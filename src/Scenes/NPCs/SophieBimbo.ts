@@ -1,8 +1,6 @@
 
 export class SophieBimbo {
 
-    private get pregnancy(): PregnancyStore { return SophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
-
     // VARS
     // 282	Sophie Bimbo Follower?
     // 283	Sophie Disabled Forever
@@ -42,7 +40,7 @@ export class SophieBimbo {
     }
 
     public sophieIsInSeason(): boolean {
-        return (flags[kFLAGS.SOPHIE_HEAT_COUNTER] > 551 && !pregnancy.isPregnant);
+        return (flags[kFLAGS.SOPHIE_HEAT_COUNTER] > 551 && !SophieScene.pregnancy.isPregnant);
     }
 
     public sophiePregChance(): void {
@@ -50,7 +48,7 @@ export class SophieBimbo {
 
         // 25% + gradually increasing cumQ bonus
         if (rand(4) == 0 || player.cumQ() > rand(1000)) {
-            pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_HARPY);
+            SophieScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_HARPY);
         }
     }
     public sophieCapacity(): number {
@@ -116,7 +114,7 @@ export class SophieBimbo {
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] = 1;
         // If she's already pregnant then convert the incubation from her wild 48 + rand(48) [95 to 0] to her follower incubation [168 to 0]. Your first daughter may already be on the way.
-        if (pregnancy.isPregnant) pregnancy.knockUpForce(pregnancy.type, int(pregnancy.incubation * 1.75));
+        if (SophieScene.pregnancy.isPregnant) SophieScene.pregnancy.knockUpForce(SophieScene.pregnancy.type, int(SophieScene.pregnancy.incubation * 1.75));
         outputText("You nod, and Sophie springs forward on her powerful legs, the strength undiminished by the effects of her bimbo transformation.  She tackles you in a bear-hug, kissing your " + chestDesc(game.player) + " over and over as her momentum carries you both off the side of the mountain.  You tumble in the air, screaming as you fall", false);
         if (player.canFly()) outputText(" and unable to bring your wings to bear with arms pinning them to your back", false);
         outputText(".\n\n", false);
@@ -182,8 +180,8 @@ export class SophieBimbo {
                     // Big lust boost
                     dynStats("lus", 20);
                 }
-                else if (pregnancy.isPregnant) {
-                    switch (pregnancy.event) {
+                else if (SophieScene.pregnancy.isPregnant) {
+                    switch (SophieScene.pregnancy.event) {
                         case 3: // Medium Bump*
                             outputText("As usual, Sophie is laying on your bedroll.  Each day the fertile swell in her stomach seems to grow bigger with the egg inside.  The positively pregnant woman idly strokes her egg-bearing belly with motherly affection.  She even coos to the growing bump as she caresses her body, clearly loving the fact that she is pregnant with another egg.  It's not long before she catches sight of you; a big silly smile breaking across her puffy lips as she hurriedly gets up from your blankets and bounds over to you.  With each step, her voluptuous body jiggles and bounces, her big bountiful bosom heaving and shaking, her ripe round rump quivering like jelly as she sways her fecund hips for you.");
                             outputText("\n\n\"<i>There you are [name]!  Like, look at me!  Your egg is getting soooo big inside me!  Like, just look at how big and sexy I am!</i>\" the bimbo brained woman tweets as she presses her curvaceous body against you, making sure you can feel her big soft tits and growing baby bump.  From how her body feels, you're sure her already bountiful bimbo-like breasts have only gotten bigger thanks to her pregnancy.  \"<i>Thanks for getting me all pregnant and stuff!</i>\"");
@@ -261,7 +259,7 @@ export class SophieBimbo {
         }
         // choices("Nice Fuck",vag2,"Mean Fuck",vag,"FuckHerAss",anal,"Get Licked",getLicked,"Ovi Elixer",ovi,"Titty-Fuck",titFuck,"",0,"",0,"",0,"Leave",campSlavesMenu);
 
-        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && !pregnancy.isPregnant && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(1, "Farm Work", sendToFarm);
+        if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0 && !SophieScene.pregnancy.isPregnant && flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) addButton(1, "Farm Work", sendToFarm);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) addButton(1, "Go Camp", backToCamp);
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0 && flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE] == 0) addButton(2, "Harvest Eggs", harvestEggs);
@@ -346,21 +344,14 @@ export class SophieBimbo {
         "White",
     ];
 
-    private _eggTypes: any[];
-
-    public get eggTypes(): any[] {
-        if (_eggTypes == null) {
-            _eggTypes = [
-                ConsumableLib.L_BLKEG,
-                ConsumableLib.L_BLUEG,
-                ConsumableLib.L_BRNEG,
-                ConsumableLib.L_PNKEG,
-                ConsumableLib.L_PRPEG,
-                ConsumableLib.L_WHTEG,
-            ];
-        }
-        return _eggTypes;
-    }
+    public readonly eggTypes = [
+        ConsumableLib.L_BLKEG,
+        ConsumableLib.L_BLUEG,
+        ConsumableLib.L_BRNEG,
+        ConsumableLib.L_PNKEG,
+        ConsumableLib.L_PRPEG,
+        ConsumableLib.L_WHTEG,
+    ];
 
     private eggSelector(): void {
         for (const i = 0; i < eggColors.length; i++) {
@@ -437,7 +428,7 @@ export class SophieBimbo {
             if (player.cocks.cockThatFits(sophieCapacity()) >= 0 && player.lust >= 33) addButton(2, "Anal", buttFuckBimboSophie);
             else outputText("\n\n<b>You're too big to butt-fuck her.</b>", false);
             // TIT FUCKS!
-            if (pregnancy.event >= 2) addButton(5, "Titty-Fuck", sophiePreggoTitJobs);
+            if (SophieScene.pregnancy.event >= 2) addButton(5, "Titty-Fuck", sophiePreggoTitJobs);
             else addButton(5, "Titty-Fuck", fuckBimboSophiesTits);
 
             // VAG FUCKS!
@@ -459,7 +450,7 @@ export class SophieBimbo {
             }
         }
         if (player.vaginas.length > 0) addButton(3, "Get Licked", bimboSophieLicksRugs);
-        if (flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] > 0 && (player.gender > 0) && !pregnancy.isPregnant) {
+        if (flags[kFLAGS.TIMES_SOPHIE_HAS_DRUNK_OVI_ELIXIR] > 0 && (player.gender > 0) && !SophieScene.pregnancy.isPregnant) {
             if (player.hasItem(ConsumableLib.OVIELIX) || Inventory.hasItemInStorage(ConsumableLib.OVIELIX)) {
                 addButton(4, "Ovi Elixir", sophieEggApocalypse);
             }
@@ -652,7 +643,7 @@ export class SophieBimbo {
         // NON WANG
         if (!player.cocks.length > 0 || player.cocks.cockThatFits(sophieCapacity()) == -1) {
             outputText("You throw yourself at Sophie, compelled by thoughts of pleasure and her delicious-looking pussy, wanting nothing more than to place your lips on her cunt and slurp with reckless abandon.  She takes the hit like a champ, tumbling with you through the dirt and dust until you land on your " + buttDescription(player) + ", bouncing to a stop with the harpy's feathery thighs clenching around your head.  ");
-            if (pregnancy.event >= 2) outputText("Her pregnant belly rests against your middle, untouched by the rough fall.  ");
+            if (SophieScene.pregnancy.event >= 2) outputText("Her pregnant belly rests against your middle, untouched by the rough fall.  ");
             outputText("How did she do that?  Your questions fade away as you look up and spot your target - the cum-slicked delta of Sophie's cunt, so moist it seems to fog the air, beckoning you to plunge your tongue inside and taste it.\n\n", false);
 
             outputText("With rapacious desire, you grab the harpy's down-coated ass-cheeks and squeeze her plump rump, pulling her dripping cooch straight onto your face.  You shiver at the potent, womanly smell as it oozes over your " + face(player) + ", and dribbles down your chin.  Without a moment's hesitation, you take the first long lick of Sophie's tasty juices.  They have a tangy flavor that seems to sizzle on your tongue before fading into a soft, sweet, peach-like taste.  You hum in pleasure - the harpy was right; your tongue REALLY wants to taste her.\n\n", false);
@@ -672,7 +663,7 @@ export class SophieBimbo {
             outputText("At long last, the bimbo's bald cunt climaxes from your work, splattering you with a flood of musky girl-spunk.  You still need her pussy so bad that you can't stop.  You lick, lap, and swallow with inhuman eagerness until the box atop you is emptied of everything save your saliva.  Then, and only then, do you finally feel release.  Your " + vaginaDescript(player) + " climaxes for Sophie, soaking her fingers and wringing them as if your life depended on it.  She giggles, coming down from her own orgasm and feeling quite pleased with the effects her words have had on you.\n\n", false);
 
             outputText("The harpy gets up, but only long enough to turn around and lay atop you, face to face");
-            if (pregnancy.event >= 2) outputText(", egg-swollen belly smushing between you");
+            if (SophieScene.pregnancy.event >= 2) outputText(", egg-swollen belly smushing between you");
             outputText(".  \"<i>That was sooo fun!  Like, we'll totally do this sometime soon, but I need a drink, and you smell like pussy.  Mmmm, I like that smell.  It means fun stuff!</i>\"  Sophie kisses you full on the mouth, her puffy, quim-stained lips coloring your own with her amber lipstick.  \"<i>You're like, the best pussy-licker ever, ya know?</i>\"\n\n", false);
 
             outputText("Sophie struts off, touching a finger to her cunt before licking it, tasting the remnants of your saliva.", false);
@@ -685,7 +676,7 @@ export class SophieBimbo {
             let x: number = player.cocks.cockThatFits(sophieCapacity());
             if (x < 0) x = player.cocks.smallestCockIndex();
             outputText("You throw yourself at Sophie, compelled by thoughts of pleasure and her delicious-looking pussy.  Imagining yourself placing your lips on her cunt and slurping with reckless abandon, you tackle her, hard.  She takes the hit like a champ, tumbling with you through the dirt and dust until you land on your " + buttDescription(player) + ", bouncing to a stop with the harpy's feathery thighs clenching around your head.  ");
-            if (pregnancy.event >= 2) outputText("Her gravid belly bumps up against your own, somehow untouched by the rough-and-tumble fall.  ");
+            if (SophieScene.pregnancy.event >= 2) outputText("Her gravid belly bumps up against your own, somehow untouched by the rough-and-tumble fall.  ");
             outputText("How did she do that?  Your questions fade away as you look up and spot your target - the cum-slicked delta of Sophie's cunt, so moist it seems to fog the air, beckoning you to plunge your tongue inside and taste it.\n\n", false);
 
             outputText("With rapacious desire, you grab the harpy's down-coated ass-cheeks and squeeze her plump rump, pulling her dripping cooch straight onto your face.  You shiver at the potent, womanly smell as it oozes over your " + face(player) + " and dribbles down your chin.  Without a moment's hesitation, you take the first, long lick of Sophie's tasty juices.  They have a tangy flavor that seems to sizzle on your tongue before fading into a soft, sweet peach-like taste.  You hum in pleasure - the harpy was right: your tongue really wants to taste her.\n\n", false);
@@ -710,7 +701,7 @@ export class SophieBimbo {
             outputText("\n\n", false);
 
             outputText("Sophie gives an airheaded giggle and jumps up, ignoring the slosh of your sexual fluids in her belly");
-            if (pregnancy.event >= 2) outputText(" and the way her egg-stuffed womb jiggles");
+            if (SophieScene.pregnancy.event >= 2) outputText(" and the way her egg-stuffed womb jiggles");
             outputText(".  Shining in the light, a web of harpy-lube stretches between her groin and your soaked face.  You try to sit up and get your tongue back where it belongs, inside her, but she steps one of her clawed feet down on your chest to playfully pin you to the ground.\n\n", false);
 
             outputText("The blond bombshell titters, \"<i>Like, you don't need to lick my cunny any more, babe. You were totally awesome and got me off super hard.  And you did such a good job cumming for me too!  Just relax there a moment, I'm gonna get a drink or something.  Let's do this again soon!</i>\"\n\n", false);
@@ -743,7 +734,7 @@ export class SophieBimbo {
         if (!player.cocks.hasSheath()) outputText("hilt", false);
         else outputText("sheath", false);
         outputText(".  Sophie's breasts sway underneath her, the pendulous globes occasionally dipping low enough to drag her thumb-sized nipples through the rough dirt.");
-        if (pregnancy.event >= 2) outputText("  Just like her breasts, her gravid tummy sways a little as well, plush with the weight of the egg you've given her.");
+        if (SophieScene.pregnancy.event >= 2) outputText("  Just like her breasts, her gravid tummy sways a little as well, plush with the weight of the egg you've given her.");
         outputText("  The bimbo moans harder every time it happens and sounds more whorish and lurid with each passing second - a true anal slut.  She looks back at you with lust in her eyes and a gleeful grin on her face.  Suddenly, one of the ditz's fingernails is dragging ", false);
         if (player.balls > 0) outputText("over your " + ballsDescriptLight(player), false);
         else outputText("across your taint", false);
@@ -768,7 +759,7 @@ export class SophieBimbo {
         outputText("  With a few final clenches of pleasure, your dick's flow of cum trickles down to a dribble.  You sigh and muse that you must've completely emptied your " + ballsDescriptLight(player) + " by now, and you slump back against a rock to watch your jizz flood out of Sophie's ass.  She pushes some inside her pink nether-lips with a triumphant smile, clearly pleased with herself.\n\n", false);
 
         outputText("Still full of energy, the big-tittied ditz bounces around and catches the cum as it drains from her gaped ass, shoving more and more into her soaked quim.  She even licks her fingers once she bores of that and says, \"<i>Thanks for making my asshole so creamy!  You even left me enough to like, stuff up my twat so I can have an egg!  Yay!</i>\"\n\n", false);
-        if (pregnancy.event >= 2) {
+        if (SophieScene.pregnancy.event >= 2) {
             outputText("Sophie giggles again, rubbing her already well-filled belly and winking at you, like you're sharing in some absurd joke.  You roll your eyes - bimbos!");
         }
         if (sophieIsInSeason()) sophiePregChance();
@@ -788,7 +779,7 @@ export class SophieBimbo {
         outputText("The harpy grabs at your " + player.armorName + " and removes it, leaving your hands free to continue the fondling of her breasts.  Once you're as a nude as your salacious slut, you finally release the huge, watermelon-like breasts and admire your handiwork.  Sophie's ditzy, empty eyes are dilated, her mouth is open and drooling, and her nipples are easily as big as your thumbs.  She's panting softly and just staring at you with her eyes glazed.  You can only assume that her simple mind has slipped into some kind of erotic trance, but if anything it only makes the idea of releasing yourself with her big, soft mammaries that much more appealing.\n\n", false);
 
         outputText("You grab hold of her nipples and sit down on a nearby rock; the dazed harpy is pulled onto her knees.  ");
-        if (pregnancy.event >= 2) outputText("Her swollen tummy pushes against your [legs] as she assumes the position, the weighty egg-distorted lump pressing against you.  ");
+        if (SophieScene.pregnancy.event >= 2) outputText("Her swollen tummy pushes against your [legs] as she assumes the position, the weighty egg-distorted lump pressing against you.  ");
         outputText("She wobbles forward and her massive mounds easily slide to either side of " + oMultiCockDesc(game.player) + ", completely engulfing it.  Still holding on to her nipples, you pull them together and ", false);
         if (player.cocks[x].cockThickness < 8) outputText("completely surround yourself", false);
         else outputText("surround as much of yourself as possible", false);
@@ -812,7 +803,7 @@ export class SophieBimbo {
         outputText("You're just getting started.  Sophie smirks and opens her mouth, letting her tongue slide out to taste your jizm as you launch the next rope, so long it trails from her hair to her chin and so thick it rolls in drops from the side of her face.  She hums in delight and squeezes her breasts tight around your " + cockDescript(game.player, x) + ", the next blast backing up inside you from the pressure.  A moment of buildup later, and your seed germinates and blooms over the harpy's tits, soaking them with spunk.  Droplets of the stuff splatter onto the ground around the both of you, but you just keep coming.  In your mind you have visions of yourself knocking up harpy after harpy, the slutty bird-girls mounting your fountaining fuck-stick long enough for their bellies to bloat with seed before moving on.  Like this, you could inseminate a whole tribe...\n\n", false);
 
         outputText("Once the thought passes, you sag back, utterly spent and more than a little parched.  Blinking the haze from your eyes, you look over at Sophie.  She's on her back, frigging herself non-stop and utterly lost to the world.  Her pretty blonde hair is plastered against her, her boobs are covered in a thick layer of white, ");
-        if (pregnancy.event >= 2) outputText("her swollen midriff is glazed, ");
+        if (SophieScene.pregnancy.event >= 2) outputText("her swollen midriff is glazed, ");
         outputText("and her eyes are closed, held shut by a thick layer of your sperm.  She's been well and truly bukkaked, drenched in ejaculate, and judging by how furiously she's schlicking away at her pussy, she couldn't be happier.  As for you, " + sMultiCockDesc(game.player) + " is still erect, even though you feel like you don't have a drop left in you.  Of course, the drugs soaking into your gold-tinted cock will probably keep you hard and ready to breed for hours.\n\n", false);
         SophieScene.luststickApplication(5);
         player.orgasm();
@@ -913,7 +904,7 @@ export class SophieBimbo {
         if (player.cor <= 50) nice = true;
         if (nice) {
             outputText("Before you can decide what, exactly, you're going to do with your harpy slut, Sophie jiggles her way over to you, the insides of her thighs dripping with every step.  You watch as the plump bird wobbles, too aroused and too damn big to walk straight, but eventually she does manage to make it to you.");
-            if (pregnancy.event >= 2) outputText("  Her pregnancy-imbued middle doesn't really help, either.");
+            if (SophieScene.pregnancy.event >= 2) outputText("  Her pregnancy-imbued middle doesn't really help, either.");
             outputText("\n\n\"<i>Like, hey, babe...</i>\" she coos, leaning forward and pressing her plushy, oversized breasts against you. Her nipples in particular push hard against your [armor], the harpy completely aroused, and before you can do anything else - she leans in and kisses you, drug-ringed lips smacking desperately against yours again and again.");
 
             outputText("\n\nFor a second you lose yourself in it as the drugged cocktail starts to run through you, making [eachCock] start to throb and pulse as ");
@@ -979,7 +970,7 @@ export class SophieBimbo {
         }
         else {
             outputText("Before you can decide what, exactly, you're going to do with your harpy slut, Sophie jiggles her way over to you, the insides of her thighs dripping with every step.  You watch as the plump bird wobbles, too aroused and too damn big to walk straight, but eventually she does manage to make it to you.");
-            if (pregnancy.event >= 2) outputText("  Her pregnancy-imbued middle doesn't really help, either.");
+            if (SophieScene.pregnancy.event >= 2) outputText("  Her pregnancy-imbued middle doesn't really help, either.");
             outputText("\n\n\"<i>Like, hey, babe...</i>\" she coos, leaning forward and pressing her plushy, oversized breasts against you.  Her nipples in particular push hard against your [armor], the harpy completely aroused, and before you can do anything else - she leans in and kisses you, drug-ringed lips smacking desperately against yours again and again.");
             outputText("\n\nFor a second you lose yourself in it as the drugged cocktail starts to run through you, making [eachCock] start to throb and pulse as [if (cocks >= 2) they grow][if (cocks = 1) it grows] hard inside of your [armor], and your arms slowly start to reach up to fondle the drug-laden harpy... before your eyes snap wide and you shove her off.");
             outputText("\n\n\"<i>You bitch!</i>\" you curse her, glaring as she falls onto her fat rump.  The stupid bird boggles for a moment, trying to process what just happened, but you're having none of it.  \"<i>If I wanted to fuck you, I'd fucking do it!</i>\"  You berate her, slowly stripping off your [armor].  Despite your yelling, she only seems turned on; she licks her lips and begins to rub her drooling cunt as she watches you strip, and you glower at her the entire time, only being irritated by her encouraging moans.");
@@ -1016,7 +1007,7 @@ export class SophieBimbo {
             else if (player.cumQ() < 3000) outputText("\n\nYour hips jump and shudder as your huge load of spunk begins to well up inside of you, and you find yourself moaning into Sophie's tits as the bird-slut eggs you on, muttering \"<i>Cum!  Cum!  Cum!</i>\" over and over.  You groan as the first spurt of your seed shoots out into the harpy's twat - and then the floodgates open.  Your hips buck repeatedly into the bird-whore as she moans her pleasure, each thrust met with a gout of your seed - which quickly starts to pour out of her.\n\nSophie's own climax quickly kicks off as her belly starts to swell with your orgasm, and your spunk paints her insides, her thighs, and the crack of her ass white along with your crotch, her belly bloated out into a little hump by the time you're done. She shudders, hips still twitching, and rubs your back lovingly.");
             else {
                 outputText("\n\nYou flop over, lost in sensation for a few moments, and Sophie seems almost puzzled, still letting out the occasional coo but otherwise going silent.  Just as it seems she's about to ask what's wrong, your hips jump, giving you the last bit of stimulation you need - and the first massive gout of your spunk fires a blisteringly hot arc of pleasure down your [cock " + (x + 1) + "], the fluids spurting out and filling Sophie's cunt in a single go.  She lets out a shrill cry, head tilting back, and her entire body shudders.  You let out a desperate, needy moan and pull your hips back, then piston into her again, another gout of your spunk loosing inside of her already-overfilled tunnel, and the excess gushes out around your cock as you thrust into her again and again, each push accompanied by another gout of your hot cum.\n\nHer belly quickly bloats from the treatment, your seed spilling into her womb");
-                if (pregnancy.event >= 2) outputText(" (or at least all over her channel, since her womb is bound up with your egg)");
+                if (SophieScene.pregnancy.event >= 2) outputText(" (or at least all over her channel, since her womb is bound up with your egg)");
                 outputText(" as your [cock " + (x + 1) + "] plugs it all from going out, and Sophie's cries get louder as she comes again, her belly bloating with your thick, hot semen and pushing against your [chest].  You finally hilt out in her, letting out a few more surges, this time with nowhere to go - so they all spill directly out around your cock, high-pressure gushes of white cream that paint your crotch and the ground underneath of it with sticky seed.");
             }
         }
@@ -1045,7 +1036,7 @@ export class SophieBimbo {
             outputText("with its own juices; you barely notice it over the orgasm from your male half, but, as you readjust your position, the slickness dripping down your thighs is unmistakable.");
         }
         outputText("\n\nSophie coos and rubs your head, extremely grateful for the (rough, sexy, abusive) fucking, and she tilts your head up to plant a number of bubbly kisses all over your face, seemingly forgetting about the drugged cocktail she has smeared all over them.  You'd be worried about having to fuck her some more to get rid of the effect, but you're so drained that right now you couldn't fuck her again if you wanted to.  Instead you collapse against your slutty harpy milf once more, ");
-        if (pregnancy.event >= 2) outputText("resting your head on her gravid tummy and smiling to yourself.");
+        if (SophieScene.pregnancy.event >= 2) outputText("resting your head on her gravid tummy and smiling to yourself.");
         else outputText("hugging her tight as she tries her best to show her appreciation.");
         if (sophieIsInSeason()) sophiePregChance();
         player.orgasm();
@@ -1313,7 +1304,7 @@ export class SophieBimbo {
         clearOutput();
         sophieSprite();
         outputText("Sophie claps her hands excitedly when you give your assent, immediately launching into a hug that presses her ");
-        switch (pregnancy.event) {
+        switch (SophieScene.pregnancy.event) {
             case 1: outputText("burgeoning"); break;
             case 2: outputText("swollen"); break;
             case 3:
@@ -1339,7 +1330,7 @@ export class SophieBimbo {
         clearOutput();
         sophieSprite();
         outputText("You go up to the feathery bimbo and idly question if she still wants to share your bed with you");
-        if (!pregnancy.isPregnant) outputText(" even though she's not pregnant any more");
+        if (!SophieScene.pregnancy.isPregnant) outputText(" even though she's not pregnant any more");
         outputText(".  Sophie's voluminous, painted lips curl into a radiant smile, an effect enhanced even more by the gold gloss she coats them with.");
 
         outputText("\n\n\"<i>Really?  Like, I can snuggle up next to you when you sleep while you use my boobs as pillows?!</i>\" she asks, unable to keep a girlish squeal of delight out of her voice.  Sophie bounces up and down; her wings flapping with wild excitement, nearly blinding you from the cloud of dust they kick up.  \"<i>I promise I won't bother while you sleep or anything, but maybe we could like, have quickies in the morning?</i>\"");
@@ -1385,7 +1376,7 @@ export class SophieBimbo {
         if (player.breasts.biggestTitSize() >= 1) outputText("own");
         else outputText("chest");
         outputText(", as she kisses you passionately, moaning into your mouth.  The effects of her potent lip-gloss hit you immediately, fortifying your pleasure into a tsunami wave of excitement, one that's cresting whether you want it to or not.  You cry out into Sophie's tongue, hips lifting her off the ground, as you cum, hard.  Your ejaculate fires out in long, thick ropes of white, painting the harpy's sodden innards white.  With her folds coated in spunk, your spasming " + cockDescript(game.player, x) + " pours the rest of your lusts into her, emptying your [balls] completely.");
-        if (pregnancy.isPregnant) {
+        if (SophieScene.pregnancy.isPregnant) {
             outputText("  The thorough seeding fills her up completely - her womb is too full of egg for there to be any room for spunk, and it all drips out with each fresh injection.");
             if (player.cumQ() >= 500) outputText("  You cum so hard that torrents of spooge wash out of her slit, her womb obstructed by the egg you made with her.");
         }

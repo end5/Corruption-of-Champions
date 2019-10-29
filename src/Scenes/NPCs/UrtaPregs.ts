@@ -34,8 +34,6 @@ export class UrtaPregs {
     URTA_LATESTBORN_COCKTYPE
     */
 
-    private get pregnancy(): PregnancyStore { return Urta.pregnancy; }
-
     // Urta Pregnancy Stages
     // Urta takes 2 days to progress from one pregnancy stage to the next
     // In Bar Menu
@@ -95,7 +93,7 @@ export class UrtaPregs {
     }
 
     public urtaPregAppearance(): void {
-        switch (pregnancy.event) {
+        switch (Urta.pregnancy.event) {
             case 1:
             case 2: outputText("Urta is sitting at her usual table, looking more clear-eyed and sober than usual.  She looks extremely happy, tail wagging gently behind her, and she gives you a thrilled look when she sees you, smiling blissfully and patting her belly in a meaningful gesture.");
                     break;
@@ -115,7 +113,7 @@ export class UrtaPregs {
     public urtaPreggoApproached(): void {
         clearOutput();
         menu();
-        switch (pregnancy.event) {
+        switch (Urta.pregnancy.event) {
             case 1: outputText("As you approach and take your usual seat, Urta chugs down a glass of something orange-colored and fizzy, which definitely doesn't smell like her usual taste in drinks.  She sees you looking at it and smiles, shrugging casually.  \"<i>Well, I can't drink alcohol while pregnant, can I, [name]?</i>\"  She then steals a kiss from you; she tastes sweet and a little tart - must be some sort of fruit-juice...");
                 // Horny:
                     if (flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] == 0) {
@@ -204,7 +202,7 @@ export class UrtaPregs {
     // Hospital
     public preggoUrtaGivingBirth(): void {
         clearOutput();
-        pregnancy.knockUpForce(); // Clear Pregnancy
+        Urta.pregnancy.knockUpForce(); // Clear Pregnancy
         flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 0;
         flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;
         outputText("As you start getting ready to settle in for the night, you become aware of a commotion steadily approaching your position.  Readying yourself to fight, you approach the boundaries of your camp.  There, stamping his hoof irritably, is a centaur wearing a studded leather jerkin.  \"<i>[name]!  Are you [name]?</i>\"  He cries upon spotting you.");
@@ -252,7 +250,7 @@ export class UrtaPregs {
     // [=Go=]
     private goVisitUrtaBirfs(withUrta: boolean = false): void {
         clearOutput();
-        pregnancy.knockUpForce(); // Clear Pregnancy
+        Urta.pregnancy.knockUpForce(); // Clear Pregnancy
         flags[kFLAGS.URTA_PREGNANT_DELIVERY_SCENE] = 0;
         flags[kFLAGS.NEW_BABY_ANNOUNCED] = 0;
         if (!withUrta) outputText("The trip to the clinic where Urta is giving birth to your child is a blur; all that matters is getting there as fast as possible.  The centaur abandons you at the hospital doors, and you make your own way inside, approaching the counter inside.");
@@ -544,7 +542,7 @@ export class UrtaPregs {
             outputText("\n\nUrta smiles at you and gives you a friendly wave as she walks up.  \"<i>Hi, lover; how's the baby?</i>\"  She asks, already looking at your swollen stomach.  You take a deep breath and begin telling Urta about the burdens you're facing. The vixen gives you a sympathetic expression as you complain, timidly advancing closer to you as you speak, then gently reaching out with one hand, stopping before she fully touches your belly, looking at you with an obvious nonverbal request for permission.  You simply smile and nod your head.");
 
             outputText("\n\nUrta smiles and eagerly starts patting and rubbing your belly, gleefully running her fingers over its taut skin, feeling every inch of the gravid swell.  \"<i>Have you felt it kick, yet?</i>\"  She asks, ");
-            if (pregnancy.type != PregnancyStore.PREGNANCY_PLAYER) outputText("sounding somewhat jealous that it's you carrying and not her.");
+            if (Urta.pregnancy.type != PregnancyStore.PREGNANCY_PLAYER) outputText("sounding somewhat jealous that it's you carrying and not her.");
             else outputText("sounding a little smug as she caresses her own gravid tummy.");
             outputText("  You shake your head, but considering how far you are into the pregnancy, it shouldn't take long... if Urta keeps visiting, you're pretty sure it'll be kicking the next time she comes around.");
 
@@ -812,7 +810,7 @@ export class UrtaPregs {
         outputText("\n\nOnce inside you present the basket Edryn gave you.  \"<i>Thanks.  Urta is resting in her room, if you want to go see her.  Now if you'll excuse me, I need to put these away.</i>\"  She grabs the basket and heads off into the kitchen.  You decide that it can't hurt to check in on Urta and see how she's doing.");
 
         outputText("\n\nYou head upstairs and gently turn the knob of the door to her room.  The ");
-        if (pregnancy.event >= 7) outputText("heavily ");
+        if (Urta.pregnancy.event >= 7) outputText("heavily ");
         outputText("pregnant vixen is snoring softly, laying on her side under the covers, forming a sizable bump in the soft, fluffy quilt that practically envelops her, almost invisible amidst the big plump cushions that serve to keep her comfortable as she sleeps. ");
 
         outputText("\n\nYou silently make your way inside, careful not to disturb the sleeping vixen, but you only make it a few steps in.  Urta's exposed ear suddenly flickers rapidly and she snorts, stirring reluctantly from amidst her cocoon of bedding and yawning loudly as she struggles to haul her gravid form upright.  \"<i>Nice try, lover, but there's no hiding from my ears... or my nose, either,</i>\" she grins at you.  \"<i>So, what brings you here?</i>\"");
@@ -922,7 +920,7 @@ export class UrtaPregs {
         outputText("You let Urta know that you're for helping her vent some steam, if that's what she wants.");
 
         outputText("\n\nUrta grins lecherously, precum ");
-        switch (pregnancy.event) {
+        switch (Urta.pregnancy.event) {
             case 7: outputText("dripping wetly onto the floor");
                     break;
             case 8:
@@ -1727,7 +1725,7 @@ export class UrtaPregs {
         clearOutput();
         // ANNOUNCE BEHBIES
         // Once per pregnancy?
-        if ((pregnancy.type == PregnancyStore.PREGNANCY_PLAYER || (player.pregnancyIncubation < 300 && player.pregnancyType == PregnancyStore.PREGNANCY_URTA)) && flags[kFLAGS.NEW_BABY_ANNOUNCED] == 0) {
+        if ((Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER || (player.pregnancyIncubation < 300 && player.pregnancyType == PregnancyStore.PREGNANCY_URTA)) && flags[kFLAGS.NEW_BABY_ANNOUNCED] == 0) {
             newBabyComing();
         }
         // Only possible between 12-14 hours.
@@ -1771,13 +1769,13 @@ export class UrtaPregs {
             outputText(" a loving smile.");
 
             // Both Preg:
-            if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && player.pregnancyType == PregnancyStore.PREGNANCY_URTA) {
+            if (Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && player.pregnancyType == PregnancyStore.PREGNANCY_URTA) {
                 outputText("\n\n\"<i>Your mommies are both going to give you a little brother or a little sister soon,</i>\" Urta says, giving you a comforting hug whilst still managing to pat your belly, even as she gently drums her fingers on her own.");
             }
             // One person preg:
-            else if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER || (player.pregnancyType == PregnancyStore.PREGNANCY_URTA)) {
+            else if (Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER || (player.pregnancyType == PregnancyStore.PREGNANCY_URTA)) {
                 outputText("\n\n\"<i>You're going to have a little brother or sister soon!</i>\" she says, beaming with delight as she pats ");
-                if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) outputText("her");
+                if (Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) outputText("her");
                 else outputText("your");
                 outputText(" belly.");
             }

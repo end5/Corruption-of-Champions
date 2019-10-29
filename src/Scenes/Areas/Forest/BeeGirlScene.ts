@@ -17,19 +17,19 @@ export class BeeGirlScene {
 
     public setTalked(): void { flags[kFLAGS.BEE_GIRL_STATUS] = BEE_GIRL_TALKED; }
 
-    private get attitude(): number { return flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE; }
+    private getAttitude(): number { return flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE; }
 
-    private set attitude(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) + value; }
+    private setAttitude(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) + value; }
 
-    private get badEndWarning(): boolean { return (flags[kFLAGS.BEE_GIRL_STATUS] & 0x80000000) != 0; }
+    private getBadEndWarning(): boolean { return (flags[kFLAGS.BEE_GIRL_STATUS] & 0x80000000) != 0; }
 
-    private set badEndWarning(value: boolean): void {
+    private setBadEndWarning(value: boolean): void {
         flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & (BEE_GIRL_ATTITUDE | BEE_GIRL_CONVERSATION)) + (value ? 0x80000000 : 0);
     }
 
-    private get conversation(): number { return (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) >> 16; }
+    private getConversation(): number { return (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) >> 16; }
 
-    private set conversation(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE) + (value << 16); }
+    private setConversation(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE) + (value << 16); }
 
     // The Queen Bee
     // location: Forest
@@ -79,7 +79,7 @@ export class BeeGirlScene {
             else beeEncounterSheDesiresYou();
         }
         else {
-            switch (attitude) {
+            switch (getAttitude()) {
                 case BEE_GIRL_PLAYER_AFRAID:
                     beeEncounterAfraid();
                     break;
@@ -146,7 +146,7 @@ export class BeeGirlScene {
     private beeEncounterAfraidFirstTimeSex(): void {
         clearOutput();
         spriteSelect(6);
-        attitude = BEE_GIRL_PLAYER_VOLUNTARY_EGGING;
+        setAttitude(BEE_GIRL_PLAYER_VOLUNTARY_EGGING);
         outputText("You smile and nod to her.  She crooks her finger towards you, inviting you to come closer as she spreads her legs wide.  You walk slowly towards her, wearing a " + (player.cor < 40 ? "somewhat nervous " : "") + "smile on your face.  You decide to take the opportunity to look over her body once more.  Starting at her unusual legs and feet, you marvel at how the alien woman’s exoskeleton legs looks so much like boots, spread wide and inviting towards you.  Your eyes move up her legs to her thighs, covered in an intriguing yellow fuzz.  You find yourself wondering what that fluff would feel like to touch.  At the same time, it’s almost as if it were leading the way to her honey pot; inevitably drawing your view to it.\n\n");
         outputText("Her cunny looks sort of like a human pussy, but is ringed with small bits of exoskeleton to grip down tightly.  However, the most notable part is how it seems to be an almost literal honey pot.  You can see small drips of yellow goo dripping out, and you guess that that must be the main source of the sweet smell that fills the clearing.  Your mind wanders back to the clearing and you look around for a moment and notice that a number of large red flowers have been strewn about.  While you don’t recognize the flowers, you guess that they’re probably the reason that the smell isn’t so overpowering this time around.  Now the bee’s scent is just at the back of your mind, making you aroused and calming your nerves a little; not unlike the gentle and calming, but not overpowering, buzzing of the handmaiden’s wings.\n\n");
         outputText("“You look back at the bee only to find that your legs have carried you right to an arm’s length away from her.  You hesitate for a moment, prompting the woman in front of you to give her ample breasts a little push together.  Then she brings your gaze up to her face.  You can see her luscious black lips part slightly, her eyes close, and suddenly she flies forward.  In an instant, your lips are with hers in a deep kiss.  The taste in her mouth is an incredibly sweet honey, it almost drives your thoughts out of your head right there, and you slump limply into her arms for a moment.  Realizing the state you’re in, the handmaiden puts her hand to her face in surprise.  <i>“Oh, zzzorry about that.”</i> she apologizes before gently lifting you up and taking off your " + player.armorName + " as you recover from the sensation overload of her kiss.\n\n");
@@ -386,14 +386,14 @@ export class BeeGirlScene {
 
     private beeEncounterClassic(clearScreen: boolean = true): void {
         if (clearScreen) clearOutput();
-        if (attitude == BEE_GIRL_TALKED_AND_LEFT || attitude == BEE_GIRL_TALKED_AND_LEFT_TWICE) attitude = BEE_GIRL_TALKED; // Reset your friendly conversation path if autorape or accepted
+        if (getAttitude() == BEE_GIRL_TALKED_AND_LEFT || getAttitude() == BEE_GIRL_TALKED_AND_LEFT_TWICE) setAttitude(BEE_GIRL_TALKED); // Reset your friendly conversation path if autorape or accepted
         beeEncounterClassicSex(false);
     }
 
     private beeEncounterClassicSex(postCombat: boolean = true): void {
         spriteSelect(6);
         // Give into the beeee
-        if (attitude == BEE_GIRL_TALKED_AND_LEFT || attitude == BEE_GIRL_TALKED_AND_LEFT_TWICE) attitude = BEE_GIRL_TALKED; // Reset your friendly conversation path if autorape or accepted
+        if (getAttitude() == BEE_GIRL_TALKED_AND_LEFT || getAttitude() == BEE_GIRL_TALKED_AND_LEFT_TWICE) setAttitude(BEE_GIRL_TALKED); // Reset your friendly conversation path if autorape or accepted
         // TAUR SPECIAL!
         if (player.isTaur()) {
             outputText("As if you have lost control of your body, you trot up beside her, utterly entranced by the sweet smell pervading the area. She assesses your strange body, walking in circles around you while stroking you with her chitin covered hands. When she reaches your flank she lifts your tail and traces around your " + assholeDescript(player) + ", smearing a bit of honey inside and causing you to shiver. The sensation is mind numbing and you find yourself hugging a tree to support yourself. Evidently satisfied with what she's seen, the bee-girl walks in front of you and smears more honey all over the tree you're holding. You lick it without a second thought, the smell quickly overpowering whatever sense you had left. Seeing this, the bee-girl giggles and pats you, moving back toward your flank.\n\n", false);
@@ -608,7 +608,7 @@ export class BeeGirlScene {
     public beeSexForCocks(clearScreen: boolean = true): void {
         if (clearScreen) clearOutput();
         spriteSelect(6);
-        if (badEndWarning == true && rand(2) == 0) {
+        if (getBadEndWarning() == true && rand(2) == 0) {
             beeDroneBadEnd();
             return;
         }
@@ -649,7 +649,7 @@ export class BeeGirlScene {
         outputText("After a time the bee peeks around your length to look at you, a mock serious look on her face.  <i>“Juzzzt what do you think you’re doing, going around and getting off without a bee?”</i> she says wagging her finger at you.  <i>“It’zzz not healthy, and you could die without proper releazzze.”</i>  She laughs and moves to the side of your member, scooping honey out of her bizarre bee vagina and spreads it onto your oversized prick.  <i>“I mean zzzeriouzzzly, nothing can actually take zzzomething this big but a queen bee,”</i> she continues while gently rubbing the honey into your skin.\n\n");
         if (player.cocks[0].cockType == CockTypesEnum.BEE) {
             outputText("It’s true, the pain in your giant bee cock never really goes away unless you’re feeling honey run over it.  You need the release that the bees offer you to actually escape the intense needs of your new member.  Unless you can find a way to get rid of it, you’re going to have to go to her queen.  It is the only way you’ll be able to survive.\n\n");
-            badEndWarning = true; // Player has been warned about the bad end
+            setBadEndWarning(true); // Player has been warned about the bad end
         }
         else {
             outputText("The honey she spreads onto your " + cockDescript(player, giantCockIndex) + " feels very soothing, while still feeling really, really sexually stimulating.  You don’t think you’ve ever been able to feel anything with your manhood quite so clearly, or so wonderfully then while she is rubbing that honey into you.  <i>“Juzzzt think, zzzoon thizzz can become a real cock and you’ll know what true pleazzzure izzz,”</i> she says giving you a knowing wink.\n\n");
@@ -741,14 +741,14 @@ export class BeeGirlScene {
         clearOutput();
         spriteSelect(6);
         // The first time you only get the option to have eggs laid in your bum ;) BEE_GIRL_TALKED
-        if (attitude < BEE_GIRL_TALKED) { // Replaced beeProgress
+        if (getAttitude() < BEE_GIRL_TALKED) { // Replaced beeProgress
             outputText("She stops buzzing, taken aback by your resistance to her wiles.  <i>“Y-you zzzure you don't want to cuddle with me?”</i> she stammers, thrusting her exotic black and yellow breasts forwards enticingly.  With some difficulty you manage to pry your eyes back up to her face and ask her why she is trying to tempt you to embrace her.\n\n");
             outputText("She buzzes out a giggle, <i>“Well where elzzz would I lay eggzzz?  The coloniezzz alwayzzz need more workerzzz, and as one of the Queen'zzz handmaidenzzz I get zzzooooo full of eggzzz...  I promizzze to make it feel gooood if you come to me.”</i>\n\n");
             if (player.cor < 33) outputText("You are sure no good can come of this, but your body is ready to say yes.");
             if (player.cor >= 33 && player.cor <= 66) outputText("Her offer intrigues you, and the arousing sweetness of her scent makes it difficult to resist.");
             if (player.cor > 66) outputText("Looking at her through lust-tinted eyes, you're sure she can deliver on her offer.  Getting closer to her scent alone would be worth bearing a few eggs...");
             outputText("\n\nDo you accept her offer?");
-            attitude = BEE_GIRL_TALKED; // Replaced beeProgress
+            setAttitude(BEE_GIRL_TALKED); // Replaced beeProgress
             doYesNo(beeEncounterClassic, Camp.returnToCampUseOneHour);
         }
         else {
@@ -759,7 +759,7 @@ export class BeeGirlScene {
             }
             // If you get unlucky you just get the choice of getting egg-laid.
             else {
-                if (attitude == BEE_GIRL_TALKED_AND_LEFT)
+                if (getAttitude() == BEE_GIRL_TALKED_AND_LEFT)
                     outputText("<i>“You’re back!  Surely you’re here to get eggzzz and honey, right?”</i>\n\n");
                 else outputText("She cocks her head and asks, \"<i>You again?  Zzzzurely you've come for more of my honey and eggzzz, no?</i>\"  Lightly caressing her swollen abdomen, you see the dripping knotted appendage begin to drop out next to her stinger.\n\n");
                 if (player.cor < 33) outputText("You are sure no good can come of this, but your body is urging you to agree.");
@@ -773,7 +773,7 @@ export class BeeGirlScene {
 
     private beeEncounterRefusedHerEggs(): void {
         spriteSelect(6);
-        switch (attitude) {
+        switch (getAttitude()) {
             case BEE_GIRL_TALKED_AND_LEFT_TWICE:
                 outputText("\n\nThe handmaiden stands up on the flower, and puts her hands on her hips.  <i>“Why not?  Thizzz will be abzzzolutly wonderful for you, I promizzze.  Why won’t you aczzzept me?”</i> she pouts through her glossy lips.\n\n");
                 outputText("You stop for a moment and wonder exactly why you’ve refused her up until now.  Is it because you are afraid of her and the effect she has on your mind?  Is it because the idea of her eggs inside you is disgusting?  Is it because of your duty as a champion?  Or are you just going to leave her there wondering?");
@@ -781,10 +781,10 @@ export class BeeGirlScene {
                 simpleChoices("Afraid", beeEncounterRefusedHerEggsAfraid, "Disgusted", beeEncounterRefusedHerEggsDisgusted, "Duty", beeEncounterRefusedHerEggsDuty, "", null, "Leave", beeEncounterRefusedHerEggsLeave);
                 return;
             case BEE_GIRL_TALKED_AND_LEFT:
-                attitude = BEE_GIRL_TALKED_AND_LEFT_TWICE; // Same text as for first time you talked and left, just update attitude
+                setAttitude(BEE_GIRL_TALKED_AND_LEFT_TWICE); // Same text as for first time you talked and left, just update attitude
                 break;
             default: // This handled the first refusal - only BEE_GIRL_TALKED should go to the default
-                attitude = BEE_GIRL_TALKED_AND_LEFT;
+                setAttitude(BEE_GIRL_TALKED_AND_LEFT);
         }
         outputText("\n\nHer face falls at your refusal, but she makes no move against you.  <i>“Okay, I won’t try to forzzze you, maybe you’ll be more willing next time?”</i>  You give a half hearted chuckle before going back to your camp.");
         dynStats("lus", 5 + player.lib / 25);
@@ -793,7 +793,7 @@ export class BeeGirlScene {
 
     private beeEncounterRefusedHerEggsAfraid(): void {
         spriteSelect(6);
-        attitude = BEE_GIRL_PLAYER_AFRAID;
+        setAttitude(BEE_GIRL_PLAYER_AFRAID);
         outputText("\n\nYou move away from her and explain that it isn’t that you don’t like the idea of bearing the eggs, it’s that you’re afraid of the effect she has on your mind.  You’re uncomfortable that you can’t think clearly around her, and you really can’t agree to anything when you can’t remember it and thus can’t really enjoy it.  She tips her head to the side in surprise, before pursing her glossy lips in worry and saying, <i>“Really?  You mean there are people who don’t like it when they lozzze themzzzelvezzz?  Hmm, maybe I should tell my queen about thizzz.”</i>  She smiles back at you and starts to fly away, before stopping in midair and floating over to you and saying <i>“Come back another time, and maybe I can work out zzzomething you’ll be comfortable with, ok?”</i>");
         dynStats("lus", 5 + player.lib / 25);
         doNext(Camp.returnToCampUseOneHour);
@@ -801,7 +801,7 @@ export class BeeGirlScene {
 
     private beeEncounterRefusedHerEggsDisgusted(): void {
         spriteSelect(6);
-        attitude = BEE_GIRL_PLAYER_DISGUSTED;
+        setAttitude(BEE_GIRL_PLAYER_DISGUSTED);
         outputText("\n\nYou tell her that you find the idea of her laying eggs in you repulsive, and that you’re tired of her trying to constantly tempt you into accepting against your will.  She gives you an annoyed look before stomping her foot down on the flower she is standing on, almost causing her to tumble over to the side while saying, <i>“Fine, ah!”</i> before righting herself with her wings.  <i>“If I ever zzzee you again, you can forget about getting a good time.”</i>  Before directing you away from the clearing.  You smile as you leave, now you don’t have to worry about her song getting to you anymore.");
         dynStats("lus", 5 + player.lib / 25);
         doNext(Camp.returnToCampUseOneHour);
@@ -809,7 +809,7 @@ export class BeeGirlScene {
 
     private beeEncounterRefusedHerEggsDuty(): void {
         spriteSelect(6);
-        attitude = BEE_GIRL_PLAYER_DUTY;
+        setAttitude(BEE_GIRL_PLAYER_DUTY);
         outputText("\n\nYou explain to her that you are a champion of your village, and what that means.  You explain your duty, and that you can’t do anything that might push you away from accomplishing that.\n\n");
 
         outputText("The bee girl nods and seems to smile in understanding.  <i>“I zzzee, I’m bound to a duty too.  I have to find people to lay my queen’zzz eggzzz.  If you have a duty too, I won’t get in your way, and I won’t forzzze you to carry them.”</i>  You thank the bee girl for her considerations and apologize that you can’t help her more directly.  She smiles at you and says, <i>“That’zzz ok champion; if you ever want to just talk, feel free to come vizzzit.  Our queen is againzzzt the demon, zzzo we will zzzuport you in our heartzzz.”</i>");
@@ -871,20 +871,20 @@ export class BeeGirlScene {
     private beeMaidenConversation(): void {
         clearOutput();
         spriteSelect(6);
-        if (conversation > 2 && player.cor > 20) conversation = 2;
-        switch (conversation) {
+        if (getConversation() > 2 && player.cor > 20) setConversation(2);
+        switch (getConversation()) {
             case 0:
-                conversation = 1;
+                setConversation(1);
                 outputText("After giving you a chance to recover from the ordeal, your chitinous partner turns to you.  <i>“That wazzz fun, wazzzn’t it?  We zzzhoud do thizzz again zzzome time, maybe get to know each other too?”</i> she says before handing you a small bottle filled with honey.  <i>“Zzzome of mine for you, take it.”</i>  With that, she spreads her wings and flies off giving you one last wave.\n\n");
                 Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 1:
-                conversation = 2;
+                setConversation(2);
                 outputText("Once you’ve recovered, she gives a happy stretch.  <i>“It’zzz alwayzzz zzzo fun playing with zzzomeone more than onzzze.  Don’t you agree?”</i> she says as she puts one of her arms around your shoulders.  You don’t hesitate to tell her that it certainly was a fun experience.  <i>“Hey, what hive are you from?”</i> she asks you, <i>“Maybe I could come bring you a zzzurprise zzzome time?”</i>  You hesitate for a moment before telling her that you aren’t actually from a hive, you aren’t even actually a full bee girl.  Her eyes go wide before clapping her hand to her forehead in realization, <i>“Right!  Of course, no wonder you zzzeemed a bit off to me.”</i>  Suddenly she freezes, <i>“Zzzomeone is coming, they probably want my eggzzz and honey, let’zzz talk again zzzome other time.”</i>  She hands you another bottle of amber liquid before shooing you off.  You put your " + player.armorName + " back on before going too far.  You turn back just in time to see an imp jump into the bee’s arms.\n\n");
                 Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 2:
-                conversation = 3;
+                setConversation(3);
                 outputText("Awhile later your and your partner are leaning back on the flower, relaxing after your frantic lovemaking.  The bee has taken a small white straw out of her bag and offered it to you, but you declined.  She shrugs and takes a long deep breath through it, then exhales for just as long.  <i>“Izzz alwayzzz fun to play with you zzzizzzter.”</i>  You share the sentiment with her.\n\n");
                 if (player.cor > 20) {
                     outputText("<i>“Zzztill, I wish I could give you a plazzze to zzztay among the rezzzt of our zzzizzzters, but you’re too tainted to hear the zzzong of our great mother.  Maybe zzzome day,”</i> she says sadly.  You tell her not to worry about it too much, it isn’t like you aren’t able to have these rendezvous.  She perks back up and wishes you well as you get dressed, gather up your things, and head back to camp.  However, she doesn’t let you leave until you’ve taken a bottle of her honey.");
@@ -896,7 +896,7 @@ export class BeeGirlScene {
                 Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
                 break;
             case 3:
-                conversation = 4;
+                setConversation(4);
                 outputText("After relaxing in a familiar scene once again, you turn to your partner and ask her why she ran off so fast last time that she left her things behind.  She lightly smacks her forehead with both hands before saying, <i>“Oh thatzzz right!  I got zzzomething for you to take.”</i>  She fishes around inside her pack for a moment before extracting something that looks like a soft candy.  A distinctive smell of honey comes off of it, different from the usual honey that comes out of this girl.  <i>“Take thizzz.  It’ll let you hear the voizzze of our mother, and then you won’t ever have to run around without being a part of a hive again.”</i>\n\n");
                 outputText("Something about that sounded a bit ominous to you, but nevertheless, will you take the candy and do what she says?");
                 doYesNo(beeMaidenFertileBeeBadEnd, beeMaidenConversationRejectCandy);

@@ -1033,7 +1033,7 @@ export class TelAdre {
         if (humanScore(player) <= 3) outputText("despite your altered appearance, ");
         outputText("you hardly get any odd stares.  There are a number of rooms towards the back, as well as a stairway leading up to an upper level.");
 
-        Scylla.scyllaBarSelectAction(); // Done before anything else so that other NPCs can check Scylla.action to see what she's doing
+        Scylla.scyllaBarSelectAction(); // Done before anything else so that other NPCs can check Scylla.scyllaAction to see what she's doing
         // Thanks to this function and Edryn.edrynHeliaThreesomePossible() the bar menu will always display the same possible options until the game time advances.
         // So it's safe to return to this menu, Helia or Urta can't suddenly disappear or appear just from leaving and re-entering the bar.
 
@@ -1163,13 +1163,13 @@ export class TelAdre {
         // URTA
         if (Urta.urtaAtBar()) {
             // Scylla & The Furries Foursome
-            if (Scylla.action == Scylla.SCYLLA_ACTION_FURRY_FOURSOME) {
-                trace("SCYLLA ACTION: " + Scylla.action);
+            if (Scylla.scyllaAction == Scylla.SCYLLA_ACTION_FURRY_FOURSOME) {
+                trace("SCYLLA ACTION: " + Scylla.scyllaAction);
                 outputText("\n\nScylla’s spot in the bar is noticeably empty. She’s usually around at this time of day, isn’t she? Urta grabs your attention with a whistle and points to a back room with an accompanying wink. Oh... that makes sense. Surely the nun won’t mind a little help with her feeding...");
                 button = anotherButton(button, "Back Room", Scylla.openTheDoorToFoursomeWivScyllaAndFurries);
             }
             // Urta X Scylla threesome
-            if (Scylla.action == Scylla.SCYLLA_ACTION_FUCKING_URTA) {
+            if (Scylla.scyllaAction == Scylla.SCYLLA_ACTION_FUCKING_URTA) {
                 if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00143] == 0)
                     outputText("\n\n<b>Though Urta would normally be here getting sloshed, her usual spot is completely vacant.  You ask around but all you get are shrugs and giggles.  Something isn't quite right here.  You see an empty bottle of one of her favorite brands of whiskey still rolling on her table, so she can't have been gone long.  Maybe she had guard business, or had to head to the back rooms for something?</b>");
                 else

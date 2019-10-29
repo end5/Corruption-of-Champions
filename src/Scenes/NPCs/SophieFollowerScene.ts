@@ -1,8 +1,6 @@
 
 export class SophieFollowerScene {
 
-    private get pregnancy(): PregnancyStore { return SophieScene.pregnancy; } // Quick way to access sophie's pregnancyStore
-
     // Make Sophie \"smart\" again: Doing the Deed
     // Visit Rathazul and he bitches.
     // Notification (On Approaching Rathazul)*
@@ -352,21 +350,14 @@ export class SophieFollowerScene {
         "White",
     ];
 
-    private _eggTypes: any[];
-
-    public get eggTypes(): any[] {
-        if (_eggTypes == null) {
-            _eggTypes = [
-                ConsumableLib.L_BLKEG,
-                ConsumableLib.L_BLUEG,
-                ConsumableLib.L_BRNEG,
-                ConsumableLib.L_PNKEG,
-                ConsumableLib.L_PRPEG,
-                ConsumableLib.L_WHTEG,
-            ];
-        }
-        return _eggTypes;
-    }
+    public readonly eggTypes = [
+        ConsumableLib.L_BLKEG,
+        ConsumableLib.L_BLUEG,
+        ConsumableLib.L_BRNEG,
+        ConsumableLib.L_PNKEG,
+        ConsumableLib.L_PRPEG,
+        ConsumableLib.L_WHTEG,
+    ];
 
     private eggSelector(): void {
         for (const i = 0; i < eggColors.length; i++) {

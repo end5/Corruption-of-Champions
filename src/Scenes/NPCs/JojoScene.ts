@@ -35,10 +35,6 @@ export class JojoScene implements TimeAwareInterface {
     }
     // End of Interface Implementation
 
-    protected set monk(value: number): void {
-        game.monk = value;
-    }
-
     // const TIMES_AMILY_AND_JOJO_PLAYED_TIMES:int = 434;
     // const AMILY_X_JOJO_COOLDOWN:int = 435;
     // const JOJO_MOVE_IN_DISABLED:int = 550;

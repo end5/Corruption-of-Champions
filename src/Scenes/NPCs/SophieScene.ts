@@ -153,14 +153,6 @@ export class SophieScene implements TimeAwareInterface {
     // 50% chance to boost lust by 20-21(not reduced) every hour
     // Forces minimum lust to be at least 50.
 
-    private get sophieBimbo(): SophieBimbo {
-        return sophieBimbo;
-    }
-
-    private get sophieFollowerScene(): SophieFollowerScene {
-        return sophieFollowerScene;
-    }
-
     public sophieAtCamp(): boolean { // Whether she's a bimbo or not
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0) return false;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) return false;

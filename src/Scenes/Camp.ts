@@ -1,17 +1,6 @@
 
 export class Camp {
 
-    protected set timeQ(value: number): void {
-        timeQ = value;
-    }
-
-    private get campQ(): boolean {
-        return campQ;
-    }
-    private set campQ(value: boolean): void {
-        campQ = value;
-    }
-
     protected hasItemInStorage(itype: ItemType): boolean {
         return Inventory.hasItemInStorage(itype);
     }

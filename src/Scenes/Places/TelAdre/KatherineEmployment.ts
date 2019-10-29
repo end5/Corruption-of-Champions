@@ -331,9 +331,9 @@ export class KatherineEmployment {
         }
         if (player.vaginas.length > 0 && player.vaginalCapacity() >= 100) { // Don't want to get knotted together out here at the lake
             takeVag = Katherine.letKatKnotYourCuntPussyFuck;
-            if (Katherine.knotSize < 4 && Katherine.cockNumber > 1) takeVagAndAss = Katherine.getDoublePennedByKat;
+            if (Katherine.getKnotSize() < 4 && Katherine.getCockNumber() > 1) takeVagAndAss = Katherine.getDoublePennedByKat;
         }
-        if (Katherine.knotSize < 4) takeAnal = Katherine.getPenetrated;
+        if (Katherine.getKnotSize() < 4) takeAnal = Katherine.getPenetrated;
         choices("Fuck Her", penKath, "Give Anal", penAnal, "Give Both", penBoth, "Bath", Katherine.bathTime, "", null,
             "Nount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "", null, "", null);
     }
@@ -380,7 +380,7 @@ export class KatherineEmployment {
 
     private katherineTrainingStage3Horny(): void {
         clearOutput();
-        outputText("You try to press on and explain the crime she has to deal with but you realize Katherine is shifting uncomfortably.  " + (Katherine.cockLength <= 10 ? "At first you aren’t sure why, but Kath’s embarrassment tips you off.  A little bulge is developing between her legs." : "The reason is immediately apparent.  The crotch of Katherine’s pants is bulging thanks to her sizeable dog dick.") + "  “<i>I’m sorry " + player.short + ", I really want to keep training.  It’s just when you were touching me and straightening me up you smelled nice and it feels like its been so long since we had fun.</i>”\n\n");
+        outputText("You try to press on and explain the crime she has to deal with but you realize Katherine is shifting uncomfortably.  " + (Katherine.getCockLength() <= 10 ? "At first you aren’t sure why, but Kath’s embarrassment tips you off.  A little bulge is developing between her legs." : "The reason is immediately apparent.  The crotch of Katherine’s pants is bulging thanks to her sizeable dog dick.") + "  “<i>I’m sorry " + player.short + ", I really want to keep training.  It’s just when you were touching me and straightening me up you smelled nice and it feels like its been so long since we had fun.</i>”\n\n");
         outputText("You tell Kath that she needs to control herself.  What if this happened while she was out on patrol?  You are about to start explaining what the criminal is up to when Kath’s tattered pants give way.  Her canine member pops out and smacks audibly against her midriff.\n\n");
         outputText("Kath looks down at her treacherous cock and back up at you.  She straightens up again, assuming the correct posture for a watch officer and puffing her chest out.  In a stern, commanding voice she says, “<i>I arrest officer Katherine for indecent exposure.</i>”\n\n");
         outputText("Then Kath starts to snicker.  You can’t help yourself and both of you are soon sitting on crates laughing like mad.  Kath recovers first and puts her arms around you while her cock pokes into your side.  “<i>I’m sorry " + player.short + ", but after that I just can’t take this seriously.  How about we blow some steam off so this doesn’t happen next time, hmmm?</i>”\n\n");
@@ -402,14 +402,14 @@ export class KatherineEmployment {
             penKath = Katherine.penetrateKatsVag;
             penAnal = Katherine.pcPenetratesKatAnally;
             if (player.cocks.cockThatFits2(70) > -1) penBoth = Katherine.pcPenetratesKatDoubly;
-            if (Katherine.knotSize <= 4) suckNFucks = Katherine.suckNFuck;
+            if (Katherine.getKnotSize() <= 4) suckNFucks = Katherine.suckNFuck;
         }
         if (player.cocks.length > 0 && flags[kFLAGS.KATHERINE_TIMES_SEXED] > 0) suckNFucked = Katherine.suckedNFuckedByKat;
         if (player.vaginas.length > 0) {
             takeVag = Katherine.letKatKnotYourCuntPussyFuck;
-            if (Katherine.knotSize < 4 && Katherine.cockNumber > 1) takeVagAndAss = Katherine.getDoublePennedByKat;
+            if (Katherine.getKnotSize() < 4 && Katherine.getCockNumber() > 1) takeVagAndAss = Katherine.getDoublePennedByKat;
         }
-        if (Katherine.knotSize < 4) takeAnal = Katherine.getPenetrated;
+        if (Katherine.getKnotSize() < 4) takeAnal = Katherine.getPenetrated;
         choices("Fuck Her", penKath, "Give Anal", penAnal, "Give Both", penBoth, "SuckNFuck", suckNFucks, "Bath", (flags[kFLAGS.KATHERINE_TRAINING] >= 100 ? Katherine.dateKathBath : null),
             "Mount Her", takeVag, "Take Anal", takeAnal, "Take Both", takeVagAndAss, "SuckNFuckd", suckNFucked, "", null);
     }
@@ -786,7 +786,7 @@ export class KatherineEmployment {
         outputText("Breaking the kiss you ask her to do this for you... in exchange you’ll make it worth her while.  You smile seductively at her.  “<i>You do not play fair, " + player.short + ",</i>” Urta tells you, tapping you playfully on the nose, a wicked grin curling on her lips.  “<i>What do you have in mind, hmm?  Something special?</i>”\n\n");
         outputText("You suggest that if she gives Kath a hand with her problem... you’d be happy to give her a hand with her own problem.  You gently reach for her shaft, sensuously teasing it with light touches.  Your vulpine partner moans, precum already starting to bubble out of her ever-ready prick.  “<i>Alright, you got a deal, sweet thing.</i>”  She suddenly grabs you and kisses you fiercely, striving to stun you with the intensity of her gesture.  “<i>I’m a lucky girl to have you... I just hope kitty realizes how lucky she is that she’s got you too.</i>”  She says after she finally breaks the liplock.\n\n");
         outputText("You smile at her, and motion for her to lead the way.  She nods, her prick bobbing before her.  Kath looks up in puzzlement as the two of you approach, while Urta tries to avoid blushing as she is exposed to her fellow mismatched herm.  “<i>Alright, seeing as how I’m in the mood too, I guess I can help you.</i>”\n\n");
-        outputText("The cat simply shrugs, as if to say ‘what the heck’, and then nods.  Urta produces the key and unlocks the belt, which Kath practically tears off, her " + Katherine.cockMultiple("", "twin ") + "doggie-dongs stabbing fiercely into the air, dripping with their need.  She promptly sits herself down on the floor, waiting for Urta to do the same.  With surprising shyness, the herm fox seats herself beside the cat.  “<i>Now, let’s see... you’re " + (Katherine.cockLength <= 10 ? "a lot " : "") + " smaller than me, so let’s see how works...</i>” Urta mutters, cracking her fingers.  She then reaches out a hand and closes her fingers gently around Kath’s " + Katherine.cockMultiple("", "upper ") + "shaft...\n\n");
+        outputText("The cat simply shrugs, as if to say ‘what the heck’, and then nods.  Urta produces the key and unlocks the belt, which Kath practically tears off, her " + Katherine.cockMultiple("", "twin ") + "doggie-dongs stabbing fiercely into the air, dripping with their need.  She promptly sits herself down on the floor, waiting for Urta to do the same.  With surprising shyness, the herm fox seats herself beside the cat.  “<i>Now, let’s see... you’re " + (Katherine.getCockLength() <= 10 ? "a lot " : "") + " smaller than me, so let’s see how works...</i>” Urta mutters, cracking her fingers.  She then reaches out a hand and closes her fingers gently around Kath’s " + Katherine.cockMultiple("", "upper ") + "shaft...\n\n");
         outputText("You could probably try and live up to your promise by giving Urta a handjob yourself, or just leave the two to pleasure each other.");
         let helpThem: () => void = katherineTrainingWithUrtaStage1HornyHelp;
         if (player.gender == 0) helpThem = null;
