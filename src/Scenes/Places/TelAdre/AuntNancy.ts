@@ -4,12 +4,10 @@
 // 264 - Nancy relationship level
 // 265 - Talk Nancy
 // 266 - Times boned
-export class AuntNancy {
-    public constructor() {
-    }
+
     // [Introduction Blurb:
     // (appears in the Wet Bitch between 6:00 and 14:00)]
-    public auntNancy(display: boolean = true): boolean {
+    export function auntNancy(display: boolean = true): boolean {
         if (game.time.hours >= 6 && game.time.hours <= 14) {
             if (display) {
                 outputText("\n\nYou see a rather buxom woman with short, white hair in a neck- and sleeve-less black dress cleaning glasses with her bar towel.  She makes the task look simple, moreso because she has two pairs of arms, wrapped in what look like shiny black gloves.", false);
@@ -26,7 +24,7 @@ export class AuntNancy {
         else return false;
     }
 
-    public interactWithAuntNancy(): void {
+    export function interactWithAuntNancy(): void {
         outputText("", true);
         // [Interaction 2]
         // [If Time = 1400, Relationship with Aunt Nancy >= 30, and PillowTalk= 0]
@@ -62,7 +60,7 @@ export class AuntNancy {
     }
 
     // [Strong:]
-    private strongStuff(): void {
+    function strongStuff(): void {
         outputText("", true);
         // [Lose 5 Gems.]
         if (player.gems < 5) {
@@ -95,7 +93,7 @@ export class AuntNancy {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Light:]
-    private lightStuff(): void {
+    function lightStuff(): void {
         outputText("", true);
         // [Lose 5 Gems.]
         if (player.gems < 5) {
@@ -164,7 +162,7 @@ export class AuntNancy {
     }
 
     // [If Decline]
-    private declineAuntNancyMassage(): void {
+    function declineAuntNancyMassage(): void {
         outputText("", true);
         outputText("Aunt Nancy listens as you politely turn her down, and nods her head, the hungry look fading from her eyes.  \"<i>I understand completely.  Sorry to have bothered you.</i>\"  She starts to walk out of the bar, stops, and turns back to size you up again.  \"<i>Of course,</i>\" she says, \"<i>if you ever change your mind... just come by whenever my shift's over.</i>\"\n\n", false);
 
@@ -174,7 +172,7 @@ export class AuntNancy {
     }
 
     // [If Agree]
-    private timeForAuntNancySpiderCooch(): void {
+    function timeForAuntNancySpiderCooch(): void {
         outputText("", true);
         outputText("You look the still-beautiful spider-lady in the eye, and, half-mesmerized, nod in agreement.  She smiles broadly (and, you can't help but notice, quite lewdly) and puts one of her lower arms through one of yours, while putting the upper one on your shoulder.  \"<i>Well then,</i>\" Aunt Nancy says, \"<i>I suppose we should be off.</i>\"\n\n", false);
 
@@ -190,7 +188,7 @@ export class AuntNancy {
         dynStats("lus", 1);
         doNext(auntNancyPoonPartII);
     }
-    private auntNancyPoonPartII(): void {
+    function auntNancyPoonPartII(): void {
         outputText("", true);
         outputText("Slowly, you follow Aunt Nancy into her home. Inside, the building is fairly dark and gloomy, even in the middle of the day, with thick curtains of unidentifiable white matter keeping most of the sun outside. Blinded, your vision still attuned to the bright desert, you can discern little of the house's insides before you hear a sudden skittering sound behind you and, as you turn to face it, are pushed further into the gloom. Your heel is caught by a thick strand of what feels like rope, and you fall flat onto your back, arms and legs splayed out to either side of you, as you land on some sort of taut net.\n\n", false);
 
@@ -345,7 +343,7 @@ export class AuntNancy {
         doNext(auntNancyPoonPartIII);
     }
 
-    private auntNancyPoonPartIII(): void {
+    function auntNancyPoonPartIII(): void {
         outputText("", true);
         // [If PC has a cock]
         if (player.cocks.length > 0) {
@@ -440,7 +438,7 @@ export class AuntNancy {
         // [Next Page, Time += 200]
         doNext(auntNancyPoonPartIV);
     }
-    private auntNancyPoonPartIV(): void {
+    function auntNancyPoonPartIV(): void {
         outputText("", true);
         outputText("<b>Two passionate, sticky hours pass...</b>\n\n", false);
 
@@ -477,4 +475,3 @@ export class AuntNancy {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00266] += 1;
         doNext(Camp.returnToCampUseTwoHours);
     }
-}

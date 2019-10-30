@@ -2,8 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Boat {
-    public discoverBoat(): void {
+    export function discoverBoat(): void {
         player.effects.create(StatusAffects.BoatDiscovery, 0, 0, 0, 0);
         outputText("You journey around the lake, seeking demons to fight", true);
         if (player.cor > 60) outputText(" or fuck", false);
@@ -11,7 +10,7 @@ export class Boat {
         outputText("<b>You have discovered the lake boat!</b>\n(You may return and use the boat to explore the lake's interior by using the 'places' menu.)", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    public boatExplore(): void {
+    export function boatExplore(): void {
         // Helia monogamy fucks
         if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelScene.followerHel()) {
             HelScene.helSexualAmbush();
@@ -70,4 +69,3 @@ export class Boat {
         }
 
     }
-}

@@ -1,15 +1,9 @@
 
-export class Frosty {
-
-    public constructor() {
-
-    }
-
     // [Seeing her at the bakery]
     // You see a bubblegum-pink girl at the bakery, walking around and eagerly trying to hand out fliers to people. Her “uniform” is more like a yellow bikini with frills circling the waist of the bottom half. If this didn’t make her stand out from the crowd then her hair certainly would; it’s a big, poofy, curly, dark pink mess that reaches down to her ass with a huge cupcake hat sitting on top.
 
     // [Deciding to talk to her]
-    public approachFrosty(): void {
+    export function approachFrosty(): void {
         clearOutput();
         if (flags[kFLAGS.MET_FROSTY] == 0) {
             flags[kFLAGS.MET_FROSTY] = 1;
@@ -58,7 +52,7 @@ export class Frosty {
         }
     }
 
-    public frostyMainMenu(): void {
+    export function frostyMainMenu(): void {
         menu();
         if (player.gems >= 15) addButton(0, "x1", cupcakeBuy, 1);
         if (player.gems >= 60) addButton(1, "x5", cupcakeBuy, 5);
@@ -70,7 +64,7 @@ export class Frosty {
 
     }
 
-    public frostySpecialsMenu(free: boolean = false): void {
+    export function frostySpecialsMenu(free: boolean = false): void {
         // 1. Hand – 5. points
         // 2. Mouth-15. Points
         menu();
@@ -82,7 +76,7 @@ export class Frosty {
         addButton(9, "Back", approachFrosty);
     }
 
-    public cupcakeBuy(arg: number = 1): void {
+    export function cupcakeBuy(arg: number = 1): void {
         clearOutput();
         outputText("You make your purchase and swiftly devour the results. They're surprisingly delicious!");
         // 15
@@ -99,7 +93,7 @@ export class Frosty {
     }
 
     // [Yes]
-    public yesFrostyLetsHaveSexForCupcakesWhoThoughtThisWasAGoodIdeaIMeanSeriously(): void {
+    export function yesFrostyLetsHaveSexForCupcakesWhoThoughtThisWasAGoodIdeaIMeanSeriously(): void {
         clearOutput();
         flags[kFLAGS.SIGNED_FROSTYS_CONTRACT] = 1;
         outputText("Being rewarded with sex for buying cupcakes, what could be better? You take the pen from Frosty’s hand and ask where to sign. She lets out a joyful “<i>YAY!</i>” and does a little jump in the air. She zooms back behind the stand and points at the lines where your name, last name, initials, date of birth, mother’s maiden name and even your pet's name should be written. You sign all these areas until you’re finally on the last page of the contract. Thank goodness too, your hand is beginning to cramp up. You put the pen down and rub your wrist. Frosty spins the stack a 180° with the tip of her finger, does a quick flipping through the papers, nods her head, puts the stack in a lock-box under the counter and pops back up.");
@@ -113,7 +107,7 @@ export class Frosty {
     }
 
     // [Yes]
-    public yesIWantYourFreeSampleYouFuckingDiseasedCupcakeSlut(): void {
+    export function yesIWantYourFreeSampleYouFuckingDiseasedCupcakeSlut(): void {
         clearOutput();
         outputText("You follow Frosty to her booth. She goes behind the counter and spins the menu with her fingertip and stops it with the palm of her hand. She goes back to her business while you look over the menu.  The lettering and style of it has changed into something more appealing and seductive.");
         // [Specials Menu is shown]
@@ -121,7 +115,7 @@ export class Frosty {
     }
 
     // [No]
-    public noIDontWantAFreebieDiseaseYouSlut(): void {
+    export function noIDontWantAFreebieDiseaseYouSlut(): void {
         clearOutput();
         outputText("You’re too busy right now, so you deny the free service. “<i>Okeydokey, see you around, [name]!</i>” Frosty does a twirl on one foot and runs back to her stand. Such a nice girl.");
         menu();
@@ -129,7 +123,7 @@ export class Frosty {
     }
 
     // [No](for the contract)
-    public noContractForMeSloot(): void {
+    export function noContractForMeSloot(): void {
         clearOutput();
         outputText("Something about signing a contract doesn’t seem right to you, especially one for cupcakes. You shake your head no; she looks a bit sad about being rejected but quickly perks back up.");
         outputText("\n\n“<i>Well, you can still buy my tasty cupcakes. You just won’t get any perks for buying them, but eating them is a benefit in its own way. Join the BETA if you change your mind on the whole thing.</i>”");
@@ -149,7 +143,7 @@ export class Frosty {
     // You don't have enough Gems for that.
 
     // [Contract](If player hasn’t signed)
-    public getAFuckingFuckContractFromFucks(): void {
+    export function getAFuckingFuckContractFromFucks(): void {
         clearOutput();
         outputText("Frosty zooms around the counter, appearing next to you like a pink blur “<i>OH! You changed your mind!?</i>” she asks excitedly with her hands held up to her face like she’s praying.");
         // [Yes [No]
@@ -161,7 +155,7 @@ export class Frosty {
     }
 
     // [No]
-    public noIDontWantToSignYourFuckingContractGoddamned(): void {
+    export function noIDontWantToSignYourFuckingContractGoddamned(): void {
         clearOutput();
         outputText("Frosty lets out a discouraged “<i>Oh</i>” and slowly walks back to her side of the counter.");
         // [Back at Frosty’s Main menu]
@@ -169,13 +163,13 @@ export class Frosty {
     }
 
     // [Specials](If the player has signed the contract)
-    public frostysLimitedSpecialMenu(): void {
+    export function frostysLimitedSpecialMenu(): void {
         clearOutput();
         outputText("Frosty spins the menu with a fingertip and stops it with the palm of her hand. She goes back to her business while you look over the menu.  The lettering and style of it has changed into something more appealing and seductive:\n\n1. Hand – 5 points\n2. Mouth - 15 points\nSPECIAL: Eat Me Out - 1 point\n\n<b>Current points: " + frostyPoints() + "</b>");
         frostySpecialsMenu();
     }
 
-    private frostyPoints(arg: number = 0): number {
+    function frostyPoints(arg: number = 0): number {
         if (arg == 0) return flags[kFLAGS.FROSTY_POINTS];
         // If any change, add it in.
         flags[kFLAGS.FROSTY_POINTS] += arg;
@@ -185,7 +179,7 @@ export class Frosty {
     }
 
     // [Hands]
-    public frostysHandsAreColdHolyShitWhyDontYouWarmTHoseMitsUp(): void {
+    export function frostysHandsAreColdHolyShitWhyDontYouWarmTHoseMitsUp(): void {
         clearOutput();
         if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             genderlessCatchAllForFrosty();
@@ -284,7 +278,7 @@ export class Frosty {
     }
 
     // [Mouth]
-    public useFrostysMouth(): void {
+    export function useFrostysMouth(): void {
         if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
             genderlessCatchAllForFrosty();
             return;
@@ -355,7 +349,7 @@ export class Frosty {
     }
 
     // [Back to Frosty’s Special Menu.]
-    public genderlessCatchAllForFrosty(): void {
+    export function genderlessCatchAllForFrosty(): void {
         clearOutput();
         if (flags[kFLAGS.SEEN_GENDERLESS_FROSTY_REJECTION] == 0) {
             flags[kFLAGS.SEEN_GENDERLESS_FROSTY_REJECTION]++;
@@ -432,7 +426,7 @@ export class Frosty {
             Party - 500pt*/
 
     // Cunnilingus (For all genders)
-    public cunnilingateFrosty(): void {
+    export function cunnilingateFrosty(): void {
         clearOutput();
         outputText("She looks at the service you selected and a wide smirk comes over her face. “<i>Ooooh, I love that one!</i>” she squeals in delight, putting away a good amout of her display in a blur, then vaulting over the counter. You jump back,  avoiding her legs as she takes a seat on the edge of your side of the counter with her legs crossed. You’re about to bend down to her crotch level and spread her two pink legs open when she suddenly holds up one finger to you and quickly blurts out: “<i>Oh wait, I forgot one more thing!</i>” She leans her back onto the counter, her hair draping on the other side as she it looks like she’s searching under the counter for something. You hear her let out an “A-HA!” as Frosty’s body shifts to grab what she was looking for; she gracefully pulls herself back with some strange lean metal cylinder with a thin nozzle on the top in her hand.");
         outputText("\n\nShe holds a finger up to the nozzle’s tip and you hear it make a spraying sound as a fluffy white substance is dispensed on her fingertip. She holds the fingers down to you, expecting you to suck the stuff off her finger. Maybe it is the heat of the moment or something else but you latch your mouth around that finger and have your tongue explore as much as it can. The white stuff is sweet and fluffy, immediately turning into a flat sugary liquid when it makes contract with your spit. You continue sucking on her finger, Frosty looking at you with delight, until the taste of the sweet stuff is gone. She pulls her finger from your craving mouth, a trail of saliva following and breaking as she takes it back.");
@@ -728,5 +722,3 @@ export class Frosty {
     “...Ok... You win...” before collapsing on the floor. The victorious cupcake-girl does a little cheer and flicks the strange pastry in her mouth. She takes one bite and shallow, letting a out a satisfied sigh. Then she looks at the unconscious nymph by her feet and picks her up, slinging her over her shoulder. “Come on Frosty, you need to get some bed rest.”  The giant carries the little creature into the back-rooms.  You wipe the crumbs from off your face and get up to leave but not before taking one last look at the imprint of Frosty. You wonder who’s gonna pay for that.
 
     -WIP-*/
-
-}

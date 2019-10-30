@@ -1,11 +1,7 @@
 
 // 	import classes.Scenes.NPCs.*;
 
-export class Masturbation {
-
-    public constructor() { }
-
-    public masturbateMenu(): void {
+    export function masturbateMenu(): void {
         menu();
         if (player.cocks.length > 0 && (player.cocks[0].cockType == CockTypesEnum.BEE)) {
             clearOutput();
@@ -55,7 +51,7 @@ export class Masturbation {
         addButton(9, "Back", playerMenu);
     }
 
-    private fappingItems(menus: boolean = true): boolean {
+    function fappingItems(menus: boolean = true): boolean {
         if (menus) menu();
         let button: number = 0; // Will be greater than zero by the end if the player owns any fapping items
         const canReachCock: boolean = player.cocks.length > 0 && (!player.isTaur() || player.cocks[player.cocks.longestCock()].cockLength >= player.tallness * (5 / 6));
@@ -106,7 +102,7 @@ export class Masturbation {
     }
 
     // Non-shitty masturbation
-    public masturbateGo(): void {
+    export function masturbateGo(): void {
         clearOutput();
         if (player.effects.findByType(StatusAffects.Dysfunction) >= 0) {
             outputText("You'd love to masturbate, but your sexual organs' numbness makes it impossible.  You'll have to find something to fuck to relieve your lust.");
@@ -662,7 +658,7 @@ export class Masturbation {
     }
 
     // Genderless people suck!
-    private genderlessMasturbate(): void {
+    function genderlessMasturbate(): void {
         clearOutput();
         // Early prep
         if (player.cor < 15)
@@ -762,7 +758,7 @@ export class Masturbation {
         }
     }
 
-    private titForeplay(): void {
+    function titForeplay(): void {
         // Ok lets touch our boobies if we haz them and they are big enough
         if (player.breastRows.length == 1 && player.breasts.biggestTitSize() > 3) {
             if (player.lib < 45)
@@ -854,7 +850,7 @@ export class Masturbation {
         }
     }
 
-    private titFuckSingle(): void {
+    function titFuckSingle(): void {
         /*DUPLICATE WITH SCENE BELOW)
         //different based on libido
         if(player.lib < 45) outputText("You grip your " + cockDescript(game.player, 0) + " and begin cautiously guiding it towards ", false);
@@ -1353,7 +1349,7 @@ export class Masturbation {
         }
     }
 
-    private multiTitFuck(): boolean {
+    function multiTitFuck(): boolean {
         const holeTotal: number = player.breasts.totalNipples();
         const fittableCocks: number = player.cocks.length;
         let doubleUp: boolean = false;
@@ -1507,7 +1503,7 @@ export class Masturbation {
         return true;
     }
 
-    private multiNippleFuckPrep(randomCock: number): void {
+    function multiNippleFuckPrep(randomCock: number): void {
         // Start with some detail on one random cock
         // different based on libido
         if (player.lib < 70)
@@ -1571,7 +1567,7 @@ export class Masturbation {
     }
 
     // ORGASM COOOOAD
-    private orgazmo(selfSucking: boolean, nippleFuck: boolean): void {
+    function orgazmo(selfSucking: boolean, nippleFuck: boolean): void {
         outputText("\n\n");
         if (player.cocks.length > 0) {
             if (player.cocks.length == 1) {
@@ -1713,7 +1709,7 @@ export class Masturbation {
         dynStats("sen", (-0.5));
     }
 
-    private titCum(cumQuantity: number = 3): void {
+    function titCum(cumQuantity: number = 3): void {
         // var tempSize:Number = Math.round((nippleLength + baseCockLength/2)*100)/100;
         // var nippleCockDescript:String = nippleCockDescript(tempSize);
         // Normal Tits, only if lactating at at least level 2
@@ -1747,7 +1743,7 @@ export class Masturbation {
     }
 
     // (D. Dildo) – a floppy pink dildo with aphrodisiac reservoir
-    private deluxeDildo(): void {
+    function deluxeDildo(): void {
         player.slimeFeed();
         clearOutput();
         // [USE FEMALE]
@@ -1827,7 +1823,7 @@ export class Masturbation {
     }
 
     // onaHole use - game should already have checked if player has a cock! CHECK BEFORE CALLING
-    private onaholeUse(): void {
+    function onaholeUse(): void {
         // Clear text for new stuff
         clearOutput();
         // Flag after first use!
@@ -1852,7 +1848,7 @@ export class Masturbation {
         onaholeContinuation();
     }
 
-    public deluxeOnaholeUse(): void {
+    export function deluxeOnaholeUse(): void {
         clearOutput();
         // Flag after first use!
         if (player.effects.findByType(StatusAffects.DeluxeOnaholeUsed) < 0) {
@@ -1879,7 +1875,7 @@ export class Masturbation {
         onaholeContinuation();
     }
 
-    private onaholeContinuation(): void {
+    function onaholeContinuation(): void {
         if (player.cocks.length > 1) {
             if (player.gender == 3 && rand(2) == 0)
                 doNext(onaholeFutaContinuation);
@@ -1893,7 +1889,7 @@ export class Masturbation {
         }
     }
 
-    private onaholeMulticockContinuation(): void {
+    function onaholeMulticockContinuation(): void {
         outputText("You pull the sloppy toy from your dribbling dick and smile, shoving its slippery surface down on another of your " + multiCockDescriptLight(player) + ".  You rapidly work it around your cocks, orgasming until ");
         if (player.balls > 0)
             outputText("you pass out with aching, empty balls.");
@@ -1903,7 +1899,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private onaholeFutaContinuation(): void {
+    function onaholeFutaContinuation(): void {
         outputText("\n\nThe blessing - or curse, depending on how you feel - of your gender catches up with you. As with all members of your gender, you are incapable of having just ONE orgasm. You feel the muscles deep in your crotch bear down hard. Your eyes widen as you realize you are about to blow a monumental load. The pressure works its way through you and towards your cock as, with one final push, you force a torrent of semen out of your body. Your grip was not sufficient on the onahole and you launch it ");
         outputText(String(int(((Math.random() * player.str / 12) + player.str / 6) * 10) / 10));
         outputText(" feet away from you. Delirious with pleasure, you continue your 'impression' of a semen volcano, covering yourself and the area with your seed. ");
@@ -1913,7 +1909,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private allNaturalOnaholeUse(): void {
+    function allNaturalOnaholeUse(): void {
         clearOutput();
         // First use!
         if (player.effects.findByType(StatusAffects.AllNaturalOnaholeUsed) < 0) {
@@ -1948,7 +1944,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private stimBeltUse(): void {
+    function stimBeltUse(): void {
         clearOutput();
         // FIRST TIME USAGE
         if ((player.keyItems.has("Self-Stimulation Belt") >= 0)) {
@@ -1976,7 +1972,7 @@ export class Masturbation {
         }
     }
 
-    private allNaturalStimBeltUse(): void {
+    function allNaturalStimBeltUse(): void {
         clearOutput();
         if (player.keyItems.has("All-Natural Self-Stimulation Belt") >= 0) {
             // First time!
@@ -2014,7 +2010,7 @@ export class Masturbation {
         player.slimeFeed();
     }
 
-    private allNaturalSelfStimulationBeltContinuation(): void {
+    function allNaturalSelfStimulationBeltContinuation(): void {
         clearOutput();
         outputText("In shock, you scream as you realize the nodule has instantly grown into a massive, organic dildo. It bottoms out easily and rests against your cervix as you recover from the initial shock of its penetration. As the pangs subside, the infernal appendage begins working itself. It begins undulating in long, slow strokes. It takes great care to adjust itself to fit every curve of your womb. Overwhelmed, your body begins reacting against your conscious thought and slowly thrusts your pelvis in tune to the thing.\n\n");
         outputText("As suddenly as it penetrated you, it shifts into a different phase of operation. It buries itself as deep as it can and begins short, rapid strokes. The toy hammers your insides faster than any man could ever hope to do. You orgasm immediately and produce successive climaxes. Your body loses what motor control it had and bucks and undulates wildly as the device pistons your cunt without end. You scream at the top of your lungs. Each yell calls to creation the depth of your pleasure and lust.\n\n");
@@ -2026,7 +2022,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private allNaturalSelfStimulationBeltBadEnd(): void {
+    function allNaturalSelfStimulationBeltBadEnd(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Whatever the belt is, whatever it does, it no longer matters to you.  The only thing you want is to feel the belt and its creature fuck the hell out of you, day and night.  You quickly don the creature again and it begins working its usual lustful magic on your insatiable little box.  An endless wave of orgasms take you.  All you now know is the endless bliss of an eternal orgasm.\n\n");
@@ -2039,7 +2035,7 @@ export class Masturbation {
         gameOver();
     }
 
-    private lickYerGirlParts(): void { // Female cat masturbation
+    function lickYerGirlParts(): void { // Female cat masturbation
         clearOutput();
         if (player.perks.findByType(PerkLib.Flexibility) < 0) {
             outputText("You undress from your " + player.armorName + " and take a seat down on the ground. You spread your legs and look down at your sex. It's aching for something more than just your fingers, and you have a craving to taste the lustful juices leaking out. A very perverted idea of cats flashes through your brain, putting a naughty smile on your face. You lay on your side and spread your legs, giving you a perfect view of your " + vaginaDescript(player) + " You lean your head down towards the pleasure-hole, only to be stopped half-way there. You stick your tongue out, trying to add a few more inches, but this doesn't do anything except increase your appetite and your lust as a drop of warm saliva falls onto your " + vaginaDescript(player) + ". You stretch and wriggle your tongue out in a fruitless effort to taste your dripping wet cunt, craving the feeling of your tongue caressing your lips and penetrating into your depths... but it is not to be. You sit back up, frustrated and even more aroused than you were before.");
@@ -2071,7 +2067,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private catAutoLick(): void { // Male cat masturbation
+    function catAutoLick(): void { // Male cat masturbation
         clearOutput();
         // NOT FEXIBLE
         if (player.perks.findByType(PerkLib.Flexibility) < 0) {
@@ -2168,7 +2164,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private meditate(): void {
+    function meditate(): void {
         clearOutput();
         outputText("You find a flat, comfortable rock to sit down on and meditate.  As always, meditation brings a sense of peace and calm to you, but it eats up two hours of the day.");
 
@@ -2177,7 +2173,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseTwoHours);
     }
 
-    private dualBeltMasturbation(): void {
+    function dualBeltMasturbation(): void {
         clearOutput();
         outputText("You look at the thing in front of you and sigh, your " + multiCockDescriptLight(player) + " and " + vaginaDescript(player) + " dripping with fluids. With a nervous sigh you step into the underwear looking device and slip it up your legs, the cold metal feeling so good on your " + player.skinDesc + ", sending a rush of feelings up your body. You slip your " + cockDescript(player) + " down and into a hole on the front of the belt, the extra length sticking out on the other side of it. Underneath the hole and right above your pussy is another metal square with what feels like a small nub on the inside rubbing against your clit. Shivering from the feeling of it, you stay there for a moment, waiting in anticipation. Finally, you reach down to the side of the belt and flick the switch to the on position.\n\n");
         outputText("The belt whirs to life, shaking on your waist, sending jolts of pleasure through your clit as the small inside nub hits it. \"<i>Ohh...</i>\" Suddenly, the ring around your cock vibrates and then tightens hard around your cock, the belt sinking onto your body and locking in place. Worry sets in instantly as you try to wiggle and take it off, but it is no use. You see something black bubble from the edges of the metal, worried even more that it might be some sort of acid. It begins to creep across your skin at a disturbing rate, going down your " + legs(player) + " and encasing them in the blackness, wrapping your cock, ");
@@ -2207,7 +2203,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private centaurMasturbation(): boolean {
+    function centaurMasturbation(): boolean {
         clearOutput();
         const canMasturbateHugeCock: boolean = player.cocks.length > 0 && (player.tallness * (5 / 6) < player.cocks[player.cocks.longestCock()].cockLength);
         if (player.breasts.hasFuckableNipples()) {
@@ -2226,7 +2222,7 @@ export class Masturbation {
         return false;
     }
 
-    private centaurNippleCunt(): void {
+    function centaurNippleCunt(): void {
         outputText("You shrug out of your " + player.armorName + ", ");
         if (flags[kFLAGS.PC_FETISH] > 0)
             outputText("panting lustily as you envision being caught masturbating your " + nippleDescription(player, 0) + "s.");
@@ -2308,7 +2304,7 @@ export class Masturbation {
         dynStats("sen", (-0.5));
     }
 
-    private centaurHugeCock(): void {
+    function centaurHugeCock(): void {
         // Set plurality and primary cock.
         const primary: number = player.cocks.longestCock();
         const plural: boolean = (player.cocks.length > 1);
@@ -2468,7 +2464,7 @@ export class Masturbation {
         dynStats("sen", (-0.5));
     }
 
-    private centaurCantMasturbate(): void {
+    function centaurCantMasturbate(): void {
         if (flags[kFLAGS.UNABLE_TO_MASTURBATE_BECAUSE_CENTAUR] == 0) {
             outputText("No matter how you twist and turn, you can't reach anywhere close to your ");
             if (player.cocks.length > 0 || player.vaginas.length > 0)
@@ -2487,7 +2483,7 @@ export class Masturbation {
     }
 
     // [Maturbate] -- [Fake Mare] (Cock Centaurs Only)
-    private centaurDudesGetHorseAids(): void {
+    function centaurDudesGetHorseAids(): void {
         const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         if (player.keyItems.getValue1Of("Fake Mare") == 0) {
@@ -2547,7 +2543,7 @@ export class Masturbation {
     }
 
     // [Masturbate] -- [CentaurPole] -- [Fem/Herm Centaurs]
-    private centaurGirlsGetHorseAids(): void {
+    function centaurGirlsGetHorseAids(): void {
         clearOutput();
         if (player.keyItems.getValue1Of("Centaur Pole") == 0) {
             // [If low Corruption:]
@@ -2580,7 +2576,7 @@ export class Masturbation {
 
     // Self/Exgartuan
     // Bee Eggs in Huge Cock: Finished (Slywyn) (edited)
-    private getHugeEggsInCawk(): void {
+    function getHugeEggsInCawk(): void {
         clearOutput();
         // Bee Eggs in Huge Cock + Exgartuan: Finished (Slywyn)(edited)
         if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0 && flags[kFLAGS.TIMES_EGGED_IN_COCK] == 0) {
@@ -2725,7 +2721,7 @@ export class Masturbation {
     }
 
     // Birth Bee Eggs Out Your Wang: Finished (Slywyn)(edited)
-    public birthBeeEggsOutYourWang(): void {
+    export function birthBeeEggsOutYourWang(): void {
         outputText("\nYou feel more lusty and aroused than usual.  As you notice the feeling, it gets worse and worse; though you try to continue on with whatever it is that you're doing, by now you're far too distracted to continue.  All you can do is plop right down on the ground and prepare to masturbate, as it seems to be the only thing your body's going to allow you to do at this point.");
 
         outputText("\n\nQuickly shedding your [armor] and plopping down on your [ass], you make sure not to smash your abdomen in the process.  Your ");
@@ -2786,7 +2782,7 @@ export class Masturbation {
     // I Regret Nothing/Exgartuan:
     // Don't know the formatting well, so going to make some mistakes I suppose.
     // Scene Requires Fuckable Nipples, I'm going to aim at breasts around HH Cup or higher, since Exgartuan will push you over that from the bare minimum breast size - I'm thinking that breast pregnancy chance without Exgartuan will be nil/low and with Exgartuan will be extant/reasonable
-    private layEggsInYerTits(): void {
+    function layEggsInYerTits(): void {
         clearOutput();
         if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.effects.getValue2Of(StatusAffects.Exgartuan) == 0) {
             // Exgartuan; breasts should be HH or larger, fuckable nipples, only if Exgartuan is awake
@@ -2894,7 +2890,7 @@ export class Masturbation {
     // Normal intro.
     // Segue into tentacle-faps.
     // Pick biggest tentacle that can possible fit into 'gina
-    private tentacleSelfFuck(): void {
+    function tentacleSelfFuck(): void {
         let x: number = -1;
         let y: number = -1;
         temp = 0;
@@ -3079,7 +3075,7 @@ export class Masturbation {
 
     // Upon selecting the option to masturbate you should have the option to fuck your own ass if you have a tentacle dick
     // Replace n with the tentacle cock number
-    private tentacleGoesUpYerPooperNewsAtEleven(): void {
+    function tentacleGoesUpYerPooperNewsAtEleven(): void {
         let tentacle: number;
         for (tentacle = 0; tentacle < player.cocks.length; tentacle++) {
             if (player.cocks[tentacle].cockType == CockTypesEnum.TENTACLE) break;
@@ -3154,7 +3150,7 @@ export class Masturbation {
 
     // Unique Masturbation Scene (by Frogapus)
     // Select [Gilded Sock] from Masturbation menu
-    private gildedCockTurbate(): void {
+    function gildedCockTurbate(): void {
         clearOutput();
         let gildedCock: number;
         for (gildedCock = 0; gildedCock < player.cocks.length; gildedCock++) {
@@ -3196,7 +3192,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private stickADildoInYourVagooSlut(): void {
+    function stickADildoInYourVagooSlut(): void {
         clearOutput();
         if (player.vaginas.hasVirginVagina()) { // LOW CORRUPTION DEFLOWER
             if (player.cor <= 50) {
@@ -3238,7 +3234,7 @@ export class Masturbation {
     }
 
     // Dildo in the butt because why not?
-    private dildoButts(): void {
+    function dildoButts(): void {
         clearOutput();
         outputText("A kinky idea crosses your mind, and you grab your dildo. Finding a safe spot a short distance from camp, you undo your [armor] and rest on your [butt].");
         outputText("\n\nYou adjust your position as you spread your [legs], giving you the most comfortable access to your [asshole]. You sloppily lick an experimental finger and carry it down to the eager entrance between your cheeks. ");
@@ -3270,7 +3266,7 @@ export class Masturbation {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private midasCockJackingGemsRoll(): number {
+    function midasCockJackingGemsRoll(): number {
         const cockSocks: number = player.cocks.countCockSocks("gilded");
         let gems: number = 10 + rand(20);
 
@@ -3291,7 +3287,7 @@ export class Masturbation {
         return gems;
     }
 
-    private onaholeRepeatUse(corrupted: boolean): void {
+    function onaholeRepeatUse(corrupted: boolean): void {
         let gemsCreated: number = 0; // Changed as gems caused a duplicate var warning
         if (player.cocks.countCockSocks("gilded") > 0 && flags[kFLAGS.GILDED_JERKED] < player.cocks.countCockSocks("gilded")) {
             flags[kFLAGS.GILDED_JERKED]++;
@@ -3327,4 +3323,3 @@ export class Masturbation {
             }
         }
     }
-}

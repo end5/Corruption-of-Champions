@@ -1,6 +1,4 @@
 
-export class Lilium {
-
     // I dunno about the term 'satanic streetwalker', and it
     // probably needs to increment your corruption if you're fucking
     // a proper demon. -Z
@@ -14,7 +12,7 @@ export class Lilium {
     // 267 Times Bought Smexin'
 
     // #########AREA TEXT#########
-    public LiliumText(output: boolean = false): () => void {
+    export function LiliumText(output: boolean = false): () => void {
         if (output) {
             // Before paying:
             if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) outputText("\n\nYou can see a pale, scantily clad demon woman leaning casually against the wall of a building.", false);
@@ -25,7 +23,7 @@ export class Lilium {
         return null;
     }
 
-    private approachLilium(): void {
+    function approachLilium(): void {
         outputText("", true);
         spriteSelect(93);
         let pay: () => void = null;
@@ -50,7 +48,7 @@ export class Lilium {
         simpleChoices("Pay", pay, "", null, "", null, "", null, "Leave", leaveLilium);
     }
 
-    private payForLilium(): void {
+    function payForLilium(): void {
         outputText("", true);
         spriteSelect(93);
         // #########GENDERLESS SCENE######### REQUIRES unsexed (hah)
@@ -93,7 +91,7 @@ export class Lilium {
     }
 
     // - Leave:
-    private leaveLilium(): void {
+    function leaveLilium(): void {
         outputText("", true);
         spriteSelect(93);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00267] == 0) outputText("\"<i>I'm deathly allergic to fun, unfortunately,</i>\" you reply before moving on to examine more of the bazaar.", false);
@@ -102,7 +100,7 @@ export class Lilium {
     }
 
     // #########BUTTFUCK + TONGUEJOB SCENE######### REQUIRES PENIS AND LONG DEMONIC TONGUE
-    private buttFuckTongueJeorb(): void {
+    function buttFuckTongueJeorb(): void {
         outputText("", true);
         spriteSelect(93);
         let x: number = player.cocks.cockThatFits(40);
@@ -144,7 +142,7 @@ export class Lilium {
     }
 
     // #########DICK RIDE SCENE######### REQUIRES VAGINA
-    private liliumDickRidah(): void {
+    function liliumDickRidah(): void {
         outputText("", true);
         spriteSelect(93);
         outputText("Lilium takes you to a secluded spot away from the Bazaar.  She removes her corset and skirt and slips the lacy cock sock off her cock and you eagerly remove your own " + player.armorName + ".\n\n", false);
@@ -200,7 +198,7 @@ export class Lilium {
     }
 
     // #########NIPPLE FUCK SCENE######### REQUIRES PENIS
-    private liliumNippleFuck(): void {
+    function liliumNippleFuck(): void {
         let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
 
@@ -256,4 +254,3 @@ export class Lilium {
         player.orgasm();
         doNext(Camp.returnToCampUseOneHour);
     }
-}

@@ -2,8 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Bog {
-    public exploreBog(): void {
+    export function exploreBog(): void {
         flags[kFLAGS.BOG_EXPLORED]++;
         // Helia monogamy fucks
         if (flags[kFLAGS.PC_PROMISED_HEL_MONOGAMY_FUCKS] == 1 && flags[kFLAGS.HEL_RAPED_TODAY] == 0 && rand(10) == 0 && player.gender > 0 && !HelFollower.followerHel()) {
@@ -23,4 +22,3 @@ export class Bog {
             doNext(Camp.returnToCampUseOneHour);
         }
     }
-}

@@ -2,8 +2,6 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class GnollSpearThrowerScene {
-
     /*Content Guide: Just to help me make sure I got everything and to explain the layout, colored font is going to be used to identify when text should be used.  This will often be used in regards to specific characteristics, instead of the overall gender.  For example, a reference to a cuntboy's chest would be in Orange but a reference to her hips or groin would be red.
      Black – Universal text
      Blue – Text to be used on Male heroes
@@ -17,7 +15,7 @@ export class GnollSpearThrowerScene {
      */
 
     // Female Gnoll.  First Page.
-    public gnoll2Encounter(): void {
+    export function gnoll2Encounter(): void {
         spriteSelect(54);
         outputText("", true);
         // <First Encounter>
@@ -51,7 +49,7 @@ export class GnollSpearThrowerScene {
     }
 
     // <Hyena Victorious – Anal>
-    public hyenaSpearLossAnal(): void {
+    export function hyenaSpearLossAnal(): void {
         spriteSelect(54);
         // Oh shit get anal raped.
         if (player.hasItem(ConsumableLib.S_DREAM)) {
@@ -141,7 +139,7 @@ export class GnollSpearThrowerScene {
         cleanupAfterCombat();
     }
 
-    public hyenaVictory(): void {
+    export function hyenaVictory(): void {
         spriteSelect(54);
         outputText("", true);
         outputText("The gnoll draws one final javelin, the sharp point distinct as it points at you.  The javelin drops, sticking deep into the dry ground, as the amazon is too");
@@ -160,7 +158,7 @@ export class GnollSpearThrowerScene {
     }
 
     // <Hyena Defeat - Fellatio>
-    private hyenaVictoryRapeFellatio(): void {
+    function hyenaVictoryRapeFellatio(): void {
         spriteSelect(54);
         let x: number = player.cocks.cockThatFits(40);
         if (x < 0) x = 0;
@@ -229,7 +227,7 @@ export class GnollSpearThrowerScene {
     }
 
     // <Hyena Defeat – Cunnilingus>
-    private victoryRapeHyenaCunnilingus(): void {
+    function victoryRapeHyenaCunnilingus(): void {
         spriteSelect(54);
         outputText("", true);
         outputText("Dark brown eyes watch your approach, already slightly glazed in lust.  Slowly, the tawny head bows before you, acknowledging you as dominant.  It amazes you that this powerful, feral woman who fought so hard would now be so meek, but part of you knows that this submission will not last forever.\n\n", false);
@@ -258,4 +256,3 @@ export class GnollSpearThrowerScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

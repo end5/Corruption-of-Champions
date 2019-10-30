@@ -46,8 +46,9 @@ export class TamaniScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    private tamaniGivesBirth(): void {
+    function tamaniGivesBirth(): void {
         if (pregnancy.type == PregnancyStore.PREGNANCY_PLAYER) { // Don't want drider eggs to add to her daughers
             flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] += flags[kFLAGS.TAMANI_PREGNANCY_COUNT];
             flags[kFLAGS.TAMANI_PREGNANCY_COUNT] = 0;
@@ -56,7 +57,7 @@ export class TamaniScene implements TimeAwareInterface {
         pregnancy.knockUpForce(); // Clear Pregnancy
     }
 
-    public tamaniChest(): string {
+    export function tamaniChest(): string {
         let descript: string = "";
         switch (flags[kFLAGS.TAMANI_TIMES_IMPREGNATED]) {
             case -1:
@@ -88,7 +89,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [Encounter Tamani – female]
-    private tamaniFemaleEncounter(): void {
+    function tamaniFemaleEncounter(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("A goblin leaps out from behind a rock outcropping.  She keeps her arms folded across her " + tamaniChest() + " and glares at you.  The little thing is only about four feet tall, with pink and black dyed hair cut into a cute little 'do.  The greenish-gray skin of her breasts bulges out around her arms, supported by a few leather straps, amplifying her cleavage.  Her cunt lips are pierced multiple times, inflamed, and slightly parted.  There really isn't any clothing on her to hide them, just more of the ever-present straps wrapping around her thighs.\n\n", false);
@@ -98,7 +99,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // (Umm OK?)
-    private tamaniFemaleYes(): void {
+    function tamaniFemaleYes(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("\"<i>That's what I thought,</i>\" says the goblin as she fishes around in her pouches, \"<i>but I'm not cruel, I'll give you my best dildo so you can keep your hot little box stuffed all the time.</i>\"\n\n", false);
@@ -111,7 +112,7 @@ export class TamaniScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [No]
-    private tamaniFemaleNo(): void {
+    function tamaniFemaleNo(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("The goblin harrumphs, \"<i>We'll see about that slut.  I'll be knocked up from every monster and stud this side of the mountain.  Hell, just grow one dick, and see how fast Tamani's legs get wrapped around you!</i>\"\n\n", false);
@@ -123,7 +124,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
     // [Encounter Tamani – HAZ COCK]
     // [First Time]
-    private tamaniMaleFirstEncounter(): void {
+    function tamaniMaleFirstEncounter(): void {
         spriteSelect(56);
         flags[kFLAGS.TAMANI_MET] = 1; // Indicates you've met her as a male at least once
         outputText("", true);
@@ -133,7 +134,7 @@ export class TamaniScene implements TimeAwareInterface {
         simpleChoices("Fuck Her", tamaniFirstTimeConsentual, "Refuse", tamaniFirstTimeRefusal, "", null, "", null, "", null);
     }
     // [Fuck Her – Consentual First Time]
-    private tamaniFirstTimeConsentual(): void {
+    function tamaniFirstTimeConsentual(): void {
         spriteSelect(56);
         tamaniKnockUp();
         outputText("", true);
@@ -190,7 +191,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [Refuse – First Time Meeting]
-    private tamaniFirstTimeRefusal(): void {
+    function tamaniFirstTimeRefusal(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("Tamani's eyes widen in surprise, \"<i>Don't let the size fool you, big " + boyGirl(player) + ". I can take more than you think,</i>\" she says while her hands begins playing with her box, \"<i>Are you sure you don't want to just let off a little steam?</i>\"\n\n", false);
@@ -200,7 +201,7 @@ export class TamaniScene implements TimeAwareInterface {
         dynStats("lus", 5);
     }
     // [No Means No]
-    private tamaniSecondRefusal(): void {
+    function tamaniSecondRefusal(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("The goblin pouts, anger clouding her cute little features.  She turns and storms off, clearly pissed at you, \"<i>Think about it.  Next time that dick better ache for me, or I'll MAKE you want it.</i>\"\n\n", false);
@@ -209,7 +210,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [REPEAT MALE ENCOUNTER]
-    private tamaniMaleRepeatEncounter(): void {
+    function tamaniMaleRepeatEncounter(): void {
         spriteSelect(56);
         outputText("", true);
         // (IF FUCKED - check to see if she's pregnant or has given birth)
@@ -228,7 +229,7 @@ export class TamaniScene implements TimeAwareInterface {
         simpleChoices("Take Her", tamaniSexWon, "Let Her", tamaniSexLetHer, "No", tamaniStartFight, "", null, "", null);
     }
 
-    private tamaniStartFight(): void {
+    function tamaniStartFight(): void {
         clearOutput();
         outputText("Tamani adopts a fighting pose and says, \"<i>If I have to I'll beat my children out of you!</b>\"");
         startCombat(new Tamani());
@@ -236,7 +237,7 @@ export class TamaniScene implements TimeAwareInterface {
 
     // [Let Her (Or Combat Rape)]
     // [let her]
-    public tamaniSexLetHer(): void {
+    export function tamaniSexLetHer(): void {
         spriteSelect(56);
         tamaniKnockUp();
         outputText("", true);
@@ -446,7 +447,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [NORMAL COMBAT – LOSS TEXT]
-    public tamaniSexLost(): void {
+    export function tamaniSexLost(): void {
         spriteSelect(56);
         tamaniKnockUp();
         outputText("", true);
@@ -491,7 +492,7 @@ export class TamaniScene implements TimeAwareInterface {
 
     // [NORMAL COMBAT – VICTORY RAEEP]
     // Shove her face in the mud and fuck her
-    public tamaniSexWon(): void {
+    export function tamaniSexWon(): void {
         spriteSelect(56);
         tamaniKnockUp();
         let x: number = player.cocks.cockThatFits(90);
@@ -566,7 +567,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [REPEAT MALE PREGNANT ENCOUNTER]
-    private tamaniPregnantEncounter(): void {
+    function tamaniPregnantEncounter(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("Tamani strolls out from behind a boulder, and wow is she ever pregnant.  It doesn't diminish the look of lust in her eyes when she meets your gaze, but her hands do keep rubbing the outside of her belly, only pausing to squeeze drops of milk from her nipples.  Her leather straps seem to fit her even better than before, accentuating her expanding curves and looking fantastic on her pregnant form.\n\n", false);
@@ -576,14 +577,14 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [Refuse]
-    private tamaniPregnantRefusal(): void {
+    function tamaniPregnantRefusal(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("She bursts into tears and waddles away crying.  You aren't sure if you should feel bad or not.", false);
         doNext(Camp.returnToCampUseOneHour);
     }
     // [FUCK HER PREGGERS – Consentual]
-    private tamaniPregnantFuck(): void {
+    function tamaniPregnantFuck(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("Tamani's eyes light up and she pounces you, somehow managing to jump up and latch onto your chest despite the weight of her burgeoning pregnancy.  The two of you overbalance as her weight carries you to the ground, flat on your back.   Your " + buttDescription(player) + " hurts a little from the impact but it's the last thing on your mind.  More important are the milk-dribbling twin mounds pressing tightly against your ", false);
@@ -632,7 +633,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // [Birth Encounter]
-    private tamaniPoopsOutBabies(): void {
+    function tamaniPoopsOutBabies(): void {
         spriteSelect(56);
         outputText("", true);
         outputText("You hear orgiastic screams in the distance as you explore.  You turn to investigate, and as you go, they become even louder and higher pitched.  You crest a rise and find Tamani ", false);
@@ -664,7 +665,7 @@ export class TamaniScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public tamaniKnockUp(): void {
+    export function tamaniKnockUp(): void {
         if (pregnancy.isPregnant) return; // Already preggers
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, 216); // Nine day long pregnancy
         // Determine how many kids...
@@ -681,7 +682,7 @@ export class TamaniScene implements TimeAwareInterface {
         if (cum >= 600 && rand(2) == 0) flags[kFLAGS.TAMANI_PREGNANCY_COUNT]++;
     }
 
-    public encounterTamani(): void {
+    export function encounterTamani(): void {
         // Fems:
         if (player.cocks.length <= 0) {
             tamaniFemaleEncounter();
@@ -701,7 +702,7 @@ export class TamaniScene implements TimeAwareInterface {
     // TAMANI HYPNO SHIT
 
     // [GIVE IN TO TAMANI'S HYPNO SHENANIGANS]
-    public getRapedByTamaniYouHypnoSlut(): void {
+    export function getRapedByTamaniYouHypnoSlut(): void {
         spriteSelect(56);
         outputText("", true);
         // Find a dick that fits
@@ -835,7 +836,7 @@ export class TamaniScene implements TimeAwareInterface {
         else doNext(Camp.returnToCampUseOneHour);
     }
 
-    public tamaniAnalShits(): void {
+    export function tamaniAnalShits(): void {
         spriteSelect(56);
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
         outputText("", true);
@@ -855,7 +856,7 @@ export class TamaniScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
 
-    public tamaniBeaten(): void {
+    export function tamaniBeaten(): void {
         clearOutput();
         outputText("With the goblin defeated, you're finally free to tend to your body's true desires, even if they may be different than the ones the goblin was intent on stoking.  You shed your [armor] like a second skin, shrugging out of the offending garments with ease.  With your nude form revealed, Tamani ");
         if (player.cocks.length > 0) outputText("licks her lips in anticipation, eyes locked on [eachCock]");
@@ -891,7 +892,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // Butts McGee Facesitting Tamaniz
-    private preferTamaniFemdom(): void {
+    function preferTamaniFemdom(): void {
         clearOutput();
         // Tamani Facesit
         // ===========Tamani============
@@ -903,7 +904,7 @@ export class TamaniScene implements TimeAwareInterface {
         addButton(1, "Refuse", declineZeFacesits);
     }
     // (("Refuse" choice))
-    private declineZeFacesits(): void {
+    function declineZeFacesits(): void {
         clearOutput();
         outputText("You tell her you're not interested.");
         outputText("\n\nThe curvy goblin kicks you with a snarl, making you instinctively grab at one [leg] and hop around on the other - until she kicks it too, knocking you down.  \"<i>Fine, bitch. Have it your way. But if I find you taking <b>my</b> cocks again, you're going to be in trouble!</i>\"  She darts off before you can get a word in edgewise, leaving you alone.");
@@ -912,7 +913,7 @@ export class TamaniScene implements TimeAwareInterface {
     }
 
     // (("Accept" choice))
-    private acceptTamaniFacesits(): void {
+    function acceptTamaniFacesits(): void {
         clearOutput();
         outputText("You eye the goblin's wide hips again before you nod, anticipating the idea.");
         outputText("\n\nTamani's impish smirk blooms into a wide grin, and the little goblin gently shoves you.  \"<i>Lay down, then!</i>\" she tells you.  You decide to comply, reaching for your [armor] - but she stops your hand.  \"<i>No need to strip, skank. Just lay down,</i>\" she tells you, pushing again.  You shrug and comply with her request, finding a comfortable spot on the ground to lay on, and then look over at her.");
@@ -934,4 +935,3 @@ export class TamaniScene implements TimeAwareInterface {
         dynStats("lus", 20 + player.lib / 20);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

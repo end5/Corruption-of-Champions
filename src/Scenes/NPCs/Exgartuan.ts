@@ -168,8 +168,9 @@ export class Exgartuan implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public fountainEncounter(): void {
+    export function fountainEncounter(): void {
         outputText("", true);
         outputText("While roaming the shifting sands of the desert, you begin to feel a change in the air.  The bone-dry atmosphere shifts, becoming more and more humid as you press on.  At last you crest a dune and discover the source of the moisture – a huge onyx fountain, spraying crystal clear water into the air.  The center of the fountain is a magnificent sculpture of two entwined demonic forms, nude and over-proportioned to the extreme.  The water is spraying out from some rather... unconventional places.  You blush, feeling a bit parched, but wary of the fountain's nature.\n\n", false);
         outputText("You come closer and discover a placard.  It reads, \"Fountain of Endowment\".  Well, clearly it's supposed to enhance something, but at what cost?\n\n", false);
@@ -178,7 +179,7 @@ export class Exgartuan implements TimeAwareInterface {
         doYesNo(drinkFountainEndowment, Camp.returnToCampUseOneHour);
     }
 
-    private drinkFountainEndowment(): void {
+    function drinkFountainEndowment(): void {
         outputText("", true);
         let changed: boolean = false;
         player.slimeFeed();
@@ -244,7 +245,7 @@ export class Exgartuan implements TimeAwareInterface {
         }
         doNext(Camp.returnToCampUseOneHour);
     }
-    private exgartuanInfestDick(): void {
+    function exgartuanInfestDick(): void {
         spriteSelect(15);
         // (+Demon dick possession – not demoncocked)
         if (player.cocks[0].cockType != CockTypesEnum.DEMON) {
@@ -272,7 +273,7 @@ export class Exgartuan implements TimeAwareInterface {
         }
         player.effects.create(StatusAffects.Exgartuan, 1, 0, 0, 0);
     }
-    private exgartuanInfestTits(): void {
+    function exgartuanInfestTits(): void {
         outputText("\n\nYour " + allBreastsDescript(player) + " jiggle as they grow MUCH larger, turning into obscene mounds that shake with every motion of your body.  All your " + nippleDescription(player, 0) + "s puff up with them, gaining volume to match their new, larger homes.  They feel hot and ache to be touched.", false);
         temp = player.breastRows.length;
         while (temp > 0) {
@@ -289,7 +290,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // [Masturbate while he's awake in dick]
-    public exgartuanMasturbation(): void {
+    export function exgartuanMasturbation(): void {
         outputText("", true);
         if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1) {
             spriteSelect(15);
@@ -389,7 +390,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // (NOT PLAYED WITH RECENTLY: +LUST MESSAGE)
-    public exgartuanBored(): void {
+    export function exgartuanBored(): void {
         let select: number = 0;
         if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && player.cocks.cockArea(0) >= 100) {
             select = rand(9);
@@ -459,7 +460,7 @@ export class Exgartuan implements TimeAwareInterface {
         }
     }
 
-    public exgartuanCombatUpdate(): boolean {
+    export function exgartuanCombatUpdate(): boolean {
         // Monsters not effected by Exgartuan's stuff
         if (monster.short == "tentacle beast" || monster.short == "worms" || monster.short == "demons") return false;
         // VARS
@@ -621,7 +622,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // (ARMOR CHANGE)
-    public exgartuanArmorShift(): void {
+    export function exgartuanArmorShift(): void {
         let changed: boolean = false;
         if (player.armor == ArmorLib.BEEARMR) {
             outputText("The silken loin-cloth of your chitin armor cinches up, tightening against your groin until it displays the prominent bulge of your demon-possessed dick clearly.", false);
@@ -713,7 +714,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // (FORCE OUT ANY WORM INFECTION)
-    public exgartuanWormCure(): void {
+    export function exgartuanWormCure(): void {
         outputText("Your ", false);
         if (player.balls > 0) outputText(ballsDescriptLight(player), false);
         else outputText("groin", false);
@@ -722,7 +723,7 @@ export class Exgartuan implements TimeAwareInterface {
         player.effects.remove(StatusAffects.Infested);
     }
 
-    public exgartuanLactationAdjustment(): void {
+    export function exgartuanLactationAdjustment(): void {
         let boobs: number = 0;
         // (Lactating Already)
         if (player.breasts.biggestLactation() > 1) {
@@ -765,7 +766,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // [BEEGIRL RAEP]
-    public exgartuanBeeRape(): void {
+    export function exgartuanBeeRape(): void {
         spriteSelect(6);
         outputText("", true);
         outputText("You grin and embrace the demon's idea as if it were your own.  Maybe it's time the bee-girl had her own lesson in fluid insemination...\n\n", false);
@@ -785,7 +786,7 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // [Free Her] (negates some corruption gain)
-    private freeBeePostRape(): void {
+    function freeBeePostRape(): void {
         outputText("", true);
         outputText("You take pity on the slut and untie her.  Hopefully she'll recover before something worse finds her.  You'd hate to let a tentacle-beast get your sloppy seconds.", false);
         doNext(Camp.returnToCampUseOneHour);
@@ -793,14 +794,14 @@ export class Exgartuan implements TimeAwareInterface {
     }
 
     // [Leave Her]
-    private leaveBeePostRape(): void {
+    function leaveBeePostRape(): void {
         outputText("", true);
         outputText("You smile cruelly and give her glittering vulva a gentle smack before you walk away, leaving her tied up there.  Maybe some lonely imps will find a use for her...", false);
         doNext(Camp.returnToCampUseOneHour);
         dynStats("cor", .5);
     }
 
-    private exgartuanSleepSurprise(): void {
+    function exgartuanSleepSurprise(): void {
         spriteSelect(15);
         // Low corruption
         if (player.cor <= 20 && player.perks.findByType(PerkLib.BulgeArmor) >= 0) {
@@ -949,7 +950,7 @@ export class Exgartuan implements TimeAwareInterface {
         player.effects.setValue(StatusAffects.Exgartuan, 2, 25);
         doNext(playerMenu);
     }
-    private exgartuanBulgeTortureII(): void {
+    function exgartuanBulgeTortureII(): void {
         outputText("", true);
         outputText("After what feels like only a few minutes, you begin to feel as if you were sizzling beneath your sheets.  After a few half-hearted tosses and turns, inhibited by your bulging lower half, you surrender and throw off your covers.  At this point, you are almost wide awake, too focused on your increased breathing and uncomfortable temperature.  A few more moments slip by before you realize what's going on, alerted by your involuntary reach for your cock to find any sort of relief: you're getting horny.  As to how it's happening, you aren't entirely clear yet.  But it certainly isn't new to you nor is it strange for this to be happening in a place as strange as Mareth.  For all you know, this could be some natural occurrence brought in by the weather or a nearby tree or something.  Like pollen... except you want to have sex instead of suffer from congestion.\n\n", false);
 
@@ -983,7 +984,7 @@ export class Exgartuan implements TimeAwareInterface {
         dynStats("lus=", 1000);
         doNext(exgartuanBulgeTortureIII);
     }
-    private exgartuanBulgeTortureIII(): void {
+    function exgartuanBulgeTortureIII(): void {
         outputText("", true);
         outputText("Fueled by pure spite and just a hint of loathing, you begin to regain some sort of composure through controlled breathing and what little concentration you can manage.  A few minutes of counting stitches in the top of your tent is all you accomplish, however; your once dormant limp " + cockDescript(game.player, 0) + " is showing a sign of life. Your eyes widen as you feel your possessed pole stiffen up, pressing hard against your " + player.armorName + " as it grows out along with your dick, still impossibly clinging to its every facet.  It stops after only gaining a few inches, but not before driving the fight right back out of you.  Thread-counting is the last thing in your head as you quickly sit right back up, instinctually grasping for your cock.  But the situation refuses to change; your " + player.armorName + " is just as exceedingly resilient as it was before.\n\n", false);
 
@@ -1053,7 +1054,7 @@ export class Exgartuan implements TimeAwareInterface {
         doNext(exgartuanBulgeTortureIV);
     }
 
-    private exgartuanBulgeTortureIV(): void {
+    function exgartuanBulgeTortureIV(): void {
         outputText("", true);
         outputText("You wake the next morning, nestled inside your bedroll.  Realizing where you are, a relaxing feeling of easiness washes over you.  You throw off your cover to greet the day, only becoming confused as it peels off your sticky skin.  You glance down at your waist, still wearing ", false);
         // [if armorname IS NOT EQUAL TO \"<i>crotch-hugging slutty swimwear</i>\" OR \"<i>crotch-hugging revealing chainmail bikini</i>\"]
@@ -1078,7 +1079,7 @@ export class Exgartuan implements TimeAwareInterface {
     // Player going to sleep, duh
     // 3:00AM
 
-    private boobGartuanSURPRISE(): void {
+    function boobGartuanSURPRISE(): void {
         spriteSelect(15);
         // [if occurrence ==0]
         if (flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1120,7 +1121,7 @@ export class Exgartuan implements TimeAwareInterface {
         doNext(boobgartuanSurprise2);
     }
 
-    private boobgartuanSurprise2(): void {
+    function boobgartuanSurprise2(): void {
         spriteSelect(15);
         outputText("", true);
         if (flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1169,7 +1170,7 @@ export class Exgartuan implements TimeAwareInterface {
         doNext(boobgartuanSurprise3);
     }
     // [new page.  occurrence ≥1 starts here]
-    private boobgartuanSurprise3(): void {
+    function boobgartuanSurprise3(): void {
         outputText("", true);
         // [if occurrence ==0]
         if (flags[kFLAGS.BOOBGARTUAN_SURPRISE_COUNT] == 0) {
@@ -1321,7 +1322,7 @@ export class Exgartuan implements TimeAwareInterface {
     // Exgartuan in cock
     // Naga lower half
     // ~50%(maybe less?) to replace normal Exgartuan masturbation scene
-    public exgartuanNagaStoleMyMasturbation(): void {
+    export function exgartuanNagaStoleMyMasturbation(): void {
         spriteSelect(15);
         outputText("", true);
         // [if corruption <15]
@@ -1417,4 +1418,3 @@ export class Exgartuan implements TimeAwareInterface {
         dynStats("lib", .25);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

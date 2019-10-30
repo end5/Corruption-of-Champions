@@ -1,6 +1,5 @@
 
 export class Marae implements TimeAwareInterface {
-
     public constructor() {
         CoC.timeAwareClassAdd(this);
     }
@@ -24,8 +23,9 @@ export class Marae implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public encounterMarae(): void {
+    export function encounterMarae(): void {
         spriteSelect(40);
         outputText(images.showImage("marae-first-encounter"));
         outputText("Like a hidden emerald jewel, a small island appears in the distance.  You wager that you're somewhere near the center of this lake.  How coincidental.   You row closer, eager to get out of the boat and stretch your " + legs(player) + ".  The rowboat grounds itself in the moist earth of the island, coming to a dead stop.   You climb out, noting that this island is little more than a raised mound of earth and grass, with a small tree perched atop its apex.  ", false);
@@ -131,20 +131,20 @@ export class Marae implements TimeAwareInterface {
         }
     }
 
-    private grabHerBoob(): void {
+    function grabHerBoob(): void {
         clearOutput();
         outputText("You reach forward to cop a feel.  The goddess' eyes go wide with fury as a massive branch swings down, catching you in the sternum.  It hits you hard enough that you land in your boat and float back a few feet into the water.  Nothing to do but leave and hope for another chance at her breasts...");
         player.takeDamage(player.HP - 1);
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private runFromPervertedGoddess(): void {
+    function runFromPervertedGoddess(): void {
         clearOutput();
         outputText("You turn and run for the boat, leaving the corrupt goddess behind.  High pitched laugher seems to chase you as you row away from the island.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private maraeBadEnd(): void {
+    function maraeBadEnd(): void {
         spriteSelect(40);
         outputText("", true);
         outputText(images.showImage("marae-bad-end"));
@@ -194,7 +194,7 @@ export class Marae implements TimeAwareInterface {
         gameOver();
     }
 
-    private maraeStealLethicite(): void {
+    function maraeStealLethicite(): void {
         spriteSelect(40);
         outputText("", true);
         // (SUCCESS)
@@ -254,7 +254,7 @@ export class Marae implements TimeAwareInterface {
         }
     }
 
-    public level2MaraeEncounter(): void {
+    export function level2MaraeEncounter(): void {
         spriteSelect(40);
         flags[kFLAGS.CORRUPT_MARAE_FOLLOWUP_ENCOUNTER_STATE] = 1;
         outputText("", true);
@@ -307,7 +307,7 @@ export class Marae implements TimeAwareInterface {
         }
     }
 
-    private MaraeIIStageII(): void {
+    function MaraeIIStageII(): void {
         spriteSelect(40);
         outputText("", true);
         outputText(images.showImage("marae-second-encounter-pt-two"));
@@ -449,7 +449,7 @@ export class Marae implements TimeAwareInterface {
         doNext(MaraePt2RoundIIIPrizes);
     }
 
-    private MaraePt2RoundIIIPrizes(): void {
+    function MaraePt2RoundIIIPrizes(): void {
         spriteSelect(40);
         outputText("", true);
         // [EPILOGUE]
@@ -550,10 +550,9 @@ export class Marae implements TimeAwareInterface {
         doNext(Camp.returnToCampUseTwoHours);
     }
 
-    private MaraeIIFlyAway(): void {
+    function MaraeIIFlyAway(): void {
         spriteSelect(40);
         outputText("", true);
         outputText("You launch into the air and beat your wings, taking to the skies.  The tentacle-tree lashes at you, but comes up short.  You've escaped!  Something large whooshes by, and you glance up to see your boat sailing past you.  She must have hurled it at you!  It lands with a splash near the mooring, somehow surviving the impact.  You dive down and drag it back to the dock before you return to camp.  That was close!", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

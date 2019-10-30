@@ -2,10 +2,8 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class MaleSpiderMorphScene {
-
     // Greeting
-    public greetMaleSpiderMorph(): void {
+    export function greetMaleSpiderMorph(): void {
         outputText("", true);
         spriteSelect(74);
         outputText("A spider-morph drops out of a tree in front of you, hanging by a single thread of sparkling webbing.  His purple eyes gaze deeply into your own while he looks you up and down.  ", false);
@@ -23,14 +21,14 @@ export class MaleSpiderMorphScene {
         }
     }
 
-    private fightSpiderBoy(): void {
+    function fightSpiderBoy(): void {
         startCombat(new MaleSpiderMorph());
         spriteSelect(74);
         playerMenu();
     }
 
     // Talk
-    private talkToSpiderBoy(): void {
+    function talkToSpiderBoy(): void {
         outputText("", true);
         spriteSelect(74);
         outputText("The male spider-morph grins even wider, displaying the partially retracted tips of his two fangs.  You smile back nervously while he rotates about and drops lightly onto his feet, gleefully approaching you in spite of his nudity.  Sensing your discomfort, he stops a few yards away and pulls some food from a pouch on his hip, offering you some dried meats and fruits.  You take one of the more harmless looking ones and sit down with him.  He starts talking first, telling of how his people were a young race of transformed off-worlders.  The demons put a quick end to that, and recruited a large amount of the more aggressive driders and arachnes from his tribe.  He quickly explains that arachne are like him, but with chitinous exoskeletons covering their whole body, except for the face.  Driders on the other hand, have the body of a human from the hips up but a giant spider body below.\n\n", false);
@@ -41,7 +39,7 @@ export class MaleSpiderMorphScene {
     }
 
     // *Victory Pretext:rr
-    public defeatSpiderBoy(): void {
+    export function defeatSpiderBoy(): void {
         outputText("", true);
         spriteSelect(74);
         let mount: () => void = null;
@@ -66,7 +64,7 @@ export class MaleSpiderMorphScene {
     }
 
     // Loss selector
-    public loseToMaleSpiderMorph(): void {
+    export function loseToMaleSpiderMorph(): void {
         const choices: any[] = [];
         if (player.cocks.length > 0) choices[choices.length] = 0;
         if (player.vaginas.length > 0) choices[choices.length] = 1;
@@ -83,7 +81,7 @@ export class MaleSpiderMorphScene {
     }
 
     // *Victory Buttfucko
-    private victoryButtFuck(): void {
+    function victoryButtFuck(): void {
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
         outputText("", true);
         spriteSelect(74);
@@ -143,7 +141,7 @@ export class MaleSpiderMorphScene {
     }
 
     // *Victory Frotting? (too biggo)
-    private victoryFrotTheSpoidah(): void {
+    function victoryFrotTheSpoidah(): void {
         outputText("", true);
         spriteSelect(74);
         outputText("You push the ", false);
@@ -181,7 +179,7 @@ export class MaleSpiderMorphScene {
     }
 
     // *Victory Cowgirl
-    private victoryCowgirlRidingOnSpiderBoi(): void {
+    function victoryCowgirlRidingOnSpiderBoi(): void {
         // *Summary: Throw him on his back and mount up on that throbbing, ebon piece of uncut spidercock as he looks to you meekly, panting, needing something to tend to his foreskinned dick so badly...
         outputText("", true);
         spriteSelect(74);
@@ -231,7 +229,7 @@ export class MaleSpiderMorphScene {
 
     // *Loss: Get butt-fucked
     // *Summary: Male only scene for maximum prostate pounding - possible random choice between two positions, plain doggy style or the 'lucky' one, where he will curl you over yourself and fuck you so you can watch his foreskinned spiderboy cock slam your asshole -while- you drip all over your face.
-    private spiderBoyLossMaleButtfuck(): void {
+    function spiderBoyLossMaleButtfuck(): void {
         outputText("", true);
         spriteSelect(74);
         outputText("You collapse", false);
@@ -308,7 +306,7 @@ export class MaleSpiderMorphScene {
 
     // *Loss: Impregnation?
     // *Summary: Vagoozles only!
-    private loseToSpiderBoyVagFucked(): void {
+    function loseToSpiderBoyVagFucked(): void {
         outputText("", true);
         spriteSelect(74);
         outputText("As your ", false);
@@ -371,7 +369,7 @@ export class MaleSpiderMorphScene {
         cleanupAfterCombat();
     }
 
-    public spiderPregVagBirth(): void {
+    export function spiderPregVagBirth(): void {
         outputText("\n", false);
         spriteSelect(74);
         if (player.vaginas.length == 0) {
@@ -392,4 +390,3 @@ export class MaleSpiderMorphScene {
         outputText(". Looking around, you notice the slimy pool appears to have dried up, but the broken eggshells show that you weren't just dreaming. Tiny dots in the dirt form a trail leading to the swamp, and you can only guess where your offspring went.\n", false);
         player.orgasm();
     }
-}

@@ -1,6 +1,4 @@
 
-export class KihaScene {
-
     /*FLAGS STUFF*/
     // 1 = PC asked her about it, past that it counts the times paid
     // const KIHA_TOLL:int = 341;
@@ -13,7 +11,7 @@ export class KihaScene {
     // const KIHA_CHOKED_OUT_PC:int = 432;
 
     // Encounter Dragon-Gal
-    public encounterKiha(): void {
+    export function encounterKiha(): void {
         let temp: () => void;
         outputText("", true);
         spriteSelect(72);
@@ -113,7 +111,7 @@ export class KihaScene {
         }
     }
     // [Buy Passage]
-    private offerToBuyPassageFromKiha(): void {
+    function offerToBuyPassageFromKiha(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You jingle your gem pouch and ask if you could pay her to allow you passage.  Kiha shoulders her axe and scratches at one of her horns, mulling the idea over.  She stops and abruptly shakes her head.  \"<i>Not today.  Now scram, before I change my mind!</i>\"\n\n", false);
@@ -123,14 +121,14 @@ export class KihaScene {
         simpleChoices("Fight", meetKihaAndFight, "", null, "", null, "", null, "Leave", leaveWhenMeetingAgressiveKiha);
     }
     // [Leave]
-    private leaveWhenMeetingAgressiveKiha(): void {
+    function leaveWhenMeetingAgressiveKiha(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You nod and step back, retreating back towards camp.  You've no desire to fight such a fiery opponent.", false);
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Fight]
-    public meetKihaAndFight(): void {
+    export function meetKihaAndFight(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You step closer and proclaim that you go where you please.  Kiha snorts and says, \"<i>Cute.  Sadly, misplaced confidence will only make this hurt that much more.</i>\"", false);
@@ -138,7 +136,7 @@ export class KihaScene {
         startCombat(new Kiha());
     }
     // [Ask Why]
-    private askWhy(): void {
+    function askWhy(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You ask why she's trying to drive you off.  Confusion breaks out across Kiha's brow for a moment before her visage hardens back into a confident sneer.  \"<i>I don't need to explain myself to you.  I was strong enough to break out of Lethice's base, and I've been strong enough to murder every lackey she's sent after me.</i>\"\n\n", false);
@@ -149,7 +147,7 @@ export class KihaScene {
         startCombat(new Kiha());
     }
     // [Pay]
-    private payKihaTribute(): void {
+    function payKihaTribute(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You sigh and pay her 200 gems.  She doesn't even mention that it was originally your idea, but still, you're getting what you want - the ability to explore her territory unhindered.  Of course, you have no idea how long this 200 gems will last.\n\n", false);
@@ -162,7 +160,7 @@ export class KihaScene {
         // (do a 'Kiha' exploration with chances of fantabulous prizes)
         doNext(kihaExplore);
     }
-    public kihaExplore(clearScreen: boolean = true): void {
+    export function kihaExplore(clearScreen: boolean = true): void {
         if (clearScreen) outputText("", true);
         // spriteSelect(72);
         flags[kFLAGS.KIHA_TOLL_DURATION]--;
@@ -188,7 +186,7 @@ export class KihaScene {
     }
 
     // [This was my idea!]
-    private tellKihaTributeWasYourIdea(): void {
+    function tellKihaTributeWasYourIdea(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You ask why she changed her mind about your idea.  Kiha's face screws up for a moment, her chocolate-hued visage distorting into an irritated grimace.  This may have been a mistake.  She screams, \"<i>As if someone like you would have an idea worthy of being adopted by me!  I forgot about your insignificant offer as soon as I was away from you.  This tribute was devised solely with my own sizable wit and cunning!</i>\"\n\n", false);
@@ -198,7 +196,7 @@ export class KihaScene {
     }
 
     // *Generic PC Victory Introduction:
-    public kihaVictoryIntroduction(): void {
+    export function kihaVictoryIntroduction(): void {
         flags[kFLAGS.PC_WIN_LAST_KIHA_FIGHT] = 1;
         outputText("", true);
         spriteSelect(72);
@@ -252,7 +250,7 @@ export class KihaScene {
             "", null, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
     }
     // *Generic PC Loss Intro
-    public kihaLossIntro(): void {
+    export function kihaLossIntro(): void {
         outputText("", true);
         spriteSelect(72);
         // (Lust)
@@ -290,7 +288,7 @@ export class KihaScene {
     }
 
     // *Milky Tit Humiliation - Fen
-    private kihaMilkTitHumiliation(): void {
+    function kihaMilkTitHumiliation(): void {
         // (Does not use the defeat intro - clear screen)
         outputText("", true);
         spriteSelect(72);
@@ -331,7 +329,7 @@ export class KihaScene {
         cleanupAfterCombat();
     }
     // Genderless - Lukadoc (Zed)
-    private kihaGenderlessBeating(): void {
+    function kihaGenderlessBeating(): void {
         spriteSelect(72);
         outputText("\"<i>What a pussy!</i>\" she yells at you, noticing your lack of any gender upon denuding you.  \"<i>What's the problem, runt? Too scared that evil imps and goblins will abuse you?</i>\"  She hits the ground with her tail in frustration and grabs her axe. \"<i>What a waste of time. You're useless both in battle and out of it.</i>\"  She begins kicking you, eventually hitting you hard enough to knock you unconscious.", false);
         player.takeDamage(1000);
@@ -339,7 +337,7 @@ export class KihaScene {
     }
 
     // *Male - Adj
-    private kihaRapesMen(): void {
+    function kihaRapesMen(): void {
         outputText("", true);
         spriteSelect(72);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -378,7 +376,7 @@ export class KihaScene {
         cleanupAfterCombat();
     }
     // *Herm - Adj
-    private kihaRapesHerms(): void {
+    function kihaRapesHerms(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("The dragoness rolls her eyes and closes the distance between the two of you with a slow, deliberate pace.  She easily bats away your weakened defenses until she is standing inches from you, her tail whipping back and forth as a cold smile curls on her dusky lips.  \"<i>Strip,</i>\" she commands, her voice a quiet whisper.  When you fail to comply, a crimson thunderbolt cracks across your sight and your face explodes with pain.  Blinking, you stagger back a few steps, Kiha's backhand still raised.  Annoyance playing over her face, she holds you in a smoldering glare as she hisses, \"<i>I don't repeat myself,</i>\" from between clenched teeth.  Rather than antagonize the dragon girl further, you comply, shedding your " + player.armorName + " to bare your exposed body to her.  A flash of delight flickers across her mouth but is quickly quelled by her mask of disdain.  \"<i>Weak, puny, and utterly incapable.  Tch, I suppose it can't be helped,</i>\" she mutters, loudly enough for you to hear.  Advancing on you once again, she places a clawed hand on your " + chestDesc(game.player) + ", almost tenderly.  Then, in a swift motion, she punches the heel of her palm against your sternum, abruptly knocking you to the ground.  Bending over your prone body, she lowers herself to straddle your " + hipDescription(player) + ", her muscular, scaled legs squeezing your lower body in a clenching grip.\n\n", false);
@@ -415,7 +413,7 @@ export class KihaScene {
     }
 
     // Mutual Masturbation - A Tsundere Masturbation Christmas Carol, by Gats Dickings
-    private tsundereMasturbationChristmasCarol(): void {
+    function tsundereMasturbationChristmasCarol(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You walk towards the draconic woman, removing your " + player.armorName + " as you observe her firm, ", false);
@@ -467,7 +465,7 @@ export class KihaScene {
         cleanupAfterCombat();
     }
     // *Victory Tail-dildo, for girls - Fencrafted for maximum pomf (Zed)
-    private kihaVictoryPomfTail(): void {
+    function kihaVictoryPomfTail(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("You approach the ", false);
@@ -518,7 +516,7 @@ export class KihaScene {
         cleanupAfterCombat();
     }
     // *Victory Dicking - Fencrafted
-    private victoryDickKiha(): void {
+    function victoryDickKiha(): void {
         spriteSelect(72);
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         const y: number = player.cocks.cockThatFits2(monster.vaginalCapacity());
@@ -616,7 +614,7 @@ export class KihaScene {
         cleanupAfterCombat();
     }
 
-    private kihaRapesLittleGirlsISawItOnTheNews(): void {
+    function kihaRapesLittleGirlsISawItOnTheNews(): void {
         outputText("", true);
         spriteSelect(72);
         outputText("\"<i>Well, well... what a cute vagina you have here!</i>\" she exclaims mockingly, pushing her palm against your moist sex.  With a wicked smile, the dragon girl forcibly shoves a pair of fingers inside you, their long, hard tips parting your sensitive flesh mercilessly.  You yelp in both pain and pleasure at her forced entrance, squirming uncomfortably on her hand.  \"<i>Haha!  You're enjoying this?  Don't fret slut, we're just getting started.</i>\"  Pulling back ever so slightly, Kiha slides another finger in, stretching your pussy with the thickness of her digits, furiously working them in and out of your snatch, relishing the gasping blush that spreads across your face.\n\n", false);
@@ -645,7 +643,7 @@ export class KihaScene {
     }
 
     // Conversation Only - Emotional Rape! (40- Corruption! PUREBABIES ONLY) (Zed)
-    private rapeKihaWithWORDS(): void {
+    function rapeKihaWithWORDS(): void {
         outputText("", true);
         spriteSelect(72);
         if (flags[kFLAGS.KIHA_TALK_STAGE] == 0) {
@@ -696,7 +694,7 @@ export class KihaScene {
     */
 
     // Kiha PC victory anal scene - by Space.
-    private analRapuzulaKiha(): void {
+    function analRapuzulaKiha(): void {
         // Requires at least one penis with area <= 20
         outputText("", true);
         spriteSelect(72);
@@ -779,4 +777,3 @@ export class KihaScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

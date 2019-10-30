@@ -17,17 +17,14 @@
  * I'm also VERY tempted to say the bonuses from massages and acpuncture sessions should be dropped, and they should be turned into like a HP recovery/fatigue recovery deal.
  * Massage recovers 50% of missing health in an hour, Acpuncture recovers 30% of current fatigue in an hour?
  */
-export class UmasShop {
-    private _loppeTalks: any[];
 
-    public constructor() {
-        initLoppeTalks();
-    }
+    let _loppeTalks: any[];
+    initLoppeTalks();
 
     /**
      * Builds an array of the sub-scenes for Loppe conversations. No point continually building the shit every time, right?
      */
-    private initLoppeTalks(): void {
+    function initLoppeTalks(): void {
         _loppeTalks = [];
         _loppeTalks.push(talkLoppeAttitudes);
         _loppeTalks.push(talkLoppeCarrotIncident);
@@ -40,7 +37,7 @@ export class UmasShop {
      * First time scene entering le shoppe
      * Edit Status: 100%
      */
-    public firstVisitPart1(): void {
+    export function firstVisitPart1(): void {
         clearOutput();
 
         outputText("You make your way to Uma's shop.  It's close to Loppe's house");
@@ -84,7 +81,7 @@ export class UmasShop {
      * Page 2 of introduction scene
      * Edit Status: 95%
      */
-    public firstVisitPart2(): void {
+    export function firstVisitPart2(): void {
         clearOutput();
 
         outputText("Loppe bounces up towards the tall equine and they embrace in a friendly hug.  \"<i>Hi, mom!</i>\"  Uma laughs softly . \"<i>Hello my little horsey hopper.  Who is this?</i>\" she asks, looking at you.\n\n");
@@ -112,7 +109,7 @@ export class UmasShop {
      * Page 3 of introduction scene
      * Edit Status: 95%
      */
-    public firstVisitPart3(): void {
+    export function firstVisitPart3(): void {
         clearOutput();
 
         outputText("\"<i>I see... that is so like my daughter to do something like that.</i>\"  Uma glares mischievously at Loppe.  \"<i>Aww mom... cut me some slack!</i>\"  Loppe protests, playfully.  You can't resist laughing softly at the two; it reminds you of people back in Ingnam... albeit they're joking about subject matter you'd normally not touch back in your world.</i>\n\n");
@@ -137,7 +134,7 @@ export class UmasShop {
      * Edit Status: 90%
      * @param returnedTo	Indicates the "entrance" mode. false = came here from an external menu, true = backed out from one of Uma's options
      */
-    public enterClinic(returnedTo: boolean = false): void {
+    export function enterClinic(returnedTo: boolean = false): void {
         clearOutput();
 
         // Hide the stuff that dun make no sense if you're dropping back from a menu inside the clinic
@@ -167,7 +164,7 @@ export class UmasShop {
      * Build the primary interface menu to interact with Uma.
      * @param	noSex	Indicates if the Sex button should be hidden from display.
      */
-    private buildCoreMenu(noSex: boolean = false): void {
+    function buildCoreMenu(noSex: boolean = false): void {
         if (noSex) {
             outputText("You sigh softly, but accept Uma's sexuality is the way it is and apologize for the problem.\n\n");
             outputText("\"<i>Don't worry about that, it's nothing personal.  I just don't swing that way.  Although, if you were to make yourself a bit more feminine, I might consider it.  Maybe you could find yourself a nice little beauty salon somewhere?  I heard there are some treatments that can make you absolutely gorgeous.</i>\"\n\n");
@@ -194,7 +191,7 @@ export class UmasShop {
      * Primary massage intro & selection menu
      * Edit Status: 95%
      */
-    public massageMenu(): void {
+    export function massageMenu(): void {
         clearOutput();
 
         outputText("You ask if she'd like to have a little business.  You could really use one of her famous massage sessions.\n\n");
@@ -220,7 +217,7 @@ export class UmasShop {
      * Player changed mind about MASSAGEU TIEMU
      * Edit Status: 100%
      */
-    public massageNope(): void {
+    export function massageNope(): void {
         clearOutput();
 
         outputText("You apologize and tell Uma that you've changed your mind, you don't want a massage right now.\n\n");
@@ -235,10 +232,10 @@ export class UmasShop {
      * Adds a 10% reduction to lust gain while active.
      * Edit Status: 100%
      */
-    public static MASSAGE_RELIEF: number = 0;
-    public static MASSAGE_RELIEF_BONUS: number = 0.9;	// Multiplicative bonus to Lust gains
-    private static MASSAGE_RELIEF_BONUS_TEXT: string = "<b>(10% Reduction to all Lust gains whilst active!)</b>";
-    public massageRelief(): void {
+    export let MASSAGE_RELIEF: number = 0;
+    export let MASSAGE_RELIEF_BONUS: number = 0.9;	// Multiplicative bonus to Lust gains
+    let MASSAGE_RELIEF_BONUS_TEXT: string = "<b>(10% Reduction to all Lust gains whilst active!)</b>";
+    export function massageRelief(): void {
         clearOutput();
 
         outputText("You tell Uma that you're interested in the lust-relieving massage.\n\n");
@@ -254,10 +251,10 @@ export class UmasShop {
      * Adds a 10% increase to lust gain while active.
      * Edit Status: 95%
      */
-    public static MASSAGE_LUST: number = 1;
-    public static MASSAGE_LUST_BONUS: number = 1.1;	// Multiplicative bonus to Lust gains
-    private static MASSAGE_LUST_BONUS_TEXT: string = "<b>(10% Increase to all Lust gains whilst active!)</b>";
-    public massageLust(): void {
+    export let MASSAGE_LUST: number = 1;
+    export let MASSAGE_LUST_BONUS: number = 1.1;	// Multiplicative bonus to Lust gains
+    let MASSAGE_LUST_BONUS_TEXT: string = "<b>(10% Increase to all Lust gains whilst active!)</b>";
+    export function massageLust(): void {
         clearOutput();
 
         outputText("You tell Uma that you're interested in the arousal-inducing massage.\n\n");
@@ -273,10 +270,10 @@ export class UmasShop {
      * Adds a +10 bonus to femininity?
      * Edit Status: 90%
      */
-    public static MASSAGE_MODELLING: number = 2;
-    public static MASSAGE_MODELLING_BONUS: number = 10;	// Flat bonus applied to femininity stat
-    private static MASSAGE_MODELLING_BONUS_TEXT: string = "<b>(+10 Bonus Femininity whilst active!)</b>";
-    public massageModelling(): void {
+    export let MASSAGE_MODELLING: number = 2;
+    export let MASSAGE_MODELLING_BONUS: number = 10;	// Flat bonus applied to femininity stat
+    let MASSAGE_MODELLING_BONUS_TEXT: string = "<b>(+10 Bonus Femininity whilst active!)</b>";
+    export function massageModelling(): void {
         clearOutput();
 
         outputText("You tell Uma that you're interested in the attractiveness-boosting massage.\n\n");
@@ -299,10 +296,10 @@ export class UmasShop {
      * Add a 10% reduction in damage taken?
      * Edit Status: 95%
      */
-    public static MASSAGE_RELAXATION: number = 3;
-    public static MASSAGE_RELAXATION_BONUS: number = 0.9;	// Multiplicative bonus to damage taken -- these seem a little op with current values
-    private static MASSAGE_RELAXATION_BONUS_TEXT: string = "<b>(10% Reduction to all Damage taken whilst active!)</b>";
-    public massageRelaxation(): void {
+    export let MASSAGE_RELAXATION: number = 3;
+    export let MASSAGE_RELAXATION_BONUS: number = 0.9;	// Multiplicative bonus to damage taken -- these seem a little op with current values
+    let MASSAGE_RELAXATION_BONUS_TEXT: string = "<b>(10% Reduction to all Damage taken whilst active!)</b>";
+    export function massageRelaxation(): void {
         clearOutput();
 
         outputText("You tell Uma that you're interested in the relaxing massage.\n\n");
@@ -318,10 +315,10 @@ export class UmasShop {
      * Add a 10% increase to damage inflicted?
      * Edit Status: 95%
      */
-    public static MASSAGE_POWER: number = 4;
-    public static MASSAGE_POWER_BONUS: number = 1.1;	// Multiplicative bonus to damage done -- these seem a little op with current values
-    private static MASSAGE_POWER_BONUS_TEXT: string = "<b>(10% Increase to all Damage inflicted whilst active!)</b>";
-    public massagePower(): void {
+    export let MASSAGE_POWER: number = 4;
+    export let MASSAGE_POWER_BONUS: number = 1.1;	// Multiplicative bonus to damage done -- these seem a little op with current values
+    let MASSAGE_POWER_BONUS_TEXT: string = "<b>(10% Increase to all Damage inflicted whilst active!)</b>";
+    export function massagePower(): void {
         clearOutput();
 
         outputText("You tell Uma that you're interested in the strength-boosting massage.\n\n");
@@ -339,7 +336,7 @@ export class UmasShop {
      * @param	selectedMassage		int key of the massage type, for later application of benefits.
      * Edit Status: 95%
      */
-    public massageMain(selectedMassage: number): void {
+    export function massageMain(selectedMassage: number): void {
         clearOutput();
 
         outputText("The room is light, but not overwhelmingly bright, with cool breezes gently wafting through, tingling deliciously on your exposed [skin] and setting the chimes hanging from the rafters gently a-tinkle.  A number of large potted plants occupy the corners of the room, and there's even a tiny fountain with stones in it, the tumble of water over rocks creating a strangely soothing melody.  A small brazier produces a sweet, calming smell from incense burning in it.  The pride of the room is a sizable table, made from bamboo; it's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.\n\n");
@@ -381,7 +378,7 @@ export class UmasShop {
      * @param	selectedMassage		Massage bonus ID to apply
      * Edit Status: 95%
      */
-    public massageCommence(selectedMassage: number): void {
+    export function massageCommence(selectedMassage: number): void {
         clearOutput();
 
         outputText("\"<i>Very well, dear.</i>\"  She cracks her knuckles ominously, \"<i>This might hurt a bit, but bear with it,</i>\" she adds, rolling up the sleeves of her kimono.\n\n");
@@ -419,13 +416,13 @@ export class UmasShop {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public static MAX_MASSAGE_BONUS_DURATION: number = 24;			// Duration of the bonus
+    export let MAX_MASSAGE_BONUS_DURATION: number = 24;			// Duration of the bonus
     /**
      * Apply massage bonus. Bonuses are replaced when a new effect is placed on the player.
      * StatusAffects.UmasMassage for all bonuses
      * @param	selectedMassage
      */
-    public applyMassageBonus(selectedMassage: number): void {
+    export function applyMassageBonus(selectedMassage: number): void {
         if (selectedMassage < 0 || selectedMassage > 4) {
             outputText("<b>Invalid massage bonus ID! Welp!</b>");
         }
@@ -470,7 +467,7 @@ export class UmasShop {
      * Handle reducing the remaining time that the bonus is active for.
      * When expired, remove and include a message to the effect.
      */
-    public updateBonusDuration(hours: number): void {
+    export function updateBonusDuration(hours: number): void {
         let statIndex: number = player.effects.findByType(StatusAffects.UmasMassage);
 
         if (statIndex >= 0) {
@@ -485,7 +482,7 @@ export class UmasShop {
     /**
      * Spam a message about the bonus being removed.
      */
-    public bonusExpired(): void {
+    export function bonusExpired(): void {
         outputText("\n<b>You groan softly as a feeling of increased tension washes over you, no longer as loose as you were before.  It looks like the effects of Uma's massage have worn off.</b>\n");
 
         player.effects.remove(StatusAffects.UmasMassage);
@@ -500,47 +497,47 @@ export class UmasShop {
      * All of the associated bonuses for the Acupuncture perks are listed here, and reference throughout the codebase. If Fenoxo wants to tweak the values,
      * you can do so easily here without having to go fishing through other files to find where they are referenced.
      */
-    public static NEEDLEWORK_UNDO: number = -1;
-    public static NEEDLEWORK_SPEED: number = 0;
-    public static NEEDLEWORK_LUST: number = 1;
-    public static NEEDLEWORK_DEFENSE: number = 2;
-    public static NEEDLEWORK_MAGIC: number = 3;
-    public static NEEDLEWORK_ATTACK: number = 4;
+    export let NEEDLEWORK_UNDO: number = -1;
+    export let NEEDLEWORK_SPEED: number = 0;
+    export let NEEDLEWORK_LUST: number = 1;
+    export let NEEDLEWORK_DEFENSE: number = 2;
+    export let NEEDLEWORK_MAGIC: number = 3;
+    export let NEEDLEWORK_ATTACK: number = 4;
 
-    public NEEDLEWORK_SPEED_PERK: PerkType = PerkLib.ChiReflowSpeed;
-    public static NEEDLEWORK_SPEED_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Speed' perk. As a result your strength is capped but speed reductions are halved.";
-    public static NEEDLEWORK_SPEED_STRENGTH_CAP: number = 60;
-    public static NEEDLEWORK_SPEED_SPEED_MULTI: number = 0.5;
+    export let NEEDLEWORK_SPEED_PERK: PerkType = PerkLib.ChiReflowSpeed;
+    export let NEEDLEWORK_SPEED_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Speed' perk. As a result your strength is capped but speed reductions are halved.";
+    export let NEEDLEWORK_SPEED_STRENGTH_CAP: number = 60;
+    export let NEEDLEWORK_SPEED_SPEED_MULTI: number = 0.5;
 
-    public NEEDLEWORK_LUST_PERK: PerkType = PerkLib.ChiReflowLust;
-    public static NEEDLEWORK_LUST_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Lust' perk. As a result your Lust resistance and Tease attack are enhanced, but Libido and Sensitivity gains are increased.";
-    public static NEEDLEWORK_LUST_LUST_RESIST: number = 10;
-    public static NEEDLEWORK_LUST_TEASE_MULTI: number = 10;
-    public static NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI: number = 1.1;
-    public static NEEDLEWORK_LUST_LIBSENSE_MULTI: number = 1.1;
+    export let NEEDLEWORK_LUST_PERK: PerkType = PerkLib.ChiReflowLust;
+    export let NEEDLEWORK_LUST_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Lust' perk. As a result your Lust resistance and Tease attack are enhanced, but Libido and Sensitivity gains are increased.";
+    export let NEEDLEWORK_LUST_LUST_RESIST: number = 10;
+    export let NEEDLEWORK_LUST_TEASE_MULTI: number = 10;
+    export let NEEDLEWORK_LUST_TEASE_DAMAGE_MULTI: number = 1.1;
+    export let NEEDLEWORK_LUST_LIBSENSE_MULTI: number = 1.1;
 
-    public NEEDLEWORK_DEFENSE_PERK: PerkType = PerkLib.ChiReflowDefense;
-    public static NEEDLEWORK_DEFENSE_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Defense' perk. As a result your body has gained passive damage resistance and extra health, but speed is capped.";
-    public static NEEDLEWORK_DEFENSE_DEFENSE_MULTI: number = 1.1;
-    public static NEEDLEWORK_DEFENSE_EXTRA_HP: number = 50;
-    public static NEEDLEWORK_DEFENSE_SPEED_CAP: number = 60;
+    export let NEEDLEWORK_DEFENSE_PERK: PerkType = PerkLib.ChiReflowDefense;
+    export let NEEDLEWORK_DEFENSE_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Defense' perk. As a result your body has gained passive damage resistance and extra health, but speed is capped.";
+    export let NEEDLEWORK_DEFENSE_DEFENSE_MULTI: number = 1.1;
+    export let NEEDLEWORK_DEFENSE_EXTRA_HP: number = 50;
+    export let NEEDLEWORK_DEFENSE_SPEED_CAP: number = 60;
 
-    public NEEDLEWORK_MAGIC_PERK: PerkType = PerkLib.ChiReflowMagic;
-    public static NEEDLEWORK_MAGIC_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Magic' perk. As a result your spells are now more powerful, but regular attacks are weaker.";
-    public static NEEDLEWORK_MAGIC_SPELL_MULTI: number = 0.25; // Additive bonus to the other magic damage bonuses
-    public static NEEDLEWORK_MAGIC_REGULAR_MULTI: number = 0.75; // Multiplier tagged onto the end of damage calculations for the player.
+    export let NEEDLEWORK_MAGIC_PERK: PerkType = PerkLib.ChiReflowMagic;
+    export let NEEDLEWORK_MAGIC_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Magic' perk. As a result your spells are now more powerful, but regular attacks are weaker.";
+    export let NEEDLEWORK_MAGIC_SPELL_MULTI: number = 0.25; // Additive bonus to the other magic damage bonuses
+    export let NEEDLEWORK_MAGIC_REGULAR_MULTI: number = 0.75; // Multiplier tagged onto the end of damage calculations for the player.
 
-    public NEEDLEWORK_ATTACK_PERK: PerkType = PerkLib.ChiReflowAttack;
-    public static NEEDLEWORK_ATTACK_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Attack' perk. As a result your regular attacks are more powerful, but your damage reduction is decreased.";
-    public static NEEDLEWORK_ATTACK_REGULAR_MULTI: number = 1.1;
-    public static NEEDLEWORK_ATTACK_DEFENSE_MULTI: number = 0.9;
+    export let NEEDLEWORK_ATTACK_PERK: PerkType = PerkLib.ChiReflowAttack;
+    export let NEEDLEWORK_ATTACK_PERK_DESC: string = "Uma's Acupuncture Needlework has gifted you with the 'Chi Reflow - Attack' perk. As a result your regular attacks are more powerful, but your damage reduction is decreased.";
+    export let NEEDLEWORK_ATTACK_REGULAR_MULTI: number = 1.1;
+    export let NEEDLEWORK_ATTACK_DEFENSE_MULTI: number = 0.9;
 
     /**
      * Return a short string representation of the selected bonus index
      * @param	needleworkType		Static index value of the selected bonus scene
      * @return						String representation of the selected bonus scene
      */
-    public needleworkString(needleworkType: number): string {
+    export function needleworkString(needleworkType: number): string {
         if (needleworkType == NEEDLEWORK_SPEED) {
             return "\"Speed\"";
         }
@@ -566,7 +563,7 @@ export class UmasShop {
      * @param	perkName	PerkName currently being searched for
      * @return				Description of what the perk does.
      */
-    public listPerkDescription(perkName: string): string {
+    export function listPerkDescription(perkName: string): string {
         switch (perkName) {
             case PerkLib.ChiReflowAttack.name:
                 return PerkLib.ChiReflowAttack.desc();
@@ -593,7 +590,7 @@ export class UmasShop {
      * Calculate the current undo cost of the players needlework
      * @return	calculated cost
      */
-    public needleworkUndoCost(): number {
+    export function needleworkUndoCost(): number {
         let baseCost: number = 125;
 
         if (flags[kFLAGS.UMA_TIMES_ACUPUNCTURE_UNDO] != 0) {
@@ -608,7 +605,7 @@ export class UmasShop {
      * Figure out if the player currently has ANY needlework perk so we can modify scenes accordingly
      * @return	true if player has a needlework perk
      */
-    public hasNeedleworkPerk(): boolean {
+    export function hasNeedleworkPerk(): boolean {
         let pType: PerkType = this.getNeedleworkPerk();
         if (pType != null) {
             return true;
@@ -622,7 +619,7 @@ export class UmasShop {
      * Figure out exactly WHICH needlework perk the player has
      * @return	Perk name that the player currently has
      */
-    public getNeedleworkPerk(): PerkType {
+    export function getNeedleworkPerk(): PerkType {
         for (const perk of [
             PerkLib.ChiReflowAttack,
             PerkLib.ChiReflowDefense,
@@ -643,7 +640,7 @@ export class UmasShop {
      * ie. it makes future balancing of the perks more of a chore. Rather, other code can just reference the static vars we have here using UmasShop.NEEDLEWORK_MAGIC_blah. It's still bad, but its an shader of bad lighter so fuck it!
      * @param	selectedSession		Static bonus index to apply to the player
      */
-    public applyNeedlework(selectedSession: number): void {
+    export function applyNeedlework(selectedSession: number): void {
         if (selectedSession == NEEDLEWORK_UNDO) {
             player.perks.remove(this.getNeedleworkPerk());
             flags[kFLAGS.UMA_TIMES_ACUPUNCTURE_UNDO]++;
@@ -675,7 +672,7 @@ export class UmasShop {
      * Edit Status: 85%
      * 				Some of the session descriptions might be a little... off. I've touched up one or two.
      */
-    public acupunctureMenu(): void {
+    export function acupunctureMenu(): void {
         clearOutput();
 
         outputText("You tell her that you want to try one of those acupuncture sessions of hers.\n\n");
@@ -740,7 +737,7 @@ export class UmasShop {
      * Player changes mind about going through with Accupuncture session.
      * Edit Status: 100%
      */
-    public needleworkTurnDown(): void {
+    export function needleworkTurnDown(): void {
         clearOutput();
 
         outputText("You shake your head and tell Uma that you'd actually rather not get one of her acupuncture treatments at this point in time.\n\n");
@@ -756,7 +753,7 @@ export class UmasShop {
      * Edit Status: 100%
      * @param	selectedSession		Static var indicating the desired outcome based on player selection. See NEEDLEWORK_ vars.
      */
-    public needleworkSession(selectedSession: number): void {
+    export function needleworkSession(selectedSession: number): void {
         clearOutput();
 
         // Pay up
@@ -783,7 +780,7 @@ export class UmasShop {
      * Edit Status: 90%
      * @param	selectedSession		Static var indicating the desired outcome based on player selection. See NEEDLEWORK_ vars.
      */
-    public doNeedleworkSession(selectedSession: number): void {
+    export function doNeedleworkSession(selectedSession: number): void {
         clearOutput();
 
         outputText("The room is light, but not overwhelmingly bright, with cool breezes gently wafting through, tingling deliciously on your exposed [skin] and setting the chimes hanging from the rafters gently a-tinkle. A number of large potted plants occupy the corners of the room, and there's even a tiny fountain with stones in it, the tumble of water over rocks creating a strangely soothing melody.  A small brazier produces a sweet, calming smell from incense burning in it.  The pride of the room is a sizable table, made from bamboo; it's covered in a white cloth, and has an upraised headboard with a hole in it that looks like it's big enough to fit your head through.\n\n");
@@ -818,7 +815,7 @@ export class UmasShop {
      * Most of these will need breaking into multiple pages methinks.
      * Edit Status: 100%
      */
-    public talkMenu(): void {
+    export function talkMenu(): void {
         clearOutput();
 
         outputText("You tell Uma that you'd like to chat; you're interested in getting to know her better, and who knows, maybe she can help you get to know her daughter better?\n\n");
@@ -837,7 +834,7 @@ export class UmasShop {
      * Talk Job
      * Edit Status: 95%
      */
-    public talkJob(): void {
+    export function talkJob(): void {
         clearOutput();
 
         outputText("You tell her that you're curious about the work she does and what it can do.\n\n");
@@ -863,7 +860,7 @@ export class UmasShop {
      * Talk Sexuality
      * Edit Status: 90%
      */
-    public talkSexuality(): void {
+    export function talkSexuality(): void {
         clearOutput();
 
         outputText("You tell her that, if it's not too personal, you'd like to ask her some questions about her sexuality?\n\n");
@@ -890,7 +887,7 @@ export class UmasShop {
      * Talk about Loppe. Randomly selects a specific scene after selection.
      * Edit Status: 100%
      */
-    public talkLoppe(): void {
+    export function talkLoppe(): void {
         clearOutput();
 
         outputText("You tell her that you wouldn't mind hearing some stories about Loppe; what was she like as a little Loppe?  Maybe her mom's got some embarrassing secrets to share about her, you grin?\n\n");
@@ -900,12 +897,12 @@ export class UmasShop {
         _loppeTalks[rand(_loppeTalks.length)]();
     }
 
-    private _sceneNum: number = 0;
+    let _sceneNum: number = 0;
 
     /**
      * Centralise the end-of-talk loppe stuffs
      */
-    public talkLoppeJoiner(): void {
+    export function talkLoppeJoiner(): void {
         menu();
         doNext(Camp.returnToCampUseOneHour);
         // addButton(1, "Debugz", talkMenu);
@@ -915,7 +912,7 @@ export class UmasShop {
      * Random talk scene about Loppe's Attitudes.
      * Edit Status: 90%
      */
-    public talkLoppeAttitudes(): void {
+    export function talkLoppeAttitudes(): void {
         outputText("\"<i>What do you think of Loppe?  How she acts?  Looks?  Behaves?</i>\"  Uma asks with a smile.\n\n");
         outputText("You're not quite sure what Uma's getting at and tell her as much, but finally declare that you'd probably call her girly.  A little on the tomboyish side, but, given she's a herm that only seems reasonable; it's hard to say what gender traits would be best for a person who is functionally both male and female.\n\n");
         outputText("\"<i>That's true, but what you probably don't know is Loppe was a lot more troublesome when she was just a little hopper.  She was a lot more boyish, and if anyone called her a girl she'd happily start an all out brawl at a moments notice.</i>\"\n\n");
@@ -944,7 +941,7 @@ export class UmasShop {
      * Loppe Talk - The Carrot Incident
      * Edit Status: 90%
      */
-    public talkLoppeCarrotIncident(): void {
+    export function talkLoppeCarrotIncident(): void {
         outputText("\"<i>Tell me, [name].  Did you know rabbits love carrots?</i>\"  Uma asks with a smirk.\n\n");
         outputText("You tell her that's what people say, back in the village you come from.  But, then again, you smirk, they also say that horses love carrots too, and you verbally recount an incident in which a mare broke out of her pen and ate so many carrots from one of the village fields she was heartily sick.  You ask jokingly if Uma shares any favorite dishes with her daughter?\n\n");
         outputText("\"<i>Of course I do.  I happen to have a soft spot for carrot cake myself... but that's not why I asked.  As you know, my daughter is part equine and part leporid, so as you can imagine she loves carrots, right?</i>\"\n\n");
@@ -971,7 +968,7 @@ export class UmasShop {
      * Loppe Talk - Loppe Puberty
      * Edit Status: 80%
      */
-    public talkLoppePuberty(): void {
+    export function talkLoppePuberty(): void {
         outputText("\"<i>By now, you must know about Loppe's stamina, right?  And that her cum production is also... quite elevated too, no?</i>\"  Uma asks, smiling.\n\n");
         outputText("You can't resist a wry grin as you comment that you might be familiar with what Uma is talking about, yes.\n\n");
         outputText("\"<i>But, did you know it caused her no end of problems when she was younger?</i>\"\n\n");
@@ -1027,7 +1024,7 @@ export class UmasShop {
      * 				Calling it 75%. I've been through all of it and some of the tensing seems off in places, but I've cleaned up a bunch of shit. I don't even know if this should stay;
      * 				It's good, but it's doesn't exactly fit with the style of anything else in CoC outside of Urta's Quest in a way, so...
      */
-    public talkLoppesFirstGirl(): void {
+    export function talkLoppesFirstGirl(): void {
         outputText("\"<i>Oh, I know what would be a great story...</i>\"  Uma smirks at you.  \"<i>How would you like to hear about my little laquine's first time with a girl?</i>\"\n\n");
         outputText("You give it a moments thought, and tell the mare that would be nice; you're curious about just what Loppe's dating life was like before you met her.  Oh, she talks a bold game, but you're not entirely certain she's being honest with you...\n\n");
         outputText("\"<i>Very well, please make yourself comfortable, it's a bit of a long story.</i>\" Uma suggests, motioning at a nearby chair and taking a seat herself.\n\n");
@@ -1043,7 +1040,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstGirlPart2);
     }
 
-    public talkLoppesFirstGirlPart2(): void {
+    export function talkLoppesFirstGirlPart2(): void {
         clearOutput();
 
         outputText("<b>Years ago in a village to the east...</b>\n\n");
@@ -1065,7 +1062,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstGirlPart3);
     }
 
-    public talkLoppesFirstGirlPart3(): void {
+    export function talkLoppesFirstGirlPart3(): void {
         clearOutput();
 
         outputText("Loppe blinks in surprise, wondering who was talking to her.  \"<i>Yes?  Who?</i>\" She began, looking around and then realising who was calling to her...  \"<i>Oh, Ms. Puff, hello.</i>\"  She replied, quietly.  She still wasn't really sure why her mother and everyone else seemed to call her \"Puffy Lips\", or \"Puff\" for short - though she had to admit, the she-wolf's lips certainly looked kissable.\n\n");
@@ -1096,7 +1093,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstGirlPart4);
     }
 
-    public talkLoppesFirstGirlPart4(): void {
+    export function talkLoppesFirstGirlPart4(): void {
         clearOutput();
 
         outputText("<b>Moments later in Puffy Lips' house...</b>\n\n");
@@ -1133,7 +1130,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstGirlPart5);
     }
 
-    public talkLoppesFirstGirlPart5(): void {
+    export function talkLoppesFirstGirlPart5(): void {
         clearOutput();
 
         outputText("<b>Many orgasms later...</b>\n\n");
@@ -1148,7 +1145,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstGirlPart6);
     }
 
-    public talkLoppesFirstGirlPart6(): void {
+    export function talkLoppesFirstGirlPart6(): void {
         clearOutput();
 
         outputText("<b>Uma's detailed description of events over...</b>\n\n");
@@ -1179,7 +1176,7 @@ export class UmasShop {
      * Talk Loppe - Loppe's First Boyfriend
      * Edit Status: 75% Some akwardness, and its fukken long. I did what I could without stomping all over everything.
      */
-    public talkLoppesFirstBoyfriend(): void {
+    export function talkLoppesFirstBoyfriend(): void {
         outputText("\"<i>How about I tell you about Loppe's first boyfriend?</i>\"  Uma suggests.\n\n");
         outputText("You tell Uma that it sounds like an interesting story, and you kindly ask her to proceed.\n\n");
         outputText("\"<i>Okay.  This happened a while after my little Loppe blossomed into pretty young lady.  She used to go to an art school, where she learned how to dance, and one of her colleagues was a black cat boy by the name of Hyou.  He was very handsome.  He had green eyes that resembled polished gems, his black fur was always well kept and on top of all that he was nice, someone pleasant to be around.  He was Loppe's senior and was the first person to greet her when she started attending the school.</i>\"\n\n");
@@ -1212,7 +1209,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstBoyfriendPart2);
     }
 
-    public talkLoppesFirstBoyfriendPart2(): void {
+    export function talkLoppesFirstBoyfriendPart2(): void {
         clearOutput();
 
         outputText("<b>Some years ago...</b>\n\n");
@@ -1241,7 +1238,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstBoyfriendPart3);
     }
 
-    public talkLoppesFirstBoyfriendPart3(): void {
+    export function talkLoppesFirstBoyfriendPart3(): void {
         clearOutput();
 
         outputText("She trails off, looking at the smug smirk of the cat beneath her.  \"<i>Alright, the time for fooling is over; let's try something from one of my mom's books.</i>\"  With the awkwardness of someone who's never actually done this before, Loppe pivots in her \"seat\" in Hyou's lap, rotating around until she's facing away from him.  \"<i>Okay, let me see... just gotta find your dick... damn it's hard to do this when your own dick is in the way.</i>\" She mutters to herself, wriggling around in an effort to try and line up her waiting pussy with Hyou's shaft.\n\n");
@@ -1273,7 +1270,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstBoyfriendPart4);
     }
 
-    public talkLoppesFirstBoyfriendPart4(): void {
+    export function talkLoppesFirstBoyfriendPart4(): void {
         clearOutput();
 
         outputText("Panting, but unable to hide the rumbling purr rising from his chest, Hyou sighs.  \"<i>S-Sorry Lops.  That was AMAZING... I-I couldn't help myself.</i>\"\n\n");
@@ -1309,7 +1306,7 @@ export class UmasShop {
         addButton(0, "Next", talkLoppesFirstBoyfriendPart5);
     }
 
-    public talkLoppesFirstBoyfriendPart5(): void {
+    export function talkLoppesFirstBoyfriendPart5(): void {
         clearOutput();
 
         outputText("<b>Uma's detailed description of events over...</b>\n\n");
@@ -1338,7 +1335,7 @@ export class UmasShop {
      * Talk Loppe - Loppe's Dad
      * Edit Status: FUCK ALL
      */
-    public talkLoppesDad(): void {
+    export function talkLoppesDad(): void {
         clearOutput();
 
         outputText("Quietly, and assuring her that you don't want to offend her, you ask if Uma will tell you about the bunny-herm who fathered Loppe?\n\n");
@@ -1367,14 +1364,14 @@ export class UmasShop {
     /**
      * SEXY TIMES
      */
-    private static UMA_CONSIDER_PC_FEM: number = 70; // Femininity value that Uma considers "girly"
-    private static UMA_CONSIDER_PC_AND: number = 50; // Femininity value that Uma considers "androgynous"
+    let UMA_CONSIDER_PC_FEM: number = 70; // Femininity value that Uma considers "girly"
+    let UMA_CONSIDER_PC_AND: number = 50; // Femininity value that Uma considers "androgynous"
 
     /**
      * Main sex menu
      * Edit Status: FUCK ALL
      */
-    public sexMenu(): void {
+    export function sexMenu(): void {
         clearOutput();
 
         if (player.gender == 0) {
@@ -1442,7 +1439,7 @@ export class UmasShop {
         buildSexMenu();
     }
 
-    private buildSexMenu(): void {
+    function buildSexMenu(): void {
         menu();
 
         addButton(0, "EroMassage", sexEroticMassage);
@@ -1465,7 +1462,7 @@ export class UmasShop {
     * Erotic Massage
     * Edit Status: FUCK ALL
     */
-    private sexEroticMassage(): void {
+    function sexEroticMassage(): void {
         clearOutput();
 
         outputText("You tell Uma you'd enjoy one of her erotic massages, please.\n\n");
@@ -1532,7 +1529,7 @@ export class UmasShop {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public sexGetFingered(): void {
+    export function sexGetFingered(): void {
         clearOutput();
 
         outputText("You give a knowing wink to the mare masseur and say you'd like to see her magic fingers put to work. You particularly want to see if she can pick the locks and open your secret treasure box.\n\n");
@@ -1636,7 +1633,7 @@ export class UmasShop {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private sexHandjob(): void {
+    function sexHandjob(): void {
         clearOutput();
 
         outputText("Rubbing your crotch for a moment, you ask her if she's willing to handle a more masculine element of your body for you?\n\n");
@@ -1709,7 +1706,7 @@ export class UmasShop {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Needs Cock.
-    private sexGetABJFromDisMilfyLesboSlut(): void {
+    function sexGetABJFromDisMilfyLesboSlut(): void {
         // Aim for something right around the biggest she can take, otherwise just take smallest.
         let x: number = player.cocks.cockThatFits(25);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -1878,7 +1875,7 @@ export class UmasShop {
         menu();
         doNext(Camp.returnToCampUseOneHour);
     }
-    private sexEatHerOut(): void {
+    function sexEatHerOut(): void {
         clearOutput();
 
         outputText("With a lustful smirk, you ask if Uma would like to receive a little ministering from you for a change?\n\n");
@@ -1940,4 +1937,3 @@ You think the matter over, and ask what if you volunteered to help Loppe with he
 [We should probably try and brainstorm how this will work.]
 [Should we move this to its own doc? Give the rest over to Fen to implement?]
     }*/
-}

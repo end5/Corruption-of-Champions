@@ -2,8 +2,6 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class FetishZealotScene {
-
     // Fetish Zealot
     // The Fetish zealot is the guard, escort, and de-facto
     // warrior for the Followers of the Fetish.  They are tasked
@@ -38,7 +36,7 @@ export class FetishZealotScene {
     // Scenes
     // Boat encounter
     // After the cultists arrive at the Lake, a zealot will be found guarding the player's boat.  Once defeated, there is a 50% chance he will be guarding it the next time the PC goes to the boat, until the swamp is added.  When that happens, repeat encounters will not occur anymore.
-    public zealotBoat(): void {
+    export function zealotBoat(): void {
         if (player.effects.getValue1Of(StatusAffects.FetishOn) == 1) {
             zealotRepeat();
             return;
@@ -53,7 +51,7 @@ export class FetishZealotScene {
 
     // Regular encounter
     // This is the regular pre combat text for wandering zealots (they'll be a regular mob at the swamp)
-    private zealotRepeat(): void {
+    function zealotRepeat(): void {
         outputText("", true);
         outputText("While exploring, you hear someone cry out behind you \"<i>This is sacred land!  You WILL be punished for trespassing!</i>\"  It seems you've managed to stumble upon whatever land this zealot has been tasked to guard, and now you must fight him.", false);
         startCombat(new FetishZealot());
@@ -61,7 +59,7 @@ export class FetishZealotScene {
     }
 
     // Raping the player
-    public zealotLossRape(): void {
+    export function zealotLossRape(): void {
         outputText("", true);
         const broseph: string = mf(player, "dude", "chick");
         // Pre Rape Scene - lose by hp
@@ -229,7 +227,7 @@ export class FetishZealotScene {
         cleanupAfterCombat();
     }
 
-    public zealotDefeated(): void {
+    export function zealotDefeated(): void {
         // Defeated by health
         if (monster.HP < 1) outputText("The zealot collapses from his wounds, too hurt to continue controlling his powers.", false);
         // Defeated by lust
@@ -244,7 +242,7 @@ export class FetishZealotScene {
     }
 
     // Raped by the player
-    private zealotWinRape(): void {
+    function zealotWinRape(): void {
         outputText("", true);
         // Religious Costume Rape
         outputText("The zealot's attire seems to have settled on an outfit similar to those commonly worn by members of religious orders, though you aren't too surprised to see that it has a slit running down the front and back of the outfit that gives you full access to his sizable cock and asshole.\n\n", false);
@@ -273,4 +271,3 @@ export class FetishZealotScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

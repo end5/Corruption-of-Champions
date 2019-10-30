@@ -13,10 +13,9 @@
 // Lips - black
 // Fur – rust red/'ruddy'
 // Tail – Barely touches the ground, but is prehensile and capable of being lengthened at will.
-export class Cinnabar {
 
     // Appearnace
-    public cinnabarAppearance(output: boolean = true): () => void {
+    export function cinnabarAppearance(output: boolean = true): () => void {
         // Send back 0 for 'closed'.
         if (game.time.hours < 15 || game.time.hours > 20) return null;
         if (output) {
@@ -28,7 +27,7 @@ export class Cinnabar {
         return cinnabarGreeting;
     }
     // Approach
-    private cinnabarGreeting(): void {
+    function cinnabarGreeting(): void {
         outputText("", true);
         spriteSelect(91);
         // 1st Time:
@@ -89,7 +88,7 @@ export class Cinnabar {
     }
 
     // [Buy an Hour]
-    private cinnabarNonHugeDickings(): void {
+    function cinnabarNonHugeDickings(): void {
         flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
         flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
@@ -201,7 +200,7 @@ export class Cinnabar {
     }
 
     // [FUCK] – tracks if last fuck was huger + corrupteded version
-    private cinnabarGetsFUKKKKED(): void {
+    function cinnabarGetsFUKKKKED(): void {
         flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
         flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
@@ -267,7 +266,7 @@ export class Cinnabar {
     }
 
     // (Huger and Corrupteder) (75+ corr)
-    private fuckCinnabarHugerAndCorruptedEr(): void {
+    function fuckCinnabarHugerAndCorruptedEr(): void {
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 1;
         const x: number = player.cocks.biggestCockIndex();
 
@@ -333,7 +332,7 @@ export class Cinnabar {
     }
 
     // (HUGER)
-    private cinnabarHuger(): void {
+    function cinnabarHuger(): void {
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
         const x: number = player.cocks.biggestCockIndex();
 
@@ -384,7 +383,7 @@ export class Cinnabar {
     }
 
     // (HUGE)
-    private cinnabarHuge(): void {
+    function cinnabarHuge(): void {
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
         const x: number = player.cocks.biggestCockIndex();
 
@@ -439,7 +438,7 @@ export class Cinnabar {
     // setting two mirrors on the bed before she sits on them and fellates one on the wall.
     // surprise – at the end she moves the portal when you pull back and makes you cum in her
     // and in your own ass.
-    private cinnabarMultiCockPortalFuckFest(): void {
+    function cinnabarMultiCockPortalFuckFest(): void {
         flags[kFLAGS.CINNABAR_HOUSE_VISITED]++;
         flags[kFLAGS.CINNABAR_NUMBER_TIMES_FUCKED]++;
         flags[kFLAGS.CINNABAR_FUCKED_CORRUPT_PREVIOUSLY] = 0;
@@ -531,4 +530,3 @@ export class Cinnabar {
         dynStats("sen", -6);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

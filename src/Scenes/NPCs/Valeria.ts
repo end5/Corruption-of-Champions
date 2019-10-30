@@ -21,11 +21,11 @@ export class Valeria implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
-
+}
     // const VELARIA_FUTA:int = 499;
 
     // Camp Menu -- [Followers] -- [Valeria]
-    public valeriaFollower(): void {
+    export function valeriaFollower(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You walk over to Valeria.  Seeing you approach, the armor-goo turns a slightly brighter shade of blue beneath her plates and grins.");
@@ -37,7 +37,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Valeria] -- [Appearance]
-    private valeriaAppearance(): void {
+    function valeriaAppearance(): void {
         clearOutput();
         spriteSelect(79);
         outputText("Valeria is a 6 foot tall goo-girl composed of a viscous blue goop.  She is currently wearing a suit of plated armor, and wields her gooey greatsword as a weapon.  She has a beautiful feminine face with strong, angular features, and has affected short-cropped gooey hair, hanging just past her cheeks.  Her hips are average, with a muscular, gropable bum.  Unlike most goos, Valeria has formed two normal human legs ending in normal human feet out of her gooey lower body.");
@@ -49,7 +49,7 @@ export class Valeria implements TimeAwareInterface {
         doNext(valeriaFollower);
     }
     // Valeria] -- [Spar]
-    private valeriaSpar(): void {
+    function valeriaSpar(): void {
         clearOutput();
         spriteSelect(79);
         outputText("You ask Valeria if she would be up for a bit of battle practice.");
@@ -63,7 +63,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Valeria] -- [Spar] -- PC Victorious
-    public pcWinsValeriaSpar(): void {
+    export function pcWinsValeriaSpar(): void {
         clearOutput();
         spriteSelect(79);
         outputText("\"<i>Oof!</i>\" Valeria grunts, nearly losing her human shape as she tumbles to the hard-packed dirt.  \"<i>All right, all right, you win!  Take it easy, partner,</i>\" she laughs, letting her greatsword dissipate back into her body.");
@@ -72,7 +72,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Valeria] -- [Spar] -- PC Defeated
-    public pcWinsValeriaSparDefeat(): void {
+    export function pcWinsValeriaSparDefeat(): void {
         clearOutput();
         spriteSelect(79);
         outputText("You collapse, ");
@@ -98,7 +98,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Followers -- [Valeria] -- [Sex]
-    private followersValeriaSex(display: boolean = true): void {
+    function followersValeriaSex(display: boolean = true): void {
         spriteSelect(79);
         if (display) {
             clearOutput();
@@ -126,7 +126,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Valeria -- [Sex] -- [Dick/No Dick]
-    private valeriaDickToggle(): void {
+    function valeriaDickToggle(): void {
         spriteSelect(79);
         clearOutput();
         // [If Valeria has a dick:]
@@ -164,7 +164,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Valeria -- [Sex] -- [Get Fucked]
-    private valeriaGetFucked(): void {
+    function valeriaGetFucked(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You disrobe and, ");
@@ -251,7 +251,7 @@ export class Valeria implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private gooFlation(clearText: boolean = true): void {
+    function gooFlation(clearText: boolean = true): void {
         spriteSelect(79);
         if (clearText) {
             clearOutput();
@@ -282,7 +282,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Valeria -- [Sex] -- [Penetrate Her] (Dickwielders only)
-    private penetrateValeria(): void {
+    function penetrateValeria(): void {
         spriteSelect(79);
         clearOutput();
         outputText("\"<i>Mmm, that's a tasty-looking cock,</i>\" Valeria says as you disrobe, letting your " + cockDescript(game.player, 0) + " flop free.  \"<i>I just might have to get a sample,</i>\" she chuckles, squatting down before you and taking your shaft in hand.  Rather than giving you a simple handy, however, the goo-girl places her palm against the head of your cock and presses forward.");
@@ -306,7 +306,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Valeria] -- [Sex] -- [Get Dominated]
-    private valeriaSexDominated(): void {
+    function valeriaSexDominated(): void {
         spriteSelect(79);
         clearOutput();
         outputText("Making a show of playing hesitant and nervous, you tell Valeria you'd like her to take charge.  A wide grin quickly spreads across her girlish features.  \"<i>Mmm, feeling subby today, partner?  Good, good... You just let Valeria take good care of you, " + mf(player, "handsome", "cutie") + ".</i>\"");
@@ -370,7 +370,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Followers -- [Valeria] -- [Talk]
-    private talkWithValeria(): void {
+    function talkWithValeria(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You ask Valeria if she wouldn't mind just talking for a little bit.");
@@ -390,7 +390,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Flirt]
-    private flirtWithValeria(): void {
+    function flirtWithValeria(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You slip an arm around Valeria's slender shoulders and pull her close.  Patting your crotch, you tell her you're practically a gourmet chef for a girl like her.  She giggles and slips a hand easily into your [armor], ");
@@ -404,7 +404,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // [Accept]
-    private acceptValeriasNeeds(): void {
+    function acceptValeriasNeeds(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You smile and tell Valeria that you're perfectly all right with her special needs");
@@ -415,7 +415,7 @@ export class Valeria implements TimeAwareInterface {
         doNext(valeriaFollower);
     }
     // [Gross]
-    private declineValeriasNeeds(): void {
+    function declineValeriasNeeds(): void {
         spriteSelect(79);
         clearOutput();
         outputText("You grimace and push the goo-girl away.  You've got no interest in her corrupted 'needs,' especially with a look like that on her face.  She gasps as you push her, nearly falling over; she catches herself and glowers angrily.");
@@ -424,7 +424,7 @@ export class Valeria implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private takeValeria(): void {
+    function takeValeria(): void {
         spriteSelect(79);
         ArmorLib.GOOARMR.useText();
         player.armor.removeText();
@@ -434,7 +434,7 @@ export class Valeria implements TimeAwareInterface {
         else Inventory.takeItem(item, playerMenu);
     }
 
-    public valeriaAndGooThreeStuff(): void {
+    export function valeriaAndGooThreeStuff(): void {
         clearOutput();
         outputText("You cautiously approach with Valeria's voice egging you on, \"<i>We gonna fuck her? We're gonna fuck her, ain't we, [name]?</i>\" She affectionately fondles your ");
         const list: any[] = ["[hips]"];
@@ -496,7 +496,7 @@ export class Valeria implements TimeAwareInterface {
         addButton(0, "Next", valeriaGooRapeII);
     }
 
-    private valeriaGooRapeII(): void {
+    function valeriaGooRapeII(): void {
         clearOutput();
         outputText("The lump that bumped you earlier smacks off ");
         if (player.breasts.biggestTitSize() >= 3) outputText("the valley of your cleavage");
@@ -647,7 +647,7 @@ export class Valeria implements TimeAwareInterface {
     }
 
     // Random Goo-girl Cum-Out:
-    public birthOutDatGooSlut(): void {
+    export function birthOutDatGooSlut(): void {
         outputText("\n<b>Something odd happens...</b>\nA sudden, violent lurch in your gut nearly knocks you off your [feet]! You lower yourself to the ground before the quaking in your middle can upend you and cradle your slime-bloated belly, wondering if you're finally going to get relief from walking around with a gutful of goo.");
         if (player.effects.getValue4Of(StatusAffects.GooStuffed) > 0) outputText(" Your tits are even wobbling around wildly, shaking and jiggling obscenely inside your [armor] in a way that makes you your [nipples] more than a little leaky.");
         outputText("\n\nYou get your answer when your [asshole] opens up to expose the goo-girl's slick core, forcing you to shudder with ecstasy as it gradually slips through your stretching anus and unleashes a torrent of slime. You bend down onto your hands, letting it pass, cumming unexpectedly at the way it caresses you as it exits your body and moaning like a some ");
@@ -712,4 +712,3 @@ export class Valeria implements TimeAwareInterface {
     \"<i>I, ah, ja. Ich vill?</i>\"
 
     Valeria chuckles as she re-absorbs her greatsword and, scratching her neck, wanders off into camp, leaving poor Isabella rather startled.*/
-}

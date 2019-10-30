@@ -1,7 +1,5 @@
 
-export class ErlKingScene {
-
-    public encounterWildHunt(): void {
+    export function encounterWildHunt(): void {
         if (flags[kFLAGS.WILD_HUNT_ENCOUNTERS] == 0) {
             firstWildHuntEncounter();
         }
@@ -15,7 +13,7 @@ export class ErlKingScene {
         flags[kFLAGS.WILD_HUNT_ENCOUNTERS]++;
     }
 
-    public playerHuntScore(): number {
+    export function playerHuntScore(): number {
         trace("Calculating Wild Hunt score.");
         trace("Int + Spd = " + String(player.inte + player.spe));
         trace("Base = " + String((player.inte + player.spe) - (player.fatigue * 2)));
@@ -110,7 +108,7 @@ export class ErlKingScene {
         return baseVal;
     }
 
-    public firstWildHuntEncounter(): void {
+    export function firstWildHuntEncounter(): void {
         clearOutput();
 
         outputText("As you explore between the tall, ancient trees, you notice a thick fog beginning to spill out from between the trees and over the mossy ground. As the haze pours forth and flows past your [feet], you notice the forest around you growing distinctly darker and colder. \n\n");
@@ -129,7 +127,7 @@ export class ErlKingScene {
         addButton(1, "Run", firstWildHuntChase, false);
     }
 
-    protected firstWildHuntChase(waited: boolean = false): void {
+    function firstWildHuntChase(waited: boolean = false): void {
         clearOutput();
 
         if (waited == false) {
@@ -193,7 +191,7 @@ export class ErlKingScene {
         else Inventory.takeItem(ConsumableLib.FOXBERY, Camp.returnToCampUseOneHour);
     }
 
-    public repeatWildHuntEncounter(): void {
+    export function repeatWildHuntEncounter(): void {
         clearOutput();
 
         outputText("As you wander through the Deepwoods, a familiar chilly fog begins to gather around your [feet], and in the distance, you hear the sound of a hunting horn and the baying of Hounds.\n\n");
@@ -209,7 +207,7 @@ export class ErlKingScene {
         addButton(1, "Wait", repeatWildHuntWait);
     }
 
-    protected repeatWildHuntWait(): void {
+    function repeatWildHuntWait(): void {
         clearOutput();
 
         outputText("The fog pours in like a wave, surrounding you and blurring the forest around you.  You hear the thunder of hooves approaching, followed by the baying of hounds.\n\n");
@@ -228,7 +226,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected repeatWildHuntChase(): void {
+    function repeatWildHuntChase(): void {
         const pScore: number = playerHuntScore();
         if (pScore > 150) {
             repeatWildHuntEscaped();
@@ -238,7 +236,7 @@ export class ErlKingScene {
         }
     }
 
-    protected repeatWildHuntEscaped(): void {
+    function repeatWildHuntEscaped(): void {
         clearOutput();
 
         outputText("The Erlking might be the Master of the Hunt, but you are no one’s prey.  You immediately begin running, moving like the wind through the Deepwoods, your heart beating hard in your chest.");
@@ -267,7 +265,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected repeatWildHuntCaught(pScore: number): void {
+    function repeatWildHuntCaught(pScore: number): void {
         clearOutput();
 
         // Player Hunt Score < 150.  The Erlking captures you.
@@ -290,7 +288,7 @@ export class ErlKingScene {
         else repeatWildHuntGivenToTheHounds();
     }
 
-    public repeatWildHuntGivenToTheHounds(): void {
+    export function repeatWildHuntGivenToTheHounds(): void {
         outputText("“<i>How disappointing,</i>” drips the refined voice of the Erlking.  His horse’s hooves thud softly on the ground as he walks below you.  The cane at his side clicks against the forest floor with every other step.  You have just enough wherewithal to understand his words as your fingers grip the net.\n\n");
 
         outputText("“<i>This was but a few minutes’ diversion.  I had been hoping for more of a challenge,</i>” he says, the red glow in his eyes dimming.  “<i>You’re not particularly good at this, are you?</i>” he says, sighing.  His long face looks almost wistful.\n\n");
@@ -353,7 +351,7 @@ export class ErlKingScene {
         player.slimeFeed();
     }
 
-    protected repeatWildHuntAWinnerIsYou(): void {
+    function repeatWildHuntAWinnerIsYou(): void {
         outputText("Spirited clapping fills the woods.  The Hounds fall silent, sitting obediently on their haunches as the Erlking walks into the clearing, dismounting and looking up at you.\n\n");
 
         outputText("“<i>A spirited chase,</i>” he says, his black-gloved hands still chipping a sharp staccato through the cold air.  “<i>I have not had such fun in ages.</i>” The clearing is awash with a dim glow - it seems the Erlking’s golden antlers are lit with their own inner fire.\n\n");
@@ -383,7 +381,7 @@ export class ErlKingScene {
 
     }
 
-    protected whatsMyPrize(): void {
+    function whatsMyPrize(): void {
         clearOutput();
 
         outputText("You stand up, brushing yourself off, and ignore the Erlking’s clearly-visible dick, stating that you’d like some compensation for all the trouble.\n\n");
@@ -404,7 +402,7 @@ export class ErlKingScene {
         if (selector == 2) Inventory.takeItem(ConsumableLib.NPNKEGG, Camp.returnToCampUseOneHour);
     }
 
-    protected stopTheMadness(): void {
+    function stopTheMadness(): void {
         flags[kFLAGS.ERLKING_DISABLED] = 1;
         clearOutput();
 
@@ -426,7 +424,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected surrenderToTheHounds(): void {
+    function surrenderToTheHounds(): void {
         // [Bad End]
         clearOutput();
 
@@ -516,7 +514,7 @@ export class ErlKingScene {
         // 			doNext(5025); // Find out the gameover shits
     }
 
-    protected predatoryPrey(): void {
+    function predatoryPrey(): void {
         clearOutput();
 
         outputText("You stand, unable to take your eyes from the Erlking’s slim body and erect dick.\n\n");
@@ -619,7 +617,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected howDareYou(): void {
+    function howDareYou(): void {
         clearOutput();
 
         // [ends the Hunt permanently, Opens Princess Option]
@@ -698,7 +696,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected encounterPrincessGwynn(): void {
+    function encounterPrincessGwynn(): void {
         clearOutput();
 
         outputText("As you wander through the Deepwoods, you hear a rustling in the bushes.  You turn to see a flash of pink between the trees.  A slim, graceful figure steps out from behind a tree, wearing a dark green cloak and a small, leather shoulder bag.  It takes you a moment to recognize the Princess, the once-Erlking.  Her deer-like face and large, doe eyes peer timidly at you.\n\n");
@@ -747,7 +745,7 @@ export class ErlKingScene {
         addButton(4, "Gifts", gwynnGibsGifts);
     }
 
-    protected gwynnSucksDicks(): void {
+    function gwynnSucksDicks(): void {
         clearOutput();
         outputText("“<i>Yes, of course, M’Lord!</i>” Gwynn burbles, happily, dropping down to her knees.  In an instant, your [cock] is in her wet mouth.  Her time in the woods has developed her skill as she moans around your [cock], slurping wetly at it.\n\n");
 
@@ -771,7 +769,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected gwynnGetsButtfuxed(): void {
+    function gwynnGetsButtfuxed(): void {
         clearOutput();
 
         outputText("“<i>At once, M’Lord!</i>” she says, clapping her hands excitedly.  She bounces up in the air, then bounds low to the ground, pulling a small bottle from her purse, and dumping a liberal amount of raspberry-scented lube on your cock.  She works it in, her slim fingers massaging your cock to full attention before she hops around.\n\n");
@@ -796,7 +794,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected gwynnNomsDaCunts(): void {
+    function gwynnNomsDaCunts(): void {
         clearOutput();
 
         outputText("“<i>Yes Ma’am,</i>” she says, licking her lips.  She points to a nearby stump, gesturing for you to have a seat on the soft moss.  As you do, she wastes no time in dropping her pink muzzle to your pussy.  \n\n");
@@ -821,7 +819,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected gwynnGetsDickmilked(): void {
+    function gwynnGetsDickmilked(): void {
         clearOutput();
 
         outputText("“<i>My Lord, are you sure?</i>” she says, tilting her head to the side.\n\n");
@@ -852,7 +850,7 @@ export class ErlKingScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected gwynnGibsGifts(): void {
+    function gwynnGibsGifts(): void {
         clearOutput();
 
         outputText("“<i>Do you have any presents for your Master?</i>” you ask casually.\n\n");
@@ -869,4 +867,3 @@ export class ErlKingScene {
 
         Inventory.takeItem(ConsumableLib.PRNPKR, Camp.returnToCampUseOneHour);
     }
-}

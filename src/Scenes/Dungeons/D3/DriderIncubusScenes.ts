@@ -1,7 +1,5 @@
 
-export class DriderIncubusScenes {
-
-    public encounterDriderIncbutt(): void {
+    export function encounterDriderIncbutt(): void {
         clearOutput();
         outputText("The door swings freely from the slightest touch, allowing you to push the well-worked portal open with ease. The view is astonishing. An open chamber big enough to house your entire village stretches away, filled with cavorting, glistening slaves of all shapes and races, locked in displays of unending, licentious delights. Lethice’s throne rises above it all, located at the back end of the room - the peak of this plane’s perversion. The corrupt queen hasn’t noticed you yet, but an eight-legged spider-man has, turning from a captive bee-girl with cruel pleasure in his eyes.");
         outputText("\n\n<i>“Whoah there, Champion. Did you really think you could waltz into Lethice’s throne room unopposed?”</i> He clicks his teeth, almost chittering. <i>“I’m going to beat you. I’m going to bind you. And I’m going to drop you at her feet and bask in the glory of watching her transform you into a mindless, rutting beast.”</i> He skitters closer, abandoning his captive and raising a spear, malice glittering in his eyes.");
@@ -11,7 +9,7 @@ export class DriderIncubusScenes {
         startCombat(new DriderIncubus());
     }
 
-    public spooderbuttGetsANewCockSleeve(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function spooderbuttGetsANewCockSleeve(hpVictory: boolean, pcCameWorms: boolean): void {
         clearOutput();
 
         const m: DriderIncubus = monster as DriderIncubus;
@@ -48,7 +46,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", spooderbuttGetsANewCockSleeveII);
     }
 
-    public spooderbuttGetsANewCockSleeveII(): void {
+    export function spooderbuttGetsANewCockSleeveII(): void {
         clearOutput();
 
         outputText("The way you’re being held, you can’t get a proper look at the Demon Queen. You can barely see anything past the dick-mounted goblin’s heaving tits and slow-grinding body, and what you can see is mostly floor, a little bit of throne, and petite pink feet with black-painted nails. Those toes wiggle happily. The owner clicks her heels together, revealing bone-spikes that keep her soles arched like high-heels.");
@@ -63,7 +61,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", spooderbuttGetsANewCockSleeveIII);
     }
 
-    public spooderbuttGetsANewCockSleeveIII(): void {
+    export function spooderbuttGetsANewCockSleeveIII(): void {
         clearOutput();
 
         outputText("Your bindings are cut from you by something short and sharp, the point pressing hard enough that you worry it will score your [skin]");
@@ -93,7 +91,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", spooderbuttGetsANewCockSleeveIV);
     }
 
-    public spooderbuttGetsANewCockSleeveIV(): void {
+    export function spooderbuttGetsANewCockSleeveIV(): void {
         clearOutput();
 
         outputText("Lethice’s will presses on you like a physical thing.");
@@ -145,7 +143,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", spooderbuttGetsANewCockSleeveV);
     }
 
-    public spooderbuttGetsANewCockSleeveV(): void {
+    export function spooderbuttGetsANewCockSleeveV(): void {
         clearOutput();
 
         outputText("You come to when a pair of demonic minotaurs loop their furry arms under your elbows and begin to drag you away. Lethice is watching with hunger in her inhuman eyes. Her dress has been lowered, but there’s no hiding the puddle your efforts created beneath her. Your jaw aches from the effort. Just how long were you eating her out?");
@@ -155,7 +153,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", spooderbuttGetsANewCockSleeveVI);
     }
 
-    public spooderbuttGetsANewCockSleeveVI(): void {
+    export function spooderbuttGetsANewCockSleeveVI(): void {
         clearOutput();
 
         outputText("True to " + mf(player, "his", "her") + " words, Lethice conquered Tel’Adre that same year, and the rest of Mareth fell in short order. The Champion came to understand the truth of Lethice’s words");
@@ -166,7 +164,7 @@ export class DriderIncubusScenes {
         gameOver();
     }
 
-    public beatTheSpooderbutt(hpVictory: boolean): void {
+    export function beatTheSpooderbutt(hpVictory: boolean): void {
         flags[kFLAGS.DRIDERINCUBUS_DEFEATED] = 1;
 
         clearOutput();
@@ -209,7 +207,7 @@ export class DriderIncubusScenes {
         driderDefeatMenu();
     }
 
-    public driderDefeatMenu(): void {
+    export function driderDefeatMenu(): void {
         let doneDriderbus: boolean = false;
         let doneGoblin: boolean = false;
 
@@ -244,12 +242,12 @@ export class DriderIncubusScenes {
         if (doneDriderbus && doneGoblin) afterDriderbuttFight();
     }
 
-    public afterDriderbuttFight(): void {
+    export function afterDriderbuttFight(): void {
 
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public killDrider(): void {
+    export function killDrider(): void {
         clearOutput();
         outputText("You laugh at Lethice and the goblin. <i>“This is all the reward I need.”</i> You press your");
         if (player.lowerBody == 5) outputText(" heel");
@@ -261,7 +259,7 @@ export class DriderIncubusScenes {
         driderDefeatMenu();
     }
 
-    public fuckMitzi(): void {
+    export function fuckMitzi(): void {
         flags[kFLAGS.MITZI_FUCKED] = 1;
         clearOutput();
 
@@ -340,7 +338,7 @@ export class DriderIncubusScenes {
         addButton(1, "Next", driderDefeatMenu);
     }
 
-    public recruitMitzi(): void {
+    export function recruitMitzi(): void {
         clearOutput();
         outputText("You give Mitzi a friendly pat once she’s ready to go and tell her to wait for you outside.");
         outputText("\n\nShe beams ecstatically and bows. <i>“Thankyousomuchyouwon’tregretthis!”</i>");
@@ -352,7 +350,7 @@ export class DriderIncubusScenes {
         driderDefeatMenu();
     }
 
-    public mitziEatsPussy(): void {
+    export function mitziEatsPussy(): void {
         clearOutput();
 
         // Something something Mitzi puts that 3’ tongue to use.
@@ -385,7 +383,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", mitziEatsPussyII);
     }
 
-    public mitziEatsPussyII(): void {
+    export function mitziEatsPussyII(): void {
         clearOutput();
         outputText("When your vision clears, Mitzi is sitting on your lap and gently massaging your [chest]. Only a few seconds have passed, but the nearby demons seem closer than you remember. You push the slut off and rise up onto your [feet], well and truly sated.");
         outputText("\n\n<i>“What should Mitzi do now, [Master]?”</i> The harlot with the too-long tongue asks, licking her lips. <i>“Want another cum?”</i>");
@@ -396,7 +394,7 @@ export class DriderIncubusScenes {
         addButton(1, "Next", driderDefeatMenu);
     }
 
-    public titfuckMitzi(): void {
+    export function titfuckMitzi(): void {
         clearOutput();
 
         outputText("You grin at the goblin and push your [armor] out of the way to expose your [cocks], explaining that you’d like to see her please your [cock biggest] with her tits before you make any decisions about taking her as a slave of your own. After all, her and her master are responsible for your current, rigid state");
@@ -411,7 +409,7 @@ export class DriderIncubusScenes {
         addButton(1, "Slow", titfuckMitziSlow);
     }
 
-    public titfuckMitziSlow(): void {
+    export function titfuckMitziSlow(): void {
         clearOutput();
 
         outputText("A quick look around the assembled demons confirms your suspicions. They’ll be too busy getting off to the show to interfere. <i>“Nice and slow, please.”</i> You grab her by her mane of purple hair and press her face more firmly into your dick. <i>“Milk out every drop. There can’t be a single squirt left for the demons or their cronies.”</i>");
@@ -497,7 +495,7 @@ export class DriderIncubusScenes {
         addButton(0, "Next", titfuckMitziSlowII);
     }
 
-    public titfuckMitziSlowII(): void {
+    export function titfuckMitziSlowII(): void {
         clearOutput();
 
         outputText("When you finally exhaust yourself, your [legs] give out, and you collapse, sliding your still-hard shaft from betwixt those heavenly globes one last time. Mitzi falls away from you in the other direction, breathing heavily and idly masturbating herself with your cum as her lube. Her high-pitched voice moans, <i>“Keep me, nice [master]!”</i> or some variation of it again and again.");
@@ -509,7 +507,7 @@ export class DriderIncubusScenes {
         addButton(1, "Next", driderDefeatMenu);
     }
 
-    public titfuckMitziQuick(): void {
+    export function titfuckMitziQuick(): void {
         clearOutput();
 
         outputText("<i>“Do it quick, if you really can,”</i> you answer the petite green slut.");
@@ -554,7 +552,7 @@ export class DriderIncubusScenes {
         addButton(1, "Next", driderDefeatMenu);
     }
 
-    public rideDrider(): void {
+    export function rideDrider(): void {
         clearOutput();
 
         outputText("You push the goblin aside and");
@@ -574,7 +572,7 @@ export class DriderIncubusScenes {
         addButton(2, "Nevermind", driderDefeatMenu);
     }
 
-    public rideDriderToGoblin(): void {
+    export function rideDriderToGoblin(): void {
         clearOutput();
 
         outputText("You grin outlandishly at the demon’s quiet begging and answer, <i>“Sure thing, but you owe me once I take down your boss. Got it?”</i>");
@@ -589,7 +587,7 @@ export class DriderIncubusScenes {
         if (player.vaginas.length > 0) addButton(7, "Mitzi Licks", mitziEatsPussy);
     }
 
-    public actuallyRideDriderDick(): void {
+    export function actuallyRideDriderDick(): void {
         clearOutput();
 
         outputText("<i>“Fat chance,”</i> You hiss in the drider demon’s ear. <i>“");
@@ -676,7 +674,7 @@ export class DriderIncubusScenes {
         driderDefeatMenu();
     }
 
-    public buttfuckDrider(): void {
+    export function buttfuckDrider(): void {
         clearOutput();
         flags[kFLAGS.DRIDERINCUBUS_FUCKED] = 1;
 
@@ -740,4 +738,3 @@ export class DriderIncubusScenes {
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP);
         driderDefeatMenu();
     }
-}

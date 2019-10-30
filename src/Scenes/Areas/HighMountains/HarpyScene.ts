@@ -2,13 +2,11 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class HarpyScene {
-
     // *If male/shemale, rape options are Pussy, Ass, Breasts*
     // *If female, rape options are Finger Her, Forced Cunnilingus, 69*
     // *If hermaphrodite, rape options are Pussy, Ass, Breasts, Forced Cunnilingus, 69*
     // *If genderless, rape options are Finger Her*
-    public harpyVictoryuuuuu(): void {
+    export function harpyVictoryuuuuu(): void {
         outputText("", true);
         // (Enemy defeated by damage)
         if (monster.HP < 1) outputText("The harpy screams out in one last, pained cry before her wings give way, the feathered woman collapsing into a weary heap.", true);
@@ -45,7 +43,7 @@ export class HarpyScene {
         else cleanupAfterCombat();
     }
 
-    public harpyLossU(): void {
+    export function harpyLossU(): void {
         // NO MALE RAPE IF DICK TOO BIG
         let x: number = -1;
         if (player.cocks.length > 0) x = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -67,7 +65,7 @@ export class HarpyScene {
         }
     }
 
-    private harpyGooGenderlessLoss(): void {
+    function harpyGooGenderlessLoss(): void {
         outputText("", true);
         outputText("The triumphant harpy looks down at your goopy form, ready to take you.  She seems a little confused though, and begins poking at your gelatinous body.\n\n", false);
 
@@ -89,7 +87,7 @@ export class HarpyScene {
     }
 
     // Requires pussy or cock small enough for harpy!
-    private harpyLossLust(): void {
+    function harpyLossLust(): void {
         outputText("", true);
         // Merauder wroted.
         let x: number = -1;
@@ -148,7 +146,7 @@ export class HarpyScene {
     }
 
     // No genderless folks.
-    private harpyDamageLoss(): void {
+    function harpyDamageLoss(): void {
         outputText("", true);
 
         let x: number = -1;
@@ -271,7 +269,7 @@ export class HarpyScene {
         dynStats("str", -1, "tou", -1, "lib", 1, "sen", 2);
     }
 
-    private victoryHarpyGetsHerPussyRaped(): void {
+    function victoryHarpyGetsHerPussyRaped(): void {
         let x: number = -1;
         if (player.cocks.length > 0) x = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
@@ -346,7 +344,7 @@ export class HarpyScene {
         player.orgasm();
     }
 
-    private winAndRapeHarpyAnally(): void {
+    function winAndRapeHarpyAnally(): void {
         outputText("", true);
         let x: number = -1;
         if (player.cocks.length > 0) x = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -401,7 +399,7 @@ export class HarpyScene {
         player.orgasm();
     }
 
-    private WinOnHarpyAndOralRape(): void {
+    function WinOnHarpyAndOralRape(): void {
         outputText("", true);
         let x: number = -1;
         if (player.cocks.length > 0) x = player.cocks.cockThatFits(monster.analCapacity());
@@ -504,7 +502,7 @@ export class HarpyScene {
         dynStats("lib", 1);
     }
 
-    private harpyScissorSurprise(): void {
+    function harpyScissorSurprise(): void {
         clearOutput();
         outputText("You stare down at the defeated harpy, watching as ");
         if (monster.HP < 1) outputText("her arms tremble from the effort of trying to keep her body from collapsing to the floor.");
@@ -537,7 +535,7 @@ export class HarpyScene {
     }
 
     // {New page}
-    private harpyScissorSurprisePtII(): void {
+    function harpyScissorSurprisePtII(): void {
         clearOutput();
         outputText("Planting your [foot] squarely on her chest you push her onto her back, her tongue still vainly lapping at the air in a lust-filled daze on the way down.  Before she has time to recover you remove the remainder of your [armor] and grab her wrists, coming down on top of her and pinning her arms above her head as you straddle her [if (isHerm = true) your cock resting on her toned stomach].  Her tits heave gently as she squirms, desperately trying to stimulate her soaked pussy.  She starts to rub her legs together but you stop her almost immediately, grabbing a leg just above the talon with your free hand and yanking it away, revealing her obscenely puffy sex and drenched thighs.  She whimpers pathetically at you, virtually begging for release, the desperation and desire in her eyes clear to see.");
 
@@ -564,7 +562,7 @@ export class HarpyScene {
         cleanupAfterCombat();
     }
 
-    private spoidahsLegEggsInHarpeis(): void {
+    function spoidahsLegEggsInHarpeis(): void {
         clearOutput();
         // requires spiderbite or naga bite
         outputText("Perched above the downed bird-bitch, you look her over as you weigh up your options.  Your eyes slide across her petite breasts, tracing her curves until your gaze rests upon her flared hips and curvaceous ass.  Unfortunately your appreciation of the finer things in life is interrupted by the feather-brained eyecandy; she simply will not stop squawking.");
@@ -627,7 +625,7 @@ export class HarpyScene {
     }
 
     // Fuck a harpy with the players throbbing clit.
-    private clitFuckAHarpy(): void {
+    function clitFuckAHarpy(): void {
         clearOutput();
         outputText("Eyeing the hapless bird-woman up and down, you feel your lusts kindling.  Moisture seeps from your [vagina] as you watch the harpy ");
         if (monster.lust > 99) outputText("moan and masturbate, dipping her fingers into her honey-pot with wild abandon.");
@@ -671,5 +669,3 @@ export class HarpyScene {
             cleanupAfterCombat();
         }
     }
-
-}

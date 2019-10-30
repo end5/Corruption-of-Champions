@@ -33,14 +33,15 @@ export class Vapula implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public vapulaSlave(): boolean {
+    export function vapulaSlave(): boolean {
         return flags[kFLAGS.VAPULA_FOLLOWER] == 1;
 
     }
 
     // Two nights after "vagina enslave", if PC still meets initial requirements (else defer until she does)(Z)
-    public femaleVapulaRecruitmentPartII(): void {
+    export function femaleVapulaRecruitmentPartII(): void {
         outputText("\nYou are awoken by long fingers inching up your inner thighs, testing and caressing your soft flesh. You sigh, open your eyes, and are confronted by an excited, purple face looming over you.");
         outputText("\n\n\"<i>I have found you, mistress,</i>\" Vapula whispers.  \"<i>And I have done what I promised!  Look.</i>\"  She proudly produces an obscene-looking device, replete with rounded nodules and hanging straps.");
         outputText("\n\nYou rub your eyes, accept the thing off the succubus and examine it.  It's a double dildo fitted with a harness: a strap-on that is evidently designed to fuck the user whilst they themselves are fucking. One end is relatively small, pink and fleshy-looking, the other is an eight inch purple monster covered in ludicrous orange leopard spots.  Vapula draws in close to you and eagerly points out its features as you turn it around in your hands.");
@@ -55,7 +56,7 @@ export class Vapula implements TimeAwareInterface {
         doNext(playerMenu);
     }
 
-    public vapulaGivesPCAPresent(): void {
+    export function vapulaGivesPCAPresent(): void {
         outputText("\nVapula walks up to you and frowns, clearly disappointed.  \"<i>Since you got rid of the only way you could properly feed me, I got you this.</i>\"\n\nShe drops a strap-on into your hand as she explains, \"<i>It can convert the lust of a woman into something that will be palatable to my... appetites.  You're welcome.</i>\"");
         outputText("\n\nShe walks away without another word.  It might be time for some discipline.");
         player.keyItems.create("Demonic Strap-On", 0, 0, 0, 0);
@@ -64,7 +65,7 @@ export class Vapula implements TimeAwareInterface {
 
     // Slave Vapula
     // Camp lines
-    public vapulaSlaveFlavorText(): void {
+    export function vapulaSlaveFlavorText(): void {
         let choice: number = rand(11);
         if (choice == 0) outputText("Vapula is currently resting on a very rough bed of leaves she's gathered herself.  She sleeps quietly, her hand absent-mindedly laid on her vagina and the other one resting on her breasts.  A thin trickle of her juice is leaking out of her crotch.");
         if (choice == 1) outputText("Your succubus slut, Vaplua, is furiously stroking herself on her bed of leaves, her purple body shining in sweat.  She moans raggedly, often looking up to you with lust-consumed eyes.");
@@ -112,7 +113,7 @@ export class Vapula implements TimeAwareInterface {
 
     // Vapula-Followers interaction: Puru Puru Mouse (Z)
     // switch follower names depending on conditions
-    public mouseWaifuFreakout(amily: boolean = false, jojo: boolean = false): void {
+    export function mouseWaifuFreakout(amily: boolean = false, jojo: boolean = false): void {
         clearOutput();
         if (amily) {
             outputText("Amily ");
@@ -168,7 +169,7 @@ export class Vapula implements TimeAwareInterface {
 
     // tion camp
     // Follower Summoning text (Z)
-    public callSlaveVapula(output: boolean = true): void {
+    export function callSlaveVapula(output: boolean = true): void {
         if (output) {
             clearOutput();
             if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) {
@@ -224,7 +225,7 @@ export class Vapula implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
 
         outputText("You tell your succubus concubine that she is to head towards the lake, find a farm, present herself to the lady who works there and do as she says. Vapula laughs long and hard at this.");
@@ -240,7 +241,7 @@ export class Vapula implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
 
         outputText("You tell her to head back to camp; there are things you need to do to her you can’t do whilst she’s here. Repeatedly. Vapula fist pumps the sky.");
@@ -252,7 +253,7 @@ export class Vapula implements TimeAwareInterface {
         doNext(FarmCorruption.rootScene);
     }
 
-    private harvestMilk(): void {
+    function harvestMilk(): void {
         clearOutput();
 
         outputText("You tell Vapula that you want her hooked up to a milking machine whenever possible; you need her fluids.");
@@ -267,7 +268,7 @@ export class Vapula implements TimeAwareInterface {
         doNext(FarmCorruption.rootScene);
     }
 
-    private stopHarvest(): void {
+    function stopHarvest(): void {
         clearOutput();
 
         outputText("You tell Vapula to stop producing succubus milk; you’re practically drowning in the stuff.");
@@ -280,7 +281,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula Appearance - this bitch is purpler than a Nigerian (Z)
-    private fapulaFapfapfapAppearance(): void {
+    function fapulaFapfapfapAppearance(): void {
         clearOutput();
         outputText("Vapula is a 6 foot 1 inch-tall succubus with a voluptuously curvy build.  Her entire skin is purple, only growing darker whenever she's aroused.  She has a fairly human face with a surprising lack of horns; were it not for her skin, the only sign betraying her demonic origins would be her pair of fangs that are revealed whenever she smiles.  Her eyes are purple as well, often glinting with lust.  Her dark-purple hair grows luxuriously around her head, giving her a fierce, almost lion-like aspect, but it's offset by her majestic aquiline wings, leaving you wondering about her origins.  Two normal, well-formed legs grow down from her squeezable hips, swaying hypnotically as she walks.  She is wearing rags that cover only a tiny fraction of her body, concealing just her naughty bits to make the whole display more erotic.");
         outputText("\n\nShe has a pair of jiggly, perky H-cup breasts, each one adorned with a 1-inch nipple.");
@@ -308,7 +309,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Talk (Z)
-    private talkToVapulaForSomeReason(): void {
+    function talkToVapulaForSomeReason(): void {
         clearOutput();
         outputText("\"<i>You want to talk?  Well it's quite rare to see " + mf(player, "studs", "girls") + " looking for conversation with the likes of me, but go ahead.  What do you want to talk about?</i>\"");
         // Option: Stop Fucking Harem OR Fucking Harem OK (if toggled on off)
@@ -340,7 +341,7 @@ export class Vapula implements TimeAwareInterface {
         simpleChoices(haremT, haremB, threesomeT, threesomeB, "", null, "", null, "Back", callSlaveVapula);
     }
 
-    private toggleCeruleanVapulaAssist(): void {
+    function toggleCeruleanVapulaAssist(): void {
         clearOutput();
         // Cerulean Threesome On (Z)
         if (flags[kFLAGS.VAPULA_THREESOMES] == 0) {
@@ -357,7 +358,7 @@ export class Vapula implements TimeAwareInterface {
         doNext(talkToVapulaForSomeReason);
     }
 
-    private toggleVapulaHaremFucks(): void {
+    function toggleVapulaHaremFucks(): void {
         clearOutput();
         // Stop Fucking Harem
         if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 1) {
@@ -378,7 +379,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Feed
-    private feedVapulaACupOfJizz(): void {
+    function feedVapulaACupOfJizz(): void {
         clearOutput();
         outputText("You tell Vapula you're going to reward her for being such a good slut; idly stroking [oneCock] into erection, you command her to get on her knees so she can receive her meal.  The demoness eagerly complies and grabs hold of [oneCock].  She then proceeds to lick it, coating the entirety of your junk with her warm, sweet saliva. With an expert precision, she massages all your most sensitive points, pumping pre-cum up your urethra with ruthless efficiency.  As drops of your juices dribble from the tip of your " + cockDescript(game.player, 0) + " she voraciously slurps them with a gourmand's smile.");
         outputText("\n\nHer ministrations feel good, but she keeps tickling you with her soft hands and pulpy lips, and her flexible tongue gives you the most infuriating tingles of pleasure.  With a groan of impatience, you grab her head and stuff your whole " + cockDescript(game.player, 0) + " into her mouth, literally stuffing her full of your junk.  She nearly chokes at first but her old reflexes acquired from a whole life devoted to lewdness and licentiousness start kicking in; Vapula gluttonously deepthroats your meat, softly moaning as she fingers herself with one hand and caresses your ");
@@ -400,7 +401,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Threesome
-    private vapulaThreesomeMenu(): void {
+    function vapulaThreesomeMenu(): void {
         clearOutput();
         outputText("Who do you invite?");
         // Option: Amily
@@ -424,7 +425,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula-Ceraph threesome
-    private vapulaCeraphThreesome(): void {
+    function vapulaCeraphThreesome(): void {
         clearOutput();
         outputText("Using your magical talisman you summon Ceraph, your omnibus slut; she seems to appear out of nowhere and gleefully strides toward you as you are lasciviously holding Vapula in your arms and caressing her. The naked omnibus watches your unholy embrace, bemused: \"<i>I see you're quite busy, " + mf(player, "Master", "Mistress") + ". I won't disturb you further.</i>\"  You point a finger at Ceraph while your other hand keeps stroking Vapula's tender ass and tell her to come immediately, your voice sounding almost breathless in your lust.  Startled by the imperiousness of your tone, the omnibus comes closer, not sure what to do as you keep toying with your purple wanton bitch.  You impatiently yank Ceraph's arm and pull her closer to Vapula in such a way that both hell-girls are now practically pressing their lush bodies against each other.  You tell your sluts that you will have your way with both of them; you feel your ");
         if (player.cocks.length > 0) outputText("dick");
@@ -437,7 +438,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Option: Please both.
-    private vapulaCeraphThreesomePleaseBoth(): void {
+    function vapulaCeraphThreesomePleaseBoth(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -502,7 +503,7 @@ export class Vapula implements TimeAwareInterface {
 
     // Option: Butt-fuck train. Requires Ceraph to be herm.
     // Ceraph-Vapula Buttfuck train
-    private vapulaAndCeraphButtfuckTrainYeehaw(): void {
+    function vapulaAndCeraphButtfuckTrainYeehaw(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -533,12 +534,12 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula-Sophie threesome
-    private vapulaSophieThreesomeSelect(): void {
+    function vapulaSophieThreesomeSelect(): void {
         if (player.cocks.length > 0) vapulaSophieThreeSome();
         else vapulaSophieThreesomeCunts();
     }
 
-    private vapulaSophieThreeSome(): void {
+    function vapulaSophieThreeSome(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -581,7 +582,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula-Sophie threesome (as female)
-    private vapulaSophieThreesomeCunts(): void {
+    function vapulaSophieThreesomeCunts(): void {
         clearOutput();
         outputText("You call Sophie insistently, panting in anticipation as you slide into your strap-on's harness.  The blond-feathered bimbo doesn't show at first - perhaps the dumb slut forgot her name again - but as you grow more impatient you finally notice the platinum-headed woman, her enormous boobs bouncing hypnotically and her luscious thighs swaying lustfully as she walks.  She grins beatifically and coos, \"<i>Yes? Is there anything I can, like, do for... ooooh, but who's this?  She's sooooooo beautiful!  She's got, like, big boobs and stuff!</i>\"  She claps her hands with even greater excitement as she turns her attention to you, or rather your crotch.  \"<i>And you've grown a cock!  I've made a new friend and I've, like, got a nice big cock to play with!  This is the best day of my life!</i>\" You think she genuinely means it.");
         outputText("\n\nVapula sighs in consternation.  \"<i>What can you do with her, " + player.short + "? I'm sure she's going to forget who I am in an hour.</i>\"");
@@ -604,7 +605,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula-Amily threesome
-    private vapulaAndAmilyThreesome(): void {
+    function vapulaAndAmilyThreesome(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -640,7 +641,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula/Night Succubus
-    public vapulaAssistsCeruleanSuccubus(): void {
+    export function vapulaAssistsCeruleanSuccubus(): void {
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
         // [automatically triggers once the option Night Fuck is toggled and Cerulean potion is drunk, can't be selected from menu. Requires Cerulean potion to have been drunk once]
@@ -684,7 +685,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula/Jojo threesome
-    private vapulaJojoThreesomes(): void {
+    function vapulaJojoThreesomes(): void {
         clearOutput();
         outputText("You call out in the jungle, \"<i>Slut!</i>\"  Vapula snickers, \"<i>I'm here, you know.</i>\"  You slap her ass to shut her up and quickly explain that you don't call her slut because she doesn't care, being a succubus.  There is only one fucktoy you call by that name, because he's in denial.  By Lethice you intend to have your way with him, and Vapula will get to participate too.  As she eagerly listens to you, her tongue inadvertently licking her lips, you hear soft steps behind you.  You look back and see Jojo walking hesitantly, intimidated by your unholy presence and the towering ex-dominatrix.  \"<i>You were right, he's such a cute shy slut.  I bet he secretly wants some nice cock to ram his every hole.  Don't you, little pet?</i>\"  The mousy monk huddles up little by little, bowing his head uncomfortably.");
         outputText("\n\nYou walk up to Jojo and slap him in the face, making him whimper.  \"<i>Hey, your mistress Vapula is talking to you.  Show some respect, look at her and answer.</i>\"");
@@ -709,7 +710,7 @@ export class Vapula implements TimeAwareInterface {
     // Netorare
     // Butt-fuck train
     // Vapula/Jojo Netorare
-    private NTRSomeJojos(): void {
+    function NTRSomeJojos(): void {
         clearOutput();
         if (player.cocks.length > 0) {
             let x: number = player.cocks.cockThatFits(100);
@@ -788,7 +789,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Vapula/Jojo Butt-fuck train
-    private jojoButtFuckTrain(): void {
+    function jojoButtFuckTrain(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -851,14 +852,14 @@ export class Vapula implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaAndIzmaThreeSome(): void {
+    function vapulaAndIzmaThreeSome(): void {
         clearOutput();
         if (player.cocks.length > 0) vapulaAndIzma(false);
         else vapulaAndIzma(true);
     }
 
     // Vapula/Izma threesome(F)
-    private vapulaAndIzma(girls: boolean = true): void {
+    function vapulaAndIzma(girls: boolean = true): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -905,7 +906,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Feed (as female)
-    private chixFeedVapulaBlehblehIVantToZuckYourSpooo(): void {
+    function chixFeedVapulaBlehblehIVantToZuckYourSpooo(): void {
         clearOutput();
         outputText("You produce the demonic dildo and hold it by the hilt of its giant purple end, wagging it lazily by your side with a playful grin.  Vapula knows what that means; she is on her knees in an instant, staring at you with wolfish anticipation.");
         // Feed/Tease
@@ -915,7 +916,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Tease
-    private teaseVapula(): void {
+    function teaseVapula(): void {
         clearOutput();
         // Requires: Vapula not fucking harem
         if (flags[kFLAGS.VAPULA_HAREM_FUCK] == 0 && (flags[kFLAGS.VAPULA_DAYS_SINCE_FED] == 0)) {
@@ -992,7 +993,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Feed (as female)
-    private chicksFeedVapula(): void {
+    function chicksFeedVapula(): void {
         clearOutput();
         // [Teased once or twice:
         if (flags[kFLAGS.VAPULA_TEASE_COUNT] > 1) {
@@ -1013,7 +1014,7 @@ export class Vapula implements TimeAwareInterface {
     }
 
     // Forcefeed
-    public vapulaForceFeeds(): void {
+    export function vapulaForceFeeds(): void {
         if (player.vaginas.length > 0 && player.keyItems.has("Demonic Strap-On") >= 0 && !player.cocks.length > 0) {
             outputText("\n<b>In the night...</b>\nArousal blooms in your dreams, and you are relentlessly pushed into increasingly juicier and filthier fantasies; feeling hopelessly wet, you half awaken and hazily slide a hand down towards your crotch, to try and find release and rest.  Your fingers touch leather and latex where your vagina should be; bewildered, you rise to see Vapula working around your crotch, tightening the final harnesses of your strap-on, locking you into the pink dildo throbbing in your " + vaginaDescript(player, 0) + " whilst she licks hungrily at the tip of the opposite end.  You try to sit up but the ferocious succubus pins you down ruthlessly, her strength increased by her state of hunger.  She smirks at you wickedly and whispers, \"<i>So you don't want me to use any dick but the one I gave you, yet you won't feed me?  That's very bad of you, " + player.short + "... really, really bad...  Do you want to starve me?  Do you want me to beg you for cum?  You naughty slut, you better be ready because I'm going to get what is rightfully mine.  I'm HUNGRY!</i>\"");
             outputText("\n\nWith a wolfish groan she swallows the purple dildo up to the hilt and begins to work it savagely, slurping and grunting obscenely.  Before you can properly react, she catches the base of the dildo with her teeth and pushes it into you as hard as she can.  You gasp as the pink end reacts, growing by several inches and sliding further into your moist cunt.  In and out Vapula drags the dildo, slapping it into your groin as she fucks you whilst blowing the purple end for all she is worth, her saliva running down your thighs.  For a moment you think about getting up, asserting your authority and making her stop... but then the warm length wedged in your depths makes you coo with pleasure as Vapula shakes the cock in her mouth around like a bear with a salmon, making your end twist and spasm delightfully.  Deciding it is worth taking advantage of her insane hunger, ");
@@ -1058,7 +1059,7 @@ export class Vapula implements TimeAwareInterface {
     // Requires Vapula force herself on you for food.
     // Requires dick or vapula dildo!
     // Requires bipedal-ness
-    private spankVapulaLikeABoss(): void {
+    function spankVapulaLikeABoss(): void {
         clearOutput();
         outputText("Without any warning, you grab the lusty succubus by the wrists and pull her into you, easily manhandling her surprised form until she's bent over your [leg], vulnerable and squealing like the gutter-slut she is.  Her wings batter at your face and chest, but after a little wrangling, you pin them flat against her back.  The best she can manage now is a few weak twitches at her wing-tips.  Her large, well-formed breasts jiggle and shake as she struggles, but all the trembling purple mountains accomplish is bringing a ready flush to your " + skin(player));
         if (player.cocks.length > 0) outputText(" and a healthy surge of blood to [eachCock]");
@@ -1092,4 +1093,3 @@ export class Vapula implements TimeAwareInterface {
         flags[kFLAGS.VAPULA_EARNED_A_SPANK] = 0;
         doNext(Camp.returnToCampUseOneHour);
     }
-}

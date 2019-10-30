@@ -1,9 +1,8 @@
 
-export class BakeryScene {
     // LAST_EASTER_YEAR:int = 823;
 
     // [First time approach]
-    public bakeryuuuuuu(): void {
+    export function bakeryuuuuuu(): void {
         if (isEaster() && player.cocks.length > 0 && (flags[kFLAGS.LAST_EASTER_YEAR] < date.fullYear || rand(20) == 0)) {
             flags[kFLAGS.LAST_EASTER_YEAR] = date.fullYear;
             easterBakeSale();
@@ -49,7 +48,7 @@ export class BakeryScene {
         addButton(9, "Leave", TelAdre.telAdreMenu);
     }
 
-    private checkBakeryMenu(): void {
+    function checkBakeryMenu(): void {
         clearOutput();
         // var used for minotaur cum eclair in the menu
         let minoCum: () => void = null;
@@ -94,7 +93,7 @@ export class BakeryScene {
         addButton(9, "Leave", bakeryuuuuuu);
     }
 
-    public ingredientsMenu(): void {
+    export function ingredientsMenu(): void {
         clearOutput();
         outputText("Also try our special ingredients in your own baking!\n");
         outputText("Fox Berry - 5 gems.\n");
@@ -110,7 +109,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker]
-    private talkToBaker(): void {
+    function talkToBaker(): void {
         clearOutput();
         outputText("The minotaur snorts as you approach him, but waves you into the kitchen.  \"<i>What?</i>\" he asks, patiently watching you.  \"<i>Want to hear about baking?");
         // (Maddie 1 completed)
@@ -134,7 +133,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Brownie]
-    private talkAboutBrownies(): void {
+    function talkAboutBrownies(): void {
         clearOutput();
         outputText("\"<i>Like our brownies?</i>\" the baker asks.  \"<i>Recipe been handed down from chef to chef for years.  Original maker invented it at an inn, for guests to carry in their lunchboxes.</i>\"");
 
@@ -147,7 +146,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Cookie]
-    private talkAboutCookies(): void {
+    function talkAboutCookies(): void {
         clearOutput();
         outputText("The baker nods at you.  \"<i>Cookies good.  Cookies easy, only need butter, sugar, flour, egg, and fig.  Mix batter and put in little circles, mash up figs, put figs in centers of circles, put other circle on top.  Cook cookie.  Also able to just put whatever into batter and make chocolate cookie or anything else, but fig most popular and cheapest.</i>\"  He smiles proudly and gestures toward the four-gem cookie display.  Do you buy one?");
         // [Yes][No]
@@ -157,7 +156,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Cupcake]
-    private talkAboutCupcakes(): void {
+    function talkAboutCupcakes(): void {
         clearOutput();
         outputText("\"<i>Cupcakes take work,</i>\" the baker intones, tilting his long face downward.  \"<i>Need butter, sugar, flour, and eggs for batter; gotta mix long time and add stuff slowly.  Candied berries get cut up, put inside batter in little pieces.  Bake batter in a special pan.</i>\"");
 
@@ -171,7 +170,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Doughnut]
-    private talkAboutDoughnuts(): void {
+    function talkAboutDoughnuts(): void {
         clearOutput();
         outputText("\"<i>Doughnuts are fun,</i>\" the gruff baker smiles.  \"<i>Make mix of wet yeast, milk, sugar, eggs, little salt, and shortening.  Sometimes cocoa too.  Pound dough until smooth, work out frustration from making cupcakes all day.  Then let sit in covered bowl to rise.  Roll it small and cut if plain, or make circles if jam doughnut; cover to rise again.</i>\"  He mimes bringing a string's ends together and traces a circle, respectively.");
 
@@ -183,7 +182,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Pound Cake]
-    private talkToBakerAboutPoundCake(): void {
+    function talkToBakerAboutPoundCake(): void {
         clearOutput();
         outputText("The minotaur snorts again, \"<i>'Baker's Special' pound cake is easy... mix butter and shortening, then sugar and eggs.  Put in little salt and whatever dry stuff needed, like fruits or chocolate.  Add milk too.  Put in narrow pan, bake long time.  Can't make batter in bulk though, got to have lots of varieties since not one is more popular than others.  So costs four gems; not as cheap as batch items.  Want a piece?</i>\"");
         // [Yes][No]
@@ -193,7 +192,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Fox Berry]
-    private talkAboutFoxBerry(): void {
+    function talkAboutFoxBerry(): void {
         clearOutput();
         outputText("\"<i>Don't even know where these came from,</i>\" the baker admits.  \"<i>Shipper just showed up one day, showed me how to prepare and sell them.  Very fruity, but popular.  Candy or cook them right and eat them all day, never grow anything.  Eat them raw instead, get fox parts, look like guard captain lady and guy at whorehouse.  Still want one for five gems?</i>\"");
 
@@ -204,7 +203,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Ringtail Fig]
-    private talkAFig(): void {
+    function talkAFig(): void {
         clearOutput();
         outputText("\"<i>Fig tree?  From border of swamp,</i>\" the baker explains.  \"<i>Grows in crevices on other garbage tree, slowly covers it up until other tree is sealed inside and dies.  Bushrangers traded dried figs to us, then we grew our own from seeds when demons attacked and they stopped coming around.  Rocky start, but they stand up to desert now.  Good to eat.  Campfire not good for preparation - cook it in oven long time or you grow stripey tail and sly-looking mask and watchmen will all be suspicious of you and follow you around.  Saw it happen.  Five gems to buy.</i>\"");
         // figjam marker here: once next phase of fig use is written, then if figjam flag <= 1, set figjam flag = 1 at end of this talk
@@ -216,7 +215,7 @@ export class BakeryScene {
     }
 
     // [Bakery - Talk - Baker - Mouse Cocoa]
-    private talkAboutMouseCocoa(): void {
+    function talkAboutMouseCocoa(): void {
         clearOutput();
         outputText("\"<i>Mouse cocoa comes from warm side of the lake, by forest border.  Like the name says, mouse people used to grow and eat a lot of it.  No mice left, though... hard to get now and expensive.  Have to buy it from the farmer at the lake; she sends out gathering parties.  Same one we get milk from.  Less and less every year... going to have to raise prices soon.  Ten gems for one handful, now.</i>\"");
         // [Yes][No]
@@ -225,7 +224,7 @@ export class BakeryScene {
         addButton(1, "No", talkToBaker);
     }
 
-    private buyCocoa(): void {
+    function buyCocoa(): void {
         clearOutput();
         if (player.gems < 10) {
             outputText("You can't afford one of those!");
@@ -239,7 +238,7 @@ export class BakeryScene {
         Inventory.takeItem(ConsumableLib.MOUSECO, ingredientsMenu);
     }
 
-    private buyFerretFruit(): void {
+    function buyFerretFruit(): void {
         clearOutput();
         if (player.gems < 20) {
             outputText("You can't afford one of those!");
@@ -253,7 +252,7 @@ export class BakeryScene {
         Inventory.takeItem(ConsumableLib.FRRTFRT, ingredientsMenu);
     }
 
-    private buyFig(): void {
+    function buyFig(): void {
         clearOutput();
         if (player.gems < 5) {
             outputText("You can't afford one of those!");
@@ -267,7 +266,7 @@ export class BakeryScene {
         Inventory.takeItem(ConsumableLib.RINGFIG, ingredientsMenu);
     }
 
-    private talkBakeryMenu(): void {
+    function talkBakeryMenu(): void {
         // choices("Brownies",createCallBackFunction2(nomnomnom, "brownies", 3),"Cookies",2831,"Cupcakes",2833,"Doughnuts",createCallBackFunction2(nomnomnom, "doughnuts", 5),"Pound Cake",createCallBackFunction2(nomnomnom, "pound cake", 4),"Fox Berry",buyFoxBerry,"SpecialEclair",minoCum,"GiantCupcake",gcupcake,rubiT,rubiB,"Leave",telAdreMenu);
         clearOutput();
         outputText("Who will you talk to?\n");
@@ -300,7 +299,7 @@ export class BakeryScene {
         addButton(9, "Leave", bakeryuuuuuu);
     }
 
-    public nomnomnom(name: string, price: number): void {
+    export function nomnomnom(name: string, price: number): void {
         flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] = name;
         flags[kFLAGS.TEMP_STORAGE_PASTRY_PRICE] = price;
         outputText("", true);
@@ -385,7 +384,7 @@ export class BakeryScene {
     [pound cake] – even split of + thickness and – tone.  (+butt)
     [mino cum eclair] – helps your cravings and – tone!, LUST!*/
 
-    public buySlutCake(): void {
+    export function buySlutCake(): void {
         outputText("", true);
         if (player.gems < 500) {
             outputText("You don't have enough gems for one of those!", false);
@@ -400,7 +399,7 @@ export class BakeryScene {
         Inventory.takeItem(ConsumableLib.CCUPCAK, bakeryuuuuuu);
     }
 
-    private buyFoxBerry(): void {
+    function buyFoxBerry(): void {
         clearOutput();
         if (player.gems < 5) {
             outputText("You can't afford one of those!");
@@ -414,7 +413,7 @@ export class BakeryScene {
         Inventory.takeItem(ConsumableLib.FOXBERY, ingredientsMenu);
     }
 
-    private easterBakeSale(): void {
+    function easterBakeSale(): void {
         clearOutput();
         outputText("You make your way to the bakery only to find that it's so full you can barely squeeze inside.  ");
         if (Rubi.rubiAffection() >= 40) outputText("An extremely busy Rubi can only manage a wave in your direction before going back to attending customers.  ");
@@ -427,7 +426,7 @@ export class BakeryScene {
         addButton(4, "Leave", TelAdre.telAdreMenu);
     }
 
-    private easterBakeSaleHelp(): void {
+    function easterBakeSaleHelp(): void {
         clearOutput();
         // [Offer Help]
         outputText("Determined to see if there is anything you can help with, you offer your assistance to the chef.  He responds to you in his usual briskness, \"<i>You help.  Go in back.  Make pastries.</i>\"  You ask if he'd rather you help with the chocolate eggs that are flying out of his door, but he declines and almost laughs at you.  \"<i>No.  I make eggs.  No one else.</i>\"");
@@ -451,7 +450,7 @@ export class BakeryScene {
     }
 
     // [Male]
-    private malesHelpOutWithEaster(): void {
+    function malesHelpOutWithEaster(): void {
         clearOutput();
         outputText("A idea crosses your mind; why not have the molten girl help you with your problem?  As if reading your mind, the girl continues her way to you, making her way with her eyes locked on your [cock biggest].  She is upon you now, flaccid streams drooling off her hand as she makes to grab your cock.  A heated pressure envelopes your shaft");
         if (player.balls > 0) outputText(", sticky drops of chocolate trailing down your [balls]");
@@ -480,4 +479,3 @@ export class BakeryScene {
         player.cumMultiplier += 2;
         doNext(Camp.returnToCampUseOneHour);
     }
-}

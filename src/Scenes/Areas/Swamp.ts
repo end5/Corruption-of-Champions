@@ -2,8 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Swamp {
-    public exploreSwamp(): void {
+    export function exploreSwamp(): void {
         // Discover 'Bog' at after 25 explores of swamp
         if ((flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00272] >= 25) && flags[kFLAGS.BOG_EXPLORED] == 0) {
             outputText("While exploring the swamps, you find yourself into a particularly dark, humid area of this already fetid biome.  You judge that you could find your way back here pretty easily in the future, if you wanted to.  With your newfound discovery fresh in your mind, you return to camp.\n\n(<b>Bog exploration location unlocked! (Page 2)</b>)", true);
@@ -67,4 +66,3 @@ export class Swamp {
                 break;
         }
     }
-}

@@ -2,10 +2,8 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class BrigidScene {
-
     // Brigid the Jailer -- PC Victorious
-    public pcDefeatsBrigid(): void {
+    export function pcDefeatsBrigid(): void {
         clearOutput();
         outputText("The harpy jailer collapses, ");
         if (monster.lust > 99) outputText("too turned on");
@@ -18,7 +16,7 @@ export class BrigidScene {
     }
 
     // Brigid the Jailer -- PC Defeated
-    public pcDefeatedByBrigid(): void {
+    export function pcDefeatedByBrigid(): void {
         clearOutput();
         if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) {
             outputText("\"<i>Tsk tsk tsk,</i>\" the harpy jailer croons, looming over you as you slump to the ground. \"<i>You shouldn't have messed with me, bitch!</i>\" she snaps, giving you a rough kick to the side. \"<i>Now, let's see what Mother has to say about this...</i>\"");
@@ -42,7 +40,7 @@ export class BrigidScene {
     }
 
     // --Next--
-    private brigitPostQueenDeathBadEndII(): void {
+    function brigitPostQueenDeathBadEndII(): void {
         clearOutput();
         // [(if M, U, or visibly pregnant F/H)
         if (player.gender <= 1 || player.pregnancyIncubation > 0) {
@@ -108,5 +106,3 @@ export class BrigidScene {
             gameOver();
         }
     }
-
-}

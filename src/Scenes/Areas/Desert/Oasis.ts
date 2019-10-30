@@ -1,7 +1,5 @@
 
-export class Oasis {
-
-    public oasisEncounter(): void {
+    export function oasisEncounter(): void {
         spriteSelect(46);
         // Find oasis, sit there.
         outputText("You wander in the desert for what seems like hours, sweating profusely in the sweltering heat. Eventually you come across a small watering hole surrounded by scrappy trees and shrubs. It would be foolish not to take this opportunity to drink, freshen up and paddle your " + legs(player) + " in the cooling water, so you settle into what little shade you can find for a quick break.\n\n", true);
@@ -14,13 +12,13 @@ export class Oasis {
         simpleChoices("Talk", oasisTalk, "Fight", chooseToFight, "", null, "", null, "Leave", oasisRunAway);
     }
 
-    private chooseToFight(): void {
+    function chooseToFight(): void {
         startCombat(new DemonPack());
         spriteSelect(46);
         playerMenu();
     }
 
-    private oasisRunAway(): void {
+    function oasisRunAway(): void {
         spriteSelect(46);
         // Run away successfully if fast enough.  80 speed = autosuccess.
         if (player.spe > 15 && player.spe / 2 > rand(40)) {
@@ -34,7 +32,7 @@ export class Oasis {
         }
     }
 
-    private oasisTalk(): void {
+    function oasisTalk(): void {
         spriteSelect(46);
         // Nice weather...
         outputText("You rise cautiously from the shade of your scraggly little bush and look over the demons arrayed before you. Briefly you wonder how exactly conversations start in a desert oasis, before settling on 'nice weather we're having.' The reaction is mixed. Some laugh, some stare in utter confusion. The ludicrously endowed leader in the snakeskin cloak throws his head back and produces a deep, thundering laugh. When he regains his composure he brings his head back around to level a deadly smile full of sharp teeth in your direction. 'Yes,' he says '...nice.'\n\n", true);
@@ -44,7 +42,7 @@ export class Oasis {
         simpleChoices("Stay", oasisTalkAccept, "", null, "", null, "", null, "Leave", oasisTalkDecline);
     }
 
-    private oasisTalkDecline(): void {
+    function oasisTalkDecline(): void {
         spriteSelect(46);
         outputText("You consider the invitation, but do your best to politely decline. The little giggle this produces in a small implike creature in the back of the group send chills down your spine and you turn to go, but as you do so you catch the eye of the leader. His grin has widened, as if he knows something that you do not. With a deliberate slowness he starts to chuckle, and your worst fears are confirmed when you hear the words 'Silly creature. The offer to feast is never denied. Take it alive and kicking.'\n\n", true);
         // MORTAL KOMBAAAAAT
@@ -52,7 +50,7 @@ export class Oasis {
         startCombat(new DemonPack());
         doNext(playerMenu);
     }
-    private oasisTalkAccept(): void {
+    function oasisTalkAccept(): void {
         spriteSelect(46);
         // You slut!
         outputText("The leader smiles in genuine delight and excited chatter rises up from the group of demons. 'This is excellent. It has been so long since we last had one of your kind join us.' Behind him the demons begin to slide free of their tattered rags, hardening, dampening and licking their lips. As the leader steps forward to caress the curves and angles of your body you begin to suspect that the hunger this feast is to satisfy is not for food, but all that is forgotten as the demons swarm silently around you and you stumble back onto the hot sand, ", true);
@@ -67,7 +65,7 @@ export class Oasis {
         // TO THE SECKSIN!
         doNext(oasisSexing);
     }
-    public oasisSexing(): void {
+    export function oasisSexing(): void {
         spriteSelect(46);
         player.slimeFeed();
         // New screen
@@ -183,7 +181,7 @@ export class Oasis {
     }
 
     // Desert Tribe Bad End
-    private oasisBadEnd(): void {
+    function oasisBadEnd(): void {
         spriteSelect(46);
         // You get this ending if you are a fully corrupt female/herm/centaur with low intelligence and had over 5-10 'Feast' encounters with the Desert Tribe, once the leader starts laying a claim on you because of your large clit
         outputText("You fuck for hours, 'feasting' with the demons. Pain, pleasure and exhaustion intermingle; no matter how hard you try to cling to consciousness, you are in no state to concentrate enough to succeed. You dangle over the edge for what seems like eternity before an orgasm stronger than any other hits you like a solid wall. You black out...\n\n", true);
@@ -210,7 +208,7 @@ export class Oasis {
         outputText("Flushing red in embarrassment at his words, you reluctantly follow after the leader and the rest of the tribe in obedience. You mull over what the leader had just said in your mind, and can't help but wonder what your future would be like if you remained with them.", false);
         doNext(oasisBadEndEpilogue);
     }
-    private oasisBadEndEpilogue(): void {
+    function oasisBadEndEpilogue(): void {
         spriteSelect(46);
         outputText("After one year", true);
         if (player.gender <= 1) outputText(" and a few doses of fermented succubi milk", false);
@@ -218,4 +216,3 @@ export class Oasis {
         outputText("A year has gone by since the day you became a slave. You find yourself sitting at the feet of your master wearing nothing but a black collar around your neck. Your belly extends out in front of you, filled to the brim with your master's baby. You smile, happy to be here to please your master and carry his young as memories of your past and your mission fade deep into the depths of your mind. Your only mission in life now is to service your master and the other members of the tribe in whatever they ask, without question or hesitation. As the tribe prepares for the next 'Feast', a commotion at the other side of the encampment catches your attention. The guards bring forth a human captive they found wandering in the oasis, and you smile dimly as you watch master invite the stranger to join them all in the Feast...", false);
         gameOver();
     }
-}

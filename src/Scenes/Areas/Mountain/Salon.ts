@@ -1,6 +1,5 @@
 
 export class Salon implements TimeAwareInterface {
-
     public constructor() {
         CoC.timeAwareClassAdd(this);
     }
@@ -23,13 +22,14 @@ export class Salon implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
     // const SALON_PAID:int = 441;
-    public hairDresser(): void {
+    export function hairDresser(): void {
         outputText("While exploring the mountain, you find a cleverly concealed doorway.  From inside you can hear the sound of blades being sharpened.  Do you enter the doorway?", true);
         doYesNo(salonGreeting, Camp.returnToCampUseOneHour);
     }
-    public salonGreeting(): void {
+    export function salonGreeting(): void {
         if (player.effects.findByType(StatusAffects.HairdresserMeeting) >= 0) {
             hairDresserRepeatGreeting();
         }
@@ -38,12 +38,12 @@ export class Salon implements TimeAwareInterface {
             hairDresserGreeting();
         }
     }
-    private favoriteSalonMenu(): void {
+    function favoriteSalonMenu(): void {
         salonPurchaseMenu();
         addButton(6, "Payments", salonFavoritesPaymentMenu);
     }
 
-    private salonFavoritesPaymentMenu(): void {
+    function salonFavoritesPaymentMenu(): void {
         let blow: () => void = null;
         if (player.cocks.length > 0) blow = goblinHairDresserFacefuck;
         let minoCum: () => void = null;
@@ -59,7 +59,7 @@ export class Salon implements TimeAwareInterface {
         addButton(9, "Back", favoriteSalonMenu);
     }
 
-    private salonPaymentMenu(): void {
+    function salonPaymentMenu(): void {
         let blow: () => void = null;
         if (player.cocks.length > 0) blow = goblinHairDresserFacefuck;
         let minoCum: () => void = null;
@@ -75,7 +75,7 @@ export class Salon implements TimeAwareInterface {
         addButton(9, "Leave", Camp.returnToCampUseOneHour);
         // choices("Goblin Blow",blow,"Canine",gloryholeDoggie,"Imp",gloryholeImp,"Minotaur",gloryholeMinotaur,"Incubus",gloryholeIncubus,"",0,"",0,"",0,"Buy MinoCum",minoCum,"Leave",13);
     }
-    private buyMinoCum(): void {
+    function buyMinoCum(): void {
         if (player.gems < 60) {
             outputText("You can't afford any minotaur cum right now!", true);
             if (flags[kFLAGS.SALON_PAID] == 0)
@@ -90,7 +90,7 @@ export class Salon implements TimeAwareInterface {
             Inventory.takeItem(ConsumableLib.MINOCUM, Camp.returnToCampUseOneHour);
         }
     }
-    public salonPurchaseMenu(): void {
+    export function salonPurchaseMenu(): void {
         flags[kFLAGS.SALON_PAID] = 1;
         spriteSelect(38);
         let cutShort2: () => void = null;
@@ -126,7 +126,7 @@ export class Salon implements TimeAwareInterface {
         addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private hairDresserGreeting(): void {
+    function hairDresserGreeting(): void {
         spriteSelect(38);
         outputText("You step inside the cave, and are greeted by a sight you did not expect.  The cave's floor is covered with smooth wood panelling and the walls are nearly entirely covered with hanging mirrors.  The few stalactites have hooks drilled into them, from which hang hundreds of scissors, shears, razors, combs, and other hairstyling impliments.  It reminds you of the hair-cutter's shop in your hometown.", true);
         outputText("\n\nThere are a few chairs along the wall and goblins with latex dresses and gloves looking bored.  At the sight of you they perk up and clamor around you excitedly, until one with a gravity-defying chest pushes them apart and greets you.", false);
@@ -141,7 +141,7 @@ export class Salon implements TimeAwareInterface {
         salonPaymentMenu();
         outputText("\n\n<b>(Salon unlocked in 'places' menu from camp)</b>", false);
     }
-    private hairDresserRepeatGreeting(): void {
+    function hairDresserRepeatGreeting(): void {
         clearOutput();
         spriteSelect(38);
         const minoCum: number = 0;
@@ -236,7 +236,7 @@ export class Salon implements TimeAwareInterface {
         }
         salonPaymentMenu();
     }
-    private gloryholeImp(): void {
+    function gloryholeImp(): void {
         player.slimeFeed();
         outputText("", true);
         outputText("You walk over to the hole in the wall, looking at the erect demon-member you'll have to service.  Judging by the height and constant bobbing up and down it does, the imp must be hovering on the other side, trying pretty damn hard to stay in the hole.\n\n", true);
@@ -256,7 +256,7 @@ export class Salon implements TimeAwareInterface {
         doNext(hairDressingMainMenu);
     }
 
-    private gloryholeDoggie(): void {
+    function gloryholeDoggie(): void {
         player.slimeFeed();
         outputText("", true);
         outputText("You sigh and kneel down to bring yourself level with the dog-dick hanging out of the wall.  It's pointed at the tip with a swollen circular bulb at the base.  As a matter of fact, the dog-dick's owner must be pretty excited to be here - it's dripping cum and the knot has swollen so large that it can't fit back through the hole.\n\n", true);
@@ -275,7 +275,7 @@ export class Salon implements TimeAwareInterface {
         outputText("A young goblin comes by with a bowl for you to make your payment into.  You spit out the gunk and wipe your mouth, as the goblin carries the seed away.  You notice a trail of clear drops on the ground behind her.  She must be anticipating something...", false);
         doNext(hairDressingMainMenu);
     }
-    private gloryholeIncubus(): void {
+    function gloryholeIncubus(): void {
         player.slimeFeed();
         outputText("", true);
         outputText("You kneel down in front of the throbbing demonic dick, ready to earn your pay.\n\n", false);
@@ -294,7 +294,7 @@ export class Salon implements TimeAwareInterface {
         doNext(hairDressingMainMenu);
     }
 
-    private gloryholeMinotaur(): void {
+    function gloryholeMinotaur(): void {
         player.slimeFeed();
         outputText("Your eyes are drawn to the huge minotaur cock, and you instinctively kneel down in front of it.\n\n", true);
         outputText("It's the largest available member in the room by a considerable margin, and from your position on your knees, it looks even more massive; it's over two feet long, and has three rings of prepuce spaced around its length. You can just barely span your entire hand around its thickness. You open your mouth wide and lean forward, taking the thick, spongy head into your mouth. The taste is incredibly strong, and its musk is as thick as the minotaur's dick itself. You moan in pleasure, and start bobbing your head back and forth, taking more and more of the dick into your mouth. You stroke the rest of the cock in time with your sucking. You can hear muffled grunting and snorting coming from the other side of the wall, obvious sounds of approval from your partner.\n\n", false);
@@ -308,7 +308,7 @@ export class Salon implements TimeAwareInterface {
         doNext(hairDressingMainMenu);
     }
 
-    private goblinHairDresserFacefuck(): void {
+    function goblinHairDresserFacefuck(): void {
         spriteSelect(38);
         outputText("Lynnette licks her lips and practically tears her way into your " + player.armorName + ", having your crotch exposed in seconds.  Your " + cockDescript(game.player, 0) + " flops out immediately, slapping her on the nose as it grows hard.  She wraps both hands around you and begins pumping with practiced ease, flicking her tongue over your crown and wrapping her lips ", true);
         if (player.cocks[0].cockThickness >= 4) outputText("around as much of you as she can", false);
@@ -321,7 +321,7 @@ export class Salon implements TimeAwareInterface {
         player.orgasm();
         hairDressingMainMenu();
     }
-    private hairDressingMainMenu(): void {
+    function hairDressingMainMenu(): void {
         spriteSelect(38);
         outputText("Lynnette offers and explains their options, \"<i>So what'll it be hun?  We could cut it down or give you a lengthening treatment. Or you can get a hair-dye to use on your own.  Just remember to come back in a few days for a touchup.</i>\"", false);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00142] > 0) {
@@ -330,7 +330,7 @@ export class Salon implements TimeAwareInterface {
         salonPurchaseMenu();
     }
 
-    private cutShort(): void {
+    function cutShort(): void {
         spriteSelect(38);
         // -trying to get a goblin to cut tentacle hair:
         if (player.hairType == 4) {
@@ -343,7 +343,7 @@ export class Salon implements TimeAwareInterface {
         outputText(hairDescription(player) + ".", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private cutMedium(): void {
+    function cutMedium(): void {
         spriteSelect(38);
         // -trying to get a goblin to cut tentacle hair:
         if (player.hairType == 4) {
@@ -356,7 +356,7 @@ export class Salon implements TimeAwareInterface {
         outputText(hairDescription(player) + ".", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private cutLong(): void {
+    function cutLong(): void {
         spriteSelect(38);
         // -trying to get a goblin to cut tentacle hair:
         if (player.hairType == 4) {
@@ -369,7 +369,7 @@ export class Salon implements TimeAwareInterface {
         outputText(hairDescription(player) + ".", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private hairGrow(): void {
+    function hairGrow(): void {
         spriteSelect(38);
         // -asking for a lengthening treatment with tentacle hair:
         if (player.hairType == 4) {
@@ -384,12 +384,12 @@ export class Salon implements TimeAwareInterface {
         outputText(num2Text(temp) + " more inches of " + player.hairColor + " hair.", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private buyDye(itype: ItemType): void {
+    function buyDye(itype: ItemType): void {
         outputText("", true);
         Inventory.takeItem(itype, Camp.returnToCampUseOneHour);
     }
 
-    private dyeMenu(): void {
+    function dyeMenu(): void {
         spriteSelect(38);
         outputText("", true);
         outputText("Lynnette pulls open a cabinet in the corner, displaying a wide array of exotic hair-dyes.  Which kind do you want?", false);
@@ -403,7 +403,7 @@ export class Salon implements TimeAwareInterface {
         addButton(9, "Back", hairDressingMainMenu);
     }
 
-    private minotaurCumBukkakeInSalon(): void {
+    function minotaurCumBukkakeInSalon(): void {
         outputText("", true);
         player.minoCumAddiction(10);
         player.slimeFeed();
@@ -487,7 +487,7 @@ export class Salon implements TimeAwareInterface {
         dynStats("lib", 2, "sen", 2, "cor", 2);
         doNext(minotaurSalonFollowUp);
     }
-    private minotaurSalonFollowUp(): void {
+    function minotaurSalonFollowUp(): void {
         spriteSelect(38);
         outputText("", true);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00142] == 0) {
@@ -504,7 +504,7 @@ export class Salon implements TimeAwareInterface {
         salonPurchaseMenu();
     }
 
-    private mudFacial(): void {
+    function mudFacial(): void {
         spriteSelect(38);
         outputText("", true);
         outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special mud'.  You close your eyes, letting them plaster your " + face(player) + " with the stuff in hopes that it will improve your complexion as much as you've been promised.  A pair of cucumber slices are laid out on your eyes, obscuring your view.\n\n", false);
@@ -514,7 +514,7 @@ export class Salon implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private sandFacial(): void {
+    function sandFacial(): void {
         spriteSelect(38);
         outputText("", true);
         outputText("You sit back in a comfortable chair and pull on a lever to recline it.  The goblins buzz around you, gathering up 'special sand'.  You close your eyes, letting them splatter your " + face(player) + " with the rough, textured goop.  It doesn't feel very good, but that won't matter if it makes you as handsome as it's supposed to.\n\n", false);
@@ -531,7 +531,7 @@ export class Salon implements TimeAwareInterface {
     */
 
     // Impregnate
-    private fuckLynnette(): void {
+    function fuckLynnette(): void {
         clearOutput();
         // Checks to see if you've cum withint hte past 24 hours.
         if (flags[kFLAGS.LYNNETTE_FUCK_COUNTER] == 0) {
@@ -696,10 +696,9 @@ export class Salon implements TimeAwareInterface {
         flags[kFLAGS.LYNNETTE_PREGNANCY_CYCLE] = 0;
         salonPurchaseMenu();
     }
-    public lynnetteApproval(arg: number = 0): number {
+    export function lynnetteApproval(arg: number = 0): number {
         if (arg != 0) flags[kFLAGS.LYNNETTE_APPROVAL] += arg;
         if (flags[kFLAGS.LYNNETTE_APPROVAL] < -100) flags[kFLAGS.LYNNETTE_APPROVAL] = -100;
         else if (flags[kFLAGS.LYNNETTE_APPROVAL] > 100) flags[kFLAGS.LYNNETTE_APPROVAL] = 100;
         return flags[kFLAGS.LYNNETTE_APPROVAL];
     }
-}

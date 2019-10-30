@@ -2,8 +2,6 @@
  * Created by Fenoxo on Jan 18th 2014
  */
 
-export class GoblinAssassinScene {
-
     /*Goblins
      Gender: Female
      Height: 2-4 feet
@@ -32,7 +30,7 @@ export class GoblinAssassinScene {
      Carries bottles of aphrodisiacs and drugs.
      Dressed in leather straps that support her chest (in a lewd way) while leaving her pierced nipples exposed and slightly parting her ass to expose her pucker & femmy funbits.  Pierced pointed ears.
      */
-    public goblinAssassinEncounter(): void {
+    export function goblinAssassinEncounter(): void {
         clearOutput();
         // First Time Intro
         if (flags[kFLAGS.TIMES_ENCOUNTERED_GOBLIN_ASSASSIN] == 0) {
@@ -50,7 +48,7 @@ export class GoblinAssassinScene {
     }
 
     // [LOSS SEXAHNZ]
-    public gobboAssassinBeatYaUp(): void {
+    export function gobboAssassinBeatYaUp(): void {
         clearOutput();
         let x: number;
         if (player.lust <= 99) outputText("You collapse, utterly beaten. To make sure you'll be easier to handle, the victorious assassin saunters up, a pair of fluid filled needles in her hands. She jams them into your [player.legs], emptying the contents into you before you can so much as stammer a protest. Burning lust pours through your veins unbidden, and you moan out loud as the chemicals have their way with you as easily as the goblin soon will.\n\n");
@@ -171,7 +169,7 @@ export class GoblinAssassinScene {
     }
 
     // [WIN RAEPZ]
-    public gobboAssassinRapeIntro(): void {
+    export function gobboAssassinRapeIntro(): void {
         spriteSelect(24);
         outputText("", true);
         outputText("The assassin falls to her feet, desperately trying to regain her composure but ultimately caving in to the exhaustion of defeat. The leather belt that was once wrapped around her pillowy breasts now hangs unfastened around her waist, the syringes once adorning it now littered around her. A shattered needle by her side emits a sweet-smelling vapor that soon reaches her nose, causing the girl to blush furiously as lust begins to overcome her senses.");
@@ -235,7 +233,7 @@ export class GoblinAssassinScene {
             cleanupAfterCombat();
         }
     }
-    private giveGoblinAMilkMustache(): void {
+    function giveGoblinAMilkMustache(): void {
         outputText("", true);
         outputText("You slowly walk up to the downed goblin, gently telling her that everything will be all right now. She looks at you a bit incredulously and spreads her legs, obviously hoping that you will satisfy the urges that she has. You shake your head at her and instead cup your hands under your " + biggestBreastSizeDescript(player) + " and tell her that it's feeding time. The goblin looks at you annoyed and says, \"<i>I don't want your breasts! I want your naughty bits!</i>\" You laugh at her and grab her arms, pulling them behind her head.\n\n", false);
 
@@ -249,7 +247,7 @@ export class GoblinAssassinScene {
         player.effects.setValue(StatusAffects.Feeder, 2, 0);
         cleanupAfterCombat();
     }
-    private gobboButtSecks(): void {
+    function gobboButtSecks(): void {
         spriteSelect(24);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
@@ -275,7 +273,7 @@ export class GoblinAssassinScene {
     }
 
     // [FEMSAUCE]
-    private gobboGetsRapedFem(): void {
+    function gobboGetsRapedFem(): void {
         spriteSelect(24);
         outputText("", true);
         if (player.isTaur()) {
@@ -383,7 +381,7 @@ export class GoblinAssassinScene {
     }
 
     // Corrupt too big fuck
-    private rapeAGoblinCorruptTooBig(): void {
+    function rapeAGoblinCorruptTooBig(): void {
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         spriteSelect(24);
@@ -461,7 +459,7 @@ export class GoblinAssassinScene {
     }
 
     // (TOO BIG – pin the bitch to the ground with your cock, coat it in her potions, and make her lick it clean, then blow your load in her mouth, possible cum inflation.)
-    private manRapesGoblinTooBig(): void {
+    function manRapesGoblinTooBig(): void {
         outputText("", true);
         outputText(images.showImage("goblin-win-male-corruptedbj"));
         const x: number = player.cocks.biggestCockIndex();
@@ -497,7 +495,7 @@ export class GoblinAssassinScene {
     }
 
     // [DUDEGASM]
-    private gobboGetsRapedMaleFits(): void {
+    function gobboGetsRapedMaleFits(): void {
         spriteSelect(24);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.biggestCockIndex();
@@ -576,7 +574,7 @@ export class GoblinAssassinScene {
     }
 
     // Spider goblin condom
-    private goblinCondomed(): void {
+    function goblinCondomed(): void {
         spriteSelect(24);
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         outputText("", true);
@@ -603,7 +601,7 @@ export class GoblinAssassinScene {
     }
 
     // REQUIRES: AT LEAST ONE DICK AND A COPY OF ATLAS SHRUGGED - MUST NOT BE MONSTROUSLY HUGE
-    private gatsGoblinBoners(): void {
+    function gatsGoblinBoners(): void {
         outputText("", true);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -644,7 +642,7 @@ export class GoblinAssassinScene {
         cleanupAfterCombat();
     }
 
-    private laySomeDriderEggsInGobboTwat(): void {
+    function laySomeDriderEggsInGobboTwat(): void {
         clearOutput();
         outputText(images.showImage("goblin-win-drider-egged"));
         // Play standard goblin victory text
@@ -689,4 +687,3 @@ export class GoblinAssassinScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

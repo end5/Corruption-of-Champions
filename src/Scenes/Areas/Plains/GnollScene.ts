@@ -2,10 +2,8 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class GnollScene {
-
     // Gnoll Entrance
-    public gnollEncounter(): void {
+    export function gnollEncounter(): void {
         spriteSelect(11);
         outputText("", true);
         outputText("The sound of distant laughter comes across the plains, then seems to die off suddenly.  A moment later, a gnoll comes bounding from the nearest scrap of cover and barrels into you.  The monstrous thing giggles as it bounces back and forth before you, looking for an opening to exploit.", false);
@@ -13,7 +11,7 @@ export class GnollScene {
     }
 
     // Gnoll Rape
-    public getRapedByGnoll(): void {
+    export function getRapedByGnoll(): void {
         // Oh shit get anal raped.
         if (player.hasItem(ConsumableLib.S_DREAM)) {
             yoDawgIHeardULiekGNollBallzzzdahdakjldh();
@@ -86,7 +84,7 @@ export class GnollScene {
         cleanupAfterCombat();
     }
 
-    public defeatHyena(): void {
+    export function defeatHyena(): void {
         outputText("", true);
         let dickDownClit: () => void = null;
         // Gnoll Defeat (HP)
@@ -127,7 +125,7 @@ export class GnollScene {
     }
 
     // DickDownClit
-    private dickDownGnollClit(): void {
+    function dickDownGnollClit(): void {
         outputText("", true);
         outputText("This is not an opportunity you can pass up.  You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger, fuller, until finally it looks nearly wide enough.  You don't wait any further; you position the head of your dick against the end of hers and jam it inside.\n\n", false);
         outputText("Inch by inch, you sink your dick down into the warm tunnel of her monstrous clitoris.  The interior, you are happy to find, is not as rough as the exterior, and in fact is just slick enough to make your invasion possible.  After a few thrusts, you find it easiest to adopt a sort of reverse-cowgirl position, facing her feet as you roll your hips forward and shove more and more of your dick inside her.   Beneath you, the gnoll is clutching at the ground and making little submissive whimpers.\n\n", false);
@@ -153,7 +151,7 @@ export class GnollScene {
     }
 
     // DickInAss
-    private dickInGnollAss(): void {
+    function dickInGnollAss(): void {
         outputText("", true);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
@@ -228,7 +226,7 @@ export class GnollScene {
     }
 
     // SuckHerClit
-    private suckGnollClit(): void {
+    function suckGnollClit(): void {
         outputText("", true);
         outputText("Since you first saw this strange anatomy, you knew it needed to be inside you.  You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger and fuller, until it might be too wide for your purposes.  Without losing any more time, you lean forward and stuff the clit's end into your mouth.\n\n", false);
         outputText("The gnoll yelps in surprise and then moans appreciatively as your mouth and tongue roam across her sensitive skin.  Her hips squirm against the hard-baked dirt, tentatively pushing her clit deeper into your mouth.\n\n", false);
@@ -241,7 +239,7 @@ export class GnollScene {
     }
 
     // TakeHerClit
-    private takeGnollClit(): void {
+    function takeGnollClit(): void {
         outputText("", true);
         outputText("You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger, fuller, until it might be too wide for your purposes.  You line up your " + vaginaDescript(player, 0) + " and lower yourself onto the long, narrow faux-cock.", false);
         player.cuntChange(9, true, true, false);
@@ -254,7 +252,7 @@ export class GnollScene {
         cleanupAfterCombat();
     }
 
-    public yoDawgIHeardULiekGNollBallzzzdahdakjldh(): void {
+    export function yoDawgIHeardULiekGNollBallzzzdahdakjldh(): void {
         outputText("", true);
         player.consumeItem(ConsumableLib.S_DREAM);
         // [either Gnoll loss, if the player has a succubi's dream in inventory]
@@ -272,7 +270,7 @@ export class GnollScene {
         doNext(yoDawgHyenaBallz2);
     }
 
-    private yoDawgHyenaBallz2(): void {
+    function yoDawgHyenaBallz2(): void {
         outputText("", true);
         outputText("Using the distraction, you roll onto your belly, crawling towards your " + player.armorName + ", hoping to use the distraction to make an escape.  Baring your " + buttDescription(player) + ", however, proves to be a mistake, as the gnoll fixates on the wobbling orbs, lunging desperately.  She lands atop you, her paws pinning your head and shoulders to the ground as the warmth of her impatient shaft slides between your cheeks, her new scrotum slapping wetly against ", false);
         if (player.balls > 0) outputText("your own " + ballsDescriptLight(player), false);
@@ -296,7 +294,7 @@ export class GnollScene {
         statScreenRefresh();
     }
 
-    private yoDawgHyenaBallz3(): void {
+    function yoDawgHyenaBallz3(): void {
         outputText("", true);
         outputText("Finally, you feel the gnoll's clit slide out of your anus as the overly-endowed girl collapses at your side.  Broken utterly, she pants with depraved exhaustion, no strength left to continue pounding your body into the dirt.  Even now, she strokes her massive clit with one spotted paw as the other helplessly massages the basketball-sized testicles that audibly churn with gallons of the girl's jizz.  Finding a reserve of strength you didn't know you had, you rise tenderly and gather your belongings, creeping away before the hyena-girl can get her second wind.", false);
         // [24 hours pass, player asshole size increased, sensitivity significantly lowered, toughness lowered temporarily, fatigue maxed, remove one succubi's dream]
@@ -342,4 +340,3 @@ export class GnollScene {
      (if Tone<90)
      The warm swirls around inside your body, seeming to melt away fat deposits wherever they lie.  Your body takes on a much leaner, toned appearance.
      (increase Tone)*/
-}

@@ -1,9 +1,4 @@
 
-export class Camp {
-
-    protected hasItemInStorage(itype: ItemType): boolean {
-        return Inventory.hasItemInStorage(itype);
-    }
     /*
             protected function hasItemsInStorage():Boolean
             {
@@ -15,8 +10,8 @@ export class Camp {
             }
     */
 
-    public constructor(campInitialize: () => void) {
-        campInitialize(doCamp); // Pass the doCamp function up to CoC. This way doCamp is private but the CoC class itself can call it.
+    function hasItemInStorage(itype: ItemType): boolean {
+        return Inventory.hasItemInStorage(itype);
     }
 
     /* Replaced with calls to playerMenu
@@ -25,7 +20,7 @@ export class Camp {
             }
     */
 
-    public returnToCamp(timeUsed: number): void {
+    export function returnToCamp(timeUsed: number): void {
         clearOutput();
         if (timeUsed == 1)
             outputText("An hour passes...\n");
@@ -36,17 +31,17 @@ export class Camp {
         goNext(timeUsed, false);
     }
 
-    public returnToCampUseOneHour(): void { returnToCamp(1); } // Replacement for event number 13;
+    export function returnToCampUseOneHour(): void { returnToCamp(1); } // Replacement for event number 13;
 
-    public returnToCampUseTwoHours(): void { returnToCamp(2); } // Replacement for event number 14;
+    export function returnToCampUseTwoHours(): void { returnToCamp(2); } // Replacement for event number 14;
 
-    public returnToCampUseFourHours(): void { returnToCamp(4); } // Replacement for event number 15;
+    export function returnToCampUseFourHours(): void { returnToCamp(4); } // Replacement for event number 15;
 
-    public returnToCampUseEightHours(): void { returnToCamp(8); } // Replacement for event number 16;
+    export function returnToCampUseEightHours(): void { returnToCamp(8); } // Replacement for event number 16;
 
     //  SLEEP_WITH:int = 701;
 
-    private doCamp(): void { // Only called by playerMenu
+    function doCamp(): void { // Only called by playerMenu
         // trace("Current fertility: " + player.totalFertility());
         mainView.showMenuButton(MainView.MENU_NEW_MAIN);
         if (player.effects.findByType(StatusAffects.PostAkbalSubmission) >= 0) {
@@ -690,15 +685,15 @@ export class Camp {
         // Slaves
     }
 
-    public hasCompanions(): boolean {
+    export function hasCompanions(): boolean {
         return companionsCount() > 0;
     }
 
-    public companionsCount(): number {
+    export function companionsCount(): number {
         return followersCount() + slavesCount() + loversCount();
     }
 
-    public followersCount(): number {
+    export function followersCount(): number {
         let counter: number = 0;
         if (EmberScene.followerEmber()) counter++;
         if (flags[kFLAGS.VALARIA_AT_CAMP] == 1) counter++;
@@ -710,7 +705,7 @@ export class Camp {
         return counter;
     }
 
-    public slavesCount(): number {
+    export function slavesCount(): number {
         let counter: number = 0;
         if (LatexGirl.latexGooFollower() && flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 0) counter++;
         if (Vapula.vapulaSlave() && flags[kFLAGS.FOLLOWER_AT_FARM_VAPULA] == 0) counter++;
@@ -723,7 +718,7 @@ export class Camp {
         return counter;
     }
 
-    public loversCount(): number {
+    export function loversCount(): number {
         let counter: number = 0;
         if (ArianScene.arianFollower()) counter++;
         if (HelScene.followerHel()) counter++;
@@ -738,7 +733,7 @@ export class Camp {
         return counter;
     }
 
-    public campLoversMenu(): void {
+    export function campLoversMenu(): void {
         let isabellaButt: () => void = null;
         let marbleEvent: () => void = null;
         let izmaEvent: () => void = null;
@@ -896,7 +891,7 @@ export class Camp {
         addButton(9, "Back", playerMenu);
     }
 
-    public campSlavesMenu(): void {
+    export function campSlavesMenu(): void {
         clearOutput();
         let vapula2: () => void = null;
         let amilyEvent: () => void = null;
@@ -945,7 +940,7 @@ export class Camp {
         addButton(9, "Back", playerMenu);
     }
 
-    public campFollowers(): void {
+    export function campFollowers(): void {
         let rathazulEvent: () => void = null;
         let jojoEvent: () => void = null;
         let valeria2: () => void = null;
@@ -1011,7 +1006,7 @@ export class Camp {
         addButton(9, "Back", playerMenu);
     }
 
-    private rest(): void {
+    function rest(): void {
         campQ = true;
         if (timeQ == 0) {
             outputText("You lie down to rest for four hours.\n", true);
@@ -1040,7 +1035,7 @@ export class Camp {
         goNext(timeQ, true);
     }
 
-    private doWait(): void {
+    function doWait(): void {
         campQ = true;
         outputText("", true);
         if (timeQ == 0) {
@@ -1067,7 +1062,7 @@ export class Camp {
         goNext(timeQ, true);
     }
 
-    public doSleep(clrScreen: boolean = true): void {
+    export function doSleep(clrScreen: boolean = true): void {
         if (Urta.pregnancy.incubation == 0 && Urta.pregnancy.type == PregnancyStore.PREGNANCY_PLAYER && game.time.hours >= 20 && game.time.hours < 2) {
             UrtaPregs.preggoUrtaGivingBirth();
             return;
@@ -1178,7 +1173,7 @@ export class Camp {
         goNext(timeQ, true);
     }
     // For shit that breaks normal sleep processing.
-    public sleepWrapper(): void {
+    export function sleepWrapper(): void {
         if (game.time.hours == 16) timeQ = 14;
         if (game.time.hours == 17) timeQ = 13;
         if (game.time.hours == 18) timeQ = 12;
@@ -1200,7 +1195,7 @@ export class Camp {
         goNext(timeQ, true);
     }
 
-    public sleepRecovery(display: boolean = false): void {
+    export function sleepRecovery(display: boolean = false): void {
         // Marble withdrawl
         if (player.effects.findByType(StatusAffects.MarbleWithdrawl) >= 0) {
             if (display) outputText("\nYour sleep is very troubled, and you aren't able to settle down.  You get up feeling tired and unsatisfied, always thinking of Marble's milk.\n", false);
@@ -1225,7 +1220,7 @@ export class Camp {
         }
     }
 
-    private dungeonFound(): boolean { // Returns true as soon as any known dungeon is found
+    function dungeonFound(): boolean { // Returns true as soon as any known dungeon is found
         if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) return true;
         if (player.effects.findByType(StatusAffects.FoundFactory) >= 0) return true;
         if (flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] > 0) return true;
@@ -1233,7 +1228,7 @@ export class Camp {
         return false;
     }
 
-    private farmFound(): boolean { // Returns true as soon as any known dungeon is found
+    function farmFound(): boolean { // Returns true as soon as any known dungeon is found
         if (player.effects.findByType(StatusAffects.MetWhitney) >= 0 && player.effects.getValue1Of(StatusAffects.MetWhitney) > 1) {
             if (flags[kFLAGS.FARM_DISABLED] == 0) return true;
             if (player.cor >= 70 && player.level >= 12 && FarmCorruption.corruptFollowers() >= 2 && flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 0) return true;
@@ -1242,7 +1237,7 @@ export class Camp {
         return false;
     }
 
-    private placesKnown(): boolean { // Returns true as soon as any known place is found
+    function placesKnown(): boolean { // Returns true as soon as any known place is found
         if (flags[kFLAGS.BAZAAR_ENTERED] > 0) return true;
         if (player.effects.findByType(StatusAffects.BoatDiscovery) >= 0) return true;
         if (flags[kFLAGS.FOUND_CATHEDRAL] == 1) return true;
@@ -1257,7 +1252,7 @@ export class Camp {
     }
 
     // Places menu
-    private places(): void { // Displays a menu for all known places
+    function places(): void { // Displays a menu for all known places
         if (flags[kFLAGS.PLACES_PAGE] != 0) {
             placesPage2();
             return;
@@ -1279,7 +1274,7 @@ export class Camp {
         addButton(9, "Back", playerMenu);
     }
 
-    private placesPage2(): void {
+    function placesPage2(): void {
         menu();
         flags[kFLAGS.PLACES_PAGE] = 1;
         // turn on ruins
@@ -1289,12 +1284,12 @@ export class Camp {
         addButton(9, "Back", playerMenu);
     }
 
-    private placesToPage1(): void {
+    function placesToPage1(): void {
         flags[kFLAGS.PLACES_PAGE] = 0;
         places();
     }
 
-    private dungeons(): void {
+    function dungeons(): void {
         menu();
         // Turn on dungeons
         if (flags[kFLAGS.DISCOVERED_DUNGEON_2_ZETAZ] > 0) addButton(0, "Deep Cave", enterZetazsLair);
@@ -1304,7 +1299,7 @@ export class Camp {
         addButton(9, "Back", places);
     }
 
-    private exgartuanCampUpdate(): void {
+    function exgartuanCampUpdate(): void {
         // Update Exgartuan stuff
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) {
             trace("EXGARTUAN V1: " + player.effects.getValue1Of(StatusAffects.Exgartuan) + " V2: " + player.effects.getValue2Of(StatusAffects.Exgartuan));
@@ -1334,4 +1329,3 @@ export class Camp {
         doNext(10036);
     }
     */
-}

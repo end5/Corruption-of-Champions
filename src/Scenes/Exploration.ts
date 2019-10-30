@@ -2,12 +2,11 @@
  * Created by aimozg on 05.01.14.
  */
 
-export class Exploration {
     // const MET_OTTERGIRL:int = 777;
     // const HAS_SEEN_MINO_AND_COWGIRL:int = 892;
     // const EXPLORATION_PAGE:int = 1015;
     // const BOG_EXPLORED:int = 1016;
-    public doExplore(): void {
+    export function doExplore(): void {
         if (player.explored == 0) {
             outputText("You tentatively step away from your campsite, alert and scanning the ground and sky for danger.  You walk for the better part of an hour, marking the rocks you pass for a return trip to your camp.  It worries you that the portal has an opening on this side, and it was totally unguarded...\n\n...Wait a second, why is your campsite in front of you? The portal's glow is clearly visible from inside the tall rock formation.   Looking carefully you see your footprints leaving the opposite side of your camp, then disappearing.  You look back the way you came and see your markings vanish before your eyes.  The implications boggle your mind as you do your best to mull over them.  Distance, direction, and geography seem to have little meaning here, yet your campsite remains exactly as you left it.  A few things click into place as you realize you found your way back just as you were mentally picturing the portal!  Perhaps memory influences travel here, just like time, distance, and speed would in the real world!\n\nThis won't help at all with finding new places, but at least you can get back to camp quickly.  You are determined to stay focused the next time you explore and learn how to traverse this gods-forsaken realm.", true);
             tryDiscover();
@@ -36,7 +35,7 @@ export class Exploration {
         addButton(9, "Back", playerMenu);
     }
 
-    private explorePageII(): void {
+    function explorePageII(): void {
         flags[kFLAGS.EXPLORATION_PAGE] = 2;
         menu();
         if (flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN] > 0) addButton(0, "High Mountain", HighMountains.exploreHighMountain);
@@ -46,13 +45,13 @@ export class Exploration {
         addButton(9, "Back", playerMenu);
     }
 
-    private goBackToPageI(): void {
+    function goBackToPageI(): void {
         flags[kFLAGS.EXPLORATION_PAGE] = 1;
         doExplore();
     }
 
     // Try to find a new location - called from doExplore once the first location is found
-    public tryDiscover(): void {
+    export function tryDiscover(): void {
 
         // GoblinAssassinScene.goblinAssassinEncounter();
         // return;
@@ -178,7 +177,7 @@ export class Exploration {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public debugOptions(): void {
+    export function debugOptions(): void {
         Inventory.takeItem(ConsumableLib.W_FRUIT, playerMenu);
     }
 
@@ -186,7 +185,7 @@ export class Exploration {
     // [DESERT]
     // [RANDOM SCENE IF CHARACTER HAS AT LEAST ONE COCK LARGER THAN THEIR HEIGHT,
     // AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
-    public bigJunkDesertScene(): void {
+    export function bigJunkDesertScene(): void {
         outputText("", true);
         const x: number = player.cocks.longestCock();
         // PARAGRAPH 1
@@ -245,5 +244,3 @@ export class Exploration {
         fatigue(5);
         doNext(Camp.returnToCampUseOneHour);
     }
-
-}

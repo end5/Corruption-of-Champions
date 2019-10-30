@@ -1,7 +1,5 @@
 
-export class Lumi {
-
-    public lumiEncounter(): void {
+    export function lumiEncounter(): void {
         outputText("", true);
         // 1st time lumi meeting
         if (flags[kFLAGS.LUMI_MET] == 0) {
@@ -18,7 +16,7 @@ export class Lumi {
         // end of placeholder text
     }
 
-    public lumiLabChoices(): void {
+    export function lumiLabChoices(): void {
         spriteSelect(37);
         outputText("", true);
         // First time meeting
@@ -43,7 +41,7 @@ export class Lumi {
         simpleChoices("Shop", lumiShop, "Enhance", enhance, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    public lumiShop(): void {
+    export function lumiShop(): void {
         spriteSelect(37);
         // Set item handling to lumi shop
         clearOutput();
@@ -58,7 +56,7 @@ export class Lumi {
     }
 
     // Lust Draft
-    private lumiLustDraftPitch(): void {
+    function lumiLustDraftPitch(): void {
         spriteSelect(37);
         clearOutput();
         outputText("You point at the bottle filled with bubble-gum pink fluid.\n\n\"<i>De lust dwaft? Always a favowite, with it you nevar have to worwy about not bein weady for sexy time; one of my fiwst creations. 15 gems each.</i>\"\n\n", false);
@@ -66,7 +64,7 @@ export class Lumi {
         doYesNo(curry(lumiPurchase, ConsumableLib.L_DRAFT), lumiShop);
     }
     // Goblin Ale
-    private lumiPitchGobboAle(): void {
+    function lumiPitchGobboAle(): void {
         spriteSelect(37);
         clearOutput();
         outputText("You point at the flagon. \"<i>Oh? Oh thats Lumi's... actually no, dat tispsy stuff for 20 gems. You'll like if you want to be like Lumi. Do you like it?</i>\"\n\n", false);
@@ -74,7 +72,7 @@ export class Lumi {
         doYesNo(curry(lumiPurchase, ConsumableLib.GOB_ALE), lumiShop);
     }
     // Ovi Elixir
-    private lumiPitchOviElixer(): void {
+    function lumiPitchOviElixer(): void {
         spriteSelect(37);
         clearOutput();
         outputText("You point at the curious hexagonal bottle. \"<i>De Oviposar Elixir? Made baithsed on da giant bee's special stuff dey give deir queen. It will help make de burfing go faster, an if you dwink it while you awen pweggy, iw will give you some eggs to burf later. More dwinks, eqwals more and biggar eggs. Lumi charges 45 gems for each dose.</i>\"\n\n", false);
@@ -82,7 +80,7 @@ export class Lumi {
         doYesNo(curry(lumiPurchase, ConsumableLib.OVIELIX), lumiShop);
     }
 
-    private lumiPurchase(itype: ItemType): void {
+    function lumiPurchase(itype: ItemType): void {
         spriteSelect(37);
         clearOutput();
         // After choosing, and PC has enough gems
@@ -107,7 +105,7 @@ export class Lumi {
         }
     }
 
-    public lumiEnhance(justCheck: boolean = false): boolean {
+    export function lumiEnhance(justCheck: boolean = false): boolean {
         spriteSelect(37);
         let fox: () => void = null;
         if (player.hasItem(ConsumableLib.FOXBERY))
@@ -160,32 +158,32 @@ export class Lumi {
             return true;
         }
     }
-    private lumiEnhanceLaBova(): void {
+    function lumiEnhanceLaBova(): void {
         lumiEnhanceGo(ConsumableLib.LABOVA_);
     }
-    private lumiEnhanceSDelight(): void {
+    function lumiEnhanceSDelight(): void {
         lumiEnhanceGo(ConsumableLib.SDELITE);
     }
-    private lumiEnhanceOviElix(): void {
+    function lumiEnhanceOviElix(): void {
         lumiEnhanceGo(ConsumableLib.OVIELIX);
     }
-    private lumiEnhanceDraft(): void {
+    function lumiEnhanceDraft(): void {
         lumiEnhanceGo(ConsumableLib.L_DRAFT);
     }
-    private lumiEnhanceGoldenSeed(): void {
+    function lumiEnhanceGoldenSeed(): void {
         lumiEnhanceGo(ConsumableLib.GLDSEED);
     }
-    private lumiEnhanceKanga(): void {
+    function lumiEnhanceKanga(): void {
         lumiEnhanceGo(ConsumableLib.KANGAFT);
     }
-    private lumiEnhanceFox(): void {
+    function lumiEnhanceFox(): void {
         lumiEnhanceGo(ConsumableLib.FOXBERY);
     }
-    private lumiEnhanceFoxJewel(): void {
+    function lumiEnhanceFoxJewel(): void {
         lumiEnhanceGo(ConsumableLib.FOXJEWL);
     }
 
-    private lumiEnhanceGo(itype: ItemType): void {
+    function lumiEnhanceGo(itype: ItemType): void {
         spriteSelect(37);
         trace("LUMI ENHANCE");
         let nextItem: ItemType = ItemType.NOTHING;
@@ -228,4 +226,3 @@ export class Lumi {
         else if (temp == 2) outputText("She adds a few things to the tray before moving down the table.  She adds some reagents to a bubbling chemical reaction, and then adds some more ingredients to that.  You wonder why she just left " + itype.longName + " there to work on something else.  Then Lumi moves back across the table, past where " + itype.longName + " sits, to start adding things to something else.  Before you have a chance to complain, she moves back to " + itype.longName + " and continues.  You decide that it's probably best not to ask about her work ethic and just let her do her thing; she has more experience than you, after all.\n\nPOP! You look over in surprise as the first thing she worked on makes a small explosion.  POW! Now the second experiment has blown up!  You start to move in alarm, wondering if Lumi really knows what she's doing; just before " + itype.longName + " seems to explode with an incredible BOOM.  Lumi stops moving for a moment, looking straight ahead before saying, \"<i>Dat was a gud one, Lumi dun!</i>\"\n\n", false);
         Inventory.takeItem(nextItem, lumiEnhance, lumiLabChoices);
     }
-}

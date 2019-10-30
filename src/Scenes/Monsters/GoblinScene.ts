@@ -2,8 +2,6 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class GoblinScene {
-
     /*Goblins
      Gender: Female
      Height: 2-4 feet
@@ -33,7 +31,7 @@ export class GoblinScene {
      Dressed in leather straps that support her chest (in a lewd way) while leaving her pierced nipples exposed and slightly parting her ass to expose her pucker & femmy funbits.  Pierced pointed ears.
      */
     // RAEP TEXT 1
-    public goblinRapesPlayer(): void {
+    export function goblinRapesPlayer(): void {
         spriteSelect(24);
         outputText("", true);
         if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.perks.findByType(PerkLib.FutaFaculties) >= 0) {
@@ -185,7 +183,7 @@ export class GoblinScene {
     }
 
     // [WIN RAEPZ]
-    public gobboRapeIntro(): void {
+    export function gobboRapeIntro(): void {
         spriteSelect(24);
         outputText("", true);
         // [HP Intro]
@@ -251,7 +249,7 @@ export class GoblinScene {
         }
         else cleanupAfterCombat();
     }
-    private giveGoblinAMilkMustache(): void {
+    function giveGoblinAMilkMustache(): void {
         outputText("", true);
         outputText("You slowly walk up to the downed goblin, gently telling her that everything will be all right now. She looks at you a bit incredulously and spreads her legs, obviously hoping that you will satisfy the urges that she has. You shake your head at her and instead cup your hands under your " + biggestBreastSizeDescript(player) + " and tell her that it's feeding time. The goblin looks at you annoyed and says, \"<i>I don't want your breasts! I want your naughty bits!</i>\" You laugh at her and grab her arms, pulling them behind her head.\n\n", false);
 
@@ -265,7 +263,7 @@ export class GoblinScene {
         player.effects.setValue(StatusAffects.Feeder, 2, 0);
         cleanupAfterCombat();
     }
-    private gobboButtSecks(): void {
+    function gobboButtSecks(): void {
         spriteSelect(24);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = 0;
@@ -291,7 +289,7 @@ export class GoblinScene {
     }
 
     // [FEMSAUCE]
-    private gobboGetsRapedFem(): void {
+    function gobboGetsRapedFem(): void {
         spriteSelect(24);
         outputText("", true);
         if (player.isTaur()) {
@@ -399,7 +397,7 @@ export class GoblinScene {
     }
 
     // Corrupt too big fuck
-    private rapeAGoblinCorruptTooBig(): void {
+    function rapeAGoblinCorruptTooBig(): void {
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         spriteSelect(24);
@@ -477,7 +475,7 @@ export class GoblinScene {
     }
 
     // (TOO BIG – pin the bitch to the ground with your cock, coat it in her potions, and make her lick it clean, then blow your load in her mouth, possible cum inflation.)
-    private manRapesGoblinTooBig(): void {
+    function manRapesGoblinTooBig(): void {
         outputText("", true);
         outputText(images.showImage("goblin-win-male-corruptedbj"));
         const x: number = player.cocks.biggestCockIndex();
@@ -513,7 +511,7 @@ export class GoblinScene {
     }
 
     // [DUDEGASM]
-    private gobboGetsRapedMaleFits(): void {
+    function gobboGetsRapedMaleFits(): void {
         spriteSelect(24);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.biggestCockIndex();
@@ -592,7 +590,7 @@ export class GoblinScene {
     }
 
     // Spider goblin condom
-    private goblinCondomed(): void {
+    function goblinCondomed(): void {
         spriteSelect(24);
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         outputText("", true);
@@ -619,7 +617,7 @@ export class GoblinScene {
     }
 
     // REQUIRES: AT LEAST ONE DICK AND A COPY OF ATLAS SHRUGGED - MUST NOT BE MONSTROUSLY HUGE
-    private gatsGoblinBoners(): void {
+    function gatsGoblinBoners(): void {
         outputText("", true);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -660,7 +658,7 @@ export class GoblinScene {
         cleanupAfterCombat();
     }
 
-    private laySomeDriderEggsInGobboTwat(): void {
+    function laySomeDriderEggsInGobboTwat(): void {
         clearOutput();
         outputText(images.showImage("goblin-win-drider-egged"));
         // Play standard goblin victory text
@@ -705,4 +703,3 @@ export class GoblinScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

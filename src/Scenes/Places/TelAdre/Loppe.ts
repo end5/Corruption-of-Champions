@@ -1,8 +1,4 @@
 
-export class Loppe {
-    public constructor() {
-
-    }
     // const LOPPE_FURRY:int = 684;
     // const LOPPE_FERTILE:int = 685;
     // const LOPPE_KIDS:int = 686;
@@ -16,7 +12,7 @@ export class Loppe {
     // const TIMES_ASKED_LOPPE_ABOUT_LOPPE:int = 694;
     // const LOPPE_MET:int = 695;
 
-    private loppeCapacity(): number {
+    function loppeCapacity(): number {
         return 90;
     }
     // Tags/Booleans (C)
@@ -33,7 +29,7 @@ export class Loppe {
     */
 
     // Appearance (edited) (C)
-    private appearanceOfLoppe(): void {
+    function appearanceOfLoppe(): void {
         clearOutput();
         if (flags[kFLAGS.LOPPE_FURRY] == 0) {
             outputText("Loppe is a 6'2\" bunny-girl with deep brown eyes set in her pretty face.  Shoulder-length black hair and a pair of snow-white rabbit ears adorn the top of her head, tilted and lying backward to conceal the insides.  Curiously, her face is that of a normal human woman.");
@@ -59,7 +55,7 @@ export class Loppe {
 
     // First Meeting (edited) (C)
     // Happens randomly when choosing to go into the bar after 16:00
-    public loppeFirstMeeting(): void {
+    export function loppeFirstMeeting(): void {
         clearOutput();
         outputText("Wandering towards the bar, you notice an unusual commotion; there are a lot more people hanging around here than is usual for the time of day.  Feeling curious, you go over to investigate, and ask a bystander what all of this is about.");
         outputText("\n\n\"<i>You don't know?  Today we're having a show at the bar.  A dancer is going to be dancing for us.  You should go and have a look, it's very beautiful!</i>\"");
@@ -73,7 +69,7 @@ export class Loppe {
     }
 
     // [=Uninterested=]
-    private noLoppeInterest(): void {
+    function noLoppeInterest(): void {
         clearOutput();
         outputText("Dancers aren't really your thing, and you shake your head.");
         // (disable repeat and NPC)
@@ -83,7 +79,7 @@ export class Loppe {
     }
 
     // [=Not Now=]
-    private mebbeLaterToLoppe(): void {
+    function mebbeLaterToLoppe(): void {
         clearOutput();
         outputText("You're not really in the mood for this right now, so you leave the bar.");
         // (go to T'A main menu, repeat event in 15 days.)
@@ -92,7 +88,7 @@ export class Loppe {
     }
 
     // [=Yes=]
-    private yesToMeetingLoppe(): void {
+    function yesToMeetingLoppe(): void {
         clearOutput();
         flags[kFLAGS.LOPPE_MET] = 1;
         outputText("There's no harm in staying a while...");
@@ -103,7 +99,7 @@ export class Loppe {
         addButton(0, "Next", yesToLoppeMeetingTwo);
     }
 
-    private yesToLoppeMeetingTwo(): void {
+    function yesToLoppeMeetingTwo(): void {
         clearOutput();
 
         outputText(images.showImage("loppe-show-at-bar"));
@@ -143,7 +139,7 @@ export class Loppe {
         addButton(0, "Sure", sureBakeryWithLoppe);
     }
     // [=Not Really=]
-    private notReallyInterestedInLoppe(): void {
+    function notReallyInterestedInLoppe(): void {
         clearOutput();
         outputText("You decline, and the girl gives you a look of disappointment.");
         outputText("\n\n\"<i>Well, that's... too bad.  Erm, if you change your mind, look me up, ok?  I spend a lot of time in the gym.  Gotta keep fit and maintain my dancer's body!</i>\"  For emphasis, or perhaps enticement, she runs her hands along her frame, flattening the robes to show off her curves... and a suspicious bulge tenting between her legs.  Following your gaze down to it, the girl turns bright red, claps a hand over her crotch and excuses herself, mumbling as she goes.");
@@ -154,7 +150,7 @@ export class Loppe {
     }
 
     // [=Sure=]
-    private sureBakeryWithLoppe(): void {
+    function sureBakeryWithLoppe(): void {
         clearOutput();
         outputText("You consider the time of day, and the girl offering, and decide that it can't hurt.  Loppe smiles and takes your hand, leading you towards a nearby bakery.");
 
@@ -203,7 +199,7 @@ export class Loppe {
     }
     // [=NoWay=]
     // Removes Loppe from game.
-    private NoWayLoppe(): void {
+    function NoWayLoppe(): void {
         clearOutput();
         outputText("Loppe lets out a breath she had obviously been holding in a bitter sigh, the ghost of the words, \"<i>I knew it</i>\" echoing faintly as she does so.  \"<i>Well, I understand.  I just had to give it a try all the same.  It was nice talking to you, [name].  Might see you again, someday.  Sorry for wasting your time...</i>\"");
 
@@ -213,7 +209,7 @@ export class Loppe {
     }
 
     // [=Okay=]
-    private okayLoppeLetsGo(): void {
+    function okayLoppeLetsGo(): void {
         clearOutput();
         outputText("Loppe looks at you, studying you to see if you're mocking her.  But when she detects only honesty, she sighs and breaths a sigh of relief.  \"<i>Sugar, you really are sweet.  I can't tell you the number of times I've been rejected just because I'm a herm... anyways, we can chat later.  Our food is here.</i>\"  She points toward the waitress holding your orders in a tray.  You nod to her in agreement and turn your attention towards the food, ready to savor the sweets.");
 
@@ -230,7 +226,7 @@ export class Loppe {
     }
 
     // [=No=]
-    private noLoppesHouse(): void {
+    function noLoppesHouse(): void {
         clearOutput();
         outputText("Loppe gives a disappointed sigh, but smiles at you all the same.  \"<i>I understand... if you ever feel like talking some more, you can find me in the gym.  I need to keep myself in tip-top shape for my dancing shows, after all.</i>\"");
         outputText("\n\nShe sighs again, picks up her last cookie, and leaves.");
@@ -239,7 +235,7 @@ export class Loppe {
     }
 
     // [=Yes=]
-    private yesLoppesHouse(): void {
+    function yesLoppesHouse(): void {
         clearOutput();
         // Loppe can now be found in the Gym
         outputText("The dancer smiles mischievously at you.  \"<i>Wonderful.  I'm going to show you just how great my body looks without this dress.  You wouldn't believe how much time I spend in the gym, working out.</i>\"  Loppe grabs her last cookie in one hand and your arm in the other, leading you away - presumably to her house.  Enroute, she giggles constantly, provoking a question from you.");
@@ -271,7 +267,7 @@ export class Loppe {
 
     // Generic Meeting (edited) (C)
     // Loppe can be found from 6:00 to 15:00 (yeah she works out like a boss!)
-    public loppeGenericMeetings(): void {
+    export function loppeGenericMeetings(): void {
         clearOutput();
         outputText("You decide to approach the bunny-girl.  Loppe smiles and wipes the sweat off her brow with the towel.  \"<i>Hey there, [name], nice seeing you around here.  So... do you want to do something?  Talk, maybe?  Or go to my place for a 'workout'?</i>\" she asks with a smirk.");
         // Appearance
@@ -288,7 +284,7 @@ export class Loppe {
     }
 
     // Talk (edited) (C)
-    private talkWithLoppe(): void {
+    function talkWithLoppe(): void {
         clearOutput();
         outputText("That 'workout' is going to have to be postponed; you have some questions.");
         outputText("\n\nLoppe giggles, and her horse-tail waves as she does so.  \"<i>I'd much rather let my body speak for me, but alright.  Let's go to the cafeteria; I could use a break anyway.</i>\"  You follow her and find a seat in a booth on the corner.");
@@ -315,7 +311,7 @@ export class Loppe {
     }
 
     // Loppe (edited) (C)
-    private talkWithLoppeAboutLoppe(): void {
+    function talkWithLoppeAboutLoppe(): void {
         clearOutput();
         outputText("You tell the laquine that you're curious about her, that you'd like to know more about her: who she is, where she comes from, et cetera.");
 
@@ -367,7 +363,7 @@ export class Loppe {
 
     // Children (edited) (C)
     // req LoppeSexed > 0 and LoppeChat > 0
-    private askLoppeAboutChildren(): void {
+    function askLoppeAboutChildren(): void {
         clearOutput();
         outputText("You decide to ask Loppe for her thoughts on children.  Has she considered having any?");
         outputText("\n\n\"<i>Kids, huh?  I suppose I've never given it much thought, but I guess I'd be willing if I ever found the right person, you know?  Don't want a rehash of my mom's story... plus I have my job as a dancer right now.  But I suppose I would like to have children in the future, to give my mom a bunch of grandkids... I'm sure she would like that,</i>\" Loppe finishes with a smile.");
@@ -398,7 +394,7 @@ export class Loppe {
     }
 
     // [No Opinion] (spacebar default)
-    private noOpinionOnLoppeArt(): void {
+    function noOpinionOnLoppeArt(): void {
         clearOutput();
         outputText("You decline to answer, waving the question off.  Loppe raises an eyebrow at that.  \"<i>Haven't thought about it either, huh?</i>\"");
         outputText("\n\n\"<i>Just making conversation,</i>\" you reply.");
@@ -408,7 +404,7 @@ export class Loppe {
     }
 
     // [=Don't Really Want Them=]
-    private loppeIDontReallyWantKidsYouStupidTwat(): void {
+    function loppeIDontReallyWantKidsYouStupidTwat(): void {
         clearOutput();
         outputText("You confess you aren't really a 'kids' person; you don't think you could ever envision yourself as a parent, especially in this crazy world.");
 
@@ -419,7 +415,7 @@ export class Loppe {
     }
 
     // [=They're Okay=]
-    private loppeKidsAreOkayIfYoureARabbitOrSumthin(): void {
+    function loppeKidsAreOkayIfYoureARabbitOrSumthin(): void {
         clearOutput();
         outputText("You finally announce that you're hardly what you'd call interested in being a parent, but you think that you could eventually see yourself having kids.  You don't think you'd be too upset if one day you found you were going to have a little bundle of joy, but you must admit you probably wouldn't go and try to have kids on purpose.");
         outputText("\n\n\"<i>So, you'll just leave that to chance?  Or are you waiting for that someone special as well?</i>\" Loppe asks.");
@@ -428,7 +424,7 @@ export class Loppe {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Someday=]
-    private loppeIWantKidsSomedayJeezeQuitHasslingMe(): void {
+    function loppeIWantKidsSomedayJeezeQuitHasslingMe(): void {
         clearOutput();
         outputText("You always saw yourself as having children at some point in your future.  Coming through the portal, though, you gave up on that dream; when you first arrived, it seemed like the world had nothing in it but imps and goblins and other twisted monsters - what kind of family could you make with people like that?");
         outputText("\n\nLoppe smiles at you. \"<i>I know the world might be a bit screwed up now, but I have hope that everything will go back to normal... or at least close enough.  So... do you have anyone 'dear' to you yet?  Any plans for a family, as of right now?</i>\"");
@@ -438,7 +434,7 @@ export class Loppe {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Soon=]
-    private loppeIWantKidsSoonOkayCanWeFuck(): void {
+    function loppeIWantKidsSoonOkayCanWeFuck(): void {
         clearOutput();
         outputText("With a faint smile, you declare that having children is definitely in your future.  You want to be a parent; all you need is to find somebody who feels similar to you.");
 
@@ -456,7 +452,7 @@ export class Loppe {
     // req LoppeSexed > 0
     // Player can pick the character they want to talk about via buttons; if no options are present, auto-leave.
     // Must also have met the character they want to talk about at least once, and said character must not have been disabled from the game. Otherwise we might have awkward results...
-    private gossipWithLoppe(): void {
+    function gossipWithLoppe(): void {
         clearOutput();
         outputText("You ask Loppe if she has any comments on the other residents of Tel'Adre.  The laquine smiles at you.  \"<i>It's not polite to pry into other people's lives, y'know?</i>\"");
         outputText("\n\nLoppe closes her eyes, weighing your request carefully, before replying, \"<i>Even so, I think I'll humor you... I do get to meet all sorts of people in my line of work.  But you'll have to be a bit more specific; why don't you tell me who you'd like to talk about?</i>\"");
@@ -481,7 +477,7 @@ export class Loppe {
     }
 
     // Urta:
-    private gossipWithLoppeAboutUrta(): void {
+    function gossipWithLoppeAboutUrta(): void {
         clearOutput();
         // (if UrtaSex or UrtaLover flags are NOT active)
         if (flags[kFLAGS.TIMES_FUCKED_URTA] <= 0 || flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1) {
@@ -508,14 +504,14 @@ export class Loppe {
     }
 
     // [=No=]
-    private noLoppeWhosFuckingUrta(): void {
+    function noLoppeWhosFuckingUrta(): void {
         clearOutput();
         outputText("You shake your head, claiming that you have no idea what she's talking about.  Loppe looks at you, then shrugs, clearly not caring if you don't have any gossip on the subject to share.");
         // end scene
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=It's Me=]
-    private itsMeFuckingUrtaLoppe(): void {
+    function itsMeFuckingUrtaLoppe(): void {
         clearOutput();
         // set LoppeUrtaKnowledge = 1
         flags[kFLAGS.LOPPE_URTA_CHATS] = 1;
@@ -535,7 +531,7 @@ export class Loppe {
     }
 
     // [=Play Along=]
-    private playAlongWivLoppesesUrtaGossip(): void {
+    function playAlongWivLoppesesUrtaGossip(): void {
         clearOutput();
         outputText("And... what would she do if, hypothetically, you <i>did</i> have a fetish for dickgirls ready to give a stallion an inferiority complex?");
         outputText("\n\nLoppe gives it some thought.  \"<i>There's not enough paper in Tel'Adre to list the things I would do, sugar.  It'd be a long, hard punishment, but I'm sure we could eventually come - to a mutual understanding.</i>\" Loppe winks at you, laying special emphasis on the last words.");
@@ -556,7 +552,7 @@ export class Loppe {
     }
 
     // [=Admit=]
-    private admitToLoppeThatYouLoveZeHorsecock(): void {
+    function admitToLoppeThatYouLoveZeHorsecock(): void {
         clearOutput();
         outputText("You look her in the eyes and tell her she's hit the nail on the head; you do have a fetish for chicks with dicks, and having a horsecock makes a dickgirl even sexier to you.");
         outputText("\n\n\"<i>Huh.</i>\"  Loppe rubs her chin.  \"<i>Y'know?  I always thought I'd be getting a lover despite my endowments... certainly not because of them.</i>\"");
@@ -581,7 +577,7 @@ export class Loppe {
     }
 
     // [Admit -> No]
-    private dontLoppesHouse4Fucks(): void {
+    function dontLoppesHouse4Fucks(): void {
         clearOutput();
         outputText("Loppe raspberries you.  \"<i>You tell me you love herms with big horse cocks and now you won't have sex with me?  You're one big tease, [name].</i>\"");
         outputText("\n\nThe dancer finishes her drink and leaves you, with a sly glance out of the corner of her eye.  It's unlikely that you've heard the last of this...");
@@ -590,7 +586,7 @@ export class Loppe {
     }
 
     // [=Deny=]
-    private denyToLoppeThatYouLoveZeHorsecock(): void {
+    function denyToLoppeThatYouLoveZeHorsecock(): void {
         clearOutput();
         outputText("Not in the mood to play along with Loppe's little game, you simply state that your reasons are your own and will stay that way for now.");
         outputText("\n\n\"<i>Aww, sugar.  You're no fun...</i>\" Loppe says, pouting at your refusal to play along with her games.  \"<i>But you're really sweet, so I guess I can forgive you.</i>\"  The dancer gets up and gives you a quick peck on the cheek.  \"<i>I should get back to my training now.  I'll see you later!</i>\"");
@@ -600,7 +596,7 @@ export class Loppe {
     }
 
     // Scylla:
-    private gossipWithLoppeAboutScylla(): void {
+    function gossipWithLoppeAboutScylla(): void {
         clearOutput();
         outputText("\"<i>The nun who likes sucking on dicks?</i>\" Loppe asks you.  \"<i>Yes, I've run into her at the Wet Bitch.  She offered to blow me too.  I was tempted, y'know?  She has those wonderful looking lips... nice big breasts too... but ultimately I wound up refusing.  It's just... not right.</i>\"");
         outputText("\n\nHuh... if there were anyone you'd be willing to bet would gladly accept Scylla's offer, that would be Loppe.");
@@ -611,7 +607,7 @@ export class Loppe {
     }
 
     // Jasun:
-    private gossipWithLoppeAboutJasun(): void {
+    function gossipWithLoppeAboutJasun(): void {
         clearOutput();
         outputText("\"<i>The male shark living in the pools of the gym?  Oh boy, is he self-obsessed.  He spends his days swimming and bodybuilding; looks almost cubical because of how much time he spends with the weights and things.  He's also an arrogant prat, but fortunately he's easy to ignore and he doesn't go sticking his nose into trouble.  Just brush him off and he's harmless.</i>\"");
         outputText("\n\nSounds like Loppe has had to deal with him herself.");
@@ -619,7 +615,7 @@ export class Loppe {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private gossipWithLoppeAboutHeckel(): void {
+    function gossipWithLoppeAboutHeckel(): void {
         clearOutput();
         outputText("You ask if Loppe's ever had a run-in with a herm hyena who's usually running in the track at the gym.");
         outputText("\n\nAt this, Loppe scowls.  \"<i>Oh, her?  Yeah, I've seen her once or twice.  Thinks she runs the gym.  Alpha bitch my sweet bunny ass...</i>\" she grumbles to herself.  \"<i>Her name's Heckel.  Don't know too much about her except she wandered in from the plains one day; she lives to prove she's stronger than everyone, and she's a real jerkass.  Why do you ask?</i>\"");
@@ -629,7 +625,7 @@ export class Loppe {
     }
 
     // Edryn:
-    private gossipWithLoppeAboutEdryn(): void {
+    function gossipWithLoppeAboutEdryn(): void {
         clearOutput();
         outputText("\"<i>That pretty centauress watchwoman that hangs in the Wet Bitch when she's off duty?  Yes, it's no secret that she specializes in particular sorts of wetwork for those with... compatible endowments,</i>\" Loppe says, giving you a lecherous wink.");
         outputText("\n\nSomething in her look suggests a question to you.");
@@ -638,7 +634,7 @@ export class Loppe {
     }
 
     // Lottie:
-    private gossipWithLoppeAboutLottie(): void {
+    function gossipWithLoppeAboutLottie(): void {
         clearOutput();
         outputText("\"<i>That pig-girl that started hanging around the gym in the evenings?  I heard about her... I believe she wants to get fit,</i>\" Loppe comments conversationally.");
         // (if PC's training Lottie)
@@ -656,7 +652,7 @@ export class Loppe {
     }
 
     // Cotton:
-    private gossipWithLoppeAboutCotton(): void {
+    function gossipWithLoppeAboutCotton(): void {
         clearOutput();
         outputText("\"<i>That pretty horse-girl that's always practicing yoga?  Not really, but she looks friendly.  As does that beast in her shorts.</i>\"  Loppe flinches at the memory of it.  \"<i>I'm very familiar with Cotton's not so little friend... though you'll find out that size isn't everything, sugar.  For instance, can she last long enough to fuck every little ounce of energy out of you?  I don't think so...</i>\"");
         outputText("\n\nUncharacteristically defensive... perhaps Loppe has a bit of a complex?");
@@ -666,7 +662,7 @@ export class Loppe {
 
     // Working (edited)
     // req LoppeChat > 0
-    private talkWithLoppeAboutWorking(): void {
+    function talkWithLoppeAboutWorking(): void {
         clearOutput();
         outputText("Her curse naturally impacts her social life, but what about work?  How do she and her mother put food on the table?");
         outputText("\n\nLoppe smiles and shakes her head.  \"<i>Well, I am training to become a proficient masseuse and acupuncturist.  Most of my income comes from dancing though, which is why I work so hard to maintain my figure.  But I've always admired mom's work... and if I learned her trade I'd be able to take some weight off her shoulders, plus we'd get to spend more time together.</i>\"");
@@ -682,7 +678,7 @@ export class Loppe {
     }
 
     // Her Mother (edited)
-    private chatWithLoppeAboutHerMom(): void {
+    function chatWithLoppeAboutHerMom(): void {
         clearOutput();
         // req LoppeChat > 0
         outputText("Loppe rubs her chin, deep in thought.  \"<i>Where do I start?  I guess by saying that my mom is a super mom.  She raised me all on her own, and she's always had time for me, despite having to keep up with her job.  I love her very much.</i>\"");
@@ -720,7 +716,7 @@ export class Loppe {
 
     // Her Village (edited)
     // req LoppeChat > 0
-    private chatWithLoppeAboutLoppesVillage(): void {
+    function chatWithLoppeAboutLoppesVillage(): void {
         clearOutput();
         outputText("You ask if Loppe would be willing to tell you about her village.");
         outputText("\n\nAt this, Loppe smiles.  \"<i>It was quiet and peaceful.  We lived by a river far from here, on floodplains.  We grew crops, wove linen, made art... we were just your basic nobodies; do no harm to others and all that.  We knew of the demons, but we trusted in our isolation and peaceful ways to keep ourselves from needing armaments.</i>\"  She shakes her head sadly, obviously well aware now of what a foolish belief that was.");
@@ -735,7 +731,7 @@ export class Loppe {
     }
 
     // Sex
-    private loppeSexChoice(bakery: boolean = false): void {
+    function loppeSexChoice(bakery: boolean = false): void {
         clearOutput();
         // First Time Intro (edited)
         if (flags[kFLAGS.LOPPE_TIMES_SEXED] == 0) {
@@ -877,7 +873,7 @@ export class Loppe {
     // Male
     // Cowgirl Cock Ride: (edited)
     // Loppe's vag capacity = 80-100
-    private loppeRidesCocks(): void {
+    function loppeRidesCocks(): void {
         clearOutput();
         outputText(images.showImage("loppe-rides-your-cocks"));
         outputText("Looking over the hermaphroditic, horse-cocked bunny-girl, you contemplate your options.  You settle yourself ");
@@ -956,7 +952,7 @@ export class Loppe {
     }
 
     // {If NoFace:
-    private loppeRidesYouNoFaceJizz(): void {
+    function loppeRidesYouNoFaceJizz(): void {
         clearOutput();
         const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
@@ -972,7 +968,7 @@ export class Loppe {
     }
 
     // {If Facial:}
-    private loppeRidesYouSpunksInYourEye(): void {
+    function loppeRidesYouSpunksInYourEye(): void {
         clearOutput();
         const x: number = player.cocks.cockThatFits(loppeCapacity());
         const y: number = player.cocks.cockThatFits2(loppeCapacity());
@@ -990,7 +986,7 @@ export class Loppe {
     }
 
     // {If HoseHer:
-    private loppeRidesYouHoseHer(): void {
+    function loppeRidesYouHoseHer(): void {
         clearOutput();
 
         outputText("You let go of Loppe, and she gratefully swivels herself fully upright, cock jutting out over your belly - your hand lunges forward and places itself palm upright underneath the shaft, fingers curling around as you push it further up and up until it's pointing, as best you can make it, at her face!  You can feel it throbbing like mad against your fingers, can feel the impressive bulge of semen as it distends her urethra and surges up towards her flared tip.  With an ululation of ecstasy, she literally explodes into orgasm, cum geysering from her cock and squarely into her face, causing her to choke and splutter at the surprise facial, the pearly spooge splattering down her throat and onto her breasts.  With a laugh she shakes her head, closing her eyes and opening her mouth; even as she continues to bounce and buck and grind against you, her cock keeps spurting cum, and she clumsily tries to catch it, eagerly swallowing down mouthful after mouthful.  She's actually quite good at it, but despite her best efforts, her hair, ears, face and breasts end up completely plastered in cum... not that this stops her from milking you with her lower hole");
@@ -999,7 +995,7 @@ export class Loppe {
         loppeRidesPCCockFinal();
     }
 
-    private loppeRidesPCCockFinal(): void {
+    function loppeRidesPCCockFinal(): void {
         const x: number = player.cocks.cockThatFits(loppeCapacity());
         const y: number = player.cocks.cockThatFits2(loppeCapacity());
 
@@ -1104,7 +1100,7 @@ export class Loppe {
     // Obviously, PC needs a cock.
     // For tentacle variant, you need a tentacle cock 14</i>\" long or more.
     // Not available to centaurs.
-    private loppeWorshipsDicks(): void {
+    function loppeWorshipsDicks(): void {
         clearOutput();
         outputText(images.showImage("loppe-worships-your-cock"));
         outputText("As your eyes sweep over the naked half-breed's form, they focus on her equine masculinity, already standing proud and eager at the prospect of sex.  Distinctly aware of your own male appendage");
@@ -1192,7 +1188,7 @@ export class Loppe {
 
     // Female
     // Get Vagina-Fucked: (edited)
-    private getFuckedInYerTwatYaCunt(): void {
+    function getFuckedInYerTwatYaCunt(): void {
         clearOutput();
         outputText(images.showImage("loppe-sticks-it-in-your-vagoo"));
         outputText("As you contemplate the delicious possibilities that the herm presents, your eyes are drawn to her admirable piece of horse-meat.  With a half-grin, you settle yourself on her bed, ");
@@ -1346,7 +1342,7 @@ export class Loppe {
 
     // Any(C)
     // Get Ass-Fucked, for not horses: (edited)(C)
-    private getButtFuckedNonHoarseByLoppe(): void {
+    function getButtFuckedNonHoarseByLoppe(): void {
         clearOutput();
         outputText(images.showImage("loppe-sticks-it-in-your-butt"));
         outputText("You swallow as your eyes are drawn to the equine sausage jutting out between the bunny-girl's legs, and know you just have to have it.  Slowly, you spread yourself upon Loppe's bed, scooting up toward the head and pillows and kneeling, [butt] in the air, inviting the laquine to do with you as she will.");
@@ -1511,7 +1507,7 @@ export class Loppe {
 
     // Get Ass-Fucked: Centaur Enhanced Edition (edited)(C)
     // Replaces the normal anal scene in case you're a centaur.
-    private getAssFuckedByLoppeAsACentaur(): void {
+    function getAssFuckedByLoppeAsACentaur(): void {
         clearOutput();
         outputText(images.showImage("loppe-sticks-it-in-your-butt-you-centaur"));
         outputText("You swallow as your eyes are drawn to the equine sausage jutting out between the bunny-girl's legs, and know you just have to have it.  But is she confident in her ability, even with your shape?");
@@ -1658,7 +1654,7 @@ export class Loppe {
 
     // SqueezeDick: (edited)(C)
     // LoppeSexed must be true.
-    private loppeSqueezedickWhateverThatIs(): void {
+    function loppeSqueezedickWhateverThatIs(): void {
         clearOutput();
         outputText(images.showImage("loppe-orgazm-denial"));
         // (if LoppeDenial == 0)
@@ -1747,7 +1743,7 @@ export class Loppe {
     }
 
     // [=Let Go=]
-    private letsLoppeGoCum(): void {
+    function letsLoppeGoCum(): void {
         clearOutput();
         outputText(images.showImage("loppe-comes-after-orgasm-denial"));
         outputText("As your fingers slacken on the laquine's straining shaft, they're practically pushed away by the violent force of long-delayed ejaculation, which rockets out of her horse-cock with immense speed and volume as you back away.  For an instant you almost think like she's going to punch a hole through the wall.  She screams, both in pleasure and relief as she fountains cum like a perverted geyser.  Spooge flies through the air, spilling all over the room; you manage to avoid the brunt of it, but some droplets inevitably hit you.");
@@ -1775,7 +1771,7 @@ export class Loppe {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Hold=]
-    private superLoppeOrgasmDenialGo(): void {
+    function superLoppeOrgasmDenialGo(): void {
         clearOutput();
         outputText(images.showImage("loppe-comes-after-moar-orgasm-denial"));
         outputText("For fear of not being able to hold her back anymore, you return both hands to tightly gripping her shaft.  Tears escape Loppe's eyes as she's denied yet again.  \"<i>Stop...</i>\" she says meekly.");
@@ -1819,7 +1815,7 @@ export class Loppe {
 
     // Boobjob Loppe: (edited, pending boob size decision)(C)
     // Needs DD-(cup) boobs.
-    private boobjobLoppe(): void {
+    function boobjobLoppe(): void {
         clearOutput();
         outputText(images.showImage("loppe-give-her-a-titty-fuck"));
         outputText("You contemplate your options, unthinkingly rubbing your breasts.  As you do so, you notice your lover is observing your hands very keenly.  With a grin, you grope your tits and ask if Loppe likes your display.");
@@ -1922,7 +1918,7 @@ export class Loppe {
     }
 
     // Leave (edited)
-    private beATeaseAndLeaveLoppeAfterSexInvite(): void {
+    function beATeaseAndLeaveLoppeAfterSexInvite(): void {
         clearOutput();
         outputText(images.showImage("loppe-teaze-and-leave"));
         outputText("Despite the hybrid beauty standing stark naked before you, you decide that you aren't in the mood after all.");
@@ -1947,7 +1943,7 @@ export class Loppe {
 
     // Fondle&Tease (rewritten and edited)(C)
     // req LoppeChat > 1
-    private fondleAndTease(output: boolean = true): void {
+    function fondleAndTease(output: boolean = true): void {
         if (output) {
             clearOutput();
             outputText("You lean in over the table and tell Loppe you'd like to talk about her.  She looks vaguely confused.  \"<i>Well, I already told you about everything I can think of.  Was there something you wanted to explore in more detail?</i>\"");
@@ -1976,7 +1972,7 @@ export class Loppe {
     }
 
     // Handjob (edited)(C)
-    private teaseLoppeNHJ(): void {
+    function teaseLoppeNHJ(): void {
         clearOutput();
         outputText("You know exactly how to help her with her problem.  Loppe looks at you and gives a quizzical little smile.  \"<i>Uh... yeah, I kind of know how you can help me too.  Why do you say that?</i>\" She asks, clearly baffled and obviously expecting you to lead her out of the cafe and back to her place for some quick nookie.");
         outputText("\n\nYou smile mischievously as your hand darts under the table to bat her own away and give her wild stallion a little pinch.  \"<i>W-what are you thinking?  We're exposed here!</i>\" she yelps, sounding surprisingly shy for someone normally so confident in the bedroom.  \"<i>Y-yes, I'd like being touched more, but... not here!  There are people all around!</i>\"");
@@ -2038,7 +2034,7 @@ export class Loppe {
     }
 
     // Suck (edited)(C)
-    private teaseLoppeNSuck(): void {
+    function teaseLoppeNSuck(): void {
         clearOutput();
         outputText("You lean over the table and give the laquine a kiss.  Confused, but not displeased, Loppe eagerly returns it, then watches as you break the lip lock and start to slide yourself under the table.  \"<i>Umm... sugar?  What are you doing?</i>\"");
 
@@ -2118,7 +2114,7 @@ export class Loppe {
     }
 
     // Kiss 'n' Run (edited)(C)
-    private teaseLoppeKissRun(): void {
+    function teaseLoppeKissRun(): void {
         clearOutput();
         outputText("Feeling wicked, you give the bunny-girl's bulging horsecock a few comforting pats, then lean across the table and press your lips against hers.  You kiss her passionately, the relieved laquine closing her eyes and murmuring softly as she sinks into the kiss, her engorged cock literally throbbing under your fingers, but trusting you to help her find the quick release that she needs to spare herself embarrassment.");
 
@@ -2131,4 +2127,3 @@ export class Loppe {
         dynStats("lus", 5 + player.lib / 20, "cor", .5);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

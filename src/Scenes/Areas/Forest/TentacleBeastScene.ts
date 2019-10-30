@@ -1,6 +1,4 @@
 
-export class TentacleBeastScene {
-
     // Tentacle Encounter - beware legalese!
     /*
      LICENSE
@@ -44,7 +42,7 @@ export class TentacleBeastScene {
     This license supercedes all previous licenses and remains in force.
     */
 
-    public encounter(): void {
+    export function encounter(): void {
         trace("Tentacle event here");
         clearOutput();
         spriteSelect(100);
@@ -91,12 +89,12 @@ export class TentacleBeastScene {
         startCombat(new TentacleBeast());
     }
 
-    private startTentacleBeastCombat(): void {
+    function startTentacleBeastCombat(): void {
         startCombat(new TentacleBeast());
         playerMenu();
     }
 
-    private tentacleEntice(): void {
+    function tentacleEntice(): void {
         // Spoiler for Entice Attack Male/Herm:
         if (player.gender == 1 || player.gender == 3) {
             if (rand(2) == 0) {
@@ -125,7 +123,7 @@ export class TentacleBeastScene {
         combatRoundOver();
     }
 
-    public tentacleVictoryRape(): void {
+    export function tentacleVictoryRape(): void {
         outputText("", true);
         spriteSelect(100);
         // Male/Herm
@@ -164,7 +162,7 @@ export class TentacleBeastScene {
 
     // Spoiler for Bad End-Tentacle Monster:
     // [CONDITIONS: Futa/Herm, Corruption > 50, Lust Defeat Only, Obtained 3 previous Lust Defeats to Tentacle Monster.]
-    private futaTentacleBadEnd(): void {
+    function futaTentacleBadEnd(): void {
         outputText("", true);
         spriteSelect(100);
         outputText("Having repeatedly been ravaged by the tentacle beast in your travels, you surrender yourself to yet another savage session of forced pleasure. However, the beast lunges forward with its great maw open. Utterly surprised, you do not have time to react before the creature's tentacles seize you and swallow you whole!!!\n\n", false);
@@ -177,7 +175,7 @@ export class TentacleBeastScene {
         doNext(futaTentacleEpilogue);
     }
 
-    private futaTentacleEpilogue(): void {
+    function futaTentacleEpilogue(): void {
         outputText("", true);
         spriteSelect(100);
         // [Met Giacomo at least once]
@@ -202,7 +200,7 @@ export class TentacleBeastScene {
         gameOver();
     }
 
-    public tentacleLossRape(): void {
+    export function tentacleLossRape(): void {
         clearOutput();
         spriteSelect(100);
         // Genderless madness
@@ -520,7 +518,7 @@ export class TentacleBeastScene {
         doNext(tentacleRapeContinuation);
     }
 
-    private tentacleRapeContinuation(): void {
+    function tentacleRapeContinuation(): void {
         player.orgasm();
         dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
         clearOutput();
@@ -592,7 +590,7 @@ export class TentacleBeastScene {
         else doNext(Camp.returnToCampUseOneHour);
     }
 
-    private tentacleRapeContinuationForFemales(): void {
+    function tentacleRapeContinuationForFemales(): void {
         clearOutput();
         spriteSelect(100);
         if (player.vaginas.length == 1) { // single coochie
@@ -638,7 +636,7 @@ export class TentacleBeastScene {
     }
 
     // Centaur v. Tentacle Monster: (display if pc is unsexed centaur)
-    private centaurGenderlessRetardation(): void {
+    function centaurGenderlessRetardation(): void {
         outputText("", true);
         spriteSelect(100);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00247] == 0 || player.balls == 0) {
@@ -705,7 +703,7 @@ export class TentacleBeastScene {
     }
 
     // Naga v. Tentacle Monster:
-    private genderlessHilarityForNagaKenDolls(): void {
+    function genderlessHilarityForNagaKenDolls(): void {
         outputText("", true);
         spriteSelect(100);
         outputText("Out of nowhere tentacles bind your arms and tail, holding you firm in a matter of seconds.  You struggle to free yourself but can do nothing against the strength of the beast holding you in your current state.  More of the appendages start teasing around your body, as if looking for something.  A handful test the entrance to your " + assholeDescript(player) + " but evidently that's not what they're after.\n\n", false);
@@ -725,7 +723,7 @@ export class TentacleBeastScene {
     }
 
     // Goo v. Tentacle Monster:
-    private tentacularGenderGooTimes(): void {
+    function tentacularGenderGooTimes(): void {
         outputText("", true);
         spriteSelect(100);
         outputText("All of a sudden, tentacles come whipping out of the undergrowth to grab you.  Though, they're moving a little too fast, and manage to compress your body walls so far together that you're almost squeezed in half.\n\n", false);
@@ -752,4 +750,3 @@ export class TentacleBeastScene {
         if (game.inCombat) cleanupAfterCombat();
         else doNext(Camp.returnToCampUseOneHour);
     }
-}

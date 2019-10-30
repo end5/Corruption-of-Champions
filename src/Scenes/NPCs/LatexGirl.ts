@@ -1,6 +1,4 @@
 
-export class LatexGirl {
-
     // const GOO_TFED_MEAN:int = 654;
     // const GOO_TFED_NICE:int = 655;
     // const GOO_NAME:int = 656;
@@ -65,7 +63,7 @@ export class LatexGirl {
     flags[kFLAGS.GOO_EYES]
     flags[kFLAGS.GOO_TOSSED_AFTER_NAMING] = 1;
     */
-    public gooFluid(arg: number = 0, output: boolean = true): number {
+    export function gooFluid(arg: number = 0, output: boolean = true): number {
         if (arg != 0) {
             flags[kFLAGS.GOO_FLUID_AMOUNT] += arg;
             if (output) outputText("\n<b>Fluid change: " + Math.round(arg * 10) / 10 + "%</b>");
@@ -74,7 +72,7 @@ export class LatexGirl {
         }
         return flags[kFLAGS.GOO_FLUID_AMOUNT];
     }
-    public gooHappiness(arg: number = 0, output: boolean = true): number {
+    export function gooHappiness(arg: number = 0, output: boolean = true): number {
         if (arg != 0) {
             flags[kFLAGS.GOO_HAPPINESS] += arg;
             if (output) outputText("\n<b>Happiness change: " + Math.round(arg * 10) / 10 + "%</b>");
@@ -83,7 +81,7 @@ export class LatexGirl {
         }
         return flags[kFLAGS.GOO_HAPPINESS];
     }
-    public gooObedience(arg: number = 0, output: boolean = true): number {
+    export function gooObedience(arg: number = 0, output: boolean = true): number {
         if (arg != 0) {
             flags[kFLAGS.GOO_OBEDIENCE] += arg;
             if (output) outputText("\n<b>Obedience change: " + Math.round(arg * 10) / 10 + "%</b>");
@@ -92,23 +90,23 @@ export class LatexGirl {
         }
         return flags[kFLAGS.GOO_OBEDIENCE];
     }
-    private gooTits(): string {
+    function gooTits(): string {
         return BreastStore.breastDescript(gooTitSize());
     }
 
-    private gooCock(): string {
+    function gooCock(): string {
         return Appearance.cockDescription(gooGetCockType(), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
     }
-    public gooGetCockType(): CockTypesEnum {
+    export function gooGetCockType(): CockTypesEnum {
         return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]);
     }
 
-    public latexGooFollower(): boolean {
+    export function latexGooFollower(): boolean {
         return flags[kFLAGS.GOO_SLAVE_RECRUITED] > 0;
 
     }
 
-    private gooTitSize(): number {
+    function gooTitSize(): number {
         // If tits are lowered
         if (flags[kFLAGS.GOO_FLUID_AMOUNT] / 2 >= flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] && flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] > 0)
             return flags[kFLAGS.GOO_PREFERRED_TIT_SIZE];
@@ -117,7 +115,7 @@ export class LatexGirl {
     }
 
     // TF Scene:
-    public meanGooGirlRecruitment(): void {
+    export function meanGooGirlRecruitment(): void {
         game.inCombat = false;
         clearOutput();
         flags[kFLAGS.GOO_TFED_MEAN] = 1;
@@ -169,7 +167,7 @@ export class LatexGirl {
 
     // Goo -> Latex Aftermath:
     // PC Carried Her Back:
-    private PCCarriedGooBackHome(): void {
+    function PCCarriedGooBackHome(): void {
         clearOutput();
         outputText("You set the once-goo down in a secluded section of your camp");
         if (Camp.companionsCount() > 0) outputText(", away from prying eyes");
@@ -190,7 +188,7 @@ export class LatexGirl {
         menu();
         addButton(0, "Next", PCCarriedGooBackHomeII);
     }
-    private PCCarriedGooBackHomeII(): void {
+    function PCCarriedGooBackHomeII(): void {
         clearOutput();
         outputText("\"<i>Call me what you want, my name doesn't matter.</i>\"");
         outputText("\n\nWhat will you name her?");
@@ -202,7 +200,7 @@ export class LatexGirl {
         mainView.nameBox.x = mainView.mainText.x + 5;
         mainView.nameBox.y = mainView.mainText.y + 3 + mainView.mainText.textHeight;
     }
-    private nameZeLatexGoo(): void {
+    function nameZeLatexGoo(): void {
         if (testingBlockExiting) {
             // We're running under the testing script.
             // Stuff a name in the box and go go go
@@ -263,7 +261,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
     // PC Couldn't Bring Her Back
-    public encounterLeftBehindGooSlave(): void {
+    export function encounterLeftBehindGooSlave(): void {
         clearOutput();
         if (flags[kFLAGS.GOO_TFED_NICE] > 0) {
             outputText("While exploring, you see something odd in the lake.  It's a black blob, barely visible in the azure waves, though it seems to be splashing wildly, as if it was struggling.  You walk up to the lake shore just as the black blob flops limply onto the beach, breathing hard.  It's the poor goo-girl that got turned into latex!");
@@ -296,7 +294,7 @@ export class LatexGirl {
         menu();
         addButton(0, "Next", encounterLeftBehindGooSlaveII);
     }
-    private encounterLeftBehindGooSlaveII(): void {
+    function encounterLeftBehindGooSlaveII(): void {
         clearOutput();
         outputText("\"<i>Call me what you want, my name doesn't matter.</i>\"");
         outputText("\n\nWhat will you name her?");
@@ -311,7 +309,7 @@ export class LatexGirl {
     }
 
     // Pure Characters Intro(F):
-    public pureGooRecruitmentStart(): void {
+    export function pureGooRecruitmentStart(): void {
         game.inCombat = false;
         clearOutput();
         flags[kFLAGS.GOO_TFED_NICE] = 1;
@@ -333,13 +331,13 @@ export class LatexGirl {
         addButton(4, "Leave Her", leaveTheLatexGooGirl);
     }
     // Leave Her(F)
-    private leaveTheLatexGooGirl(): void {
+    function leaveTheLatexGooGirl(): void {
         clearOutput();
         outputText("You don't have the time to deal with this... thing.  You put the girl down on the shore and head on back to camp.  Hopefully, whatever finds her won't be TOO horrible.");
         doNext(Camp.returnToCampUseOneHour);
     }
     // Take her Home(F)
-    private niceGuysTakeLatexHome(): void {
+    function niceGuysTakeLatexHome(): void {
         clearOutput();
         // {Intelligent:}
         if (player.inte >= 60) {
@@ -370,7 +368,7 @@ export class LatexGirl {
         addButton(0, "Next", pureGooGalRecruitAftermath);
     }
     // PURE Aftermath(F)
-    private pureGooGalRecruitAftermath(): void {
+    function pureGooGalRecruitAftermath(): void {
         clearOutput();
         outputText("You set the once-goo down in a secluded section of your camp.  She looks almost alien in a way... more than she did before, when she was just an aqueous blob with tits and faux hair.  Now, every facet of her being is shiny, reflective latex.  Even her vaginal secretions, which dribble freely, are liquid latex, glossy black juices that slowly harden into a flexible solid once freed from her body.");
         if (player.cocks.length > 1) outputText("  You can't help but wonder what it would feel like to let her sheath your " + multiCockDescriptLight(game.player) + " with her juices.");
@@ -385,7 +383,7 @@ export class LatexGirl {
         menu();
         addButton(0, "Next", pureGooGalRecruitAftermathII);
     }
-    private pureGooGalRecruitAftermathII(): void {
+    function pureGooGalRecruitAftermathII(): void {
         clearOutput();
         outputText("\"<i>Call me what you want, my name doesn't matter.</i>\"");
         outputText("\n\nWhat will you name her?");
@@ -400,7 +398,7 @@ export class LatexGirl {
     }
 
     // After Naming Latexy(F):
-    private nameZeLatexGooNice(): void {
+    function nameZeLatexGooNice(): void {
         if (mainView.nameBox.text == "") {
             clearOutput();
             outputText("<b>You must select a name.</b>", false);
@@ -445,7 +443,7 @@ export class LatexGirl {
         addButton(1, "Boot Her", bootOutNiceGoo);
     }
     // Boot her Out(F):
-    private bootOutNiceGoo(): void {
+    function bootOutNiceGoo(): void {
         clearOutput();
         outputText("You did your civic duty bringing her back with you, but taking care of her in the long term... that's asking too much.  \"<i>I understand,</i>\" she says, bowing her head sadly as she struggles unsteadily to her feet.  \"<i>It's all right.  You've done more than enough, really.  I'll go.  Hopefully some of my sisters in the lake will be willing to help me, even if I'm so... so different... from them, now.  Goodbye, my friend.  Maybe we'll meet again sometime.</i>\"");
         outputText("\n\nShe's gone a moment later, waving over her shoulder as she unsteadily walks back toward the lake.");
@@ -454,7 +452,7 @@ export class LatexGirl {
     }
 
     // Keep Her(F):
-    private niceGuysKeepTheirGooGals(): void {
+    function niceGuysKeepTheirGooGals(): void {
         clearOutput();
         outputText("You take her by the chin, tilting her head up to look at you.  Of course you'll help her.  How could you not?  Overjoyed by your answer, " + flags[kFLAGS.GOO_NAME] + " throws her slender arms around you, pulling herself up so that her slick black lips press against yours.  \"<i>Oh, thank you! Thank you!</i>\" she cries, kissing you again.  Suddenly realizing what she's done, though, the latex-girl releases you and slips back against her rock, looking abashedly away.  \"<i>I'm sorry, I just...  Thank you.  I'm not going to just be a burden on you, I promise!  I don't know how much I can do, but so long as I'm here...  Just ask, for anything, and I promise I'll do my best.  It's the least I can do to pay you back for being so kind to me.</i>\"");
         outputText("\n\nYou smile, telling that seeing her safe and sound will be payment enough.  Speaking of which, what exactly is she going to need -- what can you do to help her now?  \"<i>All I used to need to survive was liquid, but... not that much.  Not any more,</i>\" " + flags[kFLAGS.GOO_NAME] + " says.  \"<i>I can already tell that I'm not losing it like I used to... but I still hunger for... well, juices.  I can probably live on water, but I won't be healthy that way.  I'll need you to, well, uh... feed me");
@@ -470,7 +468,7 @@ export class LatexGirl {
     }
 
     // Approach Her (Select From Slaves Tab)(F)
-    public approachLatexy(): void {
+    export function approachLatexy(): void {
         clearOutput();
         // First Line - Happiness Dependent
         // (Sub 10)
@@ -574,7 +572,7 @@ export class LatexGirl {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_LATEXY] == 1) addButton(5, "Go Camp", backToCamp);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
 
         outputText("You tell your goo pet that she is to head towards the lake, find a farm, present herself to the lady who works there and do as she says. The word “lake” has the effect you expected it would have; joy creases [latexyname]’s liquid face as you mention the Promised Land.");
@@ -588,7 +586,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
 
         outputText("You tell her to head back to camp; there are things you need to do to her you can’t do whilst she’s here. Repeatedly. [latexyname] pauses and then glances over towards the lake, clearly unhappy at the prospect of being torn away from it. However, she knows her place.");
@@ -601,7 +599,7 @@ export class LatexGirl {
         doNext(FarmCorruption.rootScene);
     }
 
-    private useLatexy(): void {
+    function useLatexy(): void {
         clearOutput();
         outputText("How will you use your pet?");
         menu();
@@ -615,7 +613,7 @@ export class LatexGirl {
     }
 
     // Setting Dick Type(F)
-    private changeGooDick(): void {
+    function changeGooDick(): void {
         clearOutput();
         // Supah High obedience slut!
         if (gooObedience() >= 60) {
@@ -668,7 +666,7 @@ export class LatexGirl {
         addButton(9, "Back", approachLatexy);
     }
 
-    private latexyEatsADickItem(item: ItemType): void {
+    function latexyEatsADickItem(item: ItemType): void {
         player.consumeItem(item, 1);
         clearOutput();
         outputText(flags[kFLAGS.GOO_NAME] + " uses your proffered item without a second though.  Surprisingly she doesn't seem to react in any way, aside from closing her eyes and taking on a look of incredible concentration.  ");
@@ -715,7 +713,7 @@ export class LatexGirl {
         addButton(0, "Next", approachLatexy);
     }
     // Setting Preferred Bust Size(F)
-    private setLatexysBustSize(): void {
+    function setLatexysBustSize(): void {
         clearOutput();
         outputText("You ask " + flags[kFLAGS.GOO_NAME] + " if she wouldn't mind keeping her tits around a certain size.");
         // Low Obedience
@@ -743,7 +741,7 @@ export class LatexGirl {
         if (flags[kFLAGS.GOO_PREFERRED_TIT_SIZE] != 0) addButton(7, "Whatever", changeLatexyTits, 0);
         addButton(9, "Back", approachLatexy);
     }
-    private gooTitClass(arg: number): number {
+    function gooTitClass(arg: number): number {
         if (arg >= 35) return 7;
         else if (arg >= 24) return 6;
         else if (arg >= 15) return 5;
@@ -754,7 +752,7 @@ export class LatexGirl {
     }
 
     // She Changes Her Bust Size(F)
-    private changeLatexyTits(arg: number = 0): void {
+    function changeLatexyTits(arg: number = 0): void {
         clearOutput();
         // PC wants tits bigger than current preferred and fluid not sufficient to reach new size
         if (gooTitClass(arg) > gooTitClass(flags[kFLAGS.GOO_PREFERRED_TIT_SIZE]) && gooTitClass(flags[kFLAGS.GOO_FLUID_AMOUNT] / 2) < gooTitClass(arg)) {
@@ -822,7 +820,7 @@ export class LatexGirl {
     // Can be fed directly or indirectly.
     // Direct feeding boosts happiness a fair bit but reduces obedience until obedience is over 50.
     // Indirect feeding increases happiness somewhat.
-    private feedLatexy(): void {
+    function feedLatexy(): void {
         clearOutput();
         outputText("How will you feed her?");
         if (player.lust < 33 && player.gender > 0) outputText("  You aren't aroused enough to try and feed her any sexual fluids.");
@@ -843,7 +841,7 @@ export class LatexGirl {
     }
 
     // Feed Cum Indirectly(F)
-    private feedLatexyCumIndirectly(): void {
+    function feedLatexyCumIndirectly(): void {
         clearOutput();
         // {1st Time, any indirect scene:
         if (flags[kFLAGS.GOO_INDIRECT_FED] == 0) {
@@ -895,7 +893,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Feed Lady-Cum Indirectly(F)
-    private feedLatexyGirlCumIndirectly(): void {
+    function feedLatexyGirlCumIndirectly(): void {
         clearOutput();
         // {1st Time, any indirect scene:
         if (flags[kFLAGS.GOO_INDIRECT_FED] == 0) {
@@ -938,7 +936,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Feed Her Minotaur Cum {Nice Vs Hard}:(F)
-    private minotaurCumFeedingGoo(nice: boolean = false): void {
+    function minotaurCumFeedingGoo(nice: boolean = false): void {
         clearOutput();
         player.consumeItem(ConsumableLib.MINOCUM);
         outputText("You pull a vial of minotaur cum from the pouches at your waist");
@@ -1008,7 +1006,7 @@ export class LatexGirl {
     }
 
     // Feed Cum Directly(F)
-    private feedLatexyCumDirectly(): void {
+    function feedLatexyCumDirectly(): void {
         clearOutput();
         outputText("Opening your [armor], you let [eachCock] flop free.  " + flags[kFLAGS.GOO_NAME] + " looks down immediately, " + flags[kFLAGS.GOO_EYES] + " eyes locking tightly to [oneCock], raptly watching it stiffen with rising lust.  You take it in hand to heft its weight.  Explaining that this is to be her meal, you give it an encouraging shake.  After all, what kind of master would you be if you didn't feed your goo-girl?");
         // HUNGRY:
@@ -1084,7 +1082,7 @@ export class LatexGirl {
         }
     }
 
-    private maleDirectFeedLatexGooGoneWrong(): void {
+    function maleDirectFeedLatexGooGoneWrong(): void {
         clearOutput();
         if (player.cocks.length > 1) {
             outputText("A flawless hand wraps around ");
@@ -1124,7 +1122,7 @@ export class LatexGirl {
         addButton(0, "Next", feedCumDirectEpilogue);
     }
     // [Next]
-    private feedCumDirectEpilogue(): void {
+    function feedCumDirectEpilogue(): void {
         clearOutput();
         outputText("You wake with your mouth so dry that it feels like sandpaper.  Looking around, you see " + flags[kFLAGS.GOO_NAME] + " slumbering in the corner, looking rather... full and fecund, plump with weight.  You feel equally, obnoxiously empty.  Your groin is tingling painfully from the forceful draining.  Staggering away toward some water, you realize you'll have to raise her obedience if you want her to stop on command.  Letting her drink so deeply probably didn't help either.");
         temp = 50;
@@ -1137,7 +1135,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseFourHours);
     }
     // Feed Lady-Cum Direct(F)
-    private feedLatexyGirlCumDirect(): void {
+    function feedLatexyGirlCumDirect(): void {
         clearOutput();
         outputText("Gently shimmying out of your [armor], you languidly stretch and offhandedly mention that it's feeding time.");
         if (player.cocks.length > 0) {
@@ -1215,7 +1213,7 @@ export class LatexGirl {
         }
     }
 
-    private letLatexGooDrainCuntDry(): void {
+    function letLatexGooDrainCuntDry(): void {
         clearOutput();
         outputText(flags[kFLAGS.GOO_NAME] + "'s face remains firmly, stubbornly attached to your loins.  No matter how you writhe or push against her, she stays latched onto your [vagina].  The near supernatural pleasure has turned your arms to jello, and you slump back ineffectually after a few attempts at freedom.  The " + flags[kFLAGS.GOO_EYES] + " of your hungry pet's eyes watches you, unblinking.  Mercilessly, she tongues your sodden slit to another orgasm.  The slippery latex lips slip and slide across your womanhood as sexual ecstasy subsumes your thoughts, eyes rolling back as your mind dedicates the whole of its power to simply experiencing the pleasure that's thrust upon you.");
         outputText("\n\nWordlessly, you writhe on " + flags[kFLAGS.GOO_NAME] + " until the orgasm finally releases you from its grip.  Your pet goo pulls back, even withdrawing her tongue from your well-juiced box.  Her fist doesn't waste any time in replacing in.  In fact, as the smooth limb slides home, you can feel the bulkiest parts smoothing, shaping it into a cylindrical object with a noticeable ridge just above the 'wrist'.  " + flags[kFLAGS.GOO_NAME] + " giggles, \"<i>Gosh, you taste good, and we goo girls... we love to drink.  Mmm...</i>\"  Her voice trails into a hum of delight as she digests your newest offering, eventually returning to say, \"<i>Your little slit here seems awful happy, [name]... I don't want to stop, and it's so sweet, so delectable...  Swallowing your cum makes my pussy gush and my stomach purr.  You don't mind if I sample a few more swallows do you?</i>\"");
@@ -1231,7 +1229,7 @@ export class LatexGirl {
     }
 
     // [Next]
-    private feedCumDirectEpilogueGirls(): void {
+    function feedCumDirectEpilogueGirls(): void {
         clearOutput();
         outputText("You wake with your mouth so dry that it feels like sandpaper.  Looking around, you see " + flags[kFLAGS.GOO_NAME] + " slumbering in the corner, looking rather... full and fecund, plump with weight.  You feel equally, obnoxiously empty.  Your groin is tingling painfully from the forceful suckling.  Staggering away toward some water, you realize you'll have to raise her obedience if you want her to stop on command.  Letting her drink so deeply probably didn't help either.");
         gooFluid(50 + player.vaginas.wetness() * 8);
@@ -1244,7 +1242,7 @@ export class LatexGirl {
     /*Savin Says: Disobedient Pets get Punished with Gentle Loving PC-Dom (FEMALE)(F)*/
 
     // [Display option to \"<i>Assert Control</i>\" with Moderate strength check if achieve Femdom end to direct feed scene: \"<i>You're strong enough to pull her off before she utterly dominates you!</i>\"]
-    private assertControlOverCuntDrainingLatexGoo(): void {
+    function assertControlOverCuntDrainingLatexGoo(): void {
         if (player.str < 40 || player.str / 10 + rand(20) + 1 < 9) {
             letLatexGooDrainCuntDry();
             return;
@@ -1279,7 +1277,7 @@ export class LatexGirl {
 
     // Savin Says: Disobedient Pets get Punished with Gentle Loving PC-Dom (MALE)
     // [Display option to \"<i>Assert Control</i>\" with Moderate strength check if achieve Femdom end to direct feed scene: \"<i>You're strong enough to pull her off before she utterly dominates you!</i>\"]
-    private tryToAssertMaleDomWhileLatexGooDrains(): void {
+    function tryToAssertMaleDomWhileLatexGooDrains(): void {
         if (player.str < 40 || player.str / 10 + rand(20) + 1 < 9) {
             maleDirectFeedLatexGooGoneWrong();
             return;
@@ -1317,7 +1315,7 @@ export class LatexGirl {
     // Dominant Fucking Her(F)
     // Requires obedience of 60+
     // Female Dominant Fuck (Goo No Futa)(F)
-    private femalePCDomFucksLatexGoo(): void {
+    function femalePCDomFucksLatexGoo(): void {
         clearOutput();
         outputText("You start to undress, remarking to " + flags[kFLAGS.GOO_NAME] + " that you've got an itch she'd be great at scratching.  As if your language wasn't clear enough, you ");
         if (player.balls > 0) outputText("lift your [sack] out of the way to ");
@@ -1387,7 +1385,7 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Female Dominant Fuck (Goo IS Futa)(F)
-    private femalePCDomFucksLatexGooFuta(): void {
+    function femalePCDomFucksLatexGooFuta(): void {
         clearOutput();
         outputText("You begin to remove your [armor] under " + flags[kFLAGS.GOO_NAME] + "'s curious eye.  She asks, \"<i>[name], what are you doing?</i>\"");
         outputText("\n\nWith a salacious wiggle of your [hips], you tell her that you're going to fuck her - to ride her shining pole to orgasm after orgasm.  " + flags[kFLAGS.GOO_NAME] + "'s " + gooCock() + " immediately stiffens, hard and proud.  ");
@@ -1488,7 +1486,7 @@ export class LatexGirl {
     }
 
     // Male Dominant Fuck(F)
-    private malePCDomFucksLatexGoo(): void {
+    function malePCDomFucksLatexGoo(): void {
         clearOutput();
         outputText("You open your [armor] to expose your " + multiCockDescriptLight(game.player) + " to your latex-based lover.  She eyes it with unabashed affection and licks her lips unthinkingly, already tasting the flavor of semen on her tongue.  " + flags[kFLAGS.GOO_NAME] + " jolts out of her reverie to ask, \"<i>What are you doing");
         if (gooObedience() > 50) outputText(", [Master]");
@@ -1595,7 +1593,7 @@ export class LatexGirl {
     // Savin Really Wants to Breastfeed Latexy Because He's a Weird Milk Fetishist Like That
     // Mmm milk
     // [Requirements: PC must be lactating, of course, and have C+ cup tits. Also high Happiness because I like lovey dovey stuff, okay?]
-    private feedLatexySomeMilk(): void {
+    function feedLatexySomeMilk(): void {
         clearOutput();
         outputText("You cup your hands under your milk-laden breasts and ask " + flags[kFLAGS.GOO_NAME] + " if she's hungry.");
         // {Not hungry}
@@ -1651,4 +1649,3 @@ export class LatexGirl {
         doNext(Camp.returnToCampUseOneHour);
 
     }
-}

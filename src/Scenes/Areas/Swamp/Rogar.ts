@@ -1,6 +1,4 @@
 
-export class Rogar {
-
 	/*Ro'gar encounter in the swamp; Ro'gar phase flag = 0 (edited)
 ((Second Encounter, Ro'gar phase = 1)) (edited)
 ((Third encounter; Ro'gar phase = 2)) (edited)
@@ -30,7 +28,7 @@ export class Rogar {
     // the reference originates from the half-scene in phase 4 where he can discover you're female or unsexed after already having gotten a BJ from you
 
     // Phase 0: Ro'gar initial encounter in the swamp; Ro'gar phase flag = 0 (edited)
-    public encounterRogarSwamp(): void {
+    export function encounterRogarSwamp(): void {
         outputText("", true);
         spriteSelect(86);
         if (flags[kFLAGS.ROGAR_PHASE] == 0) {
@@ -224,7 +222,7 @@ export class Rogar {
     }
 
     // ((No))
-    private dontWaitForRogar(): void {
+    function dontWaitForRogar(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("Time passes with no sign of Ro'gar.  You decide it would be a waste of time to sit and wait for him, and head off in hopes of finding something interesting.\n\n", false);
@@ -236,7 +234,7 @@ export class Rogar {
     }
 
     // ((Yes))
-    private waitForChunkyOrcLoe(): void {
+    function waitForChunkyOrcLoe(): void {
         outputText("", true);
         spriteSelect(86);
         if (flags[kFLAGS.ROGAR_PHASE] == 0) {
@@ -265,12 +263,12 @@ export class Rogar {
     }
 
     // sexy choices
-    private sexyChoices(): void {
+    function sexyChoices(): void {
         spriteSelect(86);
         simpleChoices("Ewww", ewwwRogarIsGay, "NoThnxBro", noSlowBroIDontWantPokeSex, "Lick Clean", okayBroLetsHaveAGayCarwash, "", null, "", null);
     }
     // ((Ewww))
-    private ewwwRogarIsGay(): void {
+    function ewwwRogarIsGay(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("Declining in a clipped manner, you get to your feet and make for the door, doing your best to ignore Ro'gar's disappointed face.  He calls out to you, but it only falls on deaf ears as you shut the door quickly behind you, your legs powering through the swamp as you run with all the speed you can muster.  Only once you get back to camp do you realize you've lost the crude map... either in Ro'gar's hut or in the trackless swamp.", false);
@@ -280,7 +278,7 @@ export class Rogar {
     }
 
     // ((No thanks bro))
-    private noSlowBroIDontWantPokeSex(): void {
+    function noSlowBroIDontWantPokeSex(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("You give a nervous chuckle and politely decline.  Ro'gar's face suddenly droops with disappointment as you explain he's not your type.  \"<i>S'alright.</i>\"  The pair of you share an awkward moment before Ro'gar gives you a toothy grin.  \"<i>Yer always welcome to chat and drink if'n ya want.</i>\"  You smile in return, and the pair of you chat while enjoying a second round of drinks.  Time passes and you decide to leave.  Ro'gar waves you off as you trek through the swamp and back to camp.\n\n", false);
@@ -291,7 +289,7 @@ export class Rogar {
     }
 
     // ((Ok))
-    private okayBroLetsHaveAGayCarwash(): void {
+    function okayBroLetsHaveAGayCarwash(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("With haste you retrieve the bucket of water and towel in the corner of the room.  Wasting no time, you dip the towel into the clear water and trail it over the orc's body.  Ro'gar leans back fully, laying over the bed.  He stretches his arms up and tucks them under his head, the hands like large pillows beneath his head as he watches you intently.  Ro'gar's olive skin is caked with the grime of the swamp, though as you drag the wet towel over his body the muck washes away easily.  His chest rumbles a deep, purring tone of pleasure as you work over his abdominal muscles.  Between the dips of his defined six pack and the cleavage of his pectorals you can see the crystalline water collecting.  You audibly gulp, resisting the temptation to lean forward and lick the dribbles of water from his now-clean skin.  \"<i>Careful ya don' touch my skin too much, now...</i>\" Ro'gar rumbles as you work.  Blinking in confusion, you ask why, your hand rubbing the towel over a pectoral of its own volition.  His chest visibly tenses and flexes beneath your thorough hand.  \"<i>Ya really ain't seen many men of the swamp.  There's somethin' in the water  and if'n you spend too much time in it, like myself, it starts ta change yer body.  Ya start leakin' this slime from yer skin.  It's strong stuff.</i>\"  You begin to work over Ro'gar's arm, more conscious of where you touch him, though the rigid protrusion in your groin making it hard to concentrate on anything BUT touching him.  \"<i>Don' worry.  It ain't dangerous.  Jus'...  Well, actually, how's about I give you a taste?</i>\"  Ro'gar looks down at you, his blue eyes unquestionably predatory.\n\n", false);
@@ -329,7 +327,7 @@ export class Rogar {
     }
 
     // ((Third phase)) ([Cloaked Figure] button in Wet Bitch; Ro'gar phase = 3) (edited)
-    public rogarThirdPhase(): void {
+    export function rogarThirdPhase(): void {
         outputText("", true);
         spriteSelect(86);
         // Ro'roh Raggy flag is set by how Ro' perceives the PC; in other words, it's toggled by whether the PC is feminine
@@ -418,7 +416,7 @@ export class Rogar {
         }
     }
     // ((Phase four, repeatable; Ro'gar phase flag = 4. Once per day.)) (all edited)
-    public rogarPhaseFour(): void {
+    export function rogarPhaseFour(): void {
         outputText("", true);
         spriteSelect(86);
         // (if high femininity or breasts <=B-cup and Ro'roh Raggy = 0)
@@ -465,7 +463,7 @@ export class Rogar {
         }
     }
 
-    private rogarFuckMenu(): void {
+    function rogarFuckMenu(): void {
         spriteSelect(86);
         let getAnal: () => void = null;
         let giveAnal: () => void = null;
@@ -493,7 +491,7 @@ export class Rogar {
     }
 
     // [No Thanks]
-    private noTHanksRogarIAintGayDudeIjustLickedThatMudToBeNice(): void {
+    function noTHanksRogarIAintGayDudeIjustLickedThatMudToBeNice(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("You smile at the orc, but tell him that you're not really in the mood to hang out right now.  He looks crestfallen, but nods at you.  \"<i>Well, I understan'.  I'll be seein' ya later, then.</i>\"", false);
@@ -502,7 +500,7 @@ export class Rogar {
     }
 
     // (([Get Anal], Scenario 1a: give up the buttcherry (buttvirgins only)))
-    private loseButtGinity(): void {
+    function loseButtGinity(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         outputText("", true);
         spriteSelect(86);
@@ -594,7 +592,7 @@ export class Rogar {
     }
 
     // ((Scenario 2, [Give Anal]: Fuck Ro'gar))
-    private fuckRogarsButtPussyBoyCuntManMoundSissySlitQueerQuim(): void {
+    function fuckRogarsButtPussyBoyCuntManMoundSissySlitQueerQuim(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         outputText("", true);
         spriteSelect(86);
@@ -667,7 +665,7 @@ export class Rogar {
     }
 
     // ((Scenario 3, [Drink! (sorta)]: Fun with Bro Brew(Requires one bro brew per visit, uses it and turns player into a Bro)))
-    private brobrobrobro(): void {
+    function brobrobrobro(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("You follow Ro'gar home and walk into the apartment, draping your arm around the orc man in a tight hug. \"<i>Glad ta see you too.  What's that you got?</i>\"  Ro'gar looks at the can in your pack.  \"<i>Bro Brew!  Love the stuff.  That for me?</i>\"  He snickers and snags it before you can object, then plays keepaway with you, yanking the can out of reach.  Did you want to keep that?  His dangerous, playful expression would suggest he means to make mischief for you if you try to grab it, and it may get spilled - on you!\n\n", false);
@@ -675,7 +673,7 @@ export class Rogar {
         simpleChoices("FukkinGrabIt", takeDatBroBrewFromDaBigMeanOlOrc, "ReversePsych", rogarIsDumb, "", null, "", null, "", null);
     }
     // [reverse psychology]
-    private rogarIsDumb(): void {
+    function rogarIsDumb(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("You relinquish the can with a smile, slyly telling Ro'gar he can have it, then put your hands behind your back innocently.  He narrows his eyes, then shifts them to the can.  After a careful inspection, he thrusts the can toward you.  \"<i>Don't want it.  Ya probably put bimbo liqueur in it or somethin', ya sneaky devil.</i>\"\n\n", false);
@@ -686,7 +684,7 @@ export class Rogar {
     }
 
     // [Fukkin' Grab It!]
-    private takeDatBroBrewFromDaBigMeanOlOrc(): void {
+    function takeDatBroBrewFromDaBigMeanOlOrc(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         player.consumeItem(ConsumableLib.BROBREW);
         let changed: boolean = false;
@@ -785,7 +783,7 @@ export class Rogar {
     }
 
     // ((Scenario 4, [Frot]))
-    private frotWithRogar(): void {
+    function frotWithRogar(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         outputText("", true);
         spriteSelect(86);
@@ -810,7 +808,7 @@ export class Rogar {
     }
 
     // (([Get Tied Up], copy of Scenario 1a))
-    private kinkyWithDaOrc(): void {
+    function kinkyWithDaOrc(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         outputText("", true);
         spriteSelect(86);
@@ -869,7 +867,7 @@ export class Rogar {
     }
 
     // (([Orc Rub Down], get some fun with oils))
-    private rubdubWithDaOrcWithoutDucky(): void {
+    function rubdubWithDaOrcWithoutDucky(): void {
         flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
         outputText("", true);
         spriteSelect(86);
@@ -885,7 +883,7 @@ export class Rogar {
         simpleChoices("Play with pits", sexyOrcPitsAreSexy, "Ignore pits", lickSomeMoreOrcButNoPits, "", null, "", null, "", null);
     }
     // [Play with pits]
-    private sexyOrcPitsAreSexy(): void {
+    function sexyOrcPitsAreSexy(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("You lean forward enticed by Ro'gar's arm pits. The smile on his lips grows broader as your tongue sinks into his musky sweat centers. You can feel his fat orc dick drooling precum as you lap your tongue over the wet olive skin.\n\n", false);
@@ -904,7 +902,7 @@ export class Rogar {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Ignore pits]
-    private lickSomeMoreOrcButNoPits(): void {
+    function lickSomeMoreOrcButNoPits(): void {
         outputText("", true);
         spriteSelect(86);
         outputText("With a tilt of your head you press your mouth to Ro'gar's. His lips part for yours and your tongue dances with his, his hand stroking your sides as he growls low in need into your mouth. His hot lips and tongue pressing hard to your own. He tries to dominate your mouth, his tongue wrestling with yours to push it where he wills. His teeth catch and nip your bottom lip with a low possessive growl.\n\n", false);
@@ -920,4 +918,3 @@ export class Rogar {
         // end
         doNext(Camp.returnToCampUseOneHour);
     }
-}

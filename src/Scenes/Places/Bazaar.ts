@@ -1,5 +1,4 @@
 
-export class Bazaar {
     // JOEY_OFFERED_MILKER:int = 466;
     // OWN_MAIDEN_BIKINI:int = 770;
     // COUNTDOWN_TO_NIGHT_RAPE:int = 872;
@@ -9,11 +8,10 @@ export class Bazaar {
     // SOCKS_BOUGHT:int = 898;
     // GILDED_JERKED:int = 899;
     // Set Up With The Travelling, Tainted Bazaar
-    public constructor() {
-    }
+
 
     // [Find Travelling Bazaar]
-    public findBazaar(): void {
+    export function findBazaar(): void {
         outputText("", true);
         if (flags[kFLAGS.BAZAAR_ENCOUNTERED] == 0) {
             flags[kFLAGS.BAZAAR_ENCOUNTERED]++;
@@ -32,7 +30,7 @@ export class Bazaar {
     }
 
     // [FUCK YES I WILL PUT IT IN YOUR BIZARRE ANUS]
-    private approachBazaarGuard(): void {
+    function approachBazaarGuard(): void {
         outputText("", true);
         outputText("You step from concealment and walk up to the strange man, calling out in greeting.  He folds his arms across his chest and looks you up and down, peering at you with intense, black eyes.  They aren't solid onyx, but his irises are just as dark as the seemingly bottomless depths of his pupils.  His appraising gaze watches you, unblinking as second after second ticks by.  Just when you start to wonder if he speaks your language, he interrupts you by saying, \"<i>", false);
         if (player.cor < 33) outputText("Leave at once.  You are not yet ready for the wonders of the Bazaar.", false);
@@ -42,7 +40,7 @@ export class Bazaar {
         else simpleChoices("Enter", enterTheBazaar, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    public enterTheBazaar(): void {
+    export function enterTheBazaar(): void {
         if (game.time.hours == 19 || game.time.hours == 20) {
             flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE]++;
             if (flags[kFLAGS.COUNTDOWN_TO_NIGHT_RAPE] % 4 == 0 && player.gender == 1) {
@@ -54,7 +52,7 @@ export class Bazaar {
     }
 
     // [Enter]
-    public enterTheBazaarAndMenu(demons: boolean = true): void {
+    export function enterTheBazaarAndMenu(demons: boolean = true): void {
         outputText("", true);
         let rat: string = "Rat";
         let lilium2: string = "Demon";
@@ -122,7 +120,7 @@ export class Bazaar {
     // --Named Sara.
     // (find/replace curly quotes/apo for straights -Z)
     // [The Slippery Squeeze!]
-    private theSlipperySqueeze(): void {
+    function theSlipperySqueeze(): void {
         outputText("", true);
         outputText("You walk into one wagon whose sign clearly denotes it as 'The Slippery Squeeze'.  It's one of the largest contraptions in the bazaar, and with your first step inside you can see why.  It's built like a regular business, with a lobby in the front and numerous oak doors that lead to back rooms.  The walls are painted a soothing salmon color and a purple, fringed rug covers the wood floor.  It feels soft under your " + feet(player) + " after so much walking, letting you loosen up and relax.  Incense burns on the counter, filling the air with strange, fragrant aromas that tickle at your nose.\n\n", false);
         let androgyny: () => void = null;
@@ -176,7 +174,7 @@ export class Bazaar {
     }
 
     // [Ask]
-    private askJoeyAboutOffer(): void {
+    function askJoeyAboutOffer(): void {
         clearOutput();
         outputText("You ask the effeminate masseuse what had him so concerned a moment ago.  He grimaces.  \"<i>Well, I recently came in possession of a cock milker, one of the old magic-powered ones.  The trouble is, I obviously don't need one, and neither does anyone else.  Worse still, the thing takes up a fair bit of my room.  I guess they've already got 'alternatives',</i>\" he sighs.  \"<i>So now it's just collecting dust in the back room, and I hate seeing a nice piece of craftsmanship like that go to waste.  Even if my talents have rendered it defunct,</i>\" he murmurs with a trace of pride.");
         outputText("\n\nHe stares at you momentarily.  \"<i>Say, you wouldn't happen to want it, would you?  Maybe something for those long, lonely nights?  Heck, you could probably jury rig it to collect lots of semen.  Good quality cum fetches a decent price,</i>\" he says a little too knowingly.  \"<i>A sound investment, yeah?  I'll let it go for, oh, say, five hundred gems.</i>\"  What?  The cocky little f-  \"<i>Hah, just pulling your leg!</i>\" he laughs.  \"<i>It's yours for two hundred gems.  Because I'm such a nice guy.</i>\"");
@@ -190,14 +188,14 @@ export class Bazaar {
         doYesNo(buyCockMilker, noMilkerPlzJoey);
     }
     // [No]
-    private noMilkerPlzJoey(): void {
+    function noMilkerPlzJoey(): void {
         clearOutput();
         outputText("You decline; it's not really the sort of thing you need in your camp.  \"<i>Ah well,</i>\" Joey shrugs, \"<i>I'll just have to hang onto it for now I guess.  Shame.  Anyway,</i>\" he resumes his usual grin, \"<i>is there something else you need?  A massage, perhaps?</i>\"");
         // return to normal options, scene is never brought up again
         doNext(enterTheBazaar);
     }
     // [Yes]
-    private buyCockMilker(): void {
+    function buyCockMilker(): void {
         clearOutput();
         outputText("\"<i>Fantastic, fantastic!  Let me get it from the back.</i>\"  Joey rushes behind a curtain, audibly rummaging through the storeroom.  Soon he comes back, carrying a bunch of tubes and nozzles.  \"<i>Here you go!</i>\"  He dumps the collection of junk in your arms, taking the gems from you in the same motion.  You hastily begin stuffing the contraption in your pack.  \"<i>Now, don't get too attached.  A machine's never gonna beat the real thing.</i>\"  He flexes his delicate fingers.  \"<i>Speaking of which, need something?</i>\"");
         outputText("\n\n(<b>Key Item Acquired: Cock Milker</b>)");
@@ -207,7 +205,7 @@ export class Bazaar {
         simpleChoices("JoeyMassage", joeyMassage, "Androgyny", null, "Joey'sOffer", null, "", null, "Leave", enterTheBazaar);
     }
 
-    private joeyAndrogyny(): void {
+    function joeyAndrogyny(): void {
         outputText("", true);
         if (player.gems < 500) {
             outputText("You haven't got enough gems for that treatment!", false);
@@ -232,7 +230,7 @@ export class Bazaar {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Joey]
-    private joeyMassage(): void {
+    function joeyMassage(): void {
         outputText("", true);
         if (player.gems < 10) {
             outputText("Joey frowns when you realize you don't have the 10 gems.  He apologizes, \"<i>I'm sorry, " + player.short + " but I can't give freebies - our special potions cost us plenty.", false);
@@ -256,7 +254,7 @@ export class Bazaar {
         else doNext(joeysMassageWifNoExtraJizz);
     }
 
-    private joeysMassageWifNoExtraJizz(): void {
+    function joeysMassageWifNoExtraJizz(): void {
         outputText("", true);
         // (Continue as NoWang)
         outputText("The rabbit-eared fem-boy climbs back onto the table and strokes himself a few times over your " + buttDescription(player) + "; the first drops of his 'special oil' feel hot as they land on the curves of your butt cheeks.  He climbs over you, touching himself just enough to stay hard while his cum-drooling cock stops dripping and starts genuinely leaking.  A long trail of bunny-spunk is dripped onto your " + buttDescription(player) + " until you're glazed with thick ropes of it.  You spot his discarded thong on the floor and giggle as you feel him flip around to put his cute bunny-butt on your shoulders.  His spunk immediately runs down your spine, even as his hands smear it all over your " + player.skinDesc + ".\n\n", false);
@@ -331,7 +329,7 @@ export class Bazaar {
     }
 
     // [CONTINUE – DRANK JOEY'S SPECIAL POTION]
-    private joeysMassageWithEXTRASpooge(): void {
+    function joeysMassageWithEXTRASpooge(): void {
         outputText("", true);
         outputText("The rabbit-eared fem-boy pulls the cork on another bottle and helps you to roll to your side to drink it.  He holds the lip of the bottle to your lips and raises the bottom slowly, giving you just enough time to guzzle it without drowning.  It's sweet and syrupy, though there's an undertone of spicy strangeness that you can't quite place.  Whatever the secret ingredients are, you'll never figure them out from taste alone.  You feel warmth once you've finished, and a tightness settles ", false);
         if (player.balls == 0) outputText("inside you", false);
@@ -381,7 +379,7 @@ export class Bazaar {
         if (player.sens > 40) dynStats("sen", -4);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private joeyBigBalls(): void {
+    function joeyBigBalls(): void {
         outputText("", true);
         // (FIRST TIME)
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00348] == 0) {
@@ -406,7 +404,7 @@ export class Bazaar {
     }
 
     // Masturbate It Out (work it out on the floor)
-    private joeyWanksItOut(): void {
+    function joeyWanksItOut(): void {
         outputText("", true);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00349] == 0) {
             outputText("You tell Joey that if he masturbates to erectness, his body should be able to shoot it out faster.  He smacks his forehead and runs into a back room, his thong disintegrating around his growing testes as he runs. The door slams, leaving you in peace.  A little freaked out, you head back to camp for now.", false);
@@ -416,7 +414,7 @@ export class Bazaar {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00349]++;
     }
     // Suck Cum Out (not your garden-variety hoes)
-    private suckOffJoeysGardenHose(): void {
+    function suckOffJoeysGardenHose(): void {
         outputText("", true);
         outputText("Smiling impishly, you say \"<i>I'll just have to suck all that cum out then, won't I?</i>\"  Joey blushes, cheeks reddening to match his plump lips as you yank his rapidly disintegrating thong down to the ground.  Popping free, his half-hard member bobs before your eyes, trailing a thick trail of man-slime the whole way to the ground.  The semi-turgid mass starts at only about four and a half inches long, but as your hot breath washes over it, the twitching, slimy cock grows to its full six-inch size.  Joey moans as the flow from his cock thickens.  His balls keep right on growing, and you realize that they're at least as big as basketballs now.\n\n", false);
         outputText("You grab the bunny-boy's pert ass-cheeks and pull your mouth onto his cock, his member easily sliding along your tongue, lubricated by the unholy flow of dick-juice it drips.   Sealing your lips down on his base into a vacuum-tight O-ring, you start to suck, ever-so-slightly ratcheting up the pressure on Joey's poor, backed up penis.  Thanks to your oral cock-pump, he quickly swells beyond his normal max.   Seven inches of dick push towards your throat, and like a valve suddenly becoming unstuck, that cock's cumslit suddenly dilates wide, stretched out to handle the heavy flow.\n\n", false);
@@ -449,7 +447,7 @@ export class Bazaar {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private overHearDemonsAboutSyrena(): void {
+    function overHearDemonsAboutSyrena(): void {
         outputText("", true);
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00292] == 0) {
             outputText("A whisper of conversation catches your ear while you're wandering the bazaar, and overcome by curiosity, you veer towards it.\n\n", false);
@@ -487,7 +485,7 @@ export class Bazaar {
     }
 
     // "Greta's Garments" - Interior
-    private gretasGarments(): void {
+    function gretasGarments(): void {
         clearOutput();
         if (flags[kFLAGS.FOUND_SOCKS] == 1 && flags[kFLAGS.SOCK_COUNTER] == 0) {
             outputText("As you enter the store, you're surprised to see that a variety of products line the shelves.  Clothing of various materials, sizes and shapes lay folded on shelves and tables around the little shop.  A lone, surprisingly anatomically correct mannequin stands by the counter nude except for a thin lacy piece of fabric held taut over its wooden penis.");
@@ -523,7 +521,7 @@ export class Bazaar {
 
     }
     // Ask About Inventory
-    private askGretaAboutInventory(): void {
+    function askGretaAboutInventory(): void {
         clearOutput();
         outputText("Curious about the lack of selection, you broach the topic with the slutty shopkeeper, asking just where the items she has for sale are at.");
         outputText("\n\nThe demoness, who must be Greta, laughs, \"<i>Oh, it's sweet of you to ask, but I just got set up here.  You wouldn't know how hard it is not to go around taming every sweet little boner on display out there, but there's something to be said for earning profit with your own sweat, effort, and charm.</i>\"  She presses her hands against the sides of her chest and turns her tremendous cleavage into a canyon of mammary delight.");
@@ -540,7 +538,7 @@ export class Bazaar {
     }
 
     // Ask About Bikini:
-    private askGretaAboutZeBikini(): void {
+    function askGretaAboutZeBikini(): void {
         clearOutput();
         outputText("\"<i>Oh, that?</i>\" Greta asks.  \"<i>That's an old project of mine.  Some slutty bitch that called herself a pure maiden used to wear it, right up until I got her to forsake her vows, grow a dick, and fuck me until she was addicted to the taste of my cunt and the flavor of my milk.  From what I heard, she came from a place where similarly attired warriors battled to become Queen of some silly country.  Anyway, that gear had some powerful magics on it that pain my kind to handle.  I've been trying to corrupt it into something more fun in my spare time, but it just hasn't been going well.</i>\"");
         outputText("\n\nThe succubi sets down a half-sewn sock and grumbles, \"<i>Do you have any idea how hard it is to unweave a ward while simultaneously infusing it with corruption?</i>\"");
@@ -554,7 +552,7 @@ export class Bazaar {
     }
 
     // Buy Bikini
-    private buyGretasBikini(): void {
+    function buyGretasBikini(): void {
         clearOutput();
         flags[kFLAGS.OWN_MAIDEN_BIKINI] = 1;
         player.gems -= 500;
@@ -567,7 +565,7 @@ export class Bazaar {
     }
 
     // Cock-socks Available - First Time
-    private browseDemSocksSon(): void {
+    function browseDemSocksSon(): void {
         clearOutput();
         outputText("What type of cock-sock do you want to look at?");
         // Cock-sock Menu
@@ -584,7 +582,7 @@ export class Bazaar {
     }
 
     // Wool Cock-sock
-    private woolCockSock(): void {
+    function woolCockSock(): void {
         clearOutput();
         outputText("You spy a thick, woolen sock sitting on a counter and take it up to Greta.  \"<i>Ah, yes.  That's our basic sock.  Warm and cozy, great for those chilly nights.  That one's a mere 10 gems.  A steal, of course.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "wool";
@@ -592,7 +590,7 @@ export class Bazaar {
     }
 
     // Alabaster Cock-sock
-    private alabasterCockSock(): void {
+    function alabasterCockSock(): void {
         clearOutput();
         outputText("You pick up a one sock and inspect it.  It's a pure white cock sock, edged with delicate lace.  It almost appears to be some kind of bridal wear... although you don't know of any kind of bride that would wear something like this.  \"<i>Ah yeah, that's a popular one.  Some folks like the purity that it suggests... though I can't guess why.  It's 25 gems, though.</i>\"");
         // [Buy] [Back]
@@ -601,7 +599,7 @@ export class Bazaar {
     }
 
     // Cockring Cock-sock
-    private cockringCockSock(): void {
+    function cockringCockSock(): void {
         clearOutput();
         outputText("You pick up one sock, surprised to find how heavy it is.  Large metal rings encircle the base of the smooth cock-sock, with one loose ring dangling down, no doubt intending to wrap around the base of your ball sack.  \"<i>Oh yes, that's a fun one. Those rings will constantly constrict your manhood, so you'll always be hard and ready to go.</i>\" She giggles and waves a hand, \"<i>That's actually a very popular sock... so many demons come in to get these for their harems.  It's 100 gems.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "cockring";
@@ -609,7 +607,7 @@ export class Bazaar {
     }
 
     // Viridian Cock-sock
-    private viridianCockSock(): void {
+    function viridianCockSock(): void {
         clearOutput();
         outputText("You pick up one sock and inspect it.  The whole thing is a rich, natural green color and completely lace, accentuated with vivid red roses.  Just touching it makes you feel healthier and more alive.  \"<i>Ahh, that's a fun one right there.  It hastens your natural healing.  Very useful, and pretty, too, if I say so myself.  It's 1,000 gems.</i>\"  You pale at the price, but Greta waves a hand, \"<i>Trust me, honey, it's worth it.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "viridian";
@@ -617,7 +615,7 @@ export class Bazaar {
     }
 
     // Scarlet Cock-sock
-    private scarletCockSocK(): void {
+    function scarletCockSocK(): void {
         clearOutput();
         outputText("You pick up one sock and inspect it.  It's an incredible plush red, and made of soft satin and detailed with red lace.  It seems smaller than the other socks you've seen, and you can't help but wonder how tight it will feel on your dick.  \"<i>Mmm, that one's special.  It increases the blood flow to your little dick, enabling it to grow a lot faster.  This one goes quick.  Everyone wants to be a minotaur!  It's 250 gems.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "scarlet";
@@ -625,14 +623,14 @@ export class Bazaar {
     }
 
     // Cobalt Cock-sock
-    private cobaltCockSock(): void {
+    function cobaltCockSock(): void {
         clearOutput();
         outputText("You pick up one sock and inspect it.  It's a cool, soft blue color, made from satin and detailed in light blue lace.  It seems extremely small, compared to the other socks in the shop, and you can't help but think it must be extremely uncomfortable to wear.  \"<i>Oho, that's a fun one right there.  The cute little femboys go crazy for it.  As you can see, it's a bit small, and it will actually inhibit your cock from growing too big.  It's 250 gems.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "cobalt";
         cockSelectionMenu();
     }
     // Gilded Cock-sock
-    private gildedCockSock(): void {
+    function gildedCockSock(): void {
         clearOutput();
         outputText("You pick up one sock and inspect it, surprised to see how rigid and heavy it is.  Unlike the others in the shop, this one seems to be made of a cool golden metallic material.  Glittering gems are embedded into the top side, while the bottom is cinched closed with leather cords.  \"<i>You've got a good eye,</i>\" Greta says, her eyes twinkling greedily.  \"<i>With that bad boy, you can actually convert some of your... sweet cum into even sweeter gems.  Of course, with that kind of awesome power, you've got to understand that it'll cost you 3,000 gems.</i>\"");
         flags[kFLAGS.SOCK_HOLDING] = "gilded";
@@ -640,7 +638,7 @@ export class Bazaar {
     }
 
     // Amaranthine
-    private amaranthineCockSock(): void {
+    function amaranthineCockSock(): void {
         clearOutput();
         outputText("You pick up one sock and inspect it.  It's a silky smooth lavish purple color, with fine lace depicting some kind of six-legged wolf-like creature.  Overall, though, the sock is an odd shape, seemingly intended for someone with a knot AND some kind of equine-like flare.  Greta's eyebrows raise as she sees the item you're holding,  \"<i>Ohh, that one.  That, honey, was an experiment.  I took some magic channeled down from the stars themselves and infused it into a new sock, and that was the result.  Truth be told, I'm not entirely sure what it does, but I'll sell it to you for 1,000 gems.</i>\"");
         // Increase fertility by a small amount
@@ -648,14 +646,14 @@ export class Bazaar {
         cockSelectionMenu();
     }
 
-    private cockSelectionMenu(): void {
+    function cockSelectionMenu(): void {
         menu();
         if ((flags[kFLAGS.SOCK_HOLDING] == "amaranthine" && player.gems >= 1000) || (flags[kFLAGS.SOCK_HOLDING] == "gilded" && player.gems >= 3000) || (flags[kFLAGS.SOCK_HOLDING] == "cobalt" && player.gems >= 250) || (flags[kFLAGS.SOCK_HOLDING] == "scarlet" && player.gems >= 250) || (flags[kFLAGS.SOCK_HOLDING] == "viridian" && player.gems >= 1000) || (flags[kFLAGS.SOCK_HOLDING] == "cockring" && player.gems >= 100) || (flags[kFLAGS.SOCK_HOLDING] == "alabaster" && player.gems >= 25) || (flags[kFLAGS.SOCK_HOLDING] == "wool" && player.gems >= 10)) addButton(0, "Buy", pickACockForSock);
         else outputText("\n\n<b>You can't afford that.</b>");
         addButton(4, "Back", browseDemSocksSon);
     }
 
-    private pickACockForSock(): void {
+    function pickACockForSock(): void {
         // Buy Cock-sock
         clearOutput();
         outputText("You take the cock-sock over to the counter where Greta sits, knitting even more garments and place down the gems required.  \"<i>Aha, good choice, honey!</i>\" the succubus says, snatching up the money and stashing it away.  \"<i>Now let's get that bad boy fitted on you.</i>\"");
@@ -677,7 +675,7 @@ export class Bazaar {
         }
     }
 
-    private cockSockTarget(target: number): void {
+    function cockSockTarget(target: number): void {
         clearOutput();
         flags[kFLAGS.SOCKS_BOUGHT]++;
         // Putting it On - First Time
@@ -699,7 +697,7 @@ export class Bazaar {
     }
 
     // Yes
-    private yesPutDatSockOnMe(target: number): void {
+    function yesPutDatSockOnMe(target: number): void {
         clearOutput();
 
         let conflict: boolean = false;
@@ -762,7 +760,7 @@ export class Bazaar {
         }
     }
 
-    private noCockSock(): void {
+    function noCockSock(): void {
         clearOutput();
         flags[kFLAGS.SOCK_HOLDING] = 0;
         outputText("You shake your head.  Greta sighs, \"<i>Figures.  Here's your money back, honey.  Come back when you change your mind.</i>\"");
@@ -772,7 +770,7 @@ export class Bazaar {
     }
 
     // Remove Cock-sock
-    private takeOffDatSock(): void {
+    function takeOffDatSock(): void {
         clearOutput();
         outputText("Which cock-sock would you like to get removed?");
         // (display list of socked cocks)
@@ -785,7 +783,7 @@ export class Bazaar {
         }
     }
 
-    private removeTargettedSock(index: number): void {
+    function removeTargettedSock(index: number): void {
         clearOutput();
         // Select-A-Cock!
         outputText("You walk up to the counter top.  Greta the succubus looks up at you over her latest creation, and you explain you'd like to remove a cocksock.");
@@ -840,7 +838,7 @@ export class Bazaar {
     */
 
     // "Sweet Massage"
-    private joeySweetMassage(): void {
+    function joeySweetMassage(): void {
         clearOutput();
         player.gems -= 20;
         statScreenRefresh();
@@ -860,7 +858,7 @@ export class Bazaar {
         addButton(1, "No", eggsInButt, false);
     }
 
-    private eggsInButt(eggButt: boolean = false): void {
+    function eggsInButt(eggButt: boolean = false): void {
         clearOutput();
         if (eggButt) {
             outputText("You nod your head to the little femboy, who jumps with joy, splattering a little string of chocolate cum across the floor.  He walks around behind you and asks you to raise your butt.  You do so, surprised to find you can move after that initial massage, raising your ass high into the air and positioning your knees under you.  You can't see what he's doing back there, but when you feel a warm splash of liquid against your [asshole], you let your mind's eye go to work.");
@@ -922,7 +920,7 @@ export class Bazaar {
     }
 
     // Visit the Bizarre Bazaar at night.
-    public nightBazaarButtfuck(): void {
+    export function nightBazaarButtfuck(): void {
         clearOutput();
         outputText("While wandering the bazaar at night you feel an unease growing in your stomach. As you walk your dimly lit path, you pause and notice a rather dark pathway that you haven't seen before. Curiosity sparks in your wandering mind and you can't help but wonder how long it has been here and where it leads. Should you wander down this dark path despite the thoughts bubbling in your head that it's a bad idea?");
         outputText("\n\nDismissing that nagging feeling in the back of your mind, you head down the unlit path toward adventures unknown.  You comfort yourself with the prospects of adventure and the excitement of exploration.  Your ever-optimistic mind is lost in wonder when a flap of a large tent to your side suddenly bursts open.  \"<i>Fine! I'm goin', I'm goin'! Put a fuckin' cock in it!</i>\"");
@@ -938,7 +936,7 @@ export class Bazaar {
     }
 
     // <Option 1 Escape>
-    private escapeFromCertainRape(): void {
+    function escapeFromCertainRape(): void {
         clearOutput();
         outputText("You tear yourself away from the feline. Wide, surprised eyes stare at you as you make a break for it.  You run as quickly as your legs can carry you, the echoes of the feline's feet padding behind you urging you to run faster.  You flee through the trees mindlessly, darting down whatever path you see first.  In your panic, though, you quickly wear yourself out.  How far did you run? Where are you now?  You lean against a trunk and pant for breath.  Thankfully no one seems to be around, including your pursuer.  You pat yourself off as you notice the bright lights of the bazaar nearby and retreat back to the well-lit collection of tents.");
         // gtfo
@@ -947,7 +945,7 @@ export class Bazaar {
     }
 
     // <Option 2 Wait>
-    private waitOnStuff(): void {
+    function waitOnStuff(): void {
         clearOutput();
         outputText("Uncertainty plagues you as you wait to see what happens.  The large feline reaches the entrance of the large tent.  His free hand grips the tent and, as you let out a loud yelp, you are shoved forcefully through.");
         // Pass go and collect 200 rape
@@ -956,7 +954,7 @@ export class Bazaar {
     }
 
     // <Option 3 Assault>
-    private assaultYoRapistYo(): void {
+    function assaultYoRapistYo(): void {
         clearOutput();
         // Strength Check
         // [(If strength is less than 50)
@@ -979,7 +977,7 @@ export class Bazaar {
     }
 
     // <Option 1 Leave>
-    private assaultWinAndLeave(): void {
+    function assaultWinAndLeave(): void {
         clearOutput();
         outputText("You shove the large tiger man across the dirt.  His annoyed growls are muffled by the dirt his face is sliding across.  You issue a warning about picking fights with those stronger than he is and leave him lying in the dirt, his pride battered and bruised.  The dirt under your heel grinds in the darkness as you turn and casually continue down the path until you find yourself back in the bazaar.");
         // gtfo
@@ -988,7 +986,7 @@ export class Bazaar {
     }
 
     // <Option 2 Abuse Ass(Visible with 70 or more corruption)>
-    private abuseHisAss(): void {
+    function abuseHisAss(): void {
         clearOutput();
         outputText("Your tongue flicks from your lips at all the possibilities that course through your mind.  \"<i>Lemme go!</i>\"  The feline barks out from under you, though you have better ideas.  You move your free hand back and roughly pull down his pants, exposing his muscled rump to the cool, night air.  Feeling a firm cheek beneath your hand, you rub and squeeze it almost affectionately before swatting the cheek roughly, coaxing a strained grunt from the tiger man's mouth.");
 
@@ -1041,7 +1039,7 @@ export class Bazaar {
     }
 
     // ((If waited, or failed assault  //Pass go collect 200 rape))
-    private collectSomeButtSmex(): void {
+    function collectSomeButtSmex(): void {
         clearOutput();
         outputText("Your body crashes into a wooden table and you choke, feeling the wind knocked out of you.  You struggle to lift your head and catch your breath, only to find yourself laying in... poker chips?");
         outputText("\n\n\"<i>The fuck ya doin'? This isn't booze!</i>\" A voice shouts.");
@@ -1117,7 +1115,7 @@ export class Bazaar {
     }
 
     // <option 1 Suck tiger>
-    private suckOffATiger(): void {
+    function suckOffATiger(): void {
         clearOutput();
         outputText("You go with the barbed length.  You quickly take it into your mouth and suckle on the barbed tip.  The tiger's face melts from argument to pleasure.  \"<i>Looks like he likes mine better than your short sausage.</i>\"  The tiger gloats, the bear growling low and angrily.  Not to invite a fight over your face, you grip the bear's cock with one hand and begin to stroke over the thickness, though your fingers are unable to wrap all the way around it.  The pair give out pleased moans of resignation as you pleasure them.  The satyr still pounds away at your " + buttDescription(player) + " as you suck off the tiger, his hands gripping your head as he throatfucks your eager mouth.  You slither your tongue under his shaft and let out a muffled moan as the barbs tingle over your throat, lips, and tongue.  With a rough thrust he buries your face into his furred groin, making his heavy sack slap your cheek.  The tiger man fucks your face furiously as you feel the satyr finishing in your ass.  Thick tiger cock continues to pound down your throat as warmth spreads within your gut, satyr cum flooding your inner walls.");
         // bumpy road
@@ -1125,7 +1123,7 @@ export class Bazaar {
     }
 
     // <option 2 Suck bear>
-    private suckOffABear(): void {
+    function suckOffABear(): void {
         clearOutput();
         outputText("You turn your head and open wide, slowly squeezing the hefty bear cock past your lips.  Your jaw stretches to its limit around it and you suckle with wet, slurping noises.  You lavish all the attention you can on the fat rod in your mouth, using your tongue to lick and slurp the constant drool of pre-cum.  You flick your nimble tongue over the swollen cockhead and hear a low, pleased grunt from the bear.  Overhead, the tiger stares jealously.");
 
@@ -1136,7 +1134,7 @@ export class Bazaar {
     }
 
     // <Option 3 Suck none>
-    private suckOffNone(): void {
+    function suckOffNone(): void {
         clearOutput();
         outputText("Unwilling to wrap your lips around either of their lengths, you reach up with your hands and start to stroke the pair of arguing men off.  Each ceases their bickering to look down at you in confusion.  Their dazed expressions don't last long, quickly melting into pleasured, half-lidded gazes and moans.  Their drooling cockheads glaze your cheeks white with their pre-cum, making you reek of their strong, salty musk.  They seem eager for more and press their hard dicks over your face, prodding your closed lips with hot, pre-slicked cockheads.  You shut your eyes, one hand from each of them pressing the back of your head more into their needy cocks.  Your lips part just enough to taste their copious pre-cum, moans escaping your parted lips quietly as the satyr begins ramming his hips against you hard while his pent-up balls unload in your ass and paint your lower body with cum.");
         // no furry plx
@@ -1144,7 +1142,7 @@ export class Bazaar {
     }
 
     // all options lead to here for now
-    private finalGayFinallee(road: number = 0): void {
+    function finalGayFinallee(road: number = 0): void {
         outputText("\n\nWith a wet pop, the satyr pulls his spent manhood from your " + assholeDescript(player) + ".  He smears his softening cock over your " + buttDescription(player) + " and leaves a white streak of cum across your cheeks.  He huffs a content breath and moves over to the side.  \"<i>I'm good, you guys decide who gets to fuck the slut next.</i>\"  You look up at the tiger and bear men.  Their eyes light up a moment before turning to look at your " + buttDescription(player) + " with hungry lust.  Your spine shivers under their gaze, but before they can move a green blur runs past them.");
 
         outputText("\n\n\"<i>Zug want hole!</i>\" The large green orc runs to your behind, slapping his massive foot-long against your " + buttDescription(player) + " as if to call 'dibs!'.  You bite your lips at the sight of the throbbing twelve inches sawing your ass cheeks apart, the dark olive flesh glistening with a thick layer of prespunk and slick, cool lubricant.  The orc's bulky muscles twitch menacingly as he stares the tiger and bear down.  The two of them stay where they are and, after a few moments, the orc grunts.  He looks down and lines himself up with your hole.  His thick, orcish girth presses against your " + assholeDescript(player) + ", pushing in forcefully as the satyr's cum and rough pounding opened you just wide enough for the orc to slide in with little pain.");
@@ -1246,4 +1244,3 @@ export class Bazaar {
             // Time set to morning
         }
     }
-}

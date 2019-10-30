@@ -62,14 +62,15 @@ export class Kelly implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    private hasPinkEgg(): boolean {
+    function hasPinkEgg(): boolean {
         return (player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG));
     }
 
     // Encounters
     // First encounter
-    public breakingKeltOptions(): void {
+    export function breakingKeltOptions(): void {
         clearOutput();
         spriteSelect(35);
         if ((!player.cocks.length > 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
@@ -94,7 +95,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Resist
-    private resistKeltsBSBreakHimIntro(): void {
+    function resistKeltsBSBreakHimIntro(): void {
         clearOutput();
         spriteSelect(35);
         if (flags[kFLAGS.KELT_BREAK_LEVEL] == 0) {
@@ -158,7 +159,7 @@ export class Kelly implements TimeAwareInterface {
     // Not Now: Nothing happens. The PC may carry on lessons like normal and they can still begin the mind-breaking process whenever they wish as long as they meet the above requirements.
     // Yes: Carry on the mindbreak
 
-    private neverBreakKeltIntoKelly(): void {
+    function neverBreakKeltIntoKelly(): void {
         clearOutput();
         spriteSelect(35);
         flags[kFLAGS.NEVER_RESIST_KELT] = 1;
@@ -168,7 +169,7 @@ export class Kelly implements TimeAwareInterface {
         addButton(1, "Go Home", Camp.returnToCampUseOneHour);
     }
 
-    private breakKeltGo(): void {
+    function breakKeltGo(): void {
         clearOutput();
         spriteSelect(35);
         outputText("You approach the uppity centaur with glinting eyes, determined to take him down.  Kelt mistakes your anger for desire and sneers.");
@@ -299,7 +300,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Second encounter
     /*10 succubi milk (or 1 pink egg - large or small - and 5 succubi milk) */
-    private secondKeltBreaking(): void {
+    function secondKeltBreaking(): void {
         clearOutput();
         spriteSelect(35);
         outputText("You stroll up to Kelt, not afraid to tame the beastman a second time.  As soon as he spots you, he snorts and tramples the floor furiously.  At the same time, he turns his head back as if he was ready to gallop at any moment.  Torn between his fear of you and his desire for revenge, he doesn't dare charge you, but he doesn't move away either.  You profit from his indecision to walk straight up to him until you are face to face.  But his masculine visage doesn't appeal to you, for your main focus is the tool hanging between his hind legs.");
@@ -320,7 +321,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Defeat Him In Fight #1
-    public defeatKellyNDBREAKHIM(): void {
+    export function defeatKellyNDBREAKHIM(): void {
         clearOutput();
         // Cut these: You swing your [weapon], ready to use force against the restless centaur if necessary.
         // Cut these: \"<i>Easy now, okay? You don't have your bow, and you know what I can do with my [weapon]. Now if you just calm down I promise I'll be much nicer this time.</i>\"
@@ -425,7 +426,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Win Second Fight (Third Feminizing Encounter):
-    public breakingKeltNumeroThree(): void {
+    export function breakingKeltNumeroThree(): void {
         clearOutput();
         if (monster.HP < 1) outputText("Slumping down, ");
         else outputText("Moaning, ");
@@ -513,7 +514,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Fourth encounter
     /*This one requires you not to have lost any corruption since the last encounter you had with her (so if you did, just get back to your former corruption level).*/
-    private finalKeltBreaking(): void {
+    function finalKeltBreaking(): void {
         clearOutput();
         outputText("You resolutely walk up to the centaur slut for her final lesson.  This time you don't even need to find her: she rushes to you on her own, her eyes glinting with need.");
         outputText("\n\n\"<i>[Master], [Master]!  You're finally here.  I-I haven't been sleeping well since you left.  I've been dreaming about you... about your cock.  I haven't been able to eat properly, it's like I'm in a state of constant hunger that can't be satisfied... except by you.</i>\"");
@@ -591,14 +592,14 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Kelt Defeats PC after 1st Breaking But Before Last
-    public keltFucksShitUp(): void {
+    export function keltFucksShitUp(): void {
         clearOutput();
         outputText("As you collapse, defeated, Kelt saunters up, shouldering his bow.  \"<i>Who's the bitch now,</i>\" he taunts, rearing back as his voice cracks in a rather emasculated manner.  \"<i>You are!</i>\"  His hooves come down on your back, and concussive waves of pain roll through your body as you're trampled black and blue.  Then, you see blackness.");
         menu();
         addButton(0, "Next", keltFucksShitUpII);
 
     }
-    private keltFucksShitUpII(): void {
+    function keltFucksShitUpII(): void {
         clearOutput();
         outputText("You awaken at the periphery of the farm, thankful to be alive.  Kelt is nowhere to be seen.  You have to wonder if Whitney saved you or the dumb beast was too stupid to finish you off.  Whatever the case, you head back to camp to lick your wounds.  <b>The worst indignity of all is that he broke a lot of your succubi milks.</b>  He'll likely have regained some more of his maleness by the time you're ready to attempt teaching him another lesson.");
         player.consumeItem(ConsumableLib.SUCMILK, 5);
@@ -610,7 +611,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Appearance
-    private kellyAppearance(): void {
+    function kellyAppearance(): void {
         clearOutput();
         outputText("Kelly is a 6 foot 3 inch tall centauress with a svelte body and generous curves.  Her feminine face is pretty human in appearance, and her lovely traits would be adorably innocent if it weren't for her emerald eyes shining with lusty need whenever she looks at you.  Plump lips that seem to have been made for cock-sucking adorn her hungry mouth.  A long, single " + flags[kFLAGS.KELLY_HAIR_COLOR]);
         // [chestnut brown/sable black/garish purple/bright pink/slutty blonde)
@@ -675,7 +676,7 @@ export class Kelly implements TimeAwareInterface {
         menu();
         addButton(0, "Next", approachKelly);
     }
-    private approachKelly(): void {
+    function approachKelly(): void {
         clearOutput();
         // Fix hair color!
         if (flags[kFLAGS.KELLY_HAIR_COLOR] == 0) flags[kFLAGS.KELLY_HAIR_COLOR] = "chestnut brown";
@@ -750,7 +751,7 @@ export class Kelly implements TimeAwareInterface {
         else addButton(9, "Back", FarmCorruption.rootScene);
     }
 
-    private kellySexMenu(): void {
+    function kellySexMenu(): void {
         menu();
         if (player.cocks.length > 0 && player.lust >= 33) {
             if (player.cocks.cockThatFits(300) >= 0 || flags[kFLAGS.KELLY_CUNT_TYPE] == 1) {
@@ -775,7 +776,7 @@ export class Kelly implements TimeAwareInterface {
     // Vaginal
     // Virginity paragraph
     // [Not Virginal]
-    private fuckKellysCunt(): void {
+    function fuckKellysCunt(): void {
         clearOutput();
         flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT]++;
         let x: number = player.cocks.cockThatFits(300);
@@ -843,7 +844,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Centaur on Centaur Sex
     /*Requires a centaur lower body.*/
-    private taurOnTaurSexKelly(): void {
+    function taurOnTaurSexKelly(): void {
         clearOutput();
         flags[kFLAGS.KELLY_VAGINALLY_FUCKED_COUNT]++;
         let x: number = player.cocks.cockThatFits(300);
@@ -895,7 +896,7 @@ export class Kelly implements TimeAwareInterface {
     // Tentacle
     // Requires two or more tentacle dicks.
 
-    private tentaFuckKelly(): void {
+    function tentaFuckKelly(): void {
         clearOutput();
         outputText("With a mischievous grin, you remove your [armor], fully revealing your " + multiCockDescriptLight(game.player) + ".  The plant-like appendages wriggle around the horny centauress, inspecting her body from every angle.  You feel your own lust rising as the tentacle peckers grow harder, their green heads turning pink in arousal.  Kelly stammers, confused: \"<i>W-what are you-</i>\"");
 
@@ -958,7 +959,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Makes her cunt become horse-like.
-    private giveKellyEquinum(): void {
+    function giveKellyEquinum(): void {
         clearOutput();
         outputText("Taking the long, flared vial in your hand, you get a wicked idea - what if you gave your personal mare-slave a cunt that was better suited to her depraved, animalistic shape?  What if you turned that pretty, pink pussy into a slobbering, black mare-cunt?");
 
@@ -978,7 +979,7 @@ export class Kelly implements TimeAwareInterface {
         addButton(0, "Next", approachKelly);
     }
     // Succubi Milk - Rehumanizes Her Pussy
-    private giveKellySuccubiMilk(): void {
+    function giveKellySuccubiMilk(): void {
         clearOutput();
         outputText("You produce a vial of succubi milk and dangle it before Kelly, the ivory demon-juice sloshing audibly inside.  Kelly licks her lips immediately, running her hands across her perky nipples without meaning to.  She asks, \"<i>[Master], is that what I think it is?</i>\"");
 
@@ -997,7 +998,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Punish(C)
-    private punishKelly(): void {
+    function punishKelly(): void {
         clearOutput();
         flags[kFLAGS.TIMES_PUNISHED_KELLY]++;
         // First time:
@@ -1042,7 +1043,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Rimjob/Ride/Riding crop
     // Rimjob(C)
-    private getARimjobFromKelly(): void {
+    function getARimjobFromKelly(): void {
         let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
@@ -1114,7 +1115,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Ride(C)
     // (Assumes Kelly is at camp; minor revisions required otherwise)
-    private rideKellyForPunishment(): void {
+    function rideKellyForPunishment(): void {
         let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = player.cocks.smallestCockIndex();
         clearOutput();
@@ -1338,7 +1339,7 @@ export class Kelly implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private takeKellysVirginity(): void {
+    function takeKellysVirginity(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(300);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -1418,7 +1419,7 @@ export class Kelly implements TimeAwareInterface {
 
     // TFs
     // Canine Pepper
-    private giveKellyAPepper(): void {
+    function giveKellyAPepper(): void {
         clearOutput();
         // First:
         if (flags[kFLAGS.KELLY_TIMES_PEPPERED] == 0) {
@@ -1460,7 +1461,7 @@ export class Kelly implements TimeAwareInterface {
     // Titjob
     // [Requires: Not a centaur]
     // [If [dick0] larger than 18 inches: Requires Kelly have 4 breasts]
-    private kellyTitJob(): void {
+    function kellyTitJob(): void {
         clearOutput();
 
         let x: number;
@@ -1512,7 +1513,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Preggers
     /*Chance for Kelta to be pregnant is 1% for every 20 mL, capping at 80%.*/
-    private kellyPreggers(): void {
+    function kellyPreggers(): void {
         if (pregnancy.isPregnant) return;
         let x: number = Math.round(player.cumQ() / 20);
         if (x > 80) x = 80;
@@ -1525,7 +1526,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Sex scene
     // notice this could be adapted into a normal scene minus the paragraph referring to her pregnancy
-    private kellyPregSex(): void {
+    function kellyPregSex(): void {
         clearOutput();
         let x: number;
         if (flags[kFLAGS.KELLY_CUNT_TYPE] == 1) x = player.cocks.biggestCockIndex();
@@ -1549,7 +1550,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Giving birth
-    public kellyPopsOutARunt(): void {
+    export function kellyPopsOutARunt(): void {
         outputText("\n<b><u>As you visit the barn where your centaur slave usually resides, you see something unusual...</u></b>");
         outputText("\nKelly is laying on a haystack, her face red and slick with sweat but radiating tired happiness.  Curled into one of her milk-engorged breasts, hanging and suckling voraciously, is a tiny little creature that looks exactly like her mother.");
 
@@ -1575,7 +1576,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Talk n Hand
-    private talkNHandToKelly(): void {
+    function talkNHandToKelly(): void {
         clearOutput();
         // First: You tell her you'd just like to talk.
         if (flags[kFLAGS.KELLY_TALK_N_HAND_TIMES] == 0) {
@@ -1723,7 +1724,7 @@ export class Kelly implements TimeAwareInterface {
     }
     // Reward
     // Requirements: PC used “punish” at least once, 3+ days have gone by and “punish” has not proced*
-    private rewardKelly(): void {
+    function rewardKelly(): void {
         flags[kFLAGS.KELLY_REWARD_COOLDOWN] = 1;
         clearOutput();
         // First time:
@@ -1755,7 +1756,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Hair Dye
     // Requires: Black dye, purple dye, blonde dye, pink dye, brown dye in inventory.  Dye can't be given if her hair is that color already, e.g. brown can't be given straight away
-    private dyeKellysBitchAssHair(color: ItemType): void {
+    function dyeKellysBitchAssHair(color: ItemType): void {
         clearOutput();
         outputText("You tell her you've brought her a gift as you rummage around in your pockets.  Kelly looks apprehensive but pleasant surprise forms on her face when she catches the small vial of dye you throw at her.");
         outputText("\n\n\"<i>Oh wow, thanks [Master]! It's been ages since I did my hair.");
@@ -1809,7 +1810,7 @@ export class Kelly implements TimeAwareInterface {
 
     // Apple Sauce
     // Req Dick that fits.
-    private giveKellyAppleSauce(): void {
+    function giveKellyAppleSauce(): void {
         clearOutput();
         // First time:
         if (flags[kFLAGS.KELLY_TIMES_APPLESAUCED] == 0) {
@@ -1947,7 +1948,7 @@ export class Kelly implements TimeAwareInterface {
     }
 
     // Blowjob
-    private kellyBJsAhoy(): void {
+    function kellyBJsAhoy(): void {
         clearOutput();
         outputText("You step into Kelly, a question fading on her lips as you put your arms around her waist and answer it by drawing her face into yours.  You kiss her hungrily, pushing your tongue into her hot mouth.  It's almost an instinctive reaction - it's difficult to look at her face and not be drawn to her plump, pert lips, to not want to touch them, to use them.  And godsdamn, does she know how to use them.  She responds to your kiss in kind, humming blissfully as she eagerly accepts your tongue, rolling and curling it with her own, entwined like two lovers, drawing it further into her warm wetness as her pillowy boobs push into your [chest], her sweet, horny smell invading your nostrils as her overfull lips mash into your own, rubbing at your philtrum gently.");
         outputText("\n\nYou are already ragingly hard, [eachCock] throbbing to the idea of those warm, expert folds of flesh sliding over ");
@@ -2174,4 +2175,3 @@ export class Kelly implements TimeAwareInterface {
         dynStats("sen", -2);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

@@ -48,8 +48,9 @@ export class IsabellaScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public isabellaGreeting(): void {
+    export function isabellaGreeting(): void {
         spriteSelect(31);
         outputText("", true);
         let suck: () => void = null;
@@ -179,20 +180,20 @@ export class IsabellaScene implements TimeAwareInterface {
         // outputText("ISABELLA HAS BROKEN.  PLEASE TELL FENOXO.", true);
     }
 
-    private isabellaGreetingFirstTime(): void {
+    function isabellaGreetingFirstTime(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00256] = 1;
         isabellaGreeting();
     }
 
     // Leave]
-    public leaveAngryIzzy(): void {
+    export function leaveAngryIzzy(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("You shrug and make it quite clear you're leaving.  Crazy cow.  She shouts, \"<i>And stay avay, demon!  Izabella has no need of your foul tricks!</i>\"", false);
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Fight]
-    public unwelcomeFightCowGal(): void {
+    export function unwelcomeFightCowGal(): void {
         outputText("", true);
         outputText("You ready your " + player.weaponName + " and adopt a fighting pose.  No cow is going to chase you away!", false);
         if (!IsabellaFollowerScene.isabellaFollower()) IsabellaFollowerScene.isabellaAffection(-5);
@@ -202,7 +203,7 @@ export class IsabellaScene implements TimeAwareInterface {
         doNext(playerMenu);
     }
     // Fuck-fight
-    public fightIsabella(): void {
+    export function fightIsabella(): void {
         outputText("", true);
         if (!IsabellaFollowerScene.isabellaFollower()) IsabellaFollowerScene.isabellaAffection(-5);
         outputText("You smirk at Isabella, and ready your " + player.weaponName + ", telling her you intend to have you way with her.  She turns beet red and grabs her shield, announcing, \"<i>You von't find me such easy prey, and I vill punish you for being so naughty!</b>\"", false);
@@ -212,7 +213,7 @@ export class IsabellaScene implements TimeAwareInterface {
         doNext(playerMenu);
     }
     // [Talk]
-    public tryToTalkDownAngryCow(): void {
+    export function tryToTalkDownAngryCow(): void {
         outputText("", true);
         spriteSelect(31);
         // (int below 25)
@@ -251,7 +252,7 @@ export class IsabellaScene implements TimeAwareInterface {
         }
     }
 
-    public nomOnMommaIzzysTits(): void {
+    export function nomOnMommaIzzysTits(): void {
         outputText("", true);
         spriteSelect(31);
         const x: number = player.cocks.cockThatFits(20);
@@ -401,7 +402,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [GET ORAL'ED AS A SMALL MALE]
-    public izzyGivesSmallWangsFreeOral(): void {
+    export function izzyGivesSmallWangsFreeOral(): void {
         spriteSelect(31);
         const x: number = player.cocks.smallestCockIndex();
         outputText("", true);
@@ -541,7 +542,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [Give Isy Oral]
-    public volunteerToSlurpCowCunt(): void {
+    export function volunteerToSlurpCowCunt(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("You indicate to Isabella that you're actually more interested in tasting HER, not her milk.  The dusky cow-girl looks at you dumbly, not comprehending what you mean.  Before you can explain, her cheeks bloom with crimson - she finally figured out what you meant.  The red-head quietly asks, ");
@@ -613,7 +614,7 @@ export class IsabellaScene implements TimeAwareInterface {
         }
     }
 
-    public IsabellaWinsAndSpanks(): void {
+    export function IsabellaWinsAndSpanks(): void {
         outputText("", true);
         // [Lose and get Spanked - Small]
         if (player.tallness <= 78) {
@@ -745,7 +746,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [Isabella rapes you with her ass]
-    public isabellaRapesYouWithHerAss(): void {
+    export function isabellaRapesYouWithHerAss(): void {
         outputText("", true);
         let x: number = player.cocks.cockThatFits(38);
         if (x < 0) x = 0;
@@ -876,7 +877,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [OPTIONAL GET RAPED AFTER SPANKING/FEEDING]
-    public IsabellaPostSpankFeedSex(): void {
+    export function IsabellaPostSpankFeedSex(): void {
         const x: number = player.cocks.smallestCockIndex();
         outputText("", true);
         outputText("<b>Squish... squish... squish...</b>\n", false);
@@ -920,7 +921,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // LOSS
-    public isabellaDefeats(): void {
+    export function isabellaDefeats(): void {
         if (monster.effects.getValue1Of(StatusAffects.Sparring) <= 1) {
             if (player.cocks.length > 0 && rand(2) == 0) isabellaRapesYouWithHerAss();
             else IsabellaWinsAndSpanks();
@@ -931,7 +932,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [VICTORY!]
-    public defeatIsabella(): void {
+    export function defeatIsabella(): void {
         outputText("", true);
         if (monster.effects.getValue1Of(StatusAffects.Sparring) == 2) {
             outputText("You give the ", false);
@@ -987,7 +988,7 @@ export class IsabellaScene implements TimeAwareInterface {
             "Small Titfuck", smallTitFuck, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
     }
     // [LACTATION 69]
-    public victoryLactation69(): void {
+    export function victoryLactation69(): void {
         outputText("", true);
         outputText("Well, now that she's mentioned milk, your " + allBreastsDescript(player) + " do feel a little full, swollen with the weight of your own lactic cargo.  Even your " + nippleDescription(player, 0) + "s feel bloated and ready to be suckled.  With a devilish grin, you pace around the prone, bovine belle and taunt her, suggesting quite lewdly how you'll drain her tits dry while forcing her to guzzle your own pearly liquid.  Her eyes go wide, first with shock, then with increasing lust.  The cow-girl's features soften into submissive acceptance when you stop at her head and undo the bindings of your " + player.armorName + ".\n\n", false);
 
@@ -1072,7 +1073,7 @@ export class IsabellaScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
     // [VICTORY BUTTSEX]
-    public PCVictoryOnIsabellaButtsex(): void {
+    export function PCVictoryOnIsabellaButtsex(): void {
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
         const y: number = player.cocks.cockThatFits2(monster.analCapacity());
         outputText("", true);
@@ -1165,7 +1166,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [Victory 69]
-    public victoryAgainstIzzzzzySixtyNine(): void {
+    export function victoryAgainstIzzzzzySixtyNine(): void {
         let x: number = player.cocks.cockThatFits(38);
         if (x < 0) x = 0;
         outputText("", true);
@@ -1282,7 +1283,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // ['Too Big' Victory Titfucking Funtimes With Milk]
-    public tooBigVictoryTittyFuckingFuntimesWithMilk(): void {
+    export function tooBigVictoryTittyFuckingFuntimesWithMilk(): void {
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         outputText("You toss aside your " + player.armorName + " to reveal your " + cockDescript(game.player, x) + " to the ", false);
@@ -1360,7 +1361,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [VAGINAL PROD N' POKE]
-    public vaginalProdNPokeIsabella(): void {
+    export function vaginalProdNPokeIsabella(): void {
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         outputText("", true);
@@ -1438,7 +1439,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [Small dick tit-fucking] (Dicks less than 9 inches)
-    public tinyVictoryTittyFuckingFuntimesWithMilk(): void {
+    export function tinyVictoryTittyFuckingFuntimesWithMilk(): void {
         const x: number = player.cocks.smallestCockIndex();
         outputText("", true);
         outputText("You toss aside your " + player.armorName + " to reveal your " + cockDescript(game.player, x) + " to the ", false);
@@ -1495,7 +1496,7 @@ export class IsabellaScene implements TimeAwareInterface {
     }
 
     // [Discuss Isabella]
-    public talkWithIsabella(): void {
+    export function talkWithIsabella(): void {
         spriteSelect(31);
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00262]++;
@@ -1512,4 +1513,3 @@ export class IsabellaScene implements TimeAwareInterface {
         else outputText("You sit down with Isabella and share tales of your recent adventures.  While the companionship is nice, after an hour or so of discussion you decide to go your separate ways.", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

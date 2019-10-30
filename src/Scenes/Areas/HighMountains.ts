@@ -2,10 +2,8 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class HighMountains {
-
     // Explore High Mountain
-    public exploreHighMountain(): void {
+    export function exploreHighMountain(): void {
         flags[kFLAGS.DISCOVERED_HIGH_MOUNTAIN]++;
         doNext(playerMenu);
 
@@ -100,7 +98,7 @@ export class HighMountains {
     }
     // \"<i>Chicken Harpy</i>\" by Jay Gatsby and not Savin he didn't do ANYTHING
     // Initial Intro
-    public chickenHarpy(): void {
+    export function chickenHarpy(): void {
         clearOutput();
         spriteSelect(90);
         if (flags[kFLAGS.TIMES_MET_CHICKEN_HARPY] == 0) {
@@ -131,7 +129,7 @@ export class HighMountains {
     }
 
     // If Give Two
-    public giveTwoOviElix(): void {
+    export function giveTwoOviElix(): void {
         clearOutput();
         spriteSelect(90);
         player.consumeItem(ConsumableLib.OVIELIX);
@@ -148,7 +146,7 @@ export class HighMountains {
     }
 
     // If Give Three
-    public giveThreeOviElix(): void {
+    export function giveThreeOviElix(): void {
         clearOutput();
         spriteSelect(90);
         player.consumeItem(ConsumableLib.OVIELIX, 3);
@@ -164,7 +162,7 @@ export class HighMountains {
     }
 
     // All Text
-    public getHarpyEgg(itype: ItemType): void {
+    export function getHarpyEgg(itype: ItemType): void {
         clearOutput();
         spriteSelect(90);
         flags[kFLAGS.EGGS_BOUGHT]++;
@@ -173,11 +171,10 @@ export class HighMountains {
     }
 
     // If No
-    public leaveChickenx(): void {
+    export function leaveChickenx(): void {
         clearOutput();
         spriteSelect(90);
         outputText("At the polite decline of her offer, the chicken harpy gives a warm smile before picking her cart back up and continuing along the path through the mountains.");
         outputText("\n\nYou decide to take your own path, heading back to camp while you can.");
         doNext(Camp.returnToCampUseOneHour);
     }
-}

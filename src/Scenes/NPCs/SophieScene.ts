@@ -126,6 +126,7 @@ export class SophieScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
     // Harpy MILF.  Hellzyeah
     // -More fertile than average harpy.
@@ -153,7 +154,7 @@ export class SophieScene implements TimeAwareInterface {
     // 50% chance to boost lust by 20-21(not reduced) every hour
     // Forces minimum lust to be at least 50.
 
-    public sophieAtCamp(): boolean { // Whether she's a bimbo or not
+    export function sophieAtCamp(): boolean { // Whether she's a bimbo or not
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] > 0) return false;
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) return false;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0) return true;
@@ -161,7 +162,7 @@ export class SophieScene implements TimeAwareInterface {
         return false;
     }
 
-    public sophiesDaughterDescript(): void {
+    export function sophiesDaughterDescript(): void {
         if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] == 325) {
             outputText("\nYour cute little harpy is still just a little chick.  Her body is small and childlike, and her feathers are fluffy and poofy, making your little girl look like she has puffballs for arms and legs.  Already looking to be four or five years old, the baby harpy is just as energetic as a human child of that age.  She flutters around and scrambles from one thing to another. Thankfully, the rambunctious little darling runs out of explosive energy quickly, suddenly falling to the ground into a fluffy heap for a quick nap.\n");
         }
@@ -180,7 +181,7 @@ export class SophieScene implements TimeAwareInterface {
         }
     }
 
-    public sophiesPregnancyDescript(triggeredEvent: number): void {
+    export function sophiesPregnancyDescript(triggeredEvent: number): void {
         if (triggeredEvent == 1) {
             if (SophieBimbo.bimboSophie()) {
                 outputText("\nSophie sits by herself on your comfy bedroll.  The feathery female seems to have taken a liking to your place of rest.  Your bird-brained love-slave clearly desires to be close to you, or at least your fatherly scent, as much as possible.  Lost in her lusty fantasies, she caresses the gentle bump in her belly, the telltale sign that your virile seed has worked its magic on her egg-bearing womb.  One of her hands idly slips between her legs, fingers gently playing with her wet snatch as her other rubs her tummy.");
@@ -219,7 +220,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Discovery]
-    public meetSophie(): void {
+    export function meetSophie(): void {
         SophieBimbo.sophieSprite();
         // increment met tag
         flags[kFLAGS.MET_SOPHIE_COUNTER]++;
@@ -245,7 +246,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Repeat Meeting]
-    public meetSophieRepeat(): void {
+    export function meetSophieRepeat(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         // (Pissed)
@@ -321,13 +322,13 @@ export class SophieScene implements TimeAwareInterface {
         outputText("SOMETHING SCREWY HAPPENED IN SOPHIE'S MEETING", true);
         return;
     }
-    private consensualSexSelector(): void {
+    function consensualSexSelector(): void {
         SophieBimbo.sophieSprite();
         if (player.cocks.cockThatFits(232) < 0) consensualSophieSexNoFit();
         else consensualHotSophieDickings();
     }
 
-    private fightSophie(): void {
+    function fightSophie(): void {
         SophieBimbo.sophieSprite();
         startCombat(new Sophie());
         flags[kFLAGS.SOPHIE_ANGRY_AT_PC_COUNTER] += rand(24);
@@ -335,7 +336,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Yes]
-    private repeatBreastFeeding(): void {
+    function repeatBreastFeeding(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You agree and climb the rest of the way up to her nest, finding Sophie waiting for you there.", false);
@@ -343,14 +344,14 @@ export class SophieScene implements TimeAwareInterface {
         doNext(cramANippleInIt);
     }
     // Normal Harpy Fight
-    private PCIgnoresSophieAndHarpyIsFought(): void {
+    function PCIgnoresSophieAndHarpyIsFought(): void {
         outputText("A harpy wings out of the sky and attacks!", true);
         startCombat(new Harpy());
         spriteSelect(26);
     }
 
     // [Looking for Demons]
-    private sophieLookingForDemons(): void {
+    function sophieLookingForDemons(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie throws her head back and laughs. \"<i>Don't worry about any demons here.  Any time a demon is dumb enough to wander too close to our nests, we give him a 'foot-job' he won't forget.</i>\"  To illustrate, the busty harpy lifts her leg and proudly displays her razor-sharp talons.", false);
@@ -376,7 +377,7 @@ export class SophieScene implements TimeAwareInterface {
         doYesNo(consensualSexSelector, shootDownSophieSex);
     }
     // [No]
-    private shootDownSophieSex(): void {
+    function shootDownSophieSex(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie pouts for a moment, leaning forward to better display her cleavage. \"<i>Really?  Well if you change your mind, come back and visit me.</i>\"  She turns around and fluffs her tail-feathers at you in what is clearly a dismissal.  You climb down, careful to avoid any other nests as you head back to check on your camp and its portal.", false);
@@ -386,7 +387,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Sex]
-    private sophieMeetingChoseSex(): void {
+    function sophieMeetingChoseSex(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         // (FEMALE\Unsexed)(Genderless –  forces Leave.)
@@ -414,7 +415,7 @@ export class SophieScene implements TimeAwareInterface {
         }
     }
     // 	[Stay&Sex] – starts combat
-    private FirstTimeSophieForceSex(): void {
+    function FirstTimeSophieForceSex(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You say, \"<i>I'm not going anywhere until I'm satisfied.  Don't worry, I'll be sure to give you a few licks back.</i>\"\n\n", false);
@@ -425,7 +426,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Got Lost]
-    private sophieMeetingGotLost(): void {
+    function sophieMeetingGotLost(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You explain that you were exploring the mountains and sheepishly admit that you got lost.  Sophie giggles, \"<i>Well then, you're fortunate I was here.  Some of the other girls, they might have taken advantage of you.  The younger harpies are so busy getting fertilized and laying eggs that they don't have much appreciation for good company and pleasant conversation like I do.</i>\"\n\n", false);
@@ -454,7 +455,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Foraging For Supplies]
-    private tellSophieYoureForagingForStuff(): void {
+    function tellSophieYoureForagingForStuff(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You explain to her that you were merely searching for supplies that would aid you in your quest.  Sophie's eyes narrow dangerously as she warns you, \"<i>Don't even think of our eggs as food!  Of course, I'm sure a cute little morsel like you would never do that.  What's this about a quest?</i>\"\n\n", false);
@@ -468,7 +469,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Harpy Breastfeeding]
-    private cramANippleInIt(): void {
+    function cramANippleInIt(): void {
         SophieBimbo.sophieSprite();
         player.boostLactation(.01);
         outputText("", true);
@@ -578,7 +579,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Consensual Secks – Requires Dick]
-    private consensualHotSophieDickings(): void {
+    function consensualHotSophieDickings(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS]++;
@@ -711,7 +712,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Yes]
-    private postSophieSexSnuggle(): void {
+    function postSophieSexSnuggle(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You sprawl out in Sophie's nest and allow her to wrap her wings about you protectively.  Her hands stay busy the entire time, alternatively masturbating ", false);
@@ -742,7 +743,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [No]
-    private postSexSophieSnuggleTurnedDown(): void {
+    function postSexSophieSnuggleTurnedDown(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("You turn down her offer and assure her that you'll be fine.  Sophie giggles while you try to get dressed, and you see her amber eyes watching you as try to climb back down the mountain with a stiffy.  She seems greatly amused by your predicament.", false);
@@ -752,7 +753,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // [Consentual Sex No Fito]
-    private consensualSophieSexNoFit(): void {
+    function consensualSophieSexNoFit(): void {
         SophieBimbo.sophieSprite();
         const x: number = player.cocks.biggestCockIndex();
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS]++;
@@ -839,7 +840,7 @@ export class SophieScene implements TimeAwareInterface {
         doYesNo(postSophieSexSnuggle, postSexSophieSnuggleTurnedDown);
         // Go to same yes or no as 'fits' options.
     }
-    private sophieFucked(dicked: boolean = true): void {
+    function sophieFucked(dicked: boolean = true): void {
         // knock up if not knocked up
         if (!pregnancy.isPregnant && dicked) {
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, 48 + rand(48));
@@ -859,7 +860,7 @@ export class SophieScene implements TimeAwareInterface {
         flags[kFLAGS.FUCKED_SOPHIE_COUNTER]++;
     }
 
-    public luststickApplication(hours: number = 4): void {
+    export function luststickApplication(hours: number = 4): void {
         // Immune to luststick?
         if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) return;
         // Increment luststick resistance
@@ -885,7 +886,7 @@ export class SophieScene implements TimeAwareInterface {
         else player.effects.create(StatusAffects.Luststick, hours, 0, 0, 0);
     }
 
-    public sophieLostCombat(): void {
+    export function sophieLostCombat(): void {
         SophieBimbo.sophieSprite();
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS] = 0;
         outputText("Sophie is down!  ", true);
@@ -919,7 +920,7 @@ export class SophieScene implements TimeAwareInterface {
         }
         else cleanupAfterCombat();
     }
-    public sophieWonCombat(): void {
+    export function sophieWonCombat(): void {
         SophieBimbo.sophieSprite();
         flags[kFLAGS.SOPHIE_FOLLOWER_PROGRESS] = 0;
         if (player.cocks.length > 0) {
@@ -933,7 +934,7 @@ export class SophieScene implements TimeAwareInterface {
     }
     // COMBAT STUFF HOOOO/
     // Male 'Normal' – throw on back and grab ankles, force over head and fuck
-    private maleVictorySophieRape(): void {
+    function maleVictorySophieRape(): void {
         SophieBimbo.sophieSprite();
         const x: number = player.cocks.cockThatFits(232);
         outputText("", true);
@@ -968,7 +969,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // Male 'Doesn't Fit'
-    private maleVictorySophieRapeHUGE(): void {
+    function maleVictorySophieRapeHUGE(): void {
         SophieBimbo.sophieSprite();
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
@@ -1025,7 +1026,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // Female Pussy Grind
-    private sophieVictoryPussyGrind(): void {
+    function sophieVictoryPussyGrind(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie is ", false);
@@ -1084,7 +1085,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // Female Clit-Fucking
-    private fuckDatClit(): void {
+    function fuckDatClit(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie is ", false);
@@ -1128,7 +1129,7 @@ export class SophieScene implements TimeAwareInterface {
 
     // LOSS SCENES
     // Tiny Wang Emasculation
-    private tinyDickSupremeSophieLoss(): void {
+    function tinyDickSupremeSophieLoss(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Sophie looks down at your ", false);
@@ -1180,7 +1181,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // Normal Sized Wang Rape – Kisstacular + Hypno
-    private normalLossRapuuuuSophie(): void {
+    function normalLossRapuuuuSophie(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         const x: number = player.cocks.cockThatFits(232);
@@ -1226,7 +1227,7 @@ export class SophieScene implements TimeAwareInterface {
     }
 
     // Too Big – Get knocked out and wake up with your dick covered in kisses.  Status for 16 hours (8 more after waking up)
-    private tooBigForOwnGoodSophieLossRape(): void {
+    function tooBigForOwnGoodSophieLossRape(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         const x: number = player.cocks.biggestCockIndex();
@@ -1241,7 +1242,7 @@ export class SophieScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
     // No Dong – You wake up at the bottom of the mountain.
-    private SophieLossRapeNoDonguuuu(): void {
+    function SophieLossRapeNoDonguuuu(): void {
         SophieBimbo.sophieSprite();
         outputText("", true);
         outputText("Utterly defeated, you collapse.   Sophie doesn't let up, and batters you mercilessly with her wings until you lose consciousness.\n\n", false);
@@ -1257,4 +1258,3 @@ export class SophieScene implements TimeAwareInterface {
         // Increase pissed time
         else flags[kFLAGS.SOPHIE_ANGRY_AT_PC_COUNTER] += rand(72);
     }
-}

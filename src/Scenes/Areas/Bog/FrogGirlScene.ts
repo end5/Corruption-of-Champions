@@ -1,9 +1,7 @@
 
-export class FrogGirlScene {
-
     // const TIMES_ENCOUNTERED_FROG:int = 1017;
     // Intro
-    public findTheFrogGirl(): void {
+    export function findTheFrogGirl(): void {
         clearOutput();
         if (flags[kFLAGS.TIMES_ENCOUNTERED_FROG] == 0) {
             outputText("You begin your trudge through the bog, slogging through the soupy muck.  Insects buzz by every second, spinning in hectic spirals around your head.");
@@ -29,7 +27,7 @@ export class FrogGirlScene {
     }
 
     // Follow:
-    private followDatFrog(): void {
+    function followDatFrog(): void {
         clearOutput();
         outputText("You splash your way up the terrace of pools, shedding your [armor] as you do so, leaving your gear draped over the mangrove ridges.  She holds her arms out to you as you step naked into her pool.  She rises to meet you, and you notice that the water concealed a swollen, pregnant belly.");
         outputText("\n\nHer skin is slimy to the touch, and as she pulls you in close, she leaves her ichor on your arms and [chest].  It tingles where it touches you, and the sunlight seems to grow a bit brighter around you.  Her song continues, and you swear that you can see the music floating in the air, every different note a different neon light drifting through the air.  Half focused, your eyes dart back and forth, tracking the tiny motes of light.");
@@ -57,7 +55,7 @@ export class FrogGirlScene {
         menu();
         addButton(0, "Next", getFrogButtFilled);
     }
-    private getFrogButtFilled(): void {
+    function getFrogButtFilled(): void {
         clearOutput();
         outputText("You wake up an hour later and it takes a while for you remember anything.  Gradually, you piece the last hour together, remembering the frog girl, her hypnotic song, and hallucinogenic slime.  You’re floating on your back in a crystal-clear pool, and above you, between the mangrove canopies, Mareth’s sky drifting lazily far overhead.");
         outputText("\n\nAnd the eggs.  Oh hell, the eggs!  You splash in the water, righting yourself and looking down at your swollen belly.  You look nine months pregnant!  The frog girl filled you with her eggs and took off leaving you to birth them.  You can’t seem to force them out, either - it looks like you’ll just have to carry these eggs to term.");
@@ -71,7 +69,7 @@ export class FrogGirlScene {
     // [Anal stretch +1/Anal Moistness +1, sensitivity +1, int +1]
 
     // Resist:
-    private resistDatFrog(): void {
+    function resistDatFrog(): void {
         clearOutput();
         outputText("You shake your head and drop to the ground, dunking your head in one of the crystal clear pools.  You emerge with your head clear, cold water dripping from your [hair], frowning at the frog girl.");
         outputText("\n\nRealizing that you’ve shaken off her hypnosis, the frog girl gulps, the action producing a curious croaking noise.  As you stomp up the terrace, she scrambles up out of the pool, or at least attempts to.");
@@ -87,13 +85,13 @@ export class FrogGirlScene {
 
     }
     // Leave her be:
-    private leaveFrogBe(): void {
+    function leaveFrogBe(): void {
         clearOutput();
         outputText("You shrug and leave the pouting frog girl in her pond, hopping back down the terrace of pools and walking back towards your camp, hoping that your [hair] will dry by the time you get back.");
         doNext(Camp.returnToCampUseOneHour);
     }
     // Question the frog girl:
-    private questDatFrogGirl(): void {
+    function questDatFrogGirl(): void {
         clearOutput();
         outputText("You decide to question the pouting amphibian and take a seat at the edge of her pool, asking her why she just tried to lure you in.");
         outputText("\n\n\"<i>I’m pregnant,</i>\" she bubbles shortly, still half-sunk in the pool.  She purses her lips to one side, eyes shifting away from you.");
@@ -111,7 +109,7 @@ export class FrogGirlScene {
     }
 
     // Continue on your way:
-    private continueOnYourWay(): void {
+    function continueOnYourWay(): void {
         clearOutput();
         outputText("You nod in sympathy, patting the frog girl on her head, but decide not to inquire any further.  She sighs and sinks down further into the water, resigned to her maternal duties.");
         outputText("\n\nYou leave down the terrace of pools, heading back to your camp.");
@@ -119,7 +117,7 @@ export class FrogGirlScene {
     }
 
     // Offer to carry her eggs:
-    private carryBeeGirlsEggsVoluntarilyYouButtSlut(): void {
+    function carryBeeGirlsEggsVoluntarilyYouButtSlut(): void {
         clearOutput();
         outputText("Feeling sympathy for the frog girl, you volunteer to help with her burden.");
         outputText("\n\n\"<i>Omigosh, really?</i>\" she says, lunging forward with a splash.  She throws her arms around your shoulders.  \"<i>I promise to make it absolutely amazing for you.</i>\"");
@@ -148,7 +146,7 @@ export class FrogGirlScene {
         addButton(0, "Next", voluntarilyGetEggedEpilogue);
     }
     // **
-    private voluntarilyGetEggedEpilogue(): void {
+    function voluntarilyGetEggedEpilogue(): void {
         clearOutput();
         outputText("You wake up an hour later and it takes a while for you remember anything.  Gradually, you piece the last hour together, remembering the frog girl, her hypnotic song, and hallucinogenic slime.  You’re floating on your back in a crystal-clear pool, and above you, between the mangrove canopies, Mareth’s sky drifting lazily far overhead.");
         outputText("\n\nAnd the eggs.  Oh hell, the eggs!  You splash in the water, righting yourself and looking down at your swollen belly.  You look nine months pregnant!  The frog girl really took you up on your offer and you belly bulges out uncomfortably.  You can’t seem to force them out, either - it looks like you’ll just have to carry these eggs to term.");
@@ -160,7 +158,7 @@ export class FrogGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Teach Her a Lesson
-    private teachDatFrogALesson(): void {
+    function teachDatFrogALesson(): void {
         clearOutput();
         outputText("This frog bitch needs to be careful about who she lures in.");
         outputText("\n\nYou say so, and hop down into the water, sinking waist-deep, striding forward toward the frog girl, grabbing her by the wrist.  Slowed down by her pregnancy, it seems that she can do little to resist.");
@@ -174,7 +172,7 @@ export class FrogGirlScene {
         addButton(0, "Next", lessonFollowup);
     }
 
-    private lessonFollowup(): void {
+    function lessonFollowup(): void {
         clearOutput();
         outputText("You wake up two hours later, floating alone in the pool, with a migraine and soggy clothes.  You slog your way out, clutching your head, and head back to camp.");
         // [Toughness -1]
@@ -183,7 +181,7 @@ export class FrogGirlScene {
     }
 
     // Laying the Eggs
-    public birthFrogEggsAnal(): void {
+    export function birthFrogEggsAnal(): void {
         outputText("\n<b>Oh no...</b>\nYou groan, feeling a shudder from deep inside, a churning from your gut.  A trickle of slime leaks from your [asshole] down your [legs] and you feel a pressure from deep inside.");
         outputText("\n\nWater - you need to be near water!  The instinct is sudden and clear, and you stagger toward the small creek near your camp.  You crouch low on the river bank, hands on the ground, and knees angled up in an oddly frog-like pose.");
         outputText("\n\nSlime pools beneath you, running down into the water as he first egg begins shoving out of you.  It feels... weird.  The pressure isn’t as intense as some of the things you’ve encountered in Mareth, but it’s still incredibly large.  Your asshole stretches wide, numbed a bit by the slime, but still far larger than you would have thought possible.  As the egg squelches to the ground, you realize that the eggs are jelly-like, and pliant enough to give you some leeway in laying them.");
@@ -201,7 +199,7 @@ export class FrogGirlScene {
         dynStats("sen", 1);
     }
     // Superbonus Vaginal Eggs!
-    private superBonusFrogEggsInYerCooch(): void {
+    function superBonusFrogEggsInYerCooch(): void {
         clearOutput();
         outputText("\"<i>Wait, you want them where?</i>\" asks the frog girl, incredulously.");
         outputText("\n\nYou repeat that you’d like her to lay her clutch in your womb, licking your lips and running your fingers down to your [vagina].");
@@ -227,7 +225,7 @@ export class FrogGirlScene {
     }
 
     // Vaginal Egg birth
-    public layFrogEggs(): void {
+    export function layFrogEggs(): void {
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold: a vagina.  ", false);
             player.vaginas.createVagina();
@@ -273,4 +271,3 @@ export class FrogGirlScene {
         dynStats("sen", 1);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

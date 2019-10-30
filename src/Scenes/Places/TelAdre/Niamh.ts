@@ -40,8 +40,9 @@ export class Niamh implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public telAdreNiamh(): void {
+    export function telAdreNiamh(): void {
         if (flags[kFLAGS.MET_NIAMH] == 0) {
             outputText("\n\nAt a table near the back of the bar sits one of the many curious sights Tel'Adre has to offer: a white-haired, ebony-skinned woman, sporting twitching feline ears and tail.  The curious-looking and mostly human girl sports a pair of form-fitting white leggings and a matching top hat. An unbuttoned leaf-green waistcoat hangs slack around her slender hips, and it doesn't take you long to see the reason for the lack of closure: her ");
             if (game.time.hours <= 8) outputText("massive N-cup breasts, spilling over the table");
@@ -73,7 +74,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // Approach:
-    public approachNiamh(): void {
+    export function approachNiamh(): void {
         clearOutput();
 
         outputText(images.showImage("niamh-approach-in-bar"));
@@ -94,7 +95,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [Get Beer]
-    public getANiamhBeer(): void {
+    export function getANiamhBeer(): void {
         clearOutput();
         outputText(images.showImage("niamh-get-beer"));
         outputText("\"<i>That'll be two gems,</i>\" she replies.  You hand over the payment, which she holds up to the light and scrutinizes thoroughly.  Satisfied, she drops the things into a sack at her waist.  \"<i>Sorry,</i>\" she mutters. \"<i>I do want to get this damned beer out o' me, but this is still my primary livelihood; I canno' afford to be cheated.  Anyway, here's your mug - you can keep that f'r another two gems; I get 'em cheap.  Go ahead and fill it up, but keep in mind what you're tweakin', right?</i>\"");
@@ -135,7 +136,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [Here]
-    private drinkNiamhsBeerInTelAdre(): void {
+    function drinkNiamhsBeerInTelAdre(): void {
         clearOutput();
         if (player.lactationQ() >= 300 && player.breasts.biggestTitSize() >= 5 && rand(2) == 0 && flags[kFLAGS.MET_NIAMH] > 0) {
             outputText("\"<i>Skoal!</i>\" you cheer as you down the delicious mug of booze.  The incredibly potent beverage warms you down to your chest and beyond.  The heat of the alcohol trails like fire down into your gut and warms your genitals, causing you to feel more aroused.  The buzz of the beverage makes you light headed, as if thinking had become a little more difficult.");
@@ -192,7 +193,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [To Go]
-    private blackCatBeerToGo(): void {
+    function blackCatBeerToGo(): void {
         clearOutput();
         outputText("\"<i>That'll be two more gems, then,</i>\" the girl says.  \"<i>Though, if your hands get any more skillful I might have to pay you to take it,</i>\" she flirts.  You pass over two more gems, and she gratefully bags them and beams you a smile.");
         player.gems -= 2;
@@ -213,7 +214,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // Talk
-    private talkToNiamh(): void {
+    function talkToNiamh(): void {
         clearOutput();
         // (first time only)
         if (flags[kFLAGS.TALKED_NIAMH] == 0) {
@@ -243,7 +244,7 @@ export class Niamh implements TimeAwareInterface {
         simpleChoices("Beer", beer, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
     // Leave
-    private leaveNiamh(): void {
+    function leaveNiamh(): void {
         clearOutput();
         outputText("You decide that you don't really want to talk to this strange cat-girl and, as politely as possible, excuse yourself.");
         // Player returns to Wet Bitch menu
@@ -252,7 +253,7 @@ export class Niamh implements TimeAwareInterface {
 
     // Black Cat Beer
     // is affected by Black Cat Beer item effects
-    public blackCatBeerEffects(player: Player, clearScreen: boolean = true, newLine: boolean = false): void {
+    export function blackCatBeerEffects(player: Player, clearScreen: boolean = true, newLine: boolean = false): void {
         if (clearScreen) clearOutput();
         if (newLine) outputText("\n\n");
         outputText("Uncapping the mug, you swill the stuff down in a single swig, gasping as it burns a fiery trail into your belly.  It's rich and sweet, and damn, but it's strong stuff!");
@@ -279,24 +280,24 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // Black Cat Beer Wears Off: This message is displayed eight hours after the last drink.
-    public blackCatBeerExpires(): void {
+    export function blackCatBeerExpires(): void {
         dynStats("spe", 4.5, "int", 4.5, "lib", (-1 * player.effects.getValue2Of(StatusAffects.BlackCatBeer)));
         player.effects.remove(StatusAffects.BlackCatBeer);
         outputText("\n<b>The warm, fuzzy feeling finally dissipates, leaving you thinking clearer, focusing better, and less horny.  It was nice while it lasted, but it's also good to be back to normal.  Still, a part of you kind of wants another beer.</b>\n");
     }
 
-    private giveNiamphBimboLiquer(): void {
+    function giveNiamphBimboLiquer(): void {
         taintNiamh(true);
     }
 
-    private giveNiamphSuccubiMilk(): void {
+    function giveNiamphSuccubiMilk(): void {
         taintNiamh(false);
     }
 
     // Corruption Option
     // 20% chance of Nyam using this as her opening if PC has >= 90 corruption and either item in inventory
     // [corruption chance encounter]
-    private corruptOrBimboNiamhIntro(): void {
+    function corruptOrBimboNiamhIntro(): void {
         clearOutput();
         outputText("\"<i>Heya, favored customer,</i>\" the busty kitty greets as you approach.  \"<i>I have a favor to ask!  My drink's empty, and I get bored of me own brew,</i>\" Niamh explains.  \"<i>Would ya mind fetchin' me somethin', or are ye gonna force me to sample me own goods once more?</i>\"");
 
@@ -315,7 +316,7 @@ export class Niamh implements TimeAwareInterface {
         addButton(4, "Back", maybeLaterNiamh);
     }
     // [Maybe Later]
-    public maybeLaterNiamh(): void {
+    export function maybeLaterNiamh(): void {
         clearOutput();
         outputText("You chuckle nervously and shake your head, citing your ignorance of all things alcoholic.  Niamh sighs resignedly, reaching forward and grabbing one of her elongated nipples.  With practiced ease, she fills her flagon and takes a deep swig of it.  \"<i>Can't blame me for wantin' a change of pace,</i>\" she mutters.  \"<i>Now, would ye like your own glass of Black Cat Beer, or are ya gonna keep starin' at me tits?</i>\"");
         let beer: () => void = null;
@@ -326,7 +327,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [Succubus Milk] or [Bimbo Liqueur]
-    public taintNiamh(bimbo: boolean = false): void {
+    export function taintNiamh(bimbo: boolean = false): void {
         clearOutput();
         outputText("You grab Niamh's glass and one more and head off, making sure to turn a corner before commandeering an empty table.  Plunking the mugs down in front of you, you mutter to yourself as she moves away.");
         // [if sucmilk]
@@ -367,7 +368,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // 24 hours later, random encounter on the Plains
-    public niamhPostTelAdreMoveOut(): void {
+    export function niamhPostTelAdreMoveOut(): void {
         // Move her into the bazaar
         flags[kFLAGS.NIAMH_MOVED_OUT_COUNTER] = -1;
         clearOutput();
@@ -393,13 +394,13 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [no]
-    private niamhCorruptMobileSnackTurnDown(): void {
+    function niamhCorruptMobileSnackTurnDown(): void {
         clearOutput();
         outputText("You turn her down, fabricating a little tale about how you just got done drinking a delicious beverage, and you couldn't possibly have anything more.  She nods sagely, pauses, and loudly belches.  Even in her soused state, she retains some semblance of manners, so she chuckles nervously while moving a hand to her lips.  \"<i>Sorry 'bout tha'...</i>\" she mutters, slinking off.  You have a feeling you'll see her again.");
         doNext(Camp.returnToCampUseOneHour);
     }
     // [yup]
-    private niamhCorruptedMobileSnackDrinkTime(): void {
+    function niamhCorruptedMobileSnackDrinkTime(): void {
         clearOutput();
         outputText("Of course you do!  You went through the trouble of getting her boobs to their current condition; drinking from the tap is exactly what you had in mind.  A smile brightens Niamh's features, and she plops down heavily on the ground, waving you over to sit next to her.  ");
         // [bimbo version]
@@ -436,7 +437,7 @@ export class Niamh implements TimeAwareInterface {
         }
         doNext(Camp.returnToCampUseOneHour);
     }
-    public bimboChampagne(player: Player, clearScreen: boolean, intro: boolean): void {
+    export function bimboChampagne(player: Player, clearScreen: boolean, intro: boolean): void {
         if (clearScreen) clearOutput();
         if (intro) {
             if ((player.perks.findByType(PerkLib.FutaFaculties) >= 0 && player.perks.findByType(PerkLib.FutaForm) >= 0) || (player.perks.findByType(PerkLib.BimboBody) >= 0 && player.perks.findByType(PerkLib.BimboBrains) >= 0)) {
@@ -479,7 +480,7 @@ export class Niamh implements TimeAwareInterface {
         }
     }
 
-    public removeBimboChampagne(): void {
+    export function removeBimboChampagne(): void {
         outputText("\n<b>Whoah!  Your head is clearing up, and you feel like you can think clearly for the first time in forever.  Niamh sure is packing some potent stuff!  You shake the cobwebs out of your head, glad to once again be less dense than a goblin with a basilisk boyfriend.</b>");
         dynStats("spe", 10, "lib", -1);
         if (player.effects.getValue2Of(StatusAffects.BimboChampagne) > 0) {
@@ -499,7 +500,7 @@ export class Niamh implements TimeAwareInterface {
         outputText("\n");
     }
 
-    public bazaarNiamh(): void {
+    export function bazaarNiamh(): void {
         clearOutput();
         // Bimbo Niamh:
         if (flags[kFLAGS.NIAMH_STATUS] == 2) {
@@ -535,7 +536,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [bimbo/corrupted beer drink texts]
-    private bazaardNiamhDrink(): void {
+    function bazaardNiamhDrink(): void {
         clearOutput();
         player.gems -= 2;
         outputText("Approaching the fallen-from-grace (yet completely content) catgirl, you toss her a couple gems and request a glass of the house drink.");
@@ -552,7 +553,7 @@ export class Niamh implements TimeAwareInterface {
         }
     }
     // {If player drinks from the tap:}
-    private drinkFromZeTap(): void {
+    function drinkFromZeTap(): void {
         clearOutput();
         outputText("Your eyes lock onto her large, ever-dribbling nipples, the froth of spilt champagne caked on the table supporting her mammoth breasts, and you know you just have to have it from the source.  You push your way forward and seat yourself on a plush cushion that, from its many tears and suspicious-smelling stains, has seen better days, then grasp the huge boob in front of you, making the ditzy catgirl yowl in anticipation of pleasure.");
         outputText("\n\nThe wonderful taste explodes into your mouth as her well-trained teat gushes forth its precious elixir.  Delightfully fizzy, the frothy fluid is a rich, sugary-sweet delicacy, with a strangely gooey texture that just makes it all the yummier to swallow.  You gulp and slurp and suckle, dimly aware that somebody else has taken advantage of Niamh's free nipple.  A strange tingling feeling sweeps through your body; like pins and needles, only wonderfully pleasurable, so much so that you can feel your mind starting to dim.  Desperate for greater pleasure you suck harder and harder, gorging yourself on as much fluid as you can get, as fast as you can make it pour into your mouth - everything seems to fade away into nothing except the wonderful taste of this fizzy booze and your insatiable thirst for more of it.  You just keep drinking and drinking and, like, it just feels better and better - you find your mind totally shutting down...");
@@ -565,7 +566,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // grabbing Bim Cham in a to-go box
-    private getBimboChampFromNiamh(): void {
+    function getBimboChampFromNiamh(): void {
         clearOutput();
         outputText("You explain your need for a bottle of her champagne; the ditzy kitty takes several moments to register your words, then nods idly.  \"<i>Works fer me!</i>\" she responds, reaching behind her and rummaging in a large burlap bag.  She produces a flask from the sack's depths, unscrewing the cap and attempting to line it up with a nipple.  Try as she might, she just can't quite reach all the way, and with an airy giggle, she passes it to you instead.");
         outputText("\n\nWith a resigned sigh, you accept the flask and kneel, flicking both nipples experimentally.  Pressing her elbows against her boobs, Niamh moans, the combination of your stimulation and her pressure beginning a steady trickle of delicious-looking champagne.  The mere smell of the stuff makes you feel a bit dumber!");
@@ -576,7 +577,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [Bazaar sex]
-    private bazaarSex(): void {
+    function bazaarSex(): void {
         const x: number = player.cocks.biggestCockIndex();
         const y: number = x + 1;
         clearOutput();
@@ -602,7 +603,7 @@ export class Niamh implements TimeAwareInterface {
 
     // [Meet Sean with bimbo champagne in inventory]
     // five bimbo champagne required, takes 24 hours to proc and 500 gems to do.
-    public seanBimboBrewing(): void {
+    export function seanBimboBrewing(): void {
         clearOutput();
         outputText("The uncharacteristically gentlemanly incubus raises his eyebrow as you produce an armful of filled flasks and drop them onto his mostly-empty table.  \"<i>I assume you'd like me to do something special with these,</i>\" he quips, somewhat dryly.");
         outputText("\n\nYou smirk and explain to him the nature of the contents of the containers, as well as the nature of your visit.");
@@ -615,7 +616,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // yeah I got this
-    private yeahSeanLetsBimbooze(): void {
+    function yeahSeanLetsBimbooze(): void {
         clearOutput();
         outputText("\"<i>Perfect!</i>\" he says, moving forward to gather up the flasks.  \"<i>You can go, now.  This is a delicate process, and any mistakes may lead to an outbreak of large-breasted and dim-witted fauna.</i>\"  He pauses, gauging your expression.  \"<i>... Which is <b>not</b> a good thing,</i>\" he adds.  Almost as an afterthought, he extends his hand toward the table, saying, \"<i>I'd like the payment now, if you'd please.</i>\"  You separate out the appropriate number of gems for the demon.  He snatches it up and idly throws it behind him, where you hear a clunk and tinkle as it strikes something and rolls a bit.");
         outputText("\n\n\"<i>Now shoo, I must do work!</i>\" he scolds, ushering you out of the cave.  \"<i>Come back tomorrow!</i>\"  Satisfied, you leave his shop.");
@@ -634,7 +635,7 @@ export class Niamh implements TimeAwareInterface {
     // set some kinda sorta flag to allow the 00:00 function to trigger the next scene
 
     // 24 hours later
-    public getBimboozeFromSean(): void {
+    export function getBimboozeFromSean(): void {
         clearOutput();
         outputText("Sean turns as you enter, managing a thin smile as he regards you.  \"<i>Excellent timing, I have just finished this!</i>\"");
         outputText("He scoops a familiar-looking bottle from a tabletop, passing it off to you.  \"<i>Be somewhat careful with this,</i>\" he warns as you take it.  \"<i>The original's deleterious effect on the mind has been duplicated, I assure you.</i>\"\n\n");
@@ -645,7 +646,7 @@ export class Niamh implements TimeAwareInterface {
     }
 
     // [LEAVE]
-    private leaveWithBeerTits(): void {
+    function leaveWithBeerTits(): void {
         clearOutput();
         outputText("The offer is tempting but right now you'd much rather deal with your boozy boobs privately.  You take off while trying to keep your [armor] modestly in place over your tits but it's difficult.  Your nipples constantly leak and drip a trail of alcohol all the way back to camp.  Thankfully by the time you arrive the effects seem to have mostly worn off.  Your nipples return to dripping milk, but although they've shrunk back down a bit they don't quite shrink all the way, leaving you with somewhat larger endowments than you had before.");
         player.growTits(2, player.breasts.length, false, 2);
@@ -655,7 +656,7 @@ export class Niamh implements TimeAwareInterface {
     // [SELL YOUR BOOZE]
     // Non-holidays have small payout of gems proportional to lactation.  Boob rating increases by 1.
     // Holidays have larger payout of gems proportional to lactation.  Boob rating increases by 2.
-    private sellYourBooze(): void {
+    function sellYourBooze(): void {
         clearOutput();
         player.gems += 2;
         temp = Math.round(player.lactationQ() / 100);
@@ -698,7 +699,7 @@ export class Niamh implements TimeAwareInterface {
     // ===============
     // First Paragraph
     // ===============
-    private barBeerOrgyTits(): void {
+    function barBeerOrgyTits(): void {
         clearOutput();
         // If [player has pussy]
         if (player.vaginas.length > 0) outputText("The drooling of your [vagina] gets worse as the constant \"tapping of your kegs\" drives your sense of self-restraint to its limits.  The hands of various drunks start moving more aggressively over your breasts, eventually winding their way down between your thighs.");
@@ -898,7 +899,7 @@ export class Niamh implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private boozeBoobsType(): string {
+    function boozeBoobsType(): string {
         // New Years
         if (isHolidays() && date.date >= 31) return "champagne";
         // Saint Patrick's
@@ -910,4 +911,3 @@ export class Niamh implements TimeAwareInterface {
         // Non-Holiday, Generic
         else return "beer";
     }
-}

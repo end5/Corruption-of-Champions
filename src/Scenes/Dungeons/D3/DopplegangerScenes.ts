@@ -3,9 +3,8 @@
  * ...
  * @author Gedan
  */
-export class DopplegangerScenes {
 
-    public getDemGlasses(): void {
+    export function getDemGlasses(): void {
         clearOutput();
         outputText("You step into the room and move across to the optician stand. The metal door clicks shut behind you. A feeling of unease grows in your gut as you walk further into the room; the place seems gloomier and larger than it did from the door. You almost jump out of your skin as somebody suddenly emerges to your right- but of course it’s just you, reflected in the intricately decorated, oval-shaped mirror which centers the room. You smile at your own silliness, before watching your expression change to a frown. You seem very sharply focused in it; the room behind you barely seems there at all. Some kind of enchantment to refine a demon’s appearance, you guess.");
 
@@ -26,7 +25,7 @@ export class DopplegangerScenes {
         startCombat(new Doppleganger());
     }
 
-    public punchYourselfInTheBalls(): void {
+    export function punchYourselfInTheBalls(): void {
         flags[kFLAGS.D3_DOPPLEGANGER_DEFEATED] = 1;
         player.keyItems.create("Laybans", 0, 0, 0, 0);
 
@@ -40,7 +39,7 @@ export class DopplegangerScenes {
         addButton(1, "End It", killYourself);
     }
 
-    public fuckYourself(): void {
+    export function fuckYourself(): void {
         clearOutput();
         outputText("This, you feel, is an opportunity which is not likely to arise again.");
 
@@ -171,7 +170,7 @@ export class DopplegangerScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public killYourself(): void {
+    export function killYourself(): void {
         clearOutput();
         outputText("You hold its gaze for a moment more, and then with a single, fluid movement turn and smash your [weapon] into the engraved mirror. A shrill scream mingles with the sound of breaking glass, but by the time the shards begin to tinkle and chime to the floor it’s keened away, and when you turn back the doppelganger is gone. The shrill sound could have been the sound of the mirror itself when you hit it, you suppose. This could all have been a very strange fugue. Certainly, standing here now in this dishevelled storage room, it’s difficult to believe what just happened. Shaking your head, you make sure the protective glasses you came here for are still in your pocket before heading to the door and leaving.");
 
@@ -180,7 +179,7 @@ export class DopplegangerScenes {
         addButton(0, "Next", D3.resumeFromFight);
     }
 
-    public inSovietCoCSelfFucksYou(): void {
+    export function inSovietCoCSelfFucksYou(): void {
         clearOutput();
 
         outputText("Everything feels so vague, so inconstent; your body and mind shimmer like a lake hit by rain, incapable of focusing, incapable of holding onto a shape, a slave to any force that wants to form you. Who are you? It is obvious, isn’t it. Your image floats in front of you, the only clear thing you can perceive. It grins triumphantly, and you grin back: it is all you can do. Its movements define you, dominate you utterly, within and without. When it steps forward and puts its hand out, it isn’t by choice you mimic the action - it is all you can do. Your fingers stretch out to meet their mirror image, but before they meet they touch a cold, invisible barrier. Glass. True understanding of your situation permeates you like spreading oil, but you cannot gasp, scream in horror, pull at your hair. You slowly pull away from the mirror’s surface, your grin widening, because that is what the demon who has taken your form is doing.");
@@ -212,4 +211,3 @@ export class DopplegangerScenes {
         outputText("\n\nYou quickly go completely insane, just like your bodysnatcher did, although not in a way [he] ever knew. You will never be able to express that insanity though. Every hour there is a new scene of complete depravity for you to reflect, personify and act out. A demon’s dearest wish - an eternity of constantly changing, mind-boggling sex - is your final fate.");
         gameOver();
     }
-}

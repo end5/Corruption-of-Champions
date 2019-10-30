@@ -1,6 +1,5 @@
 
 export class Urta implements TimeAwareInterface {
-
     // Urta variables
     // flags[kFLAGS.TIMES_FUCKED_URTA] = times fucked
     // flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = urtas horsecock comfort level
@@ -89,20 +88,21 @@ export class Urta implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public urtaSprite(): void {
+    export function urtaSprite(): void {
         if (urtaDrunk()) spriteSelect(84);
         else spriteSelect(1);
     }
 
-    public urtaCapacity(): number {
+    export function urtaCapacity(): number {
         let bonus: number = flags[kFLAGS.TIMES_RUT_FUCKED_URTAS_CUNT] * 5;
         if (bonus > 40) bonus = 40;
         if (flags[kFLAGS.URTA_TENTACLE_GAPED] > 0) return 500;
         return 60 + bonus;
     }
 
-    public urtaLove(love: number = 0): boolean {
+    export function urtaLove(love: number = 0): boolean {
         if (flags[kFLAGS.URTA_PC_LOVE_COUNTER] == -1) return false;
         if (love == 0) {
             return flags[kFLAGS.URTA_PC_LOVE_COUNTER] == 1;
@@ -122,21 +122,21 @@ export class Urta implements TimeAwareInterface {
         else return false;
     }
 
-    public urtaAvailableForSex(): boolean { return urtaFuckbuddy() && Scylla.scyllaAction != Scylla.SCYLLA_ACTION_FUCKING_URTA && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0; }
+    export function urtaAvailableForSex(): boolean { return urtaFuckbuddy() && Scylla.scyllaAction != Scylla.SCYLLA_ACTION_FUCKING_URTA && flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] == 0; }
 
-    public urtaFuckbuddy(): boolean { // Returns true if Urta is either the player's fuckbuddy or lover
+    export function urtaFuckbuddy(): boolean { // Returns true if Urta is either the player's fuckbuddy or lover
         if (UrtaQuest.urtaBusy() || flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == -1) return false;
         if (urtaJustFriends()) return false;
         return (flags[kFLAGS.TIMES_FUCKED_URTA] > 0);
     }
 
-    public urtaJustFriends(): boolean { return flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == 0 && flags[kFLAGS.URTA_PC_LOVE_COUNTER] == -1; }
+    export function urtaJustFriends(): boolean { return flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] == 0 && flags[kFLAGS.URTA_PC_LOVE_COUNTER] == -1; }
 
-    public urtaAtBar(): boolean { // Is Urta physically at the Wet Bitch?
+    export function urtaAtBar(): boolean { // Is Urta physically at the Wet Bitch?
         return (!UrtaQuest.urtaBusy() && flags[kFLAGS.AMILY_VISITING_URTA] != 1 && game.time.hours < 15 && flags[kFLAGS.KATHERINE_UNLOCKED] != 3);
     }
 
-    public urtaDrunk(): boolean {
+    export function urtaDrunk(): boolean {
         // Preg = no drinking!
         if (pregnancy.isPregnant) return false;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00146] == -1) return false;
@@ -145,7 +145,7 @@ export class Urta implements TimeAwareInterface {
         else return false;
     }
 
-    private urtaOpenAboutEdryn(): boolean {
+    function urtaOpenAboutEdryn(): boolean {
         // Did it come out from the scylla threesome?
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] > 0) return true;
         // Did it come out from marble?
@@ -155,7 +155,7 @@ export class Urta implements TimeAwareInterface {
         return false;
     }
 
-    public knockUpUrtaChance(): void { // Moved here from UrtaPregs since it needs to be accessed from outside Urta
+    export function knockUpUrtaChance(): void { // Moved here from UrtaPregs since it needs to be accessed from outside Urta
         // GTFO IF PREGGO
         if (pregnancy.isPregnant) return;
         // GTFO IF NOT FERTILE
@@ -176,7 +176,7 @@ export class Urta implements TimeAwareInterface {
         }
     }
 
-    public urtaBarDescript(): boolean {
+    export function urtaBarDescript(): boolean {
         outputText("\n\n", false);
         // Urta PISSED
         if (flags[kFLAGS.URTA_ANGRY_AT_PC_COUNTDOWN] > 1) {
@@ -257,7 +257,7 @@ export class Urta implements TimeAwareInterface {
         return false;
     }
 
-    public urtaBarApproach(): void {
+    export function urtaBarApproach(): void {
         urtaSprite();
         // Images are handled by ImageManager now. This was the old way of doing things.
         // showImage(0);
@@ -474,7 +474,7 @@ export class Urta implements TimeAwareInterface {
         addButton(4, "Leave", TelAdre.barTelAdre);
     }
 
-    private drinkUrtasBooze(): void {
+    function drinkUrtasBooze(): void {
         urtaSprite();
         outputText("", true);
         outputText("You grab the bottle and take an experimental swig.  WOW, this stuff is STRONG.  It goes down smooth, but leaves a blacksmith's forge burning in your belly.  Kicking back, you take a few more sips, relaxing and enjoying watching the crowds of strangers mingle, flirt, and drink.  You set the bottle down and nearly miss the table, coming dangerously close to falling over.  You eye the bottle and realize it's nearly empty.  Damn that shit was good, but you've got to piss like a racehorse now.  Standing up in a hurry, you wobble around, looking for a bathroom and failing.  A waitress recognizes your expression, and with a knowing smile points towards the back door.\n\n", false);
@@ -484,7 +484,7 @@ export class Urta implements TimeAwareInterface {
         doNext(drinkUrtasBoozePtTwo);
     }
     // [NEXT]
-    private drinkUrtasBoozePtTwo(): void {
+    function drinkUrtasBoozePtTwo(): void {
         urtaSprite();
         outputText("", true);
         outputText("With a happy sigh you ", false);
@@ -496,14 +496,14 @@ export class Urta implements TimeAwareInterface {
         simpleChoices("Run!", drinkUrtasBoozeRun, "Let Her", drinkUrtasBoozeLetHer, "", null, "", null, "", null);
     }
 
-    private drinkUrtasBoozeRun(): void {
+    function drinkUrtasBoozeRun(): void {
         urtaSprite();
         outputText("", true);
         outputText("You turn about and run, nearly smacking into the door frame in your haste to get away.  You hear a half-strangled sob behind you as the door swings closed.", false);
         doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = -1;
     }
-    private drinkUrtasBoozeLetHer(): void {
+    function drinkUrtasBoozeLetHer(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
@@ -574,7 +574,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [BACKDOOR]
-    private urtaFollowedOutBack(): void {
+    function urtaFollowedOutBack(): void {
         urtaSprite();
         outputText("", true);
         outputText(images.showImage("urta-behindbar-masti"), false);
@@ -587,7 +587,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Sneak Away]
-    private urtaSneakAwayFromMasturbate(): void {
+    function urtaSneakAwayFromMasturbate(): void {
         urtaSprite();
         outputText("", true);
         outputText("You sneak away from the depressing sight, and decide to head back to camp.", false);
@@ -597,7 +597,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Watch]
-    private watchUrtaJerkIt(): void {
+    function watchUrtaJerkIt(): void {
         urtaSprite();
         outputText("", true);
         outputText(images.showImage("urta-behindbar-masti-solo"), false);
@@ -613,7 +613,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [MASTURBATE WITH HER]
-    private dualUrtaMasturbation(): void {
+    function dualUrtaMasturbation(): void {
         urtaSprite();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 5;
@@ -699,7 +699,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [FUCK HER]
-    public urtaFuckHer(afterBefriending: boolean = false): void {
+    export function urtaFuckHer(afterBefriending: boolean = false): void {
         urtaSprite();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
         flags[kFLAGS.TIMES_FUCKED_URTA]++;
@@ -872,7 +872,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Under Table BJ]
-    public blowUrtaUnderTable(): void {
+    export function blowUrtaUnderTable(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
@@ -913,7 +913,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Public Buttfucking]
-    public takeUrtaInTheButtPublically(): void {
+    export function takeUrtaInTheButtPublically(): void {
         urtaSprite();
         outputText("", true);
         let tooBig: boolean = false;
@@ -1020,7 +1020,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [PUBLIC FACIAL]
-    public getAPublicFacialFromUrta(): void {
+    export function getAPublicFacialFromUrta(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]++;
@@ -1073,7 +1073,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private optionalUrtaBukkake(): void {
+    function optionalUrtaBukkake(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] -= 2;
@@ -1089,7 +1089,7 @@ export class Urta implements TimeAwareInterface {
         outputText("An hour later you're totally drenched in cum.  It's dripping off you from your hair down to your " + feet(player) + ", and you love it.  You lick up the mixed spooge until you start to feel full, and a blushing barmaid comes forward to hand you a towel.  You give her a salty kiss on the lips, sending her running away before you towel off and dress yourself.", false);
         doNext(Camp.returnToCampUseOneHour);
     }
-    private declineUrtaBukkake(): void {
+    function declineUrtaBukkake(): void {
         urtaSprite();
         outputText("", true);
         outputText("You blush and try to clean yourself up.  An embarrassed barmaid forces her way through the crowd to give you a towel, and starts shooing away the assembled masturbators.  You thank her and towel off Urta's potent seed, being more than a little aroused by the scene you caused.  The fox-girl is leaning back looking VERY satisfied as she ", false);
@@ -1101,7 +1101,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [TAKE HER HOME FOR TENDER LUVINZ]
-    public goBackToUrtasForLuvinz(): void {
+    export function goBackToUrtasForLuvinz(): void {
         urtaSprite();
         outputText("", true);
         outputText(images.showImage("urta-home-image"), false);
@@ -1127,7 +1127,7 @@ export class Urta implements TimeAwareInterface {
         goBackToUrtasForLuvinzII();
     }
 
-    public goBackToUrtasForLuvinzII(): void {
+    export function goBackToUrtasForLuvinzII(): void {
         outputText("The journey is blessedly brief, and within minutes you arrive at Urta's house.  She fiddles with the lock anxiously for a moment before finally getting a -CLICK- and unlocking it.  You sweep inside behind your host and look around, mildly shocked at the spartan surroundings.  Urta's apartment is tiny, cramped, and nearly devoid of possessions beyond weapons, armor, and sex-toys.", false);
         if (flags[kFLAGS.PC_SEEN_URTA_SEX_TOYS] == 0) {
             outputText("  The last group is the most numerous of those three.", false);
@@ -1159,7 +1159,7 @@ export class Urta implements TimeAwareInterface {
         if (player.isGoo() && player.skinType == SKIN_TYPE_GOO) addButton(4, "Goo (Weird)", urtaGooTesticleVoreRuinedOrgasms);
     }
 
-    private rideUrtaTenderFemale(): void {
+    function rideUrtaTenderFemale(): void {
         urtaSprite();
         flags[kFLAGS.PC_SEEN_URTA_SEX_TOYS]++;
         urtaLove(1.5);
@@ -1258,7 +1258,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [FUCK HER VAGINA]
-    private dudeFuckingUrtasCooch(): void {
+    function dudeFuckingUrtasCooch(): void {
         urtaSprite();
         let x: number = player.cocks.cockThatFits(urtaCapacity());
         if (x < 0) x = 0;
@@ -1317,7 +1317,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [FUCK HER VAGINA – TOO BIG]
-    private fuckUrtasVagButTooBig(): void {
+    function fuckUrtasVagButTooBig(): void {
         urtaSprite();
         outputText("", true);
         outputText("You let her know that you want her just the way she is and climb into bed behind her.  She watches you apprehensively over her shoulder and objects, \"<i>I'm sorry lover, but that's WAYYYY too big to fit in any hole I've got.  Maybe I should go ahead and take you?  Or would you rather help me off under the table back at the bar?</i>\"", false);
@@ -1327,7 +1327,7 @@ export class Urta implements TimeAwareInterface {
         simpleChoices("Ride Vaginal", vaginal, "Ride Anal", tenderTakeItUpTheAssFromUrta, "Bar BJ", blowUrtaUnderTable, "No Condom", condomlessUrtaInHouseSmex, "Leave", fuckItAndLeave);
     }
 
-    private fuckItAndLeave(): void {
+    function fuckItAndLeave(): void {
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]--;
         if (flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] < 1) flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] = 1;
         flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY]--;
@@ -1340,7 +1340,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [RIDE HER COWBOY/NEUTER]
-    private tenderTakeItUpTheAssFromUrta(): void {
+    function tenderTakeItUpTheAssFromUrta(): void {
         urtaSprite();
         outputText("", true);
         flags[kFLAGS.PC_SEEN_URTA_SEX_TOYS]++;
@@ -1420,7 +1420,7 @@ export class Urta implements TimeAwareInterface {
 
     // [MARBLE COCKU-BLOCKKU]
     // (Happens when Urta is 'sated' and PC visits her.)
-    private marbleCockuBlockuUrta(): void {
+    function marbleCockuBlockuUrta(): void {
         urtaSprite();
         outputText("", true);
         outputText("Urta gives you a serious look when you come up to her, \"<i>I just got a report in from some of our scouts last night.  It looks like they found your camp.  There was a cow-girl there", false);
@@ -1443,7 +1443,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Honestly]
-    private TellUrtaDAHTRUUUUF(): void {
+    function TellUrtaDAHTRUUUUF(): void {
         urtaSprite();
         outputText("", true);
         outputText("You explain to Urta about how you became addicted to Marble's milk at the farm, and how despite the harshness of the untamed lands around the both of you, you formed a loving relationship.  Hearing the truth and honesty backing your words, Urta's eyes water, but the saddened fox-girl refuses to look away.  Once you've finished, she dabs away a tear and takes a swig of what you hope is ale.  She wipes the foam from her muzzle with the tear-stained rag and speaks with a husky, grief-laced voice, \"<i>I... appreciate your honesty.  Some part of me was afraid you would try to lie.  Yes, I'm a little disappointed I'm not the only one to warm your bed, but telling me the truth was the right thing to do, and ", false);
@@ -1470,7 +1470,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Comfort]
-    private comfortUrtaAfterTellinTruuf(): void {
+    function comfortUrtaAfterTellinTruuf(): void {
         urtaSprite();
         outputText("", true);
         outputText("You let Urta know that you understand.  After all, in a world like this monogamy is next to impossible.  There's no shame in what she did with Edryn or your relationship with Marble.  The two of you share a heartfelt hug and resolve to continue your relationship.", false);
@@ -1486,7 +1486,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Toughen Up]
-    private toughenUpUrtaAfterTellingTruuf(): void {
+    function toughenUpUrtaAfterTellingTruuf(): void {
         urtaSprite();
         outputText("", true);
         outputText("You look at Urta and explain that she shouldn't take it too hard.  Both of you got into this scenario without expecting anything more from it.  You explain that though she is a good friend and GREAT in the sack, you don't see your relationship going to that level.  Urta seems ", false);
@@ -1507,7 +1507,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Walk Out]
-    private walkoutOnUrtaAfterTellingTruff(): void {
+    function walkoutOnUrtaAfterTellingTruff(): void {
         urtaSprite();
         outputText("", true);
         outputText("You push away from the table and turn your back on Urta, enraged at her for cheating on you with Edryn, even though you cheated on her as well.  You ignore the hypocrisy in your actions and walk out, shattering Urta's heart in the process.  As you close the door of 'The Wet Bitch' behind you, you see Urta, sobbing into a hanky while Edryn goes over to comfort her.  It figures.", false);
@@ -1519,7 +1519,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Refuse]
-    private trufftrufftrufftruff(): void {
+    function trufftrufftrufftruff(): void {
         urtaSprite();
         outputText("", true);
         outputText("You refuse to answer the question, telling Urta that what happens outside the walls has no impact on what the two of you have here.  She disagrees as her fairly meek attitude slips away, replaced with a sterner expression, \"<i>No.  It matters to me.  I want to know about your life and if you won't even answer... then you aren't as kind as I thought you were.</i>\"\n\n", false);
@@ -1529,7 +1529,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Lie]
-    private lietoUrtaAboutMarble(): void {
+    function lietoUrtaAboutMarble(): void {
         urtaSprite();
         outputText("", true);
         outputText("You let Urta know that the poor cow-girl needed a place to stay from the monsters that roam the wilds, and that your camp is the safest place.  In great detail you talk about sheltering her, but never taking advantage of her, and trying your best to do what's right.  Through the whole conversation Urta dabs at tears, and you assume them to be tears of relief.  The story suitably complete and air-tight, you finish and look at Urta.\n\n", false);
@@ -1546,7 +1546,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [TWU WUV TALK]
-    private UrtaTwuWuvOffer(): void {
+    function UrtaTwuWuvOffer(): void {
         urtaSprite();
         outputText("", true);
         outputText("Urta looks nervously at you, fidgeting and shifting her sizable addition under the table.  She starts talking meekly, but her voice rises in confidence and intensity as she goes, \"<i>I've been thinking " + player.short + ", we've known each other for a while now.  When we're together, I don't have to worry about someone seeing something they shouldn't, or being made fun of, because it doesn't bother you and you don't care.  And what do I have to care about if you don't care about it?</i>\"\n\n", false);
@@ -1556,7 +1556,7 @@ export class Urta implements TimeAwareInterface {
         doYesNo(TwuWuvIsBeautifulUrta, noUDontLoveUrta);
     }
     // [No]
-    private noUDontLoveUrta(): void {
+    function noUDontLoveUrta(): void {
         urtaSprite();
         outputText("", true);
         // (LUV BLOCKED)
@@ -1567,7 +1567,7 @@ export class Urta implements TimeAwareInterface {
         doYesNo(stayFuckbuddiesAfterShootingDown, turnDownFuckbuddiesANDLove);
     }
     // [yes]
-    private stayFuckbuddiesAfterShootingDown(): void {
+    function stayFuckbuddiesAfterShootingDown(): void {
         urtaSprite();
         outputText("Urta gives you a warm smile and a kiss on the cheek, \"<i>Good.  Come see me soon, ok?</i>\"\n\n", false);
         // (READY TO GO NEXT TIEM)
@@ -1575,7 +1575,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [no]
-    private turnDownFuckbuddiesANDLove(): void {
+    function turnDownFuckbuddiesANDLove(): void {
         urtaSprite();
         outputText("", true);
         outputText("Urta bursts into tears and pushes back from the table.  She runs out of the bar, sobbing wildly.  It looks like you've totally burned that bridge.  You may as well head back to camp...", false);
@@ -1584,7 +1584,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Yes]
-    private TwuWuvIsBeautifulUrta(): void {
+    function TwuWuvIsBeautifulUrta(): void {
         urtaSprite();
         outputText("", true);
         outputText("You nod and break into a wild smile.  You lean forward and the two of you embrace in a warm hug as you admit to loving the shy fox-herm.  She pulls back and kisses you passionately on the lips, and the pair of you spend an hour cuddling contentedly in a dark corner, happy to have taken things to the next level.  It passes in a flash, but you know you need to get back to check on camp, and you leave her with another quick kiss on the lips.  You " + mf(player, "chuckle", "giggle") + " when you hear her cock harden and thunk against the table again behind you.  Oh Urta...", false);
@@ -1594,7 +1594,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [EAT THE BITCH OUT]
-    public eatUrtaOutNomNomPussy(): void {
+    export function eatUrtaOutNomNomPussy(): void {
         urtaSprite();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 3;
         urtaLove(1);
@@ -1628,7 +1628,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [GIVE GLASS]
-    private giveUrtaCumGlass(): void {
+    function giveUrtaCumGlass(): void {
         urtaSprite();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 1;
         urtaLove(-.5);
@@ -1643,7 +1643,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Drink Glass]
-    private drinkUrtasCumGlass(): void {
+    function drinkUrtasCumGlass(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2;
@@ -1657,7 +1657,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Set Aside]
-    private setAsideUrtaCumGlass(): void {
+    function setAsideUrtaCumGlass(): void {
         urtaSprite();
         // (+Lots of Bonus Luv)
         urtaLove(2);
@@ -1668,7 +1668,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Under Table BJ]
-    public blowUrtaUnderTheTableLuv(): void {
+    export function blowUrtaUnderTheTableLuv(): void {
         urtaSprite();
         player.slimeFeed();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(3);
@@ -1706,7 +1706,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [RIDE VAGINAL]
-    private rideUrtasCoochLoveyDovey(): void {
+    function rideUrtasCoochLoveyDovey(): void {
         urtaSprite();
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
         urtaLove(1);
@@ -1794,7 +1794,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [RIDE ANAL]
-    private rideUrtaInButtAtHomeLove(): void {
+    function rideUrtaInButtAtHomeLove(): void {
         urtaSprite();
         urtaLove(1);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
@@ -1891,7 +1891,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [69]
-    private oralFiestyUberExplosionUrta(): void {
+    function oralFiestyUberExplosionUrta(): void {
         urtaSprite();
         urtaLove(1.5);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
@@ -2010,7 +2010,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public urtaHomeLuvLuvinsMenu(): void {
+    export function urtaHomeLuvLuvinsMenu(): void {
         clearOutput();
         urtaSprite();
         outputText("She caresses a nipple and visibly shivers as she says, \"<i>You teased me the whole way here, and I'm COMPLETELY ready for you, any way you could want.</i>\"\n\n", false);
@@ -2042,7 +2042,7 @@ export class Urta implements TimeAwareInterface {
         if (flags[kFLAGS.URTA_PETPLAY_DONE] >= 0 && player.gender > 0) addButton(7, "Collar", urtaPetPlayDeletedForeverBecauseThirdProovedMeWrongAboutDice);
     }
 
-    private urtasCoochiNeedsFuckedLove(): void {
+    function urtasCoochiNeedsFuckedLove(): void {
         urtaSprite();
         urtaLove(1.5);
         flags[kFLAGS.URTA_TIME_SINCE_LAST_CAME] = 2 + rand(2);
@@ -2151,7 +2151,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Back Room]
-    public scyllaAndUrtaSittingInATree(): void {
+    export function scyllaAndUrtaSittingInATree(): void {
         urtaSprite();
         outputText("", true);
         // Increment 'times caught with Scylla'
@@ -2234,7 +2234,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // Sober repeat Urta x Scylla
-    private urtaAndScyllaBoningLikeBitchesSober(): void {
+    function urtaAndScyllaBoningLikeBitchesSober(): void {
         clearOutput();
         outputText("You meander towards the back rooms and a canine waitress springs forward with a key clutched in her paw.  She blushes furiously and explains that she was tipped generously to hand it to you if you arrived.  You accept the proffered tool and smile.  It must be cheaper to pay someone to wait with a key than to fix the door each time the three of you meet up!  Snickering to yourself as you plunge the key into the lock's waiting receptacle, you turn it and push your way inside.  The scene in front of you is as arousing as it is familiar.");
         outputText("\n\nUrta is leaning back against a wall for support, her breasts heaving as she gulps in deep lungfuls of air, ebony nipples hard and puckered with lust.  Her eyes have the bright glimmer of sobriety this time, though it's hard to pick out under her heavy lids and eyelashes.  An onyx-robed figure blocks your view of your foxy lover's well-endowed groin, though the two ram-like horns that curl around the crotch-height head clearly mark the second party as the tainted nun, Scylla.  She's bobbing up and down with practiced ease, even though her plump, ruby lips are smushed up against the vixen's loins.  Her throat must be absolutely stuffed with horse-dick, and indeed, as you walk closer, you can see the thick medial ring bulging the nun's neck obscenely.");
@@ -2263,7 +2263,7 @@ export class Urta implements TimeAwareInterface {
         simpleChoices("Fuck Fox", fuck, "Worshipped", worship, "", null, "", null, "Back", TelAdre.barTelAdre);
     }
     // Fuck Urta while scylla sucks sober
-    private fuckUrtaWhileScyllaSucksSober(): void {
+    function fuckUrtaWhileScyllaSucksSober(): void {
         clearOutput();
         const x: number = player.cocks.cockThatFits(urtaCapacity());
         outputText("You peel out of your straining equipment to free your " + multiCockDescriptLight(game.player));
@@ -2322,7 +2322,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Dock With Urta Under Scyllas Sober Supervision
-    private dockWithUrtaUnderScyllasSoberSupervision(): void {
+    function dockWithUrtaUnderScyllasSoberSupervision(): void {
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
         outputText("Unable to contain yourself, you sigh heavily and release your [armor].  Your immense package grows bigger with each beat of your heart, the blood-swollen veins pulsing hotly as they pump your cock to its full, obscene proportions.  It slowly undulates in the air as it fills to capacity with your lusty lifeblood, and the unmistakable aroma of your masculine ");
@@ -2379,7 +2379,7 @@ export class Urta implements TimeAwareInterface {
         doNext(dockWithUrtaUnderScyllasSoberSupervision2);
     }
     // Dock With Urta Under Scyllas Sober Supervision2
-    private dockWithUrtaUnderScyllasSoberSupervision2(): void {
+    function dockWithUrtaUnderScyllasSoberSupervision2(): void {
         clearOutput();
         outputText("You wake up with something sweet in your mouth, and as you swallow, you crack your eyelids.  White.  A gently shrinking expanse of creamy flesh fills your view, and you realize a pair of crimson lips are kissed against your own, feeding milk to your dry mouth.  You swallow gratefully and glance around, quickly discovering your gray furred companion similarly engaged.  The two of you swallow your fill and detach, feeling a little confused and miraculously, still horny.");
         outputText("\n\nScylla smiles and burps while her breasts continue to dwindle, pausing when they're just large enough to be improbably big for the woman's large frame.  She gushes, \"<i>Thank you guys so much!  I don't know what I'd do if I had to have some... stranger to help me deal with this!</i>\"  She pulls a fresh habit up to cover herself and prances out, humming a forgotten hymn.");
@@ -2394,7 +2394,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Never See]
-    private heartBreakHotelInTelAdre(): void {
+    function heartBreakHotelInTelAdre(): void {
         urtaSprite();
         outputText("", true);
         outputText("You reach ", false);
@@ -2408,7 +2408,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Bird and Leave]
-    private flipUrtaTheBird(): void {
+    function flipUrtaTheBird(): void {
         urtaSprite();
         outputText("", true);
         outputText("You curl your hand into a fist and extend your middle finger at the alcoholic and cum-slut.  You've got better things to do than waste your time watching those two indulge their addictions.\n\n", false);
@@ -2422,7 +2422,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Jerk Off And Watch]
-    private watchTwoHotBitchesAndJerkIt(): void {
+    function watchTwoHotBitchesAndJerkIt(): void {
         urtaSprite();
         outputText("", true);
         outputText(images.showImage("urta-scylla-masti"), false);
@@ -2470,7 +2470,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Lap Sittings!] - no taurs! (need size check also, to avoid implied analpocalypse -Z)
-    private makeUrtaSitOnYourLapWithScylla(): void {
+    function makeUrtaSitOnYourLapWithScylla(): void {
         urtaSprite();
 
         const x: number = player.cocks.cockThatFits(urtaCapacity());
@@ -2549,7 +2549,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [No Scylla]
-    private tellUrtaNoMoreScylla(): void {
+    function tellUrtaNoMoreScylla(): void {
         urtaSprite();
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00147] = 1;
@@ -2560,7 +2560,7 @@ export class Urta implements TimeAwareInterface {
         simpleChoices("Drink More", tellUrtaToBeADrunkenHussy, "Drink Less", tellUrtaToStopBeingALush, "No Change", tellUrtaToStayTheSame, "Leave Her", leaveUrtaAfterScyllaConfrontation, "", null);
     }
     // [Scylla Okay]
-    private tellUrtaMoreScyllaIsFine(): void {
+    function tellUrtaMoreScyllaIsFine(): void {
         urtaSprite();
         outputText("", true);
         outputText("You give Urta a raunchy, lewd smile and let her know that you're okay with her 'helping' Scylla, and vice-versa, so long as they don't mind you popping in.  She smiles and gives you a wink, but her expression darkens after a moment of thought.  Urta interrupts to mention, \"<i>There's something else.  If I can't find you or Scylla and I NEED to cum, I'll have to visit Edryn.  She's probably the only thing that's kept me sane, and if you aren't around to help with my needs I'll visit her.  ", false);
@@ -2571,7 +2571,7 @@ export class Urta implements TimeAwareInterface {
         simpleChoices("Drink More", tellUrtaToBeADrunkenHussy, "Drink Less", tellUrtaToStopBeingALush, "No Change", tellUrtaToStayTheSame, "Leave Her", leaveUrtaAfterScyllaConfrontation, "", null);
     }
     // [Leave Her]
-    private leaveUrtaAfterScyllaConfrontation(): void {
+    function leaveUrtaAfterScyllaConfrontation(): void {
         urtaSprite();
         outputText("", true);
         outputText("You sigh, letting her know that her behavior isn't something you'd want from someone you're in a relationship with.  You need someone you can trust.  Someone you can count on.  Someone who isn't so ruled by their body's lusts.  Tears well up in the fox's eyes as you go on, barely held back by her desire not to cause a scene.  When you finish she can't even look you in the eyes.  She stares down at her drink and whispers, \"<i>Goodbye...", false);
@@ -2585,7 +2585,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Drink More]
-    private tellUrtaToBeADrunkenHussy(): void {
+    function tellUrtaToBeADrunkenHussy(): void {
         urtaSprite();
         outputText("", true);
         outputText("You ", false);
@@ -2600,7 +2600,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Drink Less]
-    private tellUrtaToStopBeingALush(): void {
+    function tellUrtaToStopBeingALush(): void {
         urtaSprite();
         outputText("", true);
         outputText("You sigh and explain that her alcoholism isn't helping anyone – not her and certainly not her relationships with others.  She nods with a knowing, sober look on her face as you recount how much harder her drinking has made your relationship.  She promises you that she won't ever get that drunk again, though she warns that it will be hard to swear off alcohol entirely.  A look of resolve enters her eyes, and she leans over the table to kiss you on the lips.  The two of you wrap up the conversation knowing that you've probably seen the last of drunken Urta.\n\n", false);
@@ -2608,7 +2608,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Don't Change]
-    private tellUrtaToStayTheSame(): void {
+    function tellUrtaToStayTheSame(): void {
         urtaSprite();
         outputText("", true);
         outputText("You smile and ask her why you would ever want her to change?  You ", false);
@@ -2620,7 +2620,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private amilyXUrtaUrtaFallout(): void {
+    function amilyXUrtaUrtaFallout(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00350] = 2;
         urtaSprite();
         outputText("", true);
@@ -2637,7 +2637,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [It's Okay]
-    private itsOkayUrtaAmilyIsHot(): void {
+    function itsOkayUrtaAmilyIsHot(): void {
         outputText("", true);
         urtaSprite();
         outputText("You reach out, grab Urta's shoulders, and look at her until she raises her face to look back at you.  Before she can look away, you tell her that it's fine - you had hoped your lovers would come to love each other as you do.  Urta wipes away a tear and gives you a nervous smile when you suggest that perhaps the three of you could get together sometime.\n\n", false);
@@ -2645,7 +2645,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Heart asplosion]
-    private crushUrtasHeart(): void {
+    function crushUrtasHeart(): void {
         outputText("", true);
         urtaSprite();
         outputText("You reach across the table and slap her arrogant muzzle so hard that you see her tears land on a nearby customer's sleeve.  Urta recoils, clutching a hand to her reddening cheek as she watches you with a shocked, sad expression.  You tear into her verbally, calling her a lush, a slut, and a traitorous bitch.  Each damning declaration causes the fox to flinch, as if struck by a switch, and you keep at it, determined to drive home how irrevocably she has fucked up.  You accuse her of trying to steal away your mouse-wife and proclaim her to be worse than the demons infesting the wastes around your camp.\n\n", false);
@@ -2657,7 +2657,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public chastityBeltFun(cameFromSexMenu: boolean = true): void {
+    export function chastityBeltFun(cameFromSexMenu: boolean = true): void {
         // The intro to this scene is for when you pick the scene from Urta usual sex menu. Previous scene has a different intro.
         // Becomes available as a Sex Scene for Urta when she’s alone.
         clearOutput();
@@ -2712,7 +2712,7 @@ export class Urta implements TimeAwareInterface {
     // These scenes all use 1 hour and return the PC to the main Tel'adre menu screen when finished//
     // Approaching Urta:
     // (Regular Urta)
-    private QBsTalkExpack(): void {
+    function QBsTalkExpack(): void {
         clearOutput();
         urtaSprite();
         // (Lover Urta)
@@ -2722,14 +2722,14 @@ export class Urta implements TimeAwareInterface {
         urtaDialogueMenu();
     }
 
-    private friendsTalkExpack(): void {
+    function friendsTalkExpack(): void {
         clearOutput();
         urtaSprite();
         outputText("You approack Urta's table and she motions for you to take a seat.  She finishes writing something on one of the pieces of paperwork scattered over the table, takes a sip of her drink and leans back in her chair.  “<i>Nice to see you again " + player.short + ".  What can I do for you?</i>”");
         urtaDialogueMenu();
     }
 
-    public urtaDialogueMenu(): void {
+    export function urtaDialogueMenu(): void {
         // choices("Urta",urtaDiscussesSelf,"Edryn",urtaDiscussesEdryn,"The Watch",urtaDiscussesTheWatch,"Alcoholism",urtaDiscussesAlcholism,"",0);
         menu();
         addButton(0, "Urta", urtaDiscussesSelf);
@@ -2745,7 +2745,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Urta=]
-    private urtaDiscussesSelf(): void {
+    function urtaDiscussesSelf(): void {
         clearOutput();
         urtaSprite();
         outputText("You tell Urta you'd like to talk about her a little.");
@@ -2775,7 +2775,7 @@ export class Urta implements TimeAwareInterface {
                 "Back", urtaDialogueMenu);
     }
 
-    public flirtWithUrta(): void {
+    export function flirtWithUrta(): void {
         clearOutput();
         if (flags[kFLAGS.URTA_PC_LOVE_COUNTER] == -1) { // In friends mode
             outputText("You ask Urta if, living in Tel'Adre, it's easier to resist the powerful feelings that come from living in this world.\n\n");
@@ -2797,7 +2797,7 @@ export class Urta implements TimeAwareInterface {
         urtaFuckHer(true); // Call urtaFuckHer() to put you on track for much Urta loving
     }
 
-    private urtaFertilityDiscussion(): void {
+    function urtaFertilityDiscussion(): void {
         clearOutput();
         outputText("Urta traces a finger around the corner of her drink, \"<i>So, what do you think, [name]?");
         if (flags[kFLAGS.URTA_FERTILE] == 1) outputText("  Should I stay fertile?");
@@ -2829,7 +2829,7 @@ export class Urta implements TimeAwareInterface {
         addButton(4, "Back", urtaDialogueMenu);
     }
 
-    private urtaFertilityToggle(): void {
+    function urtaFertilityToggle(): void {
         clearOutput();
         if (flags[kFLAGS.URTA_FERTILE] == 1) {
             outputText("\"<i>Well, I guess that's okay.  But you better make it worth my while later, okay?</i>\" Urta says with a half-hidden sigh.");
@@ -2843,7 +2843,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Back", urtaFertilityDiscussion);
     }
 
-    private urtaPregOthersToggle(): void {
+    function urtaPregOthersToggle(): void {
         clearOutput();
         if (flags[kFLAGS.URTA_PREG_EVERYBODY] == 1) {
             outputText("\"<i>Awww, are you sure?  Wouldn't you like ");
@@ -2866,7 +2866,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Edryn=]
-    private urtaDiscussesEdryn(): void {
+    function urtaDiscussesEdryn(): void {
         clearOutput();
         urtaSprite();
         outputText("You think for a moment, then tell her that you have questions about Edryn.");
@@ -2880,7 +2880,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=The Watch=]
-    private urtaDiscussesTheWatch(): void {
+    function urtaDiscussesTheWatch(): void {
         clearOutput();
         urtaSprite();
         outputText("You tell Urta that you have a few questions about the Tel'Adre city watch.");
@@ -2894,7 +2894,7 @@ export class Urta implements TimeAwareInterface {
     // [=Alcoholism=]
     // To get this scene, the player must have spoken to Urta at 13 or 14 hours at least once; agreeing to the sex is not necessary//
     // This dialogue can only be had once//
-    private urtaDiscussesAlcholism(): void {
+    function urtaDiscussesAlcholism(): void {
         clearOutput();
         urtaSprite();
         if (flags[kFLAGS.DISCUSSED_URTA_ALCOHOLISM] == 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00145] == 0) {
@@ -2939,7 +2939,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Drink More=]
-    private urtaDiscussAlcoholDrinkMore(): void {
+    function urtaDiscussAlcoholDrinkMore(): void {
         clearOutput();
         urtaSprite();
         outputText("You blush a little bit and ask why she thinks you want her to drink LESS.  She stares at you quizzically and your blush deepens as you explain that when she gets drunk, lets her guard down, and gets so aggressive, you... well, you like it.  A lot.  Her ears perk up at your words, though her expression is a little uncertain while you explain it.  By the time you finish, something warm brushes by your leg and gently 'thunks' the table.  Clearly, she's as into the idea of encouraging her unrestrained, carefree self as you are.");
@@ -2956,7 +2956,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Drink Less=]
-    private urtaDiscussAlcoholDrinkLess(): void {
+    function urtaDiscussAlcoholDrinkLess(): void {
         clearOutput();
         urtaSprite();
         outputText("You sigh and explain that her alcoholism isn't helping anyone – not her and certainly not her relationships with others.  You're not going to hold what she does when she's that drunk against her, but you really don't think it's healthy for her to get like that.  You promise her you'll try and be more supportive as well.  She nods, her expression knowing and somber, and she promises you that she'll cut back - enough that you won't see her get drunk like she used to anymore. She does warn you again that she doesn't intend to stop entirely - a few cold brews from time to time won't hurt anyone");
@@ -2971,7 +2971,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // =No Change=]
-    private urtaDiscussAlcoholNoChange(): void {
+    function urtaDiscussAlcoholNoChange(): void {
         clearOutput();
         urtaSprite();
         outputText("You smile and ask her; why you would ever want her to change?  You like everything about her, including whatever she thinks she should drink.  You merely wanted to know why she changes so much when drunk - indeed, you think it's actually kind of thrilling to see her like that; you just prefer to know which is the real her.  She blushes hard when you tell her that, clearly enjoying the flattery and thrilled to hear that you're okay with how she chooses to blow off steam when she's not on the job.  The two of you joke around for a little longer, but before long, it's time you were on your way.  Urta's STILL blushing as she gives you a goodbye kiss – you must have earned some points with her today!");
@@ -2984,7 +2984,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Break Up=]
-    private breakUpWithTheBitchOverAlcoholism(): void {
+    function breakUpWithTheBitchOverAlcoholism(): void {
         clearOutput();
         urtaSprite();
         outputText("You sigh, letting her know that her behavior isn't something you'd want from someone you're in a relationship with.  You need someone you can trust.  Someone you can count on.  Someone who isn't so ruled by their body's lusts.  Tears well up in the fox's eyes as you go on, barely held back by her desire not to cause a scene.  When you finish, she can't even meet your gaze.  She stares down at her drink, a tear rolling softly down her muzzle and dripping forlornly onto the table, and whispers, \"<i>Goodbye...</i>\"");
@@ -2997,7 +2997,7 @@ export class Urta implements TimeAwareInterface {
 
     // Talk About Urta dialogue scenes:
     // [=Family=]
-    private urtaDiscussesFamily(): void {
+    function urtaDiscussesFamily(): void {
         clearOutput();
         urtaSprite();
         if (!urtaLove()) {
@@ -3025,7 +3025,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Sex/Romance=]
-    private urtaDiscussesSexAndRomance(): void {
+    function urtaDiscussesSexAndRomance(): void {
         clearOutput();
         urtaSprite();
         outputText("You ask Urta if she'll tell you her romantic & sexual history.");
@@ -3057,14 +3057,14 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [==Leave==]
-    private urtaDiscussionLeaveAfterRomance(): void {
+    function urtaDiscussionLeaveAfterRomance(): void {
         clearOutput();
         urtaSprite();
         outputText("You thank her for sharing such personal information with you.\n\n\"<i>No problem, [name].  It's good to be able to talk about it for a change,</i>\" the herm fox-morph replies.  As you get up to leave, she picks up her glass, drains it, and starts to pour herself another one.");
         doNext(Camp.returnToCampUseOneHour);
     }
     // [==Tease==]
-    private urtaDiscussionTeaseAfterRomance(): void {
+    function urtaDiscussionTeaseAfterRomance(): void {
         clearOutput();
         urtaSprite();
         outputText("You thank her for telling you about her past like this but follow it up by asking her what she likes in the bedroom, doing your best to hide a mischievous grin.");
@@ -3084,7 +3084,7 @@ export class Urta implements TimeAwareInterface {
         dynStats("lus", 25);
     }
     // [=Employment=]
-    private urtaDiscussesEmployment(): void {
+    function urtaDiscussesEmployment(): void {
         clearOutput();
         urtaSprite();
         outputText("You ask how and when it was that Urta came to be part of the Tel'Adre watch.");
@@ -3102,7 +3102,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Prejudice=]
-    private urtaDiscussesPrejudice(): void {
+    function urtaDiscussesPrejudice(): void {
         clearOutput();
         urtaSprite();
         outputText("Hesitantly, you ask Urta if she has ever faced prejudice for her hermaphroditic nature.");
@@ -3121,7 +3121,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Talk About Edryn dialogue scenes:
-    private urtaDiscussesEdrynHistory(): void {
+    function urtaDiscussesEdrynHistory(): void {
         clearOutput();
         urtaSprite();
         // [=History Together=]
@@ -3135,7 +3135,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Working Together=]
-    private urtaDiscussesWorkingWithEdryn(): void {
+    function urtaDiscussesWorkingWithEdryn(): void {
         clearOutput();
         urtaSprite();
         outputText("You tell Urta that you're curious about her working relationship with Edryn.  Do they work together often?");
@@ -3150,7 +3150,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Romance? =]
-    private urtaDiscussesEdrynRomance(): void {
+    function urtaDiscussesEdrynRomance(): void {
         clearOutput();
         urtaSprite();
         // Regular
@@ -3237,7 +3237,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Accept=]
-    private urtaDiscussesEdrynNonLoveAccept(): void {
+    function urtaDiscussesEdrynNonLoveAccept(): void {
         clearOutput();
         urtaSprite();
         outputText("You think about it long and hard, and you finally decide that you can't hold Urta's dalliances with Edryn against her.  From the sound of it, Urta honestly has more reason to be interested in the centauress than in you - she's known Edryn longer, she lost her virginity to her, they're partners and friends.  Yet, despite this, she insists she feels more of a connection to you, and she was honest about what she's been doing and why.  Plus it's not as if you can't understand how she feels about the temptation.  Most creatures you've met in this weird world have either been very sexually tempting, or outright tried to make you have sex with them.");
@@ -3247,7 +3247,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Reject=]
-    private urtaDiscussesEdrynNonLoveREJECT(): void {
+    function urtaDiscussesEdrynNonLoveREJECT(): void {
         clearOutput();
         urtaSprite();
         outputText("No matter how you look at it, you can't help but feel betrayed - Urta's been sleeping around behind your back.  If she didn't want this relationship to be monogamous, she should have told you before, and you tell her as much.");
@@ -3259,7 +3259,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Happy=]
-    private urtaDiscussesEdrynLoveHappy(): void {
+    function urtaDiscussesEdrynLoveHappy(): void {
         clearOutput();
         urtaSprite();
         outputText("When you think about it, you decide to look on the positive side of things.  You trust Urta when she says she loves you - if she needs to \"vent\" when you aren't around to help, well, it's okay.  You smile at her and assure her that you're not upset; indeed, you're happy that she would be honest with you about this, and happy to know that she has a good friend like Edryn.  She beams a thankful smile back and kisses you passionately before you excuse yourself and leave.");
@@ -3267,7 +3267,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Tolerate=]
-    private urtaDiscussesEdrynLoveTolerate(): void {
+    function urtaDiscussesEdrynLoveTolerate(): void {
         clearOutput();
         urtaSprite();
         outputText("Thinking about it long and hard, you sigh as you realize you couldn't blame her, even if you wanted to try.  It's hard enough for you to avoid being tempted by all of the sexy creatures this world has to offer - Urta must be in the same boat.  Still, you add, you would prefer that Urta not go rubbing the fact that she sometimes has to have sex with Edryn in your face.");
@@ -3278,7 +3278,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Breakup=]
-    private urtaDiscussesEdrynLoveBreakup(): void {
+    function urtaDiscussesEdrynLoveBreakup(): void {
         clearOutput();
         urtaSprite();
         outputText("No matter how you look at it, you can't help but feel betrayed - Urta's been sleeping around behind your back.  If she didn't want this relationship to be monogamous, she should have told you before, and you tell her so.");
@@ -3290,7 +3290,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Membership=]
-    private urtaDiscussesWatchMembership(): void {
+    function urtaDiscussesWatchMembership(): void {
         clearOutput();
         urtaSprite();
         outputText("You tell Urta that you're curious about the Watch's membership.");
@@ -3311,7 +3311,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Role In The City=]
-    private urtaDiscussesWatchRole(): void {
+    function urtaDiscussesWatchRole(): void {
         clearOutput();
         urtaSprite();
         outputText("You tell her that you're curious about what it is that the Watch actually does, on a day to day basis.");
@@ -3328,7 +3328,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [=Reach=]
-    private urtaDiscussesTheWatchsReach(): void {
+    function urtaDiscussesTheWatchsReach(): void {
         clearOutput();
         urtaSprite();
         outputText("You ask Urta just how far the Watch's authority spans from the city.");
@@ -3346,7 +3346,7 @@ export class Urta implements TimeAwareInterface {
         urtaLove(.5);
     }
     // [=Crime & Punishment=]
-    private urtaDiscussesCrimeAndPunishment(): void {
+    function urtaDiscussesCrimeAndPunishment(): void {
         clearOutput();
         urtaSprite();
         outputText("You explain to Urta that you're curious about the law in Tel'Adre - what is a crime here, and what are the punishments that the Watch is likely to deal to a criminal?");
@@ -3374,7 +3374,7 @@ export class Urta implements TimeAwareInterface {
 
     // Spank the Shit out of Urta and Make Her Cream Herself From Prostate Stimulation Alone Like the Horny Drunken Slut She Really Is
     // (Needs: Drunk Urta, Tamani's Deluxe Dildo OR a dick that fits her butt)
-    public spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs(): void {
+    export function spankTheShitOutOfUrtaAndMakeHerCreamHerselfFromProstateStimulationAloneLikeTheHornyDrunkenSlutSheReallyIs(): void {
         clearOutput();
         outputText(images.showImage("urta-bar-male-spank"), false);
         outputText("You consider Urta's offers and, tempting as they are, decide they just aren't for you right now.");
@@ -3428,7 +3428,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private urtaDiscussessKatherine(): void {
+    function urtaDiscussessKatherine(): void {
         clearOutput();
         const affection: number = flags[kFLAGS.KATHERINE_URTA_AFFECTION];
         if (affection == 0) { // They’re just co-workers
@@ -3454,21 +3454,21 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private urtaKathSexDont(): void {
+    function urtaKathSexDont(): void {
         outputText("You give Urta a smile tell her that while you’re happy for her you’d really prefer if she waited for you to be around before banging Katherine.  You feel a little left out.\n\n");
         outputText("Urta gives you a weak smile and says, “<i>Alright " + player.short + ", I understand.  I’ll keep it in my pants.  Course I hope you’re up for a lot of three ways.  Girl’s got to get her fix.</i>”");
         flags[kFLAGS.KATHERINE_URTA_DATE] = Katherine.KDATE_LITTLE;
         doNext(urtaDialogueMenu);
     }
 
-    private urtaKathSexWhenever(): void {
+    function urtaKathSexWhenever(): void {
         outputText("You put your arm around Urta and tell her that you don’t mind if your favorite girls need to blow off a little steam together.  As long as they don’t wear each other out that is.\n\n");
         outputText("Urta lets out a relieved laugh and says, “<i>That’s good.  That’s good.  I’ll make sure not to wear our kitten out.</i>”");
         flags[kFLAGS.KATHERINE_URTA_DATE] = Katherine.KDATE_WHENEVER;
         doNext(urtaDialogueMenu);
     }
 
-    private urtaKathSexEncourage(): void {
+    function urtaKathSexEncourage(): void {
         outputText("You ask Urta what she would say if you told her you flat out expect them to have sex when you’re not around.\n\n");
         outputText("“<i>Are you sure " + player.short + "?  I mean I love the idea, I’m sure Kath will love it too, but you know what my appetite’s like.</i>”\n\n");
         outputText("You give her a kiss and tell her you know very well.  Since you’re not in town all the time you expect Urta to see to Kath’s needs and Kath to hers.\n\n");
@@ -3482,7 +3482,7 @@ export class Urta implements TimeAwareInterface {
     // Display Eggs option
 
     // Eggs Option
-    public giveTheFoxSomeEggs(): void {
+    export function giveTheFoxSomeEggs(): void {
         clearOutput();
         if (flags[kFLAGS.URTA_TIMES_EGG_PREGGED] > 0) {
             repeatUrtaEgging();
@@ -3578,7 +3578,7 @@ export class Urta implements TimeAwareInterface {
 
     // Urta Chews You Out:
     // Play this scene automatically after PC impreggnates Urta for the first time
-    public urtaChewsOutPC(newScreen: boolean = true): void {
+    export function urtaChewsOutPC(newScreen: boolean = true): void {
         if (newScreen) clearOutput();
         else outputText("\n");
         outputText("Urta looks up at you and snorts fiercely; you almost expect steam to come flaring out of her nostrils, and her livid eyes are doing their best to burn holes straight through you.  \"<i>There you are, [name]!  You have some nerve!</i>\"");
@@ -3624,7 +3624,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // Repeatable Eggs Option:
-    private repeatUrtaEgging(): void {
+    function repeatUrtaEgging(): void {
         clearOutput();
         outputText(images.showImage("urta-egg-repeat"), false);
         outputText("With a smile, you ask if Urta would be willing to let you lay a few eggs in her womb again?");
@@ -3718,7 +3718,7 @@ export class Urta implements TimeAwareInterface {
     // *New option: condomless
     // *Give hint that virgins should do the cumflation scene?
     // [Condomless]
-    private condomlessUrtaInHouseSmex(): void {
+    function condomlessUrtaInHouseSmex(): void {
         clearOutput();
         outputText("You grab hold of the pre-filled bubble atop the fox's tip and yank, earning a moan as the latex sheath slides free, stretching it to an oblong mass before freeing her flare with an audible pop.  At the same time, you draw the second, unused condom from her unresisting grip and say, \"<i>Why don't we make a little mess?</i>\"");
         // non lover:
@@ -3736,7 +3736,7 @@ export class Urta implements TimeAwareInterface {
         addButton(4, "Back", goBackToUrtasForLuvinz);
     }
     // [Peg Her Ass]
-    private pegUrtasAssMessy(): void {
+    function pegUrtasAssMessy(): void {
         clearOutput();
         outputText(images.showImage("urta-home-pegurta"), false);
         let x: number = player.cocks.cockThatFits(urtaCapacity());
@@ -3833,7 +3833,7 @@ export class Urta implements TimeAwareInterface {
         menu();
         addButton(0, "Next", UrtaGetsPeggedCleanUp);
     }
-    private UrtaGetsPeggedCleanUp(): void {
+    function UrtaGetsPeggedCleanUp(): void {
         clearOutput();
         if (player.cor >= 50) outputText("You start to duck out, but the disapproving glare the fox gives you makes it clear that you won't be getting any more messy fun unless you stick around to clean it up this time.  Damnit.  ");
         outputText("With Urta's help, you slowly clean up the mess you two made, nearly clogging the plumbing a few times in the process.  New sheets, pillows, and furs are brought in, and you help her fix her bed.  The floor is mopped, the walls are scrubbed, and the shutters are opened to let in some fresh air.  Thankfully, just about everything is watertight and sealed, likely something she had done to ease situations such as this.  All told, between clean-up and sex, you spend a few hours with her.");
@@ -3845,7 +3845,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // [Get Filled Up At The Cum Pump Or Something This Was Supposed To Be A Joke]
-    private fillMeUpPleaseUrta(): void {
+    function fillMeUpPleaseUrta(): void {
         clearOutput();
         outputText(images.showImage("urta-home-female-fucked"), false);
         outputText("Lazily discarding the latex, you caress Urta's stocking-clad leg and coyly climb into bed.  She starts to reciprocate your affections, but you push her arm away, instructing, \"<i>Let me... let me have this.</i>\"");
@@ -3957,7 +3957,7 @@ export class Urta implements TimeAwareInterface {
         dynStats("lib", .2, "sen", -3);
     }
 
-    private cleanUpAfterUrtaCreamInjectsYou(): void {
+    function cleanUpAfterUrtaCreamInjectsYou(): void {
         clearOutput();
         if (player.cor >= 50) outputText("You start to duck out, but the disapproving glare the fox gives you makes it clear that you won't be getting any more messy fun unless you stick around to clean it up this time.  Damnit.  ");
         outputText("With Urta's help, you slowly clean up the mess you two made, nearly clogging the plumbing a few times in the process.  New sheets, pillows, and furs are brought in, and you help her fix her bed.  The floor is mopped, the walls are scrubbed, and the shutters are opened to let in some fresh air.  Thankfully, just about everything is watertight and sealed, likely something she had done to ease situations such as this.  All told, between clean-up and sex, you spend about four hours with her.");
@@ -3968,7 +3968,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseFourHours);
     }
 
-    private lippleBondUrtaScylla(): void {
+    function lippleBondUrtaScylla(): void {
         clearOutput();
         outputText(images.showImage("urta-syclla-3some", "vert"), false);
         outputText("With a grin, you approach the busty - bustier duo and lower yourself level with the woman doing most of the work.  Urta watches you with evident anticipation, probably thinking about whether you intend to join in on the oral assault on her - maybe give some attention to her overfilled balls, swelling bigger and bigger under Scylla's tender caresses, or the wet slit of a prize behind them, but you have a different thing in mind for them.");
@@ -4095,7 +4095,7 @@ export class Urta implements TimeAwareInterface {
     // - Any gender except for Genderless
     // The scene:
 
-    private nagaOnUrtaMess(): void {
+    function nagaOnUrtaMess(): void {
         clearOutput();
         outputText(images.showImage("urta-naga-fuck"), false);
         outputText("You tell Urta that today, you intend to pleasure her a bit more thoroughly, intimately and in a slightly kinky way, and then maybe have her return the favor, condoms off, regardless of how messy it gets.  She raises an eyebrow, and then you ask her if she'd ever thought about getting off on both ends with the use of your coils.  Her eyes dart open a bit and she seems flustered.");
@@ -4187,7 +4187,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // Lets Lick Some Cum... I mean, uh, fuck pussies?
-    private lickOutUrtaAtHome(): void {
+    function lickOutUrtaAtHome(): void {
         clearOutput();
         const x: number = player.cocks.cockThatFits(urtaCapacity());
         if (x < 0) {
@@ -4288,7 +4288,7 @@ export class Urta implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public slurpFawkesCocksForFunAndInflation(): void {
+    export function slurpFawkesCocksForFunAndInflation(): void {
         clearOutput();
         outputText(images.showImage("urta-home-bj"), false);
         outputText("\"<i>Thanks, Lover! I need this. I've been so busy, I haven't had any relief in days!</i>\" Urta informs you as she lightly strokes herself to full erectness. It's a short trip, and in a few pumps, she's ready to go. You glance around the bar, making sure all possible prying eyes are occupied. Feeling satisfied with your findings, you slyly shuffle your way under the table.");
@@ -4338,7 +4338,7 @@ export class Urta implements TimeAwareInterface {
     // Surprise Threesome Selected
     // PC tells Urta to meet in a back room in 30 minutes, then pays runner to send a note to Raphael.
     // PC leads Raph to the same back room, then comes in kissing him....
-    public urtaAndRaphaelSurprise(): void {
+    export function urtaAndRaphaelSurprise(): void {
         clearOutput();
         outputText("Letting your lips split into a mischievious grin, you lean across the table and whisper into Urta's fluffy ear.  \"<i>Why don't you meet me in one of the back rooms with the lights off in about thirty minutes?  I'll see if I can get a friend, we can make a party of it.</i>\"");
 
@@ -4361,7 +4361,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Next", raphaelAndUrtaPartTwo);
     }
 
-    private raphaelAndUrtaPartTwo(): void {
+    function raphaelAndUrtaPartTwo(): void {
         clearOutput();
         outputText(images.showImage("urta-raphael-3some", "vert"), false);
         outputText("Narrow, familiar paws suddenly encircle your waist, and a puff of hot breath exhales past your ear.  \"<i>Greetings, my supple swan.</i>\"");
@@ -4430,7 +4430,7 @@ export class Urta implements TimeAwareInterface {
     // Available from Urta at home menu "Goo Fuck"
     // PC must have goo legs, goo skin, goo hair, etc.
     // If Edryn is pregnant, Olivia the guardswoman takes her place
-    private urtaGooTesticleVoreRuinedOrgasms(): void {
+    function urtaGooTesticleVoreRuinedOrgasms(): void {
         clearOutput();
         outputText(images.showImage("urta-goo-fuck"), false);
         outputText("You tell your vixen lover that you've got something a bit... special in mind this time.  You surge up onto the bed and gently flip Urta onto her back.  Her horsecock bobs enticingly in front of you, already as hard as ");
@@ -4476,7 +4476,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Next", urtasRuinedOrgasmsFromGooPartII);
     }
 
-    private urtasRuinedOrgasmsFromGooPartII(): void {
+    function urtasRuinedOrgasmsFromGooPartII(): void {
         clearOutput();
         // This is just getting weird as fuck now. There will be no images for this... how could there be?
         outputText("You awaken the next morning to a panicked shout.  You bolt upright...  Or at least you try to.  Something is holding you tight, binding you in place.  You try to open your eyes, but nothing but blackness surrounds you.  Struggling, you try and wrench yourself free of your bindings.");
@@ -4632,7 +4632,7 @@ export class Urta implements TimeAwareInterface {
     // Choosable from the main sex menu.
     // Two different intros to this scene, one first-time and one repeat.
 
-    private urtaPetPlayDeletedForeverBecauseThirdProovedMeWrongAboutDice(): void {
+    function urtaPetPlayDeletedForeverBecauseThirdProovedMeWrongAboutDice(): void {
         clearOutput();
         // First Time
         if (flags[kFLAGS.URTA_PETPLAY_DONE] > 0) {
@@ -4655,7 +4655,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Wear", wearZeCollar);
     }
 
-    private ignoreUrtasCollar(): void {
+    function ignoreUrtasCollar(): void {
         flags[kFLAGS.URTA_PETPLAY_DONE] = -1;
         clearOutput();
         if (urtaLove()) urtaHomeLuvLuvinsMenu();
@@ -4663,7 +4663,7 @@ export class Urta implements TimeAwareInterface {
 
     }
 
-    private wearZeCollar(): void {
+    function wearZeCollar(): void {
         clearOutput();
         if (flags[kFLAGS.URTA_PETPLAY_DONE] == 0) {
             outputText("You reach down into the trashcan, unclasp the collar and slip it on.  You tighten it until it fits snugly against your " + skinFurScales(player) + ", but isn't otherwise uncomfortable.  With a satisfying <b>click</b>, the clasp snaps shut, so you know there's no going back.  Urta's mouth drops as she watches you do this, completely at a loss for words.  Her cock, on the other hand, hardens, knowing just what to do.");
@@ -4720,7 +4720,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // Doggystyle
-    private doggyStyle(): void {
+    function doggyStyle(): void {
         clearOutput();
         outputText(images.showImage("urta-home-petplay-doggy"), false);
         outputText("\"<i>Hmm,</i>\" Urta wonders aloud, bringing a finger up to her mouth in mock-thoughtfulness.  \"<i>What should I do with my little pet now that " + mf(player, "he", "she") + "'s all collared up?</i>\"  Your Owner walks around you slowly, assessing your body.");
@@ -4826,7 +4826,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Next", partTwoOfDoggieStyle);
     }
 
-    private partTwoOfDoggieStyle(): void {
+    function partTwoOfDoggieStyle(): void {
         clearOutput();
         game.time.hours += 2;
         statScreenRefresh();
@@ -4837,7 +4837,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // "Reward"
-    private getAPetReward(): void {
+    function getAPetReward(): void {
         clearOutput();
         outputText(images.showImage("urta-home-petplay-reward"), false);
         outputText("\"<i>Well, you've been a good little pet so far,</i>\" Urta says, patting you on the head. \"<i>I think a little... reward is in order.</i>\"  You quirk an eyebrow, wondering about that pause, but wag your ");
@@ -4934,7 +4934,7 @@ export class Urta implements TimeAwareInterface {
         addButton(0, "Next", feedTheBeastPartII);
     }
 
-    private feedTheBeastPartII(): void {
+    function feedTheBeastPartII(): void {
         clearOutput();
         game.time.hours += 2;
         statScreenRefresh();
@@ -4945,7 +4945,7 @@ export class Urta implements TimeAwareInterface {
     }
 
     // Walkies!
-    private urtaTakesPCOnWalkies(): void {
+    function urtaTakesPCOnWalkies(): void {
         clearOutput();
         outputText(images.showImage("urta-home-petplay-walkies"), false);
         outputText("\"<i>Ah, I know just what we should do!</i>\" She claps her hands together and rummages through her dresser.  Urta throws on a simple little yellow sundress and makes her way to the door.  \"<i>Come on, pet</i>\" she says with a mischevious smirk, patting her leg and holding up a leather leash. \"<i>It's time to go for a walk!</i>\"");
@@ -4993,4 +4993,3 @@ export class Urta implements TimeAwareInterface {
         }
         doNext(Camp.returnToCampUseOneHour);
     }
-}

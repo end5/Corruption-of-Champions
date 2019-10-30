@@ -3,13 +3,12 @@
  * ...
  * @author Gedan
  */
-export class FarmCorruption {
 
-    public whitneySprite(): void {
+    export function whitneySprite(): void {
         Farm.whitneySprite();
     }
 
-    public corruptFollowers(): number {
+    export function corruptFollowers(): number {
         let count: number = 0;
 
         if (JojoScene.campCorruptJojo()) count++;
@@ -23,7 +22,7 @@ export class FarmCorruption {
         return count;
     }
 
-    public whitneyCorruption(mod: number = 0): number {
+    export function whitneyCorruption(mod: number = 0): number {
         if (mod != 0) {
             flags[kFLAGS.WHITNEY_CORRUPTION] += mod;
 
@@ -61,22 +60,22 @@ export class FarmCorruption {
         return flags[kFLAGS.WHITNEY_CORRUPTION];
     }
 
-    public whitneyCorrupt(): boolean {
+    export function whitneyCorrupt(): boolean {
         if (flags[kFLAGS.WHITNEY_CORRUPTION_COMPLETE] > 0) return true;
         return false;
     }
 
-    public whitneyDom(): boolean {
+    export function whitneyDom(): boolean {
         if (flags[kFLAGS.WHITNEY_DOM] == 1) return true;
         return false;
     }
 
-    public whitneyDefurred(): boolean {
+    export function whitneyDefurred(): boolean {
         if (flags[kFLAGS.WHITNEY_DEFURRED] == 1) return true;
         return false;
     }
 
-    public whitneyHasTattoo(): boolean {
+    export function whitneyHasTattoo(): boolean {
         if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) return true;
         if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] != 0) return true;
         if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) return true;
@@ -84,24 +83,24 @@ export class FarmCorruption {
         return false;
     }
 
-    public whitneyCockArea(): number {
+    export function whitneyCockArea(): number {
         trace("Update cock area with values from Vapulas dildo.");
         return 10 * 2;
     }
 
-    public whitneyVagCapacity(): number {
+    export function whitneyVagCapacity(): number {
         // Stolen from Sheila. Whitney wasn't chaste prior to corruption, so it stands to reason she'd be able to take /something/ reasonably sized given CoC standards.
         return 44;
     }
 
-    public whitneyMaxedOralTraining(): boolean {
+    export function whitneyMaxedOralTraining(): boolean {
         if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 100) return true;
         return false;
     }
 
     // Called once per day, check all the followers that have been set to the farm and change whitneys corruption as appropriate
     // Also going to use this to handle Gem value updates and shit.
-    public updateFarmCorruption(): number {
+    export function updateFarmCorruption(): number {
         // Early exit if we've not actually started the corruption process
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] <= 0) return flags[kFLAGS.WHITNEY_CORRUPTION];
 
@@ -272,7 +271,7 @@ export class FarmCorruption {
         return modValue;
     }
 
-    public collectTheGoodies(): void {
+    export function collectTheGoodies(): void {
         clearOutput();
 
         // Get gems
@@ -325,7 +324,7 @@ export class FarmCorruption {
         addButton(9, "Back", rootScene);
     }
 
-    private getItemObj(flag: number): SimpleConsumable {
+    function getItemObj(flag: number): SimpleConsumable {
         if (flag == kFLAGS.FARM_SUCCUMILK_STORED) return ConsumableLib.SUCMILK;
         if (flag == kFLAGS.FARM_INCUDRAFT_STORED) return ConsumableLib.INCUBID;
         if (flag == kFLAGS.FARM_EGG_STORED) return SophieBimbo.eggTypes[SophieBimbo.eggColors.indexOf(flags[kFLAGS.FOLLOWER_PRODUCTION_SOPHIE_COLORCHOICE])];
@@ -335,7 +334,7 @@ export class FarmCorruption {
         return null;
     }
 
-    private takeItems(flag: number): void {
+    function takeItems(flag: number): void {
         const item: SimpleConsumable = getItemObj(flag);
 
         if (flag == kFLAGS.FARM_EGG_STORED) flags[kFLAGS.FARM_EGG_COUNTDOWN] = 7;
@@ -343,13 +342,13 @@ export class FarmCorruption {
         Inventory.takeItem(item, afterTakeItems);
     }
 
-    private afterTakeItems(): void {
+    function afterTakeItems(): void {
         if (collectionAvailable())
             collectTheGoodies();
         else rootScene();
     }
 
-    public farmProtection(): number {
+    export function farmProtection(): number {
         let protection: number = 0;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) protection += 1;
@@ -389,7 +388,7 @@ export class FarmCorruption {
         return protection;
     }
 
-    public farmValue(): number {
+    export function farmValue(): number {
         let fValue: number = 0;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) fValue += 3;
@@ -423,7 +422,7 @@ export class FarmCorruption {
         return fValue;
     }
 
-    public takeoverPrompt(): boolean {
+    export function takeoverPrompt(): boolean {
         if (flags[kFLAGS.FARM_CORRUPTION_DISABLED] == 1) return false;
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] == 1) {
             farmMenu();
@@ -461,7 +460,7 @@ export class FarmCorruption {
         return false;
     }
 
-    protected takeoverPromptKelly(): void {
+    function takeoverPromptKelly(): void {
         outputText("You stand at the top of a small rise overlooking the farm. From here you can just about pick out a beige-furred figure in the pepper field, hard at work. You shake your head almost in disbelief at the pastoral tableau. You remember when you found the farm when you were taking your first faltering steps in this land, with barely anything but the clothes you stood up in. You remember the relief you felt when you found this place, a pocket of peace in this disturbed land, how grateful you were to its owner to grub in the dirt with her and work for a pittance.");
 
         outputText("\n\nNow you feel nothing but contempt. How <b>dare</b> that bitch kick you off her land as if you were some common vagrant, simply because you took your rightful revenge on the centaur cunt she allowed to hang around and do as he pleased? Would she have stepped in if he had done to you what you have done to him? You think not, no, not Whitney, she’d have quite happily sat on the hill and read her book whilst her pet asshole raped the hell out of you.");
@@ -477,7 +476,7 @@ export class FarmCorruption {
         outputText("?");
     }
 
-    protected takeoverPromptMarbleRape(): void {
+    function takeoverPromptMarbleRape(): void {
         outputText("You stand at the top of a small rise overlooking the farm. From here you can just about pick out a beige-furred figure in the pepper field, hard at work. You shake your head almost in disbelief at the pastoral tableau. You remember when you found the farm when you were taking your first faltering steps in this land, with barely anything but the clothes you stood up in. You remember the relief you felt when you found this place, a pocket of peace in this disturbed land, how grateful you were to its owner to grub in the dirt with her and work for a pittance.");
 
         outputText("\n\nNow you feel nothing but contempt. How <b>dare</b> that bitch kick you off her land, as if you were some common vagrant, simply because you took what was rightfully yours from the cow bitch. Would Whitney have stepped in if Marble had done to you what you did to her? You think not, no, not Whitney, she’d have quite happily sat on the hill and read her book whilst the cow bitch did what she felt like to you, probably forcing her damn milk down your throat. But once it affects her, well skies above, we can’t be doing with that can we?");
@@ -493,7 +492,7 @@ export class FarmCorruption {
         outputText("?");
     }
 
-    protected takeoverPromptGeneric(): void {
+    function takeoverPromptGeneric(): void {
         outputText("You stand at the top of a small rise overlooking the farm. From here you can just about pick out a beige-furred figure in the pepper field, hard at work. You shake your head almost in disbelief at the pastoral tableau. You remember when you found the farm when you were taking your first faltering steps in this land, with barely anything but the clothes you stood up in.");
 
         outputText("\n\nYou remember the relief you felt when you found this place, a pocket of peace in this disturbed land, how grateful you were to its owner to grub in the dirt with her and work for a pittance.");
@@ -501,7 +500,7 @@ export class FarmCorruption {
         outputText("\n\nNow you feel nothing but contempt. Who chooses to live their life out here in staid idleness? What kind of sexless nothing nods her head at passing champions and then goes back to her book, not giving a flying fuck about anyone or anything as long as it doesn’t directly affect them? Does she have any idea how lucky she is, how merciful you are that you let her live her useless life in peace, with you just over the hill with a pile of sex slaves gathering? What you would give, what you would do to make her eyes open wide in dismay, to make her see a [man] she ignored passing through her yard with bigger ideas, coming back to completely destroy her.");
     }
 
-    protected takeoverPromptMerge(firstTime: boolean = false): void {
+    function takeoverPromptMerge(firstTime: boolean = false): void {
         flags[kFLAGS.FARM_CORRUPT_PROMPT_DISPLAY] = 1;
 
         if (firstTime) {
@@ -518,7 +517,7 @@ export class FarmCorruption {
         addButton(2, "Never", takeoverPromptNever);
     }
 
-    public takeoverPromptNow(): void {
+    export function takeoverPromptNow(): void {
         clearOutput();
 
         outputText("You stride down to the farm and leap over a gate. You move casually, swaggering towards the pepper field with no obvious intent. When Whitney spots you and slowly stands up from her weeding, you raise your hand in friendly greeting");
@@ -598,7 +597,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected takeoverPromptLater(): void {
+    function takeoverPromptLater(): void {
         clearOutput();
 
         outputText("You stare for a moment longer, then turn and head back to camp. You will show mercy she does not deserve... for now.");
@@ -606,7 +605,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    protected takeoverPromptNever(): void {
+    function takeoverPromptNever(): void {
         clearOutput();
         flags[kFLAGS.FARM_CORRUPTION_DISABLED] = 1;
 
@@ -617,7 +616,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public rootScene(): void {
+    export function rootScene(): void {
         clearOutput();
         spriteSelect(62);
 
@@ -719,7 +718,7 @@ export class FarmCorruption {
         farmMenu();
     }
 
-    public farmMenu(): void {
+    export function farmMenu(): void {
         menu();
 
         if (flags[kFLAGS.WHITNEY_DISABLED_FOR_DAY] != 1) {
@@ -756,7 +755,7 @@ export class FarmCorruption {
         addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private corruptingTheFarmExplore(): void {
+    function corruptingTheFarmExplore(): void {
         menu();
 
         addButton(0, "Explore", Farm.exploreFarm);
@@ -767,7 +766,7 @@ export class FarmCorruption {
         addButton(9, "Back", farmMenu);
     }
 
-    public collectionAvailable(): boolean {
+    export function collectionAvailable(): boolean {
         if (flags[kFLAGS.FARM_CORRUPTION_DAYS_SINCE_LAST_PAYOUT] >= 7) return true;
         if (flags[kFLAGS.FARM_SUCCUMILK_STORED] > 0) return true;
         if (flags[kFLAGS.FARM_INCUDRAFT_STORED] > 0) return true;
@@ -776,7 +775,7 @@ export class FarmCorruption {
         return false;
     }
 
-    private keltAChangeInManagement(): void {
+    function keltAChangeInManagement(): void {
         clearOutput();
 
         outputText("“<i>Hear there’s been a change in management,</i>” says Kelt, clopping to a halt in front of you. You confirm that that is the case. The big centaur looks at you thoughtfully. There’s something different in his dark eyes and rugged scowl than his usual wearied contempt. Grudging admiration?");
@@ -797,7 +796,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private numSlavesAtFarm(): number {
+    function numSlavesAtFarm(): number {
         let count: number = 0;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) count++;
@@ -810,12 +809,12 @@ export class FarmCorruption {
         return count;
     }
 
-    private slavesAtFarm(): boolean {
+    function slavesAtFarm(): boolean {
         if (numSlavesAtFarm() > 0) return true;
         return false;
     }
 
-    private slavesAtFarmMenu(): void {
+    function slavesAtFarmMenu(): void {
         menu();
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_AMILY] == 1) addButton(0, "Amily", AmilyScene.amilyFollowerEncounter);
@@ -833,7 +832,7 @@ export class FarmCorruption {
         addButton(9, "Back", farmMenu);
     }
 
-    private numFollowersAtFarm(): number {
+    function numFollowersAtFarm(): number {
         let count: number = 0;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !SophieBimbo.bimboSophie()) count++;
@@ -841,12 +840,12 @@ export class FarmCorruption {
         return count;
     }
 
-    private followersAtFarm(): boolean {
+    function followersAtFarm(): boolean {
         if (numFollowersAtFarm() > 0) return true;
         return false;
     }
 
-    private followersAtFarmMenu(): void {
+    function followersAtFarmMenu(): void {
         menu();
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 1 && !SophieBimbo.bimboSophie()) addButton(0, "Sophie", SophieFollowerScene.followerSophieMainScreen);
@@ -854,7 +853,7 @@ export class FarmCorruption {
         addButton(9, "Back", farmMenu);
     }
 
-    private numLoversAtFarm(): number {
+    function numLoversAtFarm(): number {
         let count: number = 0;
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] > 0) count++;
@@ -863,12 +862,12 @@ export class FarmCorruption {
         return count;
     }
 
-    private loversAtFarm(): boolean {
+    function loversAtFarm(): boolean {
         if (numLoversAtFarm() > 0) return true;
         return false;
     }
 
-    private loversAtFarmMenu(): void {
+    function loversAtFarmMenu(): void {
         menu();
 
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(0, "Izma", IzmaScene.izmaFollowerMenu);
@@ -879,7 +878,7 @@ export class FarmCorruption {
         addButton(9, "Back", farmMenu);
     }
 
-    private dogeNotCorruptYet(): void {
+    function dogeNotCorruptYet(): void {
         clearOutput();
         whitneySprite();
 
@@ -1012,7 +1011,7 @@ export class FarmCorruption {
         }
     }
 
-    private dogeNotCorruptLeaveFirstTime(): void {
+    function dogeNotCorruptLeaveFirstTime(): void {
         clearOutput();
         whitneySprite();
 
@@ -1026,7 +1025,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private dogeNotCorruptLeave6190(): void {
+    function dogeNotCorruptLeave6190(): void {
         clearOutput();
         whitneySprite();
 
@@ -1040,7 +1039,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private dogeNotCorruptYetMenu(): void {
+    function dogeNotCorruptYetMenu(): void {
         menu();
 
         addButton(0, "Appearance", whitneyAppearanceNotCorrupt);
@@ -1054,7 +1053,7 @@ export class FarmCorruption {
         else if (whitneyCorruption() <= 90 && flags[kFLAGS.WHITNEY_LEAVE_61_90] == 0) addButton(9, "Back", dogeNotCorruptLeave6190);
     }
 
-    public availableInvestments(): boolean {
+    export function availableInvestments(): boolean {
         if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) return true;
         if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) return true;
         if (flags[kFLAGS.FARM_UPGRADES_REFINERY] == 0 && flags[kFLAGS.QUEUE_REFINERY_UPGRADE] == 0) return true;
@@ -1063,7 +1062,7 @@ export class FarmCorruption {
         return false;
     }
 
-    private whitneyAppearanceNotCorrupt(): void {
+    function whitneyAppearanceNotCorrupt(): void {
         clearOutput();
         whitneySprite();
 
@@ -1073,7 +1072,7 @@ export class FarmCorruption {
         dogeNotCorruptYetMenu();
     }
 
-    private whitneyAppearanceCorrupt(): void {
+    function whitneyAppearanceCorrupt(): void {
         clearOutput();
         whitneySprite();
 
@@ -1101,7 +1100,7 @@ export class FarmCorruption {
         dogeCorruptedMissionComplete(false);
     }
 
-    private prosperityGoNotCorrupt(): void {
+    function prosperityGoNotCorrupt(): void {
         clearOutput();
         whitneySprite();
 
@@ -1130,7 +1129,7 @@ export class FarmCorruption {
         dogeNotCorruptYetMenu();
     }
 
-    private investmentMenu(): void {
+    function investmentMenu(): void {
         menu();
         if (player.keyItems.has("Breast Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_BREASTMILKER_UPGRADE] == 0) addButton(0, "Breast Milker", investmentBreastMilker);
         if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") < 0 && flags[kFLAGS.QUEUE_COCKMILKER_UPGRADE] == 0) addButton(1, "Cock Milker", investmentCockMilker);
@@ -1142,7 +1141,7 @@ export class FarmCorruption {
         else addButton(9, "Back", dogeCorruptedMissionComplete);
     }
 
-    private investmentBreastMilker(): void {
+    function investmentBreastMilker(): void {
         clearOutput();
         whitneySprite();
 
@@ -1164,7 +1163,7 @@ export class FarmCorruption {
         addButton(1, "No", turnDownInvestment);
     }
 
-    private doBreastMilkerInvestment(): void {
+    function doBreastMilkerInvestment(): void {
         clearOutput();
         whitneySprite();
 
@@ -1180,7 +1179,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private investmentCockMilker(): void {
+    function investmentCockMilker(): void {
         clearOutput();
         whitneySprite();
 
@@ -1201,7 +1200,7 @@ export class FarmCorruption {
         addButton(1, "No", turnDownInvestment);
     }
 
-    private doCockMilkerInvestment(): void {
+    function doCockMilkerInvestment(): void {
         clearOutput();
         whitneySprite();
 
@@ -1224,7 +1223,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private investmentRefinery(): void {
+    function investmentRefinery(): void {
         clearOutput();
         whitneySprite();
 
@@ -1245,7 +1244,7 @@ export class FarmCorruption {
         addButton(1, "No", turnDownInvestment);
     }
 
-    private doRefineryInvestment(): void {
+    function doRefineryInvestment(): void {
         clearOutput();
         whitneySprite();
 
@@ -1261,7 +1260,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private investmentContraceptive(): void {
+    function investmentContraceptive(): void {
         clearOutput();
         whitneySprite();
 
@@ -1286,7 +1285,7 @@ export class FarmCorruption {
         addButton(1, "No", turnDownInvestment);
     }
 
-    private doContraceptiveInvestment(): void {
+    function doContraceptiveInvestment(): void {
         clearOutput();
         whitneySprite();
 
@@ -1309,7 +1308,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private investmentMilktank(): void {
+    function investmentMilktank(): void {
         clearOutput();
         whitneySprite();
 
@@ -1348,7 +1347,7 @@ export class FarmCorruption {
         addButton(1, "No", turnDownInvestment);
     }
 
-    private doMilktankInvestment(): void {
+    function doMilktankInvestment(): void {
         clearOutput();
         whitneySprite();
 
@@ -1362,7 +1361,7 @@ export class FarmCorruption {
         doNext(rootScene);
     }
 
-    private turnDownInvestment(money: boolean = false): void {
+    function turnDownInvestment(money: boolean = false): void {
         clearOutput();
         whitneySprite();
 
@@ -1382,7 +1381,7 @@ export class FarmCorruption {
         investmentMenu();
     }
 
-    private deFurDoge(): void {
+    function deFurDoge(): void {
         clearOutput();
         whitneySprite();
 
@@ -1401,7 +1400,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private dontDeFurDoge(): void {
+    function dontDeFurDoge(): void {
         clearOutput();
         whitneySprite();
 
@@ -1440,7 +1439,7 @@ export class FarmCorruption {
         addButton(1, "Make Dom", makeDogeDommy);
     }
 
-    private makeDogeSubby(): void {
+    function makeDogeSubby(): void {
         clearOutput();
         whitneySprite();
 
@@ -1471,7 +1470,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private makeDogeDommy(): void {
+    function makeDogeDommy(): void {
         clearOutput();
         whitneySprite();
 
@@ -1512,7 +1511,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private dogeCorruptedMissionComplete(output: boolean = true): void {
+    function dogeCorruptedMissionComplete(output: boolean = true): void {
         if (flags[kFLAGS.QUEUE_BRANDING_AVAILABLE_TALK] == 1 && output) {
             brandingAvailableTalk();
             return;
@@ -1550,7 +1549,7 @@ export class FarmCorruption {
         addButton(9, "Back", rootScene);
     }
 
-    private whitneySubPleasure(): void {
+    function whitneySubPleasure(): void {
         clearOutput();
         whitneySprite();
 
@@ -1578,7 +1577,7 @@ export class FarmCorruption {
         }
     }
 
-    private cockOralTraining(): () => void {
+    function cockOralTraining(): () => void {
         if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 0) {
             return firstCockOralTraining;
         }
@@ -1602,7 +1601,7 @@ export class FarmCorruption {
         }
     }
 
-    private vaginaOralTraining(): () => void {
+    function vaginaOralTraining(): () => void {
         if (flags[kFLAGS.WHITNEY_ORAL_TRAINING] == 0) {
             return firstVaginaOralTraining;
         }
@@ -1626,7 +1625,7 @@ export class FarmCorruption {
         }
     }
 
-    private firstOralTraining(): void {
+    function firstOralTraining(): void {
         outputText("You grin down at your newly acquired slave. It’s certainly a fitting position for a literal bitch, and whether she’s adopted it knowingly or not she’s got the stance down perfectly - the yearning eyes, the slowly wagging tail, back and neck straight. A tempting image of a biscuit balanced on a nose surfaces in your mind... but it is swiftly banished by more pressing thoughts, carnal impulses sinking down to your groin at the sight of your kneeling dog girl. She watches avidly as you slowly peel off your [armor], exposing");
         if (player.cocks.length > 0) outputText(" [eachCock]");
         if (player.cocks.length > 0 && player.vaginas.length > 0) outputText(" and");
@@ -1654,7 +1653,7 @@ export class FarmCorruption {
         outputText("\n\n“<i>First,</i>” you say, settling yourself down, “<i>Put one hand in your knickers. Find that nice, wet pussy of yours.</i>” You watch her, a smile twitching the corners of your mouth as, blushing furiously, she shifts around in front of you. “<i>You know how to do that, right? All those lonely nights on the farm... good. Nice and easy. Eyes down.</i>” You say the last part adamantly, opening your [hips] wider as you do. Whitney swallows a bit as she strokes at her tiny button whilst staring at your " + ((player.cocks.length > 0) ? "[eachCock]" : "[vagina]") + ", already " + ((player.cocks.length > 0) ? "semi-turgid" : "moist") + " from the display put on by your fresh, nervous slave. “<i>Good,</i>” you murmur. “<i>Now... reach forward, and begin to lick.</i>”");
     }
 
-    private firstCockOralTraining(): void {
+    function firstCockOralTraining(): void {
         clearOutput();
         whitneySprite();
 
@@ -1692,7 +1691,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private cockOralTrainingStageOne(): void {
+    function cockOralTrainingStageOne(): void {
         clearOutput();
         whitneySprite();
 
@@ -1727,7 +1726,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private firstCockOralTrainingStageTwo(): void {
+    function firstCockOralTrainingStageTwo(): void {
         clearOutput();
         whitneySprite();
 
@@ -1874,7 +1873,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private cockOralTrainingStageTwo(): void {
+    function cockOralTrainingStageTwo(): void {
         clearOutput();
         whitneySprite();
 
@@ -1931,7 +1930,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private firstCockOralTrainingStageThree(): void {
+    function firstCockOralTrainingStageThree(): void {
         clearOutput();
         whitneySprite();
 
@@ -2066,7 +2065,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private cockOralTrainingStageThree(): void {
+    function cockOralTrainingStageThree(): void {
         clearOutput();
         whitneySprite();
 
@@ -2212,7 +2211,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private cockOralTrainingMaxed(): void {
+    function cockOralTrainingMaxed(): void {
         clearOutput();
         whitneySprite();
 
@@ -2334,7 +2333,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private firstVaginaOralTraining(): void {
+    function firstVaginaOralTraining(): void {
         clearOutput();
         whitneySprite();
 
@@ -2369,7 +2368,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vaginaOralTrainingStageOne(): void {
+    function vaginaOralTrainingStageOne(): void {
         clearOutput();
         whitneySprite();
 
@@ -2398,7 +2397,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private firstVaginaOralTrainingStageTwo(): void {
+    function firstVaginaOralTrainingStageTwo(): void {
         clearOutput();
         whitneySprite();
 
@@ -2463,7 +2462,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vaginaOralTrainingStageTwo(): void {
+    function vaginaOralTrainingStageTwo(): void {
         clearOutput();
         whitneySprite();
 
@@ -2500,7 +2499,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private firstVaginaOralTrainingStageThree(): void {
+    function firstVaginaOralTrainingStageThree(): void {
         clearOutput();
         whitneySprite();
 
@@ -2550,7 +2549,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vaginaOralTrainingStageThree(): void {
+    function vaginaOralTrainingStageThree(): void {
         clearOutput();
         whitneySprite();
 
@@ -2618,7 +2617,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vaginaOralTrainingMaxed(): void {
+    function vaginaOralTrainingMaxed(): void {
         clearOutput();
         whitneySprite();
 
@@ -2678,7 +2677,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private whitneyDomPleasure(): void {
+    function whitneyDomPleasure(): void {
         clearOutput();
         whitneySprite();
 
@@ -2699,7 +2698,7 @@ export class FarmCorruption {
         doNext(scenes[rand(scenes.length)]);
     }
 
-    private firstWhitneyDomPleasure(): void {
+    function firstWhitneyDomPleasure(): void {
         outputText("You are slightly apprehensive about this, but you’ve gone to the trouble of crafting Whitney into a fairly unique slave, and it seems churlish not to test just how deep the dominating streak you’ve brought out in her goes. You tell her you could do with a bit of relaxation.");
 
         outputText("\n\n“<i>Of course, [master]. Relaxation,</i>” murmurs Whitney. She drops a heavy tonal wink over her last two words as she entwines her arm around yours. “<i>Perhaps you’d like to come inside my house? Been making one or two, mmm, adjustments I’d like you to see.</i>” She may be quite petite but it strikes you how strong a lifetime of physical labor has made her; it feels like a small, hot bundle of rope wrapped around your arm which is leading you up the board steps and through the door of Whitney’s farmhouse.");
@@ -2715,7 +2714,7 @@ export class FarmCorruption {
         outputText("\n\n“<i>Undress,</i>” she directs curtly, and you do so meekly whilst watching her do the same. She rips off her plain work clothes quickly as if she were irritated by them, not driven by any need to put on a show for you, simply overwhelmingly eager to begin. You suddenly feel both very warm and slightly shaky.");
     }
 
-    private repeatWhitneyDomPleasure(): void {
+    function repeatWhitneyDomPleasure(): void {
         outputText("You say you could do with some relaxation.");
 
         outputText("\n\n“<i>So soon after the last time?</i>” a delighted Whitney whispers as she wraps her arm around yours tightly. “<i>Guess I’m not relaxing you hard enough.</i>” Again she leads you into her house, again she leads her into her chamber, again she locks the door securely before pushing you feverishly onto her bed, leather straps and buckles shifting beneath you as she begins to strip.");
@@ -2724,7 +2723,7 @@ export class FarmCorruption {
     }
 
     // TODO : Split this up
-    private whitneyDomBondageOral(): void {
+    function whitneyDomBondageOral(): void {
         clearOutput();
         whitneySprite();
 
@@ -2837,7 +2836,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private whitneyDomStraponDoggy(): void {
+    function whitneyDomStraponDoggy(): void {
         clearOutput();
         whitneySprite();
 
@@ -2951,7 +2950,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public whitneyDomRide(): void {
+    export function whitneyDomRide(): void {
         clearOutput();
         whitneySprite();
 
@@ -3080,7 +3079,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private brandingMenu(): void {
+    function brandingMenu(): void {
         clearOutput();
         whitneySprite();
 
@@ -3118,7 +3117,7 @@ export class FarmCorruption {
         }
     }
 
-    private hasFreeTattooSlot(name: string): boolean {
+    function hasFreeTattooSlot(name: string): boolean {
         if (name == "whitney") {
             if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] == 0) return true;
             if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] == 0) return true;
@@ -3173,7 +3172,7 @@ export class FarmCorruption {
         }
     }
 
-    public hasTattoo(name: string): boolean {
+    export function hasTattoo(name: string): boolean {
         if (name == "whitney") {
             if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] != 0) return true;
             if (flags[kFLAGS.WHITNEY_TATTOO_LOWERBACK] != 0) return true;
@@ -3228,7 +3227,7 @@ export class FarmCorruption {
         }
     }
 
-    public numTattoos(name: string): number {
+    export function numTattoos(name: string): number {
         let count: number = 0;
 
         if (name == "whitney") {
@@ -3279,7 +3278,7 @@ export class FarmCorruption {
         return count;
     }
 
-    private brandWhitney(): void {
+    function brandWhitney(): void {
         clearOutput();
         whitneySprite();
 
@@ -3291,7 +3290,7 @@ export class FarmCorruption {
         brandSlotSelect();
     }
 
-    public brandAmily(): void {
+    export function brandAmily(): void {
         clearOutput();
 
         outputText("You retrieve the pots of ink and paper from the barn and, smiling, tell your pet mouse you’re going to give her a treat.");
@@ -3308,7 +3307,7 @@ export class FarmCorruption {
         amilyBrandSlotSelect();
     }
 
-    private brandJojo(): void {
+    function brandJojo(): void {
         clearOutput();
 
         outputText("You retrieve the pots of ink and paper from the barn and, smiling brightly, tell your pet mouse you’re going to give him a special treat. Jojo knows all too well the nature of your treats. He closes his eyes and waits for the worst as you consider where and what to put on him.");
@@ -3319,7 +3318,7 @@ export class FarmCorruption {
         jojoBrandSlotSelect();
     }
 
-    private brandBimboSophie(): void {
+    function brandBimboSophie(): void {
         clearOutput();
 
         outputText("You retrieve the pots of ink and paper from the barn and, smiling, tell your pet harpy you’re going to give her a treat.");
@@ -3341,7 +3340,7 @@ export class FarmCorruption {
         bimboSophieSlotSelect();
     }
 
-    private brandVapula(): void {
+    function brandVapula(): void {
         outputText("You retrieve the pots of ink and paper from the barn and, smiling, tell your succubus you’re going to give her a treat.");
 
         outputText("\n\n“<i>What’s that supposed to be, [name]?</i>” she says, peering at your tools. “<i>Tattooing gear? Wow, that’s crude. You know Lethice has artists whose pens make you feel whatever is drawn on you, so...</i>” You say you don’t give a stuff what Lethice has, you’re here now and you going to tattoo exactly what you like on her.");
@@ -3356,7 +3355,7 @@ export class FarmCorruption {
         vapulaSlotSelect();
     }
 
-    private brandKelly(): void {
+    function brandKelly(): void {
         outputText("You retrieve the pots of ink and paper from the barn and smilingly tell your centaur cumslut you’re going to give her a treat.");
 
         outputText("\n\n“<i>Ok,</i>” she says meekly, her wide, green eyes on the objects in your hand. “<i>It won’t hurt, will it?</i>” Like you fucking her in the ass, you tell her soothingly, any initial pain will be more than worth the eventual satisfaction. As she blushes rosily, you consider where and what you’re going to put on her.");
@@ -3367,7 +3366,7 @@ export class FarmCorruption {
         kellySlotSelect();
     }
 
-    private brandSmallMilky(): void {
+    function brandSmallMilky(): void {
         outputText("You retrieve the pots of ink and paper from the barn and, smiling kindly, tell your ex Sand Witch slave you’re going to give her a treat. ");
 
         outputText("\n\n[bathgirlName] looks at your tattooing paraphernalia apprehensively.");
@@ -3380,7 +3379,7 @@ export class FarmCorruption {
         smallMilkySlotSelect();
     }
 
-    private brandBigMilky(): void {
+    function brandBigMilky(): void {
         outputText("You retrieve the pots of ink and paper from the barn and, smiling kindly, tell your ex Sand Witch slave you’re going to give her a treat. ");
 
         outputText("\n\n[bathgirlName] blinks up at you, and then frowns hard as she considers this.");
@@ -3393,7 +3392,7 @@ export class FarmCorruption {
         bigMilkySlotSelect();
     }
 
-    private getBrandingStuff(): void {
+    function getBrandingStuff(): void {
         clearOutput();
         whitneySprite();
 
@@ -3409,7 +3408,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private dontGetBrandingStuff(): void {
+    function dontGetBrandingStuff(): void {
         clearOutput();
         whitneySprite();
 
@@ -3422,7 +3421,7 @@ export class FarmCorruption {
         dogeCorruptedMissionComplete();
     }
 
-    private brandingAvailableTalk(): void {
+    function brandingAvailableTalk(): void {
         clearOutput();
         whitneySprite();
 
@@ -3444,7 +3443,7 @@ export class FarmCorruption {
         addButton(1, "No", dontTestBranding);
     }
 
-    private testBranding(): void {
+    function testBranding(): void {
         clearOutput();
         whitneySprite();
 
@@ -3457,13 +3456,13 @@ export class FarmCorruption {
         brandSlotSelect();
     }
 
-    private slotNames: any[] = [
+    let slotNames: any[] = [
         "collarbone",
         "shoulders",
         "lower back",
         "butt"];
 
-    public brandSlotSelect(): void {
+    export function brandSlotSelect(): void {
         menu();
         if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", brandSelect, 0);
         if (flags[kFLAGS.WHITNEY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", brandSelect, 1);
@@ -3471,7 +3470,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.WHITNEY_TATTOO_BUTT] == 0) addButton(3, "Butt", brandSelect, 3);
     }
 
-    public amilyBrandSlotSelect(): void {
+    export function amilyBrandSlotSelect(): void {
         menu();
         if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", amilyBrandSelect, 0);
         if (flags[kFLAGS.AMILY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", amilyBrandSelect, 1);
@@ -3479,7 +3478,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.AMILY_TATTOO_BUTT] == 0) addButton(3, "Butt", amilyBrandSelect, 3);
     }
 
-    public jojoBrandSlotSelect(): void {
+    export function jojoBrandSlotSelect(): void {
         menu();
         if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", jojoBrandSelect, 0);
         if (flags[kFLAGS.JOJO_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", jojoBrandSelect, 1);
@@ -3487,7 +3486,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.JOJO_TATTOO_BUTT] == 0) addButton(3, "Butt", jojoBrandSelect, 3);
     }
 
-    public bimboSophieSlotSelect(): void {
+    export function bimboSophieSlotSelect(): void {
         menu();
         if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", bimboSophieBrandSelect, 0);
         if (flags[kFLAGS.SOPHIE_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", bimboSophieBrandSelect, 1);
@@ -3495,7 +3494,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.SOPHIE_TATTOO_BUTT] == 0) addButton(3, "Butt", bimboSophieBrandSelect, 3);
     }
 
-    public vapulaSlotSelect(): void {
+    export function vapulaSlotSelect(): void {
         menu();
         if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", vapulaBrandSelect, 0);
         if (flags[kFLAGS.VAPULA_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", vapulaBrandSelect, 1);
@@ -3503,7 +3502,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.VAPULA_TATTOO_BUTT] == 0) addButton(3, "Butt", vapulaBrandSelect, 3);
     }
 
-    public kellySlotSelect(): void {
+    export function kellySlotSelect(): void {
         menu();
         if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", kellyBrandSelect, 0);
         if (flags[kFLAGS.KELLY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", kellyBrandSelect, 1);
@@ -3511,7 +3510,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.KELLY_TATTOO_BUTT] == 0) addButton(3, "Butt", kellyBrandSelect, 3);
     }
 
-    public smallMilkySlotSelect(): void {
+    export function smallMilkySlotSelect(): void {
         menu();
         if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", smallMilkyBrandSelect, 0);
         if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", smallMilkyBrandSelect, 1);
@@ -3519,7 +3518,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.MILKY_TATTOO_BUTT] == 0) addButton(3, "Butt", smallMilkyBrandSelect, 3);
     }
 
-    public bigMilkySlotSelect(): void {
+    export function bigMilkySlotSelect(): void {
         menu();
         if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] == 0) addButton(0, "Collarbone", bigMilkyBrandSelect, 0);
         if (flags[kFLAGS.MILKY_TATTOO_SHOULDERS] == 0) addButton(1, "Shoulders", bigMilkyBrandSelect, 1);
@@ -3527,7 +3526,7 @@ export class FarmCorruption {
         if (flags[kFLAGS.MILKY_TATTOO_BUTT] == 0) addButton(3, "Butt", bigMilkyBrandSelect, 3);
     }
 
-    public brandSelect(slot: number): void {
+    export function brandSelect(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -3544,7 +3543,7 @@ export class FarmCorruption {
         addButton(9, "Back", brandSlotSelect);
     }
 
-    public amilyBrandSelect(slot: number): void {
+    export function amilyBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3560,7 +3559,7 @@ export class FarmCorruption {
         addButton(9, "Back", amilyBrandSlotSelect);
     }
 
-    public jojoBrandSelect(slot: number): void {
+    export function jojoBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on his " + slotNames[slot] + "?");
@@ -3576,7 +3575,7 @@ export class FarmCorruption {
         addButton(9, "Back", jojoBrandSlotSelect);
     }
 
-    public bimboSophieBrandSelect(slot: number): void {
+    export function bimboSophieBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3593,7 +3592,7 @@ export class FarmCorruption {
         addButton(9, "Back", bimboSophieSlotSelect);
     }
 
-    public vapulaBrandSelect(slot: number): void {
+    export function vapulaBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3609,7 +3608,7 @@ export class FarmCorruption {
         addButton(9, "Back", vapulaSlotSelect);
     }
 
-    public kellyBrandSelect(slot: number): void {
+    export function kellyBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3625,7 +3624,7 @@ export class FarmCorruption {
         addButton(9, "Back", kellySlotSelect);
     }
 
-    public smallMilkyBrandSelect(slot: number): void {
+    export function smallMilkyBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3642,7 +3641,7 @@ export class FarmCorruption {
         addButton(9, "Back", smallMilkySlotSelect);
     }
 
-    public bigMilkyBrandSelect(slot: number): void {
+    export function bigMilkyBrandSelect(slot: number): void {
         clearOutput();
 
         outputText("What will you draw on her " + slotNames[slot] + "?");
@@ -3658,37 +3657,37 @@ export class FarmCorruption {
         addButton(9, "Back", bigMilkySlotSelect);
     }
 
-    private collarboneIntro(): void {
+    function collarboneIntro(): void {
         outputText("You command her to kneel in front of you and be still. Your lithe, naked dog girl does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper.");
     }
 
-    private amilyCollarboneIntro(): void {
+    function amilyCollarboneIntro(): void {
         outputText("You command her to kneel in front of you and be still. The succubus mouse does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. ");
     }
 
-    private jojoCollarboneIntro(): void {
+    function jojoCollarboneIntro(): void {
         outputText("You command him to kneel in front of you and be still. The mouse-demon does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on him, and then seal it on with the paper. ");
 
         outputText("\n\n“<i>Th-thanks, [master],</i>” he says, when he looks down and sees what you’ve permanently inscribed on his chest. You tussle his adorable ears and tell him he’s quite welcome.");
     }
 
-    private bimboSophieCollarboneIntro(): void {
+    function bimboSophieCollarboneIntro(): void {
         outputText("You command her to kneel in front of you and be still. It’s difficult to get her to stay still, but she goes into a trance-like state when you finally lay your ink-soaked finger on her, mesmerized by its movement until you lay the paper over the design you’ve drawn and seal the ink.");
     }
 
-    private vapulaCollarboneIntro(): void {
+    function vapulaCollarboneIntro(): void {
         outputText("You command her to kneel in front of you and be still. The succubus does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. ");
     }
 
-    private kellyCollarboneIntro(): void {
+    function kellyCollarboneIntro(): void {
         outputText("You command her to kneel in front of you and be still. The centaur does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. ");
     }
 
-    private smallMilkyCollarboneIntro(): void {
+    function smallMilkyCollarboneIntro(): void {
         outputText("You command her to take her clothes off, kneel in front of you and be still. The dusky girl does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her and then seal it on with the paper.");
     }
 
-    private bigMilkyCollarboneIntro(): void {
+    function bigMilkyCollarboneIntro(): void {
         outputText("\n\nIt’s difficult getting at this area of [bathgirlName]’s anatomy, but you manage to crane yourself around her vast tits and get to work. Dipping your finger into the ink, you carefully draw your design on her skin and then seal it on with the paper. The former sand witch slave gazes down at what you’ve drawn mistily, trailing her fingers over it.");
 
         outputText("\n\n“<i>Bath time?</i>”");
@@ -3696,25 +3695,25 @@ export class FarmCorruption {
         outputText("\n\n“<i>Soon,</i>” you reply soothingly, as you turn to go put your branding equipment back.");
     }
 
-    private shouldersIntro(): void {
+    function shouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. Your lithe, naked dog girl does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. “<i>What did you draw, [master]?</i>” she says eagerly.");
 
         outputText("\n\nLaughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw no, come on, tell me what it is! It’s a rude word, isn’t it? [Master], it better not be somethin’ the slaves are gonna laugh at.</i>”");
     }
 
-    private jojoShouldersIntro(): void {
+    function jojoShouldersIntro(): void {
         outputText("You command him to kneel facing away from you and be still. The mouse-demon does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on him, and then seal it on with the paper. ");
 
         outputText("\n\n“<i>Th-thanks, [master],</i>” he says. He pauses. “<i>I don’t suppose I could know what it-?</i>” You tussle his adorable ears and tell him of course not.");
     }
 
-    private amilyShouldersIntro(): void {
+    function amilyShouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. Your succubus mouse does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her and then seal it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she says eagerly. Laughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw [master], you know they’ll just lie and say it’s something like ‘breeding bitch’. C’mon, please tell me!</i>”");
     }
 
-    private bimboSophieShouldersIntro(): void {
+    function bimboSophieShouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. It’s difficult to get her to stay still, but she goes into a trance-like state when you finally lay your ink-soaked finger between her blonde wings, mesmerized by its movement until you lay the paper over the design you’ve drawn and seal the ink.");
 
         outputText("\n\n“<i>What did you put on?</i>” she says excitedly, turning around. “<i>Can I see?</i>” She turns around again. Her feathery brow furrows as she touches between her shoulder blades. She turns around again...");
@@ -3722,23 +3721,23 @@ export class FarmCorruption {
         outputText("\n\nYou leave her to it.");
     }
 
-    private vapulaShouldersIntro(): void {
+    function vapulaShouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. Your succubus does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. ");
 
         outputText("\n\n“<i>Let’s have a look then,</i>” she sighs, sparks flying off her fingers as she magically forms a mirror trained on her back in her hands. “<i>Ah. Very nice, [name]. I look forward to the next time you mutilate my perfect body with your incredibly crude ideas and instruments.</i>” You intimate that next time you’ll simply draw a giant cock on her face, which does get a laugh from her.");
     }
 
-    private kellyShouldersIntro(): void {
+    function kellyShouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. The centaur does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her shoulder blades, and then seal it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she asks tentatively when you’re done. Trying to keep a straight face, you say a giant spunky horse cock. “<i>That’s funny, [master]. Ha ha. Y-you didn’t really do that, did you?</i>”");
     }
 
-    private smallMilkyShouldersIntro(): void {
+    function smallMilkyShouldersIntro(): void {
         outputText("You command her to kneel facing away from you and be still. The dusky girl does so, keeping her back straight and still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper. ");
     }
 
-    private bigMilkyShouldersIntro(): void {
+    function bigMilkyShouldersIntro(): void {
         outputText("You set yourself down behind [bathgirlName] before dipping your finger into the ink, carefully draw your design on her, and then seal it on with the paper. She barely seems to notice.");
 
         outputText("\n\n“<i>Bath time?</i>”");
@@ -3746,25 +3745,25 @@ export class FarmCorruption {
         outputText("\n\n“<i>Soon,</i>” you reply soothingly, as you turn to go put your branding equipment back.");
     }
 
-    private lowerbackIntro(): void {
+    function lowerbackIntro(): void {
         outputText("You command her to set herself down on your [legs], as if she were about to receive a spanking. Your lithe, naked dog girl does so, her laughter at her own compromising permission turning to a sharp coo as you dip your finger into the ink and carefully draw your design on her, before sealing it on with the paper. “<i>What did you draw, [master]?</i>” she says eagerly.");
 
         outputText("\n\nLaughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw no, come on, tell me what it is! It’s a rude word, isn’t it? [Master], it better not be somethin’ the slaves are gonna laugh at...</i>”");
     }
 
-    private jojoLowerbackIntro(): void {
+    function jojoLowerbackIntro(): void {
         outputText("You command him to set himself face down across your [legs], as if he were about to receive a spanking. The mouse-demon does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on him and then seal it on with the paper. ");
 
         outputText("\n\n“<i>Th-thanks, [master],</i>” he says. He pauses. “<i>I don’t suppose I could know what it-?</i>” You tussle his adorable ears and tell him of course not.");
     }
 
-    private amilyLowerBackIntro(): void {
+    function amilyLowerBackIntro(): void {
         outputText("You command her to set herself face down across your [legs], as if she were about to receive a spanking. Your succubus mouse does so, her giggles at her own compromising position turning to a sharp coo as you dip your finger into the ink and carefully draw your design on her, before sealing it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she says eagerly. Laughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw [master], you know they’ll just lie and say it’s something like ‘breeding bitch’. C’mon, please tell me!</i>”");
     }
 
-    private bimboSophieLowerBackIntro(): void {
+    function bimboSophieLowerBackIntro(): void {
         outputText("You command her to set herself face down across your [legs], as if she were about to receive a spanking. It’s difficult to get her to stay still, cooing and shaking with giggles at her compromising position. She finally falls into a trance-like state when you lay your ink-soaked finger on her, mesmerized by its movement until you lay the paper over the design you’ve drawn and seal the ink.");
 
         outputText("\n\n“<i>What did you put on?</i>” she says excitedly, turning around. “<i>Can I see?</i>” She turns around again. Her feathery brow furrows as she touches her lower back. She turns around again...");
@@ -3772,7 +3771,7 @@ export class FarmCorruption {
         outputText("\n\nYou leave her to it.");
     }
 
-    private vapulaLowerBackIntro(): void {
+    function vapulaLowerBackIntro(): void {
         outputText("You command her to set herself face down across your [legs], as if she were about to receive a spanking. Your succubus does so, her put-upon sigh turning to a sharp coo as you dip your finger into the ink and carefully draw your design on her, before sealing it on with the paper. ");
 
         outputText("\n\n“<i>Let’s have a look then,</i>” she says, sparks flying off her fingers as she magically forms a mirror trained on her back in her hands. “<i>Ah. Very nice, [name]. I look forward to the next time you mutilate my perfect body with your incredibly crude ideas and instruments.</i>”");
@@ -3780,17 +3779,17 @@ export class FarmCorruption {
         outputText("\n\nYou intimate that next time you’ll simply draw a giant cock on her face, which does get a laugh from her.");
     }
 
-    private kellyLowerBackIntro(): void {
+    function kellyLowerBackIntro(): void {
         outputText("You command her to stand perfectly still.  She can’t quite stop clopping her hooves fretfully as you dip your finger into the ink and carefully draw your design on her human lower back before sealing it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she asks tentatively when you’re done. Trying to keep a straight face, you say a giant spunky horse cock. “<i>That’s funny, [master]. Ha ha. Y-you didn’t really do that, did you?</i>”");
     }
 
-    private smallMilkyLowerBackIntro(): void {
+    function smallMilkyLowerBackIntro(): void {
         outputText("You command her to set herself down across your [legs]. The dusky girl does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her, and then seal it on with the paper.");
     }
 
-    private bigMilkyLowerBackIntro(): void {
+    function bigMilkyLowerBackIntro(): void {
         outputText("You set yourself down behind [bathgirlName] before dipping your finger into the ink, carefully draw your design on her, and then seal it on with the paper. She barely seems to notice.");
 
         outputText("\n\n“<i>Bath time?</i>”");
@@ -3798,25 +3797,25 @@ export class FarmCorruption {
         outputText("\n\n“<i>Soon,</i>” you reply soothingly, as you turn to go put your branding equipment back.");
     }
 
-    private buttIntro(): void {
+    function buttIntro(): void {
         outputText("You command her to set herself down on your [legs], as if she were about to receive a spanking. Your lithe, naked dog girl does so, her laughter at her own compromising permission turning to a sharp coo as you dip your finger into the ink and carefully draw your design on the softest part of her anatomy, before sealing it on with the paper.");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she says eagerly. Laughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw no, come on, tell me what it is! It’s a rude word, isn’t it? [Master], it better not be somethin’ the slaves are gonna laugh at. Ooh!</i>” You give her new tattoo a playful slap.");
     }
 
-    private amilyButtIntro(): void {
+    function amilyButtIntro(): void {
         outputText("You command her to set herself face down across your [legs], as if she were about to receive a spanking. Your succubus mouse does so, her laughter at her own compromising position turning to a sharp coo as you dip your finger into the ink and carefully draw your design on the softest part of her anatomy, before sealing it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she says eagerly. Laughing, you admire it for yourself and then say she’ll have to ask one of your other slaves... and hope they tell the truth. “<i>Aw [master], you know they’ll just lie and say it’s something like ‘breeding bitch’. C’mon, please tell me! Ooh!</i>” That tattoo is going to be pretty irresistible, you think, as you admire your red handprint over it.");
     }
 
-    private jojoButtIntro(): void {
+    function jojoButtIntro(): void {
         outputText("You command him to set himself face down across your [legs], as if he were about to receive a spanking. The mouse-demon does so, staying perfectly still as you dip your finger into the ink, carefully draw your design onto the softest part of his body and then seal it on with the paper. ");
 
         outputText("\n\n“<i>Th-thanks, [master],</i>” he says. He pauses. “<i>I don’t suppose I could know what it-?</i>” You give his new tattoo a playful slap and tell him of course not.");
     }
 
-    private bimboSophieButtIntro(): void {
+    function bimboSophieButtIntro(): void {
         outputText("You command her to set herself face down across your [legs], as if she were about to receive a spanking. It’s difficult to get her to stay still, cooing and shaking with giggles at her compromising position. She finally falls into a trance-like state when you lay your ink-soaked finger on her, mesmerized by its movement until you lay the paper over the design you’ve drawn and seal the ink. You’ve certainly given yourself a vast if decidedly wobbly canvas to work on.");
 
         outputText("\n\n“<i>What did you put on?</i>” she says excitedly, turning around. “<i>Can I see?</i>” She turns around again. Her feathery brow furrows as she touches her butt. She turns around again...");
@@ -3824,7 +3823,7 @@ export class FarmCorruption {
         outputText("\n\nYou leave her to it.");
     }
 
-    private vapulaButtIntro(): void {
+    function vapulaButtIntro(): void {
         outputText("You command her to set herself down across your [legs], as if she were about to receive a spanking. Your succubus does so, her put-upon sigh turning to a sharp coo as you dip your finger into the ink and carefully draw your design on the softest part of her anatomy, before sealing it on with the paper. ");
 
         outputText("\n\n“<i>Let’s have a look then,</i>” she says, sparks flying off her fingers as she magically forms a mirror trained on her ass in her hands. “<i>Ah. Very nice, [name]. I look forward to the next time you mutilate my perfect body with your incredibly crude ideas and instruments.</i>”");
@@ -3832,7 +3831,7 @@ export class FarmCorruption {
         outputText("\n\nYou intimate that next time you’ll simply draw a giant cock on her face, which does get a laugh from her.");
     }
 
-    private kellyButtIntro(): void {
+    function kellyButtIntro(): void {
         outputText("You command her to stand perfectly still.  She can’t quite stop clopping her hooves fretfully as you dip your finger into the ink and carefully draw your design on her smooth, brawny horse ass before sealing it on with the paper. ");
 
         outputText("\n\n“<i>What did you draw, [master]?</i>” she asks tentatively when you’re done. Trying to keep a straight face, you say the word “spank” on one cheek, “me” on the other. “<i>That’s funny, [master]. Ha ha. Y-you didn’t really do that, did you? Ow!</i>” ");
@@ -3840,11 +3839,11 @@ export class FarmCorruption {
         outputText("\n\nThinking about it now, as you draw your reddened hand away from what is now tattooed on her irresistibly broad, chestnut behind, that was an opportunity lost. ");
     }
 
-    private smallMilkyButtIntro(): void {
+    function smallMilkyButtIntro(): void {
         outputText("You command her to set herself down across your [legs]. The dusky girl does so, staying perfectly still as you dip your finger into the ink, carefully draw your design on her fine, round ass, and then seal it on with the paper.");
     }
 
-    private bigMilkyButtIntro(): void {
+    function bigMilkyButtIntro(): void {
         outputText("You set yourself down behind [bathgirlName] before dipping your finger into the ink, carefully draw your design on her fine, round ass, and then seal it on with the paper. She barely seems to notice.");
 
         outputText("\n\n“<i>Bath time?</i>”");
@@ -3852,7 +3851,7 @@ export class FarmCorruption {
         outputText("\n\n“<i>Soon,</i>” you reply soothingly, as you turn to go put your branding equipment back.");
     }
 
-    private tattooMerge(): void {
+    function tattooMerge(): void {
         outputText("\n\nAfter you’re done horsing around, Whitney redresses, unable to stop her hand drifting to the new, indelible inscription on her body as she does.");
 
         outputText("\n\n“<i>I’m glad you like what I’ve gotten you, [master],</i>” she says. “<i>I’ll put it in the barn so if you ever get the urge to, um, mark more cattle, it’s there. Just be warned [master], magic ink ain’t cheap - each mark’ll cost a good 50 gems.</i>”");
@@ -3862,7 +3861,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private tribalTattoo(slot: number): void {
+    function tribalTattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -3893,7 +3892,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private amilyTribalTattoo(slot: number): void {
+    function amilyTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -3923,7 +3922,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoTribalTattoo(slot: number): void {
+    function jojoTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across his ";
@@ -3952,7 +3951,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieTribalTattoo(slot: number): void {
+    function bimboSophieTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -3984,7 +3983,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaTribalTattoo(slot: number): void {
+    function vapulaTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -4014,7 +4013,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyTribalTattoo(slot: number): void {
+    function kellyTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -4044,7 +4043,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyTribalTattoo(slot: number): void {
+    function smallMilkyTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -4083,7 +4082,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyTribalTattoo(slot: number): void {
+    function bigMilkyTribalTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A tribal tattoo, all snaking, erotic lines, across her ";
@@ -4112,7 +4111,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyHeartTattoo(slot: number): void {
+    function bigMilkyHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4141,7 +4140,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyPropertyOfTattoo(slot: number): void {
+    function bigMilkyPropertyOfTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4170,7 +4169,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyBathToyTattoo(slot: number): void {
+    function bigMilkyBathToyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Bath Toy” tattooed across her ";
@@ -4199,7 +4198,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyMegaMilkTattoo(slot: number): void {
+    function bigMilkyMegaMilkTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Mega Milk” tattooed across her collarbone.";
@@ -4209,7 +4208,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bigMilkyCockCozyTattoo(slot: number): void {
+    function bigMilkyCockCozyTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Cock Cozy” tattooed across her collarbone.";
@@ -4219,7 +4218,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private heartTattoo(slot: number): void {
+    function heartTattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -4250,7 +4249,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private amilyHeartTattoo(slot: number): void {
+    function amilyHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4280,7 +4279,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoHeartTattoo(slot: number): void {
+    function jojoHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on his ";
@@ -4309,7 +4308,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieHeartTattoo(slot: number): void {
+    function bimboSophieHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4341,7 +4340,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaHeartTattoo(slot: number): void {
+    function vapulaHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4371,7 +4370,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyHeartTattoo(slot: number): void {
+    function kellyHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4401,7 +4400,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyHeartTattoo(slot: number): void {
+    function smallMilkyHeartTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A plump, red love heart tattoo on her ";
@@ -4440,7 +4439,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyPropertyOfTattoo(slot: number): void {
+    function smallMilkyPropertyOfTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4479,7 +4478,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyBathToyTattoo(slot: number): void {
+    function smallMilkyBathToyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Bath Toy” tattooed across her ";
@@ -4518,7 +4517,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyMegaMilkTattoo(slot: number): void {
+    function smallMilkyMegaMilkTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Mega Milk” tattooed across her collarbone.";
@@ -4530,7 +4529,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private smallMilkyCockCozyTattoo(): void {
+    function smallMilkyCockCozyTattoo(): void {
         clearOutput();
 
         const tText: string = "“Cock Cozy” tattooed across her collarbone.";
@@ -4542,7 +4541,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public numMilkyButterflyTats(): number {
+    export function numMilkyButterflyTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE].indexOf("A butterfly") >= 0) count++;
@@ -4559,7 +4558,7 @@ export class FarmCorruption {
         return count;
     }
 
-    private smallMilkyButterflyTattoo(slot: number): void {
+    function smallMilkyButterflyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A butterfly, its four leaf-like wings in flight, tattooed across her ";
@@ -4636,7 +4635,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyHorseshoeTattoo(slot: number): void {
+    function kellyHorseshoeTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "A horseshoe imprinted firmly on each shoulder.";
@@ -4647,7 +4646,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyPropertyOfTattoo(slot: number): void {
+    function kellyPropertyOfTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4677,7 +4676,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyNo1FillyTattoo(slot: number): void {
+    function kellyNo1FillyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“#1 Filly” tattooed across her ";
@@ -4707,7 +4706,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private kellyDickWonTattoo(slot: number): void {
+    function kellyDickWonTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“I Fought the Dick And the Dick Won” tattooed in fine text across her ";
@@ -4737,7 +4736,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private propertyTattoo(slot: number): void {
+    function propertyTattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -4768,7 +4767,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private amilyPropertyTattoo(slot: number): void {
+    function amilyPropertyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4798,7 +4797,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoPropertyTattoo(slot: number): void {
+    function jojoPropertyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across his ";
@@ -4827,7 +4826,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoSissySlutTattoo(slot: number): void {
+    function jojoSissySlutTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Sissy Slut” tattooed across his ";
@@ -4856,7 +4855,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophiePropertyOfTattoo(slot: number): void {
+    function bimboSophiePropertyOfTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4888,7 +4887,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaPropertyOfTattoo(slot: number): void {
+    function vapulaPropertyOfTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Property of [Name]” tattooed across her ";
@@ -4918,7 +4917,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaCumAddictTattoo(slot: number): void {
+    function vapulaCumAddictTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Cum Addict” tattooed across her ";
@@ -4948,7 +4947,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaButtslutTattoo(slot: number): void {
+    function vapulaButtslutTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Buttslut” tattooed in a red love heart across her lower back.";
@@ -4959,7 +4958,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private vapulaDildoPolisherTattoo(slot: number): void {
+    function vapulaDildoPolisherTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Dildo Polisher” tattooed across her ";
@@ -4989,7 +4988,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieSwallowTattoo(slot: number): void {
+    function bimboSophieSwallowTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "A swallow with its tapering wings in flight across her ";
@@ -5021,7 +5020,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieBreedingBitchTattoo(slot: number): void {
+    function bimboSophieBreedingBitchTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Breeding Bitch” tattooed across her ";
@@ -5053,7 +5052,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieCockGoesHereTattoo(slot: number): void {
+    function bimboSophieCockGoesHereTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Cock Goes Here” tattooed across her lower back.";
@@ -5064,7 +5063,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private bimboSophieWideLoadTattoo(slot: number): void {
+    function bimboSophieWideLoadTattoo(slot: number): void {
         clearOutput();
 
         const tText: string = "“Wide” tattooed across one butt cheek and “Load” tattooed on the other.";
@@ -5075,7 +5074,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private no1Tattoo(slot: number): void {
+    function no1Tattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -5106,7 +5105,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private amilyBreedingBitchTattoo(slot: number): void {
+    function amilyBreedingBitchTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Breeding Bitch” tattooed across her ";
@@ -5136,7 +5135,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private champCocksuckerTattoo(slot: number): void {
+    function champCocksuckerTattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -5167,7 +5166,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private amilyCockGoesHereTattoo(slot: number): void {
+    function amilyCockGoesHereTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Cock Goes Here” tattooed across her ";
@@ -5197,7 +5196,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoCockGoesHereTattoo(slot: number): void {
+    function jojoCockGoesHereTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Cock Goes Here” tattooed across his ";
@@ -5226,7 +5225,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private amilyMommysGirlTattoo(slot: number): void {
+    function amilyMommysGirlTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Mommy’s Girl” tattooed across her ";
@@ -5256,7 +5255,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private jojoMommysBoyTattoo(slot: number): void {
+    function jojoMommysBoyTattoo(slot: number): void {
         clearOutput();
 
         let tText: string = "“Mommy’s Boy” tattooed across his ";
@@ -5285,7 +5284,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private champPussylickerTattoo(slot: number): void {
+    function champPussylickerTattoo(slot: number): void {
         clearOutput();
         whitneySprite();
 
@@ -5316,7 +5315,7 @@ export class FarmCorruption {
         tattooMerge();
     }
 
-    private dontTestBranding(): void {
+    function dontTestBranding(): void {
         clearOutput();
         whitneySprite();
 
@@ -5329,7 +5328,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private numAmilyTribalTats(): number {
+    function numAmilyTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.AMILY_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5346,7 +5345,7 @@ export class FarmCorruption {
         return count;
     }
 
-    private numWhitneyTribalTats(): number {
+    function numWhitneyTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.WHITNEY_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5363,17 +5362,17 @@ export class FarmCorruption {
         return count;
     }
 
-    public whitneyFullTribalTats(): boolean {
+    export function whitneyFullTribalTats(): boolean {
         if (numWhitneyTribalTats() == 4) return true;
         return false;
     }
 
-    public amilyFullTribalTats(): boolean {
+    export function amilyFullTribalTats(): boolean {
         if (numAmilyTribalTats() == 4) return true;
         return false;
     }
 
-    private numJojoTribalTats(): number {
+    function numJojoTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.JOJO_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5390,12 +5389,12 @@ export class FarmCorruption {
         return count;
     }
 
-    public jojoFullTribalTats(): boolean {
+    export function jojoFullTribalTats(): boolean {
         if (numJojoTribalTats() == 4) return true;
         return false;
     }
 
-    private numSophieTribalTats(): number {
+    function numSophieTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.SOPHIE_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5412,12 +5411,12 @@ export class FarmCorruption {
         return count;
     }
 
-    public sophieFullTribalTats(): boolean {
+    export function sophieFullTribalTats(): boolean {
         if (numSophieTribalTats() == 4) return true;
         return false;
     }
 
-    private numVapulaTribalTats(): number {
+    function numVapulaTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.VAPULA_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5434,12 +5433,12 @@ export class FarmCorruption {
         return count;
     }
 
-    public vapulaFullTribalTats(): boolean {
+    export function vapulaFullTribalTats(): boolean {
         if (numVapulaTribalTats() == 4) return true;
         return false;
     }
 
-    private numKellyTribalTats(): number {
+    function numKellyTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.KELLY_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5456,12 +5455,12 @@ export class FarmCorruption {
         return count;
     }
 
-    public kellyFullTribalTats(): boolean {
+    export function kellyFullTribalTats(): boolean {
         if (numKellyTribalTats() == 4) return true;
         return false;
     }
 
-    private numMilkyTribalTats(): number {
+    function numMilkyTribalTats(): number {
         let count: number = 0;
         if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE] instanceof String) {
             if (flags[kFLAGS.MILKY_TATTOO_COLLARBONE].indexOf("A tribal tattoo") >= 0) count++;
@@ -5478,12 +5477,12 @@ export class FarmCorruption {
         return count;
     }
 
-    public milkyFullTribalTats(): boolean {
+    export function milkyFullTribalTats(): boolean {
         if (numMilkyTribalTats() == 4) return true;
         return false;
     }
 
-    private orgyRoomRouter(): void {
+    function orgyRoomRouter(): void {
         let doFunctor: () => void = null;
 
         if (flags[kFLAGS.FARM_UPGRADES_ORGYROOM] == 0 && flags[kFLAGS.QUEUE_ORGYROOM_UPGRADE] == 0 && !whitneyDom()) {
@@ -5502,7 +5501,7 @@ export class FarmCorruption {
         if (doFunctor != null) addButton(4, "Massage", doFunctor);
     }
 
-    private wantOrgyRoom(): void {
+    function wantOrgyRoom(): void {
         clearOutput();
         whitneySprite();
 
@@ -5531,7 +5530,7 @@ export class FarmCorruption {
         addButton(1, noT, noOrgyRoomPlz);
     }
 
-    private getOrgyRoom(): void {
+    function getOrgyRoom(): void {
         clearOutput();
         whitneySprite();
 
@@ -5547,7 +5546,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private noOrgyRoomPlz(): void {
+    function noOrgyRoomPlz(): void {
         clearOutput();
         whitneySprite();
 
@@ -5560,7 +5559,7 @@ export class FarmCorruption {
         // Orgy Room added to Investments menu
     }
 
-    private orgyRoomTalk(): void {
+    function orgyRoomTalk(): void {
         clearOutput();
         whitneySprite();
 
@@ -5597,7 +5596,7 @@ export class FarmCorruption {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private orgyRoomSubMassage(): void {
+    function orgyRoomSubMassage(): void {
         clearOutput();
         whitneySprite();
 
@@ -5696,7 +5695,7 @@ export class FarmCorruption {
         }
     }
 
-    private orgyRoomSubMassageHappyEnding(): void {
+    function orgyRoomSubMassageHappyEnding(): void {
         clearOutput();
         whitneySprite();
 
@@ -5726,7 +5725,7 @@ export class FarmCorruption {
         if (player.vaginas.length > 0) addButton(1, "Female", subHappyEndingFemale);
     }
 
-    private subHappyEndingMale(): void {
+    function subHappyEndingMale(): void {
         clearOutput();
         const cockThatFits: number = player.cocks.cockThatFits(whitneyVagCapacity() * 1.33) + 1;
         let hasBiggerCock: boolean = false;
@@ -5773,7 +5772,7 @@ export class FarmCorruption {
 
     }
 
-    private subHappyEndingFemale(): void {
+    function subHappyEndingFemale(): void {
         clearOutput();
         whitneySprite();
 
@@ -5813,7 +5812,7 @@ export class FarmCorruption {
         happyEndingMerge();
     }
 
-    private happyEndingMerge(): void {
+    function happyEndingMerge(): void {
         outputText("\n\nOnce you have thrashed the last of it out you disentangle yourself and sink off down to one side, gasping for air, your heart thudding. It certainly pays not to get too vigorous too fast in the sweltering heat of this thing - as it is sweat beads your forehead and your vision swims for a few seconds as you stare up at the ceiling, waiting for the pulse beating in your brow to calm. In a beatific haze you listen to Whitney’s own breathing return to normal, feel her slide her arms back around your frame beneath the foam.");
 
         outputText("\n\n“<i>Are you fully relaxed now?</i>” she asks, in a low, teasing voice. “<i>Or am I going to have to massage you all over again?</i>” ");
@@ -5828,5 +5827,3 @@ export class FarmCorruption {
         dynStats("sen-", 1);
         doNext(Camp.returnToCampUseOneHour);
     }
-
-}

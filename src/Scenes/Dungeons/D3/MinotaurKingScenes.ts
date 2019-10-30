@@ -1,7 +1,5 @@
 
-export class MinotaurKingScenes {
-
-    public encounterMinotaurKing(): void {
+    export function encounterMinotaurKing(): void {
         clearOutput();
 
         outputText("The moment you step away from the defeated demon, Lethice’s assembled host parts like some kind of tentacled sea, revealing a path that would lead directly to the Queen of Corruption were it not barred by a form out of nightmares. A minotaur like none you’ve ever seen bars your path - the last obstacle before a face-to-face encounter with the cause of so much discontent.");
@@ -21,7 +19,7 @@ export class MinotaurKingScenes {
         startCombat(new MinotaurKing());
     }
 
-    public theKingIsDeadLongLiveTheKing(hpVictory: boolean): void {
+    export function theKingIsDeadLongLiveTheKing(hpVictory: boolean): void {
         flags[kFLAGS.MINOTAURKING_DEFEATED] = 1;
 
         // Cannot be defeated by HP loss, so only writing lust win texts.
@@ -51,14 +49,14 @@ export class MinotaurKingScenes {
         if (player.vaginas.length > 0) addButton(5, "Ride Him", mechanicalbullhue);
     }
 
-    private murderhobo(): void {
+    function murderhobo(): void {
         flags[kFLAGS.MINOTAURKING_KILLED] = 1;
         clearOutput();
         outputText("You make it quick, then straighten to stare Lethice in the eye. You’ll purge every single ounce of corruption from this world by any means necessary.");
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private dockucocku(cockIdx: number): void {
+    function dockucocku(cockIdx: number): void {
         flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
 
         clearOutput();
@@ -101,7 +99,7 @@ export class MinotaurKingScenes {
         }
     }
 
-    private dockucockuknotu(cockIdx: number): void {
+    function dockucockuknotu(cockIdx: number): void {
         clearOutput();
 
         outputText("When you try to pull out, there’s a problem: your knot. It inflated while you were cumming, and now that you’ve finished, it has expanded to lock you inside your unusual mate. No matter how you tug or pull, you can’t seem to extricate yourself from the cream-filled cow-man, and worse still, he’s starting to moan and squirm. Getting filled full of your spunk must have been more enjoyable for him than you thought.");
@@ -114,7 +112,7 @@ export class MinotaurKingScenes {
         gameOver();
     }
 
-    private buttufucku(): void {
+    function buttufucku(): void {
         flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
         clearOutput();
 
@@ -167,7 +165,7 @@ export class MinotaurKingScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private mechanicalbullhue(): void {
+    function mechanicalbullhue(): void {
         flags[kFLAGS.MINOTAURKING_FUCKED] = 1;
 
         clearOutput();
@@ -256,7 +254,7 @@ export class MinotaurKingScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private titfuckCowslut(): void {
+    function titfuckCowslut(): void {
         flags[kFLAGS.MINOTAURKINGSSLUT_FUCKED] = 1;
 
         clearOutput();
@@ -287,7 +285,7 @@ export class MinotaurKingScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private sloppySeconds(): void {
+    function sloppySeconds(): void {
         flags[kFLAGS.MINOTAURKINGSSLUT_FUCKED] = 1;
 
         clearOutput();
@@ -339,7 +337,7 @@ export class MinotaurKingScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public hailToTheKingBaby(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function hailToTheKingBaby(hpVictory: boolean, pcCameWorms: boolean): void {
         clearOutput();
 
         const mk: MinotaurKing = monster as MinotaurKing;
@@ -386,7 +384,7 @@ export class MinotaurKingScenes {
         addButton(0, "Next", gurglegurgle);
     }
 
-    private gurglegurgle(): void {
+    function gurglegurgle(): void {
         clearOutput();
 
         outputText("You wind up being grateful for that half-forgotten assfucking later, when the minotaur King finally lays claim to your other end. That little bit of extra gape and lubrication is enough to help him lodge his humongous pecker deep into your asshole. Just like with your throat, you find him easier to handle than his size alone would suggest, but that does nothing to diminish the obscene fullness occupying your mind.");
@@ -397,7 +395,7 @@ export class MinotaurKingScenes {
         gameOver();
     }
 
-    private leavethem(): void {
+    function leavethem(): void {
         flags[kFLAGS.MINOTAURKING_ALIVE] = 1;
         clearOutput();
 
@@ -413,4 +411,3 @@ export class MinotaurKingScenes {
 
         cleanupAfterCombat(D3.resumeFromFight);
     }
-}

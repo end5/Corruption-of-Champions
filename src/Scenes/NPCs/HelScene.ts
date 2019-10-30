@@ -69,8 +69,9 @@ export class HelScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public followerHel(): boolean {
+    export function followerHel(): boolean {
         if (flags[kFLAGS.HEL_FOLLOWER_LEVEL] == 2) return true;
         // This is a temporary fix
         if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 1) return false;
@@ -78,7 +79,7 @@ export class HelScene implements TimeAwareInterface {
         return false;
     }
 
-    public fuckBuddyHel(): boolean {
+    export function fuckBuddyHel(): boolean {
         return (flags[kFLAGS.HEL_FUCKBUDDY] == 1);
     }
     // VARS
@@ -99,7 +100,7 @@ export class HelScene implements TimeAwareInterface {
     // REQUIRES FOUGHT GNOLL!
 
     // Introduction – First Encounter
-    public encounterAJerkInThePlains(): void {
+    export function encounterAJerkInThePlains(): void {
         spriteSelect(68);
         flags[kFLAGS.HEL_TIMES_ENCOUNTERED]++;
         // Mino threesome proc
@@ -133,7 +134,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // FUCKBUDDY GREETING (edited)
-    private greetHelAsFuckbuddies(): void {
+    function greetHelAsFuckbuddies(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You make your way out onto the wide open plains.  Soon, you're enjoying a walk into hot, dry expanse, slowly meandering through the tall grasses.  But it isn't long before you hear footfalls quickly approaching.  You prepare for violence, but are pleasantly surprised to see Hel break through the tall grasses, her wide hips swaying seductively as she approaches.\n\n", false);
@@ -148,7 +149,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // PARTING FUCKBUDDIES (edited)
-    private postHelFuckBuddyFollowup(): void {
+    function postHelFuckBuddyFollowup(): void {
         spriteSelect(68);
         if (followerHel()) {
             Camp.returnToCampUseOneHour();
@@ -166,7 +167,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // FIRST COMBAT – PLAYER LOSES
-    public loseToSalamander(): void {
+    export function loseToSalamander(): void {
         spriteSelect(68);
         outputText("", true);
         // (If HP loss)
@@ -250,7 +251,7 @@ export class HelScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
 
-    public beatUpHel(): void {
+    export function beatUpHel(): void {
         spriteSelect(68);
         outputText("", true);
         // Various intros
@@ -260,7 +261,7 @@ export class HelScene implements TimeAwareInterface {
         if (player.cor < 85) helDefeatedNormal();
         else helDefeatedCorrupt();
     }
-    private helDefeatedCorrupt(): void {
+    function helDefeatedCorrupt(): void {
         spriteSelect(68);
         // [(corruption = high)
         outputText("By the way she's huffing and puffing, you figure you've got a minute or so to take advantage of her while she's vulnerable...  Do you?", false);
@@ -286,7 +287,7 @@ export class HelScene implements TimeAwareInterface {
         // (Wait takes you to \"<i>normal</i>\" post-victory, below)
     }
     // COMBAT – PLAYER WINS w/ LESS THAN 85 CORRUPTION
-    private helDefeatedNormal(clear: boolean = false): void {
+    function helDefeatedNormal(clear: boolean = false): void {
         spriteSelect(68);
         if (clear) outputText("", true);
         if (flags[kFLAGS.HEL_TIMES_ENCOUNTERED] == 1) {
@@ -307,7 +308,7 @@ export class HelScene implements TimeAwareInterface {
         helFuckMenu();
     }
 
-    private helFuckMenu(isAmbush: boolean = false): void {
+    function helFuckMenu(isAmbush: boolean = false): void {
         spriteSelect(68);
         // Leave appropriate way
         let leave: () => void = declineHelSexings;
@@ -400,7 +401,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [b]Player Win – Victory Un-Fuck – No Thanks (Any Gender)
-    private declineHelSexings(): void {
+    function declineHelSexings(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You thank her for the offer, but politely decline.\n\n", false);
@@ -415,7 +416,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Victory Fuck – Fuck her Vag
-    public beatUpHelAndStealHerWalletFromHerVagina(): void {
+    export function beatUpHelAndStealHerWalletFromHerVagina(): void {
         spriteSelect(68);
         outputText("", true);
         const x: number = player.cocks.cockThatFits(HelFollower.heliaCapacity());
@@ -445,7 +446,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Victory Fuck – Fuck her Ass
-    public fuckHelsAss(): void {
+    export function fuckHelsAss(): void {
         spriteSelect(68);
         outputText("", true);
         const x: number = player.cocks.cockThatFits(HelFollower.heliaAnalCapacity());
@@ -480,7 +481,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Victory Fuck – Get Blown (Male) (edited)
-    public helBlowsYou(): void {
+    export function helBlowsYou(): void {
         spriteSelect(68);
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
@@ -509,7 +510,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – DP(Multicock Only) (edited)
-    public dpHel(): void {
+    export function dpHel(): void {
         spriteSelect(68);
         const x: number = player.cocks.cockThatFits(HelFollower.heliaCapacity());
         const y: number = player.cocks.cockThatFits2(HelFollower.heliaCapacity());
@@ -543,7 +544,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Get Licked (Vagita) (edited)
-    public getLickedByHel(): void {
+    export function getLickedByHel(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You agree to her proposition, and instruct her to get on her knees as you slip out of your " + player.armorName + ", revealing your " + vaginaDescript(player, 0) + ".  She grins and kneels before you, quickly discarding her scaled bikini as you grasp her shoulders, pressing your womanhood to her lips.  Her long, forked tongue darts forward, teasing your lips.\n\n", false);
@@ -572,7 +573,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Tail Wank (dix of any size) (edited)
-    public helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora(): void {
+    export function helTailWanksYourDickBecauseSheLovesYouDesuDesuHoraHora(): void {
         spriteSelect(68);
         outputText("", true);
         const x: number = player.cocks.biggestCockIndex();
@@ -601,7 +602,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Tail Pegging (Anal) (edited)
-    public helTailPegging(): void {
+    export function helTailPegging(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You agree to her proposition and, after a moment of thought, strip out of your " + player.armorName + " and ask her if she could fuck you with that long, prehensile tail.  \"<i>Oh, now that's an idea I can get behind!</i>\"  She laughs at her own wit.  \"<i>Well, go on then.  Get on your hands and knees, and spread those ass cheeks.</i>\"\n\n", false);
@@ -639,7 +640,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Coil her Up (Wang Naga) (edited)
-    private nagaCoilsUpHel(): void {
+    function nagaCoilsUpHel(): void {
         spriteSelect(68);
         outputText("", true);
         const x: number = player.cocks.cockThatFits(85);
@@ -681,7 +682,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Coil her Up 69 (anal naga) (edited)
-    private nagaCoilsUpAnalNaga(): void {
+    function nagaCoilsUpAnalNaga(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You slither closer to the salamander and tell her that, yeah, you could stand to work off some steam.  She grins at that and closes the distance between you, reaching out to caress your serpentine half.  \"<i>Mmm.  Sexy tail, lover,</i>\" she says, reaching around and giving your " + buttDescription(player) + " a squeeze in her smooth, scaled hands.  \"<i>It'd be a real shame for such beautiful coils to go unused, you know...</i>\" she adds, giving you a little wink.\n\n", false);
@@ -711,7 +712,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Mount Her (Wangbearing Centaurs of height >= 60</i>\") (edited)
-    private mountHel(): void {
+    function mountHel(): void {
         spriteSelect(68);
         let x: number = player.cocks.cockThatFits(85);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -760,7 +761,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Hanging 69 (Vaginataurs of height >= 60</i>\") (edited)
-    private helVaginaTaur69(): void {
+    function helVaginaTaur69(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You trot up to the salamander and, just as you're about to tell the salamander a few of your fantasies you two could enact, she spills one of her own!  \"<i>Oh, Marae,</i>\" she purrs, reaching out to stroke your blank flank, \"<i>I've always wanted my very own warhorse.  Tell you what – let me ride you, and I'll give you something oh so special...</i>\"\n\n", false);
@@ -812,7 +813,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Possession (Ghost Morphs w/ Possession Power) (ehrdaterd)
-    private helPossessionShitPoopCock(): void {
+    function helPossessionShitPoopCock(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Taking advantage of the salamander's open state, you will yourself into incorporeality and glide toward her.  \"<i>Hey!  Wait!  What the fuck are you doing?</i>\" she yells as you approach her in your spectral form.\n\n", false);
@@ -870,7 +871,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Corrupt Rape – Rape her Ass (wangers and mash) (edited)
-    private rapingHelsAssMeansYourCorruptCauseAnalIsEvil(): void {
+    function rapingHelsAssMeansYourCorruptCauseAnalIsEvil(): void {
         spriteSelect(68);
         const x: number = player.cocks.cockThatFits(85);
         const y: number = player.cocks.cockThatFits2(85);
@@ -907,7 +908,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Player Win – Corrupt Rape – Get Rimjob (edited)
-    private receiveCorruptRimjobsFromHel(): void {
+    function receiveCorruptRimjobsFromHel(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("The sight of the salamander berserker on her knees stirs the fire in your loins, and in moments you've stripped out of your " + player.armorName + " and advanced upon her.  She looks up at you, gritting her teeth as if preparing to strike – you preempt her with a hard kick in the chest, knocking her on her back, then kneel down and straddle her, pinning her arms down underneath your knees as you bring your " + assholeDescript(player) + " to hover over her face.\n\n", false);
@@ -940,7 +941,7 @@ export class HelScene implements TimeAwareInterface {
     // MINOTAUR THREESOME ENCOUNTER & ACHIEVING SALAMANDER FUCKBUDDY STATUS (minotaurs don't live near the plains dogg) (edited)
     // ===========================================================================
     // triggers only after you've incremented the Helgate flag five times with 'consensual' sex (win or lose), but not Corrupt Rape options.
-    private helMinotaurThreesome(): void {
+    function helMinotaurThreesome(): void {
         spriteSelect(68);
         // Reset the additional talk options
         flags[kFLAGS.HEL_TALKED_ABOUT_BERSERKING] = 0;
@@ -966,7 +967,7 @@ export class HelScene implements TimeAwareInterface {
         else simpleChoices("", null, "Mino Lick", helMinoThreeSomeLickItsDick, "", null, "", null, "Nope", leaveMinotaurHelThreesome);
     }
     // [Leave]
-    private leaveMinotaurHelThreesome(): void {
+    function leaveMinotaurHelThreesome(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You shake your head with a deprecating smile, and turn to leave her to her pleasures.", false);
@@ -976,7 +977,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // THREESOME – FUCK HER ASS (wang of area =< 85) (edited)
-    private fuckHerAss(): void {
+    function fuckHerAss(): void {
         spriteSelect(68);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(85);
@@ -1006,7 +1007,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // THREESOME – MINO LICK (Unisex) (edited)
-    private helMinoThreeSomeLickItsDick(): void {
+    function helMinoThreeSomeLickItsDick(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Well, you're certainly not going to pass an opportunity like this up.  You shed your " + player.armorName + " in a hurry and step up to the poor minotaur.  You only just hold in a laugh at the glazed, half-conscious look on his face.  Looking him over, you can see a veritable pool of bull-spunk beneath his ass or sticking to the salamander's thighs as she continues to bounce on his shaft, indicating that he's been raped a half-dozen times already.  You almost feel bad for the poor thing, but then again, you half suspect your friend would be in the same shape he's in now had he won.  So, with your " + player.armorName + " off, you kneel down over his bull-like muzzle and force his snout into your " + assholeOrPussy(player) + ".\n\n", false);
@@ -1037,7 +1038,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // AFTER THREESOME SCENE (edited)
-    private postMinoThreesomeDecisionTime(): void {
+    function postMinoThreesomeDecisionTime(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("When she breaks the kiss, she leans back on her elbows and smiles at you, surprisingly prettily.  For once, you don't feel cripplingly exhausted after meeting her – no fight to tire you out before sex – so perhaps this would be a good time to interview your red-headed warrioress.\n\n", false);
@@ -1049,7 +1050,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [I'm Bugging Out]
-    private bugOutAfterHelMinoThreesome(): void {
+    function bugOutAfterHelMinoThreesome(): void {
         outputText("", true);
         spriteSelect(68);
         outputText("On second thought, you'd rather keep it simple for now, even if it means battling back her future advances with force of arms instead of words.  You kiss her once more and give her breasts a squeeze for the road, then wordlessly get up and take your leave.\n\n", false);
@@ -1059,7 +1060,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Berserker Mode]
-    private berserkMode(): void {
+    function berserkMode(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You take the opportunity to ask about her rather violent, enraged fighting style.\n\n", false);
@@ -1076,7 +1077,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Her]
-    private askHelAboutHer(): void {
+    function askHelAboutHer(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You think for a moment, and then ask her about herself.\n\n", false);
@@ -1102,7 +1103,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Attacking You]
-    private askHelAboutAttackingYou(): void {
+    function askHelAboutAttackingYou(): void {
         spriteSelect(68);
         outputText("", true);
         flags[kFLAGS.HEL_FUCKBUDDY] = 0;
@@ -1117,7 +1118,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Say Nothing]
-    private helChatMenu(): void {
+    function helChatMenu(): void {
         spriteSelect(68);
         if (flags[kFLAGS.HEL_TALKED_ABOUT_HER] == 0)
             simpleChoices("About Her", askHelAboutHer, "", null, "", null, "", null, "Leave", bugOutAfterHelMinoThreesome);
@@ -1131,7 +1132,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Stop]
-    private telHelSTOPATTACKINGMEYOUBITCH(): void {
+    function telHelSTOPATTACKINGMEYOUBITCH(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Even knowing she doesn't want to really hurt you, you ask the salamander to stop attacking you anyway.\n\n", false);
@@ -1147,7 +1148,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Seconds?]
-    private askMommaHelForSecondsAfterDinner(): void {
+    function askMommaHelForSecondsAfterDinner(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You reach down and grab the salamander's ample, muscular ass and, grinning, ask her if she's ready for more.\n\n", false);
@@ -1163,7 +1164,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Leave]
-    private leaveHelAfterMinoThreeSomeChat(): void {
+    function leaveHelAfterMinoThreeSomeChat(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Sadly, you know you have things to tend to, and so you give your salamander lover a quick peck goodbye as you get to your feet and clean off your " + player.armorName + ".  As you're getting ready to head back to camp, however, you feel her powerful arms wrap around your waist, locking you in place as her long, reptilian tongue snakes out to tease your ear.\n\n", false);
@@ -1184,7 +1185,7 @@ export class HelScene implements TimeAwareInterface {
     // -Player has met Isabella and is [currently] on friendly terms with her
     // -Isabella is NOT a follower
     // -Play when exploring the Plains.
-    public salamanderXIsabellaPlainsIntro(): void {
+    export function salamanderXIsabellaPlainsIntro(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You make your way onto the vast expanse of Mareth's plainsland and soon find yourself submerged in the tall grass, wading through it like a sea of weeds.  After a few minutes of wandering, you hear what sounds like a surprised, throaty moo in the distance, followed shortly by the crack of steel on steel.  Knowing Isabella makes camp not far from here, you ready your " + player.weaponName + " and make best haste toward the cow-girl's camp.\n\n", false);
@@ -1205,7 +1206,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Diplomacy (edited)
-    private salamanderXIsabellaDiplomacy(): void {
+    function salamanderXIsabellaDiplomacy(): void {
         spriteSelect(68);
         outputText("", true);
         // (PC passes a moderate Strength check)
@@ -1226,7 +1227,7 @@ export class HelScene implements TimeAwareInterface {
         doNext(salamanderXIsabellaDiplomacy2);
     }
 
-    private salamanderXIsabellaDiplomacy2(): void {
+    function salamanderXIsabellaDiplomacy2(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Now that you have the two redheads' attention, you insist on knowing what, exactly, is going on here.\n\n", false);
@@ -1267,7 +1268,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Watch (edited)
-    private watchIsabellaAndHelFight(): void {
+    function watchIsabellaAndHelFight(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Deciding this isn't really any of your business, you bunker down to watch the two redheads beat the shit out of each other.\n\n", false);
@@ -1291,7 +1292,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Leave (edited)
-    private skipTownOnIsabellaAndHelsFight(): void {
+    function skipTownOnIsabellaAndHelsFight(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Well, you're sure as hell not going to get involved in this – better to let them duke it out between themselves rather than risk your relationship with either girl.  You head on back to camp, not terribly surprised to hear sharp moos, grunts, and cries for some time in the distance.\n\n", false);
@@ -1302,7 +1303,7 @@ export class HelScene implements TimeAwareInterface {
 
     // Isabella x salamander Threesome – Camp Version Intro (edited)
     // (Play at ~02:00 AM, after Isabella arrives at camp. PC must have reached \"<i>Fuck Buddy</i>\" status with Hel)
-    public followrIzzyxSallyThreesomePretext(): void {
+    export function followrIzzyxSallyThreesomePretext(): void {
         spriteSelect(68);
         outputText("\n<b>Something odd happens during the night...</b>\n", false);
         outputText("You've only been asleep for a few hours when you hear a sudden and alarming THWACK just outside camp.  You jump to your feet and try to gather your equipment while trying to make sure everything and everyone in camp is present and accounted for.  It only takes you a moment to notice that Isabella is nowhere to be found!\n\n", false);
@@ -1361,7 +1362,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Isabella x Hel Threesome Scene – Beginning in the Plains (edited)
-    public isabellaXHelThreeSomePlainsStart(): void {
+    export function isabellaXHelThreeSomePlainsStart(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("While wandering the grasslands, the relative silence of the plains is suddenly broken by a high, throaty moo in the distance.  Momentarily afraid that Isabella and Hel are going to try and rip each other's throat out again, you start running toward the source of the ever-loudening 'moooOOOOOO'.\n\n", false);
@@ -1376,7 +1377,7 @@ export class HelScene implements TimeAwareInterface {
     }
     // Isabella x Hel Threesome Scene – Beginning at Camp (edited)
     // (Has a 10% chance to play when the player chooses [Sleep] while Isabella is at camp)
-    public isabellaXHelThreeSomeCampStart(): void {
+    export function isabellaXHelThreeSomeCampStart(): void {
         spriteSelect(68);
         outputText("\n<b>Something odd happens during the night...</b>\n", false);
         outputText("As you settle in to sleep for the night, you notice that Isabella's wandered off out of the camp.  Mildly concerned for the busty cow-girl's safety, you set out for the camp perimeter.  It doesn't take you long to find her, thanks to a soft, throaty mooing coming from the brush near camp.\n\n", false);
@@ -1393,7 +1394,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Leave]
-    private leaveIsabellaSallyBehind(): void {
+    function leaveIsabellaSallyBehind(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You decline the cow-girl's offer, but tell the redheads to have fun without you.  Though a bit disappointed, they both wave as you make your way back to camp.", false);
@@ -1402,7 +1403,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Drink]
-    private nomOnIzzyTitWithSallyMancer(): void {
+    function nomOnIzzyTitWithSallyMancer(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Well, that's an offer you can't refuse.  The girls' faces both brighten visibly as you say that you could use a drink.  Hel scoots to the side, allowing you to nestle yourself into Isabella's lap beside her.  You're already salivating slightly by the time Isabella hands her teat off to you", false);
@@ -1449,7 +1450,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // LEAVE before sexing or Unsexed PC
-    private noThreesomeSexWithSallyAndIssyLastMinute(): void {
+    function noThreesomeSexWithSallyAndIssyLastMinute(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("With a heavy heart, you tell the girls you'll have to pass.  Though they both look disappointed, Hel is quick to whisper huskily, \"<i>Don't you worry, you big ol' cow.  I'll take gooood care of you...</i>\"\n\n", false);
@@ -1462,7 +1463,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // DICK (edited)
-    private stuffIzzyAndSalamanderWithDicks(): void {
+    function stuffIzzyAndSalamanderWithDicks(): void {
         spriteSelect(68);
         outputText("", true);
         // Hels pussy
@@ -1575,7 +1576,7 @@ export class HelScene implements TimeAwareInterface {
         doNext(izzySallyThreeSomeFollowup);
     }
 
-    private izzySallyThreeSomeFollowup(): void {
+    function izzySallyThreeSomeFollowup(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Now a sweat-and-cum soaked mess, the girls collapse onto their backs around you.  Sighing contentedly, Isabella rolls over and nuzzles her head on your chest; a moment later sees Hel doing the same, wrapping her warm tail around your " + cockDescript(game.player, 0) + " lovingly.\n\n", false);
@@ -1591,7 +1592,7 @@ export class HelScene implements TimeAwareInterface {
         else doNext(Camp.returnToCampUseFourHours);
     }
     // VAGINA (edited)
-    private izzySallyThreeSomeVagoozlaz(): void {
+    function izzySallyThreeSomeVagoozlaz(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You quickly strip out of your " + player.armorName + ", already wet at the sight of the two busty redheads embracing and fondling each other as they await you.  When you're finally rid of interfering fabrics, you drop to your knees and insert yourself between the girls.  With a few carefully considered directions, you get the three of you into something of a triangle shape, with your head nestled between Hel's thighs and Isabella's tongue caressing your " + vaginaDescript(player) + ".\n\n", false);
@@ -1634,7 +1635,7 @@ export class HelScene implements TimeAwareInterface {
         else doNext(Camp.returnToCampUseFourHours);
     }
     // Fox Girls -- First Time Intro
-    public heliaPlusFoxyFluffs(): void {
+    export function heliaPlusFoxyFluffs(): void {
         spriteSelect(68);
         outputText("", true);
         if (flags[kFLAGS.HEL_FOXY_FOURSOME_WARNED] == 0) {
@@ -1659,7 +1660,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Fox Girls -- Leave (Only Available First Time)
-    private runAwayFromFoxGirls(): void {
+    function runAwayFromFoxGirls(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You graciously excuse yourself, saying that you forgot something back at camp.  All three girls say \"<i>Awwww</i>\" in unison, but don't make any special effort to keep you from going.  As you head out, you look over your shoulder in time to see Hel give you a little wink as the fox-herms clamber into her lap.  At least someone's getting laid today.\n\n", false);
@@ -1667,7 +1668,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Foursome Scene Intro (First & Repeat)
-    private heliasFoxyFourSomeFluffs(): void {
+    function heliasFoxyFourSomeFluffs(): void {
         outputText("", true);
         spriteSelect(68);
         outputText("You slip a hand into Mai's loose-fitting tunic, giving her soft D-cups a little squeeze as Hel grabs a room key from the bartender.  You gather up the sexy fox-herms, taking each arm-in-arm, and follow Hel upstairs to the private rooms, getting a unique view of the salamander's barely-clad ass giving a little jiggle with each step.\n\n", false);
@@ -1685,7 +1686,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Foursome Scene -- As Male
-    public foxyFluffsFoursomeAsMale(): void {
+    export function foxyFluffsFoursomeAsMale(): void {
         spriteSelect(68);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(85);
@@ -1710,7 +1711,7 @@ export class HelScene implements TimeAwareInterface {
         doNext(foxyFluffOutro);
     }
     // Foursome Scene -- As Female
-    public foxyFluffGirlsFuckSex(): void {
+    export function foxyFluffGirlsFuckSex(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("You strip out of your " + player.armorName + " and playfully push the fox-girls onto the bed and with Hel's help, spread their legs to reveal their rigid cocks.  Nestling yourself between Mai's thighs, you take her cock into your mouth up until the knot parts your lips.  She tastes of musk and sweat and salty pre, sending an electric chill up your spine as the first tasty drops of seed touch your tongue.\n\n", false);
@@ -1743,7 +1744,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // Foursome Scene -- Outro
-    private foxyFluffOutro(): void {
+    function foxyFluffOutro(): void {
         spriteSelect(68);
         outputText("", true);
         outputText("Now a cum- and sweat-soaked mess, you, Hel, and the twins collapse onto the bed, all panting from the exertion of the foursome.  With their thick knots now deflating back to normal sizes, the girls look rather cute as they wipe their own spunk off their smooth breasts and thighs.  Hel moans contentedly as she fingers a bit of foxcream out of her loose cunt.\n\n", false);
@@ -1761,7 +1762,7 @@ export class HelScene implements TimeAwareInterface {
 
     // Telling Hel to Not Get Hooked on Some Random Dude's Dickjuice (Or, How Hel Learned to Love Monogamy. Kind of.)
     // [Mino Cum]
-    private telHelToGetOffTheMInoCock(): void {
+    function telHelToGetOffTheMInoCock(): void {
         clearOutput();
         outputText("As you lie in your post-coitus afterglow with your lover, a thought makes its way into your mind: Hel just took a load of minotaur cum up the twat.  That's... that's not good. You tell her as much, adding that ");
         if (player.minotaurAddicted()) outputText("you know firsthand");
@@ -1783,7 +1784,7 @@ export class HelScene implements TimeAwareInterface {
         addButton(1, "Satisfy Her", satisfyHelSoSheStopsMinoFucking);
     }
     // [Keep Going]
-    private helCanFuckMinosWhenever(): void {
+    function helCanFuckMinosWhenever(): void {
         clearOutput();
         outputText("You decide not to deter Hel from her minotaur-raping ways.  Nothing bad could come of your salamander friend fucking a few more 'taurs than she already has, right?  You're sure she can just manage her addiction, or lack thereof, just fine on her own.");
         // (Return to post-threesome menu)
@@ -1791,7 +1792,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Satisfy Her]
-    private satisfyHelSoSheStopsMinoFucking(): void {
+    function satisfyHelSoSheStopsMinoFucking(): void {
         clearOutput();
         outputText("After a moment of contemplation, you give the salamander a lusty grin and tell her you'll just have to satisfy her tremendous sexual appetite yourself.  She seems taken aback by your offer, blinking hard at you.");
 
@@ -1826,7 +1827,7 @@ export class HelScene implements TimeAwareInterface {
 
     // Hel Sexual Ambush
     // (Proc's once per day when [Exploring] anywhere)
-    public helSexualAmbush(): void {
+    export function helSexualAmbush(): void {
         clearOutput();
         outputText("As you make your way around, you hear footfalls rapidly approaching.  Alarmed, you lift your [weapon] and spin - just in time for a blazing salamander to bull-rush you to the ground.  The two of you tumble back, eventually coming to a stop with Hel straddling you, already throwing off her scale bikini and clawing at your [armor] - you can see that her thighs are slick with her juices and her skin is flushed with arousal.");
 
@@ -1843,7 +1844,7 @@ export class HelScene implements TimeAwareInterface {
     }
 
     // [Leave] (From Sexual Ambush)
-    private pussyOutOfHelSexAmbush(): void {
+    function pussyOutOfHelSexAmbush(): void {
         clearOutput();
         outputText("You push Hel off of you and tell her that you just aren't interested in fucking right now.");
         outputText("\n\n\"<i>What,</i>\" she says, completely deadpan.  \"<i>WHAT!?</i>\"");
@@ -1853,4 +1854,3 @@ export class HelScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
         HelFollower.helAffection(-20);
     }
-}

@@ -1,16 +1,11 @@
 
-export class Farm {
-
-    public constructor() {
-
-    }
     // const FARM_DISABLED:int = 464;
 
-    public whitneySprite(): void {
+    export function whitneySprite(): void {
         spriteSelect(62);
     }
 
-    public farmExploreEncounter(): void {
+    export function farmExploreEncounter(): void {
         outputText("Whitney marches up to you as soon as you approach the farm, a stoic expression plastered across her face.");
         if (flags[kFLAGS.FARM_CORRUPTION_STARTED] > 0) {
             FarmCorruption.rootScene();
@@ -90,7 +85,7 @@ export class Farm {
     }
 
     // [YES]
-    private whitneyMilkerHookup(breast: boolean = true): void {
+    function whitneyMilkerHookup(breast: boolean = true): void {
         spriteSelect(62);
         outputText("Whitney takes the gear back to her farm after promising to have it working within the hour.  She did leave you with a cryptic warning to \"<i>leave the milkings to the beasts, lest you become one</i>.</i>\"\n\nYou shrug and head back to check up on camp.", true);
         if (breast) {
@@ -104,14 +99,14 @@ export class Farm {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [NO]
-    private whitneyMilkerRefusal(): void {
+    function whitneyMilkerRefusal(): void {
         spriteSelect(62);
         clearOutput();
         outputText("Whitney shrugs and the two of you resume your conversation.  But like all good things, it has to come to an end.  The two of you go your separate ways.");
         doNext(Camp.returnToCampUseOneHour);
     }
     // TALK
-    private talkWhitney(): void {
+    function talkWhitney(): void {
         spriteSelect(62);
         // [FIND WHITNEY TXT]
         outputText("", true);
@@ -294,7 +289,7 @@ export class Farm {
         // +3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
     }
 
-    private breastMilkerPurchase(): void {
+    function breastMilkerPurchase(): void {
         outputText("Whitney takes the gems and leaves with the promise of having your gear set up within the hour.  She calls back over her shoulder with a cryptic warning, \"<i>Watch how much time you spend getting milked like an animal, lest you wind up like one.</i>\"", true);
         doNext(Camp.returnToCampUseOneHour);
         player.keyItems.create("Breast Milker - Installed At Whitney's Farm", 0, 0, 0, 0);
@@ -302,7 +297,7 @@ export class Farm {
         statScreenRefresh();
     }
 
-    private breastMilkerNoPurchase(): void {
+    function breastMilkerNoPurchase(): void {
         doNext(Camp.returnToCampUseOneHour);
         outputText("Whitney shrugs and the two of you chat about other things, just passing the time and enjoying a relatively normal chat.", true);
         // +3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
@@ -312,7 +307,7 @@ export class Farm {
         if (player.inte < 40) dynStats("int", .5);
     }
 
-    public workFarm(): void {
+    export function workFarm(): void {
         let marbling: number = 0;
         outputText("", true);
         // In withdrawl odds are higher.
@@ -413,7 +408,7 @@ export class Farm {
         Inventory.takeItem(itype, Camp.returnToCampUseTwoHours);
     }
 
-    public meetMarble(): void {
+    export function meetMarble(): void {
         let marbling: number = 0;
         // Pre-addiction events(explore events take 1 hour, working ones take 3)
         if (player.effects.getValue3Of(StatusAffects.Marble) == 0) {
@@ -449,7 +444,7 @@ export class Farm {
         }
     }
 
-    public exploreFarm(): void {
+    export function exploreFarm(): void {
         const marbling: number = 0;
         let explore: number = 0;
 
@@ -562,7 +557,7 @@ export class Farm {
         }
     }
 
-    public getMilked(): void {
+    export function getMilked(): void {
         /*MILK YOU TIT-PUMPZ ONLY
         (Milk production TOTAL= breastSize x 10 * lactationMultiplier * breast total * milking-endurance (1- default, maxes at 2.  Builds over time as milking as done)
         (Small – 0.01 mLs – Size 1 + 1 Multi)
@@ -808,7 +803,7 @@ export class Farm {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public cockPumping(): void {
+    export function cockPumping(): void {
         let cumQ: number = player.cumQ() * (rand(10) + 90) / 100;
         outputText("", true);
         // First time barn entrance
@@ -1087,14 +1082,14 @@ export class Farm {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private cowBadEnd1(): void {
+    function cowBadEnd1(): void {
         outputText("You moo with delight, fondling your dripping " + allBreastsDescript(player) + " as you relax in your stall.   You know there was something uh, important or something that you were going to do - besides getting your udders milked!  Mmmmm, all your worries about that other thing just melt away when you're in your harness, spraying out milk...\n\n", true);
         outputText("You stop, trying to put your remaining wits to work and remember what you were going to do.   Let's see, you were coming here because your tits were so full that they made you ache, and you got hooked up and pumped like a good cow.  Another soft moo escapes your lips.  Now you're turned on and masturbating your drippy udders.  So the next step would be...\n\n", false);
         outputText("...finding someone to fuck you silly while you get something to eat.  It's so simple!  You crawl out of your stall, feeling your ponderous breasts jiggle as they drag on the ground.  A trail of white cream clearly marks your passage out into the fields, eventually passing beyond the edges of Whitney's farm and into the mountains.", false);
         doNext(cowBadEnd2);
     }
 
-    private cowBadEnd2(): void {
+    function cowBadEnd2(): void {
         outputText("", true);
         outputText("A day later, you slosh back into the barn with your breasts painfully full and ready to be emptied.  Your cum-filled belly joins your tits in dragging on the floor while you daydream about your time in the minotaur caves last night.  The first one claimed your " + assholeDescript(player) + ", brutalizing it over and over while the beast emptied his vast reservoirs of seed into your rectum.  Before the beast's equine-like cock could be stuffed halfway inside you, a slightly smaller minotaur was in front of your face, smearing your lips with a thick coating of his tasty pre.  Like a good cow, you opened wide for the bull and gratefully accepted his thick loads, feeling the narcotic-like spunk shut down your ability to think about anything but sex.\n\n", false);
         outputText("You moo happily, shivering at the intensity of the fond memories and in anticipation of tonight's activities.  But first you need to get your swollen nipples emptied!  The straps to the harness hang there in front of you – how do you work them again?  Your happy moos turn to moos of confusion and stress, but thankfully Whitney pads into the barn before you have a chance to panic.  She looks down and sighs, filling you with confusion.  You weren't a bad cow, were you?\n\n", false);
@@ -1102,7 +1097,7 @@ export class Farm {
         outputText("You nod happily, determined to find someone or something that can stuff you as full as your bulls did.  Whitney gives a resigned sigh as she turns the machine on, watching your determined stare melt into a dopey painting of relief...", false);
         gameOver();
     }
-    private milkerBadEnd1(): void {
+    function milkerBadEnd1(): void {
         const cumQ: number = player.cumQ();
         outputText("", true);
         outputText("As you roll onto your back the machine delivers an encore performance on your swollen " + multiCockDescriptLight(game.player) + ", down to the very same orgasm denial.  Wracked by pleasure but now freed to move, you find yourself trying to thrust aganst the tubes, as best as your feeble grip and exhaustion will allow, in order to try to override the machine's will and achieve release.  Nevertheless, the suction expertly mainpulates your arousal and you can do little except endure it as another oversized batch of cum wells up", false);
@@ -1221,7 +1216,7 @@ export class Farm {
     }
 
     // Introduction: Finding the Toys @ The Farm
-    private centaurToysHoooooo(): void {
+    function centaurToysHoooooo(): void {
         spriteSelect(62);
         outputText("", true);
         // [Places] - [Farm] - [Talk] If PC = Centaur
@@ -1245,4 +1240,3 @@ export class Farm {
         player.keyItems.create("Centaur Pole", 0, 0, 0, 0);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

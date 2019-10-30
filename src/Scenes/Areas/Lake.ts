@@ -2,9 +2,8 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Lake {
     // Explore Lake
-    public exploreLake(): void {
+    export function exploreLake(): void {
         // Increment exploration count
         player.exploredLake++;
         if (poniesYN()) return;
@@ -236,7 +235,7 @@ export class Lake {
         }
     }
 
-    private findLakeLoot(): void {
+    function findLakeLoot(): void {
         clearOutput();
         if (rand(2) == 0) {
             outputText("You find a long and oddly flared vial half-buried in the sand.  Written across the middle band of the vial is a single word: 'Equinum'.\n");
@@ -248,7 +247,7 @@ export class Lake {
         }
     }
 
-    private eggChoose(eggType: number): void {
+    function eggChoose(eggType: number): void {
         clearOutput();
         outputText("You reach out and touch the ");
         switch (eggType) {
@@ -264,14 +263,14 @@ export class Lake {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private eggChooseEscape(): void {
+    function eggChooseEscape(): void {
         clearOutput();
         outputText("You throw yourself into a roll and take off, leaving the ring of lights hovering in the distance behind you.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
     // Just want to do a quick Ottergirl event submission after you mentioned it!
-    private ottahGirl(): void {
+    function ottahGirl(): void {
         clearOutput();
         flags[kFLAGS.MET_OTTERGIRL]++;
         // First Time
@@ -326,7 +325,7 @@ export class Lake {
     }
 
     // For Dicks
-    private ottergirlLikesDongs(): void {
+    function ottergirlLikesDongs(): void {
         clearOutput();
         outputText("The moment you agree, a sly smile spreads across her face.  She jams the end of her fishing pole into the sand like a post, to prevent it from going anywhere, and stands up.  There's no tease, no ceremony as she strips out of her bikini bottoms and tosses them aside.  Her newly revealed mound has only the barest tuft of pubic hair, a little wisp of blonde hair amongst the sparse brown fur.");
 
@@ -434,7 +433,7 @@ export class Lake {
     }
 
     // For Chicks
-    private ottersForGals(): void {
+    function ottersForGals(): void {
         clearOutput();
         outputText("The moment you agree, a sly smile spreads across her face.  She jams the end of her fishing pole into the sand like a post, to prevent it from going anywhere, and stands up.  There's no tease, no ceremony as she strips out of her bikini bottoms and tosses them aside.  Her newly revealed mound has only the barest tuft of pubic hair, a little wisp of blonde hair amongst the sparse brown fur.");
 
@@ -492,7 +491,7 @@ export class Lake {
     }
 
     // For Pansies
-    private avoidZeOtterPussy(): void {
+    function avoidZeOtterPussy(): void {
         clearOutput();
         outputText("You shake your head and explain you can't.  She simply shrugs, \"<i>Ain't no skin off my back.</i>\"");
 
@@ -501,7 +500,7 @@ export class Lake {
     }
 
     // For Fatties
-    private getSomeFishYaFatty(): void {
+    function getSomeFishYaFatty(): void {
         clearOutput();
         outputText("You tell Callu you're a little more interested in the fish than the fuck, at least for today.  She shrugs once before jamming the end of her fishing pole into the sand like a post and turning towards her pack.");
 
@@ -512,4 +511,3 @@ export class Lake {
         // (You have gained Fish Fillet!)
         Inventory.takeItem(ConsumableLib.FISHFIL, Camp.returnToCampUseOneHour);
     }
-}

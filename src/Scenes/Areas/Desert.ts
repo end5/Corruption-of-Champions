@@ -2,9 +2,8 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Desert {
     // Explore desert
-    public exploreDesert(): void {
+    export function exploreDesert(): void {
         player.exploredDesert++;
         if (player.level >= 4 && player.exploredDesert % 15 == 0 && flags[kFLAGS.DISCOVERED_WITCH_DUNGEON] == 0) {
             enterBoobsDungeon();
@@ -107,14 +106,14 @@ export class Desert {
         else choices[select](args[select]);
     }
 
-    private mirageDesert(): void {
+    function mirageDesert(): void {
         clearOutput();
         outputText("While exploring the desert, you see a shimmering tower in the distance.  As you rush towards it, it vanishes completely.  It was a mirage!   You sigh, depressed at wasting your time.", true);
         dynStats("lus", -15);
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private walkingDesertStatBoost(): void {
+    function walkingDesertStatBoost(): void {
         clearOutput();
         outputText("You walk through the shifting sands for an hour, finding nothing.\n\n", true);
         // Chance of boost == 50%
@@ -132,4 +131,3 @@ export class Desert {
         }
         doNext(Camp.returnToCampUseOneHour);
     }
-}

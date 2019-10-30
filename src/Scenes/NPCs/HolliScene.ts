@@ -1,6 +1,4 @@
 
-export class HolliScene {
-
     // VARS
     // const TIMES_FUCKED_FLOWER:int = 594;
     // const TIMES_RIDDEN_FLOWER:int = 595;
@@ -39,12 +37,12 @@ export class HolliScene {
             -Domineering Personality.  Can be overpowered and treated like a bitch. (future update?)
         */
 
-    private fightHolli(): void {
+    function fightHolli(): void {
         flags[kFLAGS.FOUGHT_HOLLI] = 1;
         startCombat(new Holli());
     }
 
-    public treeMenu(output: boolean = true): void {
+    export function treeMenu(output: boolean = true): void {
         if (output) clearOutput();
         let ride: () => void = null;
         let fuck: () => void = null;
@@ -141,7 +139,7 @@ export class HolliScene {
         }
     }
 
-    private helpWithFarm(): void {
+    function helpWithFarm(): void {
         clearOutput();
 
         outputText("You ask if a plant goddess might not be able to help the farm you recently acquired.");
@@ -163,7 +161,7 @@ export class HolliScene {
         }
     }
 
-    private doFarmFuckery(): void {
+    function doFarmFuckery(): void {
         clearOutput();
         outputText("Holli closes her eyes and hums. The sound seems to reverberate in your bones, and you feel the ground move uneasily below you. Holli’s roots shift ponderously, and you hear new growth crackling, burying eagerly through the soil, moisture being taken in. The tree woman opens her eyes to lazily grin at you as the portentous sounds below you continue.");
 
@@ -174,7 +172,7 @@ export class HolliScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private noPlzDontFuckWithFarm(): void {
+    function noPlzDontFuckWithFarm(): void {
         clearOutput();
 
         outputText("“<i>Such a fickle mortal,</i>” she sighs. “<i>But I am a kind goddess. Ask me for it anytime, assuming you’ve... performed the rites.</i>”");
@@ -182,7 +180,7 @@ export class HolliScene {
         treeMenu(false);
     }
 
-    private fertilizeHolli(cock: boolean = true): void {
+    function fertilizeHolli(cock: boolean = true): void {
         // 20% chance per sexing.  Up to bonus 20% for jizz or fertility! Max 62%.
         let odds: number = 20;
         if (cock && player.cocks.length > 0) {
@@ -206,7 +204,7 @@ export class HolliScene {
     }
 
     // Sprout Phase: (edited)
-    public getASprout(): void {
+    export function getASprout(): void {
         clearOutput();
         outputText("Around the edge of your camp, you spot some plant-life beginning to sprout.  The barren, wasteland crust is fractured and broken, giving up a leafy green shoot.  It only reaches up to your knee, but the plant looks healthy and young.  Perhaps it will grow larger?  There is a central stem that supports most of the weight, but a dozen branches fork off, supporting a bevy of shiny green leaves.");
         outputText("\n\nYou briefly wonder how something could take root in such soil and be so successful, but then you recall the corrupt goddess, Marae.  She mentioned something about having roots through this world, didn't she?");
@@ -218,7 +216,7 @@ export class HolliScene {
         simpleChoices("Yes", destroyDatFukkinTree, "No", letZeFuckingSproutLive, "", null, "", null, "", null);
     }
     // [Yes] Destroy Tree (edited)
-    private destroyDatFukkinTree(): void {
+    function destroyDatFukkinTree(): void {
         clearOutput();
         outputText("You reach down and begin to excavate meticulously around the tainted sapling.  It has one central root that seems to go down forever, but after you've uncovered half a foot of taproot, you grab hold of it and yank.  At first, your straining seems unnoticed by the plant, the leaves rustling as it shakes and strains under your grip.  Then, all at once, it gives with a violent SNAP.  You tumble end over end, clutching to the demon-flora tightly to your [chest].  Sighing and grumbling, you get up and toss the leafy demon into your fire.");
         outputText("\n\nSparks and smoke issue; the fire burns purple and low as it struggles to consume the resilient plant.  Fading slowly, the wilting flames look as though they're about to go out; you scramble to add fuel to the guttering fire before it dies entirely.  Each chunk of dry wood that you add seems to help, and soon the rosy red of all-consuming heat has returned.  The plant's stem withers away into charred, black ash.");
@@ -229,7 +227,7 @@ export class HolliScene {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [No] (edited)
-    private letZeFuckingSproutLive(): void {
+    function letZeFuckingSproutLive(): void {
         clearOutput();
         outputText("Looking down at the sapling, you stay your wrath.  It may be corrupt, but it hasn't done anything to harm you just yet.  You give it a little pat on the uppermost leaves and leave it be.  It's not like it's going anywhere.");
         outputText("\n\n(<b>'Plant' added to your items menu</b>.  It's too small to know what it will grow into yet.  You can currently remove it at your leisure.)");
@@ -237,7 +235,7 @@ export class HolliScene {
     }
 
     // Phase 2: Pussy Tentacle Flower Phase (edited)
-    public fuckPlantGrowsToLevel2(): void {
+    export function fuckPlantGrowsToLevel2(): void {
         clearOutput();
         flags[kFLAGS.FUCK_FLOWER_LEVEL] = 2;
         flags[kFLAGS.FUCK_FLOWER_GROWTH_COUNTER] = 0;
@@ -260,7 +258,7 @@ export class HolliScene {
     }
 
     // Destroy It (edited)
-    private destroyDatFuckingPlantAtP2(): void {
+    function destroyDatFuckingPlantAtP2(): void {
         clearOutput();
         outputText("You know that letting this thing continue to grow would only threaten the safety of your camp.  Sighing, you trudge over to your supplies, gathering up some dry wood to stack around the invading foilage.  The plant, as if knowing what you're about to do, begins to wiggle from side to side, petals quivering in a panic.  However, your course is set, and this plant must die.  You take a burning log from your fire and torch the pile, feeling a little better about yourself as the blaze slowly consumes the wilting demon-plant.");
         outputText("\n\nThe fire flutters, smoky purple sparks shooting into the air, blotting out the sky.  You cough and step back from the conflagration, waiting until it burns itself out and nothing but ash remains.  You have a hunch you won't be seeing any more of those plants... hopefully.");
@@ -271,7 +269,7 @@ export class HolliScene {
     }
 
     // Fuck It (skimmed)
-    private fuckFuckingFuckFlowerP2(): void {
+    function fuckFuckingFuckFlowerP2(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(100);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -303,7 +301,7 @@ export class HolliScene {
     }
 
     // Ride It (skimmed)(coded)
-    private rideDatFuckingFukkFlowerP2(): void {
+    function rideDatFuckingFukkFlowerP2(): void {
         clearOutput();
         outputText("You shuck your [armor] and slowly ease yourself towards the violet-hued creature.  As soon as you get within a few feet, the flower's bulb angles toward you, the petals wiggling slightly along with the stamen inside.  A few of them even stretch out towards you like longing fingertips, shaking slightly from the effort before sliding back inside.  The dull ache in your [vagina] grows a few degrees hotter at the display, your body growing flush with excitement for the coming copulation.  Throwing caution to the wind, you move forward with a confident sway of your [hips].  It's time to get pollinated.");
         outputText("\n\nGrabbing hold of the plant, you tug it up against your mons and sigh.  The silky-smooth petals flatten against your thighs, the tips curling over to touch the sides of your [butt], slicking it with lubricating moisture.  You let go, and the flower holds fast to your [hips], firmly embracing you as its stamen begin to roam across your vulva.  Slowly, an intrepid tentacle ventures between your labia, into the slick passageway you're so ready to fill with wiggly delight.  A dribble of fresh fluid rushes out at those first, hesitant touches, and encouraged by its success, the stamen's brothers join in on the slippery party, plunging into your box and immediately swirling over your inner walls.");
@@ -348,7 +346,7 @@ export class HolliScene {
     }
 
     // Phase 3 Intro: (edited)
-    public flowerGrowsToP3(): void {
+    export function flowerGrowsToP3(): void {
         clearOutput();
         outputText("Again, you hear odd noises coming from a corner of your camp - the corner where you let that tainted shrubbery grow.");
         if (flags[kFLAGS.TIMES_FUCKED_FLOWER] + flags[kFLAGS.TIMES_RIDDEN_FLOWER] > 0) outputText("  The fucking probably only helped it to grow faster.");
@@ -372,7 +370,7 @@ export class HolliScene {
     }
 
     // Fuck Flower (skimmed)
-    private fuckTheFlower(): void {
+    function fuckTheFlower(): void {
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
         // (Similar to stage 2 fuck, but no cock limits, wetter, and more aggressive.
@@ -428,7 +426,7 @@ export class HolliScene {
     }
 
     // Drink Sap (edited)
-    private drinkThePlantGirlsSap(): void {
+    function drinkThePlantGirlsSap(): void {
         clearOutput();
         // Regain 50 fatigue but gain 1 corruption, .5 libido, 15 lust, and 1 sensitivity.
         dynStats("lib", .5, "sen", 1, "lus", 15, "cor", 1);
@@ -442,7 +440,7 @@ export class HolliScene {
     }
 
     // Ride Tentacles (C)
-    private rideTheWalrusP3(): void {
+    function rideTheWalrusP3(): void {
         clearOutput();
         // (Let them pull you into the tree and bang, battering you with cum repeatedly.)
         outputText("You eye the tentacles hiding amongst the leafy branches above, writhing obscenely around each other as they snake through the foilage.  You shed your [armor] into a worthless pile and bare your body, cupping your [chest] enticingly as you whistle up at the tree.  Your calls seem to fall on deaf ears; the whirling vines stay put up in their perch.  They're ignoring your delicious, feminine flesh!  Irritated, you stomp up to the trunk's flower and plunge your fist inside it.  Fresh fluid gushes out over your armor, releasing a spray of sweet, musky lubricants.  You blindly feel around inside the pliant plant-pussy with your fingers, giggling to yourself whenever the soft cavity clenches tightly to your arm.  Whatever this is, it can feel pleasure.");
@@ -468,7 +466,7 @@ export class HolliScene {
     }
 
     // Torch It (edited)(C)
-    private torchP3Tree(): void {
+    function torchP3Tree(): void {
         clearOutput();
         // Requires fire-based attack and fatigue at or below 30.  Maxes fatigue and removes the tree.
         outputText("This has gone on long enough!  This thing cannot continue to grow in your camp any longer, and you have just the means to remove it: fire.  ");
@@ -489,7 +487,7 @@ export class HolliScene {
     }
 
     // Phase Four (edited)
-    public treePhaseFourGo(): void {
+    export function treePhaseFourGo(): void {
         clearOutput();
         outputText("An unfamiliar female voice calls out your name, high-pitched and lilting.  Unflinchingly, you respond to the call, winding your way through your camp towards the fringe, where the corrupt fuck-tree was growing.  Did a faerie get caught in it? A tiny creature like that would probably wind up as a tentacle condom before it got free.  Still, you redouble your pace and ready your [weapon].  You know well enough that a fair voice doesn't always match up to a fair demeanor - in Ingnam OR Mareth.");
         outputText("\n\n\"<i>Oh, [name]!  Where are yoooouuu?</i>\" the voice croons.  You turn the bend to a sight both familiar and haunting.  There, in the middle of a wide, ancient-looking tree trunk, is a woman.  She's emerged from a split in the center of the wood, and she appears to be made of flesh, blood, and bone the same as anyone else.  However, she's obviously some kind of demon.  The corruption is most visible in her brown-gold eyes, tainting the sclera a solid black.  Above, a pair of gnarled oak horns sprout from her forehead, parting the woman's generous, dark green curls.  Her skin is a pale jade and as smooth as buttered glass, and her lips are full and pouty, curved in a knowing smile.");
@@ -514,7 +512,7 @@ export class HolliScene {
     }
 
     // ojo Rolls Out -Z
-    public JojoTransformAndRollOut(): void {
+    export function JojoTransformAndRollOut(): void {
         clearOutput();
         // triggers if both puru jojo and shoe tree are in camp
         outputText("\"<i>[name], come here please.</i>\"");
@@ -551,7 +549,7 @@ export class HolliScene {
     // Amily Hates Trees -Z
     // new overriding line for Amily's camp descript if tree is there
     // PC Fucked Adult Tree, Amily Leaves -Z
-    public amilyHatesTreeFucking(): void {
+    export function amilyHatesTreeFucking(): void {
         clearOutput();
         outputText("Your mousey cohabitant tramps up to you, irritation plain on her expression.");
         outputText("\n\n\"<i>[name], I saw what you did with that that... tree.  I thought that was just one of those perverted plants you find in the forest, but there's an actual demon in it?!  I can't believe your poor judgment!  You do know what happens to people who give themselves to demons, right?  It hasn't slipped your mind that they rape and suck souls out of everyone they come across?  I don't even feel safe anymore with you bringing trash like that into camp!</i>\"");
@@ -561,7 +559,7 @@ export class HolliScene {
         simpleChoices("Stay Quiet", stayQuietWhileAmilyBitchesAboutFuckingArborday, "Slap Her", slapAmilysWhoreFace, "", null, "", null, "", null);
     }
     // [Stay Quiet]
-    private stayQuietWhileAmilyBitchesAboutFuckingArborday(): void {
+    function stayQuietWhileAmilyBitchesAboutFuckingArborday(): void {
         clearOutput();
         outputText("Amily berates you for some while longer, then eyeballs you.  Just as you begin to speak, she cuts you off again.");
         outputText("\n\n\"<i>I'm not staying here anymore.  Maybe if you move or clean this place up, I'll return... maybe not.  Depends how many demons you insist on bringing home and fucking, I suspect.</i>\"");
@@ -580,7 +578,7 @@ export class HolliScene {
     }
 
     // [Slapaho]
-    private slapAmilysWhoreFace(): void {
+    function slapAmilysWhoreFace(): void {
         clearOutput();
         outputText("You slap Amily across the ");
         if (flags[kFLAGS.AMILY_NOT_FURRY] == 0) outputText("nose");
@@ -602,7 +600,7 @@ export class HolliScene {
     }
 
     // (FUCK DAT TREE BITCH)
-    private fuckHolliInZeFlowerPuss(): void {
+    function fuckHolliInZeFlowerPuss(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         const x: number = player.cocks.biggestCockIndex();
@@ -675,7 +673,7 @@ export class HolliScene {
     }
 
     // Drink From Her (edited)(C)
-    private haveAMapleSyrupSnack(): void {
+    function haveAMapleSyrupSnack(): void {
         clearOutput();
         outputText("You approach Holli with a hungry smile plastered across your [face], licking your chops as you eye the arboreal slut with unrestrained desire.  Of course, your gaze fixes on her heavy chest, with its distended, dripping nipples.  They leak sweet sap as you stare; the demon seems eager to feel your mouth on her slick, almond-colored buds.  Looking at you ");
         if (flags[kFLAGS.HOLLI_SUBMISSIVE] == 0) outputText("knowingly, Holli asks, \"<i>Come for a little pick-me-up?  Well, go on; drink deeply of my nectar, </i>champion.\"  The last word is inundated with malicious, mocking tones.");
@@ -695,7 +693,7 @@ export class HolliScene {
     }
 
     // Tentacle Ride (looks ok)(C)
-    private level4RideHollisTentacruels(): void {
+    function level4RideHollisTentacruels(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         // (PC voluntary gets tentacle pounded, and high from flower pussy spores.  clitoral BJ?  Nipple suckers!}
@@ -733,7 +731,7 @@ export class HolliScene {
     }
 
     // Bear Fruit(C)
-    private eatHolliFruit(): void {
+    function eatHolliFruit(): void {
         clearOutput();
         outputText("You reach up into Holli's branches and pluck ");
         if (flags[kFLAGS.HOLLI_FRUIT] == 1) outputText("the fruit");
@@ -771,7 +769,7 @@ export class HolliScene {
     // Beg Her To Guard (edited)(C)
 
     // PC can beg or not beg?
-    private askHolliToWatch(): void {
+    function askHolliToWatch(): void {
         clearOutput();
         if (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0) {
             outputText("You ask Holli if she would mind using her tentacles to help guard the camp at night.  She rolls her eyes and taunts, \"<i>I don't know; maybe if you get down on your knees and beg me.  ...And I mean </i>really<i> beg, with plenty of whimpering.  Lick my roots too.  After all, I should get something out of this.</i>\"");
@@ -796,7 +794,7 @@ export class HolliScene {
     }
 
     // Actually beg: (edited)(C)
-    private begHolli4Watches(): void {
+    function begHolli4Watches(): void {
         clearOutput();
         outputText("You swallow your pride and drop down prostrate on the ground.  Sighing, you grudgingly say, \"<i>Please, Holli, guard my camp at night.  I don't want to be raped by monsters.</i>\"");
         outputText("\n\nThe devilish dryad grips her tit and squirts some sap at you, taunting, \"<i>You'll have to do better than that.  I don't think you really mean it.  It's like you're just going through the motions... pretending.  And you're not licking my roots; get to it.</i>\"");
@@ -816,7 +814,7 @@ export class HolliScene {
     // Assert Self:
     // Success/Fail dependent on: Level, height, tone, width.
 
-    private domUpSomeHolli(): void {
+    function domUpSomeHolli(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         outputText("You swagger up to the tree and put your hand on the bark beside Holli.  Glancing over, she quips, \"<i>Is that supposed to be intimidating?</i>\"  The dryad smirks ingratiatingly.  \"<i>I'm the offshoot of a demon goddess.  I don't think you thought this through.</i>\"");
@@ -841,7 +839,7 @@ export class HolliScene {
     }
 
     // Guard Camp
-    private askBrokenHolliToGuard(): void {
+    function askBrokenHolliToGuard(): void {
         clearOutput();
         outputText("Holli bows her head when you mention her guarding camp.  She asks, \"<i>Shall I keep watch for foes to drain or let them into camp for you to have the pleasure of dealing with, [name]?  <b>I've been ");
         if (flags[kFLAGS.HOLLI_DEFENSE_ON] == 1) outputText("keeping watch");
@@ -856,7 +854,7 @@ export class HolliScene {
     }
 
     // Guard On
-    private toggleBrokenHolliGuard(): void {
+    function toggleBrokenHolliGuard(): void {
         clearOutput();
         if (flags[kFLAGS.HOLLI_DEFENSE_ON] == 0) {
             outputText("\"<i>All right, I'll get to have some fun then,</i>\" Holli quips while rubbing her palms together in anticipation.");
@@ -874,7 +872,7 @@ export class HolliScene {
     }
 
     // Dom Her With a Dick
-    private holliGetsDickDommed(): void {
+    function holliGetsDickDommed(): void {
         clearOutput();
         outputText("Tossing your [armor] aside, you expose your " + multiCockDescriptLight(game.player) + ".  Holli's eyes fixate on [oneCock], her attention rapturously contained by a single phallus.  You grip your maleness in hand and bounce it up and down into your other palm.  The solid slaps of genital impacts echo off the surrounding rocks, each sending a pleasant tingle of pleasure through the root of your manhood.  Before long, you're completely erect and throbbingly hard, bouncing unbidden with each and every thrum of your heart.");
         outputText("\n\nHolli leans forward, entranced by the sight.  Her head and shoulders slip through the surprisingly pliant bark as she bends down to view the show.  Swaying beneath her, Holli's weighty tits dangle unrestrained and unbound.  Sappy moisture clings to her almond nipples like morning dew, dripping in small drops onto the wasted ground.  The tips of her teats have gone rigid, engorged with whatever strange substance passes for blood.  Similarly, the dryad's flower is in full bloom, with its vibrant petals spread open, welcomingly.  The constant lubricants make the slick lips glitter like diamonds in the light, until their owner's shadow eclipses the illumination.");
@@ -922,7 +920,7 @@ export class HolliScene {
     }
 
     // .PC Has 10 Tentacle Go Full On Monster With Her
-    private fullOnTentacleTasticGangBangForHolli(): void {
+    function fullOnTentacleTasticGangBangForHolli(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         outputText("You remove your [armor] and expose your writhing mass of wriggling tendrils to the tree-tart.  She places a hand over her mouth and exhales, \"<i>Oh my, Mother Marae sure knows how to pick them, doesn't she?</i>\"");
@@ -956,7 +954,7 @@ export class HolliScene {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Vaginally Dominate Tentacles
-    private vaginalDomHollisTentacruels(): void {
+    function vaginalDomHollisTentacruels(): void {
         clearOutput();
         flags[kFLAGS.HOLLI_FUCKED_TODAY] = 1;
         outputText("You sashay over to your favorite tentacular tree and trace your finger through Holli's cleavage, purring, \"<i>I'm feeling a little randy.  Do me a favor and bring your 'little' friends down to play, would you?</i>\"  The commanding tone of your voice leaves little doubt that the question is anything but.  With a little bit of fear in her black, tainted eyes, Holli nods meekly.  A rain of green, phallic tentacles pours out of the robust canopy above, hanging behind you idly, though a few of them arch up like snakes sensing prey.  You hold your immobilized pet's chin in your hand and tilt her head up slightly so she sees you eye to eye.");
@@ -1005,7 +1003,7 @@ export class HolliScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private threatenHolli(): void {
+    function threatenHolli(): void {
         clearOutput();
         outputText("You snarl and threaten to burn the barked bitch to the ground if she won't make herself useful after you ask politely.");
         outputText("\n\n\"<i>You threaten me with fire?!  Now?  [name], you could have uprooted my sapling and tossed it in the fire.  You could have made a bonfire to char my flower to cinders.  You could even have called upon magic to torch my tree while it was still young.  Now?  My bark is stronger than iron and flush with the power of an invigorated goddess.  You had opportunities to rid yourself of me before Marae had invested this much time and energy into your gift.  Trying to destroy such a personal present now would draw her attention... and her ire.</i>\"");
@@ -1026,7 +1024,7 @@ export class HolliScene {
 
     // Hit Her With Your Hand (requires failing to threaten) -Z
     // replaces Threaten button once PC fails threaten
-    private slapDatHo(): void {
+    function slapDatHo(): void {
         clearOutput();
         outputText("You slap the slut in the tree on the thighs, sending a ripple up her body; she regards you with a sneer, confident that her previous implication, that between her and her mother, only a fool would attack, will be enough to stop you from removing her by force.  You might still be able to if you're powerful enough, but... she has the energy of a demon 'goddess' flowing into her.  You should be <b>very</b> sure of yourself before you resort to open confrontation, lest you make your campsite uninhabitable.");
         outputText("\n\n\"<i>What do you want, meat?  Come to play?</i>\"");
@@ -1040,7 +1038,7 @@ export class HolliScene {
     }
 
     // [Cut Her Down]
-    private cutHerDown(): void {
+    function cutHerDown(): void {
         clearOutput();
         outputText("\"<i>Are you serious?  You really want to be broken that badly, my little toy?</i>\"  The demon folds her arms over her hefty chest, her earlier, suggestive posture completely absent now.  \"<i>You know my bark is as strong as any armor, right?  That Marae herself - the land itself - bolsters me?  Take that back right now, and I'll let you return to my good graces... if you put your face in the dirt and plead for the duty to pleasure me whenever I want.</i>\"");
 
@@ -1059,7 +1057,7 @@ export class HolliScene {
     }
 
     // [Call Jojo]
-    private callDatJojo(): void {
+    function callDatJojo(): void {
         clearOutput();
         player.keyItems.remove("Jojo's Talisman");
         outputText("You take out the small talisman you got from the mouse monk, wondering just how to summon him with it.  A small string dangles from the side; when you pull it, you can feel a stitch coming undone and the weight of the talisman shifts toward the bottom.  A thick, billowing yellow smoke begins to pour out.  God, this reeks!  You hurl it away before the smell can permeate your clothing, and it sets off an echoing bang when it hits the ground!  It's not long before Jojo appears from the edge of the forest and calls to you.");
@@ -1074,7 +1072,7 @@ export class HolliScene {
         monster.effects.create(StatusAffects.JojoIsAssisting, 0, 0, 0, 0);
     }
 
-    public defeatHolli(): void {
+    export function defeatHolli(): void {
         clearOutput();
         flags[kFLAGS.FUCK_FLOWER_KILLED] = 1;
         // Win without Jojo -Z
@@ -1123,7 +1121,7 @@ export class HolliScene {
     }
 
     // [yes gimme monk pls]
-    private recruitJojoToCamp(): void {
+    function recruitJojoToCamp(): void {
         clearOutput();
         outputText("Jojo nods eagerly at you when you invite him to share your camp.  \"<i>Excellent idea.  If you'll excuse me, I wish to attempt to purify the spot where the creature grew, and then I will fetch my things.</i>\"");
         outputText("\n\nBowing neatly, he takes his leave.");
@@ -1134,7 +1132,7 @@ export class HolliScene {
     }
 
     // [no want]
-    private dontRecruitJojoToCamp(): void {
+    function dontRecruitJojoToCamp(): void {
         clearOutput();
         outputText("You hold your tongue, allowing Jojo to make his way back to the forest.");
         outputText("\n\n(Key Item Gained: Holli's Ashes)");
@@ -1143,7 +1141,7 @@ export class HolliScene {
     }
 
     // >Lose
-    public enjoyYourBadEndBIYAAAATCH(): void {
+    export function enjoyYourBadEndBIYAAAATCH(): void {
         clearOutput();
         outputText("Screeching in triumph, the demon holds your defeated form aloft and begins to shake you.  ");
         if (monster.effects.findByType(StatusAffects.JojoIsAssisting) >= 0) {
@@ -1277,7 +1275,7 @@ export class HolliScene {
     }
 
     // female champ for weiner-based bad end
-    private holliPlaysWithPenisesBadEnd(): void {
+    function holliPlaysWithPenisesBadEnd(): void {
         clearOutput();
         outputText("The young, brown-haired woman steps from the swirling portal, and the vortex collapses behind her.  Casting her eyes around the blasted, cracked landscape, she's surprised by the presence of two trees a short distance away, apparently healthy despite the lack of water and clouds of dust.  At first leery, she changes her mind when she cautiously edges closer and sees the huge, juicy fruits hanging from the branches of the leftmost tree.  Deciding that it <i>would</i> be wise to gather and use what she can find before dipping into her reserve, the brown-haired girl begins walking toward the strange trees.");
 
@@ -1329,7 +1327,7 @@ export class HolliScene {
         gameOver();
     }
 
-    private girlsGetANiceManToBadEnd(): void {
+    function girlsGetANiceManToBadEnd(): void {
         clearOutput();
         outputText("The weedy-looking young man steps out of the swirling, violet pool of the portal.  As the flickering shadows of its chaotic light recede, the lush glade that greets him is reminiscent of Ingnam's wilderness... apart from the nude bodies woven into the trees, bearing sundry and random erect animal cocks, voluptuous racks, wet pussies, and patches of smooth, trembling flesh - occasionally a tree will present all four.  A tent begins to form in his comfortable pants as he surveys the lewd greenery for a means to proceed.");
 
@@ -1457,7 +1455,7 @@ export class HolliScene {
         gameOver();
     }
 
-    private holliAndGenderlessSittingInATree(): void {
+    function holliAndGenderlessSittingInATree(): void {
         clearOutput();
         outputText("The tall, fit traveler steps through the portal, and its swirling colors dissolve to empty air behind him.  The blasted red landscape that welcomes him does so grudgingly, filling his face with a cloud of blown dust that sets him to coughing and sputtering.  Peering through a teary squint, the man looks around for a place that might provide some shelter from the wind and allow him to get his bearings, and a pair of scraggly trees nearby would seem to fill the bill.");
 
@@ -1496,7 +1494,7 @@ export class HolliScene {
         gameOver();
     }
 
-    public amilyComesBack(): void {
+    export function amilyComesBack(): void {
         clearOutput();
         outputText("Amily arrives with her belongings over her shoulder and a smile on her face.  \"<i>I knew you'd do the right thing, [name].  I'll get my nest set back up.</i>\"\n\n(<b>Amily has moved back in!  She can be found in the lovers tab.</b>)");
         // flags[kFLAGS.AMILY_TREE_FLIPOUT] = 1;
@@ -1505,4 +1503,3 @@ export class HolliScene {
         flags[kFLAGS.AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
         doNext(playerMenu);
     }
-}

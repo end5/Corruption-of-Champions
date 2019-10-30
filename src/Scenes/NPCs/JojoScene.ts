@@ -1,6 +1,5 @@
 
 export class JojoScene implements TimeAwareInterface {
-
     public pregnancy: PregnancyStore;
 
     public constructor() {
@@ -34,6 +33,7 @@ export class JojoScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
     // const TIMES_AMILY_AND_JOJO_PLAYED_TIMES:int = 434;
     // const AMILY_X_JOJO_COOLDOWN:int = 435;
@@ -41,45 +41,45 @@ export class JojoScene implements TimeAwareInterface {
     // const TIMES_EGGED_JOJO:int = 590;
     // const JOJO_EGGCUBATE_COUNT:int = 591;
 
-    public jojoSprite(): void {
+    export function jojoSprite(): void {
         if (tentacleJojo()) spriteSelect(81);
         else spriteSelect(34);
     }
 
-    private assholeOrDP(): string {
+    function assholeOrDP(): string {
         if (player.vaginas.length > 0) return (vaginaDescript(player, 0) + " and " + assholeDescript(player));
         return assholeDescript(player);
     }
-    private vaginaOrDicksOrCrotch(): string {
+    function vaginaOrDicksOrCrotch(): string {
         if (player.gender == 0) return "crotch";
         if (player.gender == 1) return multiCockDescriptLight(game.player);
         if (player.gender == 2) return vaginaDescript(player, 0);
         if (player.gender == 3) return (multiCockDescriptLight(game.player) + " and " + vaginaDescript(player, 0));
         return "FUKK: ERROR";
     }
-    private mouthMuzzle(): string {
+    function mouthMuzzle(): string {
         if (player.hasMuzzle()) return "muzzle";
         return "mouth";
     }
-    private faceMuzzle(): string {
+    function faceMuzzle(): string {
         if (player.hasMuzzle()) return "muzzle";
         return "face";
     }
-    public tentacleJojo(): boolean {
+    export function tentacleJojo(): boolean {
         return player.effects.findByType(StatusAffects.TentacleJojo) >= 0;
 
     }
-    public campCorruptJojo(): boolean {
+    export function campCorruptJojo(): boolean {
         return game.monk >= 5 && player.effects.findByType(StatusAffects.NoJojo) < 0 && flags[kFLAGS.JOJO_DEAD_OR_GONE] == 0;
     }
 
-    private jojoMutationOffer(): void {
+    function jojoMutationOffer(): void {
         jojoSprite();
         outputText("A wicked idea comes to mind while thinking of Jojo.  The lethicite you took from the lake goddess – perhaps it could be used to enhance your own budding demonic powers, and twist your mousey fuck-puppet into a truly worthy pet?\n\n<b>Do You?</b> (WARNING: Offered only once & unlocks tentacle content)", true);
         doYesNo(jojoMutationOfferYes, jojoMutationOfferNo);
     }
 
-    private jojoMutationOfferNo(): void {
+    function jojoMutationOfferNo(): void {
         jojoSprite();
         outputText("There are some lines even you won't cross.  Besides, having a sex-addled mouse with a constantly drooling foot-long cock is all the fun you can handle.\n\nWith that decided you prepare to call on your slut.", true);
         // Normal jojo sex scene here
@@ -87,7 +87,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // CORRUPT CAMP JOJO
-    public corruptCampJojo(): void {
+    export function corruptCampJojo(): void {
         clearOutput();
         jojoSprite();
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 0) {
@@ -183,7 +183,7 @@ export class JojoScene implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_JOJO] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
-    private harvestJojoDraft(): void {
+    function harvestJojoDraft(): void {
         clearOutput();
         jojoSprite();
 
@@ -199,7 +199,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(FarmCorruption.rootScene);
     }
 
-    private stopHarvestJojoDraft(): void {
+    function stopHarvestJojoDraft(): void {
         clearOutput();
         jojoSprite();
 
@@ -214,7 +214,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(FarmCorruption.rootScene);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
         jojoSprite();
 
@@ -233,7 +233,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
         jojoSprite();
 
@@ -244,7 +244,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(FarmCorruption.rootScene);
     }
 
-    private jojoMutationOfferYes(): void {
+    function jojoMutationOfferYes(): void {
         jojoSprite();
         player.keyItems.addValue("Marae's Lethicite", 2, 1);
         outputText("There's no question about it, this is a great idea.  It might be coming from the corruption in your blood, but why bother to fight it?  You take Marae's lethicite and grab one of the larger crystalline protrusions.  With a hard yank, you break it off from the main cluster, sending tiny crystalline shards over the campsite.  They vanish into the ground before you have a chance to gather them.\n\n", true);
@@ -274,7 +274,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(mutateJojo);
     }
 
-    private mutateJojo(): void {
+    function mutateJojo(): void {
         jojoSprite();
         outputText("You call out, and Jojo obediently pads into the camp.  At some point he decided to switch to wearing a loin-cloth, for all the good it has done him – it drapes over his member, barely covering half of it as it twitches and throbs from your presence.  You gesture for him to remove that tiny cloth, and he does immediately.  When he gets within a few feet of you, he drops to his knees with his hands behind his back, his head down submissively.  You see little tics and twitches run through his body as he fights to resist touching himself, so you drag it out and see how long he can wait.\n\n", true);
         outputText("It doesn't take long.  A plaintive whine escapes him as his hand creeps around his waist.  You grin and push him onto his back, stepping onto his wrist to pin his hand in place.  You drop the crystal dildo onto his chest with a single command, \"<i>Use it</i>\".\n\n", false);
@@ -319,7 +319,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // [POST TENTACLE DICKINGS]
-    public useTentacleJojo(): void {
+    export function useTentacleJojo(): void {
         jojoSprite();
         player.slimeFeed();
         let nippleSucking: boolean = false;
@@ -598,7 +598,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Jojo milk payments
-    private jojoMilkPay(tentacle: boolean = false): void {
+    function jojoMilkPay(tentacle: boolean = false): void {
         jojoSprite();
         flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN] = 4;
         outputText("A loud 'ding' chimes and a panel displays ", false);
@@ -647,7 +647,7 @@ export class JojoScene implements TimeAwareInterface {
         }
         else outputText("You g", false);
     }
-    private jojoCumQ(): number {
+    function jojoCumQ(): number {
         let cumQ: number = 0;
         cumQ = 400;
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00331] < 4) cumQ += flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00331] * 200;
@@ -657,7 +657,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Jojo - First Time Milking (edited)
-    private milkJojoFirst(): void {
+    function milkJojoFirst(): void {
         jojoSprite();
         let x: number = player.cocks.cockThatFits(40);
         outputText("", true);
@@ -748,7 +748,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private repeatMilkJojo(tentacle: boolean = false): void {
+    function repeatMilkJojo(tentacle: boolean = false): void {
         jojoSprite();
         outputText("", true);
         // Jojo Repeat Milking - Non Tentacle (edited)
@@ -837,7 +837,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Use Jojo to pay for Hair Care
-    private jojoPaysForPerms(): void {
+    function jojoPaysForPerms(): void {
         jojoSprite();
         outputText("", true);
         outputText("Lynnette the goblin answers the door and lets you in, waving you deeper into her shop.  Her shining black dress barely contains her fertile-hips and jiggling chest as she greets you, \"<i>Welcome back honey!  Who's the cutie?</i>\"\n\n", false);
@@ -869,7 +869,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Scene 1: Amily Teaches Jojo How To Give Blowjobs. (Z)
-    private amilyTeachingJojoBJ(): void {
+    function amilyTeachingJojoBJ(): void {
         clearOutput();
         // First time version
         if (flags[kFLAGS.TIMES_AMILY_AND_JOJO_PLAYED_TIMES] == 0) {
@@ -893,7 +893,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(4, "Leave", playerMenu);
     }
     // Scene 1 Result: Male Gets BJ (Z)
-    private BJRidesGETYOUONE(): void {
+    function BJRidesGETYOUONE(): void {
         AmilyScene.amilySprite();
         clearOutput();
         outputText("You step into view and knowingly ask just what all the fuss is about.  Amily meekly prostrates herself before you, apologizing, \"<i>I'm sorry, [master], I merely wanted to help your boyslut learn to satisfy your needs better.</i>\"  You wait, just long enough to make her nervous.  The pregnant pause hangs in the air as both your murine whores look increasingly worried, their large, radar-like ears twitching fitfully about as they await your response.  Laughing, you undo your [armor] and ask Amily how she planned to teach without a proper 'teaching tool'.");
@@ -925,7 +925,7 @@ export class JojoScene implements TimeAwareInterface {
             "", null);
     }
     // Fill Amily's Mouth (Z)
-    private fillAmilysMouth(): void {
+    function fillAmilysMouth(): void {
         AmilyScene.amilySprite();
         clearOutput();
         outputText("You tell Amily to open wide, and she gleefully yanks your [cock biggest] away from Jojo.  He whines pathetically but, servile as he is, the mouse-boy");
@@ -939,7 +939,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Fill Amily's Twat (requires not short-ass, weak-ass nigga) (Z)
-    private stuffAmilysMouthWithPostBJCUM(): void {
+    function stuffAmilysMouthWithPostBJCUM(): void {
         AmilyScene.amilySprite();
         clearOutput();
         outputText("You tell Amily to hurry up and climb on.  With a squeak of joy, she bounds up into your arms, immediately sinking her plush little pussy onto your lap and swallowing your cocktip.  Surprising you with her control, she holds herself like that, restraining herself from taking in your whole [cock biggest] and instead bouncing up and down atop your peak while Jojo attends to the lower portion of your manhood with his eager tongue.  He tentatively licks along the swell of your shaft, sucking at the sensitive underside and planting desperate kisses over your length, lapping up Amily's freely flowing juices as she rides the crest of your pulsing tip.  The mouse-girl's ears tickle as they brush against you, her voice husky with desperate need.  \"<i>Please, [master], give slut your seed.  Her cunny needs to be filled sooo badly.  Make me your pregnant, baby-bloated whore, [master]!</i>\"");
@@ -955,7 +955,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Fill Jojo's Mouth (Z)
-    private fillJojosMouthWithHotStickyCum(): void {
+    function fillJojosMouthWithHotStickyCum(): void {
         jojoSprite();
         clearOutput();
         outputText("You point at Jojo and command, \"<i>Open wide.</i>\"  The former monk happily opens his muzzle broadly, so far open that his buck-teeth practically vanish into the roof of his mouth.  Amily looks disappointed, but then she consoles herself by [if (hasBalls = true) sinking down to covetously suck your swollen balls while ]tugging on your shaft, squeezing it from stem to stern with hard, fast pumps.  Jojo's tongue slips out to lick the beading pre-cum from your [cock biggest] as it flexes powerfully in the other slut's grip.  Warmth races through your loins as you feel your orgasm approaching.");
@@ -967,7 +967,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Scene 2: Amily And Jojo Fuck (w/o Tentacles) (Z)
-    private amilyAndJojoFuck(): void {
+    function amilyAndJojoFuck(): void {
         jojoSprite();
         clearOutput();
         outputText("You find a nearby rock to perch on as the two mice begin to get more lewd with their actions.  Amily uses her tail to sit Jojo down in front of her, squeezing his taut balls in her hand and gasping when he spews a thick stream of pre-cum.  You use the commotion as cover to squeeze out of your [armor] and get comfortable.  Thankfully, neither of them hears you, or if they do, they don't care.  Amily titters, \"<i>Wow, no wonder [master] keeps you around with a cum-fountain like that!</i>\"  She gently traces a fingertip along the swollen underside of Jojo's cock, giggling when he, over-stimulated, immediately starts dripping fluid on her fingers.");
@@ -989,7 +989,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public jojoFollowerMeditate(): void {
+    export function jojoFollowerMeditate(): void {
         jojoSprite();
         if (player.effects.getValue1Of(StatusAffects.Meditated) > 0) {
             outputText("Jojo smiles and meditates with you.  The experience is calming, but it's so soon after your last session that you don't get much benefit from it.", doClear);
@@ -1017,7 +1017,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public jojoDefenseToggle(): void {
+    export function jojoDefenseToggle(): void {
         jojoSprite();
         clearOutput();
         if (player.effects.findByType(StatusAffects.JojoNightWatch) >= 0) {
@@ -1034,7 +1034,7 @@ export class JojoScene implements TimeAwareInterface {
     // Hurray var/function hoisting.
     // this.semiglobalReferencer.jojoRape = jojoRape;
 
-    public jojoAtCampRape(): void {
+    export function jojoAtCampRape(): void {
         jojoSprite();
         player.effects.remove(StatusAffects.JojoNightWatch);
         player.effects.remove(StatusAffects.PureCampJojo);
@@ -1044,7 +1044,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(0, "Next", jojoRape, false);
     }
 
-    public defeatedJojo(hpVictory: boolean): void {
+    export function defeatedJojo(hpVictory: boolean): void {
         jojoSprite();
         if (player.lust > 33 && player.gender > 0) {
             clearOutput();
@@ -1056,7 +1056,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private postCombatRape(): void {
+    function postCombatRape(): void {
         jojoSprite();
         outputText("  You disrobe and prepare to ");
         if (game.monk == 5)
@@ -1066,7 +1066,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(0, "Next", jojoRape, true);
     }
 
-    public jojoRape(postCombat: boolean = false): void {
+    export function jojoRape(postCombat: boolean = false): void {
         trace("jojoRape called");
 
         jojoSprite();
@@ -1095,7 +1095,7 @@ export class JojoScene implements TimeAwareInterface {
         if (postCombat) cleanupAfterCombat();
     }
 
-    private jojosFirstRape(): void {
+    function jojosFirstRape(): void {
         clearOutput();
         outputText("You pretend to agree, and follow Jojo into the woods.  You bide your time, waiting for him to relax.  Eventually the mouse stumbles, and you have your chance!\n\n");
 
@@ -1200,7 +1200,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private jojosSecondRape(): void {
+    function jojosSecondRape(): void {
         clearOutput();
         outputText("The poor mouse is already hard... his cock is throbbing eagerly as it protrudes through the opening in his robe, looking nearly eight inches long.  You're pretty sure it wasn't that big last time.\n\n");
         game.monk += 1;
@@ -1230,7 +1230,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private jojosThirdRape(): void {
+    function jojosThirdRape(): void {
         clearOutput();
         trace("Monk(3) rape");
         outputText("It's no wonder the monk's body has betrayed him so thoroughly, his " + cockDescriptShort(monster, 0) + " is nearly ten inches long, pulsing with hot need.\n\n");
@@ -1346,7 +1346,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private jojosFourthRape(): void {
+    function jojosFourthRape(): void {
         clearOutput();
         outputText("Jojo flops down, eyes filled with anticipation.  His self-control has really slipped away.  The corrupted and horny mouse on display here is anathema to the studious monk you met before.  His cock is close to a foot long and over two inches thick, veiny with arousal.\n\n");
         // Male Version
@@ -1466,7 +1466,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private jojosFifthRape(): void {
+    function jojosFifthRape(): void {
         clearOutput();
         outputText("Jojo smiles serenely, pleased at the outcome, a foot of tumescent mouse-meat bobbing at attention.\n\n");
         // Placeholder till I'm less lazy
@@ -1479,7 +1479,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    public loseToJojo(): void {
+    export function loseToJojo(): void {
         clearOutput();
         if (game.monk == 2 || game.monk == 3) {
             outputText("Jojo glares down at you, and begins praying, slowly laying prayer papers all over your battered form.  You feel rage that quickly dissipates, replaced with a calm sense of peace.  You quickly lose consciousness, but are happy he defeated you.\n\nWhen you wake, you discover a note:\n\"<i>The fighting allowed me to exorcise most of your inner demons.  A part of me wanted to seek revenge for what you had done to me, but I know it was the taint on your soul that was responsible.  If we meet again I would be happy to meditate with you.\n\n          -Jojo.</i>\"");
@@ -1534,7 +1534,7 @@ export class JojoScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
 
-    private corruptJojoSexMenu(): void {
+    function corruptJojoSexMenu(): void {
         menu();
         if (player.vaginas.length > 0) {
             addButton(2, "Gentle Vaginal", corruptJojoVaginalGentle);
@@ -1554,7 +1554,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(9, "Back", playerMenu);
     }
 
-    private corruptJojoBJCruel(): void {
+    function corruptJojoBJCruel(): void {
         jojoSprite();
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
@@ -1573,7 +1573,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoBJGentle(): void {
+    function corruptJojoBJGentle(): void {
         jojoSprite();
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
@@ -1594,7 +1594,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoCunnilingus(): void {
+    function corruptJojoCunnilingus(): void {
         jojoSprite();
         clearOutput();
         outputText("You decide to finally reward your slut for all his service to you, summoning him to your camp for pleasure. He meekly appears at your bidding and you direct him to lie down on the ground before you. He does as you ask and you gently spread his legs, settling down between them.  ");
@@ -1614,7 +1614,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoVaginalGentle(): void {
+    function corruptJojoVaginalGentle(): void {
         jojoSprite();
         clearOutput();
         outputText("Feeling the urge to be filled, you summon your mouse slut to you and smile as he quickly responds, moving to kneel before you reverently. You let your hand caress the side of his head, then order him to lay back.  ");
@@ -1642,7 +1642,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoVaginalSmother(): void {
+    function corruptJojoVaginalSmother(): void {
         jojoSprite();
         clearOutput();
         outputText("You feel the need to gain a little sexual relief and a mischievous idea comes to your mind, making you grin wickedly. You slip off into the jungle to seek out your monk mouse fuck toy, and when you find him, you practically pounce atop him, pinning him to his back. He struggles in surprise until he realizes that it is you, at which point he blushes and tries to look away, unable to help the erection that you are sitting against as you straddle him.  ");
@@ -1659,7 +1659,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoAnalCruel(): void {
+    function corruptJojoAnalCruel(): void {
         jojoSprite();
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
@@ -1677,7 +1677,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoAnalGentle(): void {
+    function corruptJojoAnalGentle(): void {
         jojoSprite();
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
@@ -1696,7 +1696,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoAnalSmother(): void {
+    function corruptJojoAnalSmother(): void {
         jojoSprite();
         clearOutput();
         outputText("You feel the need to gain a little sexual relief and a mischievous idea comes to your mind, making you grin wickedly. You slip off into the jungle to seek out your monk mouse fuck toy, and when you find him, you practically pounce atop him, pinning him to his back. He struggles in surprise until he realizes that it is you, at which point he blushes and tries to look away, unable to help the erection that you are sitting against as you straddle him.  ");
@@ -1718,7 +1718,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private corruptJojoBreasts(): void { // Should only be available to players with biggestBreastSize > 2
+    function corruptJojoBreasts(): void { // Should only be available to players with biggestBreastSize > 2
         jojoSprite();
         clearOutput();
         outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");
@@ -1745,7 +1745,7 @@ export class JojoScene implements TimeAwareInterface {
     // Extra Scenes
     // [Jojo Whispered Sex scene]
     // (Requires the Whispered perk and Jojo as follower)
-    private whisperJojobait(): void {
+    function whisperJojobait(): void {
         clearOutput();
         outputText(images.showImage("akbal-deepwoods-male-jojosex"));
         const x: number = player.cocks.biggestCockIndex();
@@ -2104,7 +2104,7 @@ export class JojoScene implements TimeAwareInterface {
     */
 
     // Bee on C. Jojo: Finished (Fenoxo) (Zedit)
-    private beeEggsInCorruptJojo(): void {
+    function beeEggsInCorruptJojo(): void {
         clearOutput();
         outputText("Drawing Jojo close, you gently tease your fingertips along the soft fur of his cheeks, buzzing reassuring noises into his dish-shaped ears.  The greedy little slut perks up and nuzzles against you happily.  His hand, soft and delicate, reaches down inside your [armor] to touch your groin.  Its partner strays south to the mouse's own erection, gathering his copious pre to smear a fresh layer across his hardness.  You let him be for now, allowing him to build your lust higher and higher.  The show draws your ovipositor out of its slit and fills it with fresh blood, hardening the tubular organ into an approximation of a large phallus.");
         outputText("\n\nJojo, for his part, seems oblivious to the swelling protrusion or your malicious grin.  Once fully hard, you whisper to him, instructing for him to get on all fours and let you fuck him.  ");
@@ -2152,7 +2152,7 @@ export class JojoScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
     // Jojo Got Laid With Fertilized Bee Eggs (Zedit)
-    public jojoLaysEggs(): void {
+    export function jojoLaysEggs(): void {
         outputText("\nWhile passing time, you hear grunts of pleasure from the direction of the forest.  You amble over to investigate and find Jojo bent over, ass-up.  He's tugging on his cock non-stop, firing ropes of cum one after another while heavy, honey-slicked eggs roll out of his gaped anus to form an amber pile.");
         outputText("\n\nYou watch idly as the mouse gathers up the drizzling honey for lube and smears it over his cock, turning his twitching, orgasmic prick golden.  He pumps faster and faster, squeezing and jerking, moaning in lurid, unrestrained bliss.  Jojo is focused utterly on laying eggs and getting off, or maybe he's just getting off from the act of laying.  He's not even supporting his upper body - he just sits there, face down in the dirt, laying and cumming, laying and cumming.  His eggs are even drizzled with his wasted spunk, a testament to the debauchery of their surrogate 'mother'.");
         outputText("\n\nThe mouse turns his head to meet your gaze and whimpers, \"<i>Did... did I do a good job?</i>\"");
@@ -2164,7 +2164,7 @@ export class JojoScene implements TimeAwareInterface {
     // Alternative Recruitment by LukaDoc
     // Note: Since you are not corrupt here Jojo cannot sense you.
     // Requirements: Level 4, Corruption < 20
-    public lowCorruptionJojoEncounter(): void {
+    export function lowCorruptionJojoEncounter(): void {
         clearOutput();
         jojoSprite();
 
@@ -2196,7 +2196,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Yes
-    public acceptJojosApology(): void {
+    export function acceptJojosApology(): void {
         clearOutput();
         jojoSprite();
 
@@ -2208,7 +2208,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // No
-    public refuseJojosApology(): void {
+    export function refuseJojosApology(): void {
         clearOutput();
         jojoSprite();
 
@@ -2221,7 +2221,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Intro
-    public lowCorruptionIntro(): void {
+    export function lowCorruptionIntro(): void {
         outputText("He extends a hand, which you gladly shake. “<i>My name is Jojo, pleased to meet you.</i>” You introduce yourself in kind.\n\n");
 
         outputText("Now that you have the opportunity to take a good look at him, you notice that he is dressed in simple garbs reminiscent of a monk. A light-blue robe covers his flat chest, tied with a simple sash around his waist. His pants, similar to his robes, fit him snugly as well.\n\n");
@@ -2241,7 +2241,7 @@ export class JojoScene implements TimeAwareInterface {
         addButton(4, "Rape", jojoRape);
     }
 
-    public meditateInForest(): void {
+    export function meditateInForest(): void {
         jojoSprite();
         clearOutput();
         outputText("Jojo smiles and leads you off the path to a small peaceful clearing.  There is a stump in the center, polished smooth and curved in a way to be comfortable.  He gestures for you to sit, and instructs you to meditate.\n\nAn indeterminate amount of time passes, but you feel more in control of yourself.  Jojo congratulates you, but offers a warning as well.  \"<i>Be ever mindful of your current state, and seek me out before you lose yourself to the taints of this world.  Perhaps someday this tainted world can be made right again.</i>\"");
@@ -2286,9 +2286,9 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Some hacky shit to be able to control the text clearing mechanics of the doEvent system... OH GOD WHY. //Gone, gone forever
-    private doClear: boolean = true;
+    let doClear: boolean = true;
 
-    public acceptJojoIntoYourCamp(): void {
+    export function acceptJojoIntoYourCamp(): void {
         jojoSprite();
         if (player.effects.findByType(StatusAffects.EverRapedJojo) >= 0 || flags[kFLAGS.JOJO_MOVE_IN_DISABLED] == 1) {
             outputText("You offer Jojo the chance to stay at your camp, but before you can finish your sentence he shakes his head 'no' and stalks off into the woods, remembering.");
@@ -2304,7 +2304,7 @@ export class JojoScene implements TimeAwareInterface {
     // Jojo In Camp
     // Player approaches pure Jojo in camp, gets offer to mediate if > 10 cor -- responses
     // [Yes]
-    public acceptOfferOfHelp(): void {
+    export function acceptOfferOfHelp(): void {
         clearOutput();
         jojoSprite();
 
@@ -2315,7 +2315,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // [No]
-    public refuseOfferOfHelp(): void {
+    export function refuseOfferOfHelp(): void {
         clearOutput();
         jojoSprite();
 
@@ -2323,7 +2323,7 @@ export class JojoScene implements TimeAwareInterface {
         jojoCampMenu();
     }
 
-    public jojoCamp(): void {
+    export function jojoCamp(): void {
         clearOutput();
         jojoSprite();
         if (flags[kFLAGS.AMILY_MET_PURE_JOJO] == 0 && flags[kFLAGS.AMILY_FOLLOWER] == 1 && AmilyScene.amilyFollower()) {
@@ -2362,7 +2362,7 @@ export class JojoScene implements TimeAwareInterface {
         }
     }
 
-    private jojoCampMenu(): void {
+    function jojoCampMenu(): void {
         // Normal Follower Choices
         // [Appearance] [Talk] [Train] [Meditate] [Night Watch toggle]
         let jojoDefense: string = "N.Watch:";
@@ -2383,7 +2383,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Appearance
-    public jojoAppearance(): void {
+    export function jojoAppearance(): void {
         clearOutput();
         jojoSprite();
         outputText("Jojo is a white furred mouse-morph with dish-like ears and a small muzzle below a sometimes twitchy nose. He watches you with striking blue eyes.\n\n");
@@ -2397,7 +2397,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(jojoCamp);
     }
 
-    public talkMenu(): void {
+    export function talkMenu(): void {
         jojoSprite();
         menu();
         addButton(0, "Village", jojoTalkVillage);
@@ -2415,7 +2415,7 @@ export class JojoScene implements TimeAwareInterface {
     // Jojo’s Past
 
     // Village Convo
-    public jojoTalkVillage(): void {
+    export function jojoTalkVillage(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2440,7 +2440,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Joining the Monks convo
-    public jojoTalkJoiningTheMonks(): void {
+    export function jojoTalkJoiningTheMonks(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2457,7 +2457,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Fall of the Monks convo
-    public jojoTalkFallOfTheMonks(): void {
+    export function jojoTalkFallOfTheMonks(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2475,7 +2475,7 @@ export class JojoScene implements TimeAwareInterface {
     }
 
     // Forest Convo
-    public jojoTalkForestConvo(): void {
+    export function jojoTalkForestConvo(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2522,7 +2522,7 @@ export class JojoScene implements TimeAwareInterface {
 
     // Yourself
     // Origin
-    public jojoTalkYourOrigin(): void // Prob tack on some interaction count or something to unlock this
+    export function jojoTalkYourOrigin(): void // Prob tack on some interaction count or something to unlock this
     {
         clearOutput();
         jojoSprite();
@@ -2575,7 +2575,7 @@ export class JojoScene implements TimeAwareInterface {
 
     // Dungeon Convo: Factory
     // Requirements: Completed Demon Factory -- player.effects.findByType(StatusAffects.DungeonShutDown) >= 0
-    public jojoTalkFactory(): void {
+    export function jojoTalkFactory(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2602,7 +2602,7 @@ export class JojoScene implements TimeAwareInterface {
 
     // Dungeon Convo: Sand Cave
     // Requirements: Completed Sand Witch Dungeon
-    public jojoTalkSandCave(): void {
+    export function jojoTalkSandCave(): void {
         clearOutput();
         jojoSprite();
         flags[kFLAGS.TIMES_TALKED_WITH_JOJO]++;
@@ -2686,7 +2686,7 @@ export class JojoScene implements TimeAwareInterface {
 
     // Training
     // Initiate first time as a talk option, and then display as a "base menu" option?
-    public apparantlyJojoDOESlift(): void {
+    export function apparantlyJojoDOESlift(): void {
         clearOutput();
         jojoSprite();
 
@@ -2824,7 +2824,7 @@ export class JojoScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public wormRemoval(): void {
+    export function wormRemoval(): void {
         jojoSprite();
         clearOutput();
         outputText("\"<i>Excellent, young one,</i>\" Jojo continues. \"<i>Your dedication to purification is admirable. Relax and know that the parasites will leave you soon.</i>\"\n\n");
@@ -2841,4 +2841,3 @@ export class JojoScene implements TimeAwareInterface {
         dynStats("sen", -1, "lus", -99, "cor", -15);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

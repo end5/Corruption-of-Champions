@@ -1,6 +1,4 @@
 
-export class SatyrScene {
-
     // const SATYR_KIDS:int = 603;
     // Game Implementation (code from here)
     // Fight Encounter (Z)
@@ -11,7 +9,7 @@ export class SatyrScene {
     Note: Satyrs actively increase their own lust in order to use their lust charge, if increasing their own lust will cause the satyr to lose the battle, then he should do something else! In other words, the conditions to execute a lust charge are mutually exclusive with the conditions to execute a lust increase.
     */
 
-    public satyrEncounter(location: number = 0): void {
+    export function satyrEncounter(location: number = 0): void {
         clearOutput();
         spriteSelect(98);
         if (rand(2) == 0 || player.pregnancyIncubation > 0 || player.buttPregnancyIncubation > 0 || player.gender == 0) {
@@ -36,7 +34,7 @@ export class SatyrScene {
     }
 
     // [=Yes=]
-    private consensualSatyrFuck(loc: number = 0): void {
+    function consensualSatyrFuck(loc: number = 0): void {
         clearOutput();
         spriteSelect(98);
         outputText("You decide to search for the source of the music.");
@@ -80,7 +78,7 @@ export class SatyrScene {
     }
 
     // [=Keep Drinking=]
-    private keepDrinking(): void {
+    function keepDrinking(): void {
         clearOutput();
         spriteSelect(98);
         outputText("You grin at the satyr's encouragement and continue drinking, setting on a slower pace so you won't spill any more; shortly you pass him the empty skin and ask for more.");
@@ -105,7 +103,7 @@ export class SatyrScene {
     }
 
     // [=Leave=]
-    private leavePartySatyr(): void {
+    function leavePartySatyr(): void {
         clearOutput();
         spriteSelect(98);
         outputText("You thank the satyr for his generosity, but you don't think you can handle this kind of booze, so you get up and start on your way back to your camp.");
@@ -119,7 +117,7 @@ export class SatyrScene {
         // (Initiate combat with frenzied satyr, on the first round PC suffers the effects of a satyr charge (some HP lost and stunned))
     }
     // [=Trick Him=]
-    private trickZeSatyr(): void {
+    function trickZeSatyr(): void {
         clearOutput();
         spriteSelect(98);
         outputText("You come up with a plan and pretend to start drinking again; once you notice the satyr is distracted, you quickly spill most of your drink on the floor and return an empty skin to him.");
@@ -141,7 +139,7 @@ export class SatyrScene {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Skip Foreplay=]
-    private skipForeplay(): void {
+    function skipForeplay(): void {
         clearOutput();
         spriteSelect(98);
         outputText("You smirk and crawl towards the satyr, discarding the skin of alcohol and knocking over several dishes and bottle in your way.  Once you're close enough, you roughly grab at his massive shaft and begin stroking it.  \"<i>We both know where this is headed...</i>\" you whisper, \"<i>so why not skip the foreplay?</i>\"");
@@ -155,7 +153,7 @@ export class SatyrScene {
     // Sex Scenes
     // Loss Rape (Z)
     // If PC has a vagina, Satyrs will use that. If not, use ass instead.
-    public loseToSatyr(): void {
+    export function loseToSatyr(): void {
         clearOutput();
         spriteSelect(98);
         // [Lust loss
@@ -213,7 +211,7 @@ export class SatyrScene {
     }
 
     // Victory Rapes
-    public defeatASatyr(): void {
+    export function defeatASatyr(): void {
         clearOutput();
         spriteSelect(98);
         // Lust Victory
@@ -234,7 +232,7 @@ export class SatyrScene {
         simpleChoices("FuckHisButt", butt, "Ride Face", faces, "B.Titfuck", bikiniTits, "", null, "Leave", cleanupAfterCombat);
     }
     // Female (Z)
-    private femaleTakesAdvantageOfSatyr(): void {
+    function femaleTakesAdvantageOfSatyr(): void {
         clearOutput();
         spriteSelect(98);
         outputText("You eye his massive shaft speculatively, then decide against it.  Why should he receive the true pleasures of your cunt when he attacked you so rudely?  No, if there will be anyone taking pleasure from this, it will be you alone.  With that in mind, you cast aside your [armor] in the most imperious manner you can muster, until you are standing stark naked.");
@@ -268,7 +266,7 @@ export class SatyrScene {
     }
 
     // Male (Z)
-    private malesTakeAdvantageOfSatyrs(): void {
+    function malesTakeAdvantageOfSatyrs(): void {
         clearOutput();
         spriteSelect(98);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
@@ -306,7 +304,7 @@ export class SatyrScene {
     // Willing Sex (Z)
     // from skip foreplay
     // always impregnates PC
-    private willinglyBoneSatyr(): void {
+    function willinglyBoneSatyr(): void {
         clearOutput();
         spriteSelect(98);
         outputText("The satyr eyes you up and down hungrily; his hands move to grope your [chest], gently tweaking your [nipples], then he moves down towards your ");
@@ -382,7 +380,7 @@ export class SatyrScene {
     }
 
     // Pregnancy Stuff (Z)
-    private satyrPreggo(): void {
+    function satyrPreggo(): void {
         if (player.vaginas.length > 0) {
             player.knockUp(PregnancyStore.PREGNANCY_SATYR, PregnancyStore.INCUBATION_SATYR); // Satyrs can now fertilize eggs for ovipositing players
         }
@@ -393,7 +391,7 @@ export class SatyrScene {
 
     // Birthing (Z)
     // Baby is always male.
-    public satyrBirth(vag: boolean): void {
+    export function satyrBirth(vag: boolean): void {
         spriteSelect(98);
         outputText("\nSudden sharp, intense pangs rip through your gut, seeming to emanate from your ");
         if (vag && !player.vaginas.length > 0) {
@@ -422,5 +420,3 @@ export class SatyrScene {
         // badabingbadaboom
         flags[kFLAGS.SATYR_KIDS]++;
     }
-
-}

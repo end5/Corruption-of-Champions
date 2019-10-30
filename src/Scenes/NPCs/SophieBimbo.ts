@@ -1,6 +1,4 @@
 
-export class SophieBimbo {
-
     // VARS
     // 282	Sophie Bimbo Follower?
     // 283	Sophie Disabled Forever
@@ -30,20 +28,20 @@ export class SophieBimbo {
     Chance of waking the PC by whispering how much they need to fuck her in their sleep, then sexing.
     Bimbo harpy pussy apparently tastes tangy with an undertone of sweet, almost peach-like flavor.
     */
-    public sophieSprite(): void {
+    export function sophieSprite(): void {
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] == 0) spriteSelect(83);
         else spriteSelect(53);
     }
 
-    public bimboSophie(): boolean {
+    export function bimboSophie(): boolean {
         return (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0 && flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] == 0 && flags[kFLAGS.SOPHIE_DEBIMBOED] == 0);
     }
 
-    public sophieIsInSeason(): boolean {
+    export function sophieIsInSeason(): boolean {
         return (flags[kFLAGS.SOPHIE_HEAT_COUNTER] > 551 && !SophieScene.pregnancy.isPregnant);
     }
 
-    public sophiePregChance(): void {
+    export function sophiePregChance(): void {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] != 0) return;
 
         // 25% + gradually increasing cumQ bonus
@@ -51,12 +49,12 @@ export class SophieBimbo {
             SophieScene.pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_HARPY);
         }
     }
-    public sophieCapacity(): number {
+    export function sophieCapacity(): number {
         return 179;
     }
 
     // *Summary:  Sophie is defeated, give draft.
-    public bimbotizeMeCaptainSophie(): void {
+    export function bimbotizeMeCaptainSophie(): void {
         sophieSprite();
         outputText("", true);
         player.consumeItem(ConsumableLib.BIMBOLQ);
@@ -101,7 +99,7 @@ export class SophieBimbo {
         doYesNo(acceptBimboSophie, declineBimboSophie);
     }
 
-    private declineBimboSophie(): void {
+    function declineBimboSophie(): void {
         sophieSprite();
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00283] = 1;
         outputText("", true);
@@ -109,7 +107,7 @@ export class SophieBimbo {
         cleanupAfterCombat();
     }
 
-    private acceptBimboSophie(): void {
+    function acceptBimboSophie(): void {
         sophieSprite();
         outputText("", true);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] = 1;
@@ -155,7 +153,7 @@ export class SophieBimbo {
         cleanupAfterCombat();
     }
     // Follower In Camp Text:
-    public sophieCampLines(): void {
+    export function sophieCampLines(): void {
         const choice: number = rand(4);
         if (choice == 0) outputText("Sophie is sitting by herself, applying yet another layer of glittering lip gloss to her puffy bimbo lips.", false);
         else if (choice == 1) outputText("Sophie is sitting by herself, idly diddling her twat and noisily moaning.  She keeps looking your way, hoping you'll approach.", false);
@@ -164,7 +162,7 @@ export class SophieBimbo {
         outputText("\n\n", false);
     }
     // Approach Texts
-    public approachBimboSophieInCamp(output: boolean = true): void {
+    export function approachBimboSophieInCamp(output: boolean = true): void {
         sophieSprite();
         if (flags[kFLAGS.FOLLOWER_AT_FARM_SOPHIE] == 0) {
             if (output) {
@@ -274,7 +272,7 @@ export class SophieBimbo {
     }
 
     // Appearance:
-    private sophieBimboAppearance(): void {
+    function sophieBimboAppearance(): void {
         clearOutput();
         outputText("Sophie is a big, buxom harpy, no two ways about her.  She has ");
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0) outputText("very ");
@@ -313,7 +311,7 @@ export class SophieBimbo {
         addButton(0, "Back", approachBimboSophieInCamp, false);
     }
 
-    private harvestEggs(): void {
+    function harvestEggs(): void {
         clearOutput();
         sophieSprite();
 
@@ -324,7 +322,7 @@ export class SophieBimbo {
         eggSelector();
     }
 
-    private changeEggs(): void {
+    function changeEggs(): void {
         clearOutput();
         sophieSprite();
 
@@ -335,7 +333,7 @@ export class SophieBimbo {
         eggSelector();
     }
 
-    public eggColors: any[] = [
+    export let eggColors: any[] = [
         "Black",
         "Blue",
         "Brown",
@@ -344,7 +342,7 @@ export class SophieBimbo {
         "White",
     ];
 
-    public readonly eggTypes = [
+    export let eggTypes = [
         ConsumableLib.L_BLKEG,
         ConsumableLib.L_BLUEG,
         ConsumableLib.L_BRNEG,
@@ -353,13 +351,13 @@ export class SophieBimbo {
         ConsumableLib.L_WHTEG,
     ];
 
-    private eggSelector(): void {
+    function eggSelector(): void {
         for (const i = 0; i < eggColors.length; i++) {
             addButton(i, eggColors[i], postEggSelector, eggColors[i]);
         }
     }
 
-    private postEggSelector(selected: string): void {
+    function postEggSelector(selected: string): void {
         clearOutput();
         sophieSprite();
 
@@ -375,7 +373,7 @@ export class SophieBimbo {
         doNext(FarmCorruption.rootScene);
     }
 
-    private stopHarvest(): void {
+    function stopHarvest(): void {
         clearOutput();
         sophieSprite();
 
@@ -389,7 +387,7 @@ export class SophieBimbo {
         doNext(FarmCorruption.rootScene);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
         sophieSprite();
 
@@ -406,7 +404,7 @@ export class SophieBimbo {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
         sophieSprite();
 
@@ -419,7 +417,7 @@ export class SophieBimbo {
         doNext(FarmCorruption.rootScene);
     }
 
-    private bimboSophieSexMenu(): void {
+    function bimboSophieSexMenu(): void {
         clearOutput();
         outputText("How will you have sex with your feather-brained slut?");
         menu();
@@ -465,7 +463,7 @@ export class SophieBimbo {
         addButton(9, "Leave", approachBimboSophieInCamp);
     }
 
-    private tellSophieToVisitIzma(): void {
+    function tellSophieToVisitIzma(): void {
         clearOutput();
         outputText("You suggest she visit Izma again.  Maybe this time she won't get tied up again?");
         outputText("\n\nSophie squeals, \"<i>REAAALLY?</i>\" before taking off towards the other side of camp.  This should be good.");
@@ -474,7 +472,7 @@ export class SophieBimbo {
     }
 
     // Lipstick Resistance Building
-    public bimboSophieLustStickSurprise(): void {
+    export function bimboSophieLustStickSurprise(): void {
         outputText("\n", false);
         // *The PC is repeatedly afflicted with harpy lipstick by Sophie in one of five ways.  Additional exposure from the mountain harpies will speed the process.  After 40(or 20-30?)  applications of lust-stick, the PC becomes resistant to it, raising the PC's lust by 20%, but also reducing lust gain by 20%.
         const select: number = rand(4);
@@ -532,7 +530,7 @@ export class SophieBimbo {
         outputText("\n", false);
     }
 
-    public daughterCheckup(): void {
+    export function daughterCheckup(): void {
         clearOutput();
         if (flags[kFLAGS.SOPHIE_DAUGHTER_MATURITY_COUNTER] > 200) {
             outputText("Back in the nest, your cute little harpy is still just a little chick.  Her body is small and childlike, and her feathers are fluffy and poofy, making your little girl look like she has puffballs for arms and legs.  Already looking to be four or five years old, the baby harpy is just as energetic as a human child of that age.  She flutters around and scrambles from one thing to another.  Thankfully, the rambunctious little darling runs out of explosive energy quickly, suddenly falling to the ground into a fluffy heap for a quick nap.");
@@ -556,7 +554,7 @@ export class SophieBimbo {
     }
 
     // Unlock resistance:
-    public unlockResistance(): void {
+    export function unlockResistance(): void {
         if (player.cocks.length > 0) {
             outputText("\nBy now, the effects of the harpy lipstick should be kicking in, yet you don't feel that different.  Sure, you feel hard and ready to fuck an egg into the nearest harpy, but at the same time, you've gotten quite used to that feeling.  It's almost like your body has adapted to being under the effects of the drugged lipstick after so many repeated applications.  Hell, you could probably let a pack of the bitches cover your body in it and it wouldn't bother you!  Maybe you could even wear it around to use on male enemies?\n\n", false);
         }
@@ -565,7 +563,7 @@ export class SophieBimbo {
         player.perks.create(PerkLib.LuststickAdapted, 0, 0, 0, 0);
     }
     // Get oral as female.
-    private bimboSophieLicksRugs(): void {
+    function bimboSophieLicksRugs(): void {
         sophieSprite();
         outputText("", true);
         // *Summary - lean back on a rock and spread your legs.  She licks you off with chance of compelling you to sixtynine her.
@@ -637,7 +635,7 @@ export class SophieBimbo {
         }
     }
     // SixtyNine Continuation - GOILS you're a wreckin' machine
-    private bimboSophieSixtyNineAfterCunnilingus(): void {
+    function bimboSophieSixtyNineAfterCunnilingus(): void {
         sophieSprite();
         outputText("", true);
         // NON WANG
@@ -714,7 +712,7 @@ export class SophieBimbo {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private buttFuckBimboSophie(): void {
+    function buttFuckBimboSophie(): void {
         sophieSprite();
         outputText("", true);
         let x: number = player.cocks.cockThatFits(sophieCapacity());
@@ -769,7 +767,7 @@ export class SophieBimbo {
     }
 
     // TitFuck
-    private fuckBimboSophiesTits(): void {
+    function fuckBimboSophiesTits(): void {
         sophieSprite();
         outputText("", true);
         let x: number = player.cocks.cockThatFits(sophieCapacity());
@@ -813,7 +811,7 @@ export class SophieBimbo {
 
     // Bimbo Sophie Camp Event – (If the player has an Ovi Elixir)
     // 1 in 700 proc chance (roughly once a month? or flat 30 days)
-    public sophieEggApocalypse(): void {
+    export function sophieEggApocalypse(): void {
         sophieSprite();
         outputText("", true);
         // First time
@@ -834,7 +832,7 @@ export class SophieBimbo {
     }
 
     // [Daddy]
-    private beBimboSophiesSugarDaddy(): void {
+    function beBimboSophiesSugarDaddy(): void {
         sophieSprite();
         outputText("", true);
         let x: number = player.cocks.cockThatFits(sophieCapacity());
@@ -863,7 +861,7 @@ export class SophieBimbo {
     }
 
     // [Mommy]
-    private beBimboSophiesSugarMommy(): void {
+    function beBimboSophiesSugarMommy(): void {
         sophieSprite();
         outputText("", true);
         if (player.hasItem(ConsumableLib.OVIELIX)) player.consumeItem(ConsumableLib.OVIELIX);
@@ -888,7 +886,7 @@ export class SophieBimbo {
 
     // Butts McGee
     // =====================================================
-    private rideDatSophieVag(nice: boolean = false): void {
+    function rideDatSophieVag(nice: boolean = false): void {
         clearOutput();
         sophieSprite();
         let x: number = player.cocks.cockThatFits(sophieCapacity());
@@ -1051,26 +1049,26 @@ export class SophieBimbo {
 
     // Getting Sophie Pregnant*
     // Sophie Fertile Text Alert (Only if PC has penis)*
-    public sophieGoesIntoSeason(): void {
+    export function sophieGoesIntoSeason(): void {
         sophieSprite();
         outputText("\nSophie seems to be focusing on preening herself a little more often than usual.  She keeps finding excuses to be around you, close enough that you can smell the sweet, peach-like scent of lust that hangs around her.  Her lower lips are more puffy and engorged than normal, and you note she's even applied some of her lip gloss to them.  The bimbo harpy continually bends over rocks, stools, and the fire pit, always with her big, jiggly ass wobbling enticingly in your direction, gold-lipped sex peeking out below.  <b>She's clearly in season - ready to be bred and wanting you to do it!</b>\n");
     }
 
     // Sophie Fertility Done (Expired or PC lost cock):*
-    public sophieSeasonExpiration(): void {
+    export function sophieSeasonExpiration(): void {
         sophieSprite();
         outputText("\nSophie has stopped behaving so oddly around you, and though her mannerisms continue to seethe with lust, she no longer seems so focused on getting a cock in her pussy.  <b>Her heat, or whatever the equivalent bird-brained harpies have, is over.</b>\n");
     }
 
     // Sophie Fertility Knocked Up*
-    public sophieGotKnockedUp(): void {
+    export function sophieGotKnockedUp(): void {
         sophieSprite();
         outputText("\nSophie seems to have a bigger, dopier smile plastered across her face than usual.  The golden gloss she had applied to her mound is now nothing more than a smeared mess, stained with white drippings in places.  She preens her ruffled hair-feathers, occasionally rubbing her tummy as she cleans herself up.  The feathery bimbo seems to be over her heat, thanks to your 'virile' intervention.\n");
     }
 
     // Impregnation Sex*
     // Lots of Sophie Compulsion Foreplay coupled with just jamming it in.  She loses all control and you ride her like a bucking bronco, cumming in her pussy a few times, then in her ass, in her tits/mouth, and then back in her pussy again.  Then snuggles?
-    private sophieImpregnationSex(): void {
+    function sophieImpregnationSex(): void {
         let x: number = player.cocks.cockThatFits(sophieCapacity());
         const y: number = player.cocks.cockThatFits2(sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -1231,7 +1229,7 @@ export class SophieBimbo {
         addButton(0, "Next", postSophieImpreg);
     }
 
-    private postSophieImpreg(): void {
+    function postSophieImpreg(): void {
         clearOutput();
         sophieSprite();
         outputText("When you wake, Sophie is snuggled up next to you, her arms and legs wrapped around you affectionately.  A cup full of water, along with several strips of dried meat sit nearby... apparently she got them while you were out, knowing how thirsty and hungry you'd be.  You run your fingers through her platinum, down-soft hair.  Having a live-in bimbo isn't really all that bad.");
@@ -1239,7 +1237,7 @@ export class SophieBimbo {
     }
     // Too Big Impregnation Sex*
     // Sophie starts grinding on top, hypno-compelling you to get hornier and hornier until you flip her over and full-body titfuck her.  After the first jizz, you get a little winded and lay back, she remounts you and gets you to cum against her entrance, then she snuggles with you and slowly teases and orgasm denials you until you fucking explode and pass out cuddling with her.
-    private giantCocksImpregnateSophie(): void {
+    function giantCocksImpregnateSophie(): void {
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
         sophieSprite();
@@ -1277,7 +1275,7 @@ export class SophieBimbo {
         addButton(0, "Next", postSophieTooBigImpreg);
     }
 
-    private postSophieTooBigImpreg(): void {
+    function postSophieTooBigImpreg(): void {
         clearOutput();
         sophieSprite();
         outputText("Sophie milks you through three more orgasms before she finally tires, and by that point, you're equally exhausted.  You snuggle up next to her and pass out, barely rousing when she begins kissing your manhood during the nap for a fourth helping of your spillable seed.  When you awaken nearly eight hours later, she's snoring soundly, with a skin of water and strips of dried meat left nearby for you to restore yourself.  Life with a bimbo isn't so bad!");
@@ -1285,7 +1283,7 @@ export class SophieBimbo {
     }
 
     // Sophie Move In Request Scene*
-    public sophieMoveInAttempt(): void {
+    export function sophieMoveInAttempt(): void {
         clearOutput();
         sophieSprite();
         flags[kFLAGS.SOPHIE_BROACHED_SLEEP_WITH] = 1;
@@ -1300,7 +1298,7 @@ export class SophieBimbo {
     }
 
     // Yes*
-    private yesSophieSleepWith(): void {
+    function yesSophieSleepWith(): void {
         clearOutput();
         sophieSprite();
         outputText("Sophie claps her hands excitedly when you give your assent, immediately launching into a hug that presses her ");
@@ -1317,7 +1315,7 @@ export class SophieBimbo {
         doNext(Camp.returnToCampUseOneHour);
     }
     // No (Also Used To Kick Her Out Of Bed)*
-    private noSophieSleepWith(): void {
+    function noSophieSleepWith(): void {
         clearOutput();
         sophieSprite();
         outputText("Sophie casts her eyes down and says, \"<i>I get it...  I'll just... sleep over in my nest then.  Alone...</i>\"  She shambles away, her tail feathers limp against her big, bouncing butt as she goes, clearly unhappy with the decision.  You can hear her sniffling even after she vanishes around a rock, trying not to cry.");
@@ -1326,7 +1324,7 @@ export class SophieBimbo {
     }
 
     // Option To Move Her In Any Time If Initially Declined*
-    private moveSophieInRepeat(): void {
+    function moveSophieInRepeat(): void {
         clearOutput();
         sophieSprite();
         outputText("You go up to the feathery bimbo and idly question if she still wants to share your bed with you");
@@ -1341,7 +1339,7 @@ export class SophieBimbo {
 
     // Sophie Morning Sex*
     // Alternate Intro/Outro for consensual fucking when it isn't morning?
-    public sophieFenCraftedSex(morning: boolean = false): void {
+    export function sophieFenCraftedSex(morning: boolean = false): void {
         let x: number = player.cocks.cockThatFits(sophieCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         sophieSprite();
@@ -1398,7 +1396,7 @@ export class SophieBimbo {
 
     // Pregnant Sophie Morning Sex*
     // Alternate Intro/Outro for consensual fucking when it isn't morning?
-    public fuckYoPregnantHarpyWaifu(morning: boolean = false): void {
+    export function fuckYoPregnantHarpyWaifu(morning: boolean = false): void {
         const x: number = player.cocks.cockThatFits(sophieCapacity());
         // {Morning Fuck}
         if (morning) {
@@ -1467,7 +1465,7 @@ export class SophieBimbo {
 
     // Very Pregnant Sophie Tit Jobs*
     // Alternate Intro/Outro for consensual fucking when it isn't morning?
-    private sophiePreggoTitJobs(): void {
+    function sophiePreggoTitJobs(): void {
         const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         sophieSprite();
@@ -1508,7 +1506,7 @@ export class SophieBimbo {
     }
 
     // Hog Wild*
-    private goHogWildOnSophieBewbs(): void {
+    function goHogWildOnSophieBewbs(): void {
         clearOutput();
         sophieSprite();
         const x: number = player.cocks.biggestCockIndex();
@@ -1550,7 +1548,7 @@ export class SophieBimbo {
     }
 
     // Let Her*
-    private letSophieMilkYoDick(): void {
+    function letSophieMilkYoDick(): void {
         clearOutput();
         sophieSprite();
         const x: number = player.cocks.biggestCockIndex();
@@ -1616,7 +1614,7 @@ export class SophieBimbo {
     }
 
     // Sophie Births Egg*
-    public sophieBirthsEgg(): void {
+    export function sophieBirthsEgg(): void {
         sophieSprite();
         outputText("\nA high pitched cry of pleasure rings out through your camp.  You rush towards it, knowing from that high-pitched tone that it can only be the harpy, Sophie.  She's leaning against a rock, her legs splayed wide.  Underneath her supple thighs, there's a well-made bed of straw, cloth, and leaves that vaguely resembles a nest.  She's been busy!");
 
@@ -1646,7 +1644,7 @@ export class SophieBimbo {
     }
 
     // Egg Hatched Notification
-    public sophiesEggHatches(): void {
+    export function sophiesEggHatches(): void {
         flags[kFLAGS.SOPHIE_CAMP_EGG_COUNTDOWN] = 0;
         sophieSprite();
         outputText("\nThe quiet of your camp is suddenly broken by loud bird-like cries and squawks.  What on earth could have gotten Sophie so worked up?  Letting out a sigh, you head over to where your feathery ");
@@ -1737,7 +1735,7 @@ export class SophieBimbo {
     }
 
     // Mature alert
-    public sophieKidMaturation(): void {
+    export function sophieKidMaturation(): void {
         clearOutput();
         sophieSprite();
         outputText("Checking up on your growing daughter, you find her once again with her mother Sophie.  The two harpies are just gabbing away about this and that when suddenly your teen-looking daughter groans as if in pain.  Worried about the state of your offspring, you approach the nest and look over your daughter.  Next to her, Sophie flutters her wings, fussing over her daughter's health.  Before your very eyes, your daughter changes - her once plain body growing out, feminine curves ballooning exquisitely.");
@@ -1814,7 +1812,7 @@ export class SophieBimbo {
         flags[kFLAGS.SOPHIE_ADULT_KID_COUNT]++;
     }
     // [yes incest plz]
-    private yesToSophieIncest(): void {
+    function yesToSophieIncest(): void {
         clearOutput();
         sophieSprite();
         outputText("Grinning at your eager girl, you lean in and kiss her lips, reaching around to grab her spankable ass.  Gripping that sumptuous rump, you yank her forward and spank her jiggling cheeks.  Your rough manhandling evokes a horny, needy squawk from the freshly matured harpy.  Smirking at your curvaceous daughter, you tell her that just like her mother, she is a beautiful, voluptuous example of her kind.  Pulling her into another kiss, you slide your tongue inside her warm mouth.  She slips a thick, fertile leg around you and kisses back, pressing her body tighter against yours.");
@@ -1828,7 +1826,7 @@ export class SophieBimbo {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [nono]
-    private noToSophieIncest(): void {
+    function noToSophieIncest(): void {
         clearOutput();
         sophieSprite();
         outputText("Sliding your hand up to your daughter's cheek, you stroke her softly before running your fingers through her feathery hair.  Your soft touch draws a gentle, bird-like coo from your daughter.  You guide her down and tell her she should rest after such a transformation.  She should seek mates outside her family.  You don't want to encourage such blatantly sexual behavior so soon, and you sit her down in Sophie's nest to rest.  Instantly, her mother is at her side, fluttering excitedly and drawing her daughter into a conversation about you and all the fun she can have once she finds a mate of her own.");
@@ -1838,7 +1836,7 @@ export class SophieBimbo {
     // Izma dominating Sophie bondage.
     // have izma get irritated with Sophies constant advances.
     // First time happens randomly
-    public sophieAndIzmaPlay(): void {
+    export function sophieAndIzmaPlay(): void {
         outputText("\n");
         flags[kFLAGS.TIMES_SOPHIE_AND_IZMA_FUCKED]++;
         outputText("<b>Something odd happens that ");
@@ -1883,7 +1881,7 @@ export class SophieBimbo {
     }
 
     // (LEGGO MY EGGO)
-    private interruptSophieIzma(): void {
+    function interruptSophieIzma(): void {
         clearOutput();
         outputText("You steel yourself.  As tempting as it is to watch these two vixens go at it, you've got to let them know they're part of <b>your</b> harem.  And of course, any fun that occurs without you is no fun at all.  You step out from behind the rock, calling out to the tigershark and bound harpy, demanding to know what's going on.");
         outputText("\n\nIzma jumps away from the Harpy in surprise.  \"<i>Oh, Alpha!</i>\" she sputters, turning to face you.  She thinks for a moment, a bead of sweat forming on her already moist forehead.  \"<i>I was, uh, just getting your slave ready for you,</i>\" she lies.");
@@ -1895,7 +1893,7 @@ export class SophieBimbo {
     }
 
     // (Watch like the voyeur you are)
-    private watchIzmaSophie(): void {
+    function watchIzmaSophie(): void {
         clearOutput();
         outputText("\"<i>Now, we do this my way,</i>\" Izma says.  \"<i>If you wanted to do things your way, you should've fought back better.</i>\"  She gleefully gropes the harpy's bottom, setting Sophie to swaying back and forth once more.  An orange fingertip probes the juicy, honeyed tunnel with slow exploratory penetrations, triggering a cacophony of lewd moans from the air-headed, bound slut.  \"<i>Yeah... you like that don't you, you greedy little slut?  Gods, I bet all you do is lie around all day, trying to think of new ways to get something hard in here, huh?  Well, you should've thought harder, because this pussy belongs to me until your drugs wear off.  And then?  Then, I'm going to leave you hanging a while to think on your mistakes.</i>\"");
 
@@ -1934,4 +1932,3 @@ export class SophieBimbo {
         dynStats("sen", -1);
         doNext(playerMenu);
     }
-}

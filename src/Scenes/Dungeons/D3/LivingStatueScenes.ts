@@ -3,9 +3,8 @@
  * ...
  * @author Gedan
  */
-export class LivingStatueScenes {
 
-    public encounter(): void {
+    export function encounter(): void {
         clearOutput();
         outputText("The immense statue gives a mighty groan as you near and shudders, shaking loose years of dust and grime. A few ravens cry in distress as they're shaken loose from their roosts. Taking a step back, you watch as the mammoth figure pushes itself up to a standing position. It towers above, at least thirty feet tall, and easily lifts a hammer carved from the same marble as its gleaming muscles.");
         if (silly()) outputText(" On the plus side, it seems to lack knees. That should make dodging its attacks a bit easier.");
@@ -16,7 +15,7 @@ export class LivingStatueScenes {
         startCombat(new LivingStatue());
     }
 
-    public beatUpDaStatue(hpVictory: boolean): void {
+    export function beatUpDaStatue(hpVictory: boolean): void {
         clearOutput();
         outputText("Cracks spiderweb out from the point of your last strike, spreading like wildfire across the surface of the stone giant. It groans in pain as its face slowly freezes, locked in a grimace of inhuman suffering before the whole of it comes apart. Chunks of marble fall, kicking up a cloud of white dust and dirt. When it clears, there's nothing left but two marble feet, amputated at the ankle, standing amidst a field of rubble.");
         outputText("\n\nA gleaming, purple stone in the center catches your eye.");
@@ -25,7 +24,7 @@ export class LivingStatueScenes {
         addButton(0, "Take Stone", takeTheStone);
     }
 
-    private takeTheStone(): void {
+    function takeTheStone(): void {
         clearOutput();
 
         outputText("You carefully step through the cratered rubble to claim your prize. It's a chunk of lethicite,");
@@ -40,10 +39,9 @@ export class LivingStatueScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public fuckinMarbleOP(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function fuckinMarbleOP(hpVictory: boolean, pcCameWorms: boolean): void {
         clearOutput();
         outputText("You slump to your knees, overwhelmed and unable to see the shadow of the falling hammer. Your last thoughts are of regret.");
 
         gameOver();
     }
-}

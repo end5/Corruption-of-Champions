@@ -3,27 +3,26 @@
  * ...
  * @author Gedan
  */
-export class IncubusMechanicScenes {
 
     // There's nothing to track if you just enter the Incubus' room in D1 and didn't approach him.
     // IF you approach him, then we can track that (either you fight, or you talk and give him an item)
-    private metIncubusMechanicInD1(): boolean {
+    function metIncubusMechanicInD1(): boolean {
         if (player.effects.findByType(StatusAffects.FactoryIncubusDefeated) >= 0) return true;
         if (player.effects.findByType(StatusAffects.IncubusBribed) >= 0) return true;
         return false;
     }
 
-    private MECHNIC_NO_SELECTION: number = 0;
-    private MECHANIC_PAID: number = 1;
-    private MECHANIC_SUCKED: number = 2;
-    private MECHANIC_FOUGHT: number = 3;
+    let MECHNIC_NO_SELECTION: number = 0;
+    let MECHANIC_PAID: number = 1;
+    let MECHANIC_SUCKED: number = 2;
+    let MECHANIC_FOUGHT: number = 3;
 
-    private MECHANIC_KILLED: number = 1;
-    private MECHANIC_RELEASED: number = 2;
-    private MECHANIC_FUCKED: number = 3;
-    private MECHANIC_FUCKED_YOU: number = 4;
+    let MECHANIC_KILLED: number = 1;
+    let MECHANIC_RELEASED: number = 2;
+    let MECHANIC_FUCKED: number = 3;
+    let MECHANIC_FUCKED_YOU: number = 4;
 
-    public meetAtElevator(): void {
+    export function meetAtElevator(): void {
         if (flags[kFLAGS.D3_MECHANIC_LAST_GREET] == MECHNIC_NO_SELECTION) {
             outputText("\n\nA");
             if (metIncubusMechanicInD1()) outputText(" familiar,");
@@ -93,7 +92,7 @@ export class IncubusMechanicScenes {
         }
     }
 
-    private payDaToll(): void {
+    function payDaToll(): void {
         flags[kFLAGS.D3_MECHANIC_LAST_GREET] = MECHANIC_PAID;
 
         clearOutput();
@@ -114,7 +113,7 @@ export class IncubusMechanicScenes {
         addButton(0, "Next", D3.exitD3);
     }
 
-    private useLiftPostDefeat(): void {
+    function useLiftPostDefeat(): void {
         clearOutput();
         outputText("You spend a minute or two fiddling with the lift controls, trying to understand how, exactly, to control the contraption. When you think you've got a handle on the system, you tug on a lever with authority and hastily step onto the platform.");
         outputText("\n\nThere's a railing to hold onto as you're lowered down to the mountains. While the platform does rock from side to side along the slow trip down, its motions are not erratic enough to put you in any significant danger. Even better, you aren't bothered by a single harpy along the way. This section of the high mountains seems to have been cleansed of them.");
@@ -124,7 +123,7 @@ export class IncubusMechanicScenes {
         addButton(0, "Next", D3.exitD3);
     }
 
-    public suckIncubusDick(): void {
+    export function suckIncubusDick(): void {
         flags[kFLAGS.D3_MECHANIC_LAST_GREET] = MECHANIC_SUCKED;
 
         clearOutput();
@@ -177,7 +176,7 @@ export class IncubusMechanicScenes {
         addButton(0, "Next", D3.exitD3);
     }
 
-    public beatDaMechanic(hpVictory: boolean): void {
+    export function beatDaMechanic(hpVictory: boolean): void {
         flags[kFLAGS.D3_MECHANIC_LAST_GREET] = MECHANIC_FOUGHT;
 
         clearOutput();
@@ -193,14 +192,14 @@ export class IncubusMechanicScenes {
         if (player.vaginas.length > 0) addButton(3, "Ride Cock", rideMechanicsCock);
     }
 
-    private killMechanic(): void {
+    function killMechanic(): void {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_KILLED;
         clearOutput();
         outputText("He proves blessedly easy to kill, and you roll the body off the cliffs to avoid alerting any of Lethice's other ilk.");
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private letMechanicGo(hpVictory: boolean): void {
+    function letMechanicGo(hpVictory: boolean): void {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_RELEASED;
         clearOutput();
         outputText("Feeling merciful, you point off the side of the cliff. <i>\"Leave this place and never return. If you do, I might have to kill you. I'd rather not shed any more blood than necessary, but I will do what I have to in order to cleanse this land. Leave and never return. Maybe you can find your own peace without driving everything around you to corruption.\"</i>");
@@ -215,7 +214,7 @@ export class IncubusMechanicScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private buttfuckTheMechanic(hpVictory: boolean): void {
+    function buttfuckTheMechanic(hpVictory: boolean): void {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_FUCKED;
 
         let x: number = player.cocks.cockThatFits(200);
@@ -306,11 +305,11 @@ export class IncubusMechanicScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private MECHANIC_DEMON_COCK: number = 0;
-    private MECHANIC_HORZ_GOG: number = 1;
-    private MECHANIC_DOG_COCK: number = 2;
+    let MECHANIC_DEMON_COCK: number = 0;
+    let MECHANIC_HORZ_GOG: number = 1;
+    let MECHANIC_DOG_COCK: number = 2;
 
-    private rideMechanicsCock(): void {
+    function rideMechanicsCock(): void {
         flags[kFLAGS.D3_MECHANIC_FIGHT_RESULT] = MECHANIC_FUCKED_YOU;
 
         clearOutput();
@@ -340,7 +339,7 @@ export class IncubusMechanicScenes {
         addButton(2, "Dog", rideMechanicsCockII, MECHANIC_DOG_COCK);
     }
 
-    private rideMechanicsCockII(cType: number): void {
+    function rideMechanicsCockII(cType: number): void {
         flags[kFLAGS.D3_MECHANIC_COCK_TYPE_SELECTION] = cType;
 
         clearOutput();
@@ -479,7 +478,7 @@ export class IncubusMechanicScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {
         if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             maleLossToMechanic(hpVictory);
         }
@@ -488,7 +487,7 @@ export class IncubusMechanicScenes {
         }
     }
 
-    private maleLossToMechanic(hpVictory: boolean): void {
+    function maleLossToMechanic(hpVictory: boolean): void {
         clearOutput();
 
         // Turned into living Sybian, more or less. Always hard and with a magic cockring that vibrates your dick on contact with pussy.
@@ -601,7 +600,7 @@ export class IncubusMechanicScenes {
         doNext(maleLossToMechanicII);
     }
 
-    private maleLossToMechanicII(): void {
+    function maleLossToMechanicII(): void {
         clearOutput();
         outputText("An agonizingly perfect pussy is suddenly pressing down on your cock, subsuming it in slick, hot depths that cling and squeeze with undulations so skillful you'd be cumming already if it weren't for the magic ring.");
 
@@ -623,13 +622,13 @@ export class IncubusMechanicScenes {
         doNext(maleLossToMechanicIII);
     }
 
-    private maleLossToMechanicIII(): void {
+    function maleLossToMechanicIII(): void {
         clearOutput();
         outputText("The champion finally got to cum once Lethice had her turn, but by that point, pussy was all " + mf(player, "he", "she") + " could think about. Release came more frequently with the demon queen's permission. It didn't really matter, though. The champion was addicted to riding on the edge of climax, broken into nothing more than a demonic vibrator.");
         gameOver();
     }
 
-    private errybodyelseLossToMechanic(hpVictory: boolean): void {
+    function errybodyelseLossToMechanic(hpVictory: boolean): void {
         clearOutput();
 
         // Get turned into girl-lube pot.
@@ -747,5 +746,3 @@ export class IncubusMechanicScenes {
         outputText("\n\nYou'll do anything to keep yourself pleasantly slick for your masters. You don't even protest when the plug is forced back into your mouth and hooked to a nutrient solution.");
         gameOver();
     }
-
-}

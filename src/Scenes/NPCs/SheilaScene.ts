@@ -91,8 +91,9 @@ export class SheilaScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    private sheilaPreg(reducedChance: boolean = false): void {
+    function sheilaPreg(reducedChance: boolean = false): void {
         // CHANCE OF PREGGERS, GAO
         if (pregnancy.isPregnant) return;
         let chance: number = 5;
@@ -105,7 +106,7 @@ export class SheilaScene implements TimeAwareInterface {
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, PregnancyStore.INCUBATION_SHIELA);
     }
 
-    public sheilaCorruption(arg: number = 0): number {
+    export function sheilaCorruption(arg: number = 0): number {
 	/*if(flags[kFLAGS.SHEILA_CORRUPTION] + arg > 100) flags[kFLAGS.SHEILA_CORRUPTION] = 100;
 	else*/ if (flags[kFLAGS.SHEILA_CORRUPTION] + arg < 0) flags[kFLAGS.SHEILA_CORRUPTION] = 0;
         else flags[kFLAGS.SHEILA_CORRUPTION] += arg;
@@ -113,7 +114,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Sheila's cup function!
-    public sheilaCup(): string {
+    export function sheilaCup(): string {
         if (flags[kFLAGS.SHEILA_CORRUPTION] < 10) return "tiny, almost-absent";
         else if (flags[kFLAGS.SHEILA_CORRUPTION] < 20) return "A-cup";
         else if (flags[kFLAGS.SHEILA_CORRUPTION] < 30) return "B-cup";
@@ -169,7 +170,7 @@ export class SheilaScene implements TimeAwareInterface {
         else return "fuckin' magic";
     }
 
-    public sheilaEncounterRouter(): void {
+    export function sheilaEncounterRouter(): void {
         trace("Sheila Encounter:");
         trace("Sheila Corruption: " + Math.round(sheilaCorruption() * 10) / 10 + " Sheila Preg: " + flags[kFLAGS.SHEILA_PREGNANCY_INCUBATION] + " Sheila XP: " + flags[kFLAGS.SHEILA_XP]);
         // UNFUCK FLAGS
@@ -218,7 +219,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
     }
 
-    private sheilaCorruptionUpdate(): void {
+    function sheilaCorruptionUpdate(): void {
         // Always dump 10 points.
         if (player.cor > 90) {
             dynStats("cor", -10);
@@ -275,7 +276,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // XP0: the first encounter (sheila xp =0 and demon sheila = 0):
-    private sheilaFirstEncounter(): void {
+    function sheilaFirstEncounter(): void {
         clearOutput();
         // set sheila corruption = 30
         flags[kFLAGS.SHEILA_CORRUPTION] = 30;
@@ -289,7 +290,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP0 - Stay Hidden]
-    private sheila1stEncStayHidden(): void {
+    function sheila1stEncStayHidden(): void {
         clearOutput();
         outputText("You regulate your breathing and hold yourself still to avoid rustling anything softly, waiting for the creature to finish its business and leave.");
         // no change in sheila xp
@@ -297,7 +298,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP0 - Look Closer]
-    private sheila1ndEncLookCloser(): void {
+    function sheila1ndEncLookCloser(): void {
         clearOutput();
         outputText("Your head pokes up a bit to get a better look at the rest of the creature.  It stands flat on its long feet and cranes its head further as well, taking in more of the gently rolling countryside, but then catches you out of the corner of its eye!  With a yelp it pushes itself up on its hindpaws again and calls, in an unmistakably feminine voice, \"<i>Friend or foe?!</i>\"");
 
@@ -307,7 +308,7 @@ export class SheilaScene implements TimeAwareInterface {
         addButton(0, "Next", sheila1ndEncLookCloserPtII);
     }
 
-    private sheila1ndEncLookCloserPtII(): void {
+    function sheila1ndEncLookCloserPtII(): void {
         clearOutput();
         outputText("You subject yourself to her examination; she seems to take professional interest in the way you hold your [weapon].  ");
         // [(PC weapon = Scarred Blade)]
@@ -343,7 +344,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP0 - Look Closer - Leave]
-    private sheila1ndEncLookCloserPtIILeave(): void {
+    function sheila1ndEncLookCloserPtIILeave(): void {
         clearOutput();
         outputText("\"<i>Good onya.  Maybe I'll see you around.</i>\"  With that, you take your leave of the strange woman.");
         // set sheila xp = 1
@@ -353,7 +354,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [XP0 - Look Closer - Talk]
     // set sheila xp = -1
-    private sheila1ndEncLookCloserPtIITalk(): void {
+    function sheila1ndEncLookCloserPtIITalk(): void {
         clearOutput();
         flags[kFLAGS.SHEILA_XP] = -1;
         outputText("\"<i>Alright, my earbashing mug, have it your own way.  I get mean when I get hungry; don't say I didn't warn ya.</i>\"  With that, Sheila takes a swing at you!  You jerk backwards to avoid the punch but move too slowly, she clips the end of your [face].  What a wind!  If she'd been trying to hit you, that sucker punch would likely have laid you out.  Just as you open your mouth to speak again, she rears back on one leg and kicks you away hard with the other, knocking the air out of you.  You land painfully on your back.");
@@ -367,7 +368,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP0 - Look Closer - Talk - Leave]
-    private sheila1ndEncLookCloserPtIITalkLeave(): void {
+    function sheila1ndEncLookCloserPtIITalkLeave(): void {
         clearOutput();
         outputText("Wordlessly, you get up and back away from the woman... though not without a dirty glance.  She follows you with her eyes until you judge yourself far enough away to turn your back to her.");
         // go to camp
@@ -376,14 +377,14 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [XP0 - Look Closer - Talk - Fight]
     // go to fight
-    private sheila1ndEncLookCloserPtIITalkFight(): void {
+    function sheila1ndEncLookCloserPtIITalkFight(): void {
         clearOutput();
         startCombat(new Sheila());
         playerMenu();
     }
 
     // XP-1: PC's apology (sheila xp = -1 and demon sheila = 0):
-    private sheilaApology(): void {
+    function sheilaApology(): void {
         clearOutput();
         outputText("As you search the plains for god-knows-what, you catch your [leg] on something; a rustling in the brush below you is the only warning you get before a cleverly hidden snare closes on it!");
         outputText("\n\n\"<i>Aha, got you now, you little... oh, it's you.</i>\"");
@@ -404,7 +405,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-1 - Avoid Her]
-    private apologyAvoidSheila(): void {
+    function apologyAvoidSheila(): void {
         clearOutput();
         outputText("You shake your head at the leery girl, and tell her you'd be just as happy as she would if you never saw each other again.");
         outputText("\n\n\"<i>Well... I expect I could arrange that if you'll play along,</i>\" she says, ears twitching in irritation.  \"<i>Take care of yourself, mate.</i>\"  She resets the trap and lays down in her spot in the tall grass again, pointedly turning over on her side to show you her back.");
@@ -414,7 +415,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-1 - Apologize]
-    private apologySheilaApology(): void {
+    function apologySheilaApology(): void {
         clearOutput();
         outputText("You scratch your " + skinFurScales(player) + " absently behind an ear, not sure how to broach the topic of reconciliation when you feel like she was the aggressor, but mumble something about being sorry things started off on the wrong foot.");
 
@@ -430,7 +431,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-1 - Slap'n'sult]
-    private apologySheilaSlapSult(): void {
+    function apologySheilaSlapSult(): void {
         clearOutput();
         outputText("You say nothing as she finishes with the snare and stands back up.");
         outputText("\n\n\"<i>Well?</i>\" she asks, setting her mouth in a hard line and looking straight into your eyes.");
@@ -449,7 +450,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-1 - Nothing]
-    private apologySheilaSayNothing(): void {
+    function apologySheilaSayNothing(): void {
         clearOutput();
         outputText("You decide to keep your own counsel for now, folding your arms defensively and frowning.");
 
@@ -463,7 +464,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // XP-2 Sheila's apology (sheila xp = -2 and demon sheila = 0):
     // Sheila apologizes to PC for taking advantage of him while she was horny
-    private sheilaIsSorrySheRapedYou(): void {
+    function sheilaIsSorrySheRapedYou(): void {
         clearOutput();
         outputText("You stalk through the plains, hunting for a bite to eat or something to give you an advantage in this harsh land.  A rustle follows you as you move into some tall grass; it takes several minutes before you realize with alarm that it's slightly out of phase with your steps.  You whirl around, only to find... Sheila, staring at you sheepishly.  Has she been following you this whole time?  You watch each other for a few minutes, neither of you making any move but her cheeks glowing brighter red with every word that doesn't pass between you.");
 
@@ -481,7 +482,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-2 - Leave Me Alone]
-    private sheilaIsSorryButLeaveMeAlone(): void {
+    function sheilaIsSorryButLeaveMeAlone(): void {
         clearOutput();
         outputText("You shake your head and turn away, dismissing Sheila with a pointed gesture.  \"<i>H-hey!</i>\" the girl calls angrily from behind you.  \"<i>Dammit, I said I was sorry, you bastard!  Screw you!  See if I talk to you again!</i>\"");
         // set sheilapreg = -1
@@ -489,7 +490,7 @@ export class SheilaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [XP-2 - Forgive]
-    private sheilaIsSorryAndYouForgive(): void {
+    function sheilaIsSorryAndYouForgive(): void {
         clearOutput();
         outputText("\"<i>Okay.</i>\"");
 
@@ -506,7 +507,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-2 - Fight]
-    private sheilaPologyFight(): void {
+    function sheilaPologyFight(): void {
         clearOutput();
         outputText("Saying nothing, you raise your [weapon] and take a swing!  Sheila starts a bit and dodges just in time, then with a look of resignation, raises her fists as well.  \"<i>That'll be right, I guess.  For what it's worth, I really am sorry.</i>\"");
         // go to fight, set sheila xp = -3
@@ -516,7 +517,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [XP-2 - Cast Arouse]
     // requires PC has mastered the spell and has enough fatigue/lust to use it
-    private sheilaPologyCastArouse(): void {
+    function sheilaPologyCastArouse(): void {
         clearOutput();
         fatigue(15, 1);
         outputText("You nod at the woman and tell her that you forgive her, even as the gears of revenge turn in the dark corners of your mind.  As she smiles and begins to babble in relief, you focus on her slender body and recite under your breath the first of the formulae that will leave her a gibbering, begging mess.");
@@ -548,7 +549,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-2 - Cast Arouse - Leave]
-    private castArouseAndLeaveSheila(): void {
+    function castArouseAndLeaveSheila(): void {
         clearOutput();
         outputText("You shake your head sadly.  \"<i>I'm sorry, I haven't the time right now.</i>\"");
 
@@ -567,7 +568,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-2 - Cast Arouse - Let Her]
-    private castArouseAndLetHer(): void {
+    function castArouseAndLetHer(): void {
         clearOutput();
         outputText("As soon as you nod, the girl bounds to her feet and jumps you, driving you slightly downward in her ardor.");
         // increase PC corruption +10, output loss scene consonant with player's sex, set sheila xp = 4
@@ -579,7 +580,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // XP-3 or XP-4 She-mad (Sheila XP <= -3 and demon sheila = 0):
-    private sheilaReallyMad(): void {
+    function sheilaReallyMad(): void {
         clearOutput();
         outputText("A rustle in the bush claims your attention, and you turn your head to see Sheila, standing up suddenly.  Her eyes narrow when she recognizes you, and she takes off running!");
 
@@ -599,7 +600,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-3 - Leave]
-    private sheilaReallyMadLeave(): void {
+    function sheilaReallyMadLeave(): void {
         clearOutput();
         outputText("Huffing, you throw the animals down and turn away.  What a display.");
         // go to camp, reincarnate as something slightly better next life
@@ -607,7 +608,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP-3 - Stand]
-    private sheilaReallyMadStandGround(): void {
+    function sheilaReallyMadStandGround(): void {
         clearOutput();
         // [(normal mode)]
         if (!silly()) {
@@ -630,7 +631,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // XP1: Reconciliation encounter (sheila xp = 1 and demon sheila = 0):
     // wherein Sheila actually wipes the sand out of her shorts and talks to the PC
-    private sheilaReconcile(): void {
+    function sheilaReconcile(): void {
         clearOutput();
         outputText("\"<i>Oy, it's you,</i>\" sings out a voice behind you.  \"<i>Back again?</i>\"");
 
@@ -646,7 +647,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP1 - Don't Wanna]
-    private sheilaReconcileDunWanna(): void {
+    function sheilaReconcileDunWanna(): void {
         clearOutput();
         outputText("Raising your hands in a palms-out gesture, you decline.  Sheila colors a bit, misinterpreting your reluctance.  \"<i>Hey, it's not like I'm cracking onto you or anything.  I was just looking for a reason to eat half a rabbit myself, is all.</i>\"");
 
@@ -658,7 +659,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP1 - Kay]
-    private sheilaReconcileKay(): void {
+    function sheilaReconcileKay(): void {
         clearOutput();
         outputText("Some fresh meat does sound pretty tempting.  You nod at the woman and she climbs to her feet.  \"<i>Beaut!  Do me the favor and fossick about for some tinder.</i>\"");
         // --Next--
@@ -666,7 +667,7 @@ export class SheilaScene implements TimeAwareInterface {
         addButton(0, "Next", sheilaReconcileKay2);
     }
 
-    private sheilaReconcileKay2(): void {
+    function sheilaReconcileKay2(): void {
         clearOutput();
         outputText("Soon enough you've got a firepit going in a small clearing.  \"<i>Ahh, classic bush theater,</i>\" Sheila says, admiring it.  The woman dextrously spits two liberated and skinned rabbit quarters on a long stick and twirls them over the lapping flame, and soon the air is full of the sizzle and pop of meat juices dripping on the hot stones and the simple tune your cook hums.  You stare at ");
         if (player.lib < 50) outputText("the beckoning hunks of meat");
@@ -710,7 +711,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // XP2: Familiarizing (Sheila XP = 2; or Sheila XP = 3 AND time =/= 20:00 and demon sheila = 0):
-    private sheilaGettingFamiliar(): void {
+    function sheilaGettingFamiliar(): void {
         clearOutput();
         outputText("\"<i>Hey, it's [name].</i>\"");
 
@@ -733,7 +734,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP2 - No Questions]
-    private sheilaFriendlyNoQuestions(): void {
+    function sheilaFriendlyNoQuestions(): void {
         clearOutput();
         outputText("You decide to hold your tongue and simply mimic her pose as best you can, relaxing on the grass.  The sun is hot but its angle not insistent here, thanks to the shelter from a broad tree nearby.  Its soft rays almost reduce you to sleep over the next forty-five minutes before your companion speaks, rousing you.");
 
@@ -749,7 +750,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP2 - Come Here Often?]
-    private sheilaFriendlyComeHereOften(): void {
+    function sheilaFriendlyComeHereOften(): void {
         clearOutput();
         outputText("You ask her why she enjoys being on the plains so much.");
         outputText("\n\n\"<i>We-ell...</i>\" she begins, at length.  \"<i>Couldn't say I enjoy it specifically.  I just like bein' out from under the thumb of the village captain.  Not that I disagree with his policies, y'know, except the part where he's a bloody iron-handed control freak.  But other areas are basically off-limits to us anymore.</i>\"");
@@ -767,7 +768,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP2 - Her People]
-    private sheilaFriendlyHerPeoples(): void {
+    function sheilaFriendlyHerPeoples(): void {
         clearOutput();
         outputText("You lie down on the grass yourself, balance the parcel on your stomach, and ask about her people.");
         outputText("\n\n\"<i>Single-minded, aren't ya?</i>\" she asks.  Her eyes close as she takes a deep breath with her nose.  \"<i>I've told you the most important things... all the ones you're gonna get, anyway.  If you think I'm gonna say anything at all that you could use to work backward to my village, don't.</i>\"");
@@ -821,7 +822,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP2 - Curfew?]
-    private sheilaFriendlyCurfew(): void {
+    function sheilaFriendlyCurfew(): void {
         clearOutput();
         outputText("\"<i>Curfew?</i>\"");
 
@@ -841,7 +842,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // XP3: Sexy Time (sheila xp = 3 AND time = 20:00 and demon sheila = 0):
-    public sheilaXPThreeSexyTime(): void {
+    export function sheilaXPThreeSexyTime(): void {
         clearOutput();
         outputText("You prowl through the twilit grasslands, lazily looking for anything interesting before the bleak, red moon brings on the night and its restrictions.  Nothing much catches your eye, except for a rounded shape cast in silhouette against the horizon.  Initially taking it for a rock, you're surprised when it shivers at the sound of your approach!  It unbends and raises a head, turning toward you and revealing the flushed face of the bush girl, Sheila.  Her eyes quickly change from terror to relief as they settle on you, and she cries out.  \"<i>[name]!  Oh thank god; please help me!</i>\"");
         outputText("\n\n\"<i>What's wrong?</i>\"");
@@ -870,7 +871,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP3 - Ditch Her]
-    private sheilaXPThreeSexyTimeDitchHer(): void {
+    function sheilaXPThreeSexyTimeDitchHer(): void {
         clearOutput();
         outputText("You shake your head, pulling away from the woman and telling her she'll be fine.  \"<i>No!</i>\" she shrieks.  \"<i>You gotta help me!</i>\"");
 
@@ -884,7 +885,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP3 - Sex]
-    private sheilaXPThreeSexyTimeSex(): void {
+    function sheilaXPThreeSexyTimeSex(): void {
         clearOutput();
         outputText("Sheila's eyes widen with your smile, and she pulls back from you.  \"<i>That's, um...</i>\"");
 
@@ -899,7 +900,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP3 - Sex - any sex scene - Let Her Be]
-    private sheilaXPThreeSexyTimePostSexLetHerBe(): void {
+    function sheilaXPThreeSexyTimePostSexLetHerBe(): void {
         clearOutput();
         outputText("Pulling away from you, Sheila gathers her clothing and departs, looking satisfied.  The glance she gives you over her shoulder is even a little warmer than before.");
         // i had snoo-snoo!
@@ -908,7 +909,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP3 - Sex - any sex scene - Stay With Her]
-    private shielaXPThreeSexyTimePostSexStay(): void {
+    function shielaXPThreeSexyTimePostSexStay(): void {
         clearOutput();
         flags[kFLAGS.SHEILA_XP] = 4;
         outputText("You grab her tail, provoking a curious, but not discouraging, look from the woman who was planning to spend the night alone.  \"<i>What is it, [name]?</i>\"");
@@ -930,7 +931,7 @@ export class SheilaScene implements TimeAwareInterface {
         addButton(0, "Next", shielaXPThreeSexyTimePostSexStayII);
     }
     // fork
-    private shielaXPThreeSexyTimePostSexStayII(): void {
+    function shielaXPThreeSexyTimePostSexStayII(): void {
         clearOutput();
         // (has cockfit 32)
         if (player.cocks.length > 0 && player.cocks.cockThatFits(32) >= 0) {
@@ -1226,7 +1227,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP3 - Guard Duty]
-    private sheilaXPThreeSexyTimeGuardDuty(): void {
+    function sheilaXPThreeSexyTimeGuardDuty(): void {
         clearOutput();
         outputText("You fold your arms and frown at Sheila, but consent to help.  She brightens, then looks confused when you make no further motion.  \"<i>So...</i>\" she begins, \"<i>what should I do?</i>\"");
 
@@ -1281,7 +1282,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // XP4: Fancy meeting you here (sheila xp >= 4 and demon sheila = 0):
-    private fuckBuddySheilaMeeting(): void {
+    function fuckBuddySheilaMeeting(): void {
         clearOutput();
         outputText("\"<i>Hey...</i>\"");
         outputText("\n\nThe soft voice, coming from a shrub, halts your progress.  You peer around it; Sheila is sitting with her hat in her lap, and looking up at you.  She smiles shyly when you make eye contact.  \"<i>Fancy meeting you here,</i>\" she says.");
@@ -1304,7 +1305,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [XP4 - Maybe Later]
     // should be default spacebar choice
-    private fuckBuddySheilaMeetingMaybeLater(): void {
+    function fuckBuddySheilaMeetingMaybeLater(): void {
         clearOutput();
         outputText("You tell her you haven't the time right now, but squeeze her knee as you get up again.");
 
@@ -1314,7 +1315,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Just Hang]
-    private fuckBuddySheilaMeetingJustHangOut(): void {
+    function fuckBuddySheilaMeetingJustHangOut(): void {
         clearOutput();
         outputText("In answer, you reach down to pinch her butt and then ");
         // [(not horse or drider)
@@ -1338,7 +1339,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat]
-    private fuckBuddySheilaMeetingChat(): void {
+    function fuckBuddySheilaMeetingChat(): void {
         clearOutput();
         outputText("\"<i>Feeling talkative?</i>\" Sheila asks.  \"<i>Have at yer.</i>\"");
 
@@ -1354,7 +1355,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Family&Friends]
-    private fuckBuddySheilaMeetingChatFamilyAndFriends(): void {
+    function fuckBuddySheilaMeetingChatFamilyAndFriends(): void {
         clearOutput();
         outputText("\"<i>Them?  They're doing fine.</i>\"  Sheila stares at you obtusely, trying to will you into changing the subject; you stare right back.  She sighs.  \"<i>No go, huh?</i>\"");
 
@@ -1416,7 +1417,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Old Loves]
-    private fuckBuddySheilaMeetingChatOldLoves(): void {
+    function fuckBuddySheilaMeetingChatOldLoves(): void {
         clearOutput();
         outputText("\"<i>[name], I don't want to talk about that,</i>\" Sheila says, \"<i>it leaves a bad taste in my mouth.</i>\"");
 
@@ -1475,7 +1476,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Why Hide?]
-    private fuckBuddySheilaMeetingChatWhyHide(): void {
+    function fuckBuddySheilaMeetingChatWhyHide(): void {
         clearOutput();
         outputText("Her eyes cloud as she looks at you dubiously.  \"<i>Well, it's like I said before.  If a demon catches one of us, we're done for.  You know, I'm sure, that when a demon manages to get a mug to want pleasure more than anything and turn into a demon as well, they get a free souvenir in the form of those little  crystals that grant them powers.  Imagine how many of those arses would love to find a hundred or so of us in one place, just lacking some stimulation to turn us into a birthday party and a pile of free godlike power trinkets.  That'd be all of them, y'see.</i>\"");
 
@@ -1495,7 +1496,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Live With Me]
-    private fuckBuddySheilaMeetingChatLiveWithMe(): void {
+    function fuckBuddySheilaMeetingChatLiveWithMe(): void {
         clearOutput();
         outputText("You ask Sheila to move in with you at your camp, and she turns bright red.");
         outputText("\n\n\"<i>Mate, I hardly know you.  I mean... um, I suppose I don't get to use that excuse when I feel what you're feeling if we... uh.  No.  The answer is no.</i>\"");
@@ -1508,7 +1509,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Kids] - requires joeycount >= 1
-    private fuckBuddySheilaMeetingChatKids(): void {
+    function fuckBuddySheilaMeetingChatKids(): void {
         clearOutput();
         // if joeycount = 1
         if (flags[kFLAGS.SHEILA_JOEYS] == 1) {
@@ -1646,7 +1647,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Chat - Kids - joeycount >= 10 - lib >= 50 - Rest For Now]
-    private fuckBuddySheilaMeetingChatKidsRest4Now(): void {
+    function fuckBuddySheilaMeetingChatKidsRest4Now(): void {
         clearOutput();
         outputText("\"<i>Always,</i>\" you answer, \"<i>but if you need to relax and sleep for a bit, I'm here for that too.</i>\"  You draw your hand back out, patting her on the cheek.");
 
@@ -1662,7 +1663,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [XP4 - Sex]
-    private sheilaXP4Sex(display: boolean = false): void {
+    function sheilaXP4Sex(display: boolean = false): void {
         if (display) {
             clearOutput();
             outputText("You slip an arm around the bushranger and lean in.  \"<i>I was thinking we could have some sex... feel up to it?</i>\"");
@@ -1689,7 +1690,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // Consensual scenes (normal Sheila's vaginal capacity is 32, for reference):
     // [Consensual - Either 69] - Fenoxo beware, omnibus scene!(req. vag or dix; both buttons direct here but decide the focus)
-    private consensualSheila69(cock: boolean = true): void {
+    function consensualSheila69(cock: boolean = true): void {
         clearOutput();
         outputText("As you lean into the woman and buzz her ear, her skin flushes.  \"<i>[name], you're incorrigible.  Don't taunt me so much this time, just get into it.</i>\"  Smiling and humming, you sit up and begin unfastening your armor; Sheila takes the opportunity to do the same, and finishes denuding herself before you do.");
 
@@ -1939,7 +1940,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Consensual - Vaginal Sex] (req. cock <= 32 area):
-    private consentacleVagSexForKangarooSlutBitches(): void {
+    function consentacleVagSexForKangarooSlutBitches(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(48);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -2153,7 +2154,7 @@ export class SheilaScene implements TimeAwareInterface {
     let me know if this is totally heinous or whatever*/
 
     // da scene
-    private sheilaMutualMasturbation(): void {
+    function sheilaMutualMasturbation(): void {
         clearOutput();
         let target: string = "";
         const choices: any[] = new Array();
@@ -2340,7 +2341,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // corruption warning texts (redirected from here when Sheila corruption is about to hit 90)
     // [Any Corruption Warning - Fondle Her]
-    private sheilaCorruptionWarningsChooseFondle(): void {
+    function sheilaCorruptionWarningsChooseFondle(): void {
         clearOutput();
         outputText("Fuck it.  You move your hand right to her entrance.  \"<i>Don't be like that...</i>\" you say softly into her neck.  She shivers under your touch as her resistance begins to subside, and you slide two fingers into her gently.  \"<i>No,</i>\" she says quietly, and then, as you slip in, \"<i>NO!</i>\"  Violently coming to herself, she pushes you away and scrambles to her feet.");
 
@@ -2361,7 +2362,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Any Corruption Warning - Listen to Her]
-    private sheilaCorruptionWarningListenToHer(): void {
+    function sheilaCorruptionWarningListenToHer(): void {
         clearOutput();
         outputText("\"<i>So...</i>\" you answer, your feel frozen in mid-cop, \"<i>what?</i>\"");
 
@@ -2382,7 +2383,7 @@ export class SheilaScene implements TimeAwareInterface {
     // - if PC wins and rapes Sheila, generally set Sheila XP to - 4
 
     // victory rapin' on normal Sheila:
-    public sheilaGotWhomped(): void {
+    export function sheilaGotWhomped(): void {
         clearOutput();
         outputText("Sheila collapses, ");
         // [(HP)
@@ -2414,13 +2415,13 @@ export class SheilaScene implements TimeAwareInterface {
         addButton(9, "Leave", letSheilaGo);
     }
     // if choosing Let Her Go and sheila xp > -3, set sheila xp = -1, then give xp/gems and Next button to camp
-    private letSheilaGo(): void {
+    function letSheilaGo(): void {
         if (flags[kFLAGS.SHEILA_XP] >= -3) flags[kFLAGS.SHEILA_XP] = -1;
         cleanupAfterCombat();
     }
 
     // [Victory Rapin' - Rape Pussy] - uses cockarea <= 48:
-    private rapeSheilasCooter(): void {
+    function rapeSheilasCooter(): void {
         clearOutput();
         // set sheila xp = -4
         flags[kFLAGS.SHEILA_XP] = -4;
@@ -2572,7 +2573,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [Victory Rapin' - Forced Oral] - no corruption transfer, but adds some to PC
     // it's fine if you make two different buttons for the male and female branches, but both should indicate that this is forced
-    private forcedSheilaOral(dick: boolean = true): void {
+    function forcedSheilaOral(dick: boolean = true): void {
         clearOutput();
         // set sheila xp = -4
         flags[kFLAGS.SHEILA_XP] = -4;
@@ -2752,7 +2753,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [Dildo Rape] - requires DX Dildo
     // set sheila xp = -4
-    private sheilaGetsRapedWithADildont(): void {
+    function sheilaGetsRapedWithADildont(): void {
         clearOutput();
         flags[kFLAGS.SHEILA_XP] = -4;
         outputText("Looking down at the woman below you, a cruel idea forms in your head.  You extract the absurd pink goblin dildo from your pack; Sheila's eyes darken as she recognizes the manufacture.  She tries to scoot further away from you, but you grab her leg and turn her over callously, then slide a hand under her and force her ass into the air by lifting her crotch.");
@@ -2824,7 +2825,7 @@ export class SheilaScene implements TimeAwareInterface {
     // - Reminder: non-demon Sheila will kick your ass and leave unless PC has raised her lust to 75+ before losing; only in those cases will she be overcome and actually take advantage of you
     // - Sheila can't into rough, brutal sex and focuses on getting off quickly and leaving, so losses only cost 8 hours if she wins by HP; however, if she chooses not to sex the PC, he's stuck with whatever lust gained
     // -Sheila doesn't care about gems after a win as much as getting the fuck away from you (or getting off and then getting the fuck away from you in shame)
-    public getBeatUpBySheila(): void {
+    export function getBeatUpBySheila(): void {
         clearOutput();
         outputText("You slump down before Sheila, breathing heavily; the woman ");
         if (monster.lust < 75) {
@@ -2852,7 +2853,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
     }
 
-    private sheilaLossRapeRouter(): void {
+    function sheilaLossRapeRouter(): void {
         // loss - forced oral (for M,F,H,U)
         // RNG biased against giving this scene to men/herms, but it should still be possible
         // boilerplate face-in-cunt shit
@@ -2868,7 +2869,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // loss scene - cowgirl (for M,H)
     // if sheila xp >= -3, set sheila xp = -2
-    private sheilaCowgirlRapesYou(): void {
+    function sheilaCowgirlRapesYou(): void {
         clearOutput();
         outputText("Sheila pushes insistently, and you allow her to force you to the ground and then onto your back");
         if (player.isTaur()) outputText("; your hooves stick awkwardly out to one side");
@@ -3072,7 +3073,7 @@ export class SheilaScene implements TimeAwareInterface {
     // RNG biased against giving this scene to men/herms, but it should still be possible
     // boilerplate face-in-cunt shit
     // if sheila xp >= -3, set sheila xp = -2
-    private sheilaForcedOralGeneric(): void {
+    function sheilaForcedOralGeneric(): void {
         clearOutput();
         outputText("Sheila kisses you once more, forcing her tongue into your mouth, and slides a hand into your [armor]; you stare wonderingly into her affectionate, hungry eyes at the sudden change.  It isn't until ");
         if (player.cocks.length > 0) outputText("her hand slips around your [cock]");
@@ -3160,7 +3161,7 @@ export class SheilaScene implements TimeAwareInterface {
     // Normal preg notif #1 (sheilapreg = 4 and demon sheila = 0 and sheila xp >= -2 and joeycount = 0):
     // output at next sheila encounter if conditions are met, suppressing any normal output (this also includes the sheila xp = -2 or -1 apology outputs)
     // set sheilapreg = 0
-    private normalSheilaPregNotifNumberOne(): void {
+    function normalSheilaPregNotifNumberOne(): void {
         pregnancy.knockUpForce(); // Clear Pregnancy
         clearOutput();
         outputText("Traipsing through the grass, you can see Sheila sitting under the shade of a low tree from a long way off.  The reverse is also true, as she waves to you from her seat, beckoning you over.  You make your way to her curiously.");
@@ -3183,7 +3184,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Notif #1 - Yep, Issue]
-    private normalSheilaPregNotifNumberOneYepIssue(): void {
+    function normalSheilaPregNotifNumberOneYepIssue(): void {
         clearOutput();
         outputText("\"<i>I see,</i>\" Sheila says, nonplussed.  \"<i>I'm sorry you feel that way...  Truth be told, I'm not keen myself on the idea of having a kid, but what's out is out.</i>\"");
 
@@ -3195,7 +3196,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Notif #1 - Nah]
-    private normalSheilaPregNotifNumberOneCoolDeal(): void {
+    function normalSheilaPregNotifNumberOneCoolDeal(): void {
         clearOutput();
         outputText("Sheila exhales explosively when you gently shake your head, then wraps her arms around you and buries her face in your shoulder.  \"<i>Oh, thank god,</i>\" she says, muffled.  \"<i>Truth be told, I'm not keen yet on the idea of having a joey.  Motherhood feels like something that happens to MY mum.</i>\"  She snuggles closer.  \"<i>But I like holding it.</i>\"");
 
@@ -3222,7 +3223,7 @@ export class SheilaScene implements TimeAwareInterface {
     // Normal Preg, Subsequent kids (sheilapreg = 4 and demon sheila = 0 and sheila xp >= -2 and joeycount > 0
     // set sheilapreg = 0 and increment joeycount +1 now
     // if sheila corruption > 80, set sheila corruption = 80
-    private normalSheilaPregNotifREPEATEDED(): void {
+    function normalSheilaPregNotifREPEATEDED(): void {
         clearOutput();
         outputText("Sheila is here as you step into the plains, with a grass-wrapped parcel of food open on her lap and her hat sitting upturned next to her, and waves you over.");
 
@@ -3247,7 +3248,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Let Her Go]
-    private normalSheilaPregNotifREPEATEDEDLetHerGo(): void {
+    function normalSheilaPregNotifREPEATEDEDLetHerGo(): void {
         clearOutput();
         outputText("Nothing you can do about that - even if you wanted to watch your baby for her, she's keeping it hidden in a hole in the ground.  You hand her the parcel back");
         if (player.cor < 40) outputText(", imploring her to eat the rest and keep up her strength");
@@ -3264,7 +3265,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Walk With Her]
-    private normalSheilaPregNotifREPEATEDEDWalkWithHer(): void {
+    function normalSheilaPregNotifREPEATEDEDWalkWithHer(): void {
         clearOutput();
         outputText("You pick up her forgotten hat and rise as well, carefully refolding the grass around Sheila's uneaten lunch and tucking it back into her pack for her.  She takes her hat back from you distantly.");
 
@@ -3286,7 +3287,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Help]
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOut(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOut(): void {
         clearOutput();
         outputText("You pick up her forgotten hat and set it on her head, then fold her lunch back into its grass wrapper and tuck it into her pack.");
 
@@ -3408,7 +3409,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - Welp]
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOutANDWELP(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDWELP(): void {
         clearOutput();
         outputText("\"<i>Welp,</i>\" you say softly.");
         // [(corr <50)
@@ -3425,7 +3426,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - Stay With Her]
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE(): void {
         clearOutput();
         outputText("With a wan smile, you pull the woman to her feet.  She doesn't resist, but continues looking into your face disconsolately.  \"<i>I'm so stonkered I can't even think what to do first...</i>\"");
 
@@ -3538,7 +3539,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // advance time to 5:00
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE2(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDERE2(): void {
         clearOutput();
         game.time.hours = 5;
         statScreenRefresh();
@@ -3567,7 +3568,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - Stay Up With Her - Lust >= 30 - Leave Her Be]
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDEREBUTLEAVEHERBE(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOutANDSTAYDEREBUTLEAVEHERBE(): void {
         clearOutput();
         outputText("You relent, allowing the woman to free herself with a peck on your cheek.  She loads up her catch, and then turns to you.  \"<i>Thanks, [name].  Owe you one.</i>\"");
         // This is your Protoshield! I can't take this!
@@ -3575,7 +3576,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Normal Preg Subsequent - Help - 21:00 hours - To Camp]
-    private normalSheilaPregNotifREPEATEDEDHelpABitchOutTOCAMP(): void {
+    function normalSheilaPregNotifREPEATEDEDHelpABitchOutTOCAMP(): void {
         clearOutput();
         outputText("Wordlessly, you lift the bundle of game animals off of Sheila's shoulders and sling it over your own.  She looks up at you, confused enough to forget about her tears.  \"<i>What're you doing?</i>\"");
 
@@ -3634,7 +3635,7 @@ export class SheilaScene implements TimeAwareInterface {
     // -mad with desire, Sheila jumps the PC for another round of sex
     // -squirts lethicite goo all over his face/cock when she finally orgasms
     // no new PG
-    private sheilaGoesDemon(): void {
+    function sheilaGoesDemon(): void {
         clearOutput();
         outputText("Sheila pulls away from you, showing her back; she remains quiet for a few minutes, shivering occasionally.  By the position of her arm, she's already touching herself again!  Her elbow dances and her head rolls as she works her cunt, but she gives up.  \"<i>Nnnn...</i>\" the woman finally whispers, \"<i>... it's not enough.  I have to have another go.</i>\"  She looks around and settles on you with half-focused, wild eyes, and she stands up and advances on you with obvious intent.");
 
@@ -3679,7 +3680,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Demon Sheila encounter (demon sheila = 1 and sheilapreg < 4)
-    private demonSheilaEncounter(): void {
+    function demonSheilaEncounter(): void {
         clearOutput();
         outputText("A shadow drops out of a low tree behind you with a rustle.  \"<i>Hey, lover; been a while... how about spending some time with me?</i>\"");
 
@@ -3695,7 +3696,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Sheila - Resist]
-    private demonSheilaResist(): void {
+    function demonSheilaResist(): void {
         clearOutput();
         outputText("You back away from the demon and raise your [weapon] with a dour glower.  Sheila purses her lips at you, then says, \"<i>Not in the mood, eh mate?  I'm so horny though... I bet I could get you into it.  Let me show you how much I love you...</i>\"  Her ears twitch furiously, belying her intentions as she");
         // [(sheila corruption < 30)
@@ -3709,7 +3710,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Sheila - Talk]
-    private demonSheilaTalk(): void {
+    function demonSheilaTalk(): void {
         clearOutput();
         outputText("Questions nag at you, and you ask Sheila if she wouldn't mind answering a few of them.  She struts over and ");
         // [(not horse)
@@ -3734,7 +3735,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [ Demon Sheila - Talk - Fuck Off]
-    private tellSheilaDemonToFuckOff(): void {
+    function tellSheilaDemonToFuckOff(): void {
         clearOutput();
         outputText("\"<i>Oh,</i>\" she says.  \"<i>Don't be like that.  You're my best mate, you know.  My beloved.  I'll never let you go, ever.</i>\"  Her eyes gloss over a bit, ");
         // [(RNG decides if dis bitch crazy, bias toward sane)
@@ -3752,7 +3753,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Sheila - Talk - The Change]
-    private askDemonSheilaAboutDahChange(): void {
+    function askDemonSheilaAboutDahChange(): void {
         clearOutput();
         // [(if sheilacite >= 1)]
         if (flags[kFLAGS.SHEILA_CITE] >= 1) {
@@ -3780,7 +3781,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [ Demon Sheila - Talk - Her Colony]
-    private askDemonSheilaAboutHerColony(): void {
+    function askDemonSheilaAboutHerColony(): void {
         clearOutput();
         outputText("\"<i>That place?  Do you wanna go there?</i>\"  Sheila smiles duplicitously, then lifts your chin and steals a kiss before you can pull away.  \"<i>Got no qualms about showing you the way to that nest of prudes, but...</i>\"  Her eyes darken.  \"<i>There's nothing left now.  A shame you didn't insist earlier, they could have stood to learn what a ripper " + mf(player, "man", "woman") + " is.</i>\"");
 
@@ -3819,7 +3820,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [ Demon Sheila - Talk - What Now?]
-    private talkToDemonSheilaAboutWhatNow(): void {
+    function talkToDemonSheilaAboutWhatNow(): void {
         clearOutput();
         // fucking daddy issues
         outputText("\"<i>What will I do now?  What else, my silly love?</i>\"  Sheila looks out over the plains.  \"<i>I'm always hot for you.  We could have a bit of a naughty, and make each other feel good.</i>\"");
@@ -3867,7 +3868,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Sheila - Talk - <any option> - Another Question]
-    private demonSheilaTalkAnotherQuestion(): void {
+    function demonSheilaTalkAnotherQuestion(): void {
         clearOutput();
         // (if lust <=99)
         if (player.lust <= 99) {
@@ -3895,7 +3896,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Sheila - Let Her Fuck]
-    private sheilaLetHerFuckYou(): void {
+    function sheilaLetHerFuckYou(): void {
         clearOutput();
         outputText("The naked flesh pressed against you fills your mind with indulgent daydreams, and Sheila reads them right from your distracted face as if you were a book.  \"<i>That'll be a yes, then?</i>\" she asks, playing the slitted tip of her spade along your fingers.  \"<i>Or are you going to make me use this on myself again?  I get quite lonely, you know.</i>\"");
 
@@ -3910,7 +3911,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // Post-demon pregnancy notif (demon sheila = 1 and sheilapreg = 4)
     // increment imp children counter?
-    private demonImpChildren(): void {
+    function demonImpChildren(): void {
         clearOutput();
         outputText("\"<i>[name]!</i>\"  A swishing in the grass behind you is the only prelude you get to a nude Sheila pressing herself against you in a hug, ");
         // (sheila corruption < 40)
@@ -3945,7 +3946,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Preg Demon Sheila - Leave]
-    private leavePregDemonSheila(): void {
+    function leavePregDemonSheila(): void {
         clearOutput();
         outputText("You shake your head at her, backing away.  She sulks a bit, then speaks.  \"<i>I guess I'll let you off, since you sexed me up so well before.  Next time, though, you're gonna give me some... satisfaction.</i>\"  She runs a finger teasingly down her chest, giving you half a smile.");
         // (if cock)
@@ -3957,7 +3958,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Preg Demon Sheila - Other Sex]
-    private pregDemonSheilaOtherSex(): void {
+    function pregDemonSheilaOtherSex(): void {
         clearOutput();
         outputText("Her eyebrows knit as you propose an alternative.  ");
         // [(if cock)
@@ -3980,7 +3981,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Preg Demon Sheila - Knock Up]
-    private pregDemonSheilaKnockUp(): void {
+    function pregDemonSheilaKnockUp(): void {
         clearOutput();
         outputText("As she smears the entrance to her snatch with the slippery slime drooling out of her slitted spade, your [cock] hardens painfully.  The eye-fucking she's giving you while teasing her breasts doesn't help matters, and soon you're so erect that you have to expose your shaft just to relieve the pressure.  With the bulk of your dick bobbing free of your [armor], Sheila waggles her eyebrows at you.  \"<i>So... yes?</i>\"");
         // output demon Sheila cock victory sex scene consonant with player's length and suppress gems/xp/item gain
@@ -3994,7 +3995,7 @@ export class SheilaScene implements TimeAwareInterface {
     // loss intro (only if coming from a fight, not from a scene that auto-outputs a loss to finish itself)
     // [You lower your [weapon], unable to continue the fight.  ]
     // thread into chosen scene with no new pg
-    public loseToSheila(consensual: boolean = false): void {
+    export function loseToSheila(consensual: boolean = false): void {
         clearOutput();
         // Loss - if PC manages to lose by HP somehow (overrides all other losses)
         if (player.HP < 1 && !consensual) {
@@ -4027,7 +4028,7 @@ export class SheilaScene implements TimeAwareInterface {
         }
     }
 
-    private loseToDemonSheila(): void {
+    function loseToDemonSheila(): void {
         clearOutput();
         outputText("Eight hours later, you come to, bruised and sore... and find yourself lying on the ground with your head in Sheila's lap; she's petting your [hair] absently.  \"<i>Awake, are you?</i>\" she grins, looking down at you.  \"<i>Where did you get all those wounds, anyway?  Ya know... you can ask for my help if the wildlife's giving you trouble - we'll just go back to my place and spend all our time in the nuddy.  Our imps can bring us food and drinks.  New playmates, too.  Want to come home with me?</i>\"");
 
@@ -4046,7 +4047,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Loss - normal cocks get rode (for cockarea <= 56)
-    private loseToNormalSheilaAndGetRidden(): void {
+    function loseToNormalSheilaAndGetRidden(): void {
         clearOutput();
         const x: number = player.cocks.cockThatFits(56);
         outputText("Sheila pushes you onto the ground");
@@ -4173,7 +4174,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Loss - tail-spade sounding for fuckhueg cock (for cockarea > 56)
-    private tailSpadeSoundingForFuckHugeDongsWithDemonSheila(): void {
+    function tailSpadeSoundingForFuckHugeDongsWithDemonSheila(): void {
         clearOutput();
         outputText("The demon opens your [armor] and undresses you, inspecting your crotch.  \"<i>Going a bit overboard, aren't you, [name]?</i>\" she taunts, rubbing your [cock biggest] with her knee.  \"<i>I'm not quite magical enough to take this monster - maybe after a few months of fucking everything I met, I'd be that loose.</i>\"  Sheila giggles at you.");
 
@@ -4216,7 +4217,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Loss - clit-swelling and clit-sounding or clit-anal
-    private clitSwellingDemonSheilaClitSoundingAnal(): void {
+    function clitSwellingDemonSheilaClitSoundingAnal(): void {
         clearOutput();
         // (no horse)
         if (!player.isTaur()) outputText("Sheila places her hand in the small of your back and leans in, drawing closer to your face even as she pulls your waist inward.");
@@ -4367,7 +4368,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Loss - unsexed joke scene
-    private aintGotNoGenderAndKangarooRaped(): void {
+    function aintGotNoGenderAndKangarooRaped(): void {
         clearOutput();
         outputText("Sheila sashays over to you and brazenly sticks her hand in your featureless crotch.  \"<i>It's too bad you've mutilated yourself like this, love... or did you do it just to tease me?  You know, it doesn't bug me that much.</i>\"");
 
@@ -4389,7 +4390,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Win against demon Sheila
-    public beatUpDemonSheila(output: boolean = true): void {
+    export function beatUpDemonSheila(output: boolean = true): void {
         if (output) {
             clearOutput();
             outputText("\"<i>Ahh, you win, mate.  I give up.</i>\"  Sheila slumps to the ground, ");
@@ -4424,7 +4425,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // Win - [Missionary] - for the purpose of procreation
     // requires a cockarea <= 56
-    private missionaryForThePurposesOfCreatingImpsWithSheila(): void {
+    function missionaryForThePurposesOfCreatingImpsWithSheila(): void {
         clearOutput();
         outputText("You unfasten your [armor] and strip down completely, as Sheila's eyes drink up your bare flesh.  Denuded, you caress your cock with several strokes, producing a drop of precum.");
 
@@ -4554,7 +4555,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // Win - [Anal Hate-fuck] - peg-knocking with optional corr >=80 break-up (for your cock or C. Jojo's)
     // if PC has both a dick and corrupted Jojo, output this scene and choice; else skip this output and go right to appropriate option
-    private analHateFuck(): void {
+    function analHateFuck(): void {
         clearOutput();
         outputText("Fucking bitch, playing with herself like nothing's the matter and you didn't just show her concrete proof of your superiority.  Part of you feels like punishing the insolent woman yourself, pounding her insides and dumping your load without a whit of regard for her own pleasure... but another part is thinking it might be fun to see her completely debased, to hammer home how pathetic she is - something like reducing her to a cock-sleeve for your personal cum-slave.");
 
@@ -4566,7 +4567,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // [Demon Victory Sex - Anal Hate-fuck - Tear Her Up]
     // with own cock version - for surprise buttsex
-    private sheilaAnalHateFuckAGoGo(): void {
+    function sheilaAnalHateFuckAGoGo(): void {
         clearOutput();
         outputText("Your [cockFit 56] gets hard in your [armor] as you watch her diddle her pussy, but you set your jaw to resist giving her what she wants - a better idea is taking shape in your head.  \"<i>Turn around,</i>\" you demand.");
 
@@ -4617,7 +4618,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Tear Her Up - No]
-    private sheilaAnalHateFuckAGoGoNO(): void {
+    function sheilaAnalHateFuckAGoGoNO(): void {
         clearOutput();
         outputText("\"<i>Go to hell.</i>\"  You bury yourself in the demon's ass as your dick begins to spasm.  Her tails writhe as the first trickle sinks into her.  \"<i>What?  Say something, I dare you.</i>\"");
 
@@ -4641,7 +4642,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Tear Her Up - Worms Suit You]
-    private sheilaAnalHateFuckAGoGoGETYOUSOMEWORMS(): void {
+    function sheilaAnalHateFuckAGoGoGETYOUSOMEWORMS(): void {
         clearOutput();
         outputText("\"<i>Mmm...</i>\" you answer, noncommittally.  Your ");
         if (player.balls > 0) outputText("[balls]");
@@ -4676,7 +4677,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Call Jojo] - corrupted mouse version:
-    private analHateFucksWithJojo(): void {
+    function analHateFucksWithJojo(): void {
         clearOutput();
         outputText("Watching her sit there and play with herself like nothing's the matter and you didn't just demonstrate her weakness for all the world to see touches a nerve deep inside you.  You scowl and focus your thoughts to call your mousey ex-monk, bent on showing this demon how a proper mendicant should behave.");
 
@@ -4718,7 +4719,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Call Jojo - No]
-    private analHateFucksWithJojoNo(clear: boolean): void {
+    function analHateFucksWithJojoNo(clear: boolean): void {
         if (clear) clearOutput();
         else outputText("\n\n");
         outputText("\"<i>No.</i>\"");
@@ -4738,7 +4739,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // [Demon Victory Sex - Anal Hate-fuck - Call Jojo - Ruin Them]
-    private jojoRuinsTheAnalHateFuck(clear: boolean = true): void {
+    function jojoRuinsTheAnalHateFuck(clear: boolean = true): void {
         if (clear) clearOutput();
         else outputText("\n\n");
         outputText("Your mouth spreads in a sickly smile as you contemplate granting her request anyway.  \"<i>Jojo...</i>\"");
@@ -4789,7 +4790,7 @@ export class SheilaScene implements TimeAwareInterface {
 
     // Win - [Big Dick+Thighs] (usable for dicks with cockarea > 56) (all 10 of them)
     // penis envy, go!
-    private bigDickAndThighs(): void {
+    function bigDickAndThighs(): void {
         clearOutput();
         outputText("As Sheila diddles herself, you ");
         // [(not horse)
@@ -4930,7 +4931,7 @@ export class SheilaScene implements TimeAwareInterface {
     }
 
     // Win - [Penetration, in Spades] - for self-loathing vaginas
-    private winAgainstDemoNSheilaForVaginas(): void {
+    function winAgainstDemoNSheilaForVaginas(): void {
         clearOutput();
         outputText("You drop onto the woman's lap without hesitation, ");
         if (!player.isTaur()) outputText("mauling her tits roughly with your hands, ");
@@ -5154,4 +5155,3 @@ export class SheilaScene implements TimeAwareInterface {
     (TBD)
 
     */
-}

@@ -2,9 +2,8 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Mountain {
     // Explore Mountain
-    public exploreMountain(): void {
+    export function exploreMountain(): void {
         player.exploredMountain++;
         let chooser: number = rand(4);
         // Helia monogamy fucks
@@ -260,7 +259,7 @@ export class Mountain {
             Salon.hairDresser();
         }
     }
-    private joinBeingAMinoCumSlut(): void {
+    function joinBeingAMinoCumSlut(): void {
         clearOutput();
         outputText("The prospect of getting a huge dose of that fresh minotaur cum is just too much to bear.  Before you realize what's happening, you're moving out of your rocky hiding spot and making your way down to the two bovine creatures, stripping your [armor] as you go.  By the time you reach the two figures, you're as naked as they are.  You shiver softly, whether due to some chill in the air or desperate anticipation, you can't say.");
         outputText("\n\nThe cow-girl is bent over, her hands on a low ledge with the minotaurs hands on either side of her ample ass.  She moans, more like a moo than a human groan, as the minotaur plunges into her quaking depths.  As you step forward, suddenly unsure of yourself, both the bull and the cow turn their sharp gazes on to you.  You feel very small");
@@ -387,7 +386,7 @@ export class Mountain {
         Inventory.takeItem(ConsumableLib.MINOCUM, Camp.returnToCampUseOneHour);
     }
 
-    private watchAMinoCumSlut(): void {
+    function watchAMinoCumSlut(): void {
         clearOutput();
         outputText("Deciding not to risk it, you settle back into your nook in the rocks and watch on eagerly.  The cow-girl turns and places her hands on a low ledge, causing her to bend over, her ample ass facing the minotaur.  The minotaur closes the distance between them in a single step.");
         outputText("\n\nShe bellows, almost moaning, as the minotaur grabs her cushiony ass-cheeks with both massive hands.  Her tail raises to expose a glistening wet snatch, its lips already parted with desire.  She moos again as his rapidly hardening bull-cock brushes her crotch. You can't tear your eyes away as he positions himself, his flaring, mushroom-like cock-head eliciting another moan as it pushes against her nether lips.");
@@ -399,7 +398,7 @@ export class Mountain {
         addButton(0, "Next", watchMinoCumSlutII);
     }
 
-    private watchMinoCumSlutII(): void {
+    function watchMinoCumSlutII(): void {
         clearOutput();
         outputText("They go at it for nearly an hour, oblivious to you watching them, before their intensity heightens as they near orgasm.  The results are almost explosive, both of them crying out as they begin twitching uncontrollably.  Clinging desperately to the cow-girl's ass, the minotaur pumps so much cum into her depths that it begins spurting out.  This accidental lubrication releases his grip and the pair collapse to the ground.  Yet the minotaur isn't finished, his man-milk spraying into the air almost like his still-erect dick is a hose and splattering down onto both of them.");
         outputText("\n\nAs you look at the two cum-covered creatures laying there in their exhausted sex-induced stupors, the minotaur's thick horse-cock now slowly deflating, you realize that you've been touching yourself.  You make yourself stop in disgust.");
@@ -408,7 +407,7 @@ export class Mountain {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private continueMinoVoyeurism(): void {
+    function continueMinoVoyeurism(): void {
         outputText("They go at it for nearly an hour, oblivious to you watching them, before their intensity heightens as they near orgasm. The results are almost explosive, both of them crying out as they begin twitching uncontrollably. Clinging desperately to the cow-girl's ass, the minotaur pumps so much cum into her depths that it begins spurting out. This accidental lubrication releases his grip and the pair collapse to the ground. Yet the minotaur isn't finished, his man-milk spraying into the air almost like his still-erect dick is a hose and splattering down onto both of them.\n\n", true);
         outputText("As you look at the two cum-covered creatures laying their in their exhausted sex-induced stupors, the minotaur's thick horse-cock now slowly deflating, you realize that you've been touching yourself.  You make yourself stop ", false);
         // [low corruption]
@@ -426,4 +425,3 @@ export class Mountain {
         dynStats("lus", 5 + player.lib / 20 + minoScore(player) + cowScore(player));
         doNext(Camp.returnToCampUseOneHour);
     }
-}

@@ -1,7 +1,5 @@
 
-export class FapArena {
-
-    public fapAppearance(display: boolean = true): void {
+    export function fapAppearance(display: boolean = true): void {
         if (display) {
             // [Paragraph: Bazaar description, 1st time]
             if (flags[kFLAGS.FAP_ARENA_RULES_EXPLAINED] == 0) outputText("\n\nThere is a gigantic tent standing in the clearing, with a large crowd gathering around it.   Perhaps you could investigate and see what is going on inside.", false);
@@ -11,7 +9,7 @@ export class FapArena {
         }
     }
     // Option labeled "Arena» is available.
-    public fapArenaGOOOO(): void {
+    export function fapArenaGOOOO(): void {
         outputText("", true);
         // (set X = longest cock)
         const x: number = player.cocks.longestCock();
@@ -80,7 +78,7 @@ export class FapArena {
         // end of condition about PC's first time, display the following
     }
 
-    private fapArenaPageII(): void {
+    function fapArenaPageII(): void {
         // Increment 'times fap-arena'ed
         flags[kFLAGS.FAP_ARENA_SESSIONS]++;
         outputText("", true);
@@ -137,7 +135,7 @@ export class FapArena {
         else doNext(createCallBackFunction(fapResults, 1));
     }
 
-    private fapResults(place: number = 3): void {
+    function fapResults(place: number = 3): void {
         outputText("", true);
         const x: number = player.cocks.longestCock();
         const num: number = rand(50) + 5;
@@ -418,7 +416,7 @@ export class FapArena {
     }
 
     // [SPECIAL: if player has an extra tentacle dick more than 40 inches long OR if the player has lost and has a unique tentacle dick, add this paragraph before the PC cums]
-    private tentacleFapSpecial(place: number): void {
+    function tentacleFapSpecial(place: number): void {
         temp = player.cocks.length;
         const x: number = player.cocks.longestCock();
         while (temp > 0) {
@@ -446,7 +444,7 @@ export class FapArena {
         }
     }
     // [in both cases, special paragraph for cumming with tentacle dick]
-    private tentacleFapCum(): boolean {
+    function tentacleFapCum(): boolean {
         temp = player.cocks.length;
         const x: number = player.cocks.longestCock();
         while (temp > 0) {
@@ -460,4 +458,3 @@ export class FapArena {
         }
         return false;
     }
-}

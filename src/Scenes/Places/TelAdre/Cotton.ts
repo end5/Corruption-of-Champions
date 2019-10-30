@@ -1,6 +1,5 @@
 
 export class Cotton implements TimeAwareInterface {
-
     // 176 TIMES HAD YOGA
     // 177 MET/FUCKED - 0 = never met.  1 = met but not fucked. 2 = fucked
     // 24"x3" wang
@@ -41,8 +40,9 @@ export class Cotton implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    private pregCottonChance(bonusMult: number = 1): void {
+    function pregCottonChance(bonusMult: number = 1): void {
         // No preg if already preg!
         if (pregnancy.isPregnant) return;
 
@@ -67,7 +67,7 @@ export class Cotton implements TimeAwareInterface {
             }
         }
     }
-    private cottonPregPCChance(): void {
+    function cottonPregPCChance(): void {
         // No kids yet - lucky!
         if (flags[kFLAGS.COTTON_KID_COUNT] == 0 && flags[kFLAGS.COTTON_HERBS_OFF] == 0) {
             player.knockUp(PregnancyStore.PREGNANCY_COTTON, PregnancyStore.INCUBATION_COTTON, 600);
@@ -83,7 +83,7 @@ export class Cotton implements TimeAwareInterface {
 
     // Been told of naga book quest?
 
-    public cottonsIntro(): boolean {
+    export function cottonsIntro(): boolean {
         if (game.time.hours >= 12 && game.time.hours <= 18) {
             // Gym intro scene (haven't met):
             if (flags[kFLAGS.COTTON_MET_FUCKED] == 0) outputText("\n\nYou see a tall, busty horse-girl doing some stretches over on a nearby mat.  Even from this far away, you can tell from the bulge in her pants that she's no ordinary 'girl'.", false);
@@ -98,7 +98,7 @@ export class Cotton implements TimeAwareInterface {
         return false;
     }
 
-    public cottonGreeting(): void {
+    export function cottonGreeting(): void {
         spriteSelect(12);
         outputText("", true);
         outputText(images.showImage("cotton-greeting"));
@@ -145,7 +145,7 @@ export class Cotton implements TimeAwareInterface {
         }
     }
 
-    private cottonGreetingCommonEnd(): void {
+    function cottonGreetingCommonEnd(): void {
         if (player.pregnancyIncubation <= 225 && player.pregnancyType == PregnancyStore.PREGNANCY_COTTON) {
             // Lamaze Class*
             // Approach Cotton, PC visibly pregnant (at least 2nd trimester, or whatever is equivalent in CoC-land)
@@ -174,7 +174,7 @@ export class Cotton implements TimeAwareInterface {
         cottonMenu();
     }
 
-    private cottonMenu(): void {
+    function cottonMenu(): void {
         menu();
         addButton(0, "Yoga", acceptYoga);
         if (flags[kFLAGS.COTTON_KID_COUNT] > 0) addButton(1, "Visit Kids", visitCottonKids);
@@ -182,7 +182,7 @@ export class Cotton implements TimeAwareInterface {
         addButton(4, "Leave", turnDownYogaWifCottonFirstTime);
     }
 
-    private centaurNagaBodyBookStuff(): void {
+    function centaurNagaBodyBookStuff(): void {
         spriteSelect(12);
         // Havent been told about the book yet?
         if (flags[kFLAGS.COTTON_UNUSUAL_YOGA_BOOK_TRACKER] == 0) {
@@ -214,7 +214,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (If No)
-    private turnDownYogaWifCottonFirstTime(): void {
+    function turnDownYogaWifCottonFirstTime(): void {
         spriteSelect(12);
         outputText("", true);
         outputText("\"<i>That's all right, to each their own.  I'll be here if you ever change your mind.</i>\"  With that, Cotton returns to her mat and continues stretching in various poses.\n\n", false);
@@ -222,7 +222,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (If Yes. Improves muscle tone up to 50, speed and feminine features.)
-    private acceptYoga(): void {
+    function acceptYoga(): void {
         spriteSelect(12);
         outputText("", true);
         outputText(images.showImage("cotton-yoga"));
@@ -324,7 +324,7 @@ export class Cotton implements TimeAwareInterface {
         dynStats("spe", 1, "lus", (5 + player.lib / 20 + player.sens / 20));
     }
 
-    private cottonChat(): void {
+    function cottonChat(): void {
         spriteSelect(12);
         const chats: any[] = [];
         // Urta chance
@@ -386,7 +386,7 @@ export class Cotton implements TimeAwareInterface {
         }
     }
     // (If Leave)
-    private leaveAfterYoga(): void {
+    function leaveAfterYoga(): void {
         spriteSelect(12);
         outputText("", true);
         outputText("\"<i>Suit yourself. You can run around all stinky, meanwhile I'm going to go wash. Feel free to drop by later for some more yoga if you'd like.</i>\"  With that, Cotton heads off to the showers and you leave the gym.\n\n", false);
@@ -394,7 +394,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (If Shower)
-    private cottonShowerFunTimes(): void {
+    function cottonShowerFunTimes(): void {
         spriteSelect(12);
         let option1: () => void = null;
         let option2: () => void = null;
@@ -413,7 +413,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (Fuck Her)
-    private cottonFirstTimeFuckHer(): void {
+    function cottonFirstTimeFuckHer(): void {
         spriteSelect(12);
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
         outputText("", true);
@@ -439,7 +439,7 @@ export class Cotton implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Get fucked, as Male)
-    private cottonFucksYou(): void {
+    function cottonFucksYou(): void {
         spriteSelect(12);
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
         outputText("", true);
@@ -517,7 +517,7 @@ export class Cotton implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Service her, any gender)
-    private serviceFirstTimeCotton(): void {
+    function serviceFirstTimeCotton(): void {
         spriteSelect(12);
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
         player.slimeFeed();
@@ -540,7 +540,7 @@ export class Cotton implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (If Refuse)
-    private refuseFirstTimeCotton(): void {
+    function refuseFirstTimeCotton(): void {
         spriteSelect(12);
         outputText("", true);
         outputText("She looks at you a little sad, \"<i>You certain pet? Well, all right. But you don't know what you're missing.</i>\" The two of you continue your shower with no funny business, then redress and leave the gym. Cotton stops you before you go too far and says, \"<i>Hey, if you want to stop by the gym later for some more yoga, I'd be happy to help.</i>\" Then she heads off down the street, and you head back to camp.", false);
@@ -548,7 +548,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (Shower Sex, Fuck Her)
-    private fuckCottonInShowerRepeat(): void {
+    function fuckCottonInShowerRepeat(): void {
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
         spriteSelect(12);
         outputText("", true);
@@ -804,7 +804,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (Shower Sex, Get Fucked as Male or Herm)
-    private cottonFucksYouInShowerRepeat(): void {
+    function cottonFucksYouInShowerRepeat(): void {
         spriteSelect(12);
         player.slimeFeed();
         flags[kFLAGS.COTTON_MET_FUCKED] = 2;
@@ -974,7 +974,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (Tantric Sex)
-    public cottonTantricSex(): void {
+    export function cottonTantricSex(): void {
         spriteSelect(12);
         outputText("", true);
         outputText(images.showImage("cotton-tantric-sex"));
@@ -1074,7 +1074,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // (Leave)
-    private leaveCotton(): void {
+    function leaveCotton(): void {
         spriteSelect(12);
         outputText("", true);
         outputText("You thank Cotton for her time, shower and head back to camp.", false);
@@ -1085,7 +1085,7 @@ export class Cotton implements TimeAwareInterface {
     // (Cotton appears in camp event, triggered by having Cotton
     // drink from a lactating character. Character must still be
     // lactating.)
-    public nomSomeTitMilkCereal(): void {
+    export function nomSomeTitMilkCereal(): void {
         spriteSelect(12);
         outputText(images.showImage("cotton-visits-you-at-camp-drinks-all-your-milk-the-asshole"));
         // (Add to Sleep screen under the sunrise line.)
@@ -1133,7 +1133,7 @@ export class Cotton implements TimeAwareInterface {
 
     // Champion, I'm PREGGERS!
     // Like the Edryn scene, when you enter the Gym after knocking Cotton up, she will immediately approach you about it.
-    public cottonPregnantAlert(): void {
+    export function cottonPregnantAlert(): void {
         clearOutput();
         outputText("As you enter the gym, keen to work out (in one way or another), you spot Cotton in her usual area.  She's pacing around, and a worried look is plastered across her face. When she sees you, she smiles a little and approaches you. Whatever it is, it clearly can't wait.");
         // -Next-
@@ -1141,7 +1141,7 @@ export class Cotton implements TimeAwareInterface {
         addButton(0, "Next", cottonPregnantAlertII);
     }
 
-    private cottonPregnantAlertII(): void {
+    function cottonPregnantAlertII(): void {
         clearOutput();
         outputText(images.showImage("cotton-you-got-her-preggo"));
         outputText("\"<i>Hello, pet,</i>\" she says, and you notice worry in her voice.  There are slight bags under her eyes, and her crimson ponytail is a little unkempt, with hair jutting out at odd angles.  Something clearly has her frazzled.");
@@ -1158,7 +1158,7 @@ export class Cotton implements TimeAwareInterface {
         addButton(1, "Leave Her", beABadCottonDad);
     }
     // (Leave Her)*
-    private beABadCottonDad(): void {
+    function beABadCottonDad(): void {
         clearOutput();
         outputText("You shake your head.  You certainly can't deal with a kid.  You tell her point blank that you want nothing to do with the child.  Tears well up in her eyes, and her mouth opens and closes several times, without a single sound coming out.");
         outputText("\n\nAfter a moment, she squares her jaw, and a determined look comes over her face.  The confident woman you first met seems to reappear.  She wipes the tears from each eye, and states, \"<i>Fine then.  I can do this on my own.</i>\"");
@@ -1174,7 +1174,7 @@ export class Cotton implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Stay)*
-    private beAGoodCottonDad(): void {
+    function beAGoodCottonDad(): void {
         clearOutput();
         outputText("You take her by the shoulders and nod.  You confirm that of course you'll be there for her, whatever she needs.");
         outputText("\n\nA smile spreads across her face and she hugs you, squeezing tightly, \"<i>Oh thank Marae.  I don't expect you to just pack up and move in, I'm totally fine with our current arrangement, but just having you around for emotional support would be wonderful.</i>\"");
@@ -1186,7 +1186,7 @@ export class Cotton implements TimeAwareInterface {
     // (New scenes to show off Cotton's pregnancy)
     // ORIGINAL:
     // Cotton First-Time Birth*
-    private cottonPopsOutAKid(): void {
+    function cottonPopsOutAKid(): void {
         let kid: number = 0;
         // (Replaces Yoga session)
         clearOutput();
@@ -1333,7 +1333,7 @@ export class Cotton implements TimeAwareInterface {
     // First Time
     // Play this scene the first time Contraception is toggled
     // Cotton must be pregnant or have CottonKids =>1 to activate this option
-    private cottonContraceptionToggle(): void {
+    function cottonContraceptionToggle(): void {
         clearOutput();
         // REPEATS
         if (flags[kFLAGS.COTTON_CONTRACEPTION_TALK] > 0) {
@@ -1363,7 +1363,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // [=Stop Taking=]
-    private tellCottonStopEatingHorsePills(): void {
+    function tellCottonStopEatingHorsePills(): void {
         clearOutput();
         outputText("You tell Cotton that, if they're going to be that useless to her, and she doesn't mind the idea of potentially having more kids, she has your permission to stop taking them.");
         outputText("\n\nShe nods and says, \"<i>Starting tomorrow I'll go ahead and stop, then.</i>\"");
@@ -1376,7 +1376,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // [=Keep Taking=]
-    private tellCottonToKeepFiringBlanksAsshole(): void {
+    function tellCottonToKeepFiringBlanksAsshole(): void {
         clearOutput();
         outputText("You tell Cotton you'd rather not force her to have any more kids, so she should keep taking the herbs; in your opinion, imperfect protection is better than no protection.");
 
@@ -1393,7 +1393,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // Turn On
-    private repeatContraceptionToggleCotton(): void {
+    function repeatContraceptionToggleCotton(): void {
         clearOutput();
         // Play this scene if Contraception chosen when Cotton Contraception is turned off
         if (flags[kFLAGS.COTTON_HERBS_OFF] == 1) {
@@ -1421,7 +1421,7 @@ export class Cotton implements TimeAwareInterface {
     // PC Pregnancy*
     // Telling Cotton*
     // This scene plays automatically the first time the PC reaches stage 2 of Cotton Pregnancy.
-    public goTellCottonShesAMomDad(): void {
+    export function goTellCottonShesAMomDad(): void {
         clearOutput();
         outputText("Convinced that Cotton is the father of the child in your womb, at daybreak, you pack your usual things and head off to Tel'Adre.  Stopping in at the gym, you ask for directions to Cotton's place, and then make your way there.");
         outputText("\n\nIt turns out that Cotton lives in a small apartment, away from the main section of town, sandwiched between a somewhat shabby-looking tailor shop and a small, but very well-kept deli.  You muster your courage and then knock insistently at the door.  \"<i>Coming, coming! -Yawn- Who is it at this time of morning?</i>\" Cotton calls from inside, pulling open the door with a disgruntled look on her sleepy features.  She blinks in surprise to see you standing there, while you apologize for disturbing her so early.  Still, you have something important to discuss with her, you explain, and then ask her if you can come in.");
@@ -1441,7 +1441,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // Birthing*
-    public birthingCottonsKids(): void {
+    export function birthingCottonsKids(): void {
         outputText("\nYou wake up suddenly to strong pains and pressures in your gut.  As your eyes shoot wide open, you look down to see your belly absurdly full and distended.  ");
         if (player.vaginas.length == 0) {
             outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ", false);
@@ -1578,7 +1578,7 @@ export class Cotton implements TimeAwareInterface {
     // Visit Kids Option
     // Present amongst ordinary Cotton options before Yoga
     // Requires PC has at least one CottonKid
-    private visitCottonKids(): void {
+    function visitCottonKids(): void {
         clearOutput();
         outputText("You tell Cotton that, if it's okay with her, you'd like to skip exercising today; you were hoping that you could visit your ");
         if (flags[kFLAGS.COTTON_KID_COUNT] == 1) outputText("kid");
@@ -1763,7 +1763,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // Feed
-    private feedYourCottonKids(): void {
+    function feedYourCottonKids(): void {
         clearOutput();
         outputText("You interrupt Cotton by pointing out that you have breasts full of milk; you'd be happy to nurse the little ");
         if (flags[kFLAGS.COTTON_OLDEST_KID_GENDER] >= 2) outputText("filly ");
@@ -1840,7 +1840,7 @@ export class Cotton implements TimeAwareInterface {
     }
 
     // Stay Quiet
-    private letCottonFeedKids(): void {
+    function letCottonFeedKids(): void {
         clearOutput();
         outputText("You quietly watch on as Cotton removes her top, exposing her dark-skinned breasts topped by chocolatey nipples.  Your child coos and giggles, knowing it's feeding time, its little underdeveloped hands reaching for the breast hungrily.  She smiles and brings the foal up to the breast, where it latches on and begins suckling hungrily.");
 
@@ -1867,5 +1867,3 @@ export class Cotton implements TimeAwareInterface {
         outputText("\n\nEventually, and apologetically, you tell her that you have to go; places to go, monsters to fight, she knows how it is.  She nods, understanding, and you give her a quick kiss before departing back to camp.");
         doNext(Camp.returnToCampUseOneHour);
     }
-
-}

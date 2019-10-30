@@ -1,6 +1,4 @@
 
-export class IsabellaFollowerScene {
-
 	/*===========================
 Izzy Affection stat.
 =============================
@@ -43,28 +41,28 @@ Optional Morning Oral for small-membered males*/
     // const ISABELLA_PROBOVA_BURP_COUNT:int = 383;
     // const FOUND_ISABELLA_AT_FARM_TODAY:int = 707;
 
-    public isabellaFollower(): boolean {
+    export function isabellaFollower(): boolean {
         return flags[kFLAGS.ISABELLA_FOLLOWER_ACCEPTED] == 1 && flags[kFLAGS.ISABELLA_CAMP_DISABLED] == 0;
 
     }
-    public isabellaAccent(): boolean {
+    export function isabellaAccent(): boolean {
         if (flags[kFLAGS.ISABELLA_ACCENT_TRAINING_PERCENT] < 100) return true;
         if (flags[kFLAGS.ISABELLA_ACCENT_FORCED_ON]) return true;
         return false;
     }
-    public isabellaAffection(mod: number = 0): number {
+    export function isabellaAffection(mod: number = 0): number {
         flags[kFLAGS.ISABELLA_AFFECTION] += mod;
         if (flags[kFLAGS.ISABELLA_AFFECTION] > 100) flags[kFLAGS.ISABELLA_AFFECTION] = 100;
         else if (flags[kFLAGS.ISABELLA_AFFECTION] < 0) flags[kFLAGS.ISABELLA_AFFECTION] = 0;
         return flags[kFLAGS.ISABELLA_AFFECTION];
     }
 
-    public isabellaSprite(): void {
+    export function isabellaSprite(): void {
         spriteSelect(31);
     }
 
     // Isabella Moves In Intro
-    public isabellaMoovesInGreeting(): void {
+    export function isabellaMoovesInGreeting(): void {
         spriteSelect(31);
         outputText("", true);
         if (flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER] == 0) {
@@ -103,7 +101,7 @@ Optional Morning Oral for small-membered males*/
         flags[kFLAGS.ISABELLA_TIMES_OFFERED_FOLLOWER]++;
     }
     // Decline Izzy Initial Moving Offer (-10 affection)
-    private turnDownIsabellaFollower(): void {
+    function turnDownIsabellaFollower(): void {
         spriteSelect(31);
         isabellaAffection(-10);
         outputText("", true);
@@ -120,7 +118,7 @@ Optional Morning Oral for small-membered males*/
             "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
     // Move Ze Bitch In!
-    private moveTheBitchIn(): void {
+    function moveTheBitchIn(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("As soon as you nod, Isabella smiles and tears her shield out of the ground, setting off a small avalanche of dirt and pebbles across her rugs.  The industrious cow-girl starts packing up her things immediately.  \"<i>It vas time to move out of zis little camp any how,</i>\" she declares as she folds her chair into a chest.  You get an eyeful of her generous backside, the plump rump swaying and jiggling back and forth with every movement Isabella's efforts generate.  It's almost hypnotizing, even half-hidden as it is under her olive-toned skirt.  A breeze blows the hem partway up, and though it doesn't go far, you watch with an intrigued, vacant stare.\n\n", false);
@@ -136,7 +134,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Follower Summoned Text:
-    public callForFollowerIsabella(): void {
+    export function callForFollowerIsabella(): void {
         spriteSelect(31);
         outputText("", true);
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 0) {
@@ -190,7 +188,7 @@ Optional Morning Oral for small-membered males*/
         if (flags[kFLAGS.FOLLOWER_AT_FARM_ISABELLA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
         isabellaSprite();
 
@@ -206,7 +204,7 @@ Optional Morning Oral for small-membered males*/
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
         isabellaSprite();
 
@@ -220,7 +218,7 @@ Optional Morning Oral for small-membered males*/
         doNext(FarmCorruption.rootScene);
     }
 
-    private campIzzySexMenu(): void {
+    function campIzzySexMenu(): void {
         spriteSelect(31);
         let tentacle: () => void = null;
         if (izzyTentacleRapeBool() && player.lust >= 33) tentacle = tentacleBoneFollowerIzzy;
@@ -252,7 +250,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Accent Coaching
-    private isabellasAccentCoaching(): void {
+    function isabellasAccentCoaching(): void {
         spriteSelect(31);
         outputText("", true);
         // Cooldown rejection
@@ -334,7 +332,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Morning Wakeup Call
-    public isabellaMorningWakeupCall(): void {
+    export function isabellaMorningWakeupCall(): void {
         spriteSelect(31);
         flags[kFLAGS.ISABELLA_MORNING_FELLATIO_COUNT]++;
         const x: number = player.cocks.shortestCockIndex();
@@ -402,7 +400,7 @@ Optional Morning Oral for small-membered males*/
         doNext(playerMenu);
     }
     // No BJ's Plz
-    private toggleIsabellasMorningWoodChopping(): void {
+    function toggleIsabellasMorningWoodChopping(): void {
         spriteSelect(31);
         outputText("", true);
         if (flags[kFLAGS.ISABELLA_BLOWJOBS_DISABLED] == 0) {
@@ -431,7 +429,7 @@ Optional Morning Oral for small-membered males*/
         doNext(campIzzySexMenu);
     }
     // Repeatable Campsex: Hot Dogginz'
-    private repeatGermanBratwurstInCamp(): void {
+    function repeatGermanBratwurstInCamp(): void {
         spriteSelect(31);
         outputText("", true);
         let x: number = player.cocks.smallestCockIndex();
@@ -563,7 +561,7 @@ Optional Morning Oral for small-membered males*/
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private izzyTentacleRapeBool(): boolean {
+    function izzyTentacleRapeBool(): boolean {
         spriteSelect(31);
         let counter: number = 0;
         temp = player.cocks.length;
@@ -581,7 +579,7 @@ Optional Morning Oral for small-membered males*/
     // Tentacle Rape (edited, but see notes -Z)
     // needs 3 cocks: 2 to tie her and lift her up and at least
     // one for penetration
-    private tentacleBoneFollowerIzzy(): void {
+    function tentacleBoneFollowerIzzy(): void {
         spriteSelect(31);
         // Tentacle dick index holders
         let t1: number = -1;
@@ -715,7 +713,7 @@ Optional Morning Oral for small-membered males*/
 
     // triggers when Izzy Milked Yet flag >= 10 and PC has Bmilker at farm; unless negative, flag gets reset to 0 if PC nurses from her in any nursing scene written later
     // PC wasn't thinking about the pressure; titties get swole
-    public milktasticLacticLactation(): void {
+    export function milktasticLacticLactation(): void {
         spriteSelect(31);
         outputText("", true);
         if (isabellaAccent()) outputText("\"<i>Ohh, mein milkers...</i>\"\n\n", false);
@@ -728,14 +726,14 @@ Optional Morning Oral for small-membered males*/
     }
 
     // [No]
-    private izzyMilkYourselfDamnit(): void {
+    function izzyMilkYourselfDamnit(): void {
         // set Izzy Milked Yet flag to 0
         // in other words, she handles it herself somehow but it repeats after another ten days without milking her
         flags[kFLAGS.ISABELLA_MILKED_YET] = 0;
         Camp.returnToCampUseOneHour();
     }
     // [Yes]
-    private izzyMilkingMeinMilkersMya(): void {
+    function izzyMilkingMeinMilkersMya(): void {
         spriteSelect(31);
         outputText("", true);
         if (player.cor < 50) outputText("Concerned", false);
@@ -765,7 +763,7 @@ Optional Morning Oral for small-membered males*/
         // --next--
         doNext(izzyMilkingMeinMilkersMya2);
     }
-    private izzyMilkingMeinMilkersMya2(): void {
+    function izzyMilkingMeinMilkersMya2(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("In no time at all, Isabella has taken her place in your stall and you've helped her fasten the harnesses on and attach the milker cups.  The machinery whirrs and lifts her heavy form in the air ", false);
@@ -803,7 +801,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // [I'll Allow It]
-    private AllowIzzyMilkerUse(): void {
+    function AllowIzzyMilkerUse(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("With a smile, you tell Isabella she's free to come here whenever she's feeling pent-up, as long as there's enough left for you to have some fun together when you want to.  Isabella hugs you again, tits and nipples pressing into your ", false);
@@ -817,7 +815,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // [Mine Mine MINE!]
-    private noMilkingMilky(): void {
+    function noMilkingMilky(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("You grin at Isabella and pull her over to you.  Wrapping one arm around her waist, you tell her that this was only a stopgap; you'll be the one to take care of all her needs from now on.  To emphasize your point, you ", false);
@@ -834,7 +832,7 @@ Optional Morning Oral for small-membered males*/
     // [GetMilk]
     // follower menu button
     // (only appears if Izzy Milked Yet flag < 0)
-    private getMilk(): void {
+    function getMilk(): void {
         spriteSelect(31);
         outputText("", true);
         outputText("You tell Isabella that you want a bottle of her milk.  ", false);
@@ -869,7 +867,7 @@ Optional Morning Oral for small-membered males*/
         Inventory.takeItem(ConsumableLib.IZYMILK, Camp.returnToCampUseOneHour);
     }
     // TDM's Angry Murble
-    public angryMurble(): void {
+    export function angryMurble(): void {
         outputText("", true);
         outputText("You come to Isabella's part of the camp with Marble in tow, supposing now is as good a time as ever to introduce the two.  Marble greats Isabella warmly but immediately starts bombarding her with questions about her origin.  From her persistence, it seems she is interested in meeting another cow-girl.  Though a little overwhelmed, Isabella recovers quickly, explaining her origins and the impurity of her cow-girl nature.  Marble is visibly disappointed.\n\n", false);
 
@@ -882,7 +880,7 @@ Optional Morning Oral for small-membered males*/
     // normal isabella combat + status affect "sparring"
     // v1 = 1, normal sparring.
     // v2 = 2, 'light' sparring.
-    private isabellaSparMenu(): void {
+    function isabellaSparMenu(): void {
         spriteSelect(31);
         outputText("", true);
         if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] == 0) {
@@ -900,7 +898,7 @@ Optional Morning Oral for small-membered males*/
         simpleChoices("Light", createCallBackFunction(sparring, 2), "Hard", createCallBackFunction(sparring, 1), "", null, "", null, "Back", callForFollowerIsabella);
     }
 
-    private sparring(type: number = 1): void {
+    function sparring(type: number = 1): void {
         spriteSelect(31);
         outputText("", true);
         if (flags[kFLAGS.ISABELLA_SPARRING_INTRO] == 1) {
@@ -924,7 +922,7 @@ Optional Morning Oral for small-membered males*/
     // Isabella Burps
 
     // first time (Z)
-    private isabellaBurps(): void {
+    function isabellaBurps(): void {
         player.consumeItem(ConsumableLib.PROBOVA);
         spriteSelect(31);
         outputText("", true);
@@ -967,7 +965,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // run
-    private runAwayFromIzzyBurps(): void {
+    function runAwayFromIzzyBurps(): void {
         outputText("", true);
         spriteSelect(31);
         // First time
@@ -998,7 +996,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // help (ya dumbo)
-    private getIzzyBurped(): void {
+    function getIzzyBurped(): void {
         outputText("", true);
         spriteSelect(31);
         flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT]++;
@@ -1126,7 +1124,7 @@ Optional Morning Oral for small-membered males*/
         doYesNo(acceptCowpology, declineIzzysCowBurpApology);
     }
     // no
-    private declineIzzysCowBurpApology(): void {
+    function declineIzzysCowBurpApology(): void {
         outputText("", true);
         spriteSelect(31);
         if (flags[kFLAGS.ISABELLA_PROBOVA_BURP_COUNT] == 1) {
@@ -1144,7 +1142,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // yes
-    private acceptCowpology(): void {
+    function acceptCowpology(): void {
         outputText("", true);
         spriteSelect(31);
         // Clear burps!
@@ -1220,7 +1218,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Get Licked in Return (seems incompatible with centaurs/driders due to lap-sitting)
-    public receiveAllTheCowTOngues(): void {
+    export function receiveAllTheCowTOngues(): void {
         clearOutput();
         spriteSelect(31);
         outputText("Isabella pulls you up into her lap when you agree.  You recline against her, the two of you sinking into the plush cushions of her big chair; ");
@@ -1270,7 +1268,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Ey bitch u wan sum fuk? (Or, how Isabella learned to love the dick regardless of size and shape) (Z)
-    private fuckIsabella(): void {
+    function fuckIsabella(): void {
         clearOutput();
         spriteSelect(31);
         // AREA FOR SCENE ACCESS: (164);
@@ -1351,7 +1349,7 @@ Optional Morning Oral for small-membered males*/
     // Savin
     // Introduction
     // (Chance to play when you EXPLORE the farm after Isabella moves to camp)
-    public findIzzyMilking(): void {
+    export function findIzzyMilking(): void {
         clearOutput();
         outputText("As you wander around Whitney's farm, your exploration brings you back toward the barn.  Wiping the sweat from your brow after nearly an hour under the hot sun, you lean back against the hard wooden wall to take a breather - only to hear a faint, yet clearly ecstatic, mooing coming from inside.  You step over to the nearest window and, peering inside, are surprised to see a familiar towering cowgirl leaning over a railing, a pair of oversized milkers chugging away at her massive mounds.  Seeing her mooing softly as the milkers suckle the thick cream from her teats soon has you well aroused at the sight... and you think you could give her a sexy surprise while she's getting milked.");
 
@@ -1364,7 +1362,7 @@ Optional Morning Oral for small-membered males*/
     }
 
     // Fuck Her (Male/Dick'd Herms)
-    private fuckIsabellaInTheBarn(): void {
+    function fuckIsabellaInTheBarn(): void {
         const x: number = player.cocks.biggestCockIndex();
         clearOutput();
         outputText("You quietly slip into the barn and make your way over to Isabella's stall.  Silently opening the door, you're afforded a good look at the nude, bent-over cowgirl, your eyes drinking in her lush curves and thick, soft ass - and the glistening pussy between her meaty thighs, slightly parted by a pair of mottle-skinned fingers rubbing and teasing at her big clit.");
@@ -1403,7 +1401,7 @@ Optional Morning Oral for small-membered males*/
         addButton(0, "Next", isabellaBarnFuckPartII);
     }
 
-    private isabellaBarnFuckPartII(): void {
+    function isabellaBarnFuckPartII(): void {
         clearOutput();
         outputText("Isabella collapses, shuddering and twitching after her orally-induced orgasm.  Playfully, you cup a hand around one of her well-milked breasts and roll her over, spreading her furry legs around your hips.  A slight groan escapes Isabella's lips as you loom over her, quickly taking one of her eight needy teats into your mouth.  A stream of ultra-sweet cream pours out at the slightest touch of your tongue, running down your throat just as fast as you can swallow.  The cow never seems to run out as you suckle from her, your head rising and falling with her heaving chest as she recovers from the squirting, thigh-quaking orgasm you just put her through.");
 
@@ -1456,4 +1454,3 @@ Optional Morning Oral for small-membered males*/
         fatigue(-25);
         doNext(Camp.returnToCampUseTwoHours);
     }
-}

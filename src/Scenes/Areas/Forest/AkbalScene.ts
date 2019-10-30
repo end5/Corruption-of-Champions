@@ -2,9 +2,7 @@
  * Created by aimozg on 01.01.14.
  */
 
-export class AkbalScene {
-
-    public akbalDefeated(hpVictory: boolean): void {
+    export function akbalDefeated(hpVictory: boolean): void {
         flags[kFLAGS.AKBAL_SUBMISSION_STATE] = 1;
         if (hpVictory) // [General Victory]
         {
@@ -42,7 +40,7 @@ export class AkbalScene {
         cleanupAfterCombat();
     }
 
-    public akbalWon(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function akbalWon(hpVictory: boolean, pcCameWorms: boolean): void {
         flags[kFLAGS.AKBAL_SUBMISSION_STATE] = -1;
         flags[kFLAGS.AKBAL_BITCH_Q] = 0;
         outputText("", true);
@@ -57,7 +55,7 @@ export class AkbalScene {
     }
 
     // Victory/Defeat Scenes
-    private rapeAkbalForcedFemaleOral(): void {
+    function rapeAkbalForcedFemaleOral(): void {
         flags[kFLAGS.AKBAL_BITCH_Q]++;
         outputText("", true);
         // Naga RAPPUUUUUU
@@ -117,7 +115,7 @@ export class AkbalScene {
     }
 
     // Standard rapes - buttfucks and oral
-    private rapeAkbal(): void {
+    function rapeAkbal(): void {
         flags[kFLAGS.AKBAL_BITCH_Q]++;
         let primary: number = player.cocks.cockThatFits(50);
         if (primary < 0)
@@ -322,7 +320,7 @@ export class AkbalScene {
         cleanupAfterCombat();
     }
 
-    private girlsRapeAkbal(): void {
+    function girlsRapeAkbal(): void {
         flags[kFLAGS.AKBAL_BITCH_Q]++;
         outputText("", true);
         outputText("You smirk to yourself quietly as the so called \"God of Terrestrial Fire\" lays in a twitching heap on the ground, his flesh squirming as he shifts into his more humanoid form. Removing your " + player.armorName + ", your hand lowers to your feminine slit, pondering how to make use of him.\n\n", false);
@@ -404,7 +402,7 @@ export class AkbalScene {
         doNext(girlsRapeAkbalPart2);
     }
 
-    private girlsRapeAkbalPart2(): void {
+    function girlsRapeAkbalPart2(): void {
         outputText("", true);
         hideUpDown();
         // Centaur
@@ -542,7 +540,7 @@ export class AkbalScene {
         cleanupAfterCombat();
     }
 
-    private loseToAckballllllz(): void {
+    function loseToAckballllllz(): void {
         // [Defeat via Lust]
         if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
             outputText(images.showImage("akbal-deepwoods-losslust-analed"));
@@ -622,7 +620,7 @@ export class AkbalScene {
     // 2. AKBAL'S MY BITCH
 
     // [First Encounter]
-    public supahAkabalEdition(): void {
+    export function supahAkabalEdition(): void {
         spriteSelect(2);
         // Make sure that the buttchange is set correctly
         // when submitting.  Gotta stretch em all!
@@ -663,7 +661,7 @@ export class AkbalScene {
     }
 
     // [Talk]
-    private superAkbalioTalk(): void {
+    function superAkbalioTalk(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("After a few moments of silence you ask, \"<i>What do you mean, 'submit'?</i>\" Akbal grins, revealing a row of wicked ivory teeth as he opens his mouth. You suddenly feel the demon's powerful body pinning you down, a wide tongue licking your neck and claws tickling your back in a way that is both horrifying and sensual. Yet after a moment of taking it in, you realize that he is still there in front of you, unmoved and grinning. You can guess what the image means: he wants you to become his mate for a day to make up for invading his territory.  What do you do?\n\n", false);
@@ -673,7 +671,7 @@ export class AkbalScene {
     }
 
     // [Encounter if previously submitted]
-    private repeatAkbalPostSubmission(): void {
+    function repeatAkbalPostSubmission(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("As you walk through the forest, you hear a purring coming from behind you.  Turning around reveals that Akbal has come to find you.  He uses his head to push you in the direction of his territory, obviously wanting to dominate you again.\n\n", false);
@@ -683,7 +681,7 @@ export class AkbalScene {
     }
 
     // [Deny]
-    private akbalDeny(): void {
+    function akbalDeny(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("You shake your head and rub the lust-filled jaguar behind the ear as you tell him you're busy.  The demon's eyes roll, and he licks your " + leg(player) + " before his eyes find an imp in the trees above the two of you.\n\n", false);
@@ -692,7 +690,7 @@ export class AkbalScene {
     }
 
     // [Encounter if previously fought and won/raped him]
-    private ackbalRepeatAfterWin(): void {
+    function ackbalRepeatAfterWin(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("As you walk through the forest, you hear a snarl and look up just in time to dodge a surprise attack by the jaguar demon, Akbal.  Your ", false);
@@ -705,7 +703,7 @@ export class AkbalScene {
     }
 
     // [Encounter if previously fought and lost]
-    private ackbalRepeatAfterLoss(): void {
+    function ackbalRepeatAfterLoss(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("A chorus of laughter sounds inside your mind as the jaguar demon, Akbal, drops to the ground in front of you.  His masculine voice says, \"<i>Well, if it isn't the defiant welp who, in all their great idiocy, has wandered into my territory again.  Will you submit, or do I have to teach you another harsh lesson?</i>\"\n\n", false);
@@ -715,7 +713,7 @@ export class AkbalScene {
     }
 
     // [Fight]
-    private startuAkabalFightomon(): void {
+    function startuAkabalFightomon(): void {
         spriteSelect(2);
         outputText("", true);
         outputText("You ready your " + player.weaponName + " and prepare to battle the demon jaguar.", false);
@@ -725,7 +723,7 @@ export class AkbalScene {
     }
 
     // [Submit]
-    private akbalSubmit(): void {
+    function akbalSubmit(): void {
         spriteSelect(2);
         player.slimeFeed();
         flags[kFLAGS.AKBAL_SUBMISSION_COUNTER]++;
@@ -944,7 +942,7 @@ export class AkbalScene {
     // [General End]
     // Set flag after submitting, then clear it and run
     // this before going to camp?
-    public akbalSubmissionFollowup(): void {
+    export function akbalSubmissionFollowup(): void {
         spriteSelect(2);
         outputText("", true);
         if (flags[kFLAGS.AKBAL_SUBMISSION_COUNTER] < 4) {
@@ -994,7 +992,7 @@ export class AkbalScene {
        Evasion+5
      */
 
-    private akbalBigButtSubmit(): void {
+    function akbalBigButtSubmit(): void {
         clearOutput();
         outputText(images.showImage("akbal-deepwoods-bigbuttanaled"));
         outputText("Smiling in anticipation of servicing the jaguar-lord once more, you remove your [armor] and drop down to all fours, slowly lowering your face down to the ground.  You give your [butt] a slow back-and-forth wiggle as your cheek comes to rest on the dirt, degrading yourself for your demon-god's enjoyment.");
@@ -1070,7 +1068,7 @@ export class AkbalScene {
     // By Foxxling
     // Akbal’s My Bitch Expansion
     // Auto Rape Intro Scene
-    private akbitchEncounter(): void {
+    function akbitchEncounter(): void {
         clearOutput();
         outputText("As you explore the deep woods you begin to hear a soft slurping sound. In this world you know that any strange sound, especially the wet ones, most likely means something dangerous is up ahead... or something dangerous is fucking something a little less dangerous.  As you cautiously advance you spy the pelt of the jaguar demon, Akbal.  The demon jaguar sits in the middle of the clearing with one leg extended as he repeatedly swipes his wide tongue against his hole, probably cleaning up imp spunk thanks to you.  He is so utterly focused on the task that he doesn’t notice your approach.");
         flags[kFLAGS.AKBAL_BITCH_Q] = 1;
@@ -1086,7 +1084,7 @@ export class AkbalScene {
         }
     }
 
-    private akbitchNoThnx(clear: boolean = true): void {
+    function akbitchNoThnx(clear: boolean = true): void {
         if (clear)
             clearOutput();
         else
@@ -1098,7 +1096,7 @@ export class AkbalScene {
     }
 
     // {Choose Rape}
-    public takeAdvantageOfAkbitch(): void {
+    export function takeAdvantageOfAkbitch(): void {
         clearOutput();
         outputText("You creep behind the many woods trees surrounding Akbal’s clearing until your eyes chance upon a vine.  It’s spongy, long, and hard to rip apart - in other words: perfect.");
 
@@ -1151,7 +1149,7 @@ export class AkbalScene {
     }
 
     // Basic AMB Scene (no +70 stats)
-    private basicAkbitchScene(): void {
+    function basicAkbitchScene(): void {
         clearOutput();
         outputText("With a grin, you tug on Akbal’s collar, and he lets out a barely suppressed purr.  ");
         if (flags[kFLAGS.AKBAL_TIMES_BITCHED] == 1)
@@ -1168,7 +1166,7 @@ export class AkbalScene {
     }
 
     // Butt Fuck - Vaginal - Anal
-    private buttFuckbuttFuckbuttFuckAkbal(): void {
+    function buttFuckbuttFuckbuttFuckAkbal(): void {
         clearOutput();
         outputText(images.showImage("akbal-deepwoods-male-buttfuck"));
         // [if (hasCock = true)]
@@ -1195,7 +1193,7 @@ export class AkbalScene {
     }
 
     // - page turn -
-    private fuckAkbitchsButt(): void {
+    function fuckAkbitchsButt(): void {
         clearOutput();
         const x: number = player.cocks.biggestCockIndex();
         outputText(images.showImage("akbal-deepwoods-male-buttfuck2"));
@@ -1230,7 +1228,7 @@ export class AkbalScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private topAkbitchFromDaBottom(): void {
+    function topAkbitchFromDaBottom(): void {
         clearOutput();
         outputText(images.showImage("akbal-deepwoods-male-akbalonback"));
         // [{if goo legs}]
@@ -1251,7 +1249,7 @@ export class AkbalScene {
         addButton(0, "Next", topAkbitchFromBottomDuex);
     }
 
-    private topAkbitchFromBottomDuex(): void {
+    function topAkbitchFromBottomDuex(): void {
         clearOutput();
         outputText(images.showImage("akbal-deepwoods-male-akbalonback2"));
         // -page turn-
@@ -1295,7 +1293,7 @@ export class AkbalScene {
 
     // AMB Strength Scene
     // 70+
-    private akbitchHighStrengthVariant(): void {
+    function akbitchHighStrengthVariant(): void {
         clearOutput();
         outputText("With a wicked grin, you rip off your [armor] and grab the bound demon by the scruff on his neck.  He does this sexy little wiggle as you hoist him until he reaches eye level, easily manipulating his light weight as you inspect his slim, toned body.  His chest heaves, his nipples stand at attention, and his erect demon-cat dick drools a heavy river of thick cream, darkening the fur on his sack and inner thighs.  This is going to be fun.");
         if (player.cocks.length > 0) {
@@ -1415,7 +1413,7 @@ export class AkbalScene {
 
     // AMB Speed Scene
     // 70
-    private akbalBitchSpeed(): void {
+    function akbalBitchSpeed(): void {
         clearOutput();
         outputText("Akbal groans as he lies face first in the dirt.  His body has already morphed into a more humanoid form.  You smile as you watch him hump the grass, two hollows forming in his ass cheeks as they clench and unclench.  The sight of him futilely trying to stimulate himself gets you so hot you practically rip off your [armor] and grab the tied up demon with a grin.");
         outputText("\n\n\"<i>[Master],</i>\" Akbal’s chorus of voices croons in your mind.");
@@ -1505,7 +1503,7 @@ export class AkbalScene {
 
     // AMB Toughness Scene
     // 70
-    private akbitchToughness(): void {
+    function akbitchToughness(): void {
         clearOutput();
         // [if (toughness > 70)]
         outputText("You look down at your handywork and marvel at the fact that being ambushed and dominated has turned the demon on enough for him to shift forms.  Yet you wonder how much the demon jaguar really likes this type of thing...  You grab the vine hanging from his makeshift collar with a malicious grin spreading across your [face].  You step away and with a silent tug, you tell him to come.  His pride sparkles in his burning green eyes and he remains, baring his teeth in a low growl.  One more sudden yank causes him to begin wiggling on the ground, his hands being tied behind his back making it harder for him to move.  Every muscle on his lean body is tense and you know this self-proclaimed \"<i>god</i>\" hates you.  You smile as you watch his muscled ass shift beneath his spotted fur as he shortens the distance between the two of you.  Once he’s close enough you squat. Reaching down you grab his face and look into those desperately defiant eyes.  You can tell from the way he moves his hot little ass around that his erection is bothering him.  His eyes fall to your [feet] as he tries to stifle a purr.");
@@ -1648,4 +1646,3 @@ export class AkbalScene {
         dynStats("cor", 3);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

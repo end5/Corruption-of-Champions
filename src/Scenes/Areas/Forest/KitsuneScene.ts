@@ -2,22 +2,20 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class KitsuneScene {
-
     // const MANSION_VISITED:int = 626;
     // const redheadIsFuta:int = 627;
     // const MET_KITSUNES:int = 628;
     // const KITSUNE_SHRINE_VISIT:int = 708;
     // const TOOK_KITSUNE_STATUE:int = 709;
 
-    private kitsuneSprite(): void {
+    function kitsuneSprite(): void {
         if (monster.hairColor == "blonde") spriteSelect(105);
         else if (monster.hairColor == "black") spriteSelect(104);
         else spriteSelect(106);
     }
 
     // [Enter the Trickster] (Coded)
-    public enterTheTrickster(): void {
+    export function enterTheTrickster(): void {
         if (flags[kFLAGS.MET_KITSUNES] > 0) {
             willOWisp();
             return;
@@ -35,7 +33,7 @@ export class KitsuneScene {
     }
 
     // Lose:
-    public loseKitsuneImpFight(): void {
+    export function loseKitsuneImpFight(): void {
         clearOutput();
         // randomly assign hair color
         if (rand(3) == 0) monster.hairColor = "blonde";
@@ -52,7 +50,7 @@ export class KitsuneScene {
     }
 
     // Win:
-    public winKitsuneImpFight(): void {
+    export function winKitsuneImpFight(): void {
         clearOutput();
         // randomly assign hair color
         if (rand(3) == 0) monster.hairColor = "blonde";
@@ -97,7 +95,7 @@ export class KitsuneScene {
     }
 
     // [Will 'O Wisp](C)
-    private willOWisp(): void {
+    function willOWisp(): void {
         clearOutput();
         // randomly assign hair color
         if (rand(3) == 0) monster.hairColor = "blonde";
@@ -118,7 +116,7 @@ export class KitsuneScene {
     }
 
     // [Turn Back] (C)
-    private turnBackFromWillOWisp(): void {
+    function turnBackFromWillOWisp(): void {
         clearOutput();
         outputText("There's no way you're going to go gallivanting off into the woods after some flame.  You shake your head to clear your thoughts, and warily turn away to head back toward camp.  You could almost swear for a moment the flame looked disappointed, and you chuckle lightly at such a silly thought.");
         // Advance time 1 hour, return to camp.
@@ -127,7 +125,7 @@ export class KitsuneScene {
     }
 
     // [Follow] (C)
-    private followTheWillOWisp(firstTime: boolean = false): void {
+    function followTheWillOWisp(firstTime: boolean = false): void {
         clearOutput();
         if (!firstTime) {
             outputText("The flame suddenly darts off into the darkness of the trees, and you find yourself unable to resist giving chase.  It feels as though you are being drawn to it by some otherworldly force, but every time your suspicions begin to grow, the flame pauses to float around you, tickling your erogenous zones and then pressing onward.");
@@ -161,7 +159,7 @@ export class KitsuneScene {
     }
 
     // [Talk] (C)
-    private talkAfterResistingKitsunellusion(): void {
+    function talkAfterResistingKitsunellusion(): void {
         clearOutput();
         kitsuneSprite();
         outputText("Odd as she is, she doesn't seem to be overtly threatening, so you decide to try to talk to her.  Searching for something to say, you end up simply asking her why she led you here.\n\n");
@@ -191,7 +189,7 @@ export class KitsuneScene {
     }
 
     // [Leave] (C)
-    private leaveKitsune(talked: boolean = false): void {
+    function leaveKitsune(talked: boolean = false): void {
         clearOutput();
         kitsuneSprite();
         // if PC was Talking to the kitsune
@@ -215,7 +213,7 @@ export class KitsuneScene {
     }
 
     // Illusory Mansion (C)
-    private mansion(willing: boolean, firstTime: boolean = false): void {
+    function mansion(willing: boolean, firstTime: boolean = false): void {
         clearOutput();
         kitsuneSprite();
         if (willing) {
@@ -255,7 +253,7 @@ export class KitsuneScene {
     }
 
     // NON-TENTACLE PC SCENES:
-    private nonTentaclePCMansion(willing: boolean): void {
+    function nonTentaclePCMansion(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText("\"<i>We hope you enjoyed the feast we prepared,</i>\" says the one with jet-black hair, as she and her sisters crowd around you in the water, fully nude.  \"<i>Now, it's </i>our<i> turn.</i>\"\n\n");
@@ -270,7 +268,7 @@ export class KitsuneScene {
     }
 
     // Formerly maleOrHerm()
-    private kitsuneMaleOrHermMansion(willing: boolean): void {
+    function kitsuneMaleOrHermMansion(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText("\"<i>Let's just see what we have here,</i>\" the blonde says, sliding herself up to gently lift [eachCock] while licking her lips.  \"<i>Oh my, such vigor!</i>\"  the blonde exclaims, eagerly watching your " + ((player.cocks.length > 1) ? "shafts swell to their" : "shaft swell to its") + " full length and girth after just a little bit of stroking from her skillful hands.\n\n");
@@ -295,7 +293,7 @@ export class KitsuneScene {
 
     // end function
     // fomerly letHer()
-    private kitSuneLetHerMansion(willing: boolean = true): void {
+    function kitSuneLetHerMansion(willing: boolean = true): void {
         clearOutput();
         kitsuneSprite();
         outputText(((willing) ? "You decide to let her have her fun, focusing your attention instead on her two lovely sisters.  While you were distracted with the redhead's \"assets\", it appears the precocious blonde and ravenette went ahead and started without you!" : "Your slurred protests fall on deaf ears, your head swimming with the haze of the many decanters of liquor you imbibed.  You move to push her away, but she catches your tipsy assault and gently leans up to give you a disarming peck on the cheek.  Though you try to mentally cling to the dispute, you find your cares gradually slipping away, until all you can focus on is the girl's two sisters, who appear to have started without you.") + "  The black-haired girl lies back, her face buried deep in the rippling flesh of the blonde's behind, slurping away at her dripping folds, while the blonde reciprocates from on top, pounding her sister's puffy pussy with her first two fingers.\n\n");
@@ -357,7 +355,7 @@ export class KitsuneScene {
     } // End letHer()
 
     // Formerly shoveHer()
-    private kitsuneShoveHerMansion(willing: boolean = true): void {
+    function kitsuneShoveHerMansion(willing: boolean = true): void {
         clearOutput();
         kitsuneSprite();
         outputText("In spite of your drunken stupor, you are just lucid enough to realize what is going on in time to stop her.  You plant your arm against her chest with a push, and she loses balance and tumbles into the water, kicking up foam.  She breaches the water with a rambunctious cry, inadvertently knocking her sisters off as she grapples with you in the steamy spring.  The surprised pair laughs and shields their eyes as you roll around in the water, tossing hot foam into the air.  When the crashing waves finally die down, you have the boisterous redhead pinned under your elbow against the side of the bath, [eachCock] grinding lewdly against the pillowy cheeks of her upthrust ass.  She struggles for a bit, but once she accepts that you have overpowered her, she slowly relaxes into a submissive state, her muscles relaxing and her ears slouching against the top of her head.\n\n");
@@ -426,7 +424,7 @@ export class KitsuneScene {
     } // End shoveHer()
 
     // formerly
-    private kitsuneStillHungryMansion(): void {
+    function kitsuneStillHungryMansion(): void {
         clearOutput();
         kitsuneSprite();
         outputText("Just as you are about to slip out of consciousness, you are roused by the feeling of the kitsune pulling you from her sister's grasp, sliding you onto your back, and bending low over you.\n\n");
@@ -457,7 +455,7 @@ export class KitsuneScene {
     } // end stillHungry();
 
     // formerly femaleOrGenderless()
-    private kitsuneFemaleOrGenderless(willing: boolean): void {
+    function kitsuneFemaleOrGenderless(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText("\"<i>Just relax, darling,</i>\" the blonde says in a crooning tone, sliding her hand down along your " + hipDescription(player) + " under the water.  Her silky-soft fingertips gently circles your " + ((player.gender >= 2) ? clitDescription(player) : assholeDescript(player)) + ", making you shudder.  Any reservations you still had are naught but memories now as you" + ((player.isBiped()) ? " spread your legs and" : "") + " give yourself over completely to her tender touch.\n\n");
@@ -476,7 +474,7 @@ export class KitsuneScene {
         }
     }
 
-    private kitsunesGenderlessLetHer(willing: boolean): void {
+    function kitsunesGenderlessLetHer(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText(((willing) ? "You decide to let the girl have her fun, allowing her to shift positions to begin rubbing her throbbing shaft against your " + ((player.gender == 2) ? vaginaDescript(player) : "featureless groin") + " eagerly." : "You shake your head sluggishly, but your slurred protests fall on deaf ears.  She easily sidesteps your " + leg(player) + " as you try to shove her away, sliding forward to lay a disarming kiss on your cheek.  A bright blue wisp of flame crackles from her lips, and that is that - the resulting spark of pleasure that arcs up your spine shatters the last of your resistance, and your cares melt like butter.") + "  While she grinds her pulsating shaft against you slowly, her sisters close in around you to join in the fun.\n\n");
@@ -498,7 +496,7 @@ export class KitsuneScene {
     } // end letHer()
 
     // fomerly shoveHer()
-    private kitsunesGenderlessShoverHer(willing: boolean): void {
+    function kitsunesGenderlessShoverHer(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText("In spite of your drunken stupor, you are just lucid enough to realize what is going on in time to stop her.  You plant your arm against her chest with a push, and she loses balance and tumbles into the water, kicking up foam.  She breaches the water with a rambunctious cry, inadvertently knocking her sisters off as she grapples with you in the steamy spring.  The surprised pair laughs and shields their eyes as you roll around in the water, tossing hot foam into the air.  When the crashing waves finally die down, you have the boisterous redhead pinned under your elbow against the side of the bath, crotch grinding lewdly against the pillowy cheeks of her upthrust ass.  She struggles for a bit, but once she accepts that you have overpowered her, she slowly relaxes into a submissive state, her muscles relaxing and her ears slouching against the top of her head.\n\n");
@@ -529,7 +527,7 @@ export class KitsuneScene {
     } // end shoveHer()
 
     // formerly stillHungry()
-    private genderlessKitsuneStillHungry(willing: boolean): void {
+    function genderlessKitsuneStillHungry(willing: boolean): void {
         clearOutput();
         kitsuneSprite();
         outputText("Just as you are about to slip out of consciousness, you are roused by the feeling of the black-haired kitsune pulling you from her sister's grasp, sliding you onto your back, and bending low over you.\n\n");
@@ -556,7 +554,7 @@ export class KitsuneScene {
     } // end stillHungry();
 
     // 3+ Tentacle cocks of 30" or longer
-    private tentacleKitsuneWingWangs(): void {
+    function tentacleKitsuneWingWangs(): void {
         clearOutput();
         kitsuneSprite();
         outputText("\"<i>Oh my!  It looks like we're in for a real treat tonight, sisters...</i>\" the blonde says as she runs her hands along your impressive prehensile endowments.\n\n");
@@ -594,7 +592,7 @@ export class KitsuneScene {
         player.orgasm();
     }
 
-    private outro(tentacles: boolean = false): void {
+    function outro(tentacles: boolean = false): void {
         fatigue(15);
         kitsuneSprite();
         dynStats("tou", -2);
@@ -633,7 +631,7 @@ export class KitsuneScene {
         }
     }
 
-    private mansionBadEnd(): void {
+    function mansionBadEnd(): void {
         clearOutput();
         kitsuneSprite();
         // Kitsune's Thrall Bad End
@@ -654,7 +652,7 @@ export class KitsuneScene {
         doNext(kitSuneMansionBadEndII);
     }
 
-    private kitSuneMansionBadEndII(): void {
+    function kitSuneMansionBadEndII(): void {
         clearOutput();
         kitsuneSprite();
         outputText("It is difficult to say how much time has passed since you came to reside here.  Time holds no meaning in this place, entrapped for all eternity in the space between worlds.  Now and again, a glimmer of your former self bubbles to the surface of the constant murky haze that is your mind now, and you have a faint recollection of a purpose beyond serving your mistresses.\n\n");
@@ -673,7 +671,7 @@ export class KitsuneScene {
     }
 
     // [Fight]
-    private fightSomeKitsunes(): void {
+    function fightSomeKitsunes(): void {
         clearOutput();
         outputText("Something just doesn't sit right with you about this woman, and you cautiously raise your " + player.weaponName + ", watching her carefully.\n\n");
         startCombat(new Kitsune(monster.hairColor)); // TODO refactor
@@ -696,7 +694,7 @@ export class KitsuneScene {
         doNext(playerMenu);
     }
 
-    public loseToKitsunes(): void {
+    export function loseToKitsunes(): void {
         const scene: any[] = [];
         // [LOSE FIGHT]
         // Shared Scenes
@@ -732,7 +730,7 @@ export class KitsuneScene {
     // [LOSE FIGHT]
     // Shared Scenes
     // For Males and Herms
-    private loseFightToHerms(): void {
+    function loseFightToHerms(): void {
         clearOutput();
         kitsuneSprite();
         const biggest: number = player.cocks.biggestCockIndex();
@@ -781,7 +779,7 @@ export class KitsuneScene {
     }
 
     // For Females and Genderless
-    private femalesAndNuetersLoseToKitsunes(): void {
+    function femalesAndNuetersLoseToKitsunes(): void {
         clearOutput();
         kitsuneSprite();
         outputText("\"<i>My, oh my, finished already?</i>\"  the kitsune says as she leans over your slumped form, grinning coyly.  \"<i>If you were going to give up that easily, you could have said so in the beginning and saved yourself the trouble!</i>\"\n\n");
@@ -817,7 +815,7 @@ export class KitsuneScene {
 
     // Blonde-exclusive
     // Single cock < 9 inches long
-    private blondeKitsuneRapesSmallWangs(): void {
+    function blondeKitsuneRapesSmallWangs(): void {
         clearOutput();
         kitsuneSprite();
         outputText("The precocious kitsune closes in on you with a predatory smirk as you fall to the ground, panting furiously.  You look up at her, fearing for whatever she has in store for you.  Mustering up every bit of willpower you have left, you scramble backward, but as you try to drag yourself up to your feet, you find your face pressing into something incredibly soft.  Six shimmering golden tails curl around your body, and you look up from between the kitsune's sizeable breasts to see her grinning down at you, her expression somewhere between doting and hungry.\n\n");
@@ -872,7 +870,7 @@ export class KitsuneScene {
 
     // Black-hair-exclusive
     // Lose while lactating
-    private loseToBlackHairLatexWhileMilky(): void {
+    function loseToBlackHairLatexWhileMilky(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You drop to the ground, struggling to support yourself as your muscles shudder with ");
@@ -904,7 +902,7 @@ export class KitsuneScene {
     }
 
     // lose, requires balls and cumQ() > 1000
-    private loseToKitsunesWithBallsAndHighCumQ(): void {
+    function loseToKitsunesWithBallsAndHighCumQ(): void {
         clearOutput();
         kitsuneSprite();
         outputText("Summarily beaten, you fall to the ground, propping yourself up in one final fleeting moment of defiance.  As you collapse in defeat, the fox-woman skips merrily over to your prone form, pausing momentarily to bend down and give you a patronizing kiss on the forehead.  Gripping you under the shoulders, she drags you bodily toward a fallen log" + ((player.tallness > 96) ? ", her face going beet red with the strain as she finally heaves your half-comatose frame into position" : ((player.tallness > 60) ? ", openly grunting with effort" : "")) + ".\n\n");
@@ -947,7 +945,7 @@ export class KitsuneScene {
 
     // Redhead-exclusive
     // Futa rape - chance increases as redhead's lust increases
-    private getRapedByRedHeadFutaKitsune(): void {
+    function getRapedByRedHeadFutaKitsune(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You collapse on the ground, too weakened to fight back anymore.  With a mischievous grin, the redhead playfully saunters up to you, crouching down and prodding you in the side.\n\n");
@@ -999,7 +997,7 @@ export class KitsuneScene {
 
     // [WIN FIGHT]
     // Damage victory
-    public defeatTheKitsunes(display: boolean = true): void {
+    export function defeatTheKitsunes(display: boolean = true): void {
         if (display) {
             clearOutput();
             kitsuneSprite();
@@ -1092,7 +1090,7 @@ export class KitsuneScene {
         addButton(9, "Leave", leaveKitsune);
     }
 
-    private kitsuneButton(button: number, nam: string, func: () => void): number {
+    function kitsuneButton(button: number, nam: string, func: () => void): number {
         if (button > 8) return 9;
         addButton(button, nam, func);
         button++;
@@ -1101,7 +1099,7 @@ export class KitsuneScene {
 
     // Shared Scenes
     // [Vaginal] - requires cock
-    private fuckAKitsuneVaginally(): void {
+    function fuckAKitsuneVaginally(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You approach the downed kitsune cautiously, wary of any tricks she might have hiding up her sleeve.  She makes a feeble attempt to scurry to her feet and run off, but you catch her by the " + ((player.cor < 40) ? "collar of her robes" : "tail") + " and pull her back, spinning her around and pinning her to a tree, leaning in close.\n\n");
@@ -1168,7 +1166,7 @@ export class KitsuneScene {
     }
 
     // [Anal] - requires cock area 144 or less
-    private putItInAKitsunesAssWin(): void {
+    function putItInAKitsunesAssWin(): void {
         clearOutput();
         kitsuneSprite();
         const x: number = player.cocks.cockThatFits(144);
@@ -1236,7 +1234,7 @@ export class KitsuneScene {
     }
 
     // [Tribbing] - requires vagina
-    private tribbingWithAKitsune(): void {
+    function tribbingWithAKitsune(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You eye her suspiciously for a bit, cautiously edging closer to her prone form.  The proverbial bag of tricks seems to be spent, however, and she allows you to close the distance without further harassment, slowly crawling backward across the grass.  Her cautious retreat is unable to outpace your approach, and before long you are planting your hips squarely atop hers, pinning her to the ground" + ((monster.hairColor == "red" && flags[kFLAGS.redheadIsFuta] > 0) ? ", her cock pressed to her stomach" : "") + ".\n\n");
@@ -1277,7 +1275,7 @@ export class KitsuneScene {
     }
 
     // [Tail Job] - requires cock
-    private tailJobKitsuneWin(): void {
+    function tailJobKitsuneWin(): void {
         clearOutput();
         kitsuneSprite();
         outputText("Eying her silky tails, you come up with a wonderful plan to relieve some tension.  Working quickly, you untie the sash around the kitsune's waist and then retie it so that her arms are pinned to her sides.  Turning her onto her back, you prop her up against a tree and then begin to strip out of your " + player.armorName + ", reaching down to gather up her six tails in your arms.  She looks up at you curiously, watching as you wrap one of the fluffy coils around [eachCock], slowly dragging your fingertips through the lustrous fur.  As your fingers slide across their fluffy surface, she gives an involuntary shudder, her cheeks flushing a slight pink.  The tail seems to constrict around you automatically, and without any further encouragement needed the tight ring of fur begins to slide up and down, squeezing and massaging your shaft" + ((player.cocks.length > 1) ? "s" : "") + " sensually.\n\n");
@@ -1318,7 +1316,7 @@ export class KitsuneScene {
     }
 
     // [Tentacles] - requires 3+ tentacles of 30" or longer
-    private kitsunesGetBonedBy3PlusTentacles(): void {
+    function kitsunesGetBonedBy3PlusTentacles(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You slowly approach the fallen fox-woman, eying her warily and keeping a safe distance in case of any tricks she still has up her sleeve.  She slowly edges away from you with each step you take toward her, yelping in surprise when you swoop down to grab her by the arms.  She tries to scramble to safety, but her struggles only succeed in sprawling her flat on the ground as she gets tangled in her robes.\n\n");
@@ -1391,7 +1389,7 @@ export class KitsuneScene {
     // Blonde-exclusive
     // [Fuck Draft]
     // {all " + cockDescript(game.player, 0) + " calls for this scene should prioritize dog cocks; if PC is in Rut, prioritize other animal dicks second, otherwise use the biggest cock.}
-    private fuckDraftBlond(): void {
+    function fuckDraftBlond(): void {
         clearOutput();
         kitsuneSprite();
         let x: number = -1;
@@ -1494,7 +1492,7 @@ export class KitsuneScene {
     }
 
     // [Ovi Elixir]
-    private doseAKitsuneWithOviElixirs(): void {
+    function doseAKitsuneWithOviElixirs(): void {
         clearOutput();
         kitsuneSprite();
         let x: number = player.cocks.cockThatFits(100);
@@ -1568,7 +1566,7 @@ export class KitsuneScene {
     }
 
     // [Lactaid]
-    private lactaidDoseAKitSune(): void {
+    function lactaidDoseAKitSune(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You lick your lips hungrily, staring at her voluptuous tits, just barely contained in her robes.  Reaching into your pouch, you pull out a bottle of Lactaid and swirl it around in your hand, grinning darkly.  As you lean down over her, the kitsune eyes you suspiciously, her gaze moving back and forth between the bottle and you.  She makes a halfhearted attempt to crawl away, letting out a cry when you grab her by the " + ((player.cor < 33) ? "hem of her robe" : "tail") + ", pulling her back.\n\n");
@@ -1629,7 +1627,7 @@ export class KitsuneScene {
 
     // Black-hair-exclusive
     // [Hotdog Anal] - replaces regular Anal option only for the black-haired girl.
-    private hotdogAnalInKitsuneButtDontLetTailTickleYourNose(): void {
+    function hotdogAnalInKitsuneButtDontLetTailTickleYourNose(): void {
         clearOutput();
         kitsuneSprite();
         const x: number = player.cocks.cockThatFits(144);
@@ -1697,7 +1695,7 @@ export class KitsuneScene {
     }
 
     // [Feeder]
-    private feederTheKitsunes(): void {
+    function feederTheKitsunes(): void {
         clearOutput();
         kitsuneSprite();
         outputText("As you stand over the beaten trickster, you pick up the faint sound of a groan coming from her stomach.  Her hands rest on the pudgy curve of her stomach, rubbing it idly and grimacing.\n\n");
@@ -1754,7 +1752,7 @@ export class KitsuneScene {
     }
 
     // [GetBJ] - requires cock 108 area or less
-    private getABJFromAFoxGirl(): void {
+    function getABJFromAFoxGirl(): void {
         clearOutput();
         kitsuneSprite();
         const x: number = player.cocks.cockThatFits(108);
@@ -1843,7 +1841,7 @@ export class KitsuneScene {
     }
 
     // [GetLicked] - requires a vagina
-    private getLickedByKitsunes(): void {
+    function getLickedByKitsunes(): void {
         clearOutput();
         kitsuneSprite();
         outputText("Wary of further trickery, you slowly make your way forward, keeping your eyes trained on her in case she decides to pull a fast one.  You must be in luck, as she only backs herself into a tree, crying out and wincing as the back of her skull hits bark with a sickening thump.  As she rubs the tender spot on the back of her head, your eyes wander across her form, an aching need building up in your feminine nethers.  As you drop low to face her eye to eye, you lift her chin gently and lean forward to kiss her, moaning lightly as her pillowy soft pink lips part to accept your tongue.\n\n");
@@ -1876,7 +1874,7 @@ export class KitsuneScene {
 
     // Redhead-exclusive
     // [Ride] - requires vagina
-    private rideDatRedheadKitsuneCockIntoTheSkyDiamonds(): void {
+    function rideDatRedheadKitsuneCockIntoTheSkyDiamonds(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You watch the downed kitsune closely, strafing around her as you close in.  One never can be too careful, and you certainly have reason to suspect that this may just be another trick.  Thankfully, it appears the clever seductress' trickery has run its course.");
@@ -1919,7 +1917,7 @@ export class KitsuneScene {
 
     // [Helix] - requires herm
     // REDHEAD KITSUNE
-    private helixZeKitsunes(): void {
+    function helixZeKitsunes(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You eye the sulking kitsune warily, wondering if this is just another one of her tricks, but as you edge closer to her, it seems she's resigned herself to her fate.  She stares up at you with a half-defiant pout, arms crossed over her chest, but makes no attempt to resist you other than to let out a startled \"<i>Eep!</i>\"  when you grab her by the shoulders and toss her onto her hands and knees.\n\n");
@@ -1987,7 +1985,7 @@ export class KitsuneScene {
 
     // [Remove Dick]
     // AKA Lose the dick, schweethaat AKA put that thing away
-    private redheadsDontDeserveToHavePenisesBecauseTheyreTooGayForPenisOrSomethingIDontReallyKnowHowThisWorksOrWhyThisFunctionNameIsSoFuckingLong(): void {
+    function redheadsDontDeserveToHavePenisesBecauseTheyreTooGayForPenisOrSomethingIDontReallyKnowHowThisWorksOrWhyThisFunctionNameIsSoFuckingLong(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You squint slightly, leering at the bulge between the kitsune's legs with a slight frown.  Your gaze travels up and down her voluptuous form, eying the girl's lovely curves carefully.  It's decided - if you're going to be having fun with her, that thing has got to go.\n\n");
@@ -2011,7 +2009,7 @@ export class KitsuneScene {
     }
 
     // [Bring Back Dick] // AKA you don't know dick about dick AKA the dickening
-    private bringBackDick(): void {
+    function bringBackDick(): void {
         clearOutput();
         kitsuneSprite();
         outputText("You look her over contemplatively, rubbing your chin in thought as you stare at her crotch.  Somehow, it seems...  empty.  Something is missing.\n\n");
@@ -2028,7 +2026,7 @@ export class KitsuneScene {
     }
 
     // Non-Futa Redhead: [Some sort of lapsitting handjob thing, I don't know]
-    private nonFutaRedHeadIsWorstRedheadLapsittingHandjobThingIDontKnow(): void {
+    function nonFutaRedHeadIsWorstRedheadLapsittingHandjobThingIDontKnow(): void {
         clearOutput();
         kitsuneSprite();
         outputText("The beaten girl makes no effort to resist or even to escape as you close in on her.  She watches you carefully as you approach, having lost much of the fire in her glistening green eyes and replaced it with a reverent submissiveness.  Her ears droop to the sides when you reach out to stroke the top of her head, and she lowers her cheek against your hip, a light pink blush spreading across her face.\n\n");
@@ -2081,7 +2079,7 @@ export class KitsuneScene {
     }
 
     // Non-futa Redhead: [Bondage] - requires a cock with area <= 144 due to some anal
-    private nonFutaRedHeadBondageIGuessYouTieHerUpWithYourPenisThenHuh(): void {
+    function nonFutaRedHeadBondageIGuessYouTieHerUpWithYourPenisThenHuh(): void {
         clearOutput();
         kitsuneSprite();
         outputText("As you close in on your fallen prey, she seems to be quite resigned to her fate.  She makes a token attempt to flee, but the moment your hand touches one of her crimson tails, she falls flat and rolls over in submission.  You drop low over her, pinning her down by the hips as you run your fingertips up the side of her cheek, tousling her hair gently and teasing the edge of her ear.  Her ear flicks lightly, then lies flat against the sides of her head, a bright pink blush spreading across her face.\n\n");
@@ -2164,7 +2162,7 @@ export class KitsuneScene {
 
     // [The Shrine of the Ninetails]
     // Discovery
-    public kitsuneShrine(): void {
+    export function kitsuneShrine(): void {
         clearOutput();
         if (flags[kFLAGS.KITSUNE_SHRINE_VISIT] == 0) {
             outputText("Your travels take you down a winding path through the forest today, deep in the heart of the woods.  Each step you take makes it feel even more like the dense foliage is creeping in even closer, the rough-hewn dirt path dwindling down to almost nothing up ahead.  Whatever the trail was used for long ago, it is in the late stages of being reclaimed by the wilderness now.\n\n");
@@ -2192,7 +2190,7 @@ export class KitsuneScene {
     }
 
     // [Read Books]
-    private readKitsuneBooks(): void {
+    function readKitsuneBooks(): void {
         clearOutput();
         outputText("You decide to peruse the selection of old tomes on the bookshelf.  To your dismay, many of them seem to be written in a strange script that you can't understand.  After a bit of searching, though, you find a couple that you can read, carefully thumbing through the old, dusty pages.\n\n");
         const choice: number = rand(3);
@@ -2218,7 +2216,7 @@ export class KitsuneScene {
     }
 
     // [Meditate]
-    private meditateLikeAKitsuneEhQuestionMark(): void {
+    function meditateLikeAKitsuneEhQuestionMark(): void {
         clearOutput();
         if (player.hasItem(ConsumableLib.FOXJEWL) && player.tailType == TAIL_TYPE_FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EARS_FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
             // 20% chance if PC has fox ears, 1 or more fox tails, carries a Fox Jewel, and meets level & INT requirements for the next tail:
@@ -2253,7 +2251,7 @@ export class KitsuneScene {
     }
 
     // [Steal Statue]
-    private stealAStatue(): void {
+    function stealAStatue(): void {
         clearOutput();
         menu();
         if (flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) {
@@ -2269,7 +2267,7 @@ export class KitsuneScene {
     }
 
     // [Take it]
-    private takeAKitsuneStatue(): void {
+    function takeAKitsuneStatue(): void {
         clearOutput();
         outputText("The thought of how many gems you'll be able to get for it is enough to quickly suppress those feelings, avarice winning out over guilt.");
         // +10 COR, add Gold Statue to inventory, Advance 1hr and return to camp
@@ -2279,7 +2277,7 @@ export class KitsuneScene {
     }
 
     // [Put it Back]
-    private putKitsuneStatueBack(): void {
+    function putKitsuneStatueBack(): void {
         clearOutput();
         outputText("Regretting your decision, you replace the statue on the pedestal, your guilty conscience winning out over greed today.");
         // Advance 1hr and return to camp.
@@ -2289,8 +2287,7 @@ export class KitsuneScene {
     }
 
     // Use:
-    public kitsuneStatue(): void {
+    export function kitsuneStatue(): void {
         outputText("You pull out the gold statue and turn it around in your hands a few times, carefully examining the intricate filigree and inscriptions covering the masterfully crafted idol.  Whoever made this certainly put a lot of time and love into their craft." + ((player.cor < 50) ? "  Examining the painstaking detail that went into it, you feel a slight pang of guilt for having stolen it from its rightful place.  You push the thoughts away, reasoning that it won't be missed - after all, the owner was long gone before you arrived." : "") + "\n\n");
         outputText("It's not much use to you other than decoration, but based on the craftsmanship alone you judge that you could get a fair price for it if you pawned it off.");
     }
-}

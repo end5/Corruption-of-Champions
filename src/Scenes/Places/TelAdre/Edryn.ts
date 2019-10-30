@@ -44,8 +44,9 @@ export class Edryn implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public edrynBarTalk(): void {
+    export function edrynBarTalk(): void {
         spriteSelect(14);
         if (player.effects.findByType(StatusAffects.Edryn) < 0) player.effects.create(StatusAffects.Edryn, 0, 0, 0, 0);
         outputText("", true);
@@ -227,7 +228,7 @@ export class Edryn implements TimeAwareInterface {
         }
     }
 
-    private edrynOffer(): void {
+    function edrynOffer(): void {
         spriteSelect(14);
         let cost: number = 0;
         switch (player.effects.getValue1Of(StatusAffects.Edryn)) {
@@ -350,7 +351,7 @@ export class Edryn implements TimeAwareInterface {
         }
     }
 
-    public edrynSexSelecter(): void {
+    export function edrynSexSelecter(): void {
         spriteSelect(14);
         let cost: number = 0;
         switch (player.effects.getValue1Of(StatusAffects.Edryn)) {
@@ -387,7 +388,7 @@ export class Edryn implements TimeAwareInterface {
         // Increment sex count
         player.effects.addValue(StatusAffects.Edryn, 1, 1);
     }
-    private fuckEdrynTaur(): void {
+    function fuckEdrynTaur(): void {
         spriteSelect(14);
         outputText("", true);
 
@@ -434,7 +435,7 @@ export class Edryn implements TimeAwareInterface {
         if (player.lust < 30) player.lust = 30;
         doNext(Camp.returnToCampUseOneHour);
     }
-    private fuckEdrynNonTaur(): void {
+    function fuckEdrynNonTaur(): void {
         spriteSelect(14);
         outputText("", true);
         outputText(images.showImage("edryn-fuck-as-non-taur"));
@@ -492,7 +493,7 @@ export class Edryn implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public edrynBar(): boolean {
+    export function edrynBar(): boolean {
         if (flags[kFLAGS.EDRYN_NEVER_SEE_AGAIN] == 0 && game.time.hours >= 14 && game.time.hours <= 19 && (game.time.hours < 17 || flags[kFLAGS.EDRYN_NUMBER_OF_KIDS] == 0))
             return true;
         return false;
@@ -511,9 +512,9 @@ export class Edryn implements TimeAwareInterface {
     // Introduction -- Hel x Edryn -- Wet Bitch Entrance
     // (PC goes to the Wet Bitch during Edryn's hours)
 
-    private edrynHeliaLastThreesomeCheck: number;
+    let edrynHeliaLastThreesomeCheck: number;
 
-    public edrynHeliaThreesomePossible(): boolean {
+    export function edrynHeliaThreesomePossible(): boolean {
         if (game.time.totalTime == edrynHeliaLastThreesomeCheck || game.time.totalTime == -edrynHeliaLastThreesomeCheck) // Only choose action once per visit to the bar
             return edrynHeliaLastThreesomeCheck > 0;
         edrynHeliaLastThreesomeCheck = game.time.totalTime;
@@ -525,13 +526,13 @@ export class Edryn implements TimeAwareInterface {
         return true;
     }
 
-    public helAppearance(): void {
+    export function helAppearance(): void {
         outputText("\n\nTo your surprise, you see Hel the salamander sitting in a corner table, a pair of foxy fox-morph girls sitting on her lap.  When she sees you enter, the pretty reptile lifts her tankard and shouts, \"<i>Hey! " + player.short + "! Over here!</i>\" over the loud noises of the bar.", false);
         // (\"<i>Hel</i>\" button added to the Wet Bitch menu)
     }
 
     // \"<i>Hel</i>\" in Wet Bitch Menu (First Time)
-    public approachHelAtZeBitch(): void {
+    export function approachHelAtZeBitch(): void {
         outputText("", true);
         outputText(images.showImage("hel-chat-at-bar"));
         let edryn: () => void = null;
@@ -568,7 +569,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // First Time - Leave
-    private leaveHelInZeBitch(): void {
+    function leaveHelInZeBitch(): void {
         outputText("", true);
         if (flags[kFLAGS.HEL_EDRYN_OFFER] == 1) {
             outputText("You decide against trying to set something up between the girls -- you like your lovers separate for now.  You spend the rest of the hour quietly chatting with Helia before giving her a friendly kiss goodbye and stepping away.", false);
@@ -582,7 +583,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // First Time -- Threesome
-    public helEdrynThreeSomeStartYerEngines(): void {
+    export function helEdrynThreeSomeStartYerEngines(): void {
         outputText("", true);
         if (flags[kFLAGS.EDRYN_TIMES_HEL_THREESOMED] == 0) {
             outputText("Suddenly, an idea forms in your mind.  You ask Hel if she'd like to meet Edryn.\n\n", false);
@@ -609,7 +610,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // THREESOME SEX
-    private threesomeEdrynAndHel(): void {
+    function threesomeEdrynAndHel(): void {
         outputText("", true);
         outputText(images.showImage("edryn-hel-threesome"));
         const x: number = player.cocks.cockThatFits(300);
@@ -645,7 +646,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Pregdryn:
-    public findOutEdrynIsPregnant(): void {
+    export function findOutEdrynIsPregnant(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("Edryn is lying down at her table, pensively circling a finger around a glass of water and poking listlessly at her plate of greens.  Her eyes keep glancing down or to the side every time you meet her gaze.  You've never seen the shameless centaur bothered like this, and you grab her by the shoulders to ask, \"<i>What's wrong?</i>\"\n\n", false);
@@ -662,7 +663,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Shocked
-    private shockedByEdrynsPregnancy(): void {
+    function shockedByEdrynsPregnancy(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("You stammer for an answer, unsure of what to say in light of this startling revelation.  Edryn looks on the verge of tears and all you can do is struggle for words.  She grips the table, her knuckles turning white while her eyes flick from side to side in a panic.", false);
@@ -672,7 +673,7 @@ export class Edryn implements TimeAwareInterface {
         simpleChoices("Accept It", shockedByPregdrynThenAccept, "Reject It", beAnAssholeToPregdryn, "", null, "", null, "", null);
     }
     // Accept it
-    private shockedByPregdrynThenAccept(): void {
+    function shockedByPregdrynThenAccept(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("Leaning forward, you grab hold of Edryn's hands and cradle them in your grip.  She looks back up at your eyes and reads your expression, breaking into a smile as she reads the feelings on your face.\n\n", false);
@@ -684,7 +685,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Reject it
-    private beAnAssholeToPregdryn(): void {
+    function beAnAssholeToPregdryn(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("You look the panicked centauress dead in the eye and explain that what she does with her body is her business, and you want nothing to do with it.  She stares dumbfounded for a split-second before her face colors red with rage.  Edryn screams, \"<i>GET THE FUCK AWAY FROM ME THEN!</i>\"\n\n", false);
@@ -697,7 +698,7 @@ export class Edryn implements TimeAwareInterface {
         doNext(TelAdre.barTelAdre);
     }
     // Pleased
-    private pleasedbyPregdryn(): void {
+    function pleasedbyPregdryn(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("You crack into a smile and congratulate the lusty centaur.  She giggles with relief at your words and wipes a bead of sweat from her brow as you finish.  Edryn exclaims, \"<i>I'm so glad you're happy about this!  I don't expect you to drop your quest and move in with me or anything like that, but it'll be wonderful to hear the clipper-clopper of little hooves in this town.</i>\"\n\n", false);
@@ -709,7 +710,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Aroused
-    public arousedByPregdryn(): void {
+    export function arousedByPregdryn(): void {
         spriteSelect(14);
         outputText("", true);
         outputText("You break into a grin bordering on lecherousness and congratulate the lusty centaur.  Her eyes widen for a moment, shocked from your expression, then narrow into a sultry expression.  Edryn teases, \"<i>I think someone has a bit of a pregnancy fetish, hrmm?  Is it the thought of my tits getting swollen with milk or the idea of me being jiggly and randy all the time that does it for you?</i>\"  She shivers, the outlines of her prominent nipples straining against her already-tightly-stretched tunic.  Edryn's eyes drop down and a rueful smile works its way across her face as she admits, \"<i>Great, now I'm turned on too!  Let me go use the little ponies' room. Then, MAYBE, we can help take care of each other.</i>\"\n\n", false);
@@ -719,7 +720,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Pregger Offer
-    private pregdrynOffer(cs: boolean = true): void {
+    function pregdrynOffer(cs: boolean = true): void {
         spriteSelect(14);
         if (cs) outputText("", true);
         // Used to call post birthing sexings.
@@ -835,7 +836,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Fucking
-    public fuckPregEdryn(): void {
+    export function fuckPregEdryn(): void {
         clearOutput();
         spriteSelect(14);
         outputText(images.showImage("edryn-preggo-fuck"));
@@ -924,7 +925,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // EAT THE BITCH'S CUNT OUT
-    private jizzFromEatingPregdrynOut(): void {
+    function jizzFromEatingPregdrynOut(): void {
         spriteSelect(14);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(300);
@@ -988,7 +989,7 @@ export class Edryn implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private edrynPregChance(): void {
+    function edrynPregChance(): void {
         // Get out if already pregged.
         if (pregnancy.isPregnant) return;
 
@@ -1027,7 +1028,7 @@ export class Edryn implements TimeAwareInterface {
     // Strong pussy that can squeeze tight enough to hold you still.
     // During orgasm contracts into cock-milking rings that happen so fast and so frequently you can't even track them
     // Intro:
-    private edrynFucktroduction(): void {
+    function edrynFucktroduction(): void {
         clearOutput();
         spriteSelect(14);
         outputText("", true);
@@ -1078,7 +1079,7 @@ export class Edryn implements TimeAwareInterface {
     }
 
     // Eat Her Out Till Shit Goes Crazy
-    public eatEdrynPussyLikeABawss(): void {
+    export function eatEdrynPussyLikeABawss(): void {
         clearOutput();
         outputText(images.showImage("edryn-eat-her-out"));
         let x: number = player.cocks.cockThatFits(300);
@@ -1158,7 +1159,7 @@ export class Edryn implements TimeAwareInterface {
         dynStats("lib", .25, "sen", -3);
     }
 
-    private postEdrynEatOutRut(): void {
+    function postEdrynEatOutRut(): void {
         clearOutput();
         outputText("When Edryn and you wake, your genitals are so sore and sensitive that getting cleaned up is almost painful.  The centauress even goes so far as to comment that she'll have to pay someone to mop up the mess, but there's a proud twinkle in her eye.  Somehow, your [armor] got splattered with vaginal juices during the sexcapade, and as you put them back on, [eachCock] regains its familiar hardness.  You chew on your lower lip as you slip out after saying goodbye, rock-hard and smelling totally of Edryn's lust.  A limited applause goes up at your departure, mixed with hooting and catcalls.  What a fuck!");
         hideUpDown();
@@ -1169,4 +1170,3 @@ export class Edryn implements TimeAwareInterface {
         flags[kFLAGS.TIMES_EATEN_EDRYN_PUSSY_RUT]++;
         doNext(Camp.returnToCampUseFourHours);
     }
-}

@@ -2,39 +2,36 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class BeeGirlScene {
-    private static BEE_GIRL_CONVERSATION: number = 0x7FFF0000; // Used to track conversations when the player is a female bee morph (Highest bit is for the bad end warning)
-    private static BEE_GIRL_ATTITUDE: number = 0x0000FFFF;
-    private static BEE_GIRL_TALKED: number = 1; // Replaces the old bee progress flag
-    private static BEE_GIRL_TALKED_AND_LEFT: number = 2; // Refusing to take her eggs leads to conversation
-    private static BEE_GIRL_TALKED_AND_LEFT_TWICE: number = 3;
-    private static BEE_GIRL_PLAYER_AFRAID: number = 4;
-    private static BEE_GIRL_PLAYER_VOLUNTARY_EGGING: number = 5; // End of the afraid chain, from now on player gets egged when they meet her
-    private static BEE_GIRL_PLAYER_DISGUSTED: number = 6;
-    private static BEE_GIRL_PLAYER_DUTY: number = 7;
+    let BEE_GIRL_CONVERSATION: number = 0x7FFF0000; // Used to track conversations when the player is a female bee morph (Highest bit is for the bad end warning)
+    let BEE_GIRL_ATTITUDE: number = 0x0000FFFF;
+    let BEE_GIRL_TALKED: number = 1; // Replaces the old bee progress flag
+    let BEE_GIRL_TALKED_AND_LEFT: number = 2; // Refusing to take her eggs leads to conversation
+    let BEE_GIRL_TALKED_AND_LEFT_TWICE: number = 3;
+    let BEE_GIRL_PLAYER_AFRAID: number = 4;
+    let BEE_GIRL_PLAYER_VOLUNTARY_EGGING: number = 5; // End of the afraid chain, from now on player gets egged when they meet her
+    let BEE_GIRL_PLAYER_DISGUSTED: number = 6;
+    let BEE_GIRL_PLAYER_DUTY: number = 7;
 
-    public constructor() { }
+    export function setTalked(): void { flags[kFLAGS.BEE_GIRL_STATUS] = BEE_GIRL_TALKED; }
 
-    public setTalked(): void { flags[kFLAGS.BEE_GIRL_STATUS] = BEE_GIRL_TALKED; }
+    function getAttitude(): number { return flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE; }
 
-    private getAttitude(): number { return flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE; }
+    function setAttitude(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) + value; }
 
-    private setAttitude(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) + value; }
+    function getBadEndWarning(): boolean { return (flags[kFLAGS.BEE_GIRL_STATUS] & 0x80000000) != 0; }
 
-    private getBadEndWarning(): boolean { return (flags[kFLAGS.BEE_GIRL_STATUS] & 0x80000000) != 0; }
-
-    private setBadEndWarning(value: boolean): void {
+    function setBadEndWarning(value: boolean): void {
         flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & (BEE_GIRL_ATTITUDE | BEE_GIRL_CONVERSATION)) + (value ? 0x80000000 : 0);
     }
 
-    private getConversation(): number { return (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) >> 16; }
+    function getConversation(): number { return (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_CONVERSATION) >> 16; }
 
-    private setConversation(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE) + (value << 16); }
+    function setConversation(value: number): void { flags[kFLAGS.BEE_GIRL_STATUS] = (flags[kFLAGS.BEE_GIRL_STATUS] & BEE_GIRL_ATTITUDE) + (value << 16); }
 
     // The Queen Bee
     // location: Forest
     // add to exploreForest
-    public beeEncounter(): void {
+    export function beeEncounter(): void {
         clearOutput();
         spriteSelect(6);
         // Intro text...
@@ -49,7 +46,7 @@ export class BeeGirlScene {
         else beeEncounterSelect(false);
     }
 
-    private beeEncounterSelect(clearScreen: boolean = true): void {
+    function beeEncounterSelect(clearScreen: boolean = true): void {
         if (clearScreen) clearOutput();
         spriteSelect(6);
         // Bee appears!
@@ -104,7 +101,7 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterAsBeeMorphMaleOrGiantCock(isBeeMorph: boolean): void {
+    function beeEncounterAsBeeMorphMaleOrGiantCock(isBeeMorph: boolean): void {
         outputText("Her face opens into a wide smile at the sight of you.  <i>“Aww, hazzz a lonely one come seeking comfort?”</i>\n\n");
         outputText("Still in a daze from the smell and sound around you (or maybe just filled with your own need to be with her) you give her a dopey smile and nod your head.  It’s as best as your addled mind can do in response.  <i>“");
         if (player.cocks.longestCockLength() > 50 || player.cocks[0].cockType == CockTypesEnum.BEE)
@@ -119,7 +116,7 @@ export class BeeGirlScene {
         else beeSexForCocks(false);
     }
 
-    private beeEncounterAsBeeMorphFemale(): void {
+    function beeEncounterAsBeeMorphFemale(): void {
         outputText("Her face breaks into a huge grin and she claps her hands together.  <i>“Hello zzzizzzter!  Come here, let’s play together!”</i>  She stretches out on the flower, and gently beckons to you while running a finger along her moist honey pot.\n\n");
         outputText("You shake your head a little clearing away the buzzing and consider her.  ");
         if (player.cor <= 33)
@@ -131,19 +128,19 @@ export class BeeGirlScene {
         simpleChoices("Fight", fightTheBeeGirl, "Play", beeMaidenPlay, "", null, "", null, "Leave", beeEncounterAsBeeMorphFemaleLeave);
     }
 
-    private beeEncounterAsBeeMorphFemaleLeave(): void {
+    function beeEncounterAsBeeMorphFemaleLeave(): void {
         spriteSelect(6);
         outputText("\n\nYou shake your head at her, and she gives you a look of disappointment.  You’re a little disappointed yourself, but you already decided to leave.  You turn away from the bee and resume your explorations.  Nothing else of note happens over the rest of the hour.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterAfraid(): void {
+    function beeEncounterAfraid(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile at the sight of you.  Her buzzing dies down and you notice that the mind numbing smell in the glade isn’t as strong as you were last here.  The handmaiden turns to the side and shows you that her bee abdomen is quite slender today; it doesn’t look like she has any eggs this time.  <i>“Zzzo, the queen hazzz zzzaid that we can try a little experiment with you, if thingzzz work out, maybe we won’t use zzzo much buzzzing and honey.”</i>  She giggles, <i>“Firzzzt time, no eggzzz, zzzo you don’t have to worry.  Are you ready to have zzzome fun?”</i>");
         simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidFirstTimeSex, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterAfraidFirstTimeSex(): void {
+    function beeEncounterAfraidFirstTimeSex(): void {
         clearOutput();
         spriteSelect(6);
         setAttitude(BEE_GIRL_PLAYER_VOLUNTARY_EGGING);
@@ -180,13 +177,13 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterAfraidRepeat(): void {
+    function beeEncounterAfraidRepeat(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile at the sight of you and her buzzing dies down.  Once again, the smell in the grove is much weaker than it was when you first came to this grove.  Those same flowers have been scattered around to ease off on the scent’s mind affecting powers.  She turns to the side to give you a full view of her now swollen abdomen and gives it a gentle pat.  <i>“Are you ready to carry zzzome eggzzz now?  I won’t hurt you, and I promizzzizz I won’t uzzze my buzzzing and honey to make you do it.  Thezzze where zzzaved zzzpecially for you, and I’ve got a little gift for you too if you zzzay yezzz.  Are you up for a little zzzex and eggzzz up your butt?”</i>");
         simpleChoices("Fight", fightTheBeeGirl, "Have Sex", beeEncounterAfraidRepeatSex, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterAfraidRepeatSex(): void {
+    function beeEncounterAfraidRepeatSex(): void {
         clearOutput();
         spriteSelect(6);
         outputText("You give a nod and strip off your " + player.armorName + ".  The bee reclines back in her flower, continuing to pick away at the smaller flower in her hands while she waits for you.  The girl makes no moves until you’re right in front of her, then she gives you a smile and invites you into her embrace.  You take a deep breath to ready yourself for what is to come before falling into her arms.  She holds you close for a time, ");
@@ -238,19 +235,19 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterDisgusted(): void {
+    function beeEncounterDisgusted(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a frown at the sight of you.  At once her buzzing stops and she looks at you and says <i>“Oh, it’zzz you again, juzzzt go away; I need to find zzzomeone that actually will carry my queen’zzz eggzzz.”</i>  Your mind is pulled from its stupor, as she directs you out of the clearing with a dismissive look.");
         simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterDuty(): void {
+    function beeEncounterDuty(): void {
         outputText(" in the light.\n\n");
         outputText("Her face breaks into a smile and her buzzing dies down.  You shake your head slightly to clear away the effect that you were under and look back at the smiling bee girl.");
         simpleChoices("Fight", fightTheBeeGirl, "Talk", beeEncounterDutyTalk, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterDutyTalk(): void {
+    function beeEncounterDutyTalk(): void {
         clearOutput();
         spriteSelect(6);
         outputText("The handmaiden seems to be quite happy to talk to you for a little while.  She is quite interested in the tales you have to share, and you have a chance to hear a bit about the world from her.  After the two of you have been talking for awhile, you notice that she has been running her hand over her lady bits and you ask her about it.  <i>“Oh?  Well, I’m juzzzt zzzo horny right now, do you think you could help me out with that?  You can keep zzzome of the honey for later, and it could do zzzome incredible thingzzz to you.”</i>  Do you take her up on her offer?”</i>");
@@ -258,28 +255,28 @@ export class BeeGirlScene {
         doYesNo(freeHoneyEvent, beeEncounterDutyLeave);
     }
 
-    private beeEncounterDutyLeave(): void {
+    function beeEncounterDutyLeave(): void {
         clearOutput();
         spriteSelect(6);
         outputText("You decline her offer, and shortly afterwards you take your leave to return to camp.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterSheFearsYou(): void {
+    function beeEncounterSheFearsYou(): void {
         outputText(" in the light.\n\n");
         outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“Pleazzze don't hurt me again!  I won't try to lay eggzzz in you any more, just let me go!”</i>\n\n");
         outputText("What will you do with her?");
         simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterSheDesiresYou(): void {
+    function beeEncounterSheDesiresYou(): void {
         outputText(" in the light.\n\n");
         outputText("Her mouth opens wide in panic as she catches sight of you.  She drops the flower and starts to draw back yelling <i>“No!  I won't give in to the dezzzire!  Go away!”</i>\n\n");
         outputText("What will you do with her?");
         simpleChoices("Fight", fightTheBeeGirl, "", null, "", null, "", null, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterSheBeatsYouRegularly(): void {
+    function beeEncounterSheBeatsYouRegularly(): void {
         outputText(" in the light.\n\n");
         outputText("Her mouth breaks out in a grin at the sight of you.  <i>“Hello again naughty " + mf(player, "boy", "girl") + ",”</i> her buzzing really starting to get inside your head as she stands up and beckons to you.  <i>“Juzzzt make it eazzier on yourzzzelf and let me lay my eggzzz in you.  No fuzzzzz, no fighting.  Just let yourzzzelf be carried away.”</i>\n\n");
         if ((player.lib + player.cor < 70) || rand(4) == 0) { // Chance to avoid raaaaeeeeep
@@ -292,14 +289,14 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterSheBeatsYouRegularlyTalk(): void {
+    function beeEncounterSheBeatsYouRegularlyTalk(): void {
         clearOutput();
         spriteSelect(6);
         outputText("<i>“Zzzo, you’re being nizzze today?”</i> she smiles as she gently floats over towards you.  <i>“I know what you’re really here for, you can’t fight it anymore.”</i> she gently slaps your " + buttDescription(player) + " and you find yourself start to walk towards the large flower, the bee girl gently floating behind you.  She giggles at you and says, <i>“Zzzee?  You really juzzzt want the eggzzz and honey.  You’re a zzzpecial one, made juzzzt for carrying the hive’zzz eggzzz.”</i>  You fall into the flower and feel the bee girl gently land on your back.  <i>“Are you ready?”</i> she asks you.");
         beeEncounterSheBeatsYouRegularlyLastChance();
     }
 
-    private beeEncounterSheBeatsYouRegularlyLastChance(): void {
+    function beeEncounterSheBeatsYouRegularlyLastChance(): void {
         if ((player.lib + player.cor < 70) || rand(4) == 0) { // Chance to avoid raaaaeeeeep
             doYesNo(beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs, beeEncounterSheBeatsYouRegularlyDontLetHer);
         }
@@ -309,14 +306,14 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterSheBeatsYouRegularlyDontLetHer(): void {
+    function beeEncounterSheBeatsYouRegularlyDontLetHer(): void {
         clearOutput();
         spriteSelect(6);
         outputText("You barely manage to shake off her wiles and roll to the side.  You give her one last look before picking yourself up and running away from the clearing.  That really could have gone better.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs(clearScreen: boolean = true): void {
+    function beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs(clearScreen: boolean = true): void {
         if (clearScreen)
             clearOutput();
         else outputText("\n\n");
@@ -350,7 +347,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseFourHours);
     }
 
-    private beeEncounterWithExgartuan(): void {
+    function beeEncounterWithExgartuan(): void {
         outputText(", bending into a smile as she sees you approach.  Standing, she welcomes you in, her wings giving a small buzz as her arms spread open for a welcoming embrace.\n\n");
         if (rand(2) == 0) {
             outputText("Your " + cockDescript(game.player, 0) + " wriggles free of your " + player.armorName + ", as you keep walking forward.  A bodiless voice yells, \"<i>Honeypot, honeypot, ME LOOOOVE HONEYPOOOOOT!</i>\"\n\n");
@@ -365,7 +362,7 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterWithWorms(): void { // If she won't fuck infested players after combat then she shouldn't fuck them here either
+    function beeEncounterWithWorms(): void { // If she won't fuck infested players after combat then she shouldn't fuck them here either
         clearOutput();
         spriteSelect(6);
         outputText("You slowly " + (player.isTaur() ? "trot" : "walk") + " toward the bee girl, your mind in a haze.  Her antennae wiggle in anticipation and she gives you a lusty smile, eager to fill your ass with her payload.  You start to take off your clothes, the last of your underwear falling to the forest floor as you reach her.\n\n");
@@ -377,20 +374,20 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private fightTheBeeGirl(): void {
+    function fightTheBeeGirl(): void {
         clearOutput();
         outputText("You clear your head and resolve to defeat the monstrous bee-woman.");
         spriteSelect(6);
         startCombat(new BeeGirl());
     }
 
-    private beeEncounterClassic(clearScreen: boolean = true): void {
+    function beeEncounterClassic(clearScreen: boolean = true): void {
         if (clearScreen) clearOutput();
         if (getAttitude() == BEE_GIRL_TALKED_AND_LEFT || getAttitude() == BEE_GIRL_TALKED_AND_LEFT_TWICE) setAttitude(BEE_GIRL_TALKED); // Reset your friendly conversation path if autorape or accepted
         beeEncounterClassicSex(false);
     }
 
-    private beeEncounterClassicSex(postCombat: boolean = true): void {
+    function beeEncounterClassicSex(postCombat: boolean = true): void {
         spriteSelect(6);
         // Give into the beeee
         if (getAttitude() == BEE_GIRL_TALKED_AND_LEFT || getAttitude() == BEE_GIRL_TALKED_AND_LEFT_TWICE) setAttitude(BEE_GIRL_TALKED); // Reset your friendly conversation path if autorape or accepted
@@ -605,7 +602,7 @@ export class BeeGirlScene {
         else doNext(Camp.returnToCampUseFourHours);
     }
 
-    public beeSexForCocks(clearScreen: boolean = true): void {
+    export function beeSexForCocks(clearScreen: boolean = true): void {
         if (clearScreen) clearOutput();
         spriteSelect(6);
         if (getBadEndWarning() == true && rand(2) == 0) {
@@ -642,7 +639,7 @@ export class BeeGirlScene {
         }
     }
 
-    private beeSexForCocksPart2(giantCockIndex: number): void {
+    function beeSexForCocksPart2(giantCockIndex: number): void {
         clearOutput();
         spriteSelect(6);
         outputText("This is all the encouragement the handmaiden needs, and she leaps forward and wraps her arms around your " + cockDescript(player, giantCockIndex) + ".  She eagerly starts rubbing her large chest up and down your length while using her hands to play with the tip, running them all over it.  Panting, she contiues to give your " + cockDescript(player, giantCockIndex) + " a full body massage, bringing you incredible stimulation.  " + (player.cocks[giantCockIndex].cockLength > 36 ? "Even rubbing her nether lips against the base of your massive member." : "") + "  Her body starts to feel a bit sticky and slick and sometimes catches in places, bringing you to even higher levels of pleasure.\n\n");
@@ -678,7 +675,7 @@ export class BeeGirlScene {
         Inventory.takeItem(ConsumableLib.SPHONEY, Camp.returnToCampUseFourHours);
     }
 
-    private beeDroneBadEnd(): void {
+    function beeDroneBadEnd(): void {
         outputText("Her face breaks into a wide knowing smile.  <i>“Hello again, my fine cocked friend,”</i> she says rising and gently hovering over to you.  <i>“You know, the queen izzz eagerly waiting to meet you.  Zzzhe will be able to take care of you much better than I ever could, but I think we can zzztill zzzpend zzzome time together if you’re up for it.”</i>\n\n");
         outputText("You look at her a bit confused, unsure exactly what she is telling you.  <i>“Zzzzilly boy, I’ve been telling the queen about our meetingzzz, and zzzhe is eager to aczzzzept you into the hive!”</i>  She moves forward and pulls your " + player.armorName + " from your body and gently rubs your " + cockDescript(player, 0) + ".  <i>“I told you that only a queen bee could help you with zzzomething thizzz big, and you’ll be able to fill her with it and fertilize all her eggzzz.  Thizzz izzz the releazzze you’ve been craving all thizzz time, come on!”</i>\n\n");
         outputText("Her offer intrigues you incredibly, and you can’t imagine turning her down, not now.  Once, you might have been able to turn away from it, but now that you’ve got this bee prick and have felt the release that bee’s honey gives you, there's just no way.  You nod eagerly to the bee girl and \n\n");
@@ -702,7 +699,7 @@ export class BeeGirlScene {
         doNext(beeDroneBadEndPart2);
     }
 
-    private beeDroneBadEndPart2(): void {
+    function beeDroneBadEndPart2(): void {
         clearOutput();
         spriteSelect(6);
         outputText("Before too long you reach a large yellow structure that rises out of the trees, built like a layered wedding cake.  There is a strong buzzing sound all around the spire, with swarms of bees darting around, in and out of the it.  Along with the occasional bee girl as well.  <i>“Come on,”</i> your guide says to you after letting you survey the place for a time and leads you to the landing area.  As you set down, a pair of large muscular bee girls armed with spears made of chitin approach the two of you.  <i>“It’zzz okay guardianzzz, the queen azzzked me to bring thizzz boy,”</i> your guide says to them.  One of them sizes you up and looks at you closely while the other gives a few sniffs of the handmaiden’s honeypot.  She then gives a nod to the other one and the guards return to their posts.\n\n");
@@ -712,7 +709,7 @@ export class BeeGirlScene {
         doNext(beeDroneBadEndPart3);
     }
 
-    private beeDroneBadEndPart3(): void {
+    function beeDroneBadEndPart3(): void {
         clearOutput();
         spriteSelect(6);
         outputText("When you enter into the queen’s chamber, your senses are assaulted with a multitude of erotic images, sounds, and scents.  There are dozens of bees all in various states of debauchery and sexual escapades.  The females are all very much like your companion, with voluptuous thin bodies, while the males are built a bit different.  While their main bodies are still fairly thin, and they generally have cute androgynous faces, their main feature would be their massive manhoods, which are all easily three to four feet long, and at least five inches in diameter.\n\n");
@@ -723,7 +720,7 @@ export class BeeGirlScene {
         doNext(beeDroneBadEndPart4);
     }
 
-    private beeDroneBadEndPart4(): void {
+    function beeDroneBadEndPart4(): void {
         clearOutput();
         spriteSelect(6);
         outputText("<i>“Welcome, to my hive, beautiful one!  My daughter hazzz told me about you, and I am delighted to zzzee you before me,”</i> the queen says to you in a breathless voice, her massive breasts heaving as she pants in pleasure.  <i>“You are zzzertainly as pleazzzent to the eyes azzz zhe told me you were.”</i>  You can’t help but shiver in pleasure at her words, but it also brings another spike of pain to your massive member.  <i>“You are eager it zzzeemzzz, though I cannot zzzay that I am not azzz well,”</i> she says in response to your behaviour.  <i>“Come beautiful one, take your plazzze at my side and feel my honey cover your member and bring it zzzweet releazzze.”</i>\n\n");
@@ -737,7 +734,7 @@ export class BeeGirlScene {
     }
 
     // Talk to the bee-girl
-    private beeTalk(): void {
+    function beeTalk(): void {
         clearOutput();
         spriteSelect(6);
         // The first time you only get the option to have eggs laid in your bum ;) BEE_GIRL_TALKED
@@ -771,7 +768,7 @@ export class BeeGirlScene {
         }
     }
 
-    private beeEncounterRefusedHerEggs(): void {
+    function beeEncounterRefusedHerEggs(): void {
         spriteSelect(6);
         switch (getAttitude()) {
             case BEE_GIRL_TALKED_AND_LEFT_TWICE:
@@ -791,7 +788,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterRefusedHerEggsAfraid(): void {
+    function beeEncounterRefusedHerEggsAfraid(): void {
         spriteSelect(6);
         setAttitude(BEE_GIRL_PLAYER_AFRAID);
         outputText("\n\nYou move away from her and explain that it isn’t that you don’t like the idea of bearing the eggs, it’s that you’re afraid of the effect she has on your mind.  You’re uncomfortable that you can’t think clearly around her, and you really can’t agree to anything when you can’t remember it and thus can’t really enjoy it.  She tips her head to the side in surprise, before pursing her glossy lips in worry and saying, <i>“Really?  You mean there are people who don’t like it when they lozzze themzzzelvezzz?  Hmm, maybe I should tell my queen about thizzz.”</i>  She smiles back at you and starts to fly away, before stopping in midair and floating over to you and saying <i>“Come back another time, and maybe I can work out zzzomething you’ll be comfortable with, ok?”</i>");
@@ -799,7 +796,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterRefusedHerEggsDisgusted(): void {
+    function beeEncounterRefusedHerEggsDisgusted(): void {
         spriteSelect(6);
         setAttitude(BEE_GIRL_PLAYER_DISGUSTED);
         outputText("\n\nYou tell her that you find the idea of her laying eggs in you repulsive, and that you’re tired of her trying to constantly tempt you into accepting against your will.  She gives you an annoyed look before stomping her foot down on the flower she is standing on, almost causing her to tumble over to the side while saying, <i>“Fine, ah!”</i> before righting herself with her wings.  <i>“If I ever zzzee you again, you can forget about getting a good time.”</i>  Before directing you away from the clearing.  You smile as you leave, now you don’t have to worry about her song getting to you anymore.");
@@ -807,7 +804,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterRefusedHerEggsDuty(): void {
+    function beeEncounterRefusedHerEggsDuty(): void {
         spriteSelect(6);
         setAttitude(BEE_GIRL_PLAYER_DUTY);
         outputText("\n\nYou explain to her that you are a champion of your village, and what that means.  You explain your duty, and that you can’t do anything that might push you away from accomplishing that.\n\n");
@@ -817,7 +814,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beeEncounterRefusedHerEggsLeave(): void {
+    function beeEncounterRefusedHerEggsLeave(): void {
         spriteSelect(6);
         outputText("\n\nYou aren’t going to deal with this girl right now, so you just turn and walk away.");
         dynStats("lus", 5 + player.lib / 25);
@@ -834,7 +831,7 @@ export class BeeGirlScene {
             }
     */
 
-    private beeMaidenPlay(): void {
+    function beeMaidenPlay(): void {
         clearOutput();
         spriteSelect(6);
         outputText("You nod to her and walk up to the flower.  She moves a bit to the side and pats the spot next to her.  You first slip out of your " + player.armorName + ", then sit your " + buttDescription(player) + " next to her.  ");
@@ -868,7 +865,7 @@ export class BeeGirlScene {
         doNext(beeMaidenConversation);
     }
 
-    private beeMaidenConversation(): void {
+    function beeMaidenConversation(): void {
         clearOutput();
         spriteSelect(6);
         if (getConversation() > 2 && player.cor > 20) setConversation(2);
@@ -907,7 +904,7 @@ export class BeeGirlScene {
         }
     }
 
-    private beeMaidenFertileBeeBadEnd(): void {
+    function beeMaidenFertileBeeBadEnd(): void {
         clearOutput();
         spriteSelect(6);
         outputText("You take a deep breath before accepting the candy from your insectoid lover.  It is a small, round and shaped like a teardrop, about an inch long and half an inch thick.  You put it in your mouth.  It is soft and sweet, but has a bit of a sour aftertaste.  After a few moments you feel like your head is spinning, and you lie back down on the flower while the bee moves over you and gently caresses your face with her chitin covered arms.  Suddenly you whole body start to ache, then burn.  You look down at yourself to see what is happening, only to see a layer of black chitin slowly growing across your torso, in the same places as the bee above you!  Looks like you’re turning into a full bee now.\n\n");
@@ -917,7 +914,7 @@ export class BeeGirlScene {
         doNext(beeMaidenFertileBeeBadEndPart2);
     }
 
-    private beeMaidenFertileBeeBadEndPart2(): void {
+    function beeMaidenFertileBeeBadEndPart2(): void {
         clearOutput();
         spriteSelect(6);
         outputText("Before too long you reach a large yellow structure that rises out of the trees, built like a layered wedding cake.  There is a strong buzzing sound all around the spire, with swarms of bees darting around, in and out of it.  Along with the occasional bee girl as well.  <i>“Come on,”</i> your guide says to you after letting you survey the place for a time and leads you to the landing area.  As you set down, a pair of large muscular bee girls armed with spears made of chitin approach the two of you.  <i>“It’zzz okay guardianzzz, thizzz one just took our queen’s honey,”</i> your guide says to them.  One of them sizes you up and then leans down to examine your genitals while the other gives a few sniffs of the handmaiden’s honeypot.  They nod to one another and return to their posts.\n\n");
@@ -927,7 +924,7 @@ export class BeeGirlScene {
         doNext(beeMaidenFertileBeeBadEndPart3);
     }
 
-    private beeMaidenFertileBeeBadEndPart3(): void {
+    function beeMaidenFertileBeeBadEndPart3(): void {
         clearOutput();
         spriteSelect(6);
         outputText("When you enter into the queen’s chamber, your senses are assaulted with a multitude of erotic images, sounds, and scents.  There are dozens of bees all in various states of debauchery and sexual escapades.  The females are all very much like your companion, with voluptuous thin bodies, while the males are built a bit different.  While their main bodies are still fairly thin, and they generally have cute androgynous faces, their main feature would be their massive manhoods, which are all easily three to four feet long, and at least five inches in diameter.\n\n");
@@ -938,7 +935,7 @@ export class BeeGirlScene {
         doNext(beeMaidenFertileBeeBadEndPart4);
     }
 
-    private beeMaidenFertileBeeBadEndPart4(): void {
+    function beeMaidenFertileBeeBadEndPart4(): void {
         clearOutput();
         spriteSelect(6);
         outputText("<i>“Welcome,”</i> an overwhelming voice speaks into your mind.  <i>“I’ve been waiting for you to arrive, child.”</i>  The queen looks down at you smiling.  <i>“You are confused, I see.  That candy that my daughter gave you was made from my honey.  It lets me connect our minds together, and make you a true member of our hive.”</i>  Her presence alone feels so powerful, like it could blow you away in an instant.\n\n");
@@ -951,19 +948,19 @@ export class BeeGirlScene {
         doNext(beeMaidenFertileBeeBadEndPart5);
     }
 
-    private beeMaidenFertileBeeBadEndPart5(): void {
+    function beeMaidenFertileBeeBadEndPart5(): void {
         clearOutput();
         spriteSelect(6);
         outputText("As a member of the fertile cast within the bee hive, the days run together, and the once-champion’s life is filled with nothing but eggs, and playing with the drones and other members of the fertile cast.  Just as her older sister, the young bee will one day tempt another champion to their embrace and fill them with the eggs of their hive.  They won’t even be able to comprehend that their latest incubator wouldn’t have been willing if it hadn’t been for her siren’s song.  Nor will they spare any head to the critical mission that they sent out to accomplish all those months ago.  Nothing of her old self remains now.\n\n");
         gameOver();
     }
 
-    private beeMaidenConversationRejectCandy(): void {
+    function beeMaidenConversationRejectCandy(): void {
         outputText("\n\nSomething about this whole thing just felt off to you, so you turn her down.  She almost bursts into tears.  <i>“But why?  Why do you want to be zzzo lonely?  I don’t underzzztand!”</i>  You try to offer up an explanation, but after a little while it’s clear that the two of you have fundamentally different mindsets.  To her, the most horrible thing imaginable is to not be a part of a hive, and it’s unlikely that you’ll be changing her opinion any time soon.  In the end all you can tell her that she’ll accept is that you don’t want this right now, but you hope you can continue your loving rendezvous if she’s feeling up to it.  She does perk up at this and gives you a nod, <i>“Okay, I’ll zzzee you around then.”</i>  Before you once again put your " + player.armorName + " back on and head away from her flower.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private freeHoneyEvent(): void {
+    function freeHoneyEvent(): void {
         spriteSelect(6);
         player.slimeFeed();
         outputText("You mull her offer over for a moment before deciding to pursue the sweet nectar dripping from her exposed sex.  She leans back in her flower, spreading her legs obscenely and pulling an empty vial out from a tiny pack that sits on the ground.\n\n", true);
@@ -974,7 +971,7 @@ export class BeeGirlScene {
         Inventory.takeItem(ConsumableLib.PURHONY, Camp.returnToCampUseOneHour);
     }
 
-    private seduceBeeGirl(): void {
+    function seduceBeeGirl(): void {
         spriteSelect(6);
         // UNFINISHED - low priority male/female variants
         if (player.gender == 3) {
@@ -998,7 +995,7 @@ export class BeeGirlScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public beeRapesYou(): void {
+    export function beeRapesYou(): void {
         spriteSelect(6);
         clearOutput();
         flags[kFLAGS.BEE_GIRL_COMBAT_LOSSES]++;
@@ -1271,7 +1268,7 @@ export class BeeGirlScene {
         }
     }
 
-    public rapeTheBeeGirl(): void {
+    export function rapeTheBeeGirl(): void {
         spriteSelect(6);
         flags[kFLAGS.BEE_GIRL_COMBAT_WINS_WITH_RAPE]++;
         const sexed: boolean = false;
@@ -1320,7 +1317,7 @@ export class BeeGirlScene {
             "Self-Egg", gentleman, "", null, "", null, "LayYourEggs", eggs, "", null);
     }
 
-    private rapeTheBeeMultiCockStuff(): void {
+    function rapeTheBeeMultiCockStuff(): void {
         spriteSelect(6);
         outputText("", true);
         // Doubledick special
@@ -1354,7 +1351,7 @@ export class BeeGirlScene {
     }
 
     // MALE sometimes herm
-    private rapeTheBeeGirlWithADick(): void {
+    function rapeTheBeeGirlWithADick(): void {
         spriteSelect(6);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -1507,7 +1504,7 @@ export class BeeGirlScene {
     }
 
     // FEMALE sometimes herm
-    private rapeABeeGirlWithYourVagina(): void {
+    function rapeABeeGirlWithYourVagina(): void {
         spriteSelect(6);
         outputText("", true);
         if (player.isTaur()) {
@@ -1577,7 +1574,7 @@ export class BeeGirlScene {
     }
 
     // FUTA Fallback
-    private futaRapesBeeGirl(): void {
+    function futaRapesBeeGirl(): void {
         spriteSelect(6);
         outputText("", true);
         outputText("Firmly grasping her thighs at the joining of her smooth carapace and soft skin, you force them open, revealing the source of her irresistible scent.   She buzzes pitifully in protest ", false);
@@ -1654,7 +1651,7 @@ export class BeeGirlScene {
     }
 
     // (can replace normal rape victory scenes if corruption>75, and strength>60, and while player has naga tongue, dick, vagina, or d-cup or larger breasts)
-    private beeGirlRapeForTheDistinguishedGentleman(): void {
+    function beeGirlRapeForTheDistinguishedGentleman(): void {
         spriteSelect(6);
         outputText("", true);
         // (if win via HP)
@@ -1722,7 +1719,7 @@ export class BeeGirlScene {
         cleanupAfterCombat();
     }
 
-    private beeAlternate(): void {
+    function beeAlternate(): void {
         spriteSelect(6);
         const x: number = player.cocks.biggestCockIndex();
         const y: number = player.cocks.biggestCockIndex2();
@@ -1789,7 +1786,7 @@ export class BeeGirlScene {
     }
 
     // Naga on Bee Scene
-    private corruptNagaBitchesRapeABee(): void {
+    function corruptNagaBitchesRapeABee(): void {
         spriteSelect(6);
         outputText("", true);
 
@@ -1807,7 +1804,7 @@ export class BeeGirlScene {
         doNext(nagaRapesPt2TheExtremeContinuationOfAwesome);
     }
 
-    private nagaRapesPt2TheExtremeContinuationOfAwesome(): void {
+    function nagaRapesPt2TheExtremeContinuationOfAwesome(): void {
         spriteSelect(6);
         outputText("", true);
         // [Player is male]
@@ -1920,7 +1917,7 @@ export class BeeGirlScene {
         cleanupAfterCombat();
     }
 
-    public beeGirlsGetsDildoed(): void {
+    export function beeGirlsGetsDildoed(): void {
         spriteSelect(6);
         clearOutput();
         flags[kFLAGS.BEE_GIRL_COMBAT_WINS_WITH_RAPE]++;
@@ -1947,7 +1944,7 @@ export class BeeGirlScene {
         cleanupAfterCombat();
     }
 
-    public milkAndHoneyAreKindaFunny(): void {
+    export function milkAndHoneyAreKindaFunny(): void {
         spriteSelect(6);
         clearOutput();
         flags[kFLAGS.BEE_GIRL_COMBAT_WINS_WITH_RAPE]++;
@@ -1991,7 +1988,7 @@ export class BeeGirlScene {
 
     // requires spiderbite or nagabite
     // Play standard victory text
-    private layEggsInABeeSpiderLike(): void {
+    function layEggsInABeeSpiderLike(): void {
         clearOutput();
         outputText("You stand over the defeated bee, sizing up your latest catch.  She watches you fearfully as your gaze slides down her prone form, taking in every inch of her body.  Your eyes stop over her abdomen as you notice the girl's dripping, barely concealed ovipositor.  A wide");
         if (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS) outputText(", fanged");
@@ -2028,4 +2025,3 @@ export class BeeGirlScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

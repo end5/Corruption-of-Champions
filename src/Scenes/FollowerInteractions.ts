@@ -1,8 +1,6 @@
 
-export class FollowerInteractions {
-
     // [Amily meets pure Jojo - ]
-    public amilyMeetsPureJojo(): void {
+    export function amilyMeetsPureJojo(): void {
         // set flag for amily met pure jojo
         flags[kFLAGS.AMILY_MET_PURE_JOJO]++;
         outputText("", true);
@@ -20,7 +18,7 @@ export class FollowerInteractions {
     }
 
     // [Amily and Pure Jojo spar – occurs when going to amily, requires 'amily meets jojo']
-    public pureJojoAndAmilySpar(): void {
+    export function pureJojoAndAmilySpar(): void {
         outputText("", true);
         flags[kFLAGS.AMILY_SPAR_WITH_PURE_JOJO]++;
         outputText("Amily and Jojo appear to be sparring.  Amily has a pair of knives in her hands, and Jojo has a staff.  The twin blurs of fur are whirling about in a frenzy of movement.  Jojo is deflecting most of the smaller mouse's strikes, and even manages to get in the occasional strike with his staff.  He's undone the top of his robe, and sweat is pouring off of his fur.  It's clear he's working himself harder than the female.  The match-up is remarkably even, but they spot you and wrap up the intense sparring session for now.  Jojo gives you a respectful nod and departs, guzzling water from a skin as he pulls his robes back into their normal places.\n\n", false);
@@ -30,7 +28,7 @@ export class FollowerInteractions {
     }
 
     // [Amily rages at what you've done to jojo (corrupted after she met pure jojo) – encountered when visiting corrupt jojo for faps]
-    public amilyIsPissedAtYouForRuiningJojo(): void {
+    export function amilyIsPissedAtYouForRuiningJojo(): void {
         clearOutput();
         flags[kFLAGS.AMILY_PISSED_PC_CORRUPED_JOJO]++;
         outputText("You call for your personal fuck-pet to come take care of your needs, but he doesn't answer.  You call again, and once more, the mouse does not appear.  Irritated, you get up and walk towards the woods.  At the edge you find Jojo.  He's unconscious and humping the ground, with a dart stuck in his ass.  You pluck the drugged dart from his furry cheek and examine it.  It's one of Amily's!\n\n");
@@ -46,7 +44,7 @@ export class FollowerInteractions {
     }
 
     // [Tell Amily to fuck off]
-    private tellAmilyToFuckOffRuinedJojo(): void {
+    function tellAmilyToFuckOffRuinedJojo(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You chuckle, \"<i>He's a better fuck like this than you ever were.  Why don't you piss off and leave us alone?</i>\"\n\n");
@@ -66,7 +64,7 @@ export class FollowerInteractions {
     }
 
     // [Fix Him]
-    private agreeToHelpAmilyFixJojo(): void {
+    function agreeToHelpAmilyFixJojo(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You nod, ");
@@ -85,7 +83,7 @@ export class FollowerInteractions {
     }
 
     // [Go to amily with pure honey in inventory]
-    public fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM(): void {
+    export function fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM(): void {
         outputText("", true);
         outputText("\"<i>You brought it!  Yes!</i>\" cheers Amily.  She reaches into your pouches and pulls out the bottle of pure honey and takes off for the woods.  You're forced to chase after her, and by the time you catch up, she's already hit Jojo with a knock-out dart.  The corrupted mouse is still hard and dripping with spunk, even while unconscious.  Amily moans, \"<i>You poor dear... here, drink up.  This will help make you better.</i>\"\n\n", false);
         // She noms your honey
@@ -112,7 +110,7 @@ export class FollowerInteractions {
     }
 
     // [Find note from jojo @ followers menu after pufying him]
-    public findJojosNote(): void {
+    export function findJojosNote(): void {
         flags[kFLAGS.JOJO_FIXED_STATUS] = 2;
         outputText("", true);
         outputText("There is a note left on your bedroll. You pick it up and unseal it – it's from Jojo!\n\n", false);
@@ -121,7 +119,7 @@ export class FollowerInteractions {
     }
 
     // [Amily finds tentacle Jojo]
-    public amilyDiscoversJojoWithTentaclesAndShitOhBoy(): void {
+    export function amilyDiscoversJojoWithTentaclesAndShitOhBoy(): void {
         clearOutput();
         flags[kFLAGS.AMILY_DISCOVERED_TENTATLE_JOJO]++;
         outputText("You settle down for a nice fuck with your tentacle-mousey, but your pet doesn't answer your calls.  Snarling in irritation, you set off towards the woods to find your corrupted fuck-toy.  It does not take long.  Jojo's body is face-down in the dirt, unconscious.  You can see his hips pumping weakly as his cum-oozing tentacles fuck each other.  There's a dart in his neck, and with great trepidation, you pluck the needle-tipped weapon from the horror-rodent.  It's one of Amily's!\n\n", false);
@@ -156,7 +154,7 @@ export class FollowerInteractions {
         }
     }
 
-    private AmilyLeavesBirdJojoTentacles(): void {
+    function AmilyLeavesBirdJojoTentacles(): void {
         clearOutput();
         outputText("You flip her the bird.  She was a shitty fuck anyways.  Amily's eyes flood with tears, but her expression hardens with rage.  The mouse yells, \"<i>Like I'd want to stay with a demon like you anyway!</i>\"  She turns and jogs off into the distance.  Amily stops just before you lose sight of her and looks over her shoulder with tears in her eyes.  You've utterly crushed her heart.  She starts jogging again and disappears from your life forever.  Meanwhile, Jojo begins to stir.  It appears he'll be ready to serve soon...\n\n");
 
@@ -174,7 +172,7 @@ export class FollowerInteractions {
 
     // (Uncorrupt)
     // [Choose Amily – Aeris (I mean Jojo) Dies]
-    private aerisDies(): void {
+    function aerisDies(): void {
         outputText("", true);
         outputText("Amily listens impassively at first, but as you explain the situation, she comes around to understand you a little better.  She walks to your side and gives you a kiss on the cheek and explains, \"<i>There's no way to fix him.  What's been done can't be undone by any magic or item.  I have to put him out of misery and stop him from corrupting anything else.</i>\"\n\n");
 
@@ -185,7 +183,7 @@ export class FollowerInteractions {
     }
 
     // [STOP – in the name of love]
-    private stopJojoDeathInTheNameOfLove(): void {
+    function stopJojoDeathInTheNameOfLove(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You grab her by the shoulders and say, \"");
@@ -210,7 +208,7 @@ export class FollowerInteractions {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Let Her Kill Jojo]
-    private whyWouldDoThis(): void {
+    function whyWouldDoThis(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You can't watch the grisly deed and avert your eyes.  She slits the once-pious monk's throat and it's done.  The two of you build a cairn of rocks over the mouse's body, as fitting a burial as you're able to provide for him.");
@@ -223,7 +221,7 @@ export class FollowerInteractions {
     }
 
     // [Amily introduces herself to Rathazul – happens at Rathazul]
-    public AmilyIntroducesSelfToRathazul(): void {
+    export function AmilyIntroducesSelfToRathazul(): void {
         outputText("", true);
         flags[kFLAGS.AMILY_MET_RATHAZUL]++;
         outputText("Amily is here with the elderly rodent alchemist and carrying on a rather deep conversation.  They have not noticed you yet, and the two are currently discussing the medicinal properties of the various herbs and materials in Mareth.  Amily pays rapt attention as the old rat concludes his lecture on the effects of imp grass.  She thanks him, \"<i>I really appreciate this, Rathazul.  I know our tribes never saw eye to eye, but you've done a lot.  My father was an alchemist like you, and I know he'd be happy to know someone like you was continuing to teach me the craft.</i>\"\n\n", false);
@@ -241,7 +239,7 @@ export class FollowerInteractions {
         doNext(Rathazul.returnToRathazulMenu);
     }
     // [Amily delivers ingredients to Rathazul – happens at Rathazul]
-    public amilyIngredientDelivery(): void {
+    export function amilyIngredientDelivery(): void {
         outputText("", true);
         outputText("As you make your way to Rathazul's lab, a ", false);
 
@@ -258,7 +256,7 @@ export class FollowerInteractions {
     }
 
     // [Amily ask Rathazul what happened to his village]
-    public amilyAsksAboutRathazulsVillage(): void {
+    export function amilyAsksAboutRathazulsVillage(): void {
         outputText("", true);
         flags[kFLAGS.AMILY_MET_RATHAZUL]++;
         outputText("Amily is once again at Rathazul's lab.  She just finished asking him what happened to his village.  Rathazul's expression clouds with anger as he thinks on it.  His response is slow and measured as he explains, \"<i>We were sold out.  Our elders knew we couldn't triumph by strength of arms, and rather than join the others they sold us out in exchange for the safety of the council.  The demons gave the elders corrupted agents to lace into the village's well, and my people fell prey to the demons in a single night.  The elders were rewarded and 'raised' to full demon-hood.  I survived because I was at the lake at the time.  The sounds of the orgy were all the warning I needed to keep hidden.  I can't help but think that things would have been different if less selfish rats had been in charge.</i>\"\n\n", false);
@@ -270,7 +268,7 @@ export class FollowerInteractions {
     }
 
     // [Rathazul and Corrupt/Tentacle Jojo] – Occurs instead of camp
-    public rathazulFreaksOverJojo(): void {
+    export function rathazulFreaksOverJojo(): void {
         clearOutput();
         flags[kFLAGS.RATHAZUL_CORRUPT_JOJO_FREAKOUT]++;
         outputText("Rathazul comes up to you with a serious, worried expression.  You ask him what's wrong, and he explains, \"<i>There is a creature in the woods.  I've seen glimpses of it numerous times, and I believe it to be some kind of demon-tainted mouse.  We must deal with it, lest it strike while we are unawares!</i>\"\n\n");
@@ -282,7 +280,7 @@ export class FollowerInteractions {
         simpleChoices("Mine", tellRathazulYouOwnJojo, "Handle It", tellRathazulYouCanHandleIt, "Harmless", TellRathazulJojoIsHarmless, "", null, "", null);
     }
     // 	[Jojo is yours]
-    private tellRathazulYouOwnJojo(): void {
+    function tellRathazulYouOwnJojo(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You tell Rathazul, \"<i>Oh that's just Jojo.  He's been corrupted, but he isn't evil and he hangs around because he knows I like to sleep with him.</i>\"\n\n");
@@ -293,7 +291,7 @@ export class FollowerInteractions {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [I can handle it]
-    private tellRathazulYouCanHandleIt(): void {
+    function tellRathazulYouCanHandleIt(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You tell Rathazul, \"<i>Don't worry about it.  I've been all over the woods and fought that mouse before.  He's a pushover, and if he tries to sneak up on either of us I'll take care of it.</i>\"\n\n");
@@ -306,7 +304,7 @@ export class FollowerInteractions {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Its harmless]
-    private TellRathazulJojoIsHarmless(): void {
+    function TellRathazulJojoIsHarmless(): void {
         JojoScene.jojoSprite();
         clearOutput();
         outputText("You explain to Rathazul, \"<i>That's just Jojo.  He got pretty fucked up and is hoping I'll let him fuck me.  The little mouse is a push-over, and nothing to worry about.</i>\"\n\n");
@@ -320,7 +318,7 @@ export class FollowerInteractions {
     }
 
     // [Rathazul and non-corrupt Jojo]
-    public jojoOffersRathazulMeditation(): void {
+    export function jojoOffersRathazulMeditation(): void {
         outputText("", true);
         flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER]++;
         outputText("Jojo is at Rathazul's lab.  The smaller, white mouse is asking the elderly rodent if he would like to meditate.  Rathazul considers for a moment and agrees, \"<i>I'll have to try it when I have some time.  A little reflection would do my old soul some good.  However we cannot now; " + player.short + " has need of me.</i>\"\n\n", false);
@@ -330,7 +328,7 @@ export class FollowerInteractions {
         doNext(Rathazul.returnToRathazulMenu);
     }
     // [Rathazul Napping]
-    public catchRathazulNapping(): void {
+    export function catchRathazulNapping(): void {
         outputText("", true);
         // (Occurs when visiting Jojo)
         flags[kFLAGS.JOJO_RATHAZUL_INTERACTION_COUNTER]++;
@@ -341,7 +339,7 @@ export class FollowerInteractions {
         doNext(JojoScene.jojoCamp);
     }
 
-    public marbleVsAmilyFreakout(): void {
+    export function marbleVsAmilyFreakout(): void {
         outputText("", true);
         flags[kFLAGS.AMILY_NOT_FREAKED_OUT]++;
         // Marble is in camp first
@@ -358,7 +356,7 @@ export class FollowerInteractions {
     }
 
     // Stay silent like a douche
-    private marbleIsPissyAndYourTooDumbToTalk(): void {
+    function marbleIsPissyAndYourTooDumbToTalk(): void {
         outputText("", true);
         // Stay silent (A1)
         outputText("You can't think of anything to say to her at this point, and can do nothing but stare.  Marble then turns to Amily and yells, \"<i>I'm " + mf(player, "his", "her") + " lover too.  " + mf(player, "He", "She") + " didn't tell you about me, did " + mf(player, "he", "she") + "?</i>\"  Amily looks at Marble for a few moments before looking back at you with tears in her eyes.  She says, \"<i>I know what kind of world this is, but I'd think you'd at least tell me about someone like her.  Did our kids together mean nothing to you?</i>\"  At this point, Marble's hammer flies to the ready in her hands.  She practically screams, \"<i>YOU HAD KIDS TOGETHER?!?!</i>\" her hammer flying to the ready in her hands.\n\n", false);
@@ -389,7 +387,7 @@ export class FollowerInteractions {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private beAPimpMarbleLovesIt(): void {
+    function beAPimpMarbleLovesIt(): void {
         outputText("", true);
         // Pimp (B1)
         outputText("You look at both of them in the eyes in turn before replying, \"<i>Come on girls, there is plenty of me to go around!</i>\"  ", false);
@@ -409,7 +407,7 @@ export class FollowerInteractions {
         }
     }
     // Pimp -> PC is not addicted -> serious (B4)
-    private srslyPimpinGuyz(): void {
+    function srslyPimpinGuyz(): void {
         outputText("", true);
         outputText("\"<i>Yes I'm serious.  What, you don't think I can take both of you?</i>\" you say while putting your hands on your hips and swinging them around.  The two of them almost scream as one before descending upon you.  In an instant you're hit with a dart from Amily, causing your body to lock up, just before Marble brings her hammer down onto your head in a massive overhead swing and everything goes black.\n\n", false);
 
@@ -435,14 +433,14 @@ export class FollowerInteractions {
         doNext(Camp.returnToCampUseEightHours);
     }
     // Pimp -> PC is not addicted -> just joking (B5)
-    private jokeAboutPimpularness(): void {
+    function jokeAboutPimpularness(): void {
         outputText("", true);
         outputText("You assure them that you thought a joke might help them calm down.  The two of them seem to disagree with you on that sentiment, but wait for you to say something else.", false);
         // Player chooses stay silent (A1) or explain (C1)
         simpleChoices("StaySilent", marbleIsPissyAndYourTooDumbToTalk, "Explain", LucyYouGotSomeSplainingToDo, "", null, "", null, "", null);
     }
 
-    private LucyYouGotSomeSplainingToDo(): void {
+    function LucyYouGotSomeSplainingToDo(): void {
         outputText("", true);
         // Explain (C1)
         outputText("You spend some time trying to explain to the two of them why you never told either of them about each other.  ", false);
@@ -469,7 +467,7 @@ export class FollowerInteractions {
         }
     }
     // Explain -> blame Marble
-    public BlameMarblezSweetVagoozle(): void {
+    export function BlameMarblezSweetVagoozle(): void {
         outputText("", true);
         outputText("You turn to Marble and point blankly tell her that it's her fault that you weren't faithful to Amily.  You start to rant about how Marble's milk has affected you, and how you lost your willpower to the addiction.  You go on about how she uses it to get what she wants, and how she didn't warn you about what would happen if you drank it.  At this Amily runs to your side and looks into your eyes for a moment before turning back to Marble and saying, \"<i>Is this the truth?</i>\"  Marble looks at you for a moment like she is going to explode before saying, \"<i>Is that really what you think of me?  How could you lie to me like this up until now?!</i>\" she then turns around and almost mechanically gathers her things ", false);
         if (flags[kFLAGS.MARBLE_KIDS] == 1) outputText("and child", false);
@@ -483,7 +481,7 @@ export class FollowerInteractions {
     }
 
     // Explain -> blame Amily
-    private blameAmilysDumbMouseCunt(): void {
+    function blameAmilysDumbMouseCunt(): void {
         // ----Quiet Browser should write this part----
         outputText("You turn to Amily and tell her point blank that she's the one who is in the wrong here. She claimed to be a pure individual, free of all corruption in this world and begging you for your help, but instead she tricked you, seduced you into being unfaithful to your lover, Marble, and making you into her breeding stud and pleasure toy - and then she had the audacity to try and claim you and her had some connection, when it was nothing but trickery and lies on her part. At this tirade, Amily looks first hurt, then outraged, then livid; it's only when Marble silently and defiantly positions herself beside you, holding her hammer and ready to charge, that the female mouse-morph removes her hand from the handle of her knife. Blinking back tears, she starts scurrying around the camp as fast as she can, gathering up all of her few belongings and then heading for the edge of the camp as fast as she can. She halts at the edge, turning to face the two of you, and starts screaming a tirade of the most profane obscenities she can muster, blistering your ears with imprecations about your sexual tastes, habits and skills, your lineage, your personal hygiene and your talents before vanishing into the undergrowth whilst you're both stunned by the litany of swearing and trying to wrap your mind around some of the things she said. Particularly the one about the greasy maggots, the centaur stallion, the candied apple and the plunger. It's pretty obvious she's never coming back.", true);
         // end event, Amily leaves the camp permanently
@@ -501,7 +499,7 @@ export class FollowerInteractions {
     // Urta.urtaLove()
 
     // AMILY_VISITING_URTA = 346;
-    public amilyUrtaReaction(): void {
+    export function amilyUrtaReaction(): void {
         outputText("", true);
         outputText("As you finish making your way back to camp, Amily surprises you from behind a rock, her arms folded across her chest.  \"<i>Hey, remember when you told me about that city in the desert?  I decided to check it out.</i>\"  You don't remember, but you're too busy absorbing the implications to respond.  \"<i>You'll never guess what I heard!  It seems someone just like you has been seen in the company of one of their prominent citizens,</i>\" she continues.  \"<i>I can't say I didn't expect something like this might happen.  I mean... she's not some demon, right?  Still... I thought we had something special, " + player.short + ".</i>\"  As you try to formulate a reply, she seizes her tail and twists it pensively in her hands, already deciding her next move.  \"<i>I-I've got to meet her... to know what you see in her.</i>\"\n\n", false);
 
@@ -513,7 +511,7 @@ export class FollowerInteractions {
     }
 
     // [Ask about Amily]
-    public askAboutAmily(): void {
+    export function askAboutAmily(): void {
         outputText("", true);
         // after 1400 and Urta's on duty:
         if (game.time.hours > 14) {
@@ -543,7 +541,7 @@ export class FollowerInteractions {
         }
     }
 
-    private askAboutAmilyPt2(): void {
+    function askAboutAmilyPt2(): void {
         outputText("", true);
         outputText("Amily breaks the kiss and gives Urta a drunkenly affectionate smile, gently stroking her cheek.  \"<i>Mmm... I wish " + player.short + " had introduced ush earlier... I think we're gonna be good friendsh,</i>\" she slurs.  Urta simply nods, giving her a goofy grin but clearly miles away, mentally. The mouse promptly yawns, dropping the now empty bottle to the floor, shuts her eyes and snuggles up to Urta, who cuddles her close and also drifts off.\n\n", false);
 
@@ -555,7 +553,7 @@ export class FollowerInteractions {
         // Tag that Urta needs to freak out!
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00350] = 1;
     }
-    private cheatingSloots(): void {
+    function cheatingSloots(): void {
         outputText("", true);
         outputText("You kick open the door and roar, \"<i>What the fuck is this!?</i>\"  Both Amily and Urta turn to you and look at you with puzzled expressions before the severity of the situation seeps into their alcohol-fuzzed consciousnesses.  Almost simultaneously, they yell, \"<i>" + player.short + "!</i>\" and stumble apart drunkenly, leaking each other's slime all over the floor.  Urta slurs, \"<i>We didn't mean to... it jusht... happened...</i>\"\n\n", false);
         outputText("You growl and turn to Amily, who quietly squeaks, \"<i>I thought... I thought if I knew her better *hic* I could find a way to save what we had... *burp* I am REALLLY out of it, but I thought... ya know, if I was willing to sleep with her too that we could all be happy together.</i>\"\n\n", false);
@@ -564,14 +562,14 @@ export class FollowerInteractions {
         // [Let Them Be] [End It]
         simpleChoices("Let It Be", letTheSlootsFuck, "End It", endThisMadness, "", null, "", null, "", null);
     }
-    private letTheSlootsFuck(): void {
+    function letTheSlootsFuck(): void {
         outputText("", true);
         outputText("You chuckle and tell them you understand, though they had better include you in the future.  Drunken relief spreads across their faces when you give them a wink and step out.  Soon you hear the sloppy sounds of sex and giggles about how great their lover is.", false);
         dynStats("lus", 75);
         doNext(Camp.returnToCampUseOneHour);
         flags[kFLAGS.AMILY_VISITING_URTA] = 4;
     }
-    private endThisMadness(): void {
+    function endThisMadness(): void {
         outputText("", true);
         outputText("You slam your fist into the wall and rage at the two cheating bitches.  Did they really think you wouldn't notice them screwing around on you behind your back?  You tell them that no, this is not going to make things better, and you scowl at Amily as you tell her that her excuse is piss-poor.  Looking towards Urta, you shout that she needs to think and stop letting her pecker lead her around.  For fuck's sake, she's nearly as bad as the monsters in the wilds!\n\n", false);
 
@@ -598,7 +596,7 @@ export class FollowerInteractions {
     }
 
     // Next Morning
-    public amilyUrtaMorningAfter(): void {
+    export function amilyUrtaMorningAfter(): void {
         // This scene plays the next morning after the second half of the "Amily goes to see Urta" scene
         // Should disable Amily as a follower option until the next day.
         outputText("\nAs you leave your bedding, you see a rather dilapidated-looking mouse sprawled restlessly in her nest.  Amily's back, obviously suffering from the effects of a really bad hangover.  Sympathetically, you bring her one of your water skins, holding it over her so that she can take it from you. She opens one bleary eye and stares at you incomprehensibly for a moment, then her vision focuses and she grabs it, gulping down water and spilling more over her clearly aching head.  You ask if she's all right.\n\n", false);
@@ -612,7 +610,7 @@ export class FollowerInteractions {
     }
 
     // [Be totally a dick]
-    private beADickToAmily(): void {
+    function beADickToAmily(): void {
         outputText("", true);
         outputText("With a wicked, shit-eating grin, you tease Amily about falling into the trap she set for you.  Her expression hardens, winces breaking her frown as her hangover thrums every time you laugh.\n\n", false);
 
@@ -635,7 +633,7 @@ export class FollowerInteractions {
     }
 
     // [Smile and nod]
-    private smileAndNodToAmilyXUrta(): void {
+    function smileAndNodToAmilyXUrta(): void {
         outputText("", true);
         outputText("You grin and tell her that you're not surprised she hit it off so well with Urta.  She breaks into an uneasy calm as you tell her that the scene was actually kind of hot, and that you won't hold it against her... though you hint that you'd like to be there if the two of them ever feel like going at it again.\n\n", false);
 
@@ -651,7 +649,7 @@ export class FollowerInteractions {
 
     // Amily Option - Urta
     // This option should probably only appear when Urta is actually at the Wet Bitch
-    public amilyUrtaSex(): void {
+    export function amilyUrtaSex(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00350] = 2;
         outputText("", true);
         outputText("With a knowing smirk, you ask how Amily would feel about going to see Urta and maybe having a little fun with her.  The mouse-girl flushes with embarrassment, but you can see the eagerness in her body language.  \"<i>Okay, sure; I kind of like going to the city... besides, between you and me?  I think Urta needs all the friends she can get... never thought I'd feel sorry for a hermaphrodite.</i>\"  She mumbles this last part to herself, but you can still hear her.", false);
@@ -676,7 +674,7 @@ export class FollowerInteractions {
         if (player.cocks.length > 0) dick = AmilyScene.threesomeAmilUrtaCAWKS;
         simpleChoices("Use Dick", dick, "Use Vag", vag, "", null, "", null, "Watch", amilyUrtaSexWatch);
     }
-    private amilyUrtaSexWatch(): void {
+    function amilyUrtaSexWatch(): void {
         outputText("", true);
 
         outputText("You tell the two that, this time, you're content to just watch.  You head over to one end of the couch and sit down, leaning back and waiting for them to begin.\n\n", false);
@@ -719,4 +717,3 @@ export class FollowerInteractions {
         dynStats("lus", 50);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

@@ -1,6 +1,4 @@
 
-export class Owca {
-
     /* Written by Nonesuch and PKD, edited by Abraxas, Anzuaz, 05095coc and some helpful anons; ideas suggested by Abraxas, G3 and some helpful anons. */
 
     // const DECLINED_TO_VISIT_REBECCS_VILLAGE:int = 500;
@@ -21,13 +19,13 @@ export class Owca {
     // const VAPULA_TEASE_COUNT:int = 552;
     // const VAPULA_EARNED_A_SPANK:int = 634;
 
-    public gangbangVillageStuff(): void {
+    export function gangbangVillageStuff(): void {
         clearOutput();
         if (flags[kFLAGS.OWCA_UNLOCKED] == 1) owcaMainScreenOn();
         else gangbangVillageFirstGoRound();
     }
     // First encounter (Z)
-    private gangbangVillageFirstGoRound(): void {
+    function gangbangVillageFirstGoRound(): void {
         clearOutput();
         /*if(flags[kFLAGS.OWCAS_ATTITUDE] < 5) {
             desperateVillages();
@@ -65,13 +63,13 @@ export class Owca {
             doNext(gangbangVillageStuff);
         }
     }
-    private dontGoToZeVillage(): void {
+    function dontGoToZeVillage(): void {
         clearOutput();
         flags[kFLAGS.DECLINED_TO_VISIT_REBECCS_VILLAGE]++;
         Camp.returnToCampUseOneHour();
     }
     // First plea (Z)
-    private agreeToFollowRebecFirstTime(): void {
+    function agreeToFollowRebecFirstTime(): void {
         clearOutput();
         if (flags[kFLAGS.TIMES_REFUSED_REBECCS_OFFER] == 0) {
             outputText("How could you refuse an invitation from such an alluring girl?  You eagerly agree to go to her village; everyone sets out at once, chatting with each other jovially, but your attention is squarely focused on Rebecc.  She seems impressed by the tales of your adventures and has nothing but praise for your endless bravery, delivered while clinging to your arm and pressing her body against yours.  Her sweet scent is invigorating, and a significant amount of blood flows toward your ");
@@ -137,7 +135,7 @@ export class Owca {
         else doYesNo(createCallBackFunction2(acceptRebeccsPlea, false, true), declineRebeccsPlea);
     }
     // Refuse plea (Z)
-    private declineRebeccsPlea(): void {
+    function declineRebeccsPlea(): void {
         clearOutput();
         outputText("You can't give in to her demand; you are a proud warrior fighting demons.  You were certainly not meant to serve as a scapegoat or sex-toy.  She sighs in disappointment.  \"<i>Well, I should have expected that.  I wasn't full of hope either.  No hard feelings.</i>\"  Everyone is looking at you with sad or apathetically hostile eyes, making you feel uncomfortable.  You quickly leave the village and return to your camp.");
         // [if more than 40 int, a warning after 4 consecutive refusals]
@@ -148,7 +146,7 @@ export class Owca {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Accept plea (Z)
-    private acceptRebeccsPlea(firstTime: boolean = false, sacrificed: boolean = false): void {
+    function acceptRebeccsPlea(firstTime: boolean = false, sacrificed: boolean = false): void {
         clearOutput();
         flags[kFLAGS.OWCAS_ATTITUDE] += 10;
         if (flags[kFLAGS.OWCAS_ATTITUDE] > 100) flags[kFLAGS.OWCAS_ATTITUDE] = 100;
@@ -171,7 +169,7 @@ export class Owca {
         // Dusk transition text (Z)
         doNext(createCallBackFunction(intoTheDemonPit, true));
     }
-    private intoTheDemonPit(sacrifice: boolean = true): void {
+    function intoTheDemonPit(sacrifice: boolean = true): void {
         clearOutput();
         // N is the number of hours left before night
         if (game.time.hours < 21) {
@@ -213,7 +211,7 @@ export class Owca {
             "Fight", createCallBackFunction(fightZeDemons, false), "", null, "", null, "", null);
     }
     // Submit/Fight
-    private fightZeDemons(sacrifice: boolean = true): void {
+    function fightZeDemons(sacrifice: boolean = true): void {
         clearOutput();
         // Fight leads to the Horde Fight
         // When acting as sacrifice, Item button is disabled; Fight, Run, and Phys Special buttons are disabled unless PC has str >= 80; Run is furthermore prevented entirely if PC is non-winged; outputs text: \"<i>You'd like to run, but you can't scale the walls of the pit with so many demonic hands pulling you down!</i>\"
@@ -238,7 +236,7 @@ export class Owca {
     }
 
     // Loss scene/Submit (gangrape) (Z)
-    public loseOrSubmitToVapula(): void {
+    export function loseOrSubmitToVapula(): void {
         clearOutput();
         outputText("Vapula taunts you as she circles around you.  \"<i>Look at the slutty pet!  Ain't you a slutty pet?  Yes, you are!  Don't pretend you're not hungry for some fat demon cock, I know you are.</i>\"  As she speaks, the crowd gathers closer.  A few creatures show some temerity, giving you pinches and gropes as they near.  The cock-belted imp unties his tentacle; the horror wriggles and squirms as it drops to the ground and slithers toward you.  The tip of the absurdly long pecker inspects your body, pressing itself against your flesh, massaging you in the most sensual places, wetting you with sap-like pre-cum and teasingly grinding itself against your mouth, and then your " + assholeDescript(player));
         if (player.vaginas.length > 0) outputText(", followed by your " + vaginaDescript(player, 0));
@@ -323,7 +321,7 @@ export class Owca {
         flags[kFLAGS.REBECCS_LAST_PLEA] = 0;
     }
 
-    private wakeUpAfterDemonGangBangs(): void {
+    function wakeUpAfterDemonGangBangs(): void {
         clearOutput();
         game.time.hours = 7;
         game.time.days++;
@@ -339,7 +337,7 @@ export class Owca {
     }
 
     // Victory (Z)
-    public defeetVapulasHorde(): void {
+    export function defeetVapulasHorde(): void {
         clearOutput();
         flags[kFLAGS.REBECCS_LAST_PLEA] = 0;
         if (flags[kFLAGS.VAPULA_SUBMISSIVENESS] <= 0) {
@@ -370,14 +368,14 @@ export class Owca {
         }
 
     }
-    private noVapulaSex(): void {
+    function noVapulaSex(): void {
         clearOutput();
         flags[kFLAGS.VAPULA_SUBMISSIVENESS] -= 5;
         cleanupAfterCombat();
     }
     // Yes/
     // [Yes: submissiveness is lowered by 10. No or auto-reject: submissiveness is lowered by 5.]
-    private rapeZeVapula(): void {
+    function rapeZeVapula(): void {
         flags[kFLAGS.VAPULA_SUBMISSIVENESS] -= 10;
         // Victory rape with penis [Anal Orgy and Bukkake] (NTR Vapula) (Z)
         if (player.cocks.length > 0) {
@@ -512,7 +510,7 @@ export class Owca {
 
     // Main Owca Village menu (Z)
     // [displayed after the second encounter text and right away in subsequent encounters]
-    private owcaMainScreenOn(): void {
+    function owcaMainScreenOn(): void {
         clearOutput();
 
         if (flags[kFLAGS.REBECCS_LAST_PLEA] == 1 && !Vapula.vapulaSlave()) {
@@ -576,7 +574,7 @@ export class Owca {
         simpleChoices("Pit", pit, "Herds", herd, "Rebecc", rebeccMenu, "Tavern", tavern, "Leave", Camp.returnToCampUseOneHour);
     }
     // Tavern (Z)
-    public owcaTavern(): void {
+    export function owcaTavern(): void {
         clearOutput();
         outputText("The tavern is nice and cozy; there are a few tables and chairs scattered around in no ordered pattern, and most clients here appear to belong to the same species.  By the crude wooden bar, you see a list of all the current drinks on sale:\n<i>");
         // SheepMk
@@ -602,14 +600,14 @@ export class Owca {
         simpleChoices("Sheep Milk", milk, "Goblin Ale", goblin, "Bro Brew", brew, "MinotaurCum", cum, "Back", gangbangVillageStuff);
     }
 
-    private owcaBuySetup(item: ItemType): void {
+    function owcaBuySetup(item: ItemType): void {
         if (item == ConsumableLib.SHEEPMK) buyOwcaShit(item, (180 - flags[kFLAGS.OWCAS_ATTITUDE]));
         else if (item == ConsumableLib.GOB_ALE) buyOwcaShit(item, (60 - Math.round(flags[kFLAGS.OWCAS_ATTITUDE] / 2)));
         else if (item == ConsumableLib.BROBREW) buyOwcaShit(item, 2000);
         else buyOwcaShit(item, (300 - flags[kFLAGS.OWCAS_ATTITUDE]));
     }
 
-    private buyOwcaShit(bleh: ItemType, price: number = 0): void {
+    function buyOwcaShit(bleh: ItemType, price: number = 0): void {
         clearOutput();
         player.gems -= price;
         statScreenRefresh();
@@ -618,7 +616,7 @@ export class Owca {
     }
 
     // Herds (Z)
-    private herds(): void {
+    function herds(): void {
         clearOutput();
         outputText("The herders greet you warmly.  \"<i>Welcome, champion!  It is indeed a pleasure to have the honor to talk to such a noble and revered hero.</i>\"  You reply with equal grace and ask in a more formal tone if there's anything you can do to help them out.");
         outputText("\n\n\"<i>Well, our sheep badly need to be sheared and we could really use an extra pair of hands to get the work done.</i>\"  The herder proceeds to hand you some tools, and redirects you to a group of villagers working actively.  You rapidly join them and soon enough you are having a pleasant conversation, chatting and laughing as you collect the wool, so much so that you don't see where time goes; in what seems like minutes you're already done.");
@@ -635,7 +633,7 @@ export class Owca {
     }
 
     // Pit (Z)
-    private zePit(): void {
+    function zePit(): void {
         clearOutput();
         outputText("You announce to all the villagers present that you're going to guard the pit as well as the village's entrance against the demons, trusting them to spread the news; they seem glad that you took this initiative on your own.  Checking your equipment, you head toward the pit, ready to stand your ground against the lewd horde.");
         // Redirects to the Dusk Transition Scene, then to a combat with full equipment and weapons. Loss/Victory scenes as usual.
@@ -643,7 +641,7 @@ export class Owca {
     }
 
     // Rebecc Menu (Z)
-    private rebeccMenu(): void {
+    function rebeccMenu(): void {
         clearOutput();
         outputText("You knock and step into the old shack, accustoming yourself to the meager light.  As soon as you close the door behind you, you spot Rebecc stepping out of a little backroom.");
         outputText("\n\n\"<i>" + player.short + "!  You came!  I was just preparing a hot bath.  My poor darling, you must have gone through a really perilous ordeal.  Here, do you want to get cleaned up?</i>\"");
@@ -660,7 +658,7 @@ export class Owca {
         simpleChoices("Appearance", rebeccAppearance, "Bath", rebeccBathScene, "", null, "Surprise Sex", sex, "Back", gangbangVillageStuff);
     }
     // Rebecc Appearance (Z)
-    private rebeccAppearance(): void {
+    function rebeccAppearance(): void {
         clearOutput();
         outputText("Rebecc is a 5-foot, 7-inch sheep-girl, with a cute human visage decorated by two little nubby horn protrusions and plush and fuzzy curled white hair that cascades down over her shoulders.  Her face is expressive, with her glinting blue eyes and avid mouth accurately reflecting her whole range of emotions.  Her complexion is extremely pale, although the exposed parts of her body are rather tanned due to hours of labor under the scorching sun.  She is currently wearing a coarse peasant dress, a layer of thin white cloth that clearly outlines her appealing curves.  Her fine hips and legs sway with elegance when she walks and you can guess a bountiful wiggly rump hides behind the back of her gown.");
         outputText("\n\nShe has a pair of ample, barely concealed breasts.  Although you can't see them outright, her thin clothing leaves little doubt that they're D-cups.  Her 0.5 inch nipples point through her dress whenever she's aroused.");
@@ -669,7 +667,7 @@ export class Owca {
         doNext(rebeccMenu);
     }
     // Rebecc Bath scene (Z)
-    private rebeccBathScene(): void {
+    function rebeccBathScene(): void {
         clearOutput();
         outputText("She grabs your hand and leads you to her bathroom, a tiny place almost entirely occupied by an enormous circular container acting as a bathtub, full of hot steaming milk.  You watch her, puzzled.");
         outputText("\n\n\"<i>What?  Don't you bathe in milk in your village?  We have plenty of it here in Owca, you know; more than clean water.  We use it for everything; it has curing properties.</i>\"  Whispering seductively, she adds, \"<i>It's also ideal for purging brave demon fighters from any taint they may have caught.</i>\"");
@@ -697,7 +695,7 @@ export class Owca {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Rebecc Rape scene (for discerning penises) (Z)
-    private rapeRebecc(outside: boolean = false): void {
+    function rapeRebecc(outside: boolean = false): void {
         clearOutput();
         if (player.cocks.length > 0) {
             outputText("Within three strides you are upon Rebecc; you slap her twice on her cheeks, brutally yank her hair and in a harsh gesture, you turn her around.  The woman yells, \"<i>W-what are you doing?  No, please stop!</i>\"  Completely caught unaware, she gasps and jolts in surprise, crying loudly until you slap her again to shut her up.");
@@ -759,7 +757,7 @@ export class Owca {
 
     // Desperate Villagers (Z)
     // [Dialogue once Attitude reaches 0 or less, pops automatically as you go to the village]
-    private desperateVillages(): void {
+    function desperateVillages(): void {
         clearOutput();
         outputText("As you approach the group of huts, you hear a vague rumble, as if many people were talking at the same time.  Walking closer, you see all the villagers gathering outside and arguing violently; among them you spot your friend, Rebecc.  As soon as she sees you she hurries over with desperate, wet eyes.");
         outputText("\n\n\"<i>They want to put you back into the pit by force!  I and some others have tried arguing with them but they won't hear anything!  The demons have been harassing us a lot due to the lack of sacrifices, please do something!</i>\"");
@@ -770,7 +768,7 @@ export class Owca {
         doYesNo(createCallBackFunction2(acceptRebeccsPlea, false, true), fightZeVillagers);
     }
     // Villagers Fight (Z, but pretty barebones)
-    private fightZeVillagers(): void {
+    function fightZeVillagers(): void {
         clearOutput();
         // You are fighting the villagers (level 14):
         startCombat(new Farmers());
@@ -780,7 +778,7 @@ export class Owca {
     }
 
     // Defeat Villagers (only displayed if corruption >= 60ish) (Z)
-    public beatUpOwca(): void {
+    export function beatUpOwca(): void {
         clearOutput();
         outputText("The last of the villagers drops his improvised weapon.  They are all lying defenseless before you.  At last, you notice Rebecc, the only one still conscious, curled up as she weeps uncontrollably.  She is clearly oblivious of her surroundings, undoubtedly shocked by the violent fight.  Even if she calls herself your friend, you don't think you'd be able to reason with her after pummeling her kin.  What do you do?");
         // Rape Rebbecc/Torch Village (needs Akbal's fire or Whitefire)/Leave
@@ -793,13 +791,13 @@ export class Owca {
     }
 
     // "Leave" redirects the PC to camp; next encounter is Rebecc's Last Plea.
-    private leaveOwcaAfterWhupping(): void {
+    function leaveOwcaAfterWhupping(): void {
         // tag for calling last plea
         flags[kFLAGS.REBECCS_LAST_PLEA] = 1;
         cleanupAfterCombat();
     }
     // Village Torching scene - requires a fire skill (Z)
-    private torchOwcaMotherFuckers(): void {
+    function torchOwcaMotherFuckers(): void {
         clearOutput();
         outputText("These ignorant folks deserve to be punished for trying to take you by force.  You muster your strength and release a wave of magical flame.  The raw heat and energy is enough to set entire thatched roofs ablaze.  You ignite house after house, the poor constructions unable to withstand your fiery might, until there are enough burning that the wind can carry the flames to all other buildings nearby.  A few minutes later, the entire village is ablaze; hovels are crumbling under their own weight and the crude roads are being littered with fallen debris.  You watch Owca burn silently, arms crossed.  Finally, when the last building has been thoroughly reduced to a pile of rubble and ashes, you quickly search for any valuables among the villagers' belongings.  Fortunately their gems haven't been melted; you pack a substantial amount of them away before leaving.  You cast a thoughtful glance at the remains of what used to be a peaceful village; ironically enough, the only structure you preserved was the pole in the pit, an ultimate mockery of their futile struggles against forces that ridiculously outmatch them.");
         flags[kFLAGS.OWCA_UNLOCKED] = -1;
@@ -813,7 +811,7 @@ export class Owca {
     }
 
     // Fuck off village
-    private torchUpVillagersAndLeave(): void {
+    function torchUpVillagersAndLeave(): void {
         clearOutput();
         outputText("You don't think you're going to see these villagers again, and you don't really want to.");
         // Corruption +15 (plus extra for rape), ~ 1000 gems, fatigue set to 100
@@ -824,7 +822,7 @@ export class Owca {
     }
     // End of quest
     // Lose to Villagers (Z)
-    public loseToOwca(): void {
+    export function loseToOwca(): void {
         clearOutput();
         outputText("You kneel down and then fall, overwhelmed by the villagers' fury and numbers.  Without hesitation, the angry mob jumps on you; you recoil in terror, persuaded that you're going to be beaten to death.  Instead, you are carelessly lifted and completely stripped off; ");
         if (player.weaponName != "fists") outputText("your " + player.weaponName + " is taken away and ");
@@ -837,7 +835,7 @@ export class Owca {
         player.effects.create(StatusAffects.LostVillagerSpecial, 0, 0, 0, 0);
     }
     // Post-Mob Encounter (Z)
-    private morningAfterRape(): void {
+    function morningAfterRape(): void {
         player.effects.remove(StatusAffects.LostVillagerSpecial);
         clearOutput();
         outputText("The village is utterly silent and almost deserted.  The few people you see look away when they spot you, probably ashamed of what they did last time.  Doors are locked and windows are closed as you pass by; everyone is obviously afraid of directly confronting their victim.  You head toward Rebecc's house, your last friend.  As you open her door, you hear a muffled wail; you recognize the pretty farmer's voice.  She is laying on her bed, weeping uncontrollably; once she finally notices your presence, she looks up to you with tear-filled eyes, sobbing convulsively as she talks.");
@@ -850,7 +848,7 @@ export class Owca {
             "Rape", createCallBackFunction(rapeRebecc, false), "", null, "", null, "Leave", fuckThisShit);
     }
     // Option: Forgive (Z)
-    private forgiveOwca(): void {
+    function forgiveOwca(): void {
         clearOutput();
         outputText("Swallowing your pride, you tell her that it's all right and that you hold no grudge against her; the villagers were obviously desperate, to have resorted to such extreme measures.  You assure her");
         if (player.cor >= 50) outputText(", lying through your teeth,");
@@ -866,7 +864,7 @@ export class Owca {
         else doNext(gangbangVillageStuff);
     }
     // Option: Leave (Z)
-    private fuckThisShit(): void {
+    function fuckThisShit(): void {
         clearOutput();
         outputText("You stare at the wretched, whimpering creature before you for a moment.  There's nothing to say.  Without a word, you head back to your camp, carefully closing Rebecc's door behind you as you leave.");
         flags[kFLAGS.REBECCS_LAST_PLEA] = 1;
@@ -875,7 +873,7 @@ export class Owca {
         else doNext(Camp.returnToCampUseOneHour);
     }
     // Rebecc's Last Plea (Z)
-    private rebeccsLastPlea(): void {
+    function rebeccsLastPlea(): void {
         clearOutput();
         outputText("As you arrive on the border of the cursed village, you see someone is running in your direction.  You recognize Rebecc instantly; she seems to stumble and stagger at every step, and her face is tear-stricken.  Intrigued, you catch the crying woman by the waist as she runs past you sightlessly; she falls into your arms, nearly tripping as she abandons herself to your embrace.  Unsure of what to do, you ask her why she is panicking, though it takes a while before your words reach her.");
         outputText("\n\n\"<i>They... they chose me!</i>\" she wails, choking back.  \"<i>They voted and I was chosen to be thrown in the pit!  They're angry at me for befriending you and I was blamed for the recent troubles with the demons!  They think you've abandoned us and I'm responsible for all this... they hate me!  They hate you too!  I'm going to be tied up, abused and broken... and everyone will pretend nothing happened!  I don't want to go to the pit; I don't know what to do!</i>\"");
@@ -887,7 +885,7 @@ export class Owca {
             "Face Them All", faceDownHordes, "", null, "", null, "Leave", leaveRebeccToBeRaped);
     }
     // Option: Leave (Z)
-    private leaveRebeccToBeRaped(): void {
+    function leaveRebeccToBeRaped(): void {
         clearOutput();
         outputText("You tell Rebecc you don't want to have anything to do with her or her sick people and promptly turn around.  She wails and begs you at first but you're faster than the tear-blinded girl, and she soon falls behind.  Your safe, simple camp looms large in your thoughts, pushing out any desire to return to this wicked village and its wicked people.");
         // [Owca Village removed from "Places" menu.]
@@ -896,7 +894,7 @@ export class Owca {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Option: Face Down the World (Z)
-    private faceDownHordes(): void {
+    function faceDownHordes(): void {
         clearOutput();
         outputText("You tell Rebecc to go hide on the plains; you're going to handle the villagers as well as the demon horde on your own.  She cries, \"<i>But " + player.short + "!  You stand no chance against this ruthless horde!  Besides, the villagers won't trust you.  They'll think you want to cheat them... they'll tie you up to prevent you from getting away!</i>\"");
         outputText("\n\nYou tell her not to worry and before her whining protestations can begin, you're already marching toward the village.  As you walk between the tiny houses, people keep staring at you with hostile or even despising eyes.  Some start following you as you walk to the pit, ignoring all the whispers and rumours rumbling about you.  When you're finally standing before the pole, with the whole town gathered around you, you speak in a loud, clear voice.");
@@ -906,7 +904,7 @@ export class Owca {
         doNext(createCallBackFunction(fightZeDemons, false));
     }
     // Slave to Vapula - Bad End (Z)
-    private slaveToVapulaBadEnd(): void {
+    function slaveToVapulaBadEnd(): void {
         clearOutput();
         // [Displayed if Vapula Submissiveness reaches 100]
         outputText("When you wake up, you find yourself tied and gagged in a strange cave.  A pair of smelly red fruits dangle before your eyes, dripping sap.  Chattering and moaning sounds come from everywhere, and your crotch feels numb.  You come back to your senses and realize your mouth is full of cock - the red 'fruits' are actually an imp's balls, and the 'sap' the drippings of a pussy just behind them!  You struggle to remove the rod of dickflesh but there's not much you can do, bound as you are.  Your constant writhing only makes the hermaphrodite imp harder and she grabs a fistful of your hair as she cums, hard.  Her balls shrink even as the sticky vaginal wetness running along their underside swells, and you can feel the veins in her dong pulsate as she unloads an enormous deposit of spooge in your throat; you are forced to swallow the unnaturally hot globs just to clear room to breathe.  Gods, it is so humiliating... yet, somehow, it's also strangely habit-forming.  Each gulp is easier than the last.  You hear an inhuman snicker as the shaft is pulled out, wiped clean of any residual cum by your lips.  The glittering pair of balls is removed from your sight as the imp is pushed aside.");
@@ -932,7 +930,7 @@ export class Owca {
 
     // Subdue Vapula Scene - begins Vapula Follower Content(Z)
     // [Triggered if submissiveness reaches 0 when beating the horde.]
-    private subdueVapula(): void {
+    function subdueVapula(): void {
         clearOutput();
         outputText("At last, the final demon falls, ");
         if (monster.HP < 1) outputText("overwhelmed by your might");
@@ -948,7 +946,7 @@ export class Owca {
         simpleChoices("Disband", disbandHorde, "EnslaveVapula", enslave, "JustFuckEm", fuck, "", null, "Skip Out", cleanupAfterCombat);
     }
     // Option: Disband (Z)
-    private disbandHorde(): void {
+    function disbandHorde(): void {
         clearOutput();
         outputText("You start speaking in a calm, measured voice.  \"<i>Here we are again.  I cannot count how often we've been in this same situation: you struggling before me, powerless.  How often do you need to be reminded your place?  Back off.  We don't want your kind here.  Go find some other prey; fuck each other for all I care.  Just stop bothering us.  If I see you or your minions hanging around this village again, you will regret it.  All of you.</i>\"");
 
@@ -962,7 +960,7 @@ export class Owca {
         cleanupAfterCombat();
     }
     // Option: Enslave - penis version (requires D2 completion and libido >= 60 and corr >= 70) (Z)
-    private enslaveVapulaWithYourWang(): void {
+    function enslaveVapulaWithYourWang(): void {
         clearOutput();
         if (!player.cocks.length > 0) {
             enslaveVapulaAsACuntWielder();
@@ -992,7 +990,7 @@ export class Owca {
     }
     // Option: Enslave - vagina version (requires D2 completion and libido >= 60 and corr >= 70 and, apparently, no centaurs)(Z)
     // NOTE: No Centaurs. Fuck Centaurs.
-    private enslaveVapulaAsACuntWielder(): void {
+    function enslaveVapulaAsACuntWielder(): void {
         clearOutput();
         outputText("You speak in a feverish voice.  \"<i>You're such a bitch.  Damn, why did you ever think you were going to make me your slut?  How many times do you need to be shown that I'm not the bottom in our relationship?  You deserve to be turned in to Lethice so she can make you her personal fuck-toy; at least you'll remember your place.</i>\"");
         outputText("\n\nAs soon as you mention the name of the demon lord, the struggling woman in your grasp recoils, her purple eyes widening in fright.  She whimpers, terrified, \"<i>Please don't!  You don't know her!  She's going to kill me, or worse!  She hates me!  If you do this, she will... she will...</i>\"  Her voice breaks as she keeps muttering unintelligible words, half-paralyzed in horror.");
@@ -1013,5 +1011,3 @@ export class Owca {
         // Chance to trigger imp gangbang is increased by 7%!
         cleanupAfterCombat();
     }
-
-}

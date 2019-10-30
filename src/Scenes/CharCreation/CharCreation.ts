@@ -1,13 +1,9 @@
 
 // 	import flash.events.MouseEvent;
 
-export class CharCreation {
+    let customPlayerProfile: () => void;
 
-    private customPlayerProfile: () => void;
-
-    public constructor() { }
-
-    public newGamePlus(): void {
+    export function newGamePlus(): void {
         flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = player.XP;
         if (flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] == 0) flags[kFLAGS.NEW_GAME_PLUS_BONUS_STORED_XP] = 1;
         while (player.level > 1) {
@@ -18,7 +14,7 @@ export class CharCreation {
         newGameGo();
     }
 
-    public newGameGo(): void {
+    export function newGameGo(): void {
         mainView.eventTestInput.x = -10207.5;
         mainView.eventTestInput.y = -1055.1;
         hideStats();
@@ -209,7 +205,7 @@ export class CharCreation {
         Inventory.initializeGearStorage();
     }
 
-    private chooseName(): void {
+    function chooseName(): void {
         if (testingBlockExiting) {
             // We're running under the testing script.
             // Stuff a name in the box and go go go
@@ -248,7 +244,7 @@ export class CharCreation {
         }
     }
 
-    private useCustomProfile(): void {
+    function useCustomProfile(): void {
         clearOutput();
         if (specialName(mainView.nameBox.text) != null) {
             clearOutput();
@@ -266,7 +262,7 @@ export class CharCreation {
         }
     }
 
-    private noCustomProfile(): void {
+    function noCustomProfile(): void {
         clearOutput();
         customPlayerProfile = null;
         outputText("Your name carries little significance beyond it being your name.  What is your gender?");
@@ -276,7 +272,7 @@ export class CharCreation {
     }
 
     // Determines if has character creation bonuses
-    private customName(arg: string): () => void {
+    function customName(arg: string): () => void {
         switch (arg) {
             case "Aria": return customAria;
             case "Betram": return customBetram;
@@ -296,7 +292,7 @@ export class CharCreation {
     }
 
     // Does PC skip creation?
-    private specialName(arg: string): () => void {
+    function specialName(arg: string): () => void {
         switch (arg) {
             case "Annetta": return customAnnetta;
             case "Ceveo": return customCeveo;
@@ -321,7 +317,7 @@ export class CharCreation {
         return null;
     }
 
-    private isAMan(): void {
+    function isAMan(): void {
         player.str += 3;
         player.tou += 2;
 
@@ -345,7 +341,7 @@ export class CharCreation {
         simpleChoices("Lean", buildLeanMale, "Average", buildAverageMale, "Thick", buildThickMale, "Girly", buildGirlyMale, "", null);
     }
 
-    private isAWoman(): void {
+    function isAWoman(): void {
         player.spe += 3;
         player.inte += 2;
 
@@ -365,7 +361,7 @@ export class CharCreation {
         simpleChoices("Slender", buildSlenderFemale, "Average", buildAverageFemale, "Curvy", buildCurvyFemale, "Tomboyish", buildTomboyishFemale, "", null);
     }
 
-    private buildLeanMale(): void {
+    function buildLeanMale(): void {
         player.str -= 1;
         player.spe += 1;
 
@@ -379,7 +375,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildSlenderFemale(): void {
+    function buildSlenderFemale(): void {
         player.str -= 1;
         player.spe += 1;
 
@@ -393,7 +389,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildAverageMale(): void {
+    function buildAverageMale(): void {
         player.femininity = 30;
         player.thickness = 50;
 
@@ -403,7 +399,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildAverageFemale(): void {
+    function buildAverageFemale(): void {
         player.femininity = 70;
         player.thickness = 50;
 
@@ -413,7 +409,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildThickMale(): void {
+    function buildThickMale(): void {
         player.spe -= 4;
         player.str += 2;
         player.tou += 2;
@@ -428,7 +424,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildCurvyFemale(): void {
+    function buildCurvyFemale(): void {
         player.spe -= 2;
         player.str += 1;
         player.tou += 1;
@@ -442,7 +438,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildGirlyMale(): void {
+    function buildGirlyMale(): void {
         player.str -= 2;
         player.spe += 2;
 
@@ -456,7 +452,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private buildTomboyishFemale(): void {
+    function buildTomboyishFemale(): void {
         player.str += 1;
         player.spe -= 1;
 
@@ -470,7 +466,7 @@ export class CharCreation {
         chooseComplexion();
     }
 
-    private chooseComplexion(): void {
+    function chooseComplexion(): void {
         clearOutput();
         outputText("What is your complexion?");
         menu();
@@ -480,7 +476,7 @@ export class CharCreation {
         addButton(3, "Ebony", setComplexion, "ebony");
     }
 
-    private setComplexion(choice: string): void { // And choose hair
+    function setComplexion(choice: string): void { // And choose hair
         player.skinTone = choice;
         clearOutput();
         outputText("You selected a " + choice + " complexion.\n\nWhat color is your hair?");
@@ -494,14 +490,14 @@ export class CharCreation {
         addButton(6, "Auburn", setHair, "auburn");
     }
 
-    private setHair(choice: string): void {
+    function setHair(choice: string): void {
         player.hairColor = choice;
         clearOutput();
         outputText("You have " + hairDescription(player) + ".");
         chooseEndowment(false);
     }
 
-    private chooseEndowment(clear: boolean): void {
+    function chooseEndowment(clear: boolean): void {
         if (clear) clearOutput();
         outputText("Every person is born with a gift.  What's yours?");
         menu();
@@ -523,7 +519,7 @@ export class CharCreation {
         }
     }
 
-    private confirmEndowmentStrength(): void {
+    function confirmEndowmentStrength(): void {
         clearOutput();
         outputText("Are you stronger than normal? (+5 Strength)\n\nStrength increases your combat damage, and your ability to hold on to an enemy or pull yourself away.");
         menu();
@@ -531,7 +527,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentThoughness(): void {
+    function confirmEndowmentThoughness(): void {
         clearOutput();
         outputText("Are you unusually tough? (+5 Toughness)\n\nToughness gives you more HP and increases the chances an attack against you will fail to wound you.");
         menu();
@@ -539,7 +535,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentSpeed(): void {
+    function confirmEndowmentSpeed(): void {
         clearOutput();
         outputText("Are you very quick?  (+5 Speed)\n\nSpeed makes it easier to escape combat and grapples.  It also boosts your chances of evading an enemy attack and successfully catching up to enemies who try to run.");
         menu();
@@ -547,7 +543,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentSmarts(): void {
+    function confirmEndowmentSmarts(): void {
         clearOutput();
         outputText("Are you a quick learner?  (+5 Intellect)\n\nIntellect can help you avoid dangerous monsters or work with machinery.  It will also boost the power of any spells you may learn in your travels.");
         menu();
@@ -555,7 +551,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentLibido(): void {
+    function confirmEndowmentLibido(): void {
         clearOutput();
         outputText("Do you have an unusually high sex-drive?  (+5 Libido)\n\nLibido affects how quickly your lust builds over time.  You may find a high libido to be more trouble than it's worth...");
         menu();
@@ -563,7 +559,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentTouch(): void {
+    function confirmEndowmentTouch(): void {
         clearOutput();
         outputText("Is your skin unusually sensitive?  (+5 Sensitivity)\n\nSensitivity affects how easily touches and certain magics will raise your lust.  Very low sensitivity will make it difficult to orgasm.");
         menu();
@@ -571,7 +567,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentBigCock(): void {
+    function confirmEndowmentBigCock(): void {
         clearOutput();
         outputText("Do you have a big cock?  (+2\" Cock Length)\n\nA bigger cock will make it easier to get off any sexual partners, but only if they can take your size.");
         menu();
@@ -579,7 +575,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentMessyOrgasms(): void {
+    function confirmEndowmentMessyOrgasms(): void {
         clearOutput();
         outputText("Are your orgasms particularly messy?  (+50% Cum Multiplier)\n\nA higher cum multiplier will cause your orgasms to be messier.");
         menu();
@@ -587,7 +583,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentBigBreasts(): void {
+    function confirmEndowmentBigBreasts(): void {
         clearOutput();
         outputText("Are your breasts bigger than average? (DD cups)\n\nLarger breasts will allow you to lactate greater amounts, tit-fuck larger cocks, and generally be a sexy bitch.");
         menu();
@@ -595,7 +591,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentBigClit(): void {
+    function confirmEndowmentBigClit(): void {
         clearOutput();
         outputText("Do you have a big clit?  (1\" Long)\n\nA large enough clit may eventually become as large as a cock.  It also makes you gain lust much faster during oral or manual stimulation.");
         menu();
@@ -603,7 +599,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentFertile(): void {
+    function confirmEndowmentFertile(): void {
         clearOutput();
         outputText("Is your family particularly fertile?  (+15% Fertility)\n\nA high fertility will cause you to become pregnant much more easily.  Pregnancy may result in: Strange children, larger bust, larger hips, a bigger ass, and other weirdness.");
         menu();
@@ -611,7 +607,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private confirmEndowmentWetVagina(): void {
+    function confirmEndowmentWetVagina(): void {
         clearOutput();
         outputText("Does your pussy get particularly wet?  (+1 Vaginal Wetness)\n\nVaginal wetness will make it easier to take larger cocks, in turn helping you bring the well-endowed to orgasm quicker.");
         menu();
@@ -619,7 +615,7 @@ export class CharCreation {
         addButton(1, "No", chooseEndowment, true);
     }
 
-    private setEndowmentStrength(): void {
+    function setEndowmentStrength(): void {
         player.str += 5;
         player.tone += 7;
         player.thickness += 3;
@@ -628,7 +624,7 @@ export class CharCreation {
         chooseHistory();
     }
 
-    private setEndowmentToughness(): void {
+    function setEndowmentToughness(): void {
         player.tou += 5;
         player.tone += 5;
         player.thickness += 5;
@@ -637,33 +633,33 @@ export class CharCreation {
         chooseHistory();
     }
 
-    private setEndowmentSpeed(): void {
+    function setEndowmentSpeed(): void {
         player.spe += 5;
         player.tone += 10;
         player.perks.create(PerkLib.Fast, 0.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentSmarts(): void {
+    function setEndowmentSmarts(): void {
         player.inte += 5;
         player.thickness -= 5;
         player.perks.create(PerkLib.Smart, 0.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentLibido(): void {
+    function setEndowmentLibido(): void {
         player.lib += 5;
         player.perks.create(PerkLib.Lusty, 0.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentTouch(): void {
+    function setEndowmentTouch(): void {
         player.sens += 5;
         player.perks.create(PerkLib.Sensitive, 0.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentBigCock(): void {
+    function setEndowmentBigCock(): void {
         player.femininity -= 5;
         player.cocks[0].cockLength = 8;
         player.cocks[0].cockThickness = 1.5;
@@ -672,28 +668,28 @@ export class CharCreation {
         chooseHistory();
     }
 
-    private setEndowmentMessyOrgasms(): void {
+    function setEndowmentMessyOrgasms(): void {
         player.femininity -= 2;
         player.cumMultiplier = 1.5;
         player.perks.create(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentBigBreasts(): void {
+    function setEndowmentBigBreasts(): void {
         player.femininity += 5;
         player.breastRows[0].breastRating += 2;
         player.perks.create(PerkLib.BigTits, 1.5, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentBigClit(): void {
+    function setEndowmentBigClit(): void {
         player.femininity -= 5;
         player.clitLength = 1;
         player.perks.create(PerkLib.BigClit, 1.25, 0, 0, 0);
         chooseHistory();
     }
 
-    private setEndowmentFertile(): void {
+    function setEndowmentFertile(): void {
         player.femininity += 5;
         player.fertility += 25;
         player.hipRating += 2;
@@ -701,14 +697,14 @@ export class CharCreation {
         chooseHistory();
     }
 
-    private setEndowmentWetVagina(): void {
+    function setEndowmentWetVagina(): void {
         player.femininity += 7;
         player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
         player.perks.create(PerkLib.WetPussy, 2, 0, 0, 0);
         chooseHistory();
     }
 
-    public chooseHistory(): void {
+    export function chooseHistory(): void {
         clearOutput();
         if (flags[kFLAGS.HISTORY_PERK_SELECTED] != 0) { // This flag can only be non-zero if chooseHistory is called from camp.as
             outputText("<b>New history perks are available during creation.  Since this character was created before they were available, you may choose one now!</b>\n\n");
@@ -726,7 +722,7 @@ export class CharCreation {
         addButton(8, "Whoring", confirmHistory, PerkLib.HistoryWhore);
     }
 
-    private confirmHistory(choice: PerkType): void {
+    function confirmHistory(choice: PerkType): void {
         clearOutput();
         switch (choice) {
             case PerkLib.HistoryAlchemist:
@@ -761,7 +757,7 @@ export class CharCreation {
         addButton(1, "No", chooseHistory);
     }
 
-    private setHistory(choice: PerkType): void {
+    function setHistory(choice: PerkType): void {
         player.perks.create(choice, 0, 0, 0, 0);
         if (choice == PerkLib.HistorySlut || choice == PerkLib.HistoryWhore) {
             if (player.vaginas.length > 0) {
@@ -781,7 +777,7 @@ export class CharCreation {
 
     }
 
-    private completeCharacterCreation(): void {
+    function completeCharacterCreation(): void {
         if (customPlayerProfile != null) {
             customPlayerProfile();
             doNext(arrival);
@@ -790,7 +786,7 @@ export class CharCreation {
         arrival();
     }
 
-    private arrival(): void {
+    function arrival(): void {
         statScreenRefresh();
         game.time.hours = 11;
         clearOutput();
@@ -807,7 +803,7 @@ export class CharCreation {
         doNext(arrivalPartTwo);
     }
 
-    private arrivalPartTwo(): void {
+    function arrivalPartTwo(): void {
         clearOutput();
         hideUpDown();
         dynStats("lus", 40, "cor", 2);
@@ -821,7 +817,7 @@ export class CharCreation {
         doNext(arrivalPartThree);
     }
 
-    private arrivalPartThree(): void {
+    function arrivalPartThree(): void {
         clearOutput();
         hideUpDown();
         dynStats("lus", -30);
@@ -831,14 +827,14 @@ export class CharCreation {
         doNext(arrivalPartFour);
     }
 
-    private arrivalPartFour(): void {
+    function arrivalPartFour(): void {
         clearOutput();
         hideUpDown();
         outputText("You look around, surveying the hellish landscape as you plot your next move.  The portal is a few yards away, nestled between a formation of rocks.  It does not seem to exude the arousing influence it had on the other side.  The ground and sky are both tinted different shades of red, though the earth beneath your feet feels as normal as any other lifeless patch of dirt.   You settle on the idea of making a camp here and fortifying this side of the portal.  No demons will ravage your beloved hometown on your watch.\n\nIt does not take long to set up your tent and a few simple traps.  You'll need to explore and gather more supplies to fortify it any further.  Perhaps you will even manage to track down the demons who have been abducting the other champions!");
         doNext(playerMenu);
     }
 
-    private customAnnetta(): void {
+    function customAnnetta(): void {
         outputText("You're a rather well-endowed hermaphrodite that sports a thick, dog-knotted cock, an unused pussy, and a nice, stretchy butt-hole.  You've also got horns and demonic high-heels on your feet.  It makes you wonder why you would ever get chosen to be champion!");
         // Specific Character	"Gender: Herm
         // Penis: 13 inch long 3 inch wide penis, dog shaped, 6.5 inch knot
@@ -886,7 +882,7 @@ export class CharCreation {
         player.gender = 3;
     }
 
-    private customAria(): void {
+    function customAria(): void {
         outputText("It's really no surprise that you were sent through the portal to deal with the demons - you look enough like one as-is.  Your numerous fetish-inducing piercings, magical fox-tails, and bimbo-licious personality were all the motivation the elders needed to keep you from corrupting the village youth.");
         // 2/26/2013 8:18:21	rdolave@gmail.com	Character Creation	"female DD breasts feminity 100 butt size 5 hip size 5 body thickness 10 clit I would like her nipples pierced with Ceraphs piercing
         // (on a side note how much do you think it would cost to add bell nipple,labia and clit piercings as well as an option for belly button piercings would like to see belly button piecings with a few different options as well.  Also would love to have handcuff ear piercings.)"	Would like the bimbo brain and bimbo body perks as well as the nine tail PerkLib.  demonic high heels, pink skin, obscenely long pink hair  would like her to be a kitsune with the nine tails.  pink fur.  starting equipment would like to be the succubus whip and nurse's outfit.  Also would like the xmas perk and all three Vday perks	Aria
@@ -930,7 +926,7 @@ export class CharCreation {
         player.setArmor(ArmorLib.NURSECL);
     }
 
-    private customBetram(): void {
+    function customBetram(): void {
         // Character Creation
         // herm, canine cock - 8", virgin, tight, wet
         // fox ears, tails, A cup breasts with normal nipples	Betram
@@ -954,7 +950,7 @@ export class CharCreation {
         outputText("You're quite the foxy herm, and as different as you were compared to the rest of Ingnam, it's no suprise you were sent through first.");
     }
 
-    private customCeveo(): void {
+    function customCeveo(): void {
         // Male. 2 cock. 5.5 average thickness and 12 in with excessive thickness both pierced with silver rings. Balls, large, about the size of a billiard ball, four of them. All humanish, more details on the character.
         player.cocks.createCock();
         player.cocks.createCock();
@@ -1015,7 +1011,7 @@ export class CharCreation {
         outputText("As a wandering mage you had found your way into no small amount of trouble in the search for knowledge.  A strange tome here, a ritual there, most people found your pale form unsettling. They would be further troubled if they could see your feet!  Lets not even begin on the blood magic.  Yes, your interest in examining every aspect of magic has run you down a strange path, so when you wandered into Ingram and began to hear of the exile of the Champion, and the superstitions that surrounded it you were intrigued, as every little rumor and ritual often had a grain of truth.  You snuck into the cave prior to the ritual, where the old man supposedly led every Champion, and there you found a strange portal that emanated a certain degree of spacial transparency -  more than the portal's own.  Within it must have been a whole new world!  Throwing caution to the wind, your curiosities engulfing you, you dove in with nary a thought for the consequences.");
     }
 
-    private customCharaun(): void {
+    function customCharaun(): void {
         outputText("As a gifted fox with a juicy, thick knot, a wet cunt, and magical powers, you have no problems with being chosen as champion.");
         // Herm, Fox Cock: (27"l x 1.4"w, knot multiplier 3.6), No Balls, Cum Multiplier: 7,500, Vaginal Wetness: 5, Clit length: 0.5, Virgin, Fertility: 15	9-tailed "enlightened" kitsune( a pure-blooded kitsune with the "Enlightened Nine-tails" perk and magic specials)
         if (!player.cocks.length > 0) player.cocks.createCock();
@@ -1063,7 +1059,7 @@ export class CharCreation {
         player.setWeapon(WeaponLib.S_BLADE);
     }
 
-    private customCharlie(): void {
+    function customCharlie(): void {
         outputText("You're strong, smart, fast, and tough.  It also helps that you've got four dongs well beyond what others have lurking in their trousers.  With your wings, bow, weapon, and tough armor, you're a natural for protecting the town.");
         player.gender = 1;
         player.tou += 2;
@@ -1144,7 +1140,7 @@ export class CharCreation {
         player.cumMultiplier = 50;
     }
 
-    private customCody(): void {
+    function customCody(): void {
         outputText("Your orange and black tiger stripes make you cut a more imposing visage than normal, and with your great strength, armor, and claymore, you're a natural pick for champion.");
         // well to start off the name would be Cody
         // -Cat with (black and orange tiger fur if possible) if not just Orange fur
@@ -1158,7 +1154,7 @@ export class CharCreation {
         player.setWeapon(WeaponLib.CLAYMOR);
     }
 
-    private customGalatea(): void {
+    function customGalatea(): void {
         // "(Dangit Fenoxo!  Stop adding sexy must-have things to the game!  If it's not too late to update it I've added in that sexy new armor.  Thanks!)
         // Other:
         if (!player.vaginas.length > 0) {
@@ -1205,13 +1201,13 @@ export class CharCreation {
         outputText("You've got large breasts prone to lactation.  You aren't sure WHY you got chosen as a champion, but with your considerable strength, you're sure you'll do a good job protecting Ingnam.");
     }
 
-    private customGundam(): void {
+    function customGundam(): void {
         outputText("You're fabulously rich, thanks to a rather well-placed bet on who would be the champion.  Hopefully you can buy yourself out of any trouble you might get in.");
         player.gems = 1500 + rand(1000);
         // for my custom character profile i want the name to be gundam all i want is to start out with around 1000-2500 gems like as a gift from the elder or something to help me out.
     }
 
-    private customHikari(): void {
+    function customHikari(): void {
         // Character Creation	If possible I would like a herm with a cat cock that is 10 inches by 4 inches. Anything else is up to you.	I would like a herm catmorph with two large d breasts and shoulder length hair. Also if possible I would like to start with some gel armor. Everything else is fair game.	Hikari
         outputText("As a herm with a super-thick cat-cock, D-cup breasts, and out-of-this-world armor, you're a natural pick for champion.");
         if (!player.cocks.length > 0) player.cocks.createCock();
@@ -1225,7 +1221,7 @@ export class CharCreation {
         player.gender = 3;
     }
 
-    private customIsaac(): void {
+    function customIsaac(): void {
         outputText("Born of a disgraced priestess, Isaac was raised alone until she was taken by illness.  He worked a number of odd jobs until he was eventually chosen as champion.");
         // - gift: fast
         player.spe += 5;
@@ -1297,7 +1293,7 @@ export class CharCreation {
         player.setArmor(ArmorLib.M_ROBES);
     }
 
-    private customKatti(): void {
+    function customKatti(): void {
         outputText("You have big breasts with big, fuckable nipples on them, and no matter what, your vagina always seems to be there to keep you company.");
         // Gender: Female
         if (!player.vaginas.length > 0) {
@@ -1315,7 +1311,7 @@ export class CharCreation {
         player.breastRows[0].fuckable = true;
     }
 
-    private customLeah(): void {
+    function customLeah(): void {
         player.setArmor(ArmorLib.LEATHRA);
         // 		if(player.perks.findByType(PerkLib.WizardsEndurance) < 0) player.perks.create(PerkLib.WizardsEndurance,30,0,0,0);
         player.setWeapon(WeaponLib.W_STAFF);
@@ -1372,7 +1368,7 @@ export class CharCreation {
         player.thickness = 65;
     }
 
-    private customLucina(): void {
+    function customLucina(): void {
         // 428347355782040	Character Creation	Female,wetness=wet, Looseness=normal,not a virgin, Fertility high i guess i dont really care can be up to you.	for her face normal human, ears i want Elvin, no tails, just normal skin, body thickness i want to be slender, body tone kinda athletic but not too much, hair i want really long i think like a 30 on the codex number i think and her hair color light blonde, i want her to have normal D size breast with you can choose how you want them really though i dont think i really care, nipple size i dont care, her skin color a fair light light color but not too pale, for her starting equipment i want im not sure what i want her to wear but basically i want a Elvin archer with a bow. so maybe you can do something about the clothing. i just want a Elvin character in the game since theres goblins plus another archer besides kelt a female one add to that.	Lucina
         outputText("You're a blond, fair-skinned lass with a well-made bow and the skills to use it.  You have D-cup breasts and a very moist cunt that's seen a little action.  You're fit and trim, but not too thin, nor too well-muscled.  All in all, you're a good fit for championing your village's cause.");
         if (!player.vaginas.length > 0) player.vaginas.createVagina();
@@ -1393,7 +1389,7 @@ export class CharCreation {
         player.keyItems.create("Bow", 0, 0, 0, 0);
     }
 
-    private customLukaz(): void {
+    function customLukaz(): void {
         // Specific Character
         // Male. 11.5 inch dog dick, 4 balls, 2 inches in diameter.
         player.cocks.createCock();
@@ -1459,7 +1455,7 @@ export class CharCreation {
         player.perks.create(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
     }
 
-    private customMara(): void {
+    function customMara(): void {
         // #226096893686530
         // For the custom PC Profile can you make a Bimbo Bunny girl (no bunny feet) (named Mara) dont really care about clothes i can get what i want pretty quickly and I change from time to time.
         outputText("You're a bunny-girl with bimbo-tier curves, jiggly and soft, a curvy, wet girl with a bit of a flirty past.");
@@ -1492,7 +1488,7 @@ export class CharCreation {
         player.teaseLevel = 3;
     }
 
-    private customMihari(): void {
+    function customMihari(): void {
         // [Values will be listed as if taken from Minerva]
         // I'm kinda going under the assumption you are letting us go hog wild if not, take what's allowed and do what you wish out of what's below
         outputText("The portal is not something you fear, not with your imposing armor and inscribed spellblade.  You're much faster and stronger than every champion that came before you, but will it be enough?");
@@ -1553,7 +1549,7 @@ export class CharCreation {
         player.setWeapon(WeaponLib.S_BLADE);
     }
 
-    private customMirvanna(): void {
+    function customMirvanna(): void {
         // Any equine or dragonny attributes accompanying it a big plus! As I'm a dragon-unicorn furry (Qilin~). Bonus points if you add a horn type for unicorn horn.
         outputText("You're an equine dragon-herm with a rather well-proportioned body.  Ingnam is certainly going to miss having you whoring yourself out around town.  You don't think they'll miss cleaning up all the messy sex, though.");
         player.gender = 3;
@@ -1615,7 +1611,7 @@ export class CharCreation {
         player.perks.create(PerkLib.HistoryWhore, 0, 0, 0, 0);
     }
 
-    private customNami(): void {
+    function customNami(): void {
         // Female with the sand-trap black pussy
         // Non-Virgin
         // Fertility- Normal Starting Value
@@ -1678,7 +1674,7 @@ export class CharCreation {
         outputText("Your exotic appearance caused you some trouble growing up, but you buried your nose in books until it came time to go through the portal.");
     }
 
-    private customNavorn(): void {
+    function customNavorn(): void {
         outputText("There's been something special about you since day one, whether it's your numerous sexual endowments or your supernatural abilities.  You're a natural pick for champion.");
         // Character Creation	"Herm same number and types of cocks from email sent earlier.
         // Special abilities: Fire breath, fox fire?
@@ -1773,7 +1769,7 @@ export class CharCreation {
         player.gender = 3;
     }
 
-    private customNixi(): void {
+    function customNixi(): void {
         // -Perks
         // fertility AND messy orgasm (hope that's not pushing it)
         player.perks.create(PerkLib.MessyOrgasms, 1.25, 0, 0, 0);
@@ -1869,7 +1865,7 @@ export class CharCreation {
         outputText("As a German-Shepherd morph, the rest of the village never really knew what to do with you... until they sent you through the portal to face whatever's on the other side...");
     }
 
-    private customPrismere(): void {
+    function customPrismere(): void {
         // Specific Character	Female, virgin, high fertility, tight with standard wetness and clit.
         player.vaginas.createVagina();
         player.clitLength = 0.25;
@@ -1900,7 +1896,7 @@ export class CharCreation {
         // I feel really weird talking about all this, so if there's anything you need to change or can't do, or if I totally misinterpreted this, just shoot me an email! jordie.wierenga@gmail.com . Thanks in advance... I'm a big fan. "	Prismere
     }
 
-    private customRannRayla(): void {
+    function customRannRayla(): void {
         // Specific Character	Virgin female.	Max femininity. Thin with a little muscle. Size C breasts. Long red hair. Light colored skin. 5'5" tall. 	Rann Rayla
         outputText("You're a young, fiery redhead who\'s utterly feminine.  You've got C-cup breasts and long red hair.  Being a champion can\'t be that bad, right?");
         player.vaginas.createVagina();
@@ -1919,7 +1915,7 @@ export class CharCreation {
         player.tallness = 65;
     }
 
-    private customRope(): void {
+    function customRope(): void {
         // 529315025394020	Character Creation	Neuter (no genitals) "50-50 masculine-feminine ratio. Shark teeth."	Rope
         outputText("Despite outward appearances, you're actually something of a neuter, with shark-like teeth, an androgynous face, and a complete lack of genitalia.");
         if (player.cocks.length > 0) player.cocks.removeCock(0, 1);
@@ -1929,7 +1925,7 @@ export class CharCreation {
         player.faceType = FACE_SHARK_TEETH;
     }
 
-    private customSera(): void {
+    function customSera(): void {
         outputText("You're something of a shemale - three rows of C-cup breasts matched with three, plump, juicy cocks.  Some decent sized balls, bat wings, and cat-like ears round out the package.");
         player.gender = 1;
         player.tou += 2;
@@ -1984,7 +1980,7 @@ export class CharCreation {
         player.keyItems.create("Deluxe Dildo", 0, 0, 0, 0);
     }
 
-    private customSiveen(): void {
+    function customSiveen(): void {
         // Female
         // Virgin
         player.gender = 2;
@@ -2028,7 +2024,7 @@ export class CharCreation {
         outputText("You are a literal angel from beyond, and you take the place of a vilage's champion for your own reasons...");
     }
 
-    private customSora(): void {
+    function customSora(): void {
         // Character Creation	Female,virgin	A kitsune with a snake-like tongue	Sora
         if (player.vaginas.length > 0) player.vaginas[0].virgin = true;
         player.tongueType = TONUGE_SNAKE;
@@ -2041,7 +2037,7 @@ export class CharCreation {
         outputText("As a Kitsune, you always got weird looks, but none could doubt your affinity for magic...");
     }
 
-    private customTestChar(): void {
+    function customTestChar(): void {
         player.XP = 500000;
         player.level = 20;
         player.breasts.createBreastRow();
@@ -2213,7 +2209,7 @@ export class CharCreation {
         flags[kFLAGS.BAZAAR_ENTERED] = 1;
     }
 
-    private customTyriana(): void {
+    function customTyriana(): void {
         outputText("Your many, posh tits, incredible fertility, and well-used cunt made you more popular than the village bicycle.  With your cat-like ears, paws, and tail, you certainly had a feline appeal.  It's time to see how you fare in the next chapter of your life.");
         // "Gender: Female
         player.gender = 2;
@@ -2261,7 +2257,7 @@ export class CharCreation {
         player.teaseLevel = 3;
     }
 
-    private customVahdunbrii(): void {
+    function customVahdunbrii(): void {
         player.breasts.createBreastRow();
         player.vaginas.createVagina();
         player.breastRows[0].breastRating = 3;
@@ -2897,5 +2893,3 @@ export class CharCreation {
 
     }
     */
-
-}

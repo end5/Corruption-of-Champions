@@ -60,8 +60,9 @@ export class Giacomo implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public giacomoEncounter(): void {
+    export function giacomoEncounter(): void {
         spriteSelect(23);
         clearOutput();
         if (game.giacomo == 0) {
@@ -94,7 +95,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private firstEncounter(): void {
+    function firstEncounter(): void {
         outputText("As you travel, you see another person on the road.  He is tethered to a small cart that is overloaded with a hodgepodge of items.  He is dressed in a very garish manner, having a broad, multicolored hat, brocaded coat and large, striped pantaloons.  His appearance is almost comical and contrasts with his severe and hawkish facial features.  The man sees you, smiles and stops his cart.\n");
         outputText("\"<i>Greetings, traveler! My name is Giacomo.  I am, as you can see, a humble purveyor of items, curios and other accoutrements.  While I am not in a position to show you my full wares as my shop is packed on this push-cart, I do offer some small trinkets for travelers I meet.</i>\"\n\n");
         outputText("The merchant looks at you sharply and cracks a wide, toothy smile you find... unnerving.  The merchant twists his way around to access a sack he has around his back.  After a moment, he swings the sack from his back to have better access to its contents.  Inquisitively, the merchant turns back to you.\n");
@@ -105,7 +106,7 @@ export class Giacomo implements TimeAwareInterface {
         game.giacomo = 1;
     }
 
-    private potionMenu(): void {
+    function potionMenu(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Which potion or tincture will you examine?");
@@ -114,7 +115,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private bookMenu(): void {
+    function bookMenu(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Which book are you interested in perusing?");
@@ -123,7 +124,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private eroticaMenu(): void {
+    function eroticaMenu(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Giacomo's grin is nothing short of creepy as he offers his wares to you.  What are you interested in?");
@@ -138,14 +139,14 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchVitailtyTincture(): void {
+    function pitchVitailtyTincture(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Giacomo holds up the item and says, \"<i>Ah, yes!  The quintessential elixir for all travelers, this little bottle of distilled livelihood will aid you in restoring your energy on your journey and, should you be hurt or injured, will aid the body's ability to heal itself.  Yes " + mf(player, "sir", "madam") + ", this is liquid gold for pilgrim and adventurer alike.  Interested?  It is <b>15 gems</b></i>.\"  ");
         doYesNo(buyVitailtyTincture, potionMenu);
     }
 
-    private buyVitailtyTincture(): void {
+    function buyVitailtyTincture(): void {
         spriteSelect(23);
         if (player.gems < 15) {
             clearOutput();
@@ -159,14 +160,14 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchScholarsTea(): void {
+    function pitchScholarsTea(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Giacomo holds up a pouch of dried, fragrant leaves and begins his spiel, \"<i>Have you ever wondered how scholars and other smart folk keep up such a mental effort for so long?  They make a tea out of this fine mixture of quality plants and herbs.  Nothing but the best, this mysterious mixture of herbs in its Orange Pekoe base makes anyone, short of a lummox, as brainy as the finest minds of the land.  All you do is steep the leaves in some water and drink up!  Hot or cold, straight or sweetened with honey, your mind will run circles around itself once it has this for fuel.  Buy it now and I will throw in the strainer for free!  Interested?  Only <b>15 gems</b>!</i>\"  ");
         doYesNo(buyScholarsTea, potionMenu);
     }
 
-    private buyScholarsTea(): void {
+    function buyScholarsTea(): void {
         spriteSelect(23);
         if (player.gems < 15) {
             clearOutput();
@@ -180,14 +181,14 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchCeruleanPotion(): void {
+    function pitchCeruleanPotion(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Giacomo makes his comical over-the-shoulder search and holds up a sky-blue bottle.  He grins widely as he begins his pitch, \"<i>My friend, you truly have a discerning eye.  Even the most successful of men seek to attract more women for pleasure and status.  This, my friend, will attract the most discerning and aroused of women.  Women attracted by this fine unction will NEVER say no.  I GUARANTEE that she will want pleasure every time you demand pleasure!  A bit of a caution to you, brother.  Some say this works TOO well.  If you aren't man enough to handle the women this urn draws to you, you'd best say so now and I will offer something more to your liking.  However, if you have the heart for it, I can sell you this little gem for <b>75 gems</b></i>!\"  ");
         doYesNo(buyCeruleanPotion, potionMenu);
     }
 
-    private buyCeruleanPotion(): void {
+    function buyCeruleanPotion(): void {
         spriteSelect(23);
         if (player.gems < 75) {
             clearOutput();
@@ -201,7 +202,7 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchDangerousPlantsBook(): void {
+    function pitchDangerousPlantsBook(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Dangerous Plants") >= 0) {
@@ -213,7 +214,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyDangerousPlantsBook, bookMenu);
     }
 
-    private buyDangerousPlantsBook(): void {
+    function buyDangerousPlantsBook(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 10) {
@@ -229,7 +230,7 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchTravellersGuide(): void {
+    function pitchTravellersGuide(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Traveler's Guide") >= 0) {
@@ -241,7 +242,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyTravellersGuide, bookMenu);
     }
 
-    private buyTravellersGuide(): void {
+    function buyTravellersGuide(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 1) {
@@ -257,7 +258,7 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchHentaiComic(): void {
+    function pitchHentaiComic(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Hentai Comic") >= 0) {
@@ -269,7 +270,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyHentaiComic, bookMenu);
     }
 
-    private buyHentaiComic(): void {
+    function buyHentaiComic(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 10) {
@@ -285,14 +286,14 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchYogaGuide(): void {
+    function pitchYogaGuide(): void {
         spriteSelect(23);
         clearOutput();
         outputText("Giacomo holds up the book with a small degree of reverence.  The cover is leather, with the lettering stitched in by hand.  \"<i>This, my friend,</i>\" begins Giacomo, \"<i>is a strange book indeed.  I traded for it in the east, where they practice a form of exercise known as yoga.  This volume in particular deals with those of, shall we say, unusual body shapes.  Because of its rarity and usefulness, I simply cannot let it go for less than 100 gems and believe me, at this price I'm practically cutting my own throat.  Care to broaden your horizons?</i>\"");
         doYesNo(buyYogaGuide, bookMenu);
     }
 
-    private buyYogaGuide(): void {
+    function buyYogaGuide(): void {
         clearOutput();
         if (player.keyItems.has("Yoga Guide") >= 0) {
             outputText("<b>You already own a yoga guide!</b>");
@@ -309,7 +310,7 @@ export class Giacomo implements TimeAwareInterface {
         doNext(bookMenu);
     }
 
-    private pitchDildo(): void {
+    function pitchDildo(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Dildo") >= 0) {
@@ -321,7 +322,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyDildo, eroticaMenu);
     }
 
-    private buyDildo(): void {
+    function buyDildo(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 20) {
@@ -337,7 +338,7 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private pitchSelfStimulationBelt(): void {
+    function pitchSelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Self-Stimulation Belt") >= 0) {
@@ -349,7 +350,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buySelfStimulationBelt, eroticaMenu);
     }
 
-    private buySelfStimulationBelt(): void {
+    function buySelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 30) {
@@ -364,7 +365,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchAllNaturalSelfStimulationBelt(): void {
+    function pitchAllNaturalSelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("All-Natural Self-Stimulation Belt") >= 0) {
@@ -386,7 +387,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyAllNaturalSelfStimulationBelt, eroticaMenu);
     }
 
-    private buyAllNaturalSelfStimulationBelt(): void {
+    function buyAllNaturalSelfStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 40) {
@@ -401,7 +402,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchOnahole(): void {
+    function pitchOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Plain Onahole") >= 0) {
@@ -413,7 +414,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyOnahole, eroticaMenu);
     }
 
-    private buyOnahole(): void {
+    function buyOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 20) {
@@ -428,7 +429,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchDeluxeOnahole(): void {
+    function pitchDeluxeOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Deluxe Onahole") >= 0) {
@@ -440,7 +441,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyDeluxeOnahole, eroticaMenu);
     }
 
-    private buyDeluxeOnahole(): void {
+    function buyDeluxeOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 50) {
@@ -455,7 +456,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchAllNaturalOnahole(): void {
+    function pitchAllNaturalOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("All-Natural Onahole") >= 0) {
@@ -474,7 +475,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyAllNaturalOnahole, eroticaMenu);
     }
 
-    private buyAllNaturalOnahole(): void {
+    function buyAllNaturalOnahole(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 150) {
@@ -489,7 +490,7 @@ export class Giacomo implements TimeAwareInterface {
         statScreenRefresh();
     }
 
-    private pitchDualStimulationBelt(): void {
+    function pitchDualStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.keyItems.has("Dual Belt") >= 0) {
@@ -501,7 +502,7 @@ export class Giacomo implements TimeAwareInterface {
         doYesNo(buyDualStimulationBelt, eroticaMenu);
     }
 
-    private buyDualStimulationBelt(): void {
+    function buyDualStimulationBelt(): void {
         spriteSelect(23);
         clearOutput();
         if (player.gems < 50) {
@@ -516,7 +517,7 @@ export class Giacomo implements TimeAwareInterface {
         doNext(eroticaMenu);
     }
 
-    private wormRemoval(): void {
+    function wormRemoval(): void {
         spriteSelect(23);
         clearOutput();
         outputText("You toss the gems at the merchant, who calmly hands you the bottle. Gulping down the liquid, your guts light up as if you swallowed fire. Pain overwhelms your body and you drop to your knees convulsing. You curse the merchant for poisoning you, yet you can only choke out gibberish through your groans. The pain quickly focuses from your stomach to your crotch as the worms inside you are clearly NOT happy with what you have done. You fall onto your back as the thrashing overwhelms you. With an unexpected climax, every worm in your body fights to escape your gonads. The fat worm that resided deep in your sex lazily pushes itself out last.\n\n");
@@ -535,7 +536,7 @@ export class Giacomo implements TimeAwareInterface {
         Inventory.takeItem(ConsumableLib.VITAL_T, Camp.returnToCampUseOneHour);
     }
 
-    private wormRemovalOffer(): void {
+    function wormRemovalOffer(): void {
         spriteSelect(23);
         outputText("\n\n\"<i>Been playing with creatures best left alone, I see</i>\", he chuckles, \"<i>Infestations of any kind are annoying, yet your plight is quite challenging given the magnitude of corrupt creatures around here. It is not the first time I have seen one infested with THOSE worms.</i>\"\n\n", false);
         outputText("You ask how he knows of your change and the merchant giggles heartily.\n\n", false);
@@ -555,7 +556,7 @@ export class Giacomo implements TimeAwareInterface {
         }
     }
 
-    private nightSuccubiFirstTime(): void {
+    function nightSuccubiFirstTime(): void {
         spriteSelect(8);
         outputText("\nAs you sleep, your rest becomes increasingly disturbed.  You feel a great weight on top of you and you find it difficult to breathe.  Stirred to consciousness, your eyes are greeted by an enormous pair of blue tinged breasts.  The nipples are quite long and thick and are surrounded by large, round areola.  A deep, feminine voice breaks the silence.  \"<i>I was wondering if you would wake up.</i>\"  You turn your head to the voice to see the visage of a sharp-featured, attractive woman.  The woman grins mischievously and speaks again.  \"<i>I was hoping that idiot, Giacomo, did not dilute the 'potion' again.</i>\"  Your campfire reflects off the woman's face and her beauty contains some sharply contrasting features.  The pupils of her eyes are slit like a cat's.  As she grins, she bares her teeth, which contain two pairs of long and short fangs.  This woman is clearly NOT human!  In shock, you attempt to get up, only prompting the woman to prove her inhuman nature by grabbing your shoulders and pinning you to the ground.  You see that each finger on her hand also contains a fourth joint, further proving her status.  Before you can speak a word, the woman begins mocking your fear and places her face in front of yours.  Her face is almost certainly demonic in nature.\n\n");
         if (player.gender == 0) {
@@ -592,7 +593,7 @@ export class Giacomo implements TimeAwareInterface {
         doNext(ceruleanSuccubusEncounterPart2);
     }
 
-    private ceruleanSuccubusEncounterPart2(): void {
+    function ceruleanSuccubusEncounterPart2(): void {
         clearOutput();
         spriteSelect(8);
         if (player.gender == 1) {
@@ -608,7 +609,7 @@ export class Giacomo implements TimeAwareInterface {
         doNext(ceruleanSuccubusEncounterPart3);
     }
 
-    private ceruleanSuccubusEncounterPart3(): void {
+    function ceruleanSuccubusEncounterPart3(): void {
         clearOutput();
         spriteSelect(8);
         if (player.gender == 1) {
@@ -629,7 +630,7 @@ export class Giacomo implements TimeAwareInterface {
         doNext(ceruleanSuccubusEncounterPart4);
     }
 
-    private ceruleanSuccubusEncounterPart4(): void {
+    function ceruleanSuccubusEncounterPart4(): void {
         spriteSelect(8);
         if (player.gender == 1) {
             clearOutput();
@@ -647,7 +648,7 @@ export class Giacomo implements TimeAwareInterface {
         Inventory.takeItem(ConsumableLib.CERUL_P, playerMenu);
     }
 
-    private nightSuccubiRepeat(): void {
+    function nightSuccubiRepeat(): void {
         spriteSelect(8);
         if (player.gender == 0) {
             if (flags[kFLAGS.CERULEAN_POTION_NEUTER_ATTEMPTED] == 0) {
@@ -786,4 +787,3 @@ export class Giacomo implements TimeAwareInterface {
         dynStats("str", rand(2), "tou", rand(2), "spe", rand(2), "int", rand(2), "cor", 1);
         Inventory.takeItem(ConsumableLib.CERUL_P, playerMenu);
     }
-}

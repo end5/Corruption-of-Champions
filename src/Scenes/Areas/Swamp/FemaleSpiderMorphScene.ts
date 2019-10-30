@@ -25,8 +25,9 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public fSpiderMorphGreeting(): void {
+    export function fSpiderMorphGreeting(): void {
         outputText("", true);
         spriteSelect(73);
         // Egg sack sometimes
@@ -50,14 +51,14 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // Selecting fight starts combat and eventParsers to 1 to display the combat menu and enemy description.
-    private fightFSpiderMorph(): void {
+    function fightFSpiderMorph(): void {
         startCombat(new FemaleSpiderMorph());
         spriteSelect(73);
         playerMenu();
     }
 
     // Run
-    private runFromFSpiderMorph(): void {
+    function runFromFSpiderMorph(): void {
         outputText("", true);
         spriteSelect(73);
         // Selecting has a 50% chance of displaying the following:
@@ -73,7 +74,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *Try to Talk
-    private talkToFSpiderMorph(): void {
+    function talkToFSpiderMorph(): void {
         outputText("", true);
         spriteSelect(73);
         if (rand(2) == 0) {
@@ -108,7 +109,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *OPTION 1 Yes - Let Her Fuck You
-    private voluntaryFemaleSpiderMorphRapesYou(): void {
+    function voluntaryFemaleSpiderMorphRapesYou(): void {
         startCombat(new FemaleSpiderMorph());
         spriteSelect(73);
         game.inCombat = false;
@@ -116,7 +117,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *OPTION 1 No (Declined sex)
-    private declinedCrazyFemaleSpiderMorphSexFunTimes(): void {
+    function declinedCrazyFemaleSpiderMorphSexFunTimes(): void {
         outputText("", true);
         outputText("You tell the lusty spider-morph that you're not interested in having sex with her now, and though she looks crestfallen, she nods understandingly and zips up a line of webbing into the trees before the situation can become any more awkward.", false);
         doNext(Camp.returnToCampUseOneHour);
@@ -124,7 +125,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
     // *Defeat Female
     // *Summary: Webs PC down, suckles nipple and injects aphrodisiac into each breast, then sixty-nine's, ending with webbing bukkake?
-    private defeatFemale(): void {
+    function defeatFemale(): void {
         outputText("", true);
         spriteSelect(73);
         // (Noncombat Intro)
@@ -251,7 +252,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *Defeat Male
-    private spiderMorphFemaleRidesACawk(): void {
+    function spiderMorphFemaleRidesACawk(): void {
         // *SUMMARY:  PC is tied down and has a web-condom sprayed around their dick, then a webbing cock-ring.  The PC is then ridden hard, bit numerous times, and never able to cum until pain lances through his (balls/cock) from the lack of release.  Finally, she bites PC's neck and the PC cums, inflating web-condom of various size.
         outputText("", true);
         spriteSelect(73);
@@ -356,7 +357,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
     // *Defeat Male - Too Big
     // Summary: web-spooling around dick, then webjob.
-    private femaleSpiderMorphTooBigWebRape(): void {
+    function femaleSpiderMorphTooBigWebRape(): void {
         outputText("", true);
         spriteSelect(73);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -429,7 +430,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
         else cleanupAfterCombat();
     }
 
-    public loseToFemaleSpiderMorph(): void {
+    export function loseToFemaleSpiderMorph(): void {
         if (player.cocks.length > 0) {
             if (player.cocks.cockThatFits(monster.vaginalCapacity()) == -1) femaleSpiderMorphTooBigWebRape();
             else spiderMorphFemaleRidesACawk();
@@ -442,7 +443,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *Victory Intro
-    public defeatASpiderBitch(): void {
+    export function defeatASpiderBitch(): void {
         outputText("", true);
         spriteSelect(73);
         outputText("The spider-girl drops to her knees and wobbles unsteadily", false);
@@ -467,7 +468,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
     // *Victory Female
     // *Summary: Make her bite herself in the tit and inject aphrodisiac venom, then scissor (or brief clit-fuck)
-    private fSpiderMorphRape(): void {
+    function fSpiderMorphRape(): void {
         outputText("", true);
         spriteSelect(73);
         outputText("You laugh at her and push her down with your " + legs(player) + ", enjoying the view of the pale maiden's unblemished skin and dark, fetishy-looking exoskeleton when she bounces in swamp loam.  Her legs scissor closed nervously, a weak effort to conceal her sex from you", false);
@@ -526,7 +527,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
     // *Victory Male
     // Summary:  Bind her hands with vines and fuck the immobilized spider-girl. BORING
-    private fSpiderMorphRapeDude(): void {
+    function fSpiderMorphRapeDude(): void {
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = 0;
         outputText("", true);
@@ -592,7 +593,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
 
     // *Victory Anal:
     // Summary: Fuck her ass until she loses control of her spinnerets and starts spraying webs willy-nilly.
-    private evilSpiderGirlVictoryAnal(): void {
+    function evilSpiderGirlVictoryAnal(): void {
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x == -1) x = 0;
         const y: number = player.cocks.cockThatFits2(monster.analCapacity());
@@ -659,7 +660,7 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
     }
 
     // *Egg Sack Find
-    private findASpiderMorphEggSack(): void {
+    function findASpiderMorphEggSack(): void {
         outputText("", true);
         spriteSelect(73);
         outputText("You stumble upon a huge, webbed sack hanging from a tree.  Examining it closer, you see that bound up inside it are nearly a dozen webs, each containing a wriggling form.  They start moving faster and faster, perhaps reacting to the nearby movement, before the shells finally shatter and unleash their cargo.  Inside each is a tiny, six inch tall humanoid figure, each resembling a child in miniature.  Remarkably, their features remind you of your own, and before the significance of that fact settles in, they drop to the ground and scurry away on their tiny, carapace-covered legs.\n\n", false);
@@ -675,4 +676,3 @@ export class FemaleSpiderMorphScene implements TimeAwareInterface {
      Oh god what...
 
      alright*/
-}

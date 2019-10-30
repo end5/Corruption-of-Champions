@@ -52,16 +52,17 @@ export class IzmaScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public izmaFollower(): boolean {
+    export function izmaFollower(): boolean {
         return flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] == 1;
     }
 
-    public izmaSprite(): void {
+    export function izmaSprite(): void {
         spriteSelect(32);
     }
 
-    public meetIzmaAtLake(): void {
+    export function meetIzmaAtLake(): void {
         spriteSelect(32);
         outputText("", true);
         // (PC scared Izma off with worms) (Izmacounter = 0)
@@ -167,7 +168,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Trade]
-    private tradeWithFuckingSharkBitches(): void {
+    function tradeWithFuckingSharkBitches(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Izma opens up her wooden trunk, and lays out some old books for you to look at.  An interesting and varied selection, if a small one; they've evidently been used before with their turned up corners and worn-looking pages.  Still good, of course.\n\n", false);
@@ -183,7 +184,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [C.Manual]
-    private readSharkCuntManual(): void {
+    function readSharkCuntManual(): void {
         spriteSelect(32);
         // Use only 10w30 jism.
         outputText("", true);
@@ -196,7 +197,7 @@ export class IzmaScene implements TimeAwareInterface {
         else doYesNo(readSharkCuntManual2, tradeWithFuckingSharkBitches);
     }
 
-    private readSharkCuntManual2(): void {
+    function readSharkCuntManual2(): void {
         spriteSelect(32);
         outputText("", true);
 
@@ -231,7 +232,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [E.Guide]
-    private sharkEdgingGuideLOL(): void {
+    function sharkEdgingGuideLOL(): void {
         spriteSelect(32);
         // durhur
         outputText("", true);
@@ -244,7 +245,7 @@ export class IzmaScene implements TimeAwareInterface {
         else doYesNo(readSharkEdgingGuideLOL, tradeWithFuckingSharkBitches);
     }
 
-    private readSharkEdgingGuideLOL(): void {
+    function readSharkEdgingGuideLOL(): void {
         spriteSelect(32);
         player.gems -= 25;
         statScreenRefresh();
@@ -264,7 +265,7 @@ export class IzmaScene implements TimeAwareInterface {
         return;
     }
     // [Porn]
-    private sharkgirlPronz(): void {
+    function sharkgirlPronz(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Izma seems exceedingly embarassed as you turn this book up from under a pile of the others.  It seems to be a series of erotic images made in this land itself, detailing various creatures of all different genders caught up in sexual situations.  You raise a questioning eyebrow to her.  \"<i>Ah, that... it's good material, I-I suppose,</i>\" she stammers, trying to cover her embarrassment at having mislaid it among the others.  \"<i>Uh... 20 gems if you want to look?</i>\"", false);
@@ -276,7 +277,7 @@ export class IzmaScene implements TimeAwareInterface {
         else doYesNo(readSharkgirlPornzYouFuckingPervertAsshole, tradeWithFuckingSharkBitches);
     }
 
-    private readSharkgirlPornzYouFuckingPervertAsshole(): void {
+    function readSharkgirlPornzYouFuckingPervertAsshole(): void {
         spriteSelect(32);
         player.gems -= 20;
         statScreenRefresh();
@@ -307,7 +308,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Talk]
-    private talkToASharkCoochie(): void {
+    function talkToASharkCoochie(): void {
         spriteSelect(32);
         outputText("", true);
         // (first chat)
@@ -334,7 +335,7 @@ export class IzmaScene implements TimeAwareInterface {
         return;
     }
     // [Leave]
-    private leaveSumSharkPussyOnTheBeach(): void {
+    function leaveSumSharkPussyOnTheBeach(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Having no business with Izma for the time being, you head off back to your camp.", false);
@@ -344,7 +345,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Fight]
-    private fightSharkCunt(): void {
+    function fightSharkCunt(): void {
         outputText("", true);
         // (Izmacounter +1)
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230]++;
@@ -364,7 +365,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victory dialogue]
-    public defeatIzma(): void {
+    export function defeatIzma(): void {
         outputText("", true);
         // (Izmafight = 0)
         if (flags[kFLAGS.IZMA_TIMES_FOUGHT_AND_WON] <= 0) {
@@ -394,7 +395,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Loss dialogue]
-    public IzmaWins(): void {
+    export function IzmaWins(): void {
         outputText("", true);
         // (if Worms)
         if (player.effects.findByType(StatusAffects.Infested) >= 0) {
@@ -419,7 +420,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // M/F/U Loss starter:
-    private loseToIzma(): void {
+    function loseToIzma(): void {
         outputText("", true);
         // Final izma submission!
         if (flags[kFLAGS.IZMA_TIMES_FOUGHT_AND_WON] <= -5) {
@@ -662,7 +663,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // [Final loss sex scene]
     // (trigger if PC loses with Izmafight <= -5)
-    private finalIzmaSubmission(): void {
+    function finalIzmaSubmission(): void {
         outputText("", true);
         outputText("You collapse onto your hands and knees, defeated by Izma once again.  You feel you may not have fought as hard as you could have though, out of a deep-rooted desire for Izma to dominate you again.\n\n", false);
 
@@ -712,7 +713,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(IzmaBadEnd);
     }
     // [Bad end]
-    private IzmaBadEnd(): void {
+    function IzmaBadEnd(): void {
         outputText("", true);
         outputText("<b>One year later...</b>\n\n", false);
 
@@ -730,7 +731,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victory rape-use penus]
-    private victoryPenisIzma(): void {
+    function victoryPenisIzma(): void {
         outputText("", true);
         let cockIndex: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (cockIndex < 0) cockIndex = 0;
@@ -789,7 +790,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victory scene- use vagino]
-    private useVagooOnIzmaWin(): void {
+    function useVagooOnIzmaWin(): void {
         outputText("", true);
         outputText("You watch the defeated tigershark closely and a grin forms on your face.  You touch a hand to her forehead and push her onto her back with minimal effort, slipping her clothing off.  She lacks the strength to stop you, but she knows full well what the terms of the battle were, so she's not going to go back on her word.  You strip off your " + player.armorName + " and spread Izma's legs wide, licking your lips at the sight of her throbbing erection and meaty quads.  You give Izma's massive cock a few test strokes, earning some pleasured groans from the tiger shark.\n\n", false);
 
@@ -817,7 +818,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Yes]
-    private eatIzmasLeafAfterRapinHer(): void {
+    function eatIzmasLeafAfterRapinHer(): void {
         outputText("", true);
         outputText("You accept the leaf gingerly and eat it.  Izma smiles.", false);
         // Set loot
@@ -834,7 +835,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [No]
-    private dontEatIzamsLeafAfterRape(): void {
+    function dontEatIzamsLeafAfterRape(): void {
         outputText("", true);
         outputText("You rankle at the offered herb and give her a haughty glare.  \"<i>You're going to tell ME what to do? Me, your proven superior?</i>\"\n\n", false);
 
@@ -848,7 +849,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victory scene- it feels good in my butt]
-    private takeItInZeButtVictoryLikeFromIzma(): void {
+    function takeItInZeButtVictoryLikeFromIzma(): void {
         outputText("", true);
         player.slimeFeed();
         outputText("You smirk as Izma slumps down, unable to fight against you anymore.\n\n", false);
@@ -878,7 +879,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victory scene – Leave her]
-    private leaveIzmaVictoryTease(): void {
+    function leaveIzmaVictoryTease(): void {
         outputText("", true);
         outputText("Izma collapses to the sand and leans back.  \"<i>Ahhh... you won.  Come get your prize,</i>\" she says, beginning to undress.  You stand there, considering for a moment, as she idly strokes herself.\n\n", false);
 
@@ -899,13 +900,13 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Victor's choice] (tacks onto end of victory sex if Izmafight >= 5)
-    private victorzChoice(): void {
+    function victorzChoice(): void {
         outputText("Izma looks at you, panting from the sex.  \"<i>S-so... that was good... want your reward now?</i>\" she asks, holding the tigershark tooth out to you.  You stare at it, thinking.  Do you want another one of those, or do you want something else?", false);
         // [Tooth][Gloves]
         simpleChoices("Tooth", chooseIzmaTooth, "Gloves", chooseIzmaGloves, "", null, "", null, "", null);
     }
     // [Tooth]
-    private chooseIzmaTooth(): void {
+    function chooseIzmaTooth(): void {
         outputText("", true);
         outputText("You accept the tooth from her with a polite word of thanks.", false);
         // (gain 1 t-shark toof)
@@ -914,7 +915,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Gloves]
-    private chooseIzmaGloves(): void {
+    function chooseIzmaGloves(): void {
         outputText("", true);
         outputText("You look her dead in the eye and say, in a flat monotone, \"<i>I want your gloves.</i>\"\n\n", false);
 
@@ -929,7 +930,7 @@ export class IzmaScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
 
-    private chooseYourIzmaWeapon(): void {
+    function chooseYourIzmaWeapon(): void {
         if (player.gender == 0) nonFightIzmaSmexASS();
         else if (player.gender == 1) nonFightIzmaSmexPAINUS();
         else if (player.gender == 2) nonFightIzmaSmexCUNTPUSSYSNATCHQUIM();
@@ -939,7 +940,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
     // [no-fight Sex: use penus]
-    private nonFightIzmaSmexPAINUS(): void {
+    function nonFightIzmaSmexPAINUS(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Hearing that her offer is being accepted, Izma smiles brightly and sheds what little clothing she has on.  The top half of her black bikini goes first; her DD-cup breasts jiggle about from the motions, and she sighs happily now that she's free of the restricting garments.  She then gets to work undoing the well-crafted grass skirt, and props it on her oak chest as gently as possible so as not to damage it.  Her monstrous cock swings heavily between her knees, slowly hardening at the prospect of sweet release.  She's a rather magnificent specimen all things considered, and you find yourself ogling every curve on her well-toned body.\n\n", false);
@@ -1006,7 +1007,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [no-fight sex: get your ass in the car]
-    private nonFightIzmaSmexASS(): void {
+    function nonFightIzmaSmexASS(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Once you strip down and reveal your nude form to Izma, she purses her lips in thought.  \"<i>Well, this is a problem....</i>\"  You raise an eyebrow as she stalks around you.  \"<i>How, uh... how are we gonna do this?  I mean... I'm NOT putting my mouth there, you can get those thoughts out of your head!</i>\" she says indignantly; you frown slightly, feeling dejected because of your odd condition.\n\n", false);
@@ -1022,7 +1023,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [no-fight sex: use vagino]
-    private nonFightIzmaSmexCUNTPUSSYSNATCHQUIM(): void {
+    function nonFightIzmaSmexCUNTPUSSYSNATCHQUIM(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Izma grins in response, and her hands move behind her back, undoing the strings on her black bikini top.  She flings the garment to the rocks, exposing her large, juicy breasts.  As if deciding to tease you, she turns around and grabs the hem of her skirt, pulling it down slowly and letting you get a good view of her firm ass.  She slowly faces you again, her massive 15-inch cock and balls swinging around with her.  You don't even realize that you've been unconsciously touching yourself throughout the whole thing, earning an uncharacteristic giggle from Izma.\n\n", false);
@@ -1051,7 +1052,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Decline Izma moving in
-    private IzmaStayAtTheLakeBitch(): void {
+    function IzmaStayAtTheLakeBitch(): void {
         spriteSelect(32);
         // [Izma stays at the lake]
         outputText("", true);
@@ -1063,7 +1064,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Accept
-    private acceptIzmaAsYourBitch(): void {
+    function acceptIzmaAsYourBitch(): void {
         spriteSelect(32);
         outputText("", true);
         // [If Pure Amily is in the camp first]
@@ -1153,7 +1154,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Amily arrives: Izma is at camp first]
-    public newAmilyMeetsIzma(): void {
+    export function newAmilyMeetsIzma(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You and Amily seem to talk non-stop on the way back, both excited at the prospect of living together.  Then she realizes you're not alone, once she sees Izma seated on her trunk, and looks puzzled. \"<i>" + player.short + "... there's a shark-girl in your camp!</i>\" she hisses, looking ready to fight or flee if the situation warrants.\n\n", false);
@@ -1183,7 +1184,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Marble: Izma is at camp first]
-    public newMarbleMeetsIzma(): void {
+    export function newMarbleMeetsIzma(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You and Marble are deep in conversation all the way to your camp, mainly inconsequential things to pass the time.  Marble enjoys the talk all the same, but she comes to a halt once she sees Izma sitting around your camp.  \"<i>Ah... who's that, sweetie?</i>\" she asks.\n\n", false);
@@ -1226,7 +1227,7 @@ export class IzmaScene implements TimeAwareInterface {
     */
 
     // [=Sex=]
-    private izmaLakeTurnedDownCampSex(): void {
+    function izmaLakeTurnedDownCampSex(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You give Izma a smirk and tell her that, if she's in the mood, you could use a little 'relief'.\n\n", false);
@@ -1237,7 +1238,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Equals]
-    private izmaLakeSexAsEquals(): void {
+    function izmaLakeSexAsEquals(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You tell Izma that you would like to have sex as equals; you and she.  She smiles and asks you what part you'd like to use.\n\n", false);
@@ -1251,7 +1252,7 @@ export class IzmaScene implements TimeAwareInterface {
         else chooseYourIzmaWeapon();
     }
     // [=Dominate=]
-    private izmaLakeDominate(): void {
+    function izmaLakeDominate(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Izma blushes fiercely and a lewd smile comes over her face at the suggestion.  \"<i>O-okay,</i>\" she says, stripping off her bikini top and gently removing her grass skirt, allowing her breasts and monster cock to pop free.  She sits down and smiles at you.  \"<i>After you...</i>\"\n\n", false);
@@ -1318,7 +1319,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private izmaLakeDominateContinueVanilla(vanilla: boolean = true): void {
+    function izmaLakeDominateContinueVanilla(vanilla: boolean = true): void {
         spriteSelect(32);
         let cockIndex: number = player.cocks.cockThatFits(65);
         if (cockIndex < 0) cockIndex = 0;
@@ -1362,7 +1363,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [No]
-    private noWankingForIzmaRadarSaysSo(): void {
+    function noWankingForIzmaRadarSaysSo(): void {
         clearOutput();
         spriteSelect(32);
         // var cockIndex:Number = player.cocks.cockThatFits(65);
@@ -1372,7 +1373,7 @@ export class IzmaScene implements TimeAwareInterface {
         simpleChoices("Stop Her", noWankingForIzma, "LetHerWank", letIzmaWankLikeABitch, "", null, "", null, "", null);
     }
     // [Let her masturbate]
-    private letIzmaWankLikeABitch(): void {
+    function letIzmaWankLikeABitch(): void {
         clearOutput();
         spriteSelect(32);
         // var cockIndex:Number = player.cocks.cockThatFits(65);
@@ -1382,7 +1383,7 @@ export class IzmaScene implements TimeAwareInterface {
         izmaCumsAfterRadarStuffHere(false);
     }
     // [Remove her hands]
-    private noWankingForIzma(): void {
+    function noWankingForIzma(): void {
         clearOutput();
         spriteSelect(32);
         // var cockIndex:Number = player.cocks.cockThatFits(65);
@@ -1390,7 +1391,7 @@ export class IzmaScene implements TimeAwareInterface {
         outputText("Grunting in disapproval, you slap her hand away from her cock, drawing a surprised gasp in between moans of pleasure from your partner; she stares up at you pleadingly to let her finish herself off.  Calmly, you tell Izma that she didn't ask for permission and has lost that \"privilege\", as you take hold of her hands and grasp them firmly on the ground, trapping her in a lover's embrace.  Izma groans pathetically out of frustration and a need for forgiveness, but you know that she needs to be \"punished\" for masturbating without asking.  With renewed vigor as the feeling of utter dominance and control floods your body, you savagely fuck Izma's moist cunt, slapping against her so ferociously that you might as well be spanking her with your [if (balls > 0) [balls]|thighs]; the force of your efforts resonates in her moans as they rise and taper off in volume with every thrust against her.  Confidently, you whisper in Izma's ear that if she's lucky, she'll release her sticky load without even being touched, the thought of which causes her cock to bob like a raven hopping on the ground after prey.  \"<i>Good girl!  Do that for your Alpha</i>\".\n\n");
         izmaCumsAfterRadarStuffHere(true);
     }
-    private izmaCumsAfterRadarStuffHere(denied: boolean): void {
+    function izmaCumsAfterRadarStuffHere(denied: boolean): void {
         let cockIndex: number = player.cocks.cockThatFits(65);
         if (cockIndex < 0) cockIndex = 0;
         if (!denied) outputText("The double stimulation pushes Izma past her limit very quickly, and she starts shooting thick jets of spunk into the air, which begin to rain down on her face and breasts.  Her vaginal walls clamp down on your " + Appearance.cockNoun(player.cocks[cockIndex].cockType) + " almost painfully as the orgasm wracks her female genitalia too.\n\n", false);
@@ -1400,7 +1401,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [=Submit=] (more copypasta – bring the vino! -Z)
-    private submitToLakeIzma(): void {
+    function submitToLakeIzma(): void {
         spriteSelect(32);
         outputText("", true);
         // (starter -all sexes)
@@ -1552,7 +1553,7 @@ export class IzmaScene implements TimeAwareInterface {
     // 9999 CAMP FOLLOWER
     // tion camp
     // [Follower options]
-    public izmaFollowerMenu(): void {
+    export function izmaFollowerMenu(): void {
         spriteSelect(32);
         outputText("", true);
 
@@ -1617,7 +1618,7 @@ export class IzmaScene implements TimeAwareInterface {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) addButton(9, "Back", FarmCorruption.rootScene);
     }
 
-    private sendToFarm(): void {
+    function sendToFarm(): void {
         clearOutput();
         izmaSprite();
 
@@ -1634,7 +1635,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private backToCamp(): void {
+    function backToCamp(): void {
         clearOutput();
         izmaSprite();
 
@@ -1648,7 +1649,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Get a tiger shark tooth
-    private gatASharkTooth(): void {
+    function gatASharkTooth(): void {
         spriteSelect(32);
         clearOutput();
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00246] > 1) {
@@ -1662,7 +1663,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
     // [Appearance]
-    private izmaPearance(): void {
+    function izmaPearance(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("Izma is a 6-foot 2-inch tall tigershark, with a very toned athletic build; her muscles are covered by coarse red sharkskin, marked with black stripes across her body.  She is currently wearing a bikini top with a grass skirt");
@@ -1684,7 +1685,7 @@ export class IzmaScene implements TimeAwareInterface {
         outputText("She has a tight asshole placed between her toned butt-cheeks, right where it belongs.", false);
         doNext(izmaFollowerMenu);
     }
-    private izmaSexMenu(): void {
+    function izmaSexMenu(): void {
         spriteSelect(32);
         // [Get Anal] [Her Vag] [69] [Izma Mounts PC]
         let mount: () => void = null;
@@ -1726,7 +1727,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     }
     // [Izma mounts the PC]
-    private followerIzmaMountsPC(lastHalf: boolean = false): void {
+    function followerIzmaMountsPC(lastHalf: boolean = false): void {
         spriteSelect(32);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(65);
@@ -1791,7 +1792,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private izmaPreg(): void {
+    function izmaPreg(): void {
         if (flags[kFLAGS.FOLLOWER_AT_FARM_IZMA] == 1) return;
         // PREGGO CHANCES
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00249] == 1 && !pregnancy.isPregnant && rand(100) < (10 + Math.round(player.cumQ() / 100))) {
@@ -1799,7 +1800,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
 
-    private RadarIzmaLeaveHerWangUnWingWanged(): void {
+    function RadarIzmaLeaveHerWangUnWingWanged(): void {
         spriteSelect(32);
         clearOutput();
         outputText("As much as you think Izma would enjoy a handjob, you are not too keen on stimulating her member right now.  Izma notices your momentary stare at her rather large cock and grins mischievously at you.  \"<i>Come on, bitch! Pleasure your \"Alpha\"; you know you want to!</i>\" she chimes.  You stare back at her, and kindly inform her that her Alpha isn't keen on doing that; your reasons are your own, but you simply don't want to do that.  Her confident smirk almost immediately evaporates.  \"<i>Oh... sorry. I was caught up in the moment. If it's okay with you, I'll just jerk my cock while I dominate my Alpha,</i>\" she purrs.  Smiling back at her, you nod and give her a slap on the ass, giving her the message to giddy up.  With complete abandon, your tigershark lover giggles and bounces against your lap, manhandling your cock with those pussy feelers.  Moaning in appreciation, you dart your hands up to her rump and grasp it in your hands.  Driven by pleasure and sexual instinct, Izma fiercely strokes her member, moaning blissfully as her closed eyelids twitch from the dual pleasures of ravaging her cunt with your cock and jerking her prick in her hand.  She tries hard to contain the force of her sexual euphoria, but her expression ultimately betrays her escalating passion as she grits her teeth and physically opens her mouth to let out a hardy moan; dead silence is the only thing that escapes from her wide open mouth for a few briefs moments, before she releases a prolonged, erratic series of wails.");
@@ -1829,7 +1830,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Get Anal]
-    private followerIzmaTakesItInPooper(): void {
+    function followerIzmaTakesItInPooper(): void {
         spriteSelect(32);
         player.slimeFeed();
         outputText("", true);
@@ -1966,7 +1967,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Vag fuck]
-    private followerIzmaTakesItInVagoo(): void {
+    function followerIzmaTakesItInVagoo(): void {
         spriteSelect(32);
         if (flags[kFLAGS.IZMA_NO_COCK] == 0) player.slimeFeed();
         outputText("", true);
@@ -2031,7 +2032,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Deny her]
-    private radarIzmaXpackDenyHer(): void {
+    function radarIzmaXpackDenyHer(): void {
         clearOutput();
         spriteSelect(32);
         outputText("Resolving that she needs to understand that your desires will be sated before her own, you quickly seize her by the wrists and forcefully push them past her head, pinning them hard against the ground.  Izma whines pathetically as her efforts to stimulate her cock are utterly denied by her Alpha; her cock twitches hungrily against your stomach as you lay against her prone body. With pleading eyes and without uttering a single word, she begs you to let her tend to her member; her non-verbal cries for sexual mercy are quashed as you plant a forceful kiss on her lips, still pinning her arms against the ground as you thrust in her moist cunt. With a mix of pleasure and frustration, she releases a series of moans into your mouth and resigns herself to you as you passionately dominate her.");
@@ -2041,7 +2042,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // RADARS SELF FACIAL
     // [Let her]
-    private radarIzmaXPackLetHer(): void {
+    function radarIzmaXPackLetHer(): void {
         clearOutput();
         spriteSelect(32);
         outputText("You reach up to caress and fondle her breasts, gently tugging and rubbing her stiff nipples and giving them the occasional soft pinch.  The pretty tigershark responds well to your movements, moaning and gasping from pleasure.  She bites her lip, thankfully with her human teeth, and gains speed as she jerks her meat pole.\n\n", false);
@@ -2050,7 +2051,7 @@ export class IzmaScene implements TimeAwareInterface {
         // (leads to Where's it going?)
         wheresItGoing();
     }
-    private wheresItGoing(denied: boolean = false): void {
+    function wheresItGoing(denied: boolean = false): void {
         spriteSelect(32);
         outputText("\n\nIzma continues to moan and groan loudly, and starts to mash her own hips against yours, trying to work in as many inches of your " + Appearance.cockNoun(player.cocks[0].cockType) + " as she can.  As she ");
         if (!denied) outputText("jerks off ");
@@ -2061,7 +2062,7 @@ export class IzmaScene implements TimeAwareInterface {
         simpleChoices("Your Face", facialWhereItGoesRadarIzmaXpack, "Your Chest", RadarIzmaCumInYourChest, "Her Face", IzmaSelfFacialWheeRadar, "", null, "", null);
     }
     // [facial] Scene follows vanilla scripting from Jokester
-    private facialWhereItGoesRadarIzmaXpack(): void {
+    function facialWhereItGoesRadarIzmaXpack(): void {
         spriteSelect(32);
         clearOutput();
         outputText("This sends a shudder through Izma's whole body.  She cries loudly as she orgasms");
@@ -2085,7 +2086,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Your chest]
-    private RadarIzmaCumInYourChest(): void {
+    function RadarIzmaCumInYourChest(): void {
         spriteSelect(32);
         clearOutput();
         outputText("Taking a firm hold of her, you angle her lengthy member towards your chest and close your eyes in anticipation for her orgasmic release.  She doesn't disappoint as the smell of sweet, salty sperm rushes into your nostrils, signaling your body to receive her hot cum. Before you can truly relish inhaling your lover's scent, her load slaps forcefully ");
@@ -2115,7 +2116,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private IzmaSelfFacialWheeRadar(): void {
+    function IzmaSelfFacialWheeRadar(): void {
         spriteSelect(32);
         clearOutput();
         outputText("Opting to direct her impending orgasm away from you entirely, you slap Izma's hands away, grabbing her dick and angling it towards her face.  With one last savage thrust, you bore your dick deep into her love canal and unleash a vicious flood of semen into her womb, which causes the tigershark to scream out in her own orgasm.  Fierce ropes of her cum soar out into the open air and speedily land on her blissed out face; some of it lands in her mouth between passionate groans and cries of euphoria.");
@@ -2133,7 +2134,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [69]
-    private followerIzmaTakesIt69(): void {
+    function followerIzmaTakesIt69(): void {
         spriteSelect(32);
         player.slimeFeed();
         outputText("", true);
@@ -2184,7 +2185,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Talk]
-    private talkWivIzma(): void {
+    function talkWivIzma(): void {
         spriteSelect(32);
         outputText("", true);
         // (option 1)
@@ -2314,14 +2315,14 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
     // [Leave]
-    private chooseNotToFlirtWithIzma(): void {
+    function chooseNotToFlirtWithIzma(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You thank Izma for the interesting conversation, even if it did end up meandering a bit, and then walk away, leaving her to her private thoughts.\n\n", false);
         doNext(Camp.returnToCampUseOneHour);
     }
     // Flirt]
-    private chooseToFlirtWithIzma(): void {
+    function chooseToFlirtWithIzma(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You smile at Izma and tell her you appreciate the offer and that you think she'll be beautiful whether she becomes a mommy or a daddy.  In fact, the mental image of her heavily pregnant, ");
@@ -2349,7 +2350,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // (The four 'Mount' and 'Ride' sex scenes mentioned as appearing once Izma goes off her meds have not been included, and therefore this content cannot be implemented as written. As it stands, I suggest excluding those menus entirely, rerouting players back to the normal sex menu, and adding pregnancy checks to the existing sex scenes where applicable (follower vag sex and Izma mounts, and pre-follower victory vag sex with no herb). Unless they were omitted by accident, or you ask someone to write them, make a placeholder, or copypasta new scenes together from her old scenes -- again. -Z)
 
-    private childToggle(): void {
+    function childToggle(): void {
         spriteSelect(32);
         // This scene is only available for one time; once it has been played through, the "Children" button is replaced by the No Kids/Make Kids button, as appropriate/ (This scene could be cut to save a flag, if necessary. Though, you have thousands, don't you? -Z)
         outputText("", true);
@@ -2388,7 +2389,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [=No=]
-    private firstTimeDeclineIzmasKdiddlezlijfhdjkfhslkfbsjkhfbs(): void {
+    function firstTimeDeclineIzmasKdiddlezlijfhdjkfhslkfbsjkhfbs(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You tell Izma, with a shake of your head, that you aren't ready to be a parent yet.  The tigershark looks a little disappointed, but she gives a soft sigh and nods in understanding.  \"<i>You're the boss.  So, what did you want to do?</i>\" she asks.\n\n", false);
@@ -2403,7 +2404,7 @@ export class IzmaScene implements TimeAwareInterface {
     // it's magical Izma doing the suffering, I don't give a shit
     // about veracity. She can take care of everything with her
     // OCDNS powers. -Z)
-    private IzmaPoopsBabies(): void {
+    function IzmaPoopsBabies(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You hear the sounds of splashing and cursing coming from the part of the stream where Izma, by neccessity, keeps her private mini-camp, and immediately you set off running. When you come tearing to a halt there, you find Izma, wading in the stream well up to her waist, and cursing as she holds her gravid belly, her tail angrily flailing through the water behind her. She still manages to smile when she sees it's you who's come to see her. No words are neccessary; you plunge into the water and head to her side.\n\n", false);
@@ -2440,7 +2441,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // PC gives birth (alone): used if PC gets pregnant from vaginal and refusing herbs before recruiting Izma or possibly later if a way to force her out is written
-    public pcPopsOutASharkTot(): void {
+    export function pcPopsOutASharkTot(): void {
         outputText("\n", false);
         // If Izma is NOT a follower
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00238] != 1) {
@@ -2534,7 +2535,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // Children Interaction Sequences: (increment childcounters only for births after Izma joins)
     // Children
-    private izmaKidsPlaytime(): void {
+    function izmaKidsPlaytime(): void {
         spriteSelect(32);
         outputText("", true);
         const choices: any[] = [];
@@ -2627,7 +2628,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private inCampRideIzmasDickDongTheWitchIsDead(): void {
+    function inCampRideIzmasDickDongTheWitchIsDead(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You direct a flushed look at Izma and rub your ", false);
@@ -2716,7 +2717,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // [Using Izma's books in camp]
     /// [Books] appears as a tab when interacting with Izma.
-    private IzmaCampBooks(): void {
+    function IzmaCampBooks(): void {
         spriteSelect(32);
         outputText("", true);
         if (flags[kFLAGS.IZMA_TIME_TILL_NEW_BOOK_AVAILABLE] > 0) {
@@ -2733,7 +2734,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [C.Manual]
-    private campCuntManual(): void {
+    function campCuntManual(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You ask Izma if she'd like to read one of the many issues of the 'Combat Manual' with you.  She gives a snigger and grabs a random issue. \"<i>Of course.  But I honestly never thought someone as good as you would need any more tips in combat,</i>\" she teases, getting comfy on a rock.  You sit beside her to read, and retort that, if anything, you're using the chance to give her combat tips.  Izma shoots you a half-hearted dirty look in response, but you think she knows you're teasing her.\n\n", false);
@@ -2760,7 +2761,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [E.Guide]
-    private entropyGuideByStephenHawking(): void {
+    function entropyGuideByStephenHawking(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You point to Izma's many copies of the 'Etiquette Guide' series and ask her if she'd like to read one of those. Izma shrugs in response and picks up one issue.  \"<i>Yeah, I suppose.  You certainly need to learn how to be mannerly,</i>\" she teases, opening up on the table of contents.  You lightly consider whether that makes her a hypocrite before giving it up and starting to read with her.  That way lies madness.\n\n", false);
@@ -2774,7 +2775,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Porn]
-    private stephenHawkingPorn(): void {
+    function stephenHawkingPorn(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("A wicked smirk crosses your face and you point to the small bundle of porn that Izma has in her trunk. Izma looks nervous and pulls out one stack of the illustrations. \"<i>Ah-hah... really?</i>\" she asks, her face a rictus of embarrassment.  You nod in response and sit down on a rock, gesturing for Izma to join you.  She has some color on her face, though whether it be more or less than usual you can't decide, not knowing enough about her biology yet, and she sits down and starts to examine the porn with you, bumping your legs with hers as she adjusts her posture ");
@@ -2788,7 +2789,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Trying to use another book inside the span of 6 hours)
-    private tooSoonExecutus(): void {
+    function tooSoonExecutus(): void {
         spriteSelect(32);
         outputText("", true);
         outputText("You tell Izma that you want to read a book with her again, and she gives you a petulant look.  \"<i>Really?   I mean, I love books, but even I get tired of them.  I was about to go do something else after cleaning up a bit.  We-ell... I don't feel like reading any more right now, but... if you were to pay me our usual arrangement I could let you borrow one for a while.  You know I trust you, but books do wear out even with the best of care, and there are a few new ones I'd like to get.</i>\"  Do you pay Izma to lend you a book?", false);
@@ -2801,7 +2802,7 @@ export class IzmaScene implements TimeAwareInterface {
 
     // (Req: Vagina. Player has dominated Izma pre-camp, refused birth control.
     // Izma now in camp.)
-    public findLostIzmaKids(): void {
+    export function findLostIzmaKids(): void {
         outputText("", true);
         outputText("While rowing the boat across the lake you spy a shark fin heading your way.  Worried it might damage the small boat, you hastily row back to shore, jumping out of the boat.  The shark shows no signs of slowing, and the fin disappears just before coming ashore.  A grey blur bursts from the water and lands on the ground a few feet away from you.\n\n", false);
         outputText("It's a young woman – a peculiarly corrupted woman, with shiny grey skin, silver hair, and a fin positioned between her shoulder blades.  She is much smaller and thinner than the average shark-girl.  She's wearing some rather revealing black swimwear.  The girl looks up at you and grins widely, showing rows of knife-like teeth.  \"<i>Wanna play? Heads up though, I...</i>\" Her grin wavers, and silence hangs in the air for a few moments.\n\n", false);
@@ -2810,7 +2811,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(findLostIzmaKidsII);
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00412]--;
     }
-    private findLostIzmaKidsII(): void {
+    function findLostIzmaKidsII(): void {
         outputText("", true);
         outputText("You embrace your daughter, both of you half-laughing half-crying into each other's shoulders.  After a few moments of this, you pull away a little and blurt out a few urgent questions about her well-being and mental health.  She in turn inquires about you and her \"father.\"\n\n", false);
         outputText("This sparks off a happy chain of thoughts in your mind, and you inform your wayward daughter that Izma is now living with you (and there's room for another).  She squeaks happily at the news, and tells you that she'll meet you at camp.  She pecks you on the cheek, then runs into the shallows and disappears.  You walk away, beaming at the thought of seeing a new face in camp.", false);
@@ -2820,7 +2821,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Ask Izma About Removing Her Dick
-    private removeIzmasPenis(): void {
+    function removeIzmasPenis(): void {
         clearOutput();
         if (flags[kFLAGS.ASKED_IZMA_ABOUT_WANG_REMOVAL] == 0) {
             outputText("You ask Izma if she wouldn't mind getting rid of her dick for you, her Alpha.  She recoils at the mention, a haughty look on her angular visage.  \"<i>Tch, why would I want to get rid of my pride and joy?  My dick feels so good... I would never want to lose it,</i>\" Izma answers with a hint of rebellion.");
@@ -2865,7 +2866,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
 
-    private forceIzmaPenis(): void {
+    function forceIzmaPenis(): void {
         clearOutput();
         outputText("Izma takes a half step back when you glide forward, penetrating her personal space with the effortless authority of one who has repeatedly demonstrated it.  You look your Beta in the eye and remind her EXACTLY how the shark people do it.  The strong rule.  The strong give the orders.  The weak MUST obey the strong, and Izma... she is weak.  She casts her eyes down, away from your imperious gaze, and she stammers, \"<i>Yes... yes, my Alpha,</i>\" in a suitably chastised manner.");
         outputText("\n\nWith your power unquestioned, you again bring up the question of removing her dick, and what the best way to go about it would be.  Izma pouts, but willingly answers, \"<i>Well, ever since we mutated, most transformation items will make us very ill.  Somehow, that change seems to fight almost any other.  I'd guess it has something to do with the demonic taint.  If ANYTHING would work on a tigershark like me, it would be the demonic items.  You might have to use a lot of them, though. Marethians aren't as susceptible to change as off-worlders like you.</i>\"");
@@ -2901,7 +2902,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Administer Izma's Treatment:
-    private izmaDickToggle(): void {
+    function izmaDickToggle(): void {
         clearOutput();
         if (flags[kFLAGS.IZMA_NO_COCK] == 0) {
             outputText("With a flourish, you produce five bottles of creamy demonic milk, the glass tinkling merrily in the breeze.  Izma frowns, but steps out of her skirt, grumping, \"<i>If I have to lose it, I'd at least want to be able to say goodbye.</i>\"  As the grass-skirt squishes into a pile on the ground, you hand the first bottle to Izma.  She makes a face, but pops the cork nonetheless. Her throat bobs as she chucks down the liquid, the bottle quickly emptying.");
@@ -2933,7 +2934,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Fuck her pussy-Dominant]
-    private fuckIzmasPussyDominate(): void {
+    function fuckIzmasPussyDominate(): void {
         clearOutput();
         spriteSelect(32);
         let x: number = player.cocks.cockThatFits(65);
@@ -2986,14 +2987,14 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Goo Job]
-    private gooJob(): void {
+    function gooJob(): void {
         clearOutput();
         outputText("Concentrating on moving your mass forward, you manage to envelop Izma's entire back side.  Slowly but surely, you are able to harden your goo around Izma's rock hard cock, and begin to pump her penile member with gusto. Now that she's been jerked off, and the fact that she's ");
         radarIzmaSpanking(false);
         player.effects.create(StatusAffects.Goojob, 0, 0, 0, 0);
     }
     // [Spanking and orgasm]
-    private radarIzmaSpanking(newSentence: boolean = true): void {
+    function radarIzmaSpanking(newSentence: boolean = true): void {
         if (newSentence) {
             clearOutput();
             outputText("Now ");
@@ -3001,7 +3002,7 @@ export class IzmaScene implements TimeAwareInterface {
         outputText("being subjected to double penetration and powerful bucks, ");
         radarIzmaGasm();
     }
-    private radarIzmaGasm(): void {
+    function radarIzmaGasm(): void {
         outputText("Izma loses herself in the moment, clawing and grasping at the trunk as she releases a passionate series of wails.  Grunting your approval, you give her luscious ass a hard slap, the thunderous thwack of palm against rump drowning out her cries of content euphoria.  Soon you feel your orgasm coming, but you don't want to cum until you hear Izma beg for your seed.");
         outputText("\n\n\"<i>Come on, bitch, beg for me to cum!</i>\" you yell out.  Izma struggles valiantly to find the words to express her need to be filled with your cream, but all she can do is utter a mix of moans and incoherent gibberish.  Bringing your gyrations to a dead stop, you growl and grunt your disapproval to Izma as she turns and stares at you in utter horror and disbelief that you would stop so close to orgasming.  \"<i>I said beg!</i>\" you repeat demandingly to your hard-of-hearing beta.  \"<i>I-I want you!  Cum in me, please!</i>\" the terrified shark-morph quickly stammers out.  Not exactly what you had in mind unfortunately.  \"<i>You're getting warm,</i>\" you coo, picking up your gyrations at a reduced speed in an attempt to guide her to what you really want to hear from her.  \"<i>Fuck me!  Stuff me with your s-seed!  R-ravage my pussy!</i>\" Izma replies, raising her voice louder than before.  So close, you think to yourself as you speed up your thrusting.  \"<i>COME ON!  LET EVERYONE KNOW YOU WANT ME TO BREED YOU!  AS LOUD AS YOU CAN!</i>\" you scream.  Izma shudders under you as you bellow out your command, gritting her teeth as she takes in a very deep, erratic breath.");
         outputText("\n\n\"<i>CUM IN ME! BREED ME, KNOCK ME UP, I WANT IT ALL!</i>\" she howls out at long last.  \"<i>Good girl!  Keep it up!</i>\" you enthusiastically yell out, giving her all the encouragement she'll ever need as you ferociously fuck her cunt.  \"<i>TAKE ME, mmpffh-DOMINATE MEE-IIAAHH!  CUM IN M-AHHH-MY PUSSY!</i>\" she manages to scream out in-between almost non-stop moaning.  With ferocity you never thought possible, the feelers in her tight pussy whip along your dick furiously, driving you over the point of no return as you feel your release surging through your loins.  With a savage shout, you scream the arrival of your orgasm to anyone in the immediate area, ");
@@ -3030,7 +3031,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // [Anal (dominant)]
-    private radarIzmaAnalDominant(): void {
+    function radarIzmaAnalDominant(): void {
         clearOutput();
         outputText("With a wicked smile stretched across your face, you order Izma to accompany you to a nearby tree trunk on the edge of camp, away from the prying eyes of any strangers.  Without a single moment's hesitation, Izma complies with her Alpha's command, swaying her wide hips sensually as she walks; her engorged, drooling cock rocks back and forth between her skirt like a snake through grass.  At least she's got the right idea; you will be playing with her prick, but probably not in the way she expects.");
         outputText("\n\nFinally arriving at the trunk of the large tree, you order Izma to remove her skimpy little skirt and let her member hang proudly for her Alpha to see.  Your tigershark beta grins devilishly as she yanks herself free of her insignificant dressing, her sizable cock flopping upwards as she does as if to physically shake free of some invisible shackles that were restraining it.  Unable to contain yourself, you grin like an idiot and stroke your chin, admiring her body's eagerness to pleasure her lover.  \"<i>I know you like what you see [name], just give the word and your beta will fuck you any way you want,</i>\" she teases, placing emphasis on \"any way\" as she raises her eyebrows.  ");
@@ -3096,7 +3097,7 @@ export class IzmaScene implements TimeAwareInterface {
         dynStats("sen", 2);
     }
     // [Tuck in]
-    private radarIzmaAnalDomResultTuckIn(): void {
+    function radarIzmaAnalDomResultTuckIn(): void {
         clearOutput();
         // (not enough strength:
         if (player.str < 70) {
@@ -3115,14 +3116,14 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
     // [Leave her]
-    private radarIzmaLeaveHerInTheDirtAfterAnalDom(): void {
+    function radarIzmaLeaveHerInTheDirtAfterAnalDom(): void {
         clearOutput();
         outputText("Laughing, you tell Izma that she needs to work on her stamina, and that she'll have to recuperate out here in the grass.  She weakly acknowledges your choice, telling you that it's the right thing to do with worn out betas.  You stop and forcefully tell her that she did well; just that she needs to work on her endurance.  With a shaky nod, she smiles and drifts off to sleep.  To ensure she remains safe, you keep watch nearby as she naps peacefully.  Thankfully, she wakes after a half hour and saunters seductively past you, thanking her Alpha for fucking her and watching over her as she heads off to the lake to clean up.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
     // [Fuck Izma's ass (Dominant)]
-    private radarFucksIzmasAss(): void {
+    function radarFucksIzmasAss(): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(65);
         if (x < 0) x = 0;
@@ -3178,7 +3179,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
     // More than four TD's: [Both,(requires 70 INT)]   [Just Dick]   [Just Blowjob]
-    private radarIzmaJustDick(choice: number = 0): void {
+    function radarIzmaJustDick(choice: number = 0): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(65);
         if (x < 0) x = 0;
@@ -3291,14 +3292,14 @@ export class IzmaScene implements TimeAwareInterface {
     */
 
     // [Internal, Global option for non-TD and TD scenes]
-    private internalIzmaAnalCumShot(): void {
+    function internalIzmaAnalCumShot(): void {
         clearOutput();
         outputText("With a series of labored breaths, you excitedly tell your lover that you are going to cum inside her, and that she'd better love every second of it.  The rushing warmth that resonates through your cock fills you with a relaxed euphoria as you groan and bottom out once more, releasing your seed deep into her eager depths.");
         // (If PC fucked her vaginally:
         if (player.cocks.cockThatFits2(65) >= 0) outputText("  The feelers in her pussy glide along the glans of your " + cockDescript(player, player.cocks.cockThatFits2(65)) + ", driving your dick's unconscious efforts to inseminate her into overdrive as you feel each subsequent stream of semen increase in velocity.");
     }
     // [External, Non-TD scenes]
-    private backJizzShot(): void {
+    function backJizzShot(): void {
         clearOutput();
         outputText("Pulling out of Izma, you begin to stroke [eachCock] furiously, bobbing your shaky hands up and down ");
         if (player.cocks.length == 1) outputText("your shaft ");
@@ -3320,7 +3321,7 @@ export class IzmaScene implements TimeAwareInterface {
     // Resets Latexy's feed counter.
     // Has option to enable Izma to feed latexy.
     // Adds latexy button in Izma's sex menu with options to turn feedings on/off and/or watch one.
-    public izmaDomsLatexy(): void {
+    export function izmaDomsLatexy(): void {
         if (flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] == 0) {
             // {First time}
             outputText("\nFamiliar, lusty pants can be heard coming from the edge of the camp, and you begrudgingly head over to investigate.  The heavy breathing is accompanied by a few groans of pleasure, each higher pitched than the last, and as you round a rock, you're treated to the sight of Izma nude, holding a rope that's currently lashed around " + flags[kFLAGS.GOO_NAME] + ".  The goo-girl has one hand stuffed into her slick quim, busily fisting herself for the shark-girl's pleasure.");
@@ -3339,7 +3340,7 @@ export class IzmaScene implements TimeAwareInterface {
         }
     }
 
-    private izmaDomsLatexyPartI(): void {
+    function izmaDomsLatexyPartI(): void {
         if (flags[kFLAGS.TIMES_IZMA_DOMMED_LATEXY] == 0) clearOutput();
         else outputText("\n\n");
         outputText("Izma growls while she pumps away at her erection, saying, \"<i>Yeah, you like that, don't ya ink-slut?</i>\"");
@@ -3390,7 +3391,7 @@ export class IzmaScene implements TimeAwareInterface {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private stopIzmaLatexy(): void {
+    function stopIzmaLatexy(): void {
         clearOutput();
         outputText("You step into the middle of it before it can progress any farther.  " + flags[kFLAGS.GOO_NAME] + " is yours, and Izma is not to play at being a mistress to YOUR pet.");
         outputText("\n\nVisibly chastized, the tigershark-girl backs off with a meek, \"<i>Yes, Alpha.</i>\"  Just like that, she's running off, probably to jack that raging mega-boner she built up from playing with the goo.");
@@ -3400,7 +3401,7 @@ export class IzmaScene implements TimeAwareInterface {
     }
 
     // Click Latexy Submenu In Izma's Menu
-    private izmaLatexySubmenu(): void {
+    function izmaLatexySubmenu(): void {
         clearOutput();
         outputText("\"<i>Oh, I wouldn't worry about her, [name],</i>\" Izma says while her tail flicks back and forth.");
         menu();
@@ -3413,7 +3414,7 @@ export class IzmaScene implements TimeAwareInterface {
         addButton(4, "Back", izmaSexMenu);
     }
     // [No Feeding]
-    private izmaLatexyToggle(): void {
+    function izmaLatexyToggle(): void {
         clearOutput();
         if (flags[kFLAGS.IZMA_X_LATEXY_DISABLED] == 0) {
             outputText("You tell Izma you don't want her feeding " + flags[kFLAGS.GOO_NAME] + " any more.");
@@ -3427,4 +3428,3 @@ export class IzmaScene implements TimeAwareInterface {
         menu();
         addButton(4, "Back", izmaLatexySubmenu);
     }
-}

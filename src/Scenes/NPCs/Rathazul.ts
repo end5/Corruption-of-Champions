@@ -28,14 +28,15 @@ export class Rathazul implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public returnToRathazulMenu(): void {
+    export function returnToRathazulMenu(): void {
         if (player.effects.findByType(StatusAffects.CampRathazul) >= 0)
             campRathazul();
         else encounterRathazul();
     }
 
-    public encounterRathazul(): void {
+    export function encounterRathazul(): void {
         spriteSelect(49);
 
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
@@ -71,20 +72,20 @@ export class Rathazul implements TimeAwareInterface {
         }
     }
 
-    private rathazulMoveToCamp(): void {
+    function rathazulMoveToCamp(): void {
         clearOutput();
         outputText("Rathazul smiles happily back at you and begins packing up his equipment.  He mutters over his shoulder, \"<i>It will take me a while to get my equipment moved over, but you head on back and I'll see you within the hour.  Oh my, yes.</i>\"\n\nHe has the look of someone experiencing hope for the first time in a long time.");
         player.effects.create(StatusAffects.CampRathazul, 0, 0, 0, 0);
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private rathazulMoveDecline(): void {
+    function rathazulMoveDecline(): void {
         clearOutput();
         outputText("Rathazul wheezes out a sigh, and nods.\n\n\"<i>Perhaps I'll still be of some use out here after all,</i>\" he mutters as he packs up his camp and prepares to head to another spot along the lake.");
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public campRathazul(): void {
+    export function campRathazul(): void {
         spriteSelect(49);
         if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 2 && player.effects.findByType(StatusAffects.MetRathazul) >= 0) {
             MarblePurification.visitRathazulToPurifyMarbleAfterLaBovaStopsWorkin();
@@ -134,7 +135,7 @@ export class Rathazul implements TimeAwareInterface {
 
     }
 
-    private rathazulWorkOffer(): boolean {
+    function rathazulWorkOffer(): boolean {
         spriteSelect(49);
         let totalOffers: number = 0;
         let spoken: boolean = false;
@@ -277,7 +278,7 @@ export class Rathazul implements TimeAwareInterface {
         return false;
     }
 
-    private purifySomething(): void {
+    function purifySomething(): void {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul asks, \"<i>What would you like me to purify?</i>\"");
@@ -298,7 +299,7 @@ export class Rathazul implements TimeAwareInterface {
         addButton(4, "Back", rathazulWorkOffer);
     }
 
-    private rathazulPurifyIncubiDraft(): void {
+    function rathazulPurifyIncubiDraft(): void {
         clearOutput();
         if (player.gems < 20) {
             outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
@@ -313,7 +314,7 @@ export class Rathazul implements TimeAwareInterface {
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
-    private rathazulPurifySuccubiMilk(): void {
+    function rathazulPurifySuccubiMilk(): void {
         clearOutput();
         if (player.gems < 20) {
             outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
@@ -328,7 +329,7 @@ export class Rathazul implements TimeAwareInterface {
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
-    private rathazulPurifySuccubiDelight(): void {
+    function rathazulPurifySuccubiDelight(): void {
         clearOutput();
         if (player.gems < 20) {
             outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
@@ -343,7 +344,7 @@ export class Rathazul implements TimeAwareInterface {
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
-    private rathazulPurifyLaBova(): void {
+    function rathazulPurifyLaBova(): void {
         clearOutput();
         if (player.gems < 20) {
             outputText("Rathazul says, \"<i>You do not have enough gems for that service.</i>\"");
@@ -358,7 +359,7 @@ export class Rathazul implements TimeAwareInterface {
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
-    private rathazulDebimboOffer(): void {
+    function rathazulDebimboOffer(): void {
         spriteSelect(49);
         clearOutput();
         if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] == 0) {
@@ -383,7 +384,7 @@ export class Rathazul implements TimeAwareInterface {
     }
 
     // Creation Of The Draft:*
-    private makeADeBimboDraft(): void {
+    function makeADeBimboDraft(): void {
         clearOutput();
         spriteSelect(49);
         outputText("Rathazul takes the teas and the gems into his wizened palms, shuffling the glittering jewels into a pouch and the teas into a large decanter.  He promptly sets the combined brews atop a flame and shuffles over to his workbench, where he picks up numerous pouches and vials of every color and description, adding them to the mix one after the other.  The mixture roils and bubbles atop the open flame like a monstrous, eerie thing, but quickly simmers down to a quiet boil.  Rathazul leaves it going for a while, stirring occasionally as he pulls out a smaller vial.  Once most of the excess liquid has evaporated, he pours the concoction into the glass container and corks it, holding it up to the light to check its coloration.");
@@ -396,7 +397,7 @@ export class Rathazul implements TimeAwareInterface {
         Inventory.takeItem(ConsumableLib.DEBIMBO, returnToRathazulMenu);
     }
 
-    public rathazulArmorMenu(): void {
+    export function rathazulArmorMenu(): void {
         spriteSelect(49);
         clearOutput();
         const beeArmor: () => void = (player.hasItem(UseableLib.B_CHITN, 5) ? craftCarapace : null);
@@ -409,7 +410,7 @@ export class Rathazul implements TimeAwareInterface {
         simpleChoices("BeeArmor", beeArmor, "GelArmor", gelArmor, "SpiderSilk", silk, "", null, "Back", returnToRathazulMenu);
     }
 
-    private craftSilkArmor(): void {
+    function craftSilkArmor(): void {
         spriteSelect(49);
         outputText("", true);
         outputText("You hand the bundled webbing to Rathazul carefully, lest you damage the elderly mouse.  He gives you a bemused smile and snatches the stuff from your grasp while he mutters, \"<i>I'm not falling apart you know.</i>\"\n\n", false);
@@ -434,7 +435,7 @@ export class Rathazul implements TimeAwareInterface {
         // [Yes] [No]
         doYesNo(commissionSilkArmorForReal, declineSilkArmorCommish);
     }
-    private commissionSilkArmorForReal(): void {
+    function commissionSilkArmorForReal(): void {
         spriteSelect(49);
         outputText("", true);
         outputText("You sort 500 gems into a pouch and toss them to Rathazul, along with the rest of the webbing.  The wizened alchemist snaps the items out of the air with lightning-fast movements and goes to work immediately.  He bustles about with enormous energy, invigorated by the challenging task before him.  It seems Rathazul has completely forgotten about you, but as you turn to leave, he calls out, \"<i>What did you want me to make?  A mage's robe or some nigh-impenetrable armor?</i>\"\n\n", false);
@@ -446,14 +447,14 @@ export class Rathazul implements TimeAwareInterface {
         addButton(1, "Robes", chooseArmorOrRobes, 2);
     }
 
-    private declineSilkArmorCommish(): void {
+    function declineSilkArmorCommish(): void {
         spriteSelect(49);
         outputText("", true);
         outputText("You take the silk back from Rathazul and let him know that you can't spend 500 gems on a project like that right now.  He sighs, giving you a crestfallen look and a slight nod of his hooded muzzle.", false);
         doNext(returnToRathazulMenu);
     }
 
-    public chooseArmorOrRobes(robeType: number): void {
+    export function chooseArmorOrRobes(robeType: number): void {
         spriteSelect(49);
         outputText("Rathazul grunts in response and goes back to work.  You turn back to the center of your camp, wondering if the old rodent will actually deliver the wondrous item that he's promised you.", true);
         doNext(Camp.returnToCampUseOneHour);
@@ -461,7 +462,7 @@ export class Rathazul implements TimeAwareInterface {
         flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] = 24;
         trace("274: " + flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN]);
     }
-    private collectRathazulArmor(): void {
+    function collectRathazulArmor(): void {
         spriteSelect(49);
         outputText("", true);
         outputText("Rathazul beams and ejaculates, \"<i>Good news everyone!  Your ", false);
@@ -489,7 +490,7 @@ export class Rathazul implements TimeAwareInterface {
         Inventory.takeItem(itype, returnToRathazulMenu);
     }
 
-    private craftOozeArmor(): void {
+    function craftOozeArmor(): void {
         spriteSelect(49);
         player.destroyItems(UseableLib.GREENGL, 5);
         outputText("Rathazul takes the green gel from you and drops it into an empty cauldron.  With speed well beyond what you'd expect from such an elderly creature, he nimbly unstops a number of vials and pours them into the cauldron.  He lets the mixture come to a boil, readying a simple humanoid-shaped mold from what you had thought was piles of junk material.  In no time at all, he has cast the boiling liquid into the mold, and after a few more minutes he cracks it open, revealing a suit of glistening armor.\n\n", true);
@@ -498,7 +499,7 @@ export class Rathazul implements TimeAwareInterface {
         if (player.effects.findByType(StatusAffects.RathazulArmor) < 0) player.effects.create(StatusAffects.RathazulArmor, 0, 0, 0, 0);
     }
 
-    private buyDyes(): void {
+    function buyDyes(): void {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul smiles and pulls forth several vials of colored fluids.  Which type of dye would you like?");
@@ -516,7 +517,7 @@ export class Rathazul implements TimeAwareInterface {
         addButton(9, "Nevermind", buyDyeNevermind);
     }
 
-    private buyDye(dye: ItemType): void {
+    function buyDye(dye: ItemType): void {
         spriteSelect(49);
         clearOutput();
         Inventory.takeItem(dye, returnToRathazulMenu);
@@ -524,7 +525,7 @@ export class Rathazul implements TimeAwareInterface {
         player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     }
 
-    private buyDyeNevermind(): void {
+    function buyDyeNevermind(): void {
         spriteSelect(49);
         clearOutput();
         outputText("You change your mind about the dye, and Rathazul returns your gems.\n\n(<b>+50 Gems</b>)");
@@ -533,7 +534,7 @@ export class Rathazul implements TimeAwareInterface {
         doNext(returnToRathazulMenu);
     }
 
-    private buyReducto(): void {
+    function buyReducto(): void {
         spriteSelect(49);
         clearOutput();
         const cost: number = (flags[kFLAGS.AMILY_MET_RATHAZUL] >= 2 ? 50 : 100);
@@ -550,14 +551,14 @@ export class Rathazul implements TimeAwareInterface {
         }
     }
 
-    private growLethiciteDefense(): void {
+    function growLethiciteDefense(): void {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul asks, \"<i>Are you absolutely sure?  Growing this thorn canopy as a defense will use one third of the crystal's power.</i>\"\n\n(Do you have Rathazul use the crystal to grow a defensive canopy?)");
         doYesNo(growLethiciteDefenseYesYesYes, growLethiciteDefenseGuessNot);
     }
 
-    private growLethiciteDefenseYesYesYes(): void {
+    function growLethiciteDefenseYesYesYes(): void {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul nods and produces a mallet and chisel from his robes.  With surprisingly steady hands for one so old, he holds the chisel against the crystal and taps it, easily cracking off a large shard.  Rathazul gathers it into his hands before slamming it down into the dirt, until only the smallest tip of the crystal is visible.  He produces vials of various substances from his robe, as if by magic, and begins pouring them over the crystal.  In a few seconds, he finishes, and runs back towards his equipment.\n\n\"<i>You may want to take a step back,</i>\" he warns, but before you have a chance to do anything, a thick trunk covered in thorny vines erupts from the ground.  Thousands of vine-like branches split off the main trunk as it reaches thirty feet in the air, radiating away from the trunk and intertwining with their neighbors as they curve back towards the ground.  In the span of a few minutes, your camp gained a thorn tree and a thick mesh of barbed vines preventing access from above.");
@@ -566,14 +567,14 @@ export class Rathazul implements TimeAwareInterface {
         doNext(playerMenu);
     }
 
-    private growLethiciteDefenseGuessNot(): void {
+    function growLethiciteDefenseGuessNot(): void {
         spriteSelect(49);
         clearOutput();
         outputText("Rathazul nods sagely, \"<i>That may be wise.  Perhaps there will be another use for this power.");
         doNext(returnToRathazulMenu);
     }
 
-    public craftCarapace(): void {
+    export function craftCarapace(): void {
         spriteSelect(49);
         outputText("The rat takes the scales and works on his bench for an hour while you wait.  Once he has finished, Ratzhul is beaming with pride, \"<i>I think you'll be pleased. Go ahead and take a look.</i>\"\n\nHe hands you the armor.  ", true);
         outputText("The plates shine and shimmer like black steel.  He has used the yellow chitin to add accents and embroidery to the plates with a level of detail and craftsmanship rarely seen back home. A yellow fur neck lining has been fashioned from hairs found on the pieces.  The armor includes a breastplate, shoulder guards, full arm guards, and knee high boots.  You notice there are no pants.  As you turn to ask him where the pants are, you see him scratching his head and hastily rustling in drawers.  He mutters under his breath, \"<i>I'm sorry, I'm sorry, I got so focused on working on the pauldrons that I forgot to make any leg coverings!  Here, this should look good with it, and it won't restrict your movements.</i>\"  He hands you a silken loincloth", false);
@@ -586,4 +587,3 @@ export class Rathazul implements TimeAwareInterface {
         Inventory.takeItem(ArmorLib.BEEARMR, returnToRathazulMenu);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

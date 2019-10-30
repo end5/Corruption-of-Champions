@@ -1,8 +1,4 @@
 
-export class KatherineThreesome {
-
-    public constructor() { }
-
     /*
     Contains the following scenes:
         circlejerk					Not available if Kath has no cock, Works for all except genderless characters
@@ -22,7 +18,7 @@ export class KatherineThreesome {
         eatOutVala					Not available if Kath has no cock
     */
 
-    public circlejerk(): void { // Not available if Kath has no cock
+    export function circlejerk(): void { // Not available if Kath has no cock
         clearOutput();
         outputText("There’s no reason to not have some fun with the two of them... plus you don’t think you’d be able resist the allure of joining two of your favourite girls in their bonding.  Stripping off your " + player.armorName + " you step behind the two girls and embrace Urta into a hug, hands wandering her body to loosen the straps of her armor.\n\n");
         outputText("Urta seems to jump at your touch.  “<i>" + player.short + "?  What are you doing, you naughty [boy]?</i>”  She giggles.  Kath looks at you and smirks, “<i>Couldn’t resist getting into this, huh, " + player.short + "?  Well, why not?  After all, we’re technically a </i>ménage à trois</i>, aren’t we?</i>”\n\n");
@@ -112,7 +108,7 @@ export class KatherineThreesome {
         }
     }
 
-    public threeSixtyNine(): void {
+    export function threeSixtyNine(): void {
         clearOutput();
         if (Katherine.isAt(Katherine.KLOC_BAR) || Katherine.isAt(Katherine.KLOC_BAR_DRUNK))
             outputText("You drag the " + (Katherine.getCockNumber() > 0 ? "eager herms" : "lusty pair") + " to one of the backrooms.  Urta locks the door");
@@ -176,7 +172,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public roastYou(): void { // Not available if Kath has no cock
+    export function roastYou(): void { // Not available if Kath has no cock
         clearOutput();
         if (Katherine.isAt(Katherine.KLOC_BAR) || Katherine.isAt(Katherine.KLOC_BAR_DRUNK))
             outputText("You lead the horny herms toward one of the bar’s backrooms.  You get inside and lock the door but as you turn around Urta jumps you from behind, twisting your arm and pulling you to the floor.  Kath laughs and starts helping Urta as she removes your clothes.\n\n“<i>You’re too slow today " + player.short + ".  I’m horny as anything and I can tell from her scent that Katherine is dying for a good fuck too.  Just relax and we’ll take really good care of you.</i>”");
@@ -282,7 +278,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public spitroastKath(): void { // Works for all except genderless characters
+    export function spitroastKath(): void { // Works for all except genderless characters
         clearOutput();
         const atBar: boolean = Katherine.isAt(Katherine.KLOC_BAR) || Katherine.isAt(Katherine.KLOC_BAR_DRUNK);
         if (atBar)
@@ -346,7 +342,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public pinAndFuck(): void { // Kath is sober, Urta is drunk //Not available if Kath has no cock
+    export function pinAndFuck(): void { // Kath is sober, Urta is drunk //Not available if Kath has no cock
         clearOutput();
         outputText("When you get to Urta’s table she pulls you both in for a hug and takes the opportunity to bury her head between Katherine’s breasts" + (player.breasts.breasts.hasBreasts() ? " and then between yours" : "") + ".  Not wanting to fuck your herms at the table you get Urta’s attention by tugging on her ear and motion at one of the vacant backrooms.  The drunken fox herm gets up and wanders toward the door, her arms around you both.  It’s not for support but so that she can grope all your favorite bits.  On Urta’s other side you can see Kath smiling as Urta massages the base of her tail.\n\n");
         outputText("Once the three of you get inside the room together Urta gets aggressive.  She shoves both you and Kath against the wall and starts trying to pull your clothes off.  As she concentrates on " + Katherine.clothesChoice("unbuttoning Kath’s blouse", "sliding her hands inside Kath’s bodysuit", "unlacing Kath’s dress", "pulling the robe off Kath’s shoulders", "slipping the stretchy tube top over Kath’s head", "reaching inside the nurse’s top to grope Kath’s breasts") + " you decide that today Urta won’t be setting the pace.\n\n");
@@ -381,7 +377,7 @@ export class KatherineThreesome {
         else doNext(pinAndFuckMountUrta);
     }
 
-    private pinAndFuckMountUrta(): void { // Plays for anyone without a cock and for herms who select this option
+    function pinAndFuckMountUrta(): void { // Plays for anyone without a cock and for herms who select this option
         clearOutput();
         outputText("You roll Kath and Urta over so you can get access to Urta’s equine cock.  It’s a little soft but a couple of strokes along its cum slicked length start to change that.  Urta opens her eyes and tries to focus on you but you’re already " + (player.vaginas.length > 0 ? "sliding your pussy against her shaft" : "rubbing her horsecock against your anus") + ".  Underneath you both Kath lets out a happy “<i>Oh!</i>”  You’re guessing Urta’s muscles are clamping down on Kath’s cock" + Katherine.cockMultiple("", "s") + ".\n\n");
 
@@ -433,7 +429,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private pinAndFuckStuffKath(): void { // Plays for any males and for herms who select this option
+    function pinAndFuckStuffKath(): void { // Plays for any males and for herms who select this option
         clearOutput();
         outputText("When Kath flopped on top of Urta her legs spread apart and gave you a great view of " + (player.cocks.length > 1 ? "three" : "two") + " things.  Her" + Katherine.cockMultiple("", " lower") + " knot, hot and hard, buried in Urta’s pussy" + Katherine.cockMultiple(" and her dripping slit", ", her dripping slit and her supple sphincter, both") + " waiting for your cock.  " + (player.cocks.length > 1 ? "They look" : "It looks") + " so wet, so empty.  Neither Katherine nor Urta notice as you " + (player.isNaga() ? "slither" : "step") + " around them, position yourself behind Kath, line up your dick" + (player.cocks.length > 1 ? "s and feed them" : " and feed it") + " into Kath's body.\n\n");
         outputText("Kath may be tired but she’s still in the mood.  She clenches her pussy " + (player.cocks.length > 1 ? "and ass around your cocks" : "around your cock") + " and lets out a low moan.  You ");
@@ -480,18 +476,18 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public watch(urtaIsDrunk: boolean): void { // Kath is sober (or drunk), Urta is drunk
+    export function watch(urtaIsDrunk: boolean): void { // Kath is sober (or drunk), Urta is drunk
         clearOutput();
         outputText("By the time you reach Urta’s table she’s downed the last of her beverage.  She stands up and gives both of you big hugs.  You feel her horsecock grind against you and you see Kath looking self-conscious after her hug from Urta.\n\n");
         watchMainBody(urtaIsDrunk);
     }
 
-    public watchNoIntro(urtaIsDrunk: boolean): void { // Kath is sober (or drunk), Urta is drunk
+    export function watchNoIntro(urtaIsDrunk: boolean): void { // Kath is sober (or drunk), Urta is drunk
         clearOutput();
         watchMainBody(urtaIsDrunk);
     }
 
-    private watchMainBody(urtaIsDrunk: boolean): void { // Kath is sober, Urta is drunk
+    function watchMainBody(urtaIsDrunk: boolean): void { // Kath is sober, Urta is drunk
         outputText("The three of you quickly commandeer one of the back rooms.  Urta is " + (urtaIsDrunk ? "a little unsteady" : "pretty horny") + " so she sits down on a spare chair in the corner and yanks off her clothes.  You kiss Kath and concentrate on getting her naked, giving Urta a show as you " + Katherine.clothesChoice("first remove her blouse and then slip off her skirt", "peel the sheer bodysuit off her lithe form", "unlace her dress and slide it off her sexy body", "undo her robe and pull it from her shoulders", "pull the tube top over her head and then " + Katherine.clothesLowerChoice("peel off her tight shorts", "slip off her skirt", "", "", ""), "unbutton her tight blouse, slip off her skirt and finally pluck the cute white hat from her head") + ".  Urta’s interest is obvious from her panting and the throbbing of her horsecock.\n\n");
         outputText("Kath poses for Urta and asks, “<i>Like what you see?</i>”\n\n");
         outputText("Urta strokes her cock, smearing some pre along the shaft and says, “<i>Come over and find out!</i>”  It looks like Urta’s in the mood to put on a show so you give Kath a gentle push toward the fox.  As soon as she comes within arm’s reach Urta grabs her and pulls Katherine into her lap.\n\n");
@@ -541,7 +537,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public kathLicksOutUrta(): void { // Kath is drunk, Urta is sober
+    export function kathLicksOutUrta(): void { // Kath is drunk, Urta is sober
         clearOutput();
         outputText("Kath begins to twitch and pant as Urta plays with her ears, which leads her to start stroking Urta's tail.  Pretty soon a deep 'thunk' from beneath the table lets you know how much Urta appreciates the attention.  There's no need to get involved, so you smile at Urta and lean back.  You can have fun with either of them later and right now you're content to watch and see what develops as the " + (Katherine.getCockNumber() > 0 ? "herms" : "girls") + " get more and more aroused.\n\n");
         outputText("The show gets underway when Urta lets go long enough to shift in her seat.  Apparently her cock was getting stiff enough to make her position uncomfortable.  Kath blinks out of her slightly dazed state and gives you an evil grin.  Before Urta can notice or react Kath ducks under the table and Urta's eyes go wide.  Her hands snap to her chair, holding her steady as you hear sounds of wet fabric sliding from below.\n\n");
@@ -561,7 +557,7 @@ export class KatherineThreesome {
         doNext(Katherine.katherineSex);
     }
 
-    public knothole(): void { // Kath is drunk, Urta is sober //Not available if Kath has no cock
+    export function knothole(): void { // Kath is drunk, Urta is sober //Not available if Kath has no cock
         clearOutput();
         outputText("Urta scratches behind Kath’s ear and suggests slipping into one of the back rooms.  As soon as you get her inside Kath strips off her clothes and tackles Urta.  Urta is unprepared, but her combat experience is more than enough to deal with Kath when she’s drunk.  Urta laughs and easily gains control of the horny " + Katherine.catGirl("cat girl", "feline") + ".  Katherine starts to struggle, so Urta sweeps her legs out from under her, presses Kath to the floor and asks if she’s going to be good.\n\n");
         outputText("Kath mutters, “<i>Yes,</i>” but keeps trying to get loose.\n\n");
@@ -602,7 +598,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public sandwich(): void { // Kath is drunk, Urta is sober //Not available if Kath has no cock
+    export function sandwich(): void { // Kath is drunk, Urta is sober //Not available if Kath has no cock
         clearOutput();
         outputText("Urta scratches behind Kath’s ear and suggests slipping into one of the back rooms.  As soon as you close the door behind you Kath jumps into Urta’s arms and gives her a long kiss.\n\n");
         outputText("When they come up for air Urta says, “<i>Just a minute Kath, let me get ready,</i>” in a playful tone, trying to push Kath away long enough to get her clothes off.  Kath locks lips with Urta again while her fingers work on the laces of Urta’s clothes.\n\n");
@@ -614,7 +610,7 @@ export class KatherineThreesome {
         else doNext(sandwichGetFucked);
     }
 
-    private sandwichGetFucked(): void {
+    function sandwichGetFucked(): void {
         outputText("\n\nYou look down at Urta’s horse cock.  It bounces with each move Katherine makes - almost like it’s trying to hypnotize you.  Urta moans, “<i>Oh please!</i>” and you see no reason to deny her.  You ");
         if (player.isTaur())
             outputText("turn around and flick your tail at her");
@@ -632,7 +628,7 @@ export class KatherineThreesome {
         sandwichCommonEnd(); // Play the common end
     }
 
-    private sandwichGetLicked(): void {
+    function sandwichGetLicked(): void {
         outputText("\n\nYou massage Urta’s shoulders and ask if she could help you out.  She’s not sure what you mean until you apply a little pressure, gently angling her head toward your " + (player.cocks.length > 0 ? "cock" : "pussy") + ".  Once she gets the idea Urta quickly gets down on all fours.  You have to smile to yourself as Urta " + (player.cocks.length > 0 ? "licks your cock and sucks out some pre" : "digs in") + ".  She puts her hands on your hips so that Katherine’s thrusts don’t " + (player.cocks.length > 0 ? "impale her" : "force her face into your pussy") + ".\n\n");
         outputText("It’s hard to just stand there.  Before you Kath is lost in pleasure, drunkenly slamming ");
         if (Katherine.getCockNumber() > 1)
@@ -679,7 +675,7 @@ export class KatherineThreesome {
         sandwichCommonEnd(); // Play the common end
     }
 
-    private sandwichMaleCentaurLicked(): void {
+    function sandwichMaleCentaurLicked(): void {
         outputText("\n\nYou massage Urta’s shoulders and ask if she could help you out.  She’s not sure what you mean until you apply a little pressure.  Once she gets the idea Urta quickly gets down on all fours.  You give her a big smile and carefully walk over her.\n\n");
 
         outputText("You wind up in an unusual, but very pleasant situation.  Beneath you Urta is greedily slurping at your cock.  Katherine, who is lodged in Urta’s ");
@@ -708,7 +704,7 @@ export class KatherineThreesome {
         sandwichCommonEnd(); // Play the common end
     }
 
-    private sandwichCommonEnd(): void {
+    function sandwichCommonEnd(): void {
         outputText("\n\nYou pull yourself free from your knotted lovers and take in the scene.  The two herms are panting happily.  Urta is stuffed like she’s nine months along and Kath’s tail is flicking from side to side.  Occasionally it lands in a puddle of spunk and flicks a glob of spooge across the room.  It’s going to take a while to clean up, but you have people to see and places to be.\n\n");
         outputText("To ‘make up’ for skipping out on the cleaning you decide to give them a little treat.  " + (flags[kFLAGS.URTA_FERTILE] == 1 && !Urta.pregnancy.isPregnant ? "First you pat Urta’s belly and ask if she’s trying to get herself knocked up.  She just mumbles something incoherent.  Then you" : "You") + " get behind Kath and rub the base of the drunken kitty’s tail.  She purrs appreciatively.  You reach further down and start playing with ");
         if (Katherine.getBallSize() > 0)
@@ -732,7 +728,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public orgy(): void { // Both Kath and Urta are drunk
+    export function orgy(): void { // Both Kath and Urta are drunk
         clearOutput();
         outputText("Your attempt to draw them off into one of the backrooms comes too late.  Urta kisses Kath and Kath responds by undoing Urta’s belt.  Her massive schlong smacks the underside of the table on its way to freedom.  The deep wooden ‘knock’ silences most of the bar and everyone looks your way to see what’s going on.\n\n");
         outputText("Urta is so drunk that she doesn’t care that her prick is standing erect and waving free in the open air.  Kath cares even less about what people think and slowly draws her hand down Urta’s cock, from the tip to the root.  Urta shudders under the attention and quickly undoes " + Katherine.clothesLowerChoice("Kath’s blouse", "Kath’s blouse", "the upper part of Kath’s bodysuit", "the laces on Kath’s dress", "the front of Kath’s robe") + ", freeing her " + Katherine.breasts.adj() + " breasts.\n\n");
@@ -790,7 +786,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseTwoHours);
     }
 
-    public doubleStuffKath(): void { // Both Kath and Urta are drunk
+    export function doubleStuffKath(): void { // Both Kath and Urta are drunk
         clearOutput();
         outputText("You ask your two " + (Katherine.getCockNumber() > 0 ? "herms" : "lovers") + " if they want to go somewhere more private.\n\n");
         const urtaHasHouse: boolean = player.keyItems.has("Spare Key to Urta's House") >= 0;
@@ -882,7 +878,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public doublePenetrateKath(): void { // Both Kath and Urta are drunk
+    export function doublePenetrateKath(): void { // Both Kath and Urta are drunk
         clearOutput();
         outputText("You ask your two " + (Katherine.getCockNumber() > 0 ? "herms" : "sluts") + " if it’s time to commandeer one of the back rooms.\n\n");
         outputText("Urta " + Katherine.clothesLowerChoice("runs her hand up Kath’s thigh", "slides her hand under Kath’s skirt", "rubs the " + (Katherine.getCockNumber() > 0 ? Katherine.cockAdj() + "bulge in the " : "") + "crotch of Kath’s bodysuit", "slides her hand under Kath’s dress", "slides her hand between the folds of Kath’s robe") + " and gives you a wolfish smile.\n\n");
@@ -981,7 +977,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public doubleStuffVala(): void { // Not available if Kath has no cock
+    export function doubleStuffVala(): void { // Not available if Kath has no cock
         valaCommonStart();
         outputText("When Katherine finally rips off her bra you push her back onto an old table that’s sitting in the corner.  Before she has a chance to react you spin Vala around and place her on top of Kath’s thighs, her pussy close enough to feel the heat from Kath’s shaft" + Katherine.cockMultiple("", "s") + ".  The two of them look at each other" + (flags[kFLAGS.KATHERINE_VALA_AFFECTION] >= 8 ? " with lust and try to pull closer together so they can mate" : ", uncertain - but too turned on to turn back") + ".\n\n");
         outputText("You pull apart Vala’s folds, giving her pleasure and Kath a good look.  With your other hand you stroke Kath’s " + Katherine.cockType() + " cock" + Katherine.cockMultiple("", "s") + " and feel Vala wiggle her hips, trying to impale herself.  It’s what you want so you grip Kath’s cock" + Katherine.cockMultiple(" tightly and guide it", "s tightly, forcing the tips together, and guide them") + " into Vala’s passage.  Both girls moan as the head" + Katherine.cockMultiple(" sinks", "s sink") + " in.  Then you put your hands on Vala’s ass and push her forward.  You know from experience how elastic she can be and sure enough " + Katherine.cockMultiple("Kath’s cock buries itself", "both Kath’s cocks bury themselves") + " to the hilt.\n\n");
@@ -1016,7 +1012,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public eatOutVala(): void { // Not available if Kath has no cock
+    export function eatOutVala(): void { // Not available if Kath has no cock
         valaCommonStart();
         outputText("You pull Vala into your arms and then walk her backwards, toward Kath.  Vala doesn’t notice what you’re doing and Kath backs up into a wall.  You keep moving and press Vala against Kath.  Neither of them have anywhere to go and you feel the tip" + Katherine.cockMultiple(" of Kath’s cock", "s of Kath’s cocks") + " poking out from between Vala’s legs.\n\n");
         outputText("Perfect!  You give each of them a kiss and then grab Vala’s ass with both hands, lifting her off the ground and spreading her cheeks as far apart as you can manage.  You tell Kath to line her " + Katherine.cockMultiple("", "twin ") + Katherine.cockType() + " member" + Katherine.cockMultiple("", "s") + " up with Vala’s ass but it’s Vala who reacts first.  With the speed and agility you’d expect from a faerie she takes Kath’s cock" + Katherine.cockMultiple(", spreads some pre over the shaft and lines it", "s, spreads some pre over the shafts and and lines them") + " up with her butt.\n\n");
@@ -1036,7 +1032,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public fistKathAndVala(): void {
+    export function fistKathAndVala(): void {
         valaCommonStart();
         outputText("You tell Vala to sit down and give you a second.  She pulls out a stool that looks like it has seen better days and sits down, her legs spread wide and her fingers on her nipples to keep the juices flowing.\n\n");
         outputText("Next you deal with the horny kitty.  You get behind Kath and wrap your arms around her naked body, teasing her nipples and putting on a show.  Vala lets out an appreciative, “<i>Mmmm, yeah,</i>” as she watches you bring Kath's lust to the boil.  When Kath melts into your arms, giving up any hope of control, you drag her to another battered chair and plop her down.\n\n");
@@ -1061,7 +1057,7 @@ export class KatherineThreesome {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private valaCommonStart(): void {
+    function valaCommonStart(): void {
         clearOutput();
         outputText("You put your arms around both of them and cop a feel.  From Kath you get a pleased purr and from Vala a contented sigh.  You tell them both that you’ve got an idea and lead them toward the back of the bar.\n\n");
         outputText("As soon as you lock the door you decide to concentrate on Vala.  Pinching her nipples and kissing her deeply gets her in the mood awfully quickly.  Looks like she wasn’t just bored but horny too.\n\n");
@@ -1070,7 +1066,7 @@ export class KatherineThreesome {
         outputText("\n\n");
     }
 
-    private valaCommonPostSex(theyWereFucking: boolean): void { // This bit happens in all three Vala sex scenes
+    function valaCommonPostSex(theyWereFucking: boolean): void { // This bit happens in all three Vala sex scenes
         if (flags[kFLAGS.KATHERINE_VALA_TIMES_SEX] == 0) {
             outputText("She looks back at Kath and says, “<i>Oh - I’m Vala, by the way.</i>”\n\n");
             outputText("Kath’s jaw drops and she stammers, “<i>Hi, I’m Kath, Katherine.  I’m sorry, I don’t usually do stuff like this.</i>”\n\n");
@@ -1085,5 +1081,3 @@ export class KatherineThreesome {
         }
         outputText("\n\nKath sighs and rubs Vala’s " + (theyWereFucking ? "belly" : "chest") + ".  She’s so relaxed that she looks half-asleep.  “<i>Mmmm - " + Katherine.playerText() + (theyWereFucking ? "... I think we’re going to be here together for a while.  Maybe" : "... maybe") + " you should get going and check up on that portal of yours.  We’ll deal with the mess.</i>”\n\n");
     }
-
-}

@@ -2,8 +2,6 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class FetishCultistScene {
-
     /*
      (first draft)
      Appearance: A large human female who's wearing what looks like a depraved religious outfit while chanting what sounds like random sentences, her outfit sometimes changes into something else, seemingly at random, but only for a short time.  Whatever intelligence she used to have is obviously long gone.
@@ -14,14 +12,14 @@ export class FetishCultistScene {
      Loot: Could drop a random set of clothing or a costume on death.
      */
 
-    public fetishCultistEncounter(): void {
+    export function fetishCultistEncounter(): void {
         outputText("You see a largely human-looking young woman in the distance in a strange, whorish outfit, seemingly lost in prayers that sound like nonsense to you.  Finally noticing your presence, she confronts you with a lewd smile on her face.\n\nShe has clearly lost her grasp on sanity, and filled the void with pure perversion.", true);
         startCombat(new FetishCultist());
         spriteSelect(19);
         doNext(playerMenu);
     }
 
-    public cultistRapesYou(): void {
+    export function cultistRapesYou(): void {
         monster.lust = 1;
         monster.HP = 10;
         let changed: boolean = false;
@@ -373,7 +371,7 @@ export class FetishCultistScene {
         }
     }
 
-    public playerRapesCultist(): void {
+    export function playerRapesCultist(): void {
         clearOutput();
         // (nun worship version, this one looks like it will be a little shorter than the other one was, only two variations again)
         if (monster.armorName == "pervy nun's clothing") {
@@ -489,7 +487,7 @@ export class FetishCultistScene {
     }
 
     // PC goes for the vagina
-    private plugSwimsuitVag(): void {
+    function plugSwimsuitVag(): void {
         const x: number = player.cocks.biggestCockIndex();
         outputText("", true);
         if (player.vaginas.length > 0) outputText("You decline the vibrators; you'd much rather take her incredibly wet pussy.  ", false);
@@ -522,7 +520,7 @@ export class FetishCultistScene {
     }
 
     // PC goes for the vagina vibrators
-    private swimsuitVibrators(): void {
+    function swimsuitVibrators(): void {
         outputText("", true);
         outputText("You suggest that you're interested in trying the vaginal vibrators she offered.  The cultist nods, and turns to face you holding two surprisingly large toys in her hands.  They're shaped like a long tube, with a small arm on the side near the handle that points towards the end.  You aren't sure where they came from, but you'd guess she used the same magic that she uses to shift her clothing to get them.\n\n", false);
         if (player.vaginalCapacity() <= 30) {// PC does not have a very loose or looser vagina)
@@ -581,14 +579,14 @@ export class FetishCultistScene {
         }
     }
 
-    private cultistBadEnd(): void {
+    function cultistBadEnd(): void {
         // This ending is caused from having too low of inte when losing to the cultist (say under 15) or it could be after losing too many times to them.  You chose which you would prefer.
         // (after being raped, do not show regular recovery message, skip here)
         outputText("\n\nYour mind is not able to recover from the fantasy, and instead moves on to another one, and another, and another...", false);
         doNext(cultistBadEnd2);
     }
 
-    public cultistBadEnd2(): void {
+    export function cultistBadEnd2(): void {
         let genderTag: string = "";
         outputText("On a hill sits a large cathedral overlooking a river that feeds into a massive lake.  It is a surprisingly grand structure in a land almost devoid of any signs of civilization in any direction.  The design is quite clear; its entrance lined with statues of lewd naked figures and its windows are made of stain glass depicting acts of sexuality.  Even without hearing the sounds of ecstasy that usually emanate from inside, it is quite clear this is a place of debauchery.\n\n", true);
         outputText("Within, a ", false);
@@ -603,7 +601,7 @@ export class FetishCultistScene {
         gameOver();
     }
 
-    public fetishCultistHasAMilkFetish(): void {
+    export function fetishCultistHasAMilkFetish(): void {
         outputText("", true);
         outputText("You remove your " + player.armorName + ", standing naked in front of the beaten fetish-girl with your lactating " + breastDescript(game.player, 0) + " dripping milk. You pick the cultist up and sit down on the ground with her resting on your lap, her soft warm ass up against your thighs. You hold the nipple up to her mouth; she suckles on it without the slightest sign of rebellion.\n\n", false);
 
@@ -663,4 +661,3 @@ export class FetishCultistScene {
         player.effects.setValue(StatusAffects.Feeder, 2, 0);
         cleanupAfterCombat();
     }
-}

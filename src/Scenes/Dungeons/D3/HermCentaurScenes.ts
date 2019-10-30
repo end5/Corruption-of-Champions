@@ -3,9 +3,8 @@
  * ...
  * @author Gedan
  */
-export class HermCentaurScenes {
 
-    public encounterThePony(): void {
+    export function encounterThePony(): void {
         outputText("\n\nA gigantic, demonic centaur is here!  She grins down at your sudden arrival and gestures at the mammoth dong between her thighs as she taunts, \"<i>You are not prepared.</i>\"");
 
         if (player.vaginalCapacity() < 100 || player.analCapacity() < 100) outputText("\n\nNot prepared to take that beast perhaps, but certainly prepared to take this over-grown abomination down!");
@@ -14,11 +13,11 @@ export class HermCentaurScenes {
         startCombat(new HermCentaur());
     }
 
-    private CENTAUR_KILLED: number = 1;
-    private CENTAUR_RELEASED: number = 2;
-    private CENTAUR_FUCKED: number = 3;
+    let CENTAUR_KILLED: number = 1;
+    let CENTAUR_RELEASED: number = 2;
+    let CENTAUR_FUCKED: number = 3;
 
-    public beatThePony(hpVictory: boolean): void {
+    export function beatThePony(hpVictory: boolean): void {
         clearOutput();
         outputText("With a heavy 'thud', the demonic red-head slumps onto her side in the grass.  Her tail flails fitfully");
         if (hpVictory) outputText(" as she tries to rise");
@@ -40,7 +39,7 @@ export class HermCentaurScenes {
         addButton(6, "Kill", killHer);
     }
 
-    private killHer(): void {
+    function killHer(): void {
         clearOutput();
         outputText("Sighing, you advance on the downed demon, trying to ignore the horrified look in her eyes as you end her.");
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_KILLED;
@@ -49,7 +48,7 @@ export class HermCentaurScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private letHerGo(): void {
+    function letHerGo(): void {
         clearOutput();
         outputText("You dust off your [armor] and wave nonchalantly at the equine demoness.  She slowly staggers up, watching you warily.  Dismissively, you tell her to leave before she earns your ire - her queen will be dealt with soon enough.  She clops off in a huff towards the exit.");
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_RELEASED;
@@ -58,7 +57,7 @@ export class HermCentaurScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private maleFuckHer(): void {
+    function maleFuckHer(): void {
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_FUCKED;
 
         let y: number = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -105,11 +104,11 @@ export class HermCentaurScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private HORZGOG: number = 0;
-    private DOGGECOCK: number = 1;
-    private TENTACOCK: number = 2;
+    let HORZGOG: number = 0;
+    let DOGGECOCK: number = 1;
+    let TENTACOCK: number = 2;
 
-    private femFuckHer(): void {
+    function femFuckHer(): void {
         flags[kFLAGS.D3_CENTAUR_DEFEATED] = CENTAUR_FUCKED;
 
         clearOutput();
@@ -126,7 +125,7 @@ export class HermCentaurScenes {
         addButton(2, "Tentacles", femFuckHerII, TENTACOCK);
     }
 
-    private femFuckHerII(cockType: number): void {
+    function femFuckHerII(cockType: number): void {
         clearOutput();
         // [Tentacle]
         if (cockType == TENTACOCK) {
@@ -229,7 +228,7 @@ export class HermCentaurScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean): void {
         if (player.cocks.length > 0 && player.vaginas.length > 0) {
             if (rand(2) == 0) maleLoss(hpVictory);
             else femLoss(hpVictory);
@@ -240,7 +239,7 @@ export class HermCentaurScenes {
         else if (!player.vaginas.length > 0 && !player.cocks.length > 0) femLoss(hpVictory);
     }
 
-    private femLoss(hpVictory: boolean): void {
+    function femLoss(hpVictory: boolean): void {
         clearOutput();
         outputText("Dropping down, you");
         if (hpVictory) outputText(" try to pull yourself up with on your palms, utterly defeated in spite of the centaur's complete lack of physical attacks.");
@@ -315,7 +314,7 @@ export class HermCentaurScenes {
         addButton(0, "Next", femLossII);
     }
 
-    private femLossII(): void {
+    function femLossII(): void {
         clearOutput();
         outputText("Later, you wake when something hard digs into your back, and as you crack your eyes open, the first thing you see is a set of equine hindquarters and prodigiously large testes.  Your next realization is that you're moving... not just moving, being dragged!  You glance downward and see that you're joined with the centauress once again, only this time, you can't see any distortion in your middle.  Your belly is stuffed so full of cum that you can't see the fleshy spear, but you can certainly feel it.  It's different now... narrower at the tip, but obscenely bloated at the base.  Even now, you can feel it stretching you to your limits to make a tight seal and slowly leaking a fresh river of jism to assault your ovaries.");
 
@@ -327,7 +326,7 @@ export class HermCentaurScenes {
         addButton(0, "Next", femLossIII);
     }
 
-    private femLossIII(): void {
+    function femLossIII(): void {
         clearOutput();
         outputText("<b>Months later...</b>");
 
@@ -337,7 +336,7 @@ export class HermCentaurScenes {
         gameOver();
     }
 
-    private maleLoss(hpVictory: boolean): void {
+    function maleLoss(hpVictory: boolean): void {
         clearOutput();
 
         let y: number = player.cocks.cockThatFits(monster.vaginalCapacity());
@@ -420,10 +419,8 @@ export class HermCentaurScenes {
         addButton(0, "Next", maleLossII);
     }
 
-    private maleLossII(): void {
+    function maleLossII(): void {
         clearOutput();
         outputText("As the years roll by, you see lots of pussy, and lots of injections.  They test all kinds of cocktails on you.  Ones that makes your balls swell, or your seed runny, or thick, or even black.  Eventually, one of your children comes out as something other than an imp.  The first proper demon infant.  Too fucked up to feel anything but pride, you can only marvel at your amazing virility as you seed the birth of a new species, knocking up every demon with a cunt in a month-long orgy.  Your jism fuels the ascendency of an entire race, dooming Mareth.");
         gameOver();
     }
-
-}

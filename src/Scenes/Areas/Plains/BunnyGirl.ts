@@ -1,6 +1,5 @@
 
-export class BunnyGirl {
-    public isItEaster(): boolean {
+    export function isItEaster(): boolean {
         return (date.date >= 30 && date.date <= 31 && date.month == 2) || (date.month == 3 && date.date <= 1);
     }
 
@@ -9,7 +8,7 @@ export class BunnyGirl {
     // 14" Human dick with a pointed head.  A pair of egg-shaped testes.
     // Egg preg changes – Bunny Ears, Bunny Tail, Bunny Legs?, Hot pink nose & whiskers?
 
-    public bunnbunbunMeet(): void {
+    export function bunnbunbunMeet(): void {
         outputText("", true);
         spriteSelect(13);
         if (flags[kFLAGS.MET_BUNBUN] == 0) {
@@ -77,7 +76,7 @@ export class BunnyGirl {
         }
     }
     // [Talk]
-    private talkToBunnyBunBun(): void {
+    function talkToBunnyBunBun(): void {
         spriteSelect(13);
         flags[kFLAGS.MET_BUNBUN]++;
         outputText("", true);
@@ -116,7 +115,7 @@ export class BunnyGirl {
         dynStats("lus", 5 + player.lib / 20);
     }
     // [Rape Her]
-    private rapeBunBun(): void {
+    function rapeBunBun(): void {
         spriteSelect(13);
         outputText("", true);
         if (player.spe < 60) {
@@ -161,7 +160,7 @@ export class BunnyGirl {
     }
 
     // [Take Dick in Vag Fukked]
-    private bunbunFucksYourVag(): void {
+    function bunbunFucksYourVag(): void {
         spriteSelect(13);
         outputText("", true);
         outputText("A anticipatory grin widens across your " + face(player) + " as you speedily disrobe, discarding your " + player.armorName, false);
@@ -246,7 +245,7 @@ export class BunnyGirl {
     }
 
     // [Take Dick In A]
-    private bunbunFucksPCInAss(): void {
+    function bunbunFucksPCInAss(): void {
         spriteSelect(13);
         outputText("", true);
         outputText("You get a very naughty idea and silently discard your " + player.armorName + ", tossing it aside as you turn around and present your " + buttDescription(player) + " to the bunny-girl.  With a lewd shake, you tease her and give her a good view of your " + assholeDescript(player) + " while it lowers closer and closer to the turgid bunny-cock, just inches away.  Drops of clear pre-cum roll down her shaft as it twitches eagerly, and the girl watches you through a gleam of sexual excitement while her shaft gets closer and closer to your rear entrance.  You let your " + legs(player) + " relax a little until it's pressing tightly against your sphincter, feeling it slather pre-cum in preparation for the coming penetration.\n\n", false);
@@ -335,7 +334,7 @@ export class BunnyGirl {
     }
 
     // FUCK DAT BUNNYBUNBUNBUN.
-    private bunbunGetsFucked(): void {
+    function bunbunGetsFucked(): void {
         spriteSelect(13);
         outputText("", true);
         // Requires wang that fits
@@ -417,7 +416,7 @@ export class BunnyGirl {
         Inventory.takeItem(ConsumableLib.NPNKEGG, Camp.returnToCampUseOneHour);
     }
 
-    private bunbun69(): void {
+    function bunbun69(): void {
         spriteSelect(13);
         outputText("", true);
         // Centaur
@@ -616,7 +615,7 @@ export class BunnyGirl {
     // Bee on Bunny, by Eliria
     // Coded or questionable parts are in {}.
     // Thank you for your time! Scene as follows (also in attachment):
-    public layEggsInBunbuns(): void {
+    export function layEggsInBunbuns(): void {
         clearOutput();
         outputText("The displayed lapin in front of you has you excited, but not for a simple roll in the grass.  Your ");
         if (player.eggs() < 20) outputText("eager egg-tube slips free, ready to show the rabbit you can play the egg game too.");
@@ -663,7 +662,7 @@ export class BunnyGirl {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public ovipositBunnyEaster(): void {
+    export function ovipositBunnyEaster(): void {
         clearOutput();
         outputText("Smiling a little over-eagerly, you suggest, \"<i>You know, if you really like eggs, I know where you can get a few...</i>\"");
         outputText("\n\n\"<i>Oh?  Where's that?</i>\" she responds, both her floppy ears standing up stock-straight and quivering with excitement.  She hops over to you, unconsciously letting her dripping phallus bob ponderously with each jump, the inertia turning it into a sexual pendulum of ridiculous, fourteen-inch proportions.  \"<i>Are they behind you?</i>\"");
@@ -717,7 +716,7 @@ export class BunnyGirl {
     // Bunny Girl Eggsplosion
     // Additional, low chance encounter in the plains. Options in parentheses should be adjusted to the following format: (Normal text/ Easter text)
     // -----------
-    private adjathaEggsplosions(): void {
+    function adjathaEggsplosions(): void {
         clearOutput();
         outputText("Your trek through the plains is interrupted by a shrill, piercing cry that jolts you out of the daydreams that were floating through your mind.  The piercing wail of a woman in distress grabs your attention and you hurry over the rising hills to the source of the howling bluster.  You weren't sure exactly what to expect, but as the source of the commotion comes into view, you have to admit this wasn't exactly what you thought you'd find.");
 
@@ -758,7 +757,7 @@ export class BunnyGirl {
     }
 
     // [Free Her] (Any gender)
-    private freeHerOhGodWhyDidYouDoThis(): void {
+    function freeHerOhGodWhyDidYouDoThis(): void {
         clearOutput();
         outputText("Taking a chance, you step up to the wriggling bunny and inspect her bonds.  The girl's body is covered in a ");
         if (!isEaster()) outputText("sheen of sweat");
@@ -801,7 +800,7 @@ export class BunnyGirl {
     }
 
     // [Fuck Her] (Male/Futa Only)
-    private fuckTheEggBoundBun(): void {
+    function fuckTheEggBoundBun(): void {
         clearOutput();
         outputText("It's not often you find a treat gift wrapped so neatly for you; what kind of ingrate would you be if you just turned it down?  You step up to the wriggling bunny and inspect her carefully.  The girl's body is covered in a ");
         if (!isEaster()) outputText("sheen of sweat");
@@ -856,7 +855,7 @@ export class BunnyGirl {
     }
 
     // [Get Egged] (Female/Futa only)
-    private getEggflated(): void {
+    function getEggflated(): void {
         clearOutput();
         outputText("Deciding it'd be too cruel to leave her like this, you resolve to put the bunny-girl at ease. However, you're not so foolish that you're willing to just untie her - if that hungry look in her eyes is any warning.  Stepping up to the wriggling bunny, you inspect her carefully.  The girl's body is covered in a ");
         if (!isEaster()) outputText("sheen of sweat");
@@ -969,4 +968,3 @@ export class BunnyGirl {
     // If not full bunny morph: [Next]
     // On the way back to your camp, the torrid heat of the melting eggs inside you become unbearable and you drop to your hands and knees. Something is changing!
     // [Insert every bunny morph change text that the player does not have. End Encounter. Weight up, Sensitivity down, fertility up.]
-}

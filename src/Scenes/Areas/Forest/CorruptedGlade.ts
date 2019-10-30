@@ -1,9 +1,5 @@
 
-export class CorruptedGlade {
-
-    public constructor() { }
-
-    public intro(): void {
+    export function intro(): void {
         spriteSelect(92);
         outputText("Walking through the woods, you find a damp patch overgrown with corrupted plant-life.  Every flower seems warped into a colorful imitation of a female's genitals, each vine appears throbbing and veiny, and every knot on the nearby trees is capped with a nipple-like protrusion, leaking dark sap.");
         if (player.cor <= 33) { // disgusted reaction
@@ -40,7 +36,7 @@ export class CorruptedGlade {
         // Wallow in decadence reaction - UNFINISHED
     }
 
-    private flowerFun(): void {
+    function flowerFun(): void {
         clearOutput();
         spriteSelect(92);
         if (player.cocks.length > 0) { // Sex scenes for those with cawks
@@ -100,7 +96,7 @@ export class CorruptedGlade {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private tentacleFun(): void {
+    function tentacleFun(): void {
         clearOutput();
         spriteSelect(92);
         if (player.vaginas.length > 0 && rand(2) == 0) { // Vaginal Variant 50% of the time
@@ -219,7 +215,7 @@ export class CorruptedGlade {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    private treeBoobFun(): void {
+    function treeBoobFun(): void {
         clearOutput();
         spriteSelect(92);
         outputText("Stepping carefully around the other hazards of the glade, you close on the strange trees with equal parts curiosity and desire.  Up close, it's easy to see the strange growths that sprout from the bark – dozens of full ripe-looking breasts, each capped with a swollen and leaking nipple.  You touch one, marveling at the smooth texture of its chocolate-colored skin.   In response a runner of sap oozes free of the nipple and slides down the curved surface.\n\n");
@@ -252,4 +248,3 @@ export class CorruptedGlade {
         }
         doNext(Camp.returnToCampUseOneHour);
     }
-}

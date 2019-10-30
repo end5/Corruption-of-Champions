@@ -2,8 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Plains {
-    public explorePlains(): void {
+    export function explorePlains(): void {
         outputText("", true);
         flags[kFLAGS.TIMES_EXPLORED_PLAINS]++;
         // Dem Kangasluts!  Force Sheila relationship phase!
@@ -78,7 +77,7 @@ export class Plains {
         choices[rand(choices.length)]();
     }
 
-    private plainsLoot(): void {
+    function plainsLoot(): void {
         if (rand(2) == 0) { // OVI
             outputText("While exploring the plains you nearly trip over a discarded, hexagonal bottle.  ");
             Inventory.takeItem(ConsumableLib.OVIELIX, Camp.returnToCampUseOneHour);
@@ -88,4 +87,3 @@ export class Plains {
             Inventory.takeItem(ConsumableLib.KANGAFT, Camp.returnToCampUseOneHour);
         }
     }
-}

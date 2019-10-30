@@ -1,20 +1,19 @@
 
-export class LethiceScenes {
-    public static GAME_END_REDEMPTION: uint = 1;
-    public static GAME_END_CONSORT: uint = 2;
-    public static GAME_END_PURGE_0_50: uint = 3;
-    public static GAME_END_PURGE_50_100: uint = 4;
-    public static GAME_END_PURGE_100: uint = 5;
-    public static GAME_END_CONQUER_LOW: uint = 6;
-    public static GAME_END_CONQUER_MED: uint = 7;
-    public static GAME_END_CONQUER_HIGH: uint = 8;
+    export let GAME_END_REDEMPTION: uint = 1;
+    export let GAME_END_CONSORT: uint = 2;
+    export let GAME_END_PURGE_0_50: uint = 3;
+    export let GAME_END_PURGE_50_100: uint = 4;
+    export let GAME_END_PURGE_100: uint = 5;
+    export let GAME_END_CONQUER_LOW: uint = 6;
+    export let GAME_END_CONQUER_MED: uint = 7;
+    export let GAME_END_CONQUER_HIGH: uint = 8;
 
-    private saveExport(): void {
+    function saveExport(): void {
         menu();
         addButton(0, "Export", exportSaveData);
     }
 
-    private exportSaveData(): void {
+    function exportSaveData(): void {
         // This is turbo wankle style shit, but it'll work well enough for now.
 
         // 1. This will be a nightmare to get into CoC2 directly...
@@ -45,7 +44,7 @@ export class LethiceScenes {
         addButton(0, "Game Over", function(): void { });
     }
 
-    public encounterLethice(): void {
+    export function encounterLethice(): void {
         if (player.cor < 90) {
             goFight();
         }
@@ -56,7 +55,7 @@ export class LethiceScenes {
         }
     }
 
-    private goFight(): void {
+    function goFight(): void {
         outputText("<i>“So be it.”</i> Lethice rises from her throne, pacing pensively back and forth. Wings unfurl from behind her back, casting you into the darkness of her demonic shadow. <i>“You seek a fight with the Queen of Mareth, and you shall have one.”</i> With feline grace, she launches herself dozens of feet into the air, flips forward, and snaps her wings out to catch her midair. <i>“My pets! My lovelies! Watch what this mortal’s foolishness earns " + mf(player, "him", "her") + "!”</i>");
         outputText("\n\nScattered applause breaks out as Lethice wings around to engage you.");
         if (!player.canFly()) outputText(" Good thing she’s not the only one that can fly!");
@@ -73,7 +72,7 @@ export class LethiceScenes {
         startCombat(m);
     }
 
-    public defeated(hpVictory: boolean): void {
+    export function defeated(hpVictory: boolean): void {
         clearOutput();
 
         if (hpVictory) {
@@ -96,7 +95,7 @@ export class LethiceScenes {
         }
     }
 
-    private plowHer(): void {
+    function plowHer(): void {
         clearOutput();
 
         outputText("After all you’ve been through, after everything you’ve fought and every enemy you’ve made... it all has come down to this: Lethice, the so-called Demon Queen, on her knees before you like any corrupted slut, helpless but to be just another sheathe for your cock. The realization fills your heart with a sense of pride and joy. Your quest is over, and now it’s time to reap your rewards.");
@@ -135,7 +134,7 @@ export class LethiceScenes {
         }
     }
 
-    private plowHerPussy(): void {
+    function plowHerPussy(): void {
         clearOutput();
 
         outputText("Lethice is primed and ready, spanked into submission twice over and drooling with her eagerness for a victorious fucking. You have to wonder when the last time this haughty bitch was put on the bottom - how long has she gotten to play top dog, with nobody to tell her otherwise?");
@@ -165,7 +164,7 @@ export class LethiceScenes {
         addButton(0, "Next", theChoiceDunDunDun);
     }
 
-    private plowHerButt(): void {
+    function plowHerButt(): void {
         clearOutput();
 
         outputText("As tempting as that drooling slit might be, you’ve got other plans for the Demon Queen. You grind your hips through the reddened, sensitive valley of her rump, making sure to slather up in the drenched swamp of her eager pussy. Lethice actually tries to push back against you, to take your throbbing cock when your crown parts her lips, but another rough spank and a push down into the throne stops that. This is <i>your</i> victory, and you’re not letting her decide how it goes down!");
@@ -198,7 +197,7 @@ export class LethiceScenes {
         theChoiceDunDunDun();
     }
 
-    private plowHerDouble(): void {
+    function plowHerDouble(): void {
         clearOutput();
 
         outputText("You smirk down at Lethice’s winged back and reddened ass, letting your multiple cocks tell her what’s in store. Your [cock] presses against the tight, dark ring of her asshole while the");
@@ -227,7 +226,7 @@ export class LethiceScenes {
         theChoiceDunDunDun();
     }
 
-    private queenHer(): void {
+    function queenHer(): void {
         clearOutput();
 
         outputText("The Demon Queen is defeated. Some part of you knew this was where it had to end ever since you first heard of Lethice: with one of you on her knees, completely at the mercy of the other. Now, though... She looks almost... normal, in a way. Her default form, such as it is, seems like nothing more than a tall, lanky girl with horns - she doesn’t even sport the huge, drooling cock and tits of most of her slack-jawed minions standing around. If she closed her eyes and furled back her wings, you could almost imagine her as any of the priestesses from Ingnam.");
@@ -275,7 +274,7 @@ export class LethiceScenes {
         theChoiceDunDunDun();
     }
 
-    private boobPlay(hpVictory: boolean): void {
+    function boobPlay(hpVictory: boolean): void {
         clearOutput();
 
         outputText("So this is the great and powerful Demon Queen, brought low");
@@ -379,7 +378,7 @@ export class LethiceScenes {
         theChoiceDunDunDun();
     }
 
-    private redemption(hpVictory: boolean): void {
+    function redemption(hpVictory: boolean): void {
         clearOutput();
 
         outputText("Looking down at the");
@@ -401,7 +400,7 @@ export class LethiceScenes {
         addButton(0, "Next", redemptionII);
     }
 
-    private redemptionII(): void {
+    function redemptionII(): void {
         clearOutput();
 
         outputText("<b>A day of travel later...</b>");
@@ -466,7 +465,7 @@ export class LethiceScenes {
         addButton(0, "Next", redemptionIII);
     }
 
-    private redemptionIII(): void {
+    function redemptionIII(): void {
         clearOutput();
 
         outputText("What name do you give the new woman you and Marae have made?");
@@ -480,7 +479,7 @@ export class LethiceScenes {
         addButton(0, "Next", redemptionIIIGoName);
     }
 
-    private redemptionIIIGoName(): void {
+    function redemptionIIIGoName(): void {
         if (mainView.nameBox.text == "") {
             clearOutput();
             outputText("<b>You must select a name.</b>", false);
@@ -513,7 +512,7 @@ export class LethiceScenes {
         addButton(0, "Next", redemptionIV);
     }
 
-    private redemptionIV(): void {
+    function redemptionIV(): void {
         clearOutput();
 
         outputText("You spend some time there on the beach, comforting " + flags[kFLAGS.LETHICE_NAME] + ". Eventually, as the hazy sky begins to darken, you take her hand and board your small boat, pushing off towards land. A new day will soon dawn on Mareth, and with it, you introduce a new hope: a way to fight back against the demons.");
@@ -540,7 +539,7 @@ export class LethiceScenes {
         saveExport();
     }
 
-    private joinHer(): void {
+    function joinHer(): void {
         clearOutput();
 
         outputText("Stepping towards the infamous Demon Queen, you");
@@ -600,7 +599,7 @@ export class LethiceScenes {
         addButton(0, "Next", joinHerII);
     }
 
-    private joinHerII(): void {
+    function joinHerII(): void {
         clearOutput();
 
         outputText("<b>Time passes in Mareth...</b>");
@@ -652,7 +651,7 @@ export class LethiceScenes {
         saveExport();
     }
 
-    public won(hpVictory: boolean, pcCameWorms: boolean): void {
+    export function won(hpVictory: boolean, pcCameWorms: boolean): void {
         clearOutput();
 
         outputText("You fall.");
@@ -685,7 +684,7 @@ export class LethiceScenes {
         addButton(0, "Next", woofwoof);
     }
 
-    private woofwoof(): void {
+    function woofwoof(): void {
         clearOutput();
 
         outputText("<b>Time passes...</b>");
@@ -732,7 +731,7 @@ export class LethiceScenes {
         addButton(0, "Next", woofwoofII);
     }
 
-    private woofwoofII(): void {
+    function woofwoofII(): void {
         clearOutput();
 
         outputText("You bark excitedly, ready to be your loving, forgiving mistress’s means of meeting out punishment. The Champion’s eyes turn to you, and her jaw drops like an anchor.");
@@ -792,13 +791,13 @@ export class LethiceScenes {
         gameOver();
     }
 
-    private theChoiceDunDunDun(): void {
+    function theChoiceDunDunDun(): void {
         menu();
         addButton(0, "Kill Her", killHer);
         addButton(1, "Leave Her", leaveHer);
     }
 
-    private killHer(): void {
+    function killHer(): void {
         clearOutput();
 
         flags[kFLAGS.LETHICE_KILLED] = 1;
@@ -808,7 +807,7 @@ export class LethiceScenes {
         postTheChoice();
     }
 
-    private leaveHer(): void {
+    function leaveHer(): void {
         clearOutput();
 
         flags[kFLAGS.LETHICE_LEFT_ALIVE] = 1;
@@ -819,7 +818,7 @@ export class LethiceScenes {
         postTheChoice();
     }
 
-    private postTheChoice(): void {
+    function postTheChoice(): void {
         outputText("\n\nNow that you’re alone in an empty citadel, the world’s is seemingly your oyster. Doubtless the demons had experiments into interdimensional travel. You could search the place for a way home, or claim it as your own. For all this land’s harshness, it is a place of magic and love too. Surely staying here would not be too great a burden?");
 
         menu();
@@ -827,7 +826,7 @@ export class LethiceScenes {
         addButton(1, "ClaimFort", claimFortress);
     }
 
-    private goHome(): void {
+    function goHome(): void {
         clearOutput();
         outputText("This place is huge. You had no idea there were so many wings with so many different occupants. More than a few demons missed their chance to escape in the initial confusion and slither out of your way at the sight of you, leaving their possessions and experiments unguarded. Priceless artifacts, forgotten slaves, and endless walls of advanced machinery. It’s all yours for the taking, and yet none of it is what you came here to seek.");
         outputText("\n\nHours pass while you fruitlessly search. Who knew demons would keep so much junk. It isn’t until you find the Research and Development wing that you catch a break. One of Lethice’s scientists spent decades trying to crack the mystery of how to open a stable portal between Mareth and another plane - any plane, by the looks of it. The demons considered themselves trapped here, evidence backed up by tomes you found in your search of their library.");
@@ -839,7 +838,7 @@ export class LethiceScenes {
         addButton(0, "Next", goHomeII);
     }
 
-    private goHomeII(): void {
+    function goHomeII(): void {
         clearOutput();
         outputText("<b>Weeks later...</b>\nThey had it. The damned bastards had it. Syrena, the head researcher had figured out how to open a stable portal months ago, but for whatever reason, she kept it from Lethice. There’s a shortage of evidence about what she was actually scheming, but you’d guess she was planning to take a cadre of loyal demons to an untainted plane and set herself up as a queen.");
         outputText("\n\nNo room for loyalty among demons, you suppose. Still, with the information in these books, you can go home. Taking them back to your camp, you work the rituals on the portal to Ingnam{, assisted by your follower{s}}, and before you know it, the portal’s hazy mists resolve into a perfectly circle opening, one that leads to a familiar cave.");
@@ -850,7 +849,7 @@ export class LethiceScenes {
         addButton(1, "Justice", goHomeJustice);
     }
 
-    private goHomeVeng(): void {
+    function goHomeVeng(): void {
         clearOutput();
 
         outputText("<b>Later...\n</b>Tales of the Champion’s return are rarely told, not in the open anyway. " + mf(player, "He", "She") + " blew into town with all the subtlety of a cyclone, laying waste to the village’s elders and all who dared defend them. Every villager remembers that night, the night that their leadership was put to the torch - literally. Each of them was left to die inside his own burning mans, bathed in the scorching heat until naught remained but ashes and memories.");
@@ -862,7 +861,7 @@ export class LethiceScenes {
         saveExport();
     }
 
-    private goHomeJustice(): void {
+    function goHomeJustice(): void {
         clearOutput();
         outputText("<b>Later...</b>\nTales of the Champions arrival spread far and wide. None expected " + mf(player, "his", "her") + " return, and yet " + mf(player, "he", "she") + " arrived all the same, weapon in hand before the council chambers, demanding the corrupt old men who once lead to face justice for their betrayal. At " + mf(player, "his", "her") + " feet were strange creatures, beings the Champion faced and defeated, brought to Ingnam’s world to testify to just how rotten the village’s core had become. Once they said their piece, " + mf(player, "he", "she"));
         // 9999 check dis
@@ -882,7 +881,7 @@ export class LethiceScenes {
         saveExport();
     }
 
-    private claimFortress(): void {
+    function claimFortress(): void {
         clearOutput();
         outputText("This fortress would be a fitting seat to your power. But the question remains, what would you do from such a fortress? You could gather the pure forces of the land together into one army, and from here purge the demon’s corrupted taint from the land, or you could set yourself up in Lethice’s place. Many demons could be turned to serve you, now that you think about it. Surely you could rule better than she!");
 
@@ -891,7 +890,7 @@ export class LethiceScenes {
         addButton(1, "Conquer", conquer);
     }
 
-    private HowFuckedIsThePlayerOMeter(): number {
+    function HowFuckedIsThePlayerOMeter(): number {
         let levelOfFuckedness: number = 0;
 
         // Marae corrupt +50
@@ -994,7 +993,7 @@ export class LethiceScenes {
         return levelOfFuckedness;
     }
 
-    private hasChildren(): boolean {
+    function hasChildren(): boolean {
         if (player.effects.getValue1Of(StatusAffects.Birthed) > 0) return true;
         if (flags[kFLAGS.AMILY_BIRTH_TOTAL] > 0 || flags[kFLAGS.PC_TIMES_BIRTHED_AMILYKIDS] > 0) return true;
         if (flags[kFLAGS.BENOIT_EGGS] > 0) return true;
@@ -1019,7 +1018,7 @@ export class LethiceScenes {
         return false;
     }
 
-    private purgeShit(): void {
+    function purgeShit(): void {
         clearOutput();
 
         outputText("You gather an army of friends, companions");
@@ -1066,7 +1065,7 @@ export class LethiceScenes {
         saveExport();
     }
 
-    private conquer(): void {
+    function conquer(): void {
         clearOutput();
 
         if (player.cor <= 33) {
@@ -1130,4 +1129,3 @@ export class LethiceScenes {
         }
         saveExport();
     }
-}

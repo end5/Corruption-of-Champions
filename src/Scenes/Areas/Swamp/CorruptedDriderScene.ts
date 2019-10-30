@@ -2,8 +2,6 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class CorruptedDriderScene {
-
     // VARS
     // 9999 - times encountered
     // Skintone used for eyecolor
@@ -11,7 +9,7 @@ export class CorruptedDriderScene {
     // nipplesPierced > 0 indicates pierced!
 
     // *Encounter Intro (done)
-    public driderEncounter(): void {
+    export function driderEncounter(): void {
         spriteSelect(77);
         outputText("", true);
         // Load monster stats so we can display things like eye/hide color!
@@ -45,7 +43,7 @@ export class CorruptedDriderScene {
     }
 
     // *Victory Intro: (done)
-    public defeatDriderIntro(): void {
+    export function defeatDriderIntro(): void {
         spriteSelect(77);
         outputText("", true);
         outputText("All eight of the drider's black and " + monster.hairColor + " striped legs collapse under her weight while she struggles ", false);
@@ -99,7 +97,7 @@ export class CorruptedDriderScene {
     }
 
     // Lose to drider
-    public loseToDrider(): void {
+    export function loseToDrider(): void {
         spriteSelect(77);
         // Build array of choices
         const select: any[] = [];
@@ -119,7 +117,7 @@ export class CorruptedDriderScene {
     }
 
     // *Victory Rape: PC Penis goes in Vagina (done)
-    private winDriderPCDickInSpiderCunt(): void {
+    function winDriderPCDickInSpiderCunt(): void {
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         spriteSelect(77);
         outputText("", true);
@@ -258,7 +256,7 @@ export class CorruptedDriderScene {
     }
 
     // Part 2 of the above
-    private winDriderPCDickInSpiderCunt2(): void {
+    function winDriderPCDickInSpiderCunt2(): void {
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         spriteSelect(77);
         outputText("", true);
@@ -285,7 +283,7 @@ export class CorruptedDriderScene {
     }
 
     // *Victory Rape: Ride Spider-Cawk in Vagoo (done)
-    private winVSDriderTakeItsCockInCunt(): void {
+    function winVSDriderTakeItsCockInCunt(): void {
         spriteSelect(77);
         outputText("", true);
         outputText("Your eyes lower towards the drider-woman's thick, demonic shaft lying exposed to your wicked intention.  Easing yourself over to the defeated arachnid, you slowly reach out and squeeze her pained member, a quiet, unwanted moan escaping from between her soft lips.  Gently caressing her length, you make sure to trace your fingers around every bump and curve of the corrupted tool that throbs heatedly in your palm, using your thumb to apply pressure underneath her growing cock.  The drider lies fully erect in no time at all, and you respond by hastily jerking her pride before relinquishing your grip and moving away from your new toy.  Any reluctance she may have held before has vanished with your gratuitous touch, the exhausted spider-lady now humping aimlessly at the air in an attempt to relieve herself - using her trembling hands to fondle her breasts while whining pathetically at her lack of sexual gratification.  An idea sparks in your head - you figure it'd be more satisfying to watch the spidertaur squirm than to give her relief straight away.\n\n", false);
@@ -320,7 +318,7 @@ export class CorruptedDriderScene {
     }
 
     // *Victory Rape: Ride Ovi Vaginal (done)
-    private victoryVSDriderRideOviVaginal(): void {
+    function victoryVSDriderRideOviVaginal(): void {
         spriteSelect(77);
         outputText("", true);
         // *Summary:  Roll the drider over and squat on an ovipositor - reuse anal intro? (fuck you bitch, i'm taking your shitty kids to the lake and turning them pink)
@@ -390,7 +388,7 @@ export class CorruptedDriderScene {
     }
 
     // *Victory Rape: Ride Ovi Anal sex-insenitive (done)
-    private victoryVSDriderRideOviAnal(): void {
+    function victoryVSDriderRideOviAnal(): void {
         spriteSelect(77);
         // *Summary: Force the drider onto her back and then fish out her ovipositor, jerk it off, then climb on top for some egg-based buttlovin'
         outputText("", true);
@@ -492,7 +490,7 @@ export class CorruptedDriderScene {
 
     // *Victory Spinneret Penetration - written by Sham (done)
     // (please view the spinneret as a spider-horsecock because for all intents and purposes that is really what it is) - shambadibs (1.5-inch width max because i'm racist against buur-bous american penis) (also probably a corruption minimum this is a pretty dick move) (I GET IT)
-    private victoryVSDriderStickDickInSpinneret(): void {
+    function victoryVSDriderStickDickInSpinneret(): void {
         spriteSelect(77);
         outputText("", true);
         const x: number = player.cocks.smallestCockIndex();
@@ -543,7 +541,7 @@ export class CorruptedDriderScene {
     }
 
     // *Loss Ride Ovi Anal unsexed - gats (done)
-    private loseVSDriderGetAnalledOvi(): void {
+    function loseVSDriderGetAnalledOvi(): void {
         spriteSelect(77);
         outputText("", true);
         outputText("You fall to the ground, defeated by the agile arachnid-woman as she slowly advances towards you, her engorged clit growing larger and larger as it throbs in your direction.  You've managed to find yourself crumpled face down in the dirt, your " + buttDescription(player) + " in full display of the aroused drider while she grins lustfully at your broken figure.  Grunting, you begin to pull yourself off the ground, only to hear your attacker 'tsk' before feeling the warm stickiness of her web launch upon your limbs, gluing your hands to your ankles and leaving you completely vulnerable.  You struggle against the bindings, but to no avail.  Lifting your head, you turn to see the drider stroking her now fully-enlarged demon cock, replacing the hardened clit that once adorned her moist pussy.\n\n", false);
@@ -599,7 +597,7 @@ export class CorruptedDriderScene {
     }
 
     // *Loss Vaginal Impregnation and forced BJ - Symphonie (done)
-    private loseVSDriderAndVaginallyImpreggleOvi(): void {
+    function loseVSDriderAndVaginallyImpreggleOvi(): void {
         spriteSelect(77);
         outputText("", true);
         // FAST FACTS: Drider uses webbing to spread eagle you then oviposits your womb while making you suck some dick.
@@ -692,7 +690,7 @@ export class CorruptedDriderScene {
     }
 
     // *Loss Ride & Impregnate Butt (done)
-    private loseVSDriderAndGetFuckedANDAnalImpreggegity(): void {
+    function loseVSDriderAndGetFuckedANDAnalImpreggegity(): void {
         const x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         spriteSelect(77);
         // Poor males.  All the buttsexes. (yo this is an actual paragraph of the game text right)
@@ -746,7 +744,7 @@ export class CorruptedDriderScene {
 
     // *Asspreg egg 'birth': (done)
     // Summary: what goes up must come down
-    public birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY(): void {
+    export function birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY(): void {
         spriteSelect(77);
         outputText("\nYour gut rumbles dangerously.  As if by instinct, you drop down and bend over, supporting half your weight on your hands while you lower your " + buttDescription(player) + " to just above ground level.  You grunt suddenly, your pregnant asshole dilating wide as a heavy weight seems to settle atop it, just inside you.  Clenching and tingling, your pucker slowly opens, releasing a torrent of green goop, along with a spherical white egg.  It drops into the messy puddle, cushioned from the fall by the heavy slime still leaking from your slightly agape anus.\n\n", false);
         outputText("The feeling of giving birth in such a way is oddly soothing, almost pleasant.  Your muscles move on their own, slowly and repeatedly clenching, relaxing, and forcing the eggs downward.  The next orb slips through your ring more easily than the first, shooting tingles of pleasure out from your pucker and making you gasp in surprise.  Hot on its heels, another egg follows, catching at your anal ring for a moment before your next contraction squeezes it out into the growing pile of goop.  It feels even better, good enough to make you cross your eyes and exhale contentedly.", false);
@@ -771,7 +769,7 @@ export class CorruptedDriderScene {
         player.orgasm();
     }
 
-    public driderPregVagBirth(): void {
+    export function driderPregVagBirth(): void {
         spriteSelect(77);
         outputText("\nYou shudder violently, your stomach growling fiercely at you.  It feels as if something is moving around in your womb, and you bend over on all fours, raising your ass into the air as if it is the most natural thing in the world.  A slimy green fluid starts leaking out of your cunt, making a small puddle on the ground.  The sensation is extremely pleasurable as you feel it running down your thighs.  Groaning, you start to push out a small, smooth green ball, and the action makes your pussy so much wetter.  Groaning, you push out another, and another, each ball rubbing against your inner walls before dropping into the slimy pool of goo.  After the sixth, you orgasm, spraying your cum all over the ground underneath you, each egg squeezing out and prolonging the intense feeling.", false);
         player.cuntChange(40, true, true, false);
@@ -810,7 +808,7 @@ export class CorruptedDriderScene {
     }
 
     // Win Drider Male Anal (OH BABY)
-    private buttFuckADriderOhBaby(): void {
+    function buttFuckADriderOhBaby(): void {
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
         spriteSelect(77);
         outputText("", true);
@@ -843,7 +841,7 @@ export class CorruptedDriderScene {
         cleanupAfterCombat();
     }
 
-    private driderVagSmartFuck(): void {
+    function driderVagSmartFuck(): void {
         spriteSelect(77);
         clearOutput();
         // Drider Non-reverse Rape
@@ -874,7 +872,7 @@ export class CorruptedDriderScene {
     }
 
     // [No]
-    private dontSilkRapeDrider(): void {
+    function dontSilkRapeDrider(): void {
         spriteSelect(77);
         clearOutput();
         outputText("Deciding against wasting the valuable material for little more than a quick fuck, you ponder your other options for using the defeated girl.");
@@ -882,7 +880,7 @@ export class CorruptedDriderScene {
         doNext(defeatDriderIntro);
     }
 
-    private driderTiedUpPartTwo(useItem: boolean): void {
+    function driderTiedUpPartTwo(useItem: boolean): void {
         spriteSelect(77);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -919,7 +917,7 @@ export class CorruptedDriderScene {
         doNext(driderTiedUpPartThree);
     }
 
-    private driderTiedUpPartThree(): void {
+    function driderTiedUpPartThree(): void {
         spriteSelect(77);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -969,7 +967,7 @@ export class CorruptedDriderScene {
         doNext(driderTiedUpPartFour);
     }
 
-    private driderTiedUpPartFour(): void {
+    function driderTiedUpPartFour(): void {
         spriteSelect(77);
         let x: number = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -997,4 +995,3 @@ export class CorruptedDriderScene {
         // Plus gems and such
         cleanupAfterCombat();
     }
-}

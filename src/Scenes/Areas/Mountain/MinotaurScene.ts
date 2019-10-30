@@ -1,5 +1,4 @@
 
-export class MinotaurScene {
     /*
        private function minotaurAddicted():Boolean {
        return player.minotaurAddicted();
@@ -8,7 +7,7 @@ export class MinotaurScene {
        return player.minotaurNeed();
    }
     */
-    public minoVictoryRapeChoices(): void {
+    export function minoVictoryRapeChoices(): void {
         spriteSelect(44);
         // Determine if PC can rape with a dick!
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
@@ -104,7 +103,7 @@ export class MinotaurScene {
 
     // Tentacle scenes require multi dicks at minimum
     // (dicks > 1 && tentacledicks > 0)
-    private rapeMinotaurTentacles(): void {
+    function rapeMinotaurTentacles(): void {
         spriteSelect(44);
         // multicock but single tentalce rape scene
         if (player.cocks.length > 1 && player.cocks.tentacleCocks() == 1) {
@@ -179,7 +178,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private rapeMinotaurTentacle(): void {
+    function rapeMinotaurTentacle(): void {
         spriteSelect(44);
         minoRapeIntro();
         let x: number = 0;
@@ -249,7 +248,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private AddictNagaOnMinotaur(): void {
+    function AddictNagaOnMinotaur(): void {
         spriteSelect(44);
         outputText("", true);
         // [if(monster.lust >= 99)
@@ -271,7 +270,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private minoUrethralPen(): void {
+    function minoUrethralPen(): void {
         spriteSelect(44);
         minoRapeIntro();
         let counter: number = 0;
@@ -328,7 +327,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private minoRapeIntro(): void {
+    function minoRapeIntro(): void {
         spriteSelect(44);
         outputText("", true);
         // Monster got ass whupped
@@ -350,7 +349,7 @@ export class MinotaurScene {
         }
     }
     // Man buttrapes a minotaur butt.
-    private bumRapeaMinotaur(): void {
+    function bumRapeaMinotaur(): void {
         spriteSelect(44);
         const x: number = player.cocks.cockThatFits(monster.analCapacity());
         minoRapeIntro();
@@ -396,7 +395,7 @@ export class MinotaurScene {
         }
         cleanupAfterCombat();
     }
-    private girlRapeAMinotaur(): void {
+    function girlRapeAMinotaur(): void {
         spriteSelect(44);
         minoRapeIntro();
         player.slimeFeed();
@@ -439,7 +438,7 @@ export class MinotaurScene {
         player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR);
         cleanupAfterCombat();
     }
-    private minotaurGetsRapedByHerms(): void {
+    function minotaurGetsRapedByHerms(): void {
         spriteSelect(44);
         minoRapeIntro();
         minoCumAddiction(5);
@@ -459,7 +458,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    public minoPheromones(): void {
+    export function minoPheromones(): void {
         spriteSelect(44);
         outputText("The minotaur smiles at you and lifts his loincloth, flicking it at you.  Thick ropes of pre-cum fly through the air, ", false);
         // sometimes get hit with the pre for stronger effect!
@@ -487,7 +486,7 @@ export class MinotaurScene {
             doNext(endLustLoss);
         else doNext(combatMenu);
     }
-    public getRapedByMinotaur(autoRape: boolean = false): void {
+    export function getRapedByMinotaur(autoRape: boolean = false): void {
         spriteSelect(44);
         player.slimeFeed();
         clearOutput();
@@ -602,7 +601,7 @@ export class MinotaurScene {
         else doNext(Camp.returnToCampUseFourHours);
     }
 
-    private getOralRapedByMinotaur(): void {
+    function getOralRapedByMinotaur(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("The huge bull-man grabs you around the waist with one hand and flips you over. You hang upside down in his grip, your " + legs(player) + " splayed in the air.  The minotaur rubs your face across his sweat-slick balls, smearing his musk into your skin. Each of the minotaur's testicles is bigger than a man's head, and the skin of his sack is pulled taut over his cum-filled balls.\n\n", false);
@@ -638,7 +637,7 @@ export class MinotaurScene {
         else doNext(Camp.returnToCampUseFourHours);
     }
 
-    private minoGetsTitFucked(): void {
+    function minoGetsTitFucked(): void {
         spriteSelect(44);
         player.slimeFeed();
         if (player.isNaga()) {
@@ -676,7 +675,7 @@ export class MinotaurScene {
     }
 
     // (Direct Injection) – GIGITY!
-    private takeMinoCumDirectly(): void {
+    function takeMinoCumDirectly(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("Relishing your victory, you breathe deeply, shivering and stretching.  ", false);
@@ -719,11 +718,11 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private minoCumAddiction(raw: number = 10): void {
+    function minoCumAddiction(raw: number = 10): void {
         player.minoCumAddiction(raw);
     }
 
-    public minoCumUpdate(): boolean {
+    export function minoCumUpdate(): boolean {
         if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] == 0) return false;
         let output: boolean = false;
         // Your addicted enough for it to be official!
@@ -804,7 +803,7 @@ export class MinotaurScene {
         return output;
     }
 
-    public minoAddictionFuck(): void {
+    export function minoAddictionFuck(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("While exploring the mountains, a familiar musky scent works its way into your nostrils.   Sniffing hungrily, you begin shaking, nearly convulsing with need.   You don't think, you act, sprinting heedlessly around the rock obstructions that litter the jagged mountain-side, chasing down your need.  Rounding a sharp bend, you sigh happily as the smell noticably increases in strength.  A few feet away is a minotaur, covered in shaggy fur and snacking on fruit.  Ecstatic, you scrabble forwards, sending tiny rocks everywhere.   The minotaur looks up, at first with a frown, then with a gradually widening grin as he recognizes the look in your eyes.\n\n", false);
@@ -818,7 +817,7 @@ export class MinotaurScene {
     }
 
     // [Optional Bad-End For Uber-Addicted]
-    public minoAddictionBadEndEncounter(): void {
+    export function minoAddictionBadEndEncounter(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("While exploring the mountains you catch a strong whiff of your favorite scent.  Tipping your head to the side, you take in a few deep lungfuls and sigh.   Judging by the strength of the smell, there must be MANY minotaurs gathered together.   Immediate visions of being surrounded by the muscly monsters fill your mind.   In your fantasy your holes are plugged and you're soaked in their wondrous stuff.  You desperately want it to be a reality, and all you need to do is follow your nose...\n\n", false);
@@ -837,7 +836,7 @@ export class MinotaurScene {
         }
     }
 
-    private minoAddictionBadEnd2(): void {
+    function minoAddictionBadEnd2(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("You grin and stumble up the mountain, inhaling deep breaths from moment to moment to make sure you're on the right track.  The scent gets stronger and stronger, making you ", false);
@@ -870,7 +869,7 @@ export class MinotaurScene {
         dynStats("int", -20, "lib", 5, "sen", 15, "lus", 50, "cor", 10);
     }
     // [PAGE 2]
-    private minoCumAddictBadEnd3(): void {
+    function minoCumAddictBadEnd3(): void {
         spriteSelect(44);
         hideUpDown();
         outputText("", true);
@@ -881,7 +880,7 @@ export class MinotaurScene {
         dynStats("int", -1, "lib", 5, "sen", 30, "lus=", 100, "cor", 20);
     }
 
-    private minotaurDrinksMilkNewsAtEleven(): void {
+    function minotaurDrinksMilkNewsAtEleven(): void {
         spriteSelect(44);
         outputText("", true);
         outputText("You kneel next to the exhausted minotaur, lifting his head up to your " + breastDescript(game.player, 0) + ". He turns his muzzle away from them, still trying to defy you. You force his head back toward your chest and push your " + nippleDescription(player, 0) + " against his mouth, but he keeps his lips tightly shut. You pound your fist on his stomach, forcing a gasp of air out of his mouth as you cram your nipple inside. The minotaur is trying to shake his head to free up his mouth but you're holding his fur too firmly for him to wriggle free. His struggling only causes sips of milk to trickle down into his mouth. You squeeze your breast and send streams of milk down his throat. He soon stops fighting and just starts nursing. He's sucking hard, pulling the milk out of you, and stopping every few minutes to take a deep breath. He soon empties that teat and you put the other one up to his mouth. He obediently begins to nurse on that one, but he's a bit winded from the other, so his suckling is gentle and soothing. It takes him a bit longer for him to empty this nipple, but having such a strong minotaur reduced to a weak, suckling calf pleases you greatly for some reason.\n\n", false);
@@ -896,7 +895,7 @@ export class MinotaurScene {
     }
 
     // should be restricted to PCs with 36" cocks or less (arm length-ish) since you're holding the minotaur's horns; centaur addition matches to same length because you're welcome
-    private minotaurBlowjob(): void {
+    function minotaurBlowjob(): void {
         spriteSelect(44);
         outputText("", true);
         const x: number = player.cocks.cockThatFits(80);
@@ -927,7 +926,7 @@ export class MinotaurScene {
         cleanupAfterCombat();
     }
 
-    private layEggsInAMinotaurSpiderLike(): void {
+    function layEggsInAMinotaurSpiderLike(): void {
         clearOutput();
         if (player.canOvipositBee()) {
             layBeeEggsInCowbutt();
@@ -978,7 +977,7 @@ export class MinotaurScene {
 
     // Bee on Minotaur: Finished (Woodrobin) (Zedit)(CODED)
     // r.j.mote@gmail.com
-    private layBeeEggsInCowbutt(): void {
+    function layBeeEggsInCowbutt(): void {
         clearOutput();
         outputText("Looking down at the defeated minotaur");
         if (monster.lust > 99) outputText(", stroking his flared cock desperately");
@@ -1021,7 +1020,7 @@ export class MinotaurScene {
     // ((This would be a Minotaur Loss Rape if the PC fulfills either of the following conditions.))
     // {CHECK: If male PC with big butt (Over... I have no idea what butt numbers are), use this}
     // {CHECK: If female or herm PC with big butt and vagina too small to fit minotaur cock, use this}
-    private getMinoHawtDawged(): void {
+    function getMinoHawtDawged(): void {
         clearOutput();
         if (player.lust > 99) {
             outputText("You collapse to your knees, hands racing to your crotch and your ");
@@ -1069,4 +1068,3 @@ export class MinotaurScene {
         minoCumAddiction(5);
         cleanupAfterCombat();
     }
-}

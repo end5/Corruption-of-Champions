@@ -2,11 +2,9 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class InfestedHellhoundScene {
-
     // [INTRO – 50% chance split with regular hellhound if worms
     // turned on and over level 2]
-    public infestedHellhoundEncounter(): void {
+    export function infestedHellhoundEncounter(): void {
         outputText("", true);
         outputText("A low snarl vibrates through your body, ", false);
         if (player.lowerBody == LOWER_BODY_TYPE_GOO) outputText("making your jello-like body jiggle", false);
@@ -17,7 +15,7 @@ export class InfestedHellhoundScene {
         spriteSelect(27);
     }
 
-    public infestedHellhoundLossRape(): void {
+    export function infestedHellhoundLossRape(): void {
         outputText("", true);
         // [BOTH INFESTED]
         if (player.cocks.length > 0 && player.effects.findByType(StatusAffects.Infested) >= 0) {
@@ -173,4 +171,3 @@ export class InfestedHellhoundScene {
             cleanupAfterCombat();
         }
     }
-}

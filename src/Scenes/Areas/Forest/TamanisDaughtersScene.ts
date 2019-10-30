@@ -74,15 +74,16 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         return false;
     }
     // End of Interface Implementation
+}
 
-    public static tamaniPresent: boolean = false; // Used to communicate between this class and TamanisDaughters.as
+    export let tamaniPresent: boolean = false; // Used to communicate between this class and TamanisDaughters.as
 
     // Prime daughter tit-size
     // 12-20 – C
     // 21- 40 DD
     // 41 –60 E
     // 30+ - F mother fucker!
-    private tdCup(): string {
+    function tdCup(): string {
         if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] < 20) return "C";
         else if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] < 30) return "D";
         else if (flags[kFLAGS.TAMANI_NUMBER_OF_DAUGHTERS] < 40) return "DD";
@@ -92,7 +93,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // ENCOUNTER:
-    public encounterTamanisDaughters(): void {
+    export function encounterTamanisDaughters(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_ENCOUNTED_TAMANIS_DAUGHTERS]++;
         outputText("", true);
@@ -124,7 +125,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Play Dumb]
-    private playDumbToTamanisDaughters(): void {
+    function playDumbToTamanisDaughters(): void {
         spriteSelect(57);
         outputText("", true);
         outputText("You shrug and ask, \"<i>What exactly is it you want again?  I'm not sure you have the right " + mf(player, "guy", "person") + ".</i>\"\n\n", false);
@@ -146,7 +147,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Fight Them]
-    private fightTamanisDaughters(): void {
+    function fightTamanisDaughters(): void {
         outputText("", true);
 
         outputText("You whirl around threateningly, intent on putting Tamani's wayward brood back in their place.\n\n", false);
@@ -170,7 +171,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     // (Combat is 1 attack per 10 girls + 1x Tamani attack)
 
     // [Fuck them]
-    private fuckYoDaughtersHomie(): void {
+    function fuckYoDaughtersHomie(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
         const cocks: number = player.cocks.length;
@@ -350,7 +351,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Let them]
-    private legTamanisDaughtersRAEPYou(): void {
+    function legTamanisDaughtersRAEPYou(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
         const cocks: number = player.cocks.length;
@@ -703,7 +704,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Lose Combat, Get Your Dick DRAINED]
-    private tamaniDaughtersCombatLossDrain(): void {
+    function tamaniDaughtersCombatLossDrain(): void {
         spriteSelect(57);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
         outputText("", true);
@@ -842,7 +843,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         dynStats("str", -.5, "int", -.5, "lib", 1, "cor", 1);
     }
 
-    private tamaniDaughtersBadEndChoice(): void {
+    function tamaniDaughtersBadEndChoice(): void {
         spriteSelect(57);
         outputText("The next morning your unfocused eyes blink open, and you find yourself in the same situation as before.  Thankfully your orgasm has been allowed to end, though you still feel dopey and unfocused from whatever is flowing into you.  You manage to twist your head around to get a better look at the situation and discover a pair of IV's lodged in your arms.  Twisting your body, you realize you can still feel the drug-enema tube lodged in your " + assholeDescript(player) + ".  Oddly, it's hard to feel worried or concerned about the situation.\n\n", false);
 
@@ -855,7 +856,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Yes]
-    private tamaniDaughtersYesBadEndMePlease(): void {
+    function tamaniDaughtersYesBadEndMePlease(): void {
         spriteSelect(57);
         outputText("", true);
         outputText("\"<i>Wonderful!</i>\" cries the excited pregnant slut.   She gives you a quick peck on the cheek as she prances back over to the machine.  You brace yourself in anticipation, eager to lose yourself to an eternal orgasm.  A switch clicks, and a dial whirs as it's turned up to the maximum.  The fluids pumping into your backside and directly into your veins suddenly jump in pressure, stinging painfully for a moment before the pleasure returns.  Your eyes slowly roll back, your jaw goes slack, and your " + multiCockDescriptLight(game.player) + " spew", false);
@@ -868,7 +869,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [NO]
-    private tamaniDaughtersDeclineBadEnd(): void {
+    function tamaniDaughtersDeclineBadEnd(): void {
         spriteSelect(57);
         outputText("", true);
         outputText("\"<i>Seriously!?</i>\" exclaims the pregnant slut, \"<i>What kind of person wouldn't want to cum all the time?  Fuck, just the idea of it is making me drip!</i>\"\n\n", false);
@@ -881,7 +882,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         cleanupAfterCombat();
     }
     // [Rather Fill Individually]
-    private tamanisDaughtersFillIndividuallyBADEND(): void {
+    function tamanisDaughtersFillIndividuallyBADEND(): void {
         spriteSelect(57);
         outputText("", true);
         outputText("\"<i>Really?</i>\" asks the pregnant goblin before she exclaims, \"<i>You do love us!  Oh Dad, once mom comes home will you fuck all of us?  I want to feel you make love to my drippy, pregnant pussy while she watches!</i>\"\n\n", false);
@@ -905,7 +906,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
     }
 
     // [Lose to Daughters With Tamani There]
-    private loseToDaughtersWithTamaniThere(): void {
+    function loseToDaughtersWithTamaniThere(): void {
         spriteSelect(57);
         outputText("", true);
         flags[kFLAGS.TIMES_FUCKED_TAMANIS_DAUGHTERS]++;
@@ -1014,7 +1015,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         else doNext(Camp.returnToCampUseOneHour);
     }
 
-    private knockUpDaughters(): void {
+    function knockUpDaughters(): void {
         if (pregnancy.isPregnant) return;
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_PLAYER, 216); // Nine day long pregnancy, just like mom
         // Determine how many kids...
@@ -1031,7 +1032,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         if (cum >= 600 && rand(2) == 0) flags[kFLAGS.TAMANI_DAUGHTERS_PREGNANCY_COUNT]++;
     }
 
-    public combatWinAgainstDaughters(): void {
+    export function combatWinAgainstDaughters(): void {
         spriteSelect(57);
         if (monster.HP < 1) {
             outputText("You smile in satisfaction as " + monster.a + monster.short + " collapses, unable to continue fighting.", true);
@@ -1054,7 +1055,7 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
         }
     }
 
-    public loseToDaughters(): void {
+    export function loseToDaughters(): void {
         spriteSelect(57);
         if (player.lust > 99) {
             // worms r gross mmmmkay?
@@ -1099,4 +1100,3 @@ export class TamanisDaughtersScene implements TimeAwareInterface {
             }
         }
     }
-}

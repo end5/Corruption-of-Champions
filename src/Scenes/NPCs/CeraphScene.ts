@@ -2,8 +2,6 @@
  * Created by aimozg on 03.01.14.
  */
 
-export class CeraphScene {
-
     // VARS
     //  ZETSUKO_MET:int = 406;
 
@@ -74,7 +72,7 @@ export class CeraphScene {
 
     // [Beat Ceraph And Rape Her]
     // Ceraph's fluids boost PC libido and sensitivity massively either way.
-    public maleFuckCeraphsPussy(): void {
+    export function maleFuckCeraphsPussy(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
         spriteSelect(7);
         outputText("", true);
@@ -188,7 +186,7 @@ export class CeraphScene {
     }
 
     // [Female] Ride 'Dat Cawk
-    public rideCeraphsCockLikeaBAWSSexclamation11eleven(): void {
+    export function rideCeraphsCockLikeaBAWSSexclamation11eleven(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
         player.slimeFeed();
         spriteSelect(7);
@@ -244,7 +242,7 @@ export class CeraphScene {
     }
 
     // [OH SHIT SON YOU LOST GET EARS PIERCED]
-    private loseToCeraphAndGetPiercingsInEarsOrSomethingSomehow(): void {
+    function loseToCeraphAndGetPiercingsInEarsOrSomethingSomehow(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph advances on your ", false);
@@ -272,7 +270,7 @@ export class CeraphScene {
     }
 
     // [OH SHIT SON MOAR SHIT GETTING PIERCEDEDEDED] – NIPPLEZ GO
-    private loseToCeraphAnGetPierced2(): void {
+    function loseToCeraphAnGetPierced2(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph giggles as she closes in on you once again.  Unable to fight back, you lie there as she once again massages your temples, using her magic to paralyze your body.  She's all too happy to build up the suspense as she pulls out a pair of shining black studs, \"<i>Oh, did you want to know what these are going to teach you?  Well, how about I slide them into your ", false);
@@ -298,7 +296,7 @@ export class CeraphScene {
     }
 
     // [OH SHIT!  WHY DOES FEN KEEP WIRTING THAT 3RD TIME – CROTCH GO]
-    private getPiercedByCeraphLoss3(): void {
+    function getPiercedByCeraphLoss3(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("The demoness pulls out a diamond-studded piercing and closes in on you, her cock hard, her pussy moist, and her hips swaying seductively as she advances.  Ceraph gives you a serious look and warns you, \"<i>You know how close you are to being my pet, don't you?  You just need this piercing and a little time to get used to it.  Then if you're good, I'll strip you naked, tie you down, and let you lick me out.  We can even let the imps watch!</i>\"\n\n", false);
@@ -351,7 +349,7 @@ export class CeraphScene {
     }
 
     // [FINAL ENCOUNTER LEVEL]
-    private finalEncounterLevelCeraphPiercingButtholeNipples(): void {
+    function finalEncounterLevelCeraphPiercingButtholeNipples(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph wiggles out from between the bushes, holding a bondage harness and openly eyeing your body.  She suggestively says, \"<i>Well, aren't you just a cute little slave-to-be.  Are you ready to put yourself in your slave harness and join my harem?  I've got a few more piercings I think would look great on you.  Maybe I could give you an oral fixation and a foot fetish.  Wouldn't that be nice?  Or maybe I can just keep you tied up and parade you around Mareth.  You know I'll make sure you love every minute baby, just come put this on.</i>\"\n\n", false);
@@ -361,7 +359,7 @@ export class CeraphScene {
     }
 
     // [no]
-    private finalCeraphEncounterChoiceNo(): void {
+    function finalCeraphEncounterChoiceNo(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You tell Ceraph no, emphatically, over and over.  She gives you a smirk and says, \"<i>Whatever.  It's only a matter of time.  You'll join me soon, pet.</i>\"\n\n", false);
@@ -371,7 +369,7 @@ export class CeraphScene {
     }
 
     // [fight]
-    private finalCeraphEncounterStartFight(): void {
+    function finalCeraphEncounterStartFight(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You tell Ceraph no, and let her know ", false);
@@ -383,7 +381,7 @@ export class CeraphScene {
 
     // [Yes] TO BAD END
     // [Agree to become Ceraph's Fuckpet Bondage Toy bitch slut]
-    private agreeToBecomeCeraphsFuckpetBondageToyBitchSlut(): void {
+    function agreeToBecomeCeraphsFuckpetBondageToyBitchSlut(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("At this point, you know she's right.  The desires Ceraph has awakened inside you will never go away.  In spite of the hassle they've caused, you've come to love being so uncontrollably aroused by such humiliating treatment.", false);
@@ -418,7 +416,7 @@ export class CeraphScene {
     }
 
     // (EPILOGUE)
-    private agreeToBeABitchPt2(): void {
+    function agreeToBeABitchPt2(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Months pass in pure bliss.  Since adoption into Mistress Ceraph's harem, pet gained over a dozen piercings and nearly twice as many fetishes.  Pet learned to love spanking, and developed the ability to cum just from having " + mf(player, "his", "her") + " nipples pinched or being paddled.  Ceraph enjoyed that for a while, but she did eventually tire, and pet was given a fetish for orgasm denial", false);
@@ -430,7 +428,7 @@ export class CeraphScene {
     }
 
     // [Initial Meeting Text]
-    private ceraphFirstTime(): void {
+    function ceraphFirstTime(): void {
         outputText("", true);
         spriteSelect(88);
         outputText("A cute goblin steps out of the bushes, holding a pair of green earrings up to the light.  She politely asks, \"<i>Hey cutey!  I've got some spare earrings I made the other day.  I was wondering if you want them?  As you can see, my ears are already full, and my daughters are a bunch of ungrateful cunts.</i>\"\n\n", false);
@@ -442,7 +440,7 @@ export class CeraphScene {
     }
 
     // [No]
-    private ceraphFirstTimeDecline(): void {
+    function ceraphFirstTimeDecline(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You decline, informing the petite girl you have no interest in her earrings.  She shrugs and laughs, her form distorting as it grows taller, twisting as her skin lightens, her breasts bulge, and a pair of cute horns breaks out of the skin of her forehead.  She pockets the earrings and stretches, revealing a glistening demon-snatch capped with a modest cock growing from where her clit should be.\n\n", false);
@@ -455,7 +453,7 @@ export class CeraphScene {
     }
 
     // [Yes]
-    private ceraphFirstTimeVolunteer(): void {
+    function ceraphFirstTimeVolunteer(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("The goblin motions for you to bend over, and you do.  She holds the earrings up on your ears, getting them aligned just right.  ", false);
@@ -476,7 +474,7 @@ export class CeraphScene {
     }
 
     // [PC 'BEAT OFF' Ceraph the first time...]
-    private ceraphFirstTimeRepeat(): void {
+    function ceraphFirstTimeRepeat(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph saunters out of the bushes and gives you a disapproving look, \"<i>I tried this the easy way.  Now we're doing it the hard way.</i>\"\n\n", false);
@@ -494,7 +492,7 @@ export class CeraphScene {
      As if summoned by your thoughts, you can hear her voice on the wind, taunting you again, \"<i>Enjoy your new bondage fetish pet!  One more piercing and you'll be ready.  Don't have too much fun being tied down and fucked ok?</i>\"
      */
     // [PC @ 2 piercings, Ceraph offers 3rd]
-    private level3CeraphOffer(): void {
+    function level3CeraphOffer(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph once again appears to you, licking her lips and repeatedly swatting a riding crop against her thigh.  She asks, \"<i>Have you come to love the exposure, the helplessness, of being nude and restrained?  Does your body ache for me to turn you into a bound love-pet yet?  We could keep going down this road my pet-to-be, just one more piercing and then you'll be ready.</i>\"\n\n", false);
@@ -504,7 +502,7 @@ export class CeraphScene {
     }
 
     // [No]
-    private level3CeraphOfferNo(): void {
+    function level3CeraphOfferNo(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You let Ceraph know that you refuse to let her violate your body and mind in such a way.  She shrugs nonchalantly and tugs on the crop, stretching it into a whip that bursts into flames.\n\n", false);
@@ -514,7 +512,7 @@ export class CeraphScene {
     }
 
     // [YES OH YES]
-    private yesOHGODYESPIERCELEVEL3(): void {
+    function yesOHGODYESPIERCELEVEL3(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You nod, biting your lip anxiously and undoing your armor to give her better access to your body.  The demoness pulls out a diamond-studded piercing and closes in on you, her cock hard, her pussy moist, and her hips swaying seductively as she advances.  Ceraph gives you a serious look and warns you, \"<i>You know how close you are to being my pet, don't you?  You just need this piercing and a little time to get used to it.  Then if you're good I'll strip you naked, tie you down, and let you lick me out.  We can even let the imps watch!</i>\"\n\n", false);
@@ -566,7 +564,7 @@ export class CeraphScene {
         doNext(Camp.returnToCampUseOneHour);
     }
 
-    public encounterCeraph(): void {
+    export function encounterCeraph(): void {
         // Just in case set up next button for 1 hr + camp
         doNext(Camp.returnToCampUseOneHour);
         // If havent met her
@@ -599,7 +597,7 @@ export class CeraphScene {
         }
     }
 
-    public winRapeChoices(): void {
+    export function winRapeChoices(): void {
         // FOLLOWER CHANCE:
         let leave: () => void = cleanupAfterCombat;
         if (!game.inCombat) {
@@ -651,7 +649,7 @@ export class CeraphScene {
         }
     }
 
-    public loseFUCKME(): void {
+    export function loseFUCKME(): void {
         // Reset rape count if lost
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] = 0;
         spriteSelect(7);
@@ -663,7 +661,7 @@ export class CeraphScene {
         }
     }
 
-    public ceraphRapesYouBADDAWGYODIGGITY(): void {
+    export function ceraphRapesYouBADDAWGYODIGGITY(): void {
         player.slimeFeed();
         spriteSelect(7);
         outputText("", true);
@@ -710,7 +708,7 @@ export class CeraphScene {
     }
 
     // (REQ's – HUGE WANG, Exgartuan or Jojo corruption, and !centaur)
-    private hugeCorruptionForceFuckCeraph(): void {
+    function hugeCorruptionForceFuckCeraph(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291] += 2;
         outputText("", true);
         spriteSelect(7);
@@ -793,7 +791,7 @@ export class CeraphScene {
         dynStats("lib", 3, "sen", 3, "cor", 1);
     }
 
-    private ceraphsNiceOffer(): void {
+    function ceraphsNiceOffer(): void {
         outputText("", true);
         spriteSelect(7);
         if (flags[kFLAGS.PC_FETISH] > 0) {
@@ -821,7 +819,7 @@ export class CeraphScene {
      (Chance of encountering 'Friendly' Ceraph even when PC is awaiting trapped armor.
      */
 
-    public friendlyNeighborhoodSpiderManCeraph(): void {
+    export function friendlyNeighborhoodSpiderManCeraph(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("While exploring, a sudden compulsion to strip naked runs through your body, ", false);
@@ -853,14 +851,14 @@ export class CeraphScene {
     }
 
     // [Fight] → Cue normal Ceraph fight
-    private startAFightWithCeraph(): void {
+    function startAFightWithCeraph(): void {
         startCombat(new Ceraph());
         spriteSelect(7);
         playerMenu();
     }
 
     // [Run] →
-    private runFromCeraphsNiceDeal(): void {
+    function runFromCeraphsNiceDeal(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You ", false);
@@ -872,7 +870,7 @@ export class CeraphScene {
     }
 
     // [Trade]
-    private tradeCeraphSomething(): void {
+    function tradeCeraphSomething(): void {
         outputText("", true);
         spriteSelect(7);
         let liqueur: () => void = null;
@@ -911,7 +909,7 @@ export class CeraphScene {
     }
 
     // [Take Armor]
-    private getCeraphsArmor(): void {
+    function getCeraphsArmor(): void {
         clearOutput();
         spriteSelect(7);
         outputText("Ceraph smiles knowingly at your response.  \"<i>You'll find this to be quite sexy.  Just be careful putting it on.  If you don't fit it right it'll pinch,</i>\" the demoness instructs while tossing you a set of armor.\n\n", false);
@@ -920,7 +918,7 @@ export class CeraphScene {
     }
 
     // [Trade Bimbo Liquer]
-    private tradeCeraphBimboLiqueur(): void {
+    function tradeCeraphBimboLiqueur(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("Ceraph grins as wide as the Cheshire Cat, groaning with happiness as she pulls her dripping tail from her snatch.  The pungent scent of her lusty, tainted puss hangs in the air while her tail extends towards you, looping around the liquer's top and pulling it from your pouch.  Ceraph plucks the bottle from her lust-drenched tail with great care and undoes the top.  She gives the liquer a tiny sniff, but it rocks her back on her heels all the same.  The demon starts giggling as she corks it, smiling with a slightly dopy look.  \"<i>Wheeeeeewww... heheheheee.. that stuff has got some kick!</i>\"\n\n", false);
@@ -934,7 +932,7 @@ export class CeraphScene {
     }
 
     // [Trade Genitals]
-    private tradeCeraphCrotchityBits(): void {
+    function tradeCeraphCrotchityBits(): void {
         outputText("", true);
         spriteSelect(7);
         // (EXGARTUAN PISSED)
@@ -1030,7 +1028,7 @@ export class CeraphScene {
     }
 
     // [No]
-    private bailBeforeCeraphYoinksYourNads(): void {
+    function bailBeforeCeraphYoinksYourNads(): void {
         outputText("", true);
         spriteSelect(7);
         outputText("You let her know that you've changed your mind and take off before Ceraph can try to take your beloved body parts.  You hear her laugh and tease as you run, yelling, \"<i>What, can't handle the thought of an Omnibus touching your fun bits?  Poor baby!</i>\"\n\n", false);
@@ -1038,7 +1036,7 @@ export class CeraphScene {
     }
 
     // [Yes]
-    private giveUpYourBallsOrWhateverForLessFetishes(): void {
+    function giveUpYourBallsOrWhateverForLessFetishes(): void {
         outputText("", true);
         spriteSelect(7);
         let x: number = 0;
@@ -1150,7 +1148,7 @@ export class CeraphScene {
     // *Used as a fleshlight.
     // *Clit pump
     // *Orgy floor Drain
-    public ceraphBodyPartDreams(): void {
+    export function ceraphBodyPartDreams(): void {
         spriteSelect(7);
         // Create array for choosing bits!
         const choices: any[] = [];
@@ -1349,7 +1347,7 @@ export class CeraphScene {
         doNext(playerMenu);
     }
 
-    public buttRapeCeraph(): void {
+    export function buttRapeCeraph(): void {
         flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
         spriteSelect(7);
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
@@ -1406,5 +1404,3 @@ export class CeraphScene {
             cleanupAfterCombat();
         else doNext(Camp.returnToCampUseOneHour);
     }
-
-}

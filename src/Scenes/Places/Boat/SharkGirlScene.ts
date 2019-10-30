@@ -1,6 +1,4 @@
 
-export class SharkGirlScene {
-
 	/*Codex: Shark girls and tiger shark girls
 
 Gender: Mostly female, though there are males and herms. Due to the nature of their conception, the vast majority of tiger sharks are herms.
@@ -32,7 +30,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
 ----------------------------------
 */
     // [Explore Lake]
-    public sharkGirlEncounter(exploreLoc: number = 0): void {
+    export function sharkGirlEncounter(exploreLoc: number = 0): void {
         // Set 'PC met Sharkgirls' for Izma stuff
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] == 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00230] = 1;
         if (player.effects.findByType(StatusAffects.SharkGirl) < 0) player.effects.create(StatusAffects.SharkGirl, 0, 0, 0, 0);
@@ -60,7 +58,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
     }
 
     // Victory Sex. Herms should get a choice between the two scenes:
-    public sharkWinChoices(): void {
+    export function sharkWinChoices(): void {
         spriteSelect(70);
         // HP Win
         if (monster.HP < 1) {
@@ -89,7 +87,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
     }
 
     // Male and Herm:
-    private sharkgirlDickFuck(): void {
+    function sharkgirlDickFuck(): void {
         player.effects.addValue(StatusAffects.SharkGirl, 1, 1);
         outputText("", true);
         spriteSelect(70);
@@ -125,7 +123,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
         if (player.cor < 33) dynStats("cor", 1);
     }
 
-    private sharkgirlSixtyNine(): void {
+    function sharkgirlSixtyNine(): void {
         outputText("", true);
         spriteSelect(70);
         // Nagas don't actually get to 69!
@@ -165,7 +163,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
     // Shark girl Bad End.
     // Requirements: Have vaginal sex with 7 Shark girls in one day (Loss rape for males also counts toward this)
     // Scene triggers automatically after the seventh Shark girl
-    private sharkBadEnd(): void {
+    function sharkBadEnd(): void {
         outputText("", true);
         spriteSelect(70);
         outputText("Several weeks pass by and you once again find yourself at the lake, your loins aching for another shark girl to swim by. Just thinking of their incredible sexual organs and the sense of domination you get from them makes you feel aroused. Sadly though, there's no sign of one, so you instead decide to take a nap.\n\n", false);
@@ -177,7 +175,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
     }
 
     // [Next]
-    private sharkBadEnd2(): void {
+    function sharkBadEnd2(): void {
         outputText("", true);
         spriteSelect(70);
         outputText("Several months and mutations later...\n\n", false);
@@ -244,7 +242,7 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
     [If dick is 7+ inches OR balls are apple-sized] You do your best to put the thong on, and while the material is very stretchy, it's simply far too uncomfortable to even try. Maybe if you shrunk your male parts down a little... [/]
     -------------------------------*/
     // Loss Rape scenes:
-    public sharkLossRape(): void {
+    export function sharkLossRape(): void {
         outputText("", true);
         spriteSelect(70);
         // Genderless:
@@ -303,4 +301,3 @@ Sex Life: The shark girls treat sex like a game or a sport, constantly battling 
         }
         doNext(playerMenu);
     }
-}

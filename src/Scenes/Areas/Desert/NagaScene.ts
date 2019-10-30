@@ -1,12 +1,8 @@
 
-export class NagaScene {
-    public constructor() {
-
-    }
     // NAGA STATUS
     // v1 - players last fuck was as naga - 1 = true, 0 = false
     // v2 - player has ever fucked as a naga.  1 = true, 0 = false
-    public nagaEncounter(): void {
+    export function nagaEncounter(): void {
         spriteSelect(45);
         // Create status if needed
         if (player.effects.findByType(StatusAffects.Naga) < 0) player.effects.create(StatusAffects.Naga, 0, 0, 0, 0);
@@ -142,7 +138,7 @@ export class NagaScene {
         startCombat(new Naga());
     }
 
-    private gooNagaRape(): void {
+    function gooNagaRape(): void {
         outputText("", true);
         player.orgasm();
         outputText("You look over at the prone form of the naga lying in the sand, her ", false);
@@ -237,7 +233,7 @@ export class NagaScene {
     }
 
     // 3) Victory male
-    private nagaVictoryMale(): void {
+    function nagaVictoryMale(): void {
         outputText("", true);
         player.orgasm();
         // Male or 50% herms
@@ -324,7 +320,7 @@ export class NagaScene {
         return;
     }
 
-    private nagaVictoryFemale(): void {
+    function nagaVictoryFemale(): void {
         outputText("", true);
         // 4) Victory female
         if (player.vaginas.length > 0) {
@@ -382,7 +378,7 @@ export class NagaScene {
         return;
     }
 
-    private nagaVictoryGenderless(): void {
+    function nagaVictoryGenderless(): void {
         outputText("", true);
         // c)Centaur
         if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
@@ -421,7 +417,7 @@ export class NagaScene {
         return;
     }
 
-    public nagaFUCKSJOOOOOO(): void {
+    export function nagaFUCKSJOOOOOO(): void {
         outputText("", true);
         // BIMBO!  LIKE, TOTALLY AWESOME AND CUM!
         // [Naga-on-Female Bimbo Loss Scene]
@@ -667,7 +663,7 @@ export class NagaScene {
         cleanupAfterCombat();
     }
 
-    public nagaRapeChoice(): void {
+    export function nagaRapeChoice(): void {
         if (monster.HP < 1) outputText("You've defeated the naga!  ", true);
         else outputText("The naga writhes in the sand, masturbating feverishly!  She's completely forgotten about fighting you.  ", true);
 
@@ -694,7 +690,7 @@ export class NagaScene {
         cleanupAfterCombat();
     }
 
-    public nagaPlayerConstrict(): void {
+    export function nagaPlayerConstrict(): void {
         outputText("", true);
         if (player.fatigue + physicalCost(10) > 100) {
             outputText("You just don't have the energy to wrap yourself so tightly around someone right now...", true);
@@ -749,7 +745,7 @@ export class NagaScene {
         enemyAI();
     }
 
-    public naggaSqueeze(): void {
+    export function naggaSqueeze(): void {
         outputText("", true);
         // Squeeze -
         outputText("Your coils wrap tighter around your prey, leaving " + monster.pronoun2 + " short of breath. You can feel it in your tail as " + monster.pronoun3 + " struggles are briefly intensified.", false);
@@ -767,7 +763,7 @@ export class NagaScene {
         enemyAI();
     }
     // Tease
-    public naggaTease(): void {
+    export function naggaTease(): void {
         outputText("", true);
         // (if poisoned)
         if (monster.effects.findByType(StatusAffects.NagaVenom) >= 0) {
@@ -886,7 +882,7 @@ export class NagaScene {
         enemyAI();
     }
 
-    public nagaLeggoMyEggo(): void {
+    export function nagaLeggoMyEggo(): void {
         outputText("", true);
         outputText("You release " + monster.a + monster.short + " from " + monster.pronoun3 + " bonds, and " + monster.pronoun1 + " drops to the ground, catching " + monster.pronoun3 + " breath before " + monster.pronoun1 + " stands back up, apparently prepared to fight some more.", false);
         outputText("\n\n", false);
@@ -894,7 +890,7 @@ export class NagaScene {
         enemyAI();
     }
 
-    private eggUpANagaSpiderLike(): void {
+    function eggUpANagaSpiderLike(): void {
         clearOutput();
         outputText("As the shiny-scaled girl collapses against the sand, you scramble forward, panting not so much with the exertion of the fight as with lust and excitement.  Surely a creature as large as her has enough room to fit all your eggs?  You feel so full, and it's been so long since you last had release.");
 
@@ -929,7 +925,7 @@ export class NagaScene {
     }
 
     // Bee Naga Scene: Finished (Fenoxo) (edited)
-    private beePositANagaPlease(): void {
+    function beePositANagaPlease(): void {
         clearOutput();
         outputText("You advance on the snake-woman before you with barely-concealed lust, a gradual trickle of your fluid drooling from the ovipositor slit behind you.  She recoils away in fear of your alien appearance, but in her current state she's unfit to put up more than a token resistance.  You round on her and help her up into a tender embrace, looking into her eyes as if to say, \"<i>It's okay, this won't hurt.</i>\"  She doesn't understand the words, but her searching, reptilian eyes slowly lose their fire at your reassuring gaze.");
         outputText("\n\nGingerly, you caress her sinuous, scaled body, exploring the curvy flow of muscle as scales down to the slight, almost imperceptible flare of her humanoid waist.  She squirms against you, her tail lashing in the sands to either side, thumping anxiously.  Soon, your curious fingers find her soft opening, hidden amongst the scales, and as you press inside, you find a second set of wet lips along with a harder, pill-shaped organ that can only be a clit.  The woman's fanged mouth parts in a wordless expression of pleasure, and as you have her distracted, you let your stinger slide through the scales on her underbelly.");
@@ -969,4 +965,3 @@ export class NagaScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-}

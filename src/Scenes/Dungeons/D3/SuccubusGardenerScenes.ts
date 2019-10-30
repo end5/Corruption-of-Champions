@@ -3,33 +3,32 @@
  * ...
  * @author Gedan
  */
-export class SuccubusGardenerScenes {
 
-    private GARDENER_LEFT: number = 1;
-    private GARDENER_FUCKED: number = 2;
-    private GARDENER_KILLED: number = 3;
+    let GARDENER_LEFT: number = 1;
+    let GARDENER_FUCKED: number = 2;
+    let GARDENER_KILLED: number = 3;
 
-    public gardenerDefeated(): boolean {
+    export function gardenerDefeated(): boolean {
         if (flags[kFLAGS.D3_GARDENER_DEFEATED] > 0) return true;
         return false;
     }
 
-    public gardenerKilled(): boolean {
+    export function gardenerKilled(): boolean {
         if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 3) return true;
         return false;
     }
 
-    public gardenerFucked(): boolean {
+    export function gardenerFucked(): boolean {
         if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 2) return true;
         return false;
     }
 
-    public gardenerLeft(): boolean {
+    export function gardenerLeft(): boolean {
         if (flags[kFLAGS.D3_GARDENER_DEFEATED] == 1) return true;
         return false;
     }
 
-    public fuckUpTheGardener(hpVictory: boolean): void {
+    export function fuckUpTheGardener(hpVictory: boolean): void {
         clearOutput();
         outputText("The succubus drops to her knees, grabbing a tentacle and thrusting it into wanton sex forcefully enough to make you wince. She doesn't seem to mind, in fact, her lips spread into a wordless 'o' of pleasure as she begins rocking back and forth atop, lost to her own lusts. She's in no state to stop you from moving on. Hell, she's probably going to be busy with the tentacles for a long, long time. You suppose you could try and put her mouth to use, but there are a LOT of tentacles awfully close. It might be best to move on or end her quickly.");
 
@@ -39,7 +38,7 @@ export class SuccubusGardenerScenes {
         addButton(2, "Fuck Her", tentaFail);
     }
 
-    private tentaFail(): void {
+    function tentaFail(): void {
         clearOutput();
         // Start setting up to fuck the succubus -> surprise tentacle grape, idiot.
         outputText("There's no way you're going to pass up an opportunity to put a succubus's lips to use. Pillowy");
@@ -148,14 +147,14 @@ export class SuccubusGardenerScenes {
         }
     }
 
-    private tentaFailII(): void {
+    function tentaFailII(): void {
         clearOutput();
         outputText("\n\nYou're held captive, overwhelmed by your own senses, and brought to nirvana ceaselessly. The demons never even try to free your fate, held captive as you are by one of the eldest tentacle beasts. You spend the rest of your life feeding it, incapable of focusing on anything but your own feelings of ecstasy.");
 
         gameOver();
     }
 
-    private endHer(): void {
+    function endHer(): void {
         clearOutput();
         outputText("You circle behind her an put and end to her evil while she is busy with her pet, then turn to walk away. When you look back over your shoulder, her body is gone. Nothing remains but an empty pathway.");
 
@@ -165,7 +164,7 @@ export class SuccubusGardenerScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    private leaveHer(): void {
+    function leaveHer(): void {
         clearOutput();
         outputText("Figuring that the succubus's pets can keep her busy indefinitely, you turn away. A shriek of pleasure draws your attention back, and you turn in time to see dozens of coiling, leafy masses encircling her every limb, bodily carrying her into a wall of twisting, leaking cocks and pussies. Her orifices are stuffed with pumping lengths that froth with spit and girlcum, and her eyes, equal parts alarmed and aroused, widen before disappearing into the forest of green.");
 
@@ -175,7 +174,7 @@ export class SuccubusGardenerScenes {
         cleanupAfterCombat(D3.resumeFromFight);
     }
 
-    public surrenderToTheGardener(hpVictory: boolean = false): void {
+    export function surrenderToTheGardener(hpVictory: boolean = false): void {
         // Male
         if (player.cocks.length > 0 && !player.vaginas.length > 0) {
             maleLoss(hpVictory);
@@ -198,7 +197,7 @@ export class SuccubusGardenerScenes {
         }
     }
 
-    private femGenderlessLoss(hpVictory: boolean): void {
+    function femGenderlessLoss(hpVictory: boolean): void {
         clearOutput();
         outputText("You drop to the ground, defeated and degraded");
 
@@ -253,7 +252,7 @@ export class SuccubusGardenerScenes {
         addButton(0, "Next", femGenderlessLossII);
     }
 
-    private femGenderlessLossII(): void {
+    function femGenderlessLossII(): void {
         clearOutput();
         outputText("Your fall doesn't take you very far. A cushion of interceding plants stops you long before any harm could befall you, holding you nearly horizontally above the rich, loamy earth. There's a bit of a salty-sweat scent in the air. You can't quite identify it, but then again, you don't really have time to. Bands of floral flesh are circling around your arms and [legs]. They aren't constrictive. As a matter of fact, they're kind of comforting - like being surrounded in a lovers arms. Of course, these arms conform perfectly to your flesh, pressing down on you from all sides.");
 
@@ -309,7 +308,7 @@ export class SuccubusGardenerScenes {
         gameOver();
     }
 
-    private maleLoss(hpVictory: boolean): void {
+    function maleLoss(hpVictory: boolean): void {
         clearOutput();
         outputText("You drop to the ground, defeated and degraded");
         if (hpVictory) outputText(", not even able to push your bruised body up onto its [feet].");
@@ -327,7 +326,7 @@ export class SuccubusGardenerScenes {
         addButton(1, "Feeder", maleLossFeeder);
     }
 
-    private maleLossPet(): void {
+    function maleLossPet(): void {
         clearOutput();
         outputText("<i>\"I'll be your doggie,\"</i> you gasp with an accompanying needy arch of your back.");
 
@@ -434,7 +433,7 @@ export class SuccubusGardenerScenes {
         addButton(0, "Next", maleLossPetII);
     }
 
-    private maleLossPetII(): void {
+    function maleLossPetII(): void {
         clearOutput();
         outputText("Your kennel is amazing! It's the perfect size for you to crawl into, there's holes in it so that you don't get too hot while you wait to be let out. There's even one big enough for you to slip");
         if (player.cocks.length > 1) outputText(" a");
@@ -477,13 +476,13 @@ export class SuccubusGardenerScenes {
         addButton(0, "Next", maleLossPetIII);
     }
 
-    private maleLossPetIII(): void {
+    function maleLossPetIII(): void {
         clearOutput();
         outputText("The champion, more canine than [man], became little more than one mutt among many that the demons had tamed, used for everything from breeding to hunting escaped slaves, and " + mf(player, "he", "she") + " loved it, delighted in it even. Eventually, " + mf(player, "his", "her") + " owner bred her numerous times, creating a bloodline of strong, loyal servants that eventually helped keep all of Mareth under the demon's heels.");
         gameOver();
     }
 
-    private maleLossFeeder(): void {
+    function maleLossFeeder(): void {
         clearOutput();
         outputText("<i>\"I'll... I'll play with the tentacles,\"</i> you gasp out, as much to yourself as the succubus, finally coming to terms with your shameful predicament. Somehow, being forced to endlessly climax seems subtly more dignified than crawling around on a leash. You tell yourself that you'll simply bide your time - wait for a chance to slip free of the vines' ceaseless squirming. You resolve not to give up even though you've lost this battle.");
 
@@ -544,7 +543,7 @@ export class SuccubusGardenerScenes {
         addButton(0, "Next", maleLossFeederII);
     }
 
-    private maleLossFeederII(): void {
+    function maleLossFeederII(): void {
         clearOutput();
         outputText("Trapped in a hellish loop of constant yet unsatisfied orgasm, you're pulled into the sea of tentacles. Your eyes have rolled back too far to see the grinning demoness or her confidently swaggering derriere, but if they could, they'd grow wide with worry once the twisting, dripping vines blocked her out. Hunger and thirst soon compete with pleasure for your attention. The swelling of your belly has already receeded, the fluid inside long side converted to ivory jets of release.");
 
@@ -600,4 +599,3 @@ export class SuccubusGardenerScenes {
 
         gameOver();
     }
-}

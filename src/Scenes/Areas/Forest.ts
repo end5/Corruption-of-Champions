@@ -2,8 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Forest {
-    public exploreDeepwoods(): void {
+    export function exploreDeepwoods(): void {
         player.effects.addValue(StatusAffects.ExploredDeepwoods, 1, 1);
 
         const chooser: number = rand(5);
@@ -99,7 +98,7 @@ export class Forest {
     }
 
     // Explore forest
-    public exploreForest(): void {
+    export function exploreForest(): void {
         player.exploredForest++;
 
         trace("FOREST EVENT CALLED");
@@ -343,7 +342,7 @@ export class Forest {
     }
     // [FOREST]
     // [RANDOM SCENE IF CHARACTER HAS AT LEAST ONE COCK LARGER THAN THEIR HEIGHT, AND THE TOTAL COMBINED WIDTH OF ALL THEIR COCKS IS TWELVE INCHES OR GREATER]
-    public bigJunkForestScene(lake: boolean = false): void {
+    export function bigJunkForestScene(lake: boolean = false): void {
         outputText("", true);
         const x: number = player.cocks.longestCock();
 
@@ -445,7 +444,7 @@ export class Forest {
     // Catch a Satyr using the corrupt glade and either leave or have your way with him.
     // Suggested to Fen as the MaleXMale submission.
     // Will be standalone
-    private trappedSatyr(): void {
+    function trappedSatyr(): void {
         outputText("", true);
         spriteSelect(99);
         outputText("As you wander through the woods, you find yourself straying into yet another corrupt glade.  However, this time the perverse grove isn't unoccupied; loud bleatings and brayings of pleasure split the air, and as you push past a bush covered in dripping, glans-shaped berries, you spot the source.\n\n", false);
@@ -467,7 +466,7 @@ export class Forest {
     }
 
     // [=No=]
-    private ignoreSatyr(): void {
+    function ignoreSatyr(): void {
         outputText("", true);
         spriteSelect(99);
         outputText("You shake your head, ", false);
@@ -478,7 +477,7 @@ export class Forest {
         doNext(Camp.returnToCampUseOneHour);
     }
     // Player returns to camp
-    private rapeSatyr(): void {
+    function rapeSatyr(): void {
         outputText("", true);
         spriteSelect(99);
         const x: number = player.cocks.biggestCockIndex();
@@ -533,14 +532,14 @@ export class Forest {
     }
 
     // [=Leave=]
-    private dontRepeatFuckSatyr(): void {
+    function dontRepeatFuckSatyr(): void {
         outputText("", true);
         spriteSelect(99);
         outputText("You've had your fun, and you don't really want to fool around in the forest all day, so you grab your " + player.armorName + " and leave the rutting satyr behind.\n\n", false);
         doNext(Camp.returnToCampUseOneHour);
     }
     // [=Again=]
-    private secondSatyrFuck(): void {
+    function secondSatyrFuck(): void {
         let x: number = player.cocks.cockThatFits(monster.analCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("", true);
@@ -557,4 +556,3 @@ export class Forest {
         dynStats("lib", 1, "sen", -5);
         doNext(Camp.returnToCampUseOneHour);
     }
-}

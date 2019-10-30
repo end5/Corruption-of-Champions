@@ -1,8 +1,4 @@
 
-export class Rubi {
-    public constructor() {
-
-    }
     // const RUBI_AFFECTION:int = 604;
     // const RUBI_DISABLED:int = 605;
 
@@ -63,12 +59,12 @@ export class Rubi {
     // const RUBI_INQUISITORS_CORSET:int = 1013;
     // const RUBI_SETUP:int = 1014;
 
-    private rubiSprite(): void {
+    function rubiSprite(): void {
         if (flags[kFLAGS.RUBI_HORNTYPE] > 0) spriteSelect(102);
         else spriteSelect(101);
     }
 
-    private initializeRubi(): void {
+    function initializeRubi(): void {
         if (flags[kFLAGS.RUBI_BIMBO] == 0) {
             flags[kFLAGS.RUBI_BREAST_SIZE] = 0;
             flags[kFLAGS.RUBI_COCK_SIZE] = 5;
@@ -83,19 +79,19 @@ export class Rubi {
         }
         flags[kFLAGS.RUBI_SETUP] = 1;
     }
-    private rubiBalls(): string {
+    function rubiBalls(): string {
         return "normal";
         return "swollen";
         return "massively engorged";
     }
 
-    private rubiBimbo(): boolean {
+    function rubiBimbo(): boolean {
         return (flags[kFLAGS.RUBI_BIMBO] > 0);
     }
-    private rubiIncubus(): boolean {
+    function rubiIncubus(): boolean {
         return (flags[kFLAGS.RUBI_INCUBUS_PROGRESS] == 3);
     }
-    public rubiAffection(delt: number = 0): number {
+    export function rubiAffection(delt: number = 0): number {
         if (delt == 0) return flags[kFLAGS.RUBI_AFFECTION];
         flags[kFLAGS.RUBI_AFFECTION] += delt;
         if (flags[kFLAGS.RUBI_AFFECTION] > 100) flags[kFLAGS.RUBI_AFFECTION] = 100;
@@ -103,7 +99,7 @@ export class Rubi {
         return flags[kFLAGS.RUBI_AFFECTION];
     }
 
-    public rubiCock(lust: number = 50): string {
+    export function rubiCock(lust: number = 50): string {
         let cumQ: number = 300;
         if (flags[kFLAGS.RUBI_BLU_BALLS] < 4) {
             cumQ = 10;
@@ -114,10 +110,10 @@ export class Rubi {
         return Appearance.cockDescription(rubiGetCockType(), flags[kFLAGS.RUBI_COCK_SIZE], flags[kFLAGS.RUBI_COCK_SIZE] / 6, lust, cumQ);
     }
 
-    public rubiGetCockType(): CockTypesEnum {
+    export function rubiGetCockType(): CockTypesEnum {
         return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.RUBI_COCK_TYPE]);
     }
-    public rubiBreasts(): string {
+    export function rubiBreasts(): string {
         let ret: string = "pair of ";
 
         if (flags[kFLAGS.RUBI_BREAST_SIZE] < 1)
@@ -130,17 +126,17 @@ export class Rubi {
 
         return ret;
     }
-    private rubiChest(): string {
+    function rubiChest(): string {
         return rubiBreasts();
     }
-    public rubiCapacity(): number {
+    export function rubiCapacity(): number {
         let bonus: number = flags[kFLAGS.RUBI_TIMES_ANALLY_TRAINED] * 10;
         if (bonus > 76) bonus = 76;
         if (flags[kFLAGS.HYPER_HAPPY])
             bonus += 200;		// MAKE IT FIT
         return 24 + bonus;
     }
-    public rubiMF(man: string, woman: string): string {
+    export function rubiMF(man: string, woman: string): string {
         if (flags[kFLAGS.RUBI_ADMITTED_GENDER] < 1) return woman;
         else {
             if (flags[kFLAGS.RUBI_SHE] == 1) return woman;
@@ -160,7 +156,7 @@ export class Rubi {
     // Rubi can be found in the Tel'Adre bakery from 12:00 to 20:00.  He is available to everyone, regardless of gender, corruption or transformation.  Rubi, however, is not interested in Centaurs, Naga or Driders (as of yet), and such PCs won't be able to advance beyond Relationship 19.  If players gain such bodies after reaching this level, the option to go home with Rubi won't be available.
 
     // When the player reaches Relationship 50, a special scene is triggered.
-    private specialRelationship20scene(): void {
+    function specialRelationship20scene(): void {
         clearOutput();
         rubiSprite();
         outputText("As you're leaving the bakery, you hear the clicking of heels behind you.  Turning back you see Rubi rushing towards you shouting, \"<i>Hey, wait a second!</i>\"  You do, and wait for her to catch up.  Stopping in front of you, she puts her hands on her dainty knees and catches her breath.");
@@ -179,7 +175,7 @@ export class Rubi {
         simpleChoices("Accept", acceptRubi, "Reject", rejectRubi, "", null, "", null, "", null);
     }
     // [If Accept]
-    private acceptRubi(): void {
+    function acceptRubi(): void {
         clearOutput();
         rubiSprite();
         outputText("You wrap your arms around and pull him into a hug.  You declare that you like him no matter what sort of genitals he happened to be born with.");
@@ -196,7 +192,7 @@ export class Rubi {
     }
 
     // [If Reject]
-    private rejectRubi(): void {
+    function rejectRubi(): void {
         clearOutput();
         rubiSprite();
         outputText("With your hands on his shoulders you carefully keep him at arm's length.  Putting it as delicately as you can, you tell him that you're just not interested in him <i>that</i> way, not anymore at least.");
@@ -208,7 +204,7 @@ export class Rubi {
     }
 
     // Bakery Intro scenes
-    public rubiIntros(): () => void {
+    export function rubiIntros(): () => void {
         if (flags[kFLAGS.RUBI_SETUP] == 0) {
             initializeRubi();
         }
@@ -232,7 +228,7 @@ export class Rubi {
     }
 
     // Approach Rubi scenes
-    public approachRubiScenes(): void {
+    export function approachRubiScenes(): void {
         outputText(images.showImage("rubi-at-cafe"), false);
         clearOutput();
         rubiSprite();
@@ -507,7 +503,7 @@ export class Rubi {
     }
 
     // Choose Milk?
-    public buyRubiMilk(): void {
+    export function buyRubiMilk(): void {
         clearOutput();
         rubiSprite();
         // (Increase thickness by a small amount?  +1 relationship)
@@ -535,7 +531,7 @@ export class Rubi {
     }
 
     // Choose Tea?
-    public getTeaFromRubi(): void {
+    export function getTeaFromRubi(): void {
         clearOutput();
         rubiSprite();
         // (Reduce arousal and fatigue slightly?  +1 relationship)
@@ -562,7 +558,7 @@ export class Rubi {
     }
 
     // Choose Chat?
-    public chatWithRubi(): void {
+    export function chatWithRubi(): void {
         clearOutput();
         rubiSprite();
         // (+1 relationship)
@@ -598,7 +594,7 @@ export class Rubi {
     }
 
     // Choose Rubi's Place?
-    public rubisFuckingHouseYouPervert(): void {
+    export function rubisFuckingHouseYouPervert(): void {
         outputText(images.showImage("rubi-at-house"), false);
         clearOutput();
         rubiSprite();
@@ -677,7 +673,7 @@ export class Rubi {
         addButton(9, "Leave", Camp.returnToCampUseOneHour);
     }
 
-    private rubiSexMenu(): void {
+    function rubiSexMenu(): void {
         // [Fuck Rubi (if player has cock, OR at least a 4</i>\" clit)] [Dildo Fuck (If player has Deluxe Dildo)] [Tease] [Release (Only if Normal or Incubus Rubi who has been teased)] [Titfuck (Bimbo Rubi only)] [Give Item]
         menu();
         if (player.lust >= 33) {
@@ -703,7 +699,7 @@ export class Rubi {
     }
 
     // Talk
-    private talkToRubiInHouse(): void {
+    function talkToRubiInHouse(): void {
         clearOutput();
         rubiSprite();
         outputText("You just want to talk with Rubi for now.  What do you want to talk about?");
@@ -711,7 +707,7 @@ export class Rubi {
         addButton(0, "Identity", rubiIdentity);
     }
 
-    private rubiIdentity(): void {
+    function rubiIdentity(): void {
         clearOutput();
         rubiSprite();
         // Identity
@@ -741,7 +737,7 @@ export class Rubi {
     }
 
     // He
-    private rubiIsAHe(): void {
+    function rubiIsAHe(): void {
         clearOutput();
         rubiSprite();
         flags[kFLAGS.RUBI_SHE] = 0;
@@ -750,7 +746,7 @@ export class Rubi {
         addButton(9, "Back", rubisFuckingHouseYouPervert);
     }
     // She
-    private rubiIsAShe(): void {
+    function rubiIsAShe(): void {
         clearOutput();
         rubiSprite();
         flags[kFLAGS.RUBI_SHE] = 1;
@@ -762,7 +758,7 @@ export class Rubi {
     // There are variants for Normal, Bimbo and Incubus Rubi, as well as smaller variations if you're currently teasing him or not.
     // Fuck Rubi
     // (available for players with cocks or large clits (at least 4</i>\")) (If Orgasm Denial is activated, adds 1 to Blue Balls)
-    public fuckRubi(): void {
+    export function fuckRubi(): void {
         outputText(images.showImage("rubi-fuck"), false);
         let x: number;
         x = player.cocks.cockThatFits(rubiCapacity());
@@ -902,7 +898,7 @@ export class Rubi {
 
     // Dildo Fuck
     // (If the PC has the Deluxe Dildo) (If Orgasm Denial is activated, adds +2 to Blue Balls (Yay arousal drugs!))
-    public dildoFuckRubi(): void {
+    export function dildoFuckRubi(): void {
         outputText(images.showImage("rubi-dildo-fuck"), false);
         clearOutput();
         rubiSprite();
@@ -1006,7 +1002,7 @@ export class Rubi {
     }
 
     // Tease
-    public teaseRubi(): void {
+    export function teaseRubi(): void {
         outputText(images.showImage("rubi-tease"), false);
         clearOutput();
         rubiSprite();
@@ -1086,7 +1082,7 @@ export class Rubi {
     }
 
     // Release
-    public releaseRubi(): void {
+    export function releaseRubi(): void {
         outputText(images.showImage("rubi-orgasm-denial-release"), false);
         clearOutput();
         rubiSprite();
@@ -1156,7 +1152,7 @@ export class Rubi {
     }
 
     // Cheating Rubi
-    public cheatingRubi(): void {
+    export function cheatingRubi(): void {
         clearOutput();
         rubiSprite();
         // (Selecting the Rubi button at the Bakery while she's not there)
@@ -1168,7 +1164,7 @@ export class Rubi {
     }
 
     // (Don't Care)
-    private dontCareAboutNoCheatingRubis(): void {
+    function dontCareAboutNoCheatingRubis(): void {
         clearOutput();
         rubiSprite();
         outputText("You shrug your shoulders.  It's not really your problem, is it?  You're free to fuck who you choose, and so is she.");
@@ -1178,7 +1174,7 @@ export class Rubi {
     }
 
     // (Find Her)
-    private findBimboCheatster(): void {
+    function findBimboCheatster(): void {
         clearOutput();
         rubiSprite();
         outputText("You let out a disgruntled sigh.  Rubi's seeing someone else?!  Not on your watch!  You leave the bakery and make your way towards her neighborhood.  It doesn't take long, you've gone with her there enough times to memorize the path, even without her leading.");
@@ -1189,7 +1185,7 @@ export class Rubi {
         simpleChoices("Interrupt", interruptTheNTRsYouCrazyFool, "Watch n Wait", waitAndGetNTRedLikeTheBoyBitchYouAre, "", null, "", null, "", null);
     }
     // (Interrupt)
-    private interruptTheNTRsYouCrazyFool(): void {
+    function interruptTheNTRsYouCrazyFool(): void {
         clearOutput();
         rubiSprite();
         outputText("No one's sticking their dick in your ");
@@ -1219,7 +1215,7 @@ export class Rubi {
     }
 
     // (Wait)
-    private waitAndGetNTRedLikeTheBoyBitchYouAre(): void {
+    function waitAndGetNTRedLikeTheBoyBitchYouAre(): void {
         outputText(images.showImage("rubi-get-ntr-ed"), false);
         clearOutput();
         rubiSprite();
@@ -1247,7 +1243,7 @@ export class Rubi {
     }
 
     // (Resolution)
-    private NTRbimboBitchResolution(): void {
+    function NTRbimboBitchResolution(): void {
         clearOutput();
         rubiSprite();
         outputText("You look at Rubi and say that you're definitely going to have to talk about what just happened.");
@@ -1261,7 +1257,7 @@ export class Rubi {
     }
 
     // (No)
-    private noBimboNTR(): void {
+    function noBimboNTR(): void {
         clearOutput();
         rubiSprite();
         outputText("Folding your arms, you shake your head.  You tell her that if this is going to work out, she has to remain faithful to you.  Sex toys and masturbation will have to do to keep her \"<i>urges</i>\" under control.  She looks a little sad, but nods as you speak.");
@@ -1271,7 +1267,7 @@ export class Rubi {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Yes)
-    private yesBimboNTR(): void {
+    function yesBimboNTR(): void {
         clearOutput();
         rubiSprite();
         outputText("You contemplate it for a moment, and then slowly nod your head.  What's the harm in letting her blow off steam?  You know she'll always come back to you.  You assent to her wishes, to which she squeals and hugs you tightly, tossing the pink cushion aside.");
@@ -1282,7 +1278,7 @@ export class Rubi {
     }
 
     // (Break Up)
-    private breakUpWithRubi(): void {
+    function breakUpWithRubi(): void {
         clearOutput();
         rubiSprite();
         outputText("You think about it for a long moment and then sigh sadly.  You look Rubi dead in the eyes and explain you can't be with a woman who wants to cheat on her partner.  Tears form in her eyes as she sniffles, but she nods with you.");
@@ -1293,7 +1289,7 @@ export class Rubi {
         doNext(Camp.returnToCampUseOneHour);
     }
     // (Pimp)
-    private pimpOutRubi(): void {
+    function pimpOutRubi(): void {
         clearOutput();
         rubiSprite();
         outputText("You think about it for a long while, mulling over all the possibilities.  Then something else occurs to you. She wants help controlling her urges, why not make a little money in the meantime?  You explain that she's free to sleep with whoever she wants, but that she could charge them for her time.  After all, if you're going to do what you love, you may as well get paid for it.");
@@ -1316,7 +1312,7 @@ export class Rubi {
     // 	Rubi nods towards the bottles and box in the corner and gives you a sly wink.  \"<i>Want another massage?</i>\"
 
     // Actual Scene:
-    private chocoRubiMassage(): void {
+    function chocoRubiMassage(): void {
         outputText(images.showImage("rubi-get-massage"), false);
         clearOutput();
         rubiSprite();
@@ -1358,7 +1354,7 @@ export class Rubi {
     }
 
     // Bottle Up:
-    private bottleUpRubiMassage(): void {
+    function bottleUpRubiMassage(): void {
         clearOutput();
         rubiSprite();
         outputText("You bite the strawberry in half and mouth, \"<i>No, not yet.  Just let it build up.</i>\"  [rubi Ey] whines plaintively, but you cock your head to the side and say, \"<i>Come on, do it for me.  Just, don't let any out....  Here, come off of there and come into bed with me.  We can snuggle and let you relax a bit.</i>\"");
@@ -1370,7 +1366,7 @@ export class Rubi {
     }
 
     // Release/Not Pent Up
-    private releaseRubiMassage(): void {
+    function releaseRubiMassage(): void {
         clearOutput();
         rubiSprite();
         outputText("You figure after all the pampering [rubi ey] did, [rubi ey] deserves a treat.");
@@ -1398,7 +1394,7 @@ export class Rubi {
     }
 
     // Closet
-    private goInRubisClosetSoThatYouCanComeOutOfTheCloset(): void {
+    function goInRubisClosetSoThatYouCanComeOutOfTheCloset(): void {
         clearOutput();
         rubiSprite();
         outputText("You ask to see Rubi's wardrobe.  [rubi Eir] eyes light up and [rubi ey] claps [rubi eir] hands together excitedly.  \"<i>");
@@ -1414,7 +1410,7 @@ export class Rubi {
     }
 
     // Appearance
-    private rubiAppearance(): void {
+    function rubiAppearance(): void {
         outputText(images.showImage("rubi-inspect-appearance"), false);
         clearOutput();
         rubiSprite();
@@ -1493,7 +1489,7 @@ export class Rubi {
     }
 
     // Get Dressed
-    private playDressUp(): void {
+    function playDressUp(): void {
         clearOutput();
         rubiSprite();
         outputText("You look over Rubi's vast collection of clothes.  What outfit would you like Rubi to put on?\n\n");
@@ -1575,7 +1571,7 @@ export class Rubi {
         }
         addButton(9, "Back", rubiAppearance);
     }
-    private playDressUp2(): void {
+    function playDressUp2(): void {
         clearOutput();
         rubiSprite();
         outputText("You look over Rubi's vast collection of clothes.  What outfit would you like Rubi to put on?\n\n");
@@ -1654,7 +1650,7 @@ export class Rubi {
         addButton(9, "Back", rubiAppearance);
     }
 
-    private dressUpRouter(arg: string): void {
+    function dressUpRouter(arg: string): void {
         clearOutput();
         rubiSprite();
         if (arg == "Suitclothes") putOnASuitYouSlut();
@@ -1676,7 +1672,7 @@ export class Rubi {
     }
 
     // Waitress Uniform
-    private putRubiInAWaitressUniform(): void {
+    function putRubiInAWaitressUniform(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the waitress uniform.  \"<i>Hm, well all right, but it's just my work clothes,</i>\" [rubi ey] replies.");
@@ -1712,7 +1708,7 @@ export class Rubi {
         addButton(4, "Back", rubiAppearance);
     }
     // Dashing Outfit
-    private putOnADashingOutfitYouWhore(): void {
+    function putOnADashingOutfitYouWhore(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the dashing outfit.  \"<i>Ohh, feeling like plundering a little booty today?</i>\" [rubi ey] asks with a coy smile.");
@@ -1734,7 +1730,7 @@ export class Rubi {
     }
 
     // Adventurer's Outfit
-    private goOnAnAnalAdventureRubiNotReallyJustAnAdventurersOutfit(): void {
+    function goOnAnAnalAdventureRubiNotReallyJustAnAdventurersOutfit(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the adventurer's outfit.  \"<i>Ah yes, am I going to be the Champion now?</i>\" Rubi asks, balling up [rubi eir] dainty hands and putting them on [rubi eir] hips.  \"<i>Rubi, Champion of Mareth!  Slayer of demons and ");
@@ -1763,7 +1759,7 @@ export class Rubi {
     }
 
     // Long Dress
-    private giveRubiALongDressToHideHerHideousBody(): void {
+    function giveRubiALongDressToHideHerHideousBody(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the long dress.  \"<i>Oohh, I just </i>love<i> that one! One second!</i>\" [rubi ey] says as [rubi ey] pulls out the dress and several accessories.");
@@ -1789,7 +1785,7 @@ export class Rubi {
     }
 
     // Nurse's Clothes
-    private rubiPutsOnNursesClothesSoSheCanCheckYourTemperature(): void {
+    function rubiPutsOnNursesClothesSoSheCanCheckYourTemperature(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the nurse's uniform.  \"<i>Ohh, coming down with a bit of a fever?  Do you need a sponge bath?</i>\" [rubi ey] says coyly, before gathering up the clothing.");
@@ -1815,7 +1811,7 @@ export class Rubi {
     }
 
     // Rubber Fetish Clothes
-    private rubiHasARubberFetish(): void {
+    function rubiHasARubberFetish(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the rubber fetish outfit.  \"<i>Ohoh,</i>\" [rubi ey] giggles and quirks an eyebrow at you, \"</i>feeling a bit kinky are we?</i>\"");
@@ -1843,7 +1839,7 @@ export class Rubi {
     }
 
     // Suitclothes
-    private putOnASuitYouSlut(): void {
+    function putOnASuitYouSlut(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the suit.  \"<i>Oh, really?  It looks nice, but you don't think it's too manly?</i>\"");
@@ -1865,7 +1861,7 @@ export class Rubi {
     }
 
     // Tube-Top
-    private putOnATubeTopYouWhore(): void {
+    function putOnATubeTopYouWhore(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the tube top and shorts.  \"<i>Ooh, I like that one.  It's a little risque, but so cute!</i>\"");
@@ -1886,7 +1882,7 @@ export class Rubi {
     }
 
     // Slutty Swimwear
-    private putOnSluttySwimwearYouSkank(): void {
+    function putOnSluttySwimwearYouSkank(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the swimsuit.  \"<i>Oh, but there's no pool or lake nearby.  Or do you just want to see me in a bikini?</i>\"  Rubi giggles a moment.");
@@ -1908,7 +1904,7 @@ export class Rubi {
     }
 
     // Bimbo Minidress
-    private putOnADressYouBimbo(): void {
+    function putOnADressYouBimbo(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the minidress.  \"<i>Oh that cute little thing we picked up together?  For sure!  It's so cute!</i>\"");
@@ -1927,7 +1923,7 @@ export class Rubi {
     }
 
     // Bodysuit
-    private putOnMyBodysuitYouWhore(): void {
+    function putOnMyBodysuitYouWhore(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the bodysuit.  \"<i>Oh, that thing is pretty cute,</i>\" [rubi ey] says, \"<i>Though there's not much to it.  But I suppose that's the point, huh?</i>\"");
@@ -1948,7 +1944,7 @@ export class Rubi {
         addButton(4, "Back", rubiAppearance);
     }
     // Bondage Straps
-    private putOnBondageStrapsYouBondageTrap(): void {
+    function putOnBondageStrapsYouBondageTrap(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the bondage straps.  \"<i>Oh!  That outfit, huh?</i>\"  Rubi blushes brightly");
@@ -1965,7 +1961,7 @@ export class Rubi {
     }
 
     // Inquisitor's Corset
-    private whyTheFuckIsRubiWearingAnInquisitorsCorset(): void {
+    function whyTheFuckIsRubiWearingAnInquisitorsCorset(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the inquisitor's corset.  \"<i>Oh my, I really love that one.  It's so pretty and lacy!</i>\"");
@@ -1988,7 +1984,7 @@ export class Rubi {
     }
 
     // Risque Waitress Uniform
-    private putOnAWaitressUniformYouWhore(): void {
+    function putOnAWaitressUniformYouWhore(): void {
         clearOutput();
         rubiSprite();
         outputText("You tell Rubi you'd like to see [rubi em] in the risque version of [rubi eir] normal waitress uniform.  \"<i>Oh, you like that outfit, huh?  I thought you might,</i>\" Rubi says with a giggle.");
@@ -2010,13 +2006,13 @@ export class Rubi {
         addButton(0, "Date", dateIntro, cookingDate);
         addButton(4, "Back", rubiAppearance);
     }
-    private cookingDate(): void {
+    function cookingDate(): void {
         outputText("\n\n<b>Third forgot to write this one!</b>");
         doNext(Camp.returnToCampUseOneHour);
     }
 
     // Dates
-    private dateIntro(date: () => void): void {
+    function dateIntro(date: () => void): void {
         clearOutput();
         rubiSprite();
         // (First Time)
@@ -2044,7 +2040,7 @@ export class Rubi {
     // Ice-Cream Date
     // For Waitress Uniform, Dashing Outfit, Adventurer's Outfit, Nurse Uniform
     // Costs 2 gems.
-    private iceCreamDate(): void {
+    function iceCreamDate(): void {
         player.gems -= 2;
         statScreenRefresh();
         rubiSprite();
@@ -2074,7 +2070,7 @@ export class Rubi {
 
     // Fancy Dinner Date
     // For Suitclothes, Long Dress.
-    private fancyDate(): void {
+    function fancyDate(): void {
         rubiSprite();
         // Costs 10 gems
         if (player.gems >= 10) {
@@ -2120,7 +2116,7 @@ export class Rubi {
 
     // Exhibitionist Date
     /// For Tube Top, Slutty Swimwear, Bimbo Minidress, Bondage Straps.
-    private exhibitionistDate(): void {
+    function exhibitionistDate(): void {
         rubiSprite();
         outputText("\n\nYou think carefully as to where you could go.  With [rubi em] dressed up as sluttily as [rubi ey] is, you think a nice dinner is out of the question.  However, perhaps you can have a bit of fun taking a walk around town.  You wrap your arm around your lover's waist and together the two of you strike out into the warm Tel'Adran air.");
         outputText("\n\nYou head away from the more populated avenues of the city.  Rubi fidgets slightly, not used to being so... exposed on the streets.  You whisper words of encouragement in [rubi eir] ear, saying how sexy [rubi ey] is looking, that [rubi ey] shouldn't feel bad about flaunting it.  In fact, you suggest, [rubi ey] might even like to show off a bit more to the random people you pass.");
@@ -2147,7 +2143,7 @@ export class Rubi {
 
     // Bar Date
     // For Rubber Fetish Clothes, Bodysuit, Inquisitor's Corset.
-    private barDate(): void {
+    function barDate(): void {
         rubiSprite();
         outputText("\n\nYou think carefully about where you could go.  Your companion is not quite dressed well enough for any kind of fancy dinner, but you think you could head down to the local bar for a drink or two.  You wrap your arm around Rubi's waist and together the two of you head out onto the streets of Tel'Adre.  You head from street to street until you come upon the local bar, the \"Wet Bitch\".");
 
@@ -2182,7 +2178,7 @@ export class Rubi {
     // Repeatable
     // Must have a cock greater than Rubi's capacity.
     // Rubi's capacity won't go larger than 100.
-    private anallyTrainYourBitchBoySlutHowToBeAnalForDCL(): void {
+    function anallyTrainYourBitchBoySlutHowToBeAnalForDCL(): void {
         clearOutput();
         rubiSprite();
         flags[kFLAGS.RUBI_TIMES_ANALLY_TRAINED]++;
@@ -2391,7 +2387,7 @@ export class Rubi {
     // PC gets fucked by Rubi
     // Rubi must have at least a 5" cock
     // Requires 75 Affection
-    private getFuckedByRubi(): void {
+    function getFuckedByRubi(): void {
         outputText(images.showImage("rubi-fucks-you"), false);
         clearOutput();
         rubiSprite();
@@ -2496,7 +2492,7 @@ export class Rubi {
     // PC must have a penis
     // If Rubi is being teased, adds +1 to blueballs
     // -100 arousal for PC
-    private rubiHotdogging(): void {
+    function rubiHotdogging(): void {
         outputText(images.showImage("rubi-hotdogged"), false);
         clearOutput();
         rubiSprite();
@@ -2559,7 +2555,7 @@ export class Rubi {
     }
 
     // Tease
-    private teaseButtjobs(): void {
+    function teaseButtjobs(): void {
         outputText(images.showImage("rubi-tease-buttjob"), false);
         clearOutput();
         rubiSprite();
@@ -2594,7 +2590,7 @@ export class Rubi {
     }
 
     // Pop
-    private popButtjobs(): void {
+    function popButtjobs(): void {
         outputText(images.showImage("rubi-pop-buttjob"), false);
         clearOutput();
         rubiSprite();
@@ -2648,7 +2644,7 @@ export class Rubi {
     // (Can give him Purified Succubus Milk, grows boobs, shrinks penis.)
     // (Can give him Purified Incubus Draft, shrinks boobs, grows penis.)
     // (Can give him Gro+ to grow either one.)
-    private giveRubiATFItem(itype: ItemType): void {
+    function giveRubiATFItem(itype: ItemType): void {
         clearOutput();
         rubiSprite();
         // First Time Giving a TF Item
@@ -3053,7 +3049,7 @@ export class Rubi {
     }
 
     // GRO+/REDUCTO
-    private rubiGrowPlusBreasts(): void {
+    function rubiGrowPlusBreasts(): void {
         outputText(images.showImage("rubi-gro-plus-tits"), false);
         clearOutput();
         rubiSprite();
@@ -3080,7 +3076,7 @@ export class Rubi {
         // Go back to give item menu.
     }
     // (If Penis)
-    private rubiPenisGroPlus(): void {
+    function rubiPenisGroPlus(): void {
         outputText(images.showImage("rubi-gro-plus-penis"), false);
         clearOutput();
         rubiSprite();
@@ -3118,7 +3114,7 @@ export class Rubi {
         // Go back to give item menu.
     }
     // (If Breasts)
-    private rubiBoobsReducto(): void {
+    function rubiBoobsReducto(): void {
         clearOutput();
         rubiSprite();
         outputText("You hand over the jar of paste.  Rubi looks it over and, after giving it a sniff, uses two fingers to scoop up some of the pale substance, smearing it over [rubi eir] breasts.  Before long, the jar is empty and [rubi eir] [rubi breasts] are covered in the stuff.");
@@ -3133,7 +3129,7 @@ export class Rubi {
     }
 
     // (If Penis)
-    private rubiPenisReducto(): void {
+    function rubiPenisReducto(): void {
         clearOutput();
         rubiSprite();
         outputText("You hand over the jar of paste.  Rubi looks it over and, after giving it a sniff, uses two fingers to scoop up some of the pale substance, smearing it over [rubi eir] penis.  Before long, the jar is empty and [rubi eir] [rubi cock] is covered in the stuff.");
@@ -3150,7 +3146,7 @@ export class Rubi {
     }
 
     // Give Item.
-    private pickAnItemToFeedRubi(): void {
+    function pickAnItemToFeedRubi(): void {
         clearOutput();
         rubiSprite();
         let button: number = 0;
@@ -3564,7 +3560,7 @@ export class Rubi {
     }
 
     // (Give Clothes)
-    public giveRubiClothes(itype: ItemType = null): void {
+    export function giveRubiClothes(itype: ItemType = null): void {
         clearOutput();
         rubiSprite();
         outputText("You hand over the spare set of clothes, and Rubi's eyes light up.  \"<i>For me?</i>\"  the little demon practically screams, ecstatic.  \"<i>ThankyouthankyouthankyouTHANKYOU!</i>\"");
@@ -3587,7 +3583,7 @@ export class Rubi {
     }
 
     // Rubi's Bimbofication
-    public hypnoBimboficationForRubiSloots(): void {
+    export function hypnoBimboficationForRubiSloots(): void {
         clearOutput();
         outputText("You slither out of your [armor], flicking your tongue hungrily at the air, tasting the petite boy's desire. He is so attracted to you, and yet, he's trying so hard to be classy about it. It's cute in its own way, but you'd rather see him be more... honest about his drives. You want the cute, ");
         if (flags[kFLAGS.RUBI_BREAST_SIZE] < 1) outputText("femmy boy");
@@ -3662,4 +3658,3 @@ export class Rubi {
         rubiAffection(100);
     }
     // These need to stay here, I think.
-}

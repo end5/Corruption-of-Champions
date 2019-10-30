@@ -3,7 +3,6 @@
 * The lovely town of Tel Adre
 * @author:
 */
-export class TelAdre {
 
     // const YVONNE_FUCK_COUNTER:int = 437;
 
@@ -21,7 +20,7 @@ export class TelAdre {
     // 6) **Nose (+.5 attack)
     // 7) **Tongue (+1 sens)
     // 8) **Vulva (+1 sens)
-    public piercingLoc: number = 0;
+    export let piercingLoc: number = 0;
 
     // 1. Amethyst (+1 int, +1 lib)
     // 2. Diamond (+2 int, -1 cor)
@@ -31,17 +30,17 @@ export class TelAdre {
     // 6. Onyx (+1 tou, -1 spe)
     // 7. Ruby (+1 lib, +1 sens)
     // 8. Steel (+2 str, -2 int)
-    public piercingMat: number = 0;
+    export let piercingMat: number = 0;
 
     // 1. Stud
     // 2. Ring (Called prince albert on dick)
     // 3. Jacobs Ladder (dick only)
     // 4. Hoop (ears/nipples/clit)
     // 5. Chain (nipples only)
-    public piercingType: number = 0;
+    export let piercingType: number = 0;
     // }endregion
 
-    public discoverTelAdre(): void {
+    export function discoverTelAdre(): void {
         outputText("", true);
         if (player.effects.findByType(StatusAffects.TelAdre) < 0) {
             outputText("The merciless desert sands grind uncomfortably under your " + feet(player) + " as you walk the dunes, searching the trackless sands to uncover their mysteries.  All of a sudden, you can see the outline of a small city in the distance, ringed in sandstone walls.  Strangely it wasn't there a few moments before.  It's probably just a mirage brought on by the heat.  Then again, you don't have any specific direction you're heading, what could it hurt to go that way?", false);
@@ -54,7 +53,7 @@ export class TelAdre {
     }
 
     // player chose to approach the city in the distance
-    private encounterTelAdre(): void {
+    function encounterTelAdre(): void {
         outputText("", true);
         if (player.effects.findByType(StatusAffects.TelAdre) < 0) {
             outputText("You slog through the shifting sands for a long time, not really seeming to get that close.  Just when you're about to give up, you crest a large dune and come upon the walls of the city you saw before.  It's definitely NOT a mirage.  There are sandstone walls at least fifty feet tall ringing the entire settlement, and the only entrance you can see is a huge gate with thick wooden doors.  The entrance appears to be guarded by a female gray fox who's more busy sipping on something from a bottle than watching the desert.\n\n", false);
@@ -74,7 +73,7 @@ export class TelAdre {
     }
 
     // Alignment crystal goooooo
-    private telAdreCrystal(): void {
+    function telAdreCrystal(): void {
         if (player.effects.findByType(StatusAffects.TelAdre) < 0) player.effects.create(StatusAffects.TelAdre, 0, 0, 0, 0);
         // -70+ corruption, or possessed by exgartuan
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0 || player.cor >= 70) {
@@ -100,7 +99,7 @@ export class TelAdre {
         doNext(telAdreTour);
     }
 
-    private telAdreTour(): void {
+    function telAdreTour(): void {
         player.effects.setValue(StatusAffects.TelAdre, 1, 1);
         outputText("", true);
         Urta.urtaSprite();
@@ -115,7 +114,7 @@ export class TelAdre {
         doNext(telAdreMenu);
     }
 
-    public telAdreMenu(): void {
+    export function telAdreMenu(): void {
         if (flags[kFLAGS.VALENTINES_EVENT_YEAR] < date.fullYear && player.balls > 0 && player.cocks.length > 0 && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] >= 4 && flags[kFLAGS.TIMES_MET_SCYLLA_IN_ADDICTION_GROUP] > 0 && isValentine()) {
             crazyVDayShenanigansByVenithil();
             return;
@@ -179,7 +178,7 @@ export class TelAdre {
         telAdreMenuShow();
     }
 
-    public telAdreMenuShow(): void { // Just displays the normal Tel'Adre menu options, no special events, no description. Useful if a special event has already played
+    export function telAdreMenuShow(): void { // Just displays the normal Tel'Adre menu options, no special events, no description. Useful if a special event has already played
         let homes: boolean = false;
         if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes())
             homes = true;
@@ -202,7 +201,7 @@ export class TelAdre {
         addButton(9, "Leave", camp.returnToCampUseOneHour);
     }
 
-    private armorShops(): void {
+    function armorShops(): void {
         menu();
         addButton(0, "Blacksmith", armorShop);
         addButton(1, "Piercing", piercingStudio);
@@ -215,7 +214,7 @@ export class TelAdre {
         addButton(4, "Back", telAdreMenu);
     }
 
-    public houses(): void {
+    export function houses(): void {
         clearOutput();
         outputText("Whose home will you visit?");
         let orphanage: () => void = null;
@@ -236,7 +235,7 @@ export class TelAdre {
         addButton(9, "Back", telAdreMenu);
     }
 
-    private piercingStudio(): void {
+    function piercingStudio(): void {
         spriteSelect(63);
         let about: () => void = null;
         if (player.effects.findByType(StatusAffects.Yara) < 0) about = aboutYara;
@@ -260,7 +259,7 @@ export class TelAdre {
                 "Leave", telAdreMenu);
         }
     }
-    private aboutYara(): void {
+    function aboutYara(): void {
         spriteSelect(63);
         player.effects.create(StatusAffects.Yara, 0, 0, 0, 0);
         outputText("You introduce yourself and ask Yara about her past, noting that ", true);
@@ -270,7 +269,7 @@ export class TelAdre {
         dynStats("int", 2, "lus", -5, "cor", -1);
         doNext(piercingStudio);
     }
-    private pierceMenu(): void {
+    function pierceMenu(): void {
         spriteSelect(63);
         hideUpDown();
         let clit: () => void = null;
@@ -314,7 +313,7 @@ export class TelAdre {
         }
     }
 
-    private dickPierce(): void {
+    function dickPierce(): void {
         spriteSelect(63);
         if (player.cocks.length > 0) outputText("\"<i>Ok, this is gonna hurt a LOT, but I've heard good things about it.  What kind of piercing do you want done?</i>\" Yara asks.", true);
         else {
@@ -326,7 +325,7 @@ export class TelAdre {
         piercingLoc = 1;
     }
 
-    private clitPierce(): void {
+    function clitPierce(): void {
         spriteSelect(63);
         if (player.hasVagina()) outputText("\"<i>Ohhh, that's going to be suckably cute!</i>\" exclaims Yara, blushing more than a little. \"<i>What kind of piercing would you like?</i>", true);
         else {
@@ -338,48 +337,48 @@ export class TelAdre {
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private earPierce(): void {
+    function earPierce(): void {
         spriteSelect(63);
         piercingLoc = 2;
         outputText("\"<i>Okay, just let me get my supplies and we can get started.  What kind of jewelry do you want in them?</i>\" asks Yara.", true);
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "Hoop", chooseHoop, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private eyebrowPierce(): void {
+    function eyebrowPierce(): void {
         spriteSelect(63);
         piercingLoc = 3;
         outputText("\"<i>Ah, that's a good look!  What do you want there?</i>\" asks Yara.", true);
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private lipPierce(): void {
+    function lipPierce(): void {
         spriteSelect(63);
         piercingLoc = 4;
         outputText("\"<i>Oh my, that'll be HAWT!  What kind of jewelry do you want there?</i>\" asks Yara.", true);
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private nipplePierce(): void {
+    function nipplePierce(): void {
         spriteSelect(63);
         piercingLoc = 5;
         outputText("\"<i>Yeah, sure I can do those!  What kind of jewelry do you want there?  I'm partial to nipple-chains myself,</i>\" admits Yara, blushing bright red.", true);
         simpleChoices("Studs", chooseStud, "Rings", chooseRing, "Chain", chooseChain, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private nosePierce(): void {
+    function nosePierce(): void {
         spriteSelect(63);
         piercingLoc = 6;
         outputText("Yara wrinkles her nose in distaste, \"<i>Really?  Well ok, what do you want there?</i>\"", true);
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
 
-    private tonguePierce(): void {
+    function tonguePierce(): void {
         spriteSelect(63);
         piercingLoc = 7;
         outputText("Yara happily purrs, \"<i>Oh my, I bet that'll be fun!  I'm afraid I can only put a stud there though, ok?</i>\"", true);
         simpleChoices("Ok", chooseStud, "", null, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
-    private vulvaPierce(): void {
+    function vulvaPierce(): void {
         spriteSelect(63);
         piercingLoc = 8;
         if (player.hasVagina()) outputText("Yara explains, \"<i>This is gonna hurt a lot, but I think you'll love how it feels after.  I know I do!  Now what kind of jewelry do you want down-town?</i>\"", true);
@@ -390,28 +389,28 @@ export class TelAdre {
         }
         simpleChoices("Stud", chooseStud, "Ring", chooseRing, "", null, "Back", pierceMenu, "Nevermind", piercingStudio);
     }
-    private chooseStud(): void {
+    function chooseStud(): void {
         piercingType = 1;
         chooseMaterials();
     }
-    private chooseRing(): void {
+    function chooseRing(): void {
         piercingType = 2;
         chooseMaterials();
     }
-    private chooseLadder(): void {
+    function chooseLadder(): void {
         piercingType = 3;
         chooseMaterials();
     }
-    private chooseHoop(): void {
+    function chooseHoop(): void {
         piercingType = 4;
         chooseMaterials();
     }
-    private chooseChain(): void {
+    function chooseChain(): void {
         piercingType = 5;
         chooseMaterials();
     }
 
-    private chooseMaterials(): void {
+    function chooseMaterials(): void {
         spriteSelect(63);
         outputText("Yara gathers up her materials and says, \"<i>Ok, now what type of material do you want it made from?  Don't worry about price, none of these are that rare, so the piercing will only be 100 gems.  Though I do have some rarer materials; you'll need 1,000 gems to spend if you want to check them out.</i>\"", true);
         if (player.gems < 100) {
@@ -423,56 +422,56 @@ export class TelAdre {
         if (player.gems >= 1000) rare = chooseAdvancedMaterials;
         choices("Amethyst", chooseAmethyst, "Diamond", chooseDiamond, "Gold", chooseGold, "Emerald", chooseEmerald, "Jade", chooseJade, "Onyx", chooseOnyx, "Ruby", chooseRuby, "Steel", chooseSteel, "Rare Menu", rare, "Nevermind", piercingStudio);
     }
-    private chooseAmethyst(): void {
+    function chooseAmethyst(): void {
         piercingMat = 1;
         areYouSure();
     }
-    private chooseDiamond(): void {
+    function chooseDiamond(): void {
         piercingMat = 2;
         areYouSure();
     }
-    private chooseGold(): void {
+    function chooseGold(): void {
         piercingMat = 3;
         areYouSure();
     }
-    private chooseEmerald(): void {
+    function chooseEmerald(): void {
         piercingMat = 4;
         areYouSure();
     }
-    private chooseJade(): void {
+    function chooseJade(): void {
         piercingMat = 5;
         areYouSure();
     }
-    private chooseOnyx(): void {
+    function chooseOnyx(): void {
         piercingMat = 6;
         areYouSure();
     }
-    private chooseRuby(): void {
+    function chooseRuby(): void {
         piercingMat = 7;
         areYouSure();
     }
-    private chooseSteel(): void {
+    function chooseSteel(): void {
         piercingMat = 8;
         areYouSure();
     }
-    private chooseLethite(): void {
+    function chooseLethite(): void {
         piercingMat = 9;
         areYouSure();
     }
-    private chooseFertite(): void {
+    function chooseFertite(): void {
         piercingMat = 10;
         areYouSure();
     }
-    private chooseFurrite(): void {
+    function chooseFurrite(): void {
         piercingMat = 11;
         areYouSure();
     }
-    private chooseCrimstone(): void {
+    function chooseCrimstone(): void {
         piercingMat = 12;
         areYouSure();
     }
 
-    private areYouSure(): void {
+    function areYouSure(): void {
         spriteSelect(63);
         outputText("Yara says, \"<i>Ok, last chance to back out, are you sure you want to go ahead with this?  Remember, once I put it in, it's permanent.</i>\"", true);
         doYesNo(normalPierceAssemble, piercingStudio);
@@ -481,7 +480,7 @@ export class TelAdre {
     // 10. Fertite (Fertility Booster)
     // 11. Furrite (Attracts Furries)
     // 12. Crimstone - + min lust
-    private chooseAdvancedMaterials(): void {
+    function chooseAdvancedMaterials(): void {
         spriteSelect(63);
         outputText("Yara goes back into the back and comes out with a gilded tray full of exotic materials.  She hands you a brochure and asks, \"<i>Ok, now what am I going to be working with?</i>\"", true);
         outputText("\n\nThere's a number of materials listed here:", false);
@@ -493,7 +492,7 @@ export class TelAdre {
         simpleChoices("Lethite", chooseLethite, "Fertite", chooseFertite, "Furrite", chooseFurrite, "Crimstone", chooseCrimstone, "Back", chooseMaterials);
     }
 
-    private normalPierceAssemble(): void {
+    function normalPierceAssemble(): void {
         spriteSelect(63);
         outputText("Yara makes you comfortable and has you look away while she uses her piercing tools.  It hurts, but she's skilled and before you know it, your piercing is done!", true);
         // 1. Amethyst (+1 int, +1 lib)
@@ -759,7 +758,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private piercingRemove(): void {
+    function piercingRemove(): void {
         spriteSelect(63);
         hideUpDown();
         let clit: () => void = null;
@@ -805,7 +804,7 @@ export class TelAdre {
         choices("Clit", clit, "Dick", dick, "Ears", ears, "Eyebrow", eyebrow, "Lip", lip, "Nipples", nipples, "Nose", nose, "Tongue", tongue, "Labia", vulva, "Back", piercingStudio);
     }
 
-    private removeClitPierce(): void {
+    function removeClitPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.vaginas[0].clitPierced = 0;
@@ -817,7 +816,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeCockPierce(): void {
+    function removeCockPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.cocks[0].pierced = 0;
@@ -829,7 +828,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeEarsPierce(): void {
+    function removeEarsPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.earsPierced = 0;
@@ -841,7 +840,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeEyebrowPierce(): void {
+    function removeEyebrowPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.eyebrowPierced = 0;
@@ -853,7 +852,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeLipPierce(): void {
+    function removeLipPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.lipPierced = 0;
@@ -865,7 +864,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeNipplesPierce(): void {
+    function removeNipplesPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.nipplesPierced = 0;
@@ -877,7 +876,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeNosePierce(): void {
+    function removeNosePierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.nosePierced = 0;
@@ -889,7 +888,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeTonguePierce(): void {
+    function removeTonguePierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.tonguePierced = 0;
@@ -901,7 +900,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    private removeVulvaPierce(): void {
+    function removeVulvaPierce(): void {
         spriteSelect(63);
         outputText("Yara gives you something to drink and you swiftly black out.  You awake about an hour later, sore and weak, though thankfully not bleeding.", true);
         player.vaginas[0].labiaPierced = 0;
@@ -913,7 +912,7 @@ export class TelAdre {
         doNext(piercingStudio);
     }
 
-    public oswaldPawn(): void {
+    export function oswaldPawn(): void {
         spriteSelect(47);
         outputText("", true);
         if (player.effects.findByType(StatusAffects.Oswald) < 0) {
@@ -944,7 +943,7 @@ export class TelAdre {
         else oswaldPawnMenu(); // eventParser(1065);
     }
 
-    private buyCarrotFromOswald(): void {
+    function buyCarrotFromOswald(): void {
         player.gems -= 500;
         statScreenRefresh();
         player.keyItems.create("Carrot", 0, 0, 0, 0);
@@ -954,7 +953,7 @@ export class TelAdre {
         addButton(0, "Next", oswaldPawn);
     }
 
-    private oswaldPawnMenu(): void { // Moved here from Inventory.as
+    function oswaldPawnMenu(): void { // Moved here from Inventory.as
         spriteSelect(47);
         outputText("\n\n<b><u>Oswald's Estimates</u></b>");
         menu();
@@ -977,7 +976,7 @@ export class TelAdre {
         addButton(9, "Back", telAdreMenu);
     }
 
-    private oswaldPawnSell(slot: number): void { // Moved here from Inventory.as
+    function oswaldPawnSell(slot: number): void { // Moved here from Inventory.as
         spriteSelect(47);
         const itemValue: number = int(player.itemSlots[slot].itype.value / 2);
         clearOutput();
@@ -990,7 +989,7 @@ export class TelAdre {
         doNext(oswaldPawn);
     }
 
-    private oswaldPawnSellAll(): void {
+    function oswaldPawnSellAll(): void {
         spriteSelect(47);
         let itemValue: number = 0;
         clearOutput();
@@ -1006,18 +1005,18 @@ export class TelAdre {
         doNext(oswaldPawn);
     }
 
-    private anotherButton(button: number, nam: string, func: () => void, arg: any = -9000): number {
+    function anotherButton(button: number, nam: string, func: () => void, arg: any = -9000): number {
         if (button > 8) return 9;
         addButton(button, nam, func, arg);
         button++;
         return button;
     }
-    private enterBarTelAdre(): void {
+    function enterBarTelAdre(): void {
         if (isThanksgiving()) pigSlutRoastingGreet();
         else barTelAdre();
     }
 
-    public barTelAdre(): void {
+    export function barTelAdre(): void {
         // Dominka & Edryn both persist their sprites if you back out of doing anything with them -- I
         // I guess this is good a place as any to catch-all the sprite, because I don't think theres ever a case you get a sprite from just entering the bar?
         spriteSelect(-1);
@@ -1376,7 +1375,7 @@ export class TelAdre {
     }
     */
 
-    public tailorShoppe(): void {
+    export function tailorShoppe(): void {
         outputText("", true);
         spriteSelect(61);
         outputText("The inside of the tailor's shop is far cleaner than anything else you've seen in the city.  The walls are painted muted gray, and the floor is carpeted with a sprawling, royal blue rug.  After glancing around, you realize WHY the walls and floor are so muted – the quiet backdrop makes the merchandise look even more amazing.  There are racks and racks of clothing, but much of it is plain comfortable clothing, and not worth spending much time investigating.  A high-pitched voice pipes up, \"<i>Can I help you?</i>\"\n\n", false);
@@ -1406,7 +1405,7 @@ export class TelAdre {
             "Leave", telAdreMenu);
     }
 
-    private buyClothes(itype: ItemType): void {
+    function buyClothes(itype: ItemType): void {
         outputText("", true);
         spriteSelect(61);
         outputText("Victoria nods and pulls a measuring tape off her shoulder.  She moves around you with practiced ease, taking measurements from every conceivable angle.  Thanks to her small stature, it's quite easy for her to take your inseam measurement, though Vicky manages to ", false);
@@ -1428,14 +1427,14 @@ export class TelAdre {
         else doYesNo(curry(debitClothes, itype), tailorShoppe);
     }
 
-    private debitClothes(itype: ItemType): void {
+    function debitClothes(itype: ItemType): void {
         spriteSelect(61);
         player.gems -= itype.value;
         statScreenRefresh();
         inventory.takeItem(itype, tailorShoppe);
     }
 
-    public armorShop(): void {
+    export function armorShop(): void {
         outputText("", true);
         spriteSelect(64);
         outputText("The interior of the armory is blisteringly hot, filled with intense heat from the massive forge dominating the far side of the shop.  The bellows are blowing hard as a tall german-shepherd woman works the forge.  Incredibly, she's wearing nothing aside from a ragged leather apron.  It bulges from the front, barely containing her obscene proportions as it protects them from the heat of her forge.  She pulls a piece of metal from the forge and strikes it a few times with a hammer bigger than your head, then tosses it in a bucket filled with water, steam boiling out of it from the hot metal.  At last, the sweating forgemistress notices you and turns around, her breasts jiggling wildly.\n\n", true);
@@ -1459,7 +1458,7 @@ export class TelAdre {
             "", null, "Eggshell", egg, "Flirt", yvonneFlirt, "Leave", telAdreMenu);
     }
 
-    public weaponShop(): void {
+    export function weaponShop(): void {
         outputText("", true);
         spriteSelect(80);
         outputText("The high pitched ring of a steel hammer slamming into hot metal assaults your ears as you walk up to the stand.  Sparks are flying with every blow the stand's owner strikes on his current work.  The metal is glowing red hot, and the hammer falls with the relentless, practiced precision of an experienced blacksmith's guiding hand.  Thick gray and white fur ruffles as the blacksmith stands up, revealing the details of his form to you.  He's one of the dog-people that inhabits this city, though his fur and ears remind you of a dog one of your friends had growing up called a husky.  The blacksmith is anything but husky.  He's fairly short, but lean and whip-cord tough.  His right arm is far more thickly muscled than his left thanks to his trade, and he walks with a self-assured gait that can only come with age and experience.\n\n", false);
@@ -1476,7 +1475,7 @@ export class TelAdre {
             weapons.S_GAUNT.shortName, createCallBackFunction(weaponBuy, weapons.S_GAUNT),
             "", null, "Leave", telAdreMenu);
     }
-    private weaponBuy(itype: ItemType): void {
+    function weaponBuy(itype: ItemType): void {
         outputText("", true);
         spriteSelect(80);
         outputText("The gruff metal-working husky gives you a slight nod and slams the weapon down on the edge of his stand.  He grunts, \"<i>That'll be " + itype.value + " gems.</i>\"", false);
@@ -1490,13 +1489,13 @@ export class TelAdre {
         // Go to debit/update function or back to shop window
         doYesNo(curry(debitWeapon, itype), weaponShop);
     }
-    private debitWeapon(itype: ItemType): void {
+    function debitWeapon(itype: ItemType): void {
         spriteSelect(80);
         player.gems -= itype.value;
         statScreenRefresh();
         inventory.takeItem(itype, weaponShop);
     }
-    private armorBuy(itype: ItemType): void {
+    function armorBuy(itype: ItemType): void {
         spriteSelect(64);
         outputText("", true);
         outputText("Yvonne gives you a serious look, then nods.  She pulls the armor off a rack and makes a few adjustments, banging away with her massive hammer to ensure a perfect fit.  The entire time, she's oblivious to the movements of her massive breasts, accidentally exposing her impressive nipples multiple times.\n\n", false);
@@ -1512,7 +1511,7 @@ export class TelAdre {
         doYesNo(curry(debitArmor, itype), armorShop);
     }
 
-    private debitArmor(itype: ItemType): void {
+    function debitArmor(itype: ItemType): void {
         spriteSelect(64);
         outputText("", true);
         player.gems -= itype.value;
@@ -1520,7 +1519,7 @@ export class TelAdre {
         inventory.takeItem(itype, armorShop);
     }
 
-    private urtaIsABadass(): void {
+    function urtaIsABadass(): void {
         flags[kFLAGS.PC_SEEN_URTA_BADASS_FIGHT] = 1;
         outputText("", true);
         outputText("There's a commotion in the streets of Tel'Adre.  A dense crowd of onlookers has formed around the center of the street, massed together so tightly that you're unable to see much, aside from the backs the other onlookers' heads.  The sound of blows impacting on flesh can be heard over the crowd's murmuring, alerting you of the fight at the gathering's core.", false);
@@ -1528,7 +1527,7 @@ export class TelAdre {
     }
 
     // [Invetigate]
-    private watchUrtaBeABadass(): void {
+    function watchUrtaBeABadass(): void {
         outputText("", true);
         Urta.urtaSprite();
         outputText("You shoulder past the bulky centaurs, ignore the rough fur of the nearby wolves and hounds as it brushes against you, and press your way through to the center of the crowd.  Eventually the throng parts, revealing the embattled combatants.  A snarling wolf, nearly eight feet tall, towers over Urta.  The comparatively diminutive fox-woman is girded in light leather armor and dripping with sweat.  The larger wolf-man is staggering about, and his dark brown fur is matted with blood.\n\n", false);
@@ -1548,7 +1547,7 @@ export class TelAdre {
         doNext(telAdreMenu);
     }
 
-    public gymDesc(): void {
+    export function gymDesc(): void {
         // PREGGO ALERT!
         if (flags[kFLAGS.PC_IS_A_GOOD_COTTON_DAD] + flags[kFLAGS.PC_IS_A_DEADBEAT_COTTON_DAD] == 0 && Cotton.pregnancy.isPregnant) {
             Cotton.cottonPregnantAlert();
@@ -1583,7 +1582,7 @@ export class TelAdre {
         gymMenu();
     }
 
-    private gymMenu(): void {
+    function gymMenu(): void {
 
         let membership: () => void = null;
         let cotton2: () => void = null;
@@ -1629,7 +1628,7 @@ export class TelAdre {
             "Leave", telAdreMenu);
     }
 
-    private buyGymLifeTimeMembership(): void {
+    function buyGymLifeTimeMembership(): void {
         outputText("", true);
         // [Buy LifeTime Membership]
         outputText("You fish into your pouches and pull out 500 gems, dumping them into the centaur's hands.  Her eyes widen as she turns and trots towards a counter in the back.  She leans over as she counts, giving you a generous view down her low-cut top at the cleavage she barely bothers to conceal.", false);
@@ -1644,7 +1643,7 @@ export class TelAdre {
         gymMenu();
     }
 
-    private weightLifting(): void {
+    function weightLifting(): void {
         outputText("", true);
         // Too tired?  Fuck off.
         if (player.fatigue > 75) {
@@ -1690,7 +1689,7 @@ export class TelAdre {
         else doYesNo(SexMachine.exploreShowers, camp.returnToCampUseOneHour);
     }
 
-    private goJogging(): void {
+    function goJogging(): void {
         outputText("", true);
         // Too tired?  Fuck off.
         if (player.fatigue > 70) {
@@ -1776,7 +1775,7 @@ export class TelAdre {
         else doYesNo(SexMachine.exploreShowers, camp.returnToCampUseOneHour);
     }
 
-    private yaraSex(girl: boolean = true): void {
+    function yaraSex(girl: boolean = true): void {
         spriteSelect(63);
         outputText("", true);
         outputText("Yara makes you comfortable and has you look away while she uses her piercing tools.  It hurts, but she's skilled. Before you know it, your piercing is done!  You move to rise, retaining a bit of modesty", false);
@@ -1790,7 +1789,7 @@ export class TelAdre {
         else simpleChoices("Turn down", piercingStudio, "Oh yeah!", createCallBackFunction(letsDoYaraSex, false), "", null, "", null, "", null);
     }
 
-    private letsDoYaraSex(girl: boolean = true): void {
+    function letsDoYaraSex(girl: boolean = true): void {
         spriteSelect(63);
         outputText("", true);
         let x: number = player.cocks.cockThatFits(36);
@@ -1874,7 +1873,7 @@ export class TelAdre {
     }
 
     // [Flirt]
-    private yvonneFlirt(): void {
+    function yvonneFlirt(): void {
         spriteSelect(64);
         clearOutput();
         outputText("You step closer, glancing from her bulging, barely contained tits to her pouting lips and expressive, violet eyes.  A shock of sweat-matted auburn hair obscures part of her face, but the tall, buxom blacksmith nervously brushes it aside as she watches.  Once you're close enough to touch, you quietly and sincerely proclaim, \"<i>You're the most beautiful piece of craftsmanship in this entire store.</i>\"");
@@ -1908,14 +1907,14 @@ export class TelAdre {
         simpleChoices("Fuck Her", fuckYvonneInZeBlacksmith, "Nevermind", backOutOfYvonneFuck, "", null, "", null, "", null);
     }
     // [Nevermind]
-    private backOutOfYvonneFuck(): void {
+    function backOutOfYvonneFuck(): void {
         spriteSelect(64);
         clearOutput();
         outputText("You politely decline, not wanting to interrupt her work.  Yvonne sighs and begins to pump the bellows, muttering, \"<i>Then you'd better be buying something!</i>\"");
         doNext(armorShop);
     }
     // [Fuck]
-    private fuckYvonneInZeBlacksmith(): void {
+    function fuckYvonneInZeBlacksmith(): void {
         spriteSelect(64);
         clearOutput();
         // X = cock that fits!
@@ -1953,7 +1952,7 @@ export class TelAdre {
 
     // *Typical buy text goes here. Options are now Yes/No/Flirt*
     // [Flirt]
-    private flirtWithVictoria(itype: ItemType): void {
+    function flirtWithVictoria(itype: ItemType): void {
         clearOutput();
         let x: number = player.cocks.cockThatFits(70);
         if (x < 0) x = player.cocks.smallestCockIndex();
@@ -2011,4 +2010,3 @@ export class TelAdre {
         dynStats("sen", -1);
         doNext(camp.returnToCampUseOneHour);
     }
-}

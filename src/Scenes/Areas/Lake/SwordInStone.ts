@@ -1,7 +1,5 @@
 
-export class SwordInStone {
-
-    public findSwordInStone(): void {
+    export function findSwordInStone(): void {
         if (player.effects.findByType(StatusAffects.FactoryOverload) < 0) {
             // Encounter it!
             outputText("While walking along the lake, the glint of metal catches your eye.  You drop into a combat stance, readying your " + player.weaponName + " for another fight.   Your eyes dart about, searching for the source of the light. You feel rather foolish when you locate the source of the reflection.  It came from a sword lodged hilt-deep in the trunk of a tree.  You relax a bit, approaching the odd sight to get a better look.\n\n", true);
@@ -22,7 +20,7 @@ export class SwordInStone {
         }
     }
 
-    private tryToTakeSwordInStone(): void {
+    function tryToTakeSwordInStone(): void {
         outputText("", true);
         // if corrupted...
         if (player.cor >= 25) {
@@ -52,4 +50,3 @@ export class SwordInStone {
             player.effects.create(StatusAffects.TookBlessedSword, 0, 0, 0, 0);
         }
     }
-}
