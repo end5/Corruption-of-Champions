@@ -2,7 +2,7 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class FetishCultistScene extends AbstractLakeContent {
+export class FetishCultistScene {
 
     /*
      (first draft)

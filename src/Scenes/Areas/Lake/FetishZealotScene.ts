@@ -2,7 +2,7 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class FetishZealotScene extends AbstractLakeContent {
+export class FetishZealotScene {
 
     // Fetish Zealot
     // The Fetish zealot is the guard, escort, and de-facto

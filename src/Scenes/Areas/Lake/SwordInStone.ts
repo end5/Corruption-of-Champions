@@ -1,5 +1,5 @@
 
-export class SwordInStone extends AbstractLakeContent {
+export class SwordInStone {
 
     public findSwordInStone(): void {
         if (player.effects.findByType(StatusAffects.FactoryOverload) < 0) {

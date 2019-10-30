@@ -1,5 +1,5 @@
 
-export class Kaiju extends AbstractLakeContent {
+export class Kaiju {
 
     // const KAIJU_MEETINGS:int = 910;
     // const KAIJU_DISABLED:int = 911;

@@ -2,7 +2,7 @@
  * Created by aimozg on 06.01.14.
  */
 
-export class Boat extends AbstractLakeContent {
+export class Boat {
     public discoverBoat(): void {
         player.effects.create(StatusAffects.BoatDiscovery, 0, 0, 0, 0);
         outputText("You journey around the lake, seeking demons to fight", true);

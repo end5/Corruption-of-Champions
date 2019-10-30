@@ -2,7 +2,7 @@
  * Created by aimozg on 04.01.14.
  */
 
-export class GooGirlScene extends AbstractLakeContent {
+export class GooGirlScene {
 
     // VARS
     // const GOOGIRL_BIRTHS:int = 384;

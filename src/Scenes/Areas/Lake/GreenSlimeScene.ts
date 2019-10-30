@@ -1,5 +1,5 @@
 
-export class GreenSlimeScene extends AbstractLakeContent {
+export class GreenSlimeScene {
     // serviceLowCorruption();
     // servuceLowCorruptionHighLust();
     // maleRapesOoze();
