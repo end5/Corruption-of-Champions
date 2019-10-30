@@ -275,7 +275,6 @@ export function faerieOrgyFuckFemaleContinue(): void {
     doNext(TelAdre.barTelAdre);
 }
 
-
 // [Cum Bath]
 export function valaCumBath(): void {
     spriteSelect(60);

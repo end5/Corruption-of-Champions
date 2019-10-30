@@ -1,6 +1,4 @@
 
-
-
 export class MilkySuccubus extends AbstractSuccubus {
 
     protected performCombatAction(): void {

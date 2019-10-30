@@ -8,7 +8,6 @@ const DUNGEON_FACTORY_FOREMANS_OFFICE: number = 6;
 const DUNGEON_FACTORY_PUMP_CONTROL: number = 7;
 const DUNGEON_FACTORY_STORE_ROOM: number = 8;
 
-
 export function enterFactory(): void {
     clearOutput();
     if (player.effects.findByType(StatusAffects.FactoryOverload) >= 0) {

@@ -1,6 +1,4 @@
 
-
-
 export class MinotaurLord extends Monster {
 
     protected performCombatAction(): void {
