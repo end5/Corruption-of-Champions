@@ -25,7 +25,7 @@ export class StatusAffectType {
     public constructor(id: string) {
         this._id = id;
         if (STATUSAFFECT_LIBRARY[id] != null) {
-            CoC_Settings.error("Duplicate status affect " + id);
+            Logger.error("Duplicate status affect " + id);
         }
         STATUSAFFECT_LIBRARY[id] = this;
     }

@@ -39,7 +39,7 @@ export class InfestedHellhound extends HellHound {
                     outputText(" hotly, expelling a few of your own worms in response along with a dribble of thick pre-cum.   You wonder what it would feel like to let his worms crawl inside you...", false);
                     dynStats("lus", 10);
                 } else {
-                    CoC_Settings.error("Infested but no cock!");
+                    Logger.error("Infested but no cock!");
                     dynStats("lus", 5);
                     outputText("  The idea of being covered in the beast's infested seed arouses you slightly, but you shake your head violently and clear away the unwelcome thought.", false);
                 }

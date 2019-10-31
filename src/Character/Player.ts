@@ -54,39 +54,39 @@ export class Player extends Character {
     private _modArmorName: string = "";
 
     public set armorValue(value: number): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.armorValue.");
+        Logger.error("ERROR: attempt to directly set player.armorValue.");
     }
 
     public set armorName(value: string): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.armorName.");
+        Logger.error("ERROR: attempt to directly set player.armorName.");
     }
 
     public set armorDef(value: number): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.armorDef.");
+        Logger.error("ERROR: attempt to directly set player.armorDef.");
     }
 
     public set armorPerk(value: string): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.armorPerk.");
+        Logger.error("ERROR: attempt to directly set player.armorPerk.");
     }
 
     public set weaponName(value: string): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.weaponName.");
+        Logger.error("ERROR: attempt to directly set player.weaponName.");
     }
 
     public set weaponVerb(value: string): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.weaponVerb.");
+        Logger.error("ERROR: attempt to directly set player.weaponVerb.");
     }
 
     public set weaponAttack(value: number): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.weaponAttack.");
+        Logger.error("ERROR: attempt to directly set player.weaponAttack.");
     }
 
     public set weaponPerk(value: string): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.weaponPerk.");
+        Logger.error("ERROR: attempt to directly set player.weaponPerk.");
     }
 
     public set weaponValue(value: number): void {
-        CoC_Settings.error("ERROR: attempt to directly set player.weaponValue.");
+        Logger.error("ERROR: attempt to directly set player.weaponValue.");
     }
 
     public get modArmorName(): string {
@@ -183,7 +183,7 @@ export class Player extends Character {
         // Can return null, in which case caller should discard.
         const oldArmor: Armor = _armor.playerRemove(); // The armor is responsible for removing any bonuses, perks, etc.
         if (newArmor == null) {
-            CoC_Settings.error(short + ".armor is set to null");
+            Logger.error(short + ".armor is set to null");
             newArmor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
         }
         _armor = newArmor.playerEquip(); // The armor can also choose to equip something else - useful for Ceraph's trap armor
@@ -194,7 +194,7 @@ export class Player extends Character {
     public function set armor(value:Armor):void
     {
         if (value == null){
-            CoC_Settings.error(short+".armor is set to null");
+            Logger.error(short+".armor is set to null");
             value = ArmorLib.COMFORTABLE_UNDERCLOTHES;
         }
         value.equip(this, false, false);
@@ -215,7 +215,7 @@ export class Player extends Character {
         // Can return null, in which case caller should discard.
         const oldWeapon: Weapon = _weapon.playerRemove(); // The weapon is responsible for removing any bonuses, perks, etc.
         if (newWeapon == null) {
-            CoC_Settings.error(short + ".weapon is set to null");
+            Logger.error(short + ".weapon is set to null");
             newWeapon = WeaponLib.FISTS;
         }
         _weapon = newWeapon.playerEquip(); // The weapon can also choose to equip something else
@@ -226,7 +226,7 @@ export class Player extends Character {
     public function set weapon(value:Weapon):void
     {
         if (value == null){
-            CoC_Settings.error(short+".weapon is set to null");
+            Logger.error(short+".weapon is set to null");
             value = WeaponLib.FISTS;
         }
         value.equip(this, false, false);
@@ -1016,7 +1016,7 @@ export class Player extends Character {
 
     public consumeItem(itype: ItemType, amount: number = 1): boolean {
         if (!hasItem(itype, amount)) {
-            CoC_Settings.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + itemCount(itype) + ".");
+            Logger.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + itemCount(itype) + ".");
             return false;
         }
         // From here we can be sure the player has enough of the item in inventory
@@ -1040,7 +1040,7 @@ export class Player extends Character {
                     {
                         if(!hasItem(itype,1))
                         {
-                            CoC_Settings.error("ERROR: consumeItem in items.as attempting to find an item to remove when the has none.");
+                            Logger.error("ERROR: consumeItem in items.as attempting to find an item to remove when the has none.");
                             break;
                         }
                         trace("FINDING A NEW SLOT! (ITEMS LEFT: " + amount + ")");

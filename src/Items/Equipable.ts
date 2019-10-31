@@ -42,7 +42,7 @@ export class Equipable extends Consumable {
     }
 
     protected equip(player: Player, returnOldItem: boolean, output: boolean): void {
-        CoC_Settings.errorAMC("Equipable", "equip", id);
+        Logger.errorAMC("Equipable", "equip", id);
     }
 
     /**
@@ -50,7 +50,7 @@ export class Equipable extends Consumable {
      * @param output true if the unequip function should print to the screen
      */
     public unequip(player: Player, returnToInventory: boolean, output: boolean = false): void {
-        CoC_Settings.errorAMC("Equipable", "unequip", id);
+        Logger.errorAMC("Equipable", "unequip", id);
     }
 
     public doEffect(player: Player, output: boolean): void {

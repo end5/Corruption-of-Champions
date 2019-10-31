@@ -25,7 +25,7 @@ export class Consumable extends Useable {
     /*
             public function doEffect(player:Player,output:Boolean):void
             {
-                CoC_Settings.errorAMC("Consumable","doEffect",id);
+                Logger.errorAMC("Consumable","doEffect",id);
             }
     */
 

@@ -13,7 +13,7 @@ export class ItemSlotClass extends Object {
             return;
         }
         if (quant < 0 || quant == 0 && itype != ItemType.NOTHING || quant > 0 && itype == ItemType.NOTHING) {
-            CoC_Settings.error("Inconsistent setItemAndQty call: " + quant + " " + itype);
+            Logger.error("Inconsistent setItemAndQty call: " + quant + " " + itype);
             quant = 0;
             itype = ItemType.NOTHING;
         }
@@ -28,7 +28,7 @@ export class ItemSlotClass extends Object {
 
     public removeOneItem(): void {
         if (this._quantity == 0)
-            CoC_Settings.error("Tried to remove item from empty slot!");
+            Logger.error("Tried to remove item from empty slot!");
         if (this._quantity > 0)
             this._quantity -= 1;
 
@@ -41,7 +41,7 @@ export class ItemSlotClass extends Object {
     }
 
     public set quantity(value: number): void {
-        if (value > 0 && _itype == null) CoC_Settings.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
+        if (value > 0 && _itype == null) Logger.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
         if (value == 0) _itype = ItemType.NOTHING;
         _quantity = value;
     }

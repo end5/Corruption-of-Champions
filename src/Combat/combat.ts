@@ -229,7 +229,7 @@ export function combatMenu(newRound: boolean = true): void { // If returning fro
         addButton(6, "M. Specials", magicalSpecials);
         addButton(7, (monster.effects.findByType(StatusAffects.Level) >= 0 ? "Climb" : "Wait"), wait);
         addButton(8, "Fantasize", fantasize);
-        // if (CoC_Settings.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
+        // if (Logger.debugBuild && !debug) addButton(9, "Inspect", debugInspect);
         if (monster instanceof DriderIncubus) {
             mdi = monster as DriderIncubus;
             if (!mdi.goblinFree) addButton(9, "Goblin", mdi.freeGoblin);

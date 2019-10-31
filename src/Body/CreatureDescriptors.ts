@@ -899,7 +899,7 @@ export function OMultiCockDesc(creature: Creature): string {
 
 function cockMultiLDescriptionShort(creature: Creature): string {
     if (creature.cocks.length < 1) {
-        CoC_Settings.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
+        Logger.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
         return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
     }
     if (creature.cocks.length == 1) { // For a songle cock return the default description
@@ -943,7 +943,7 @@ export function allChestDesc(creature: Creature): string {
 
 export function cockHead(creature: Creature, cockNum: number = 0): string {
     if (cockNum < 0 || cockNum > creature.cocks.length - 1) {
-        CoC_Settings.error("");
+        Logger.error("");
         return "ERROR";
     }
     switch (cocks[cockNum].cockType) {
@@ -1032,11 +1032,11 @@ export function ballsDescriptLight(creature: Creature, forcedSize: boolean = tru
 export function breastDescript(creature: Creature, rowNum: number): string {
     // ERROR PREVENTION
     if (creature.breastRows.length - 1 < rowNum) {
-        CoC_Settings.error("");
+        Logger.error("");
         return "<b>ERROR, breastDescript() working with invalid breastRow</b>";
     }
     if (creature.breastRows.length == 0) {
-        CoC_Settings.error("");
+        Logger.error("");
         return "<b>ERROR, breastDescript() called when no breasts are present.</b>";
     }
     return BreastStore.breastDescript(creature.breastRows[rowNum].breastRating, creature.breastRows[rowNum].lactationMultiplier);
@@ -1064,6 +1064,6 @@ export function allVaginaDescript(creature: Creature): string {
     if (creature.vaginas.length == 1) return vaginaDescript(creature, rand(creature.vaginas.length - 1));
     if (creature.vaginas.length > 1) return (vaginaDescript(creature, rand(creature.vaginas.length - 1)) + "s");
 
-    CoC_Settings.error("ERROR: allVaginaDescript called with no vaginas.");
+    Logger.error("ERROR: allVaginaDescript called with no vaginas.");
     return "ERROR: allVaginaDescript called with no vaginas.";
 }

@@ -61,7 +61,7 @@ export class Amily extends Monster {
                     outputText(" [Flexibility]", false);
                     break;
                 default:
-                    CoC_Settings.error();
+                    Logger.error();
                     outputText(" <b>[ERROR]</b>", false);
                     break;
             }
@@ -184,7 +184,7 @@ export class Amily extends Monster {
                     outputText(" [Flexibility]", false);
                     break;
                 default:
-                    CoC_Settings.error("");
+                    Logger.error("");
                     outputText(" <b>[ERROR]</b>", false);
                     break;
             }

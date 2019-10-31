@@ -1529,7 +1529,7 @@ export class Saves {
                 if (saveFile.data.effects[i].statusAffectName == "Lactation EnNumbere") continue; // ugh...
                 const stype: StatusAffectType = StatusAffectType.lookupStatusAffect(saveFile.data.effects[i].statusAffectName);
                 if (stype == null) {
-                    CoC_Settings.error("Cannot find status affect '" + saveFile.data.effects[i].statusAffectName + "'");
+                    Logger.error("Cannot find status affect '" + saveFile.data.effects[i].statusAffectName + "'");
                     continue;
                 }
                 player.effects.create(stype,

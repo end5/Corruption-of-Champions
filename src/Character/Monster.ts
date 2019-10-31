@@ -464,7 +464,7 @@ export class Monster extends Creature {
     public checkMonster(): boolean {
         _checkCalled = true;
         checkError = validate();
-        if (checkError.length > 0) CoC_Settings.error("Monster not initialized:" + checkError);
+        if (checkError.length > 0) Logger.error("Monster not initialized:" + checkError);
         return checkError.length == 0;
     }
 

@@ -86,7 +86,7 @@ export function debugPane(): void {
 
     outputText("\nCurrently have " + images.getLoadedImageCount() + " images loaded into cache.");
 
-    if (CoC_Settings.haltOnErrors)  // Using a static class so I can grab it from anywhere.
+    if (Logger.haltOnErrors)  // Using a static class so I can grab it from anywhere.
         outputText("\nCurrently set to halt on all errors.");
     else
         outputText("\nParsing or description errors only generate warning message");
@@ -109,10 +109,10 @@ export function debugPane(): void {
 
 export function toggleHaltSettings(): void {
     // toggle debug
-    if (CoC_Settings.haltOnErrors)
-        CoC_Settings.haltOnErrors = false;
+    if (Logger.haltOnErrors)
+        Logger.haltOnErrors = false;
     else
-        CoC_Settings.haltOnErrors = true;
+        Logger.haltOnErrors = true;
     debugPane();
     return;
 }

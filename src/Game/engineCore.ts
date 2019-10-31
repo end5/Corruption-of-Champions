@@ -867,28 +867,28 @@ function logFunctionInfo(func: () => void, arg: any = null): void {
     else {
         logStr += "Calling = " + getFunctionName(func) + " Param = " + arg;
     }
-    CoC_Settings.appendButtonEvent(logStr);
+    Logger.appendButtonEvent(logStr);
     trace(logStr);
 }
 
 // returns a function that takes no arguments, and executes function `func` with argument `arg`
 export function createCallBackFunction(func: () => void, arg: any): () => void {
     if (func == null) {
-        CoC_Settings.error("createCallBackFunction(null," + arg + ")");
+        Logger.error("createCallBackFunction(null," + arg + ")");
     }
     if (arg == -9000 || arg == null) {
 		/*		if (func == eventParser){
-					CoC_Settings.error("createCallBackFunction(eventParser,"+arg+")");
+					Logger.error("createCallBackFunction(eventParser,"+arg+")");
 				} */
         return function(): any {
-            if (CoC_Settings.haltOnErrors)
+            if (Logger.haltOnErrors)
                 logFunctionInfo(func, arg);
             return func();
         };
     }
     else {
         return function(): any {
-            if (CoC_Settings.haltOnErrors)
+            if (Logger.haltOnErrors)
                 logFunctionInfo(func, arg);
             return func(arg);
         };
@@ -896,10 +896,10 @@ export function createCallBackFunction(func: () => void, arg: any): () => void {
 }
 export function createCallBackFunction2(func: () => void, ...args): () => void {
     if (func == null) {
-        CoC_Settings.error("createCallBackFunction(null," + args + ")");
+        Logger.error("createCallBackFunction(null," + args + ")");
     }
     return function(): any {
-        if (CoC_Settings.haltOnErrors) logFunctionInfo(func, args);
+        if (Logger.haltOnErrors) logFunctionInfo(func, args);
         return func.apply(null, args);
     };
 }

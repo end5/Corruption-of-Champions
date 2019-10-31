@@ -49,7 +49,7 @@ export function beard(char: Character): string {
     if (char.hasBeard())
         return "beard";
     else {
-        // CoC_Settings.error("");
+        // Logger.error("");
         return "ERROR: NO BEARD! <b>YOU ARE NOT A VIKING AND SHOULD TELL FEN IMMEDIATELY.</b>";
     }
 }

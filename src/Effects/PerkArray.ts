@@ -128,7 +128,7 @@ export class PerkArray extends Array {
             return;
         }
         if (valueIdx < 1 || valueIdx > 4) {
-            CoC_Settings.error("addValue(" + ptype.id + ", " + valueIdx + ", " + bonus + ").");
+            Logger.error("addValue(" + ptype.id + ", " + valueIdx + ", " + bonus + ").");
             return;
         }
         if (valueIdx == 1)
@@ -149,7 +149,7 @@ export class PerkArray extends Array {
             return;
         }
         if (valueIdx < 1 || valueIdx > 4) {
-            CoC_Settings.error("setValue(" + ptype.id + ", " + valueIdx + ", " + newNum + ").");
+            Logger.error("setValue(" + ptype.id + ", " + valueIdx + ", " + newNum + ").");
             return;
         }
         if (valueIdx == 1)

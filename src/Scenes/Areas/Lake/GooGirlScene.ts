@@ -10,7 +10,7 @@ function gooGirl(): GooGirl {
     let g: GooGirl = monster as GooGirl;
     if (g == null) {
         trace(monster.short + ", not GooGirl!");
-        CoC_Settings.error(monster.short + ", not GooGirl!");
+        Logger.error(monster.short + ", not GooGirl!");
         g = new GooGirl();
     }
     return g;

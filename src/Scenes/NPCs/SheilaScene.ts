@@ -2166,7 +2166,7 @@ function sheilaMutualMasturbation(): void {
     if (player.gender == 0 || choices.length == 0) choices[choices.length] = "ass";
 
     if (choices.length == 0) {
-        CoC_Settings.error("");
+        Logger.error("");
         outputText("ERROR - SHEILA MASTURBATE BROKE, SON");
         doNext(Camp.returnToCampUseOneHour);
     }

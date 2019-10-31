@@ -129,7 +129,7 @@ export class Inventory {
 
     public takeItem(itype: ItemType, nextAction: () => void, overrideAbandon: () => void = null, source: ItemSlotClass = null): void {
         if (itype == null) {
-            CoC_Settings.error("takeItem(null)");
+            Logger.error("takeItem(null)");
             return;
         }
         if (itype == ItemType.NOTHING) return;

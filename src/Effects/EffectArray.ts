@@ -28,7 +28,7 @@ export class EffectArray extends Array {
         // Various Errors preventing action
         if (counter < 0) return;
         if (statusValueNum < 1 || statusValueNum > 4) {
-            CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
+            Logger.error("ChangeStatusValue called with invalid status value number.");
             return;
         }
         if (statusValueNum == 1)
@@ -48,7 +48,7 @@ export class EffectArray extends Array {
             return;
         }
         if (statusValueNum < 1 || statusValueNum > 4) {
-            CoC_Settings.error("ChangeStatusValue called with invalid status value number.");
+            Logger.error("ChangeStatusValue called with invalid status value number.");
             return;
         }
         if (statusValueNum == 1)

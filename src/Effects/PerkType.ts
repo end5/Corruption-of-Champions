@@ -52,7 +52,7 @@ export class PerkType {
         this._desc = desc;
         this._longDesc = longDesc || _desc;
         if (PERK_LIBRARY[id] != null) {
-            CoC_Settings.error("Duplicate perk id " + id + ", old perk is " + (PERK_LIBRARY[id] as PerkType)._name);
+            Logger.error("Duplicate perk id " + id + ", old perk is " + (PERK_LIBRARY[id] as PerkType)._name);
         }
         PERK_LIBRARY[id] = this;
     }

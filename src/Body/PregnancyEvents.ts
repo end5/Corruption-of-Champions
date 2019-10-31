@@ -1911,6 +1911,6 @@ export function eggDescript(plural: boolean = true): string {
         else descript += "egg";
         return descript;
     }
-    CoC_Settings.error("");
+    Logger.error("");
     return "EGG ERRORZ";
 }

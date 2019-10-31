@@ -261,9 +261,9 @@ export class CoC extends MovieClip {
         testingBlockExiting = false;
 
         // Used for stopping chaos monkey on syntax errors. Separate flag so we can make stopping optional
-        CoC_Settings.haltOnErrors = false;
+        Logger.haltOnErrors = false;
 
-        this.parser = new Parser(this, CoC_Settings);
+        this.parser = new Parser(this, Logger);
 
         this.model = new GameModel();
         this.mainView = new MainView(this.model);

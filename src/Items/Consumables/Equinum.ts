@@ -224,7 +224,7 @@ export function equinum(player: Player): void {
                 temp = player.cocks.addHorseCock();
                 outputText("\n\nOne of your penises begins to feel strange.  You pull down your clothes to take a look and see the skin of your " + cockDescript(player, temp) + " darkening to a mottled brown and black pattern.", false);
                 if (temp == -1) {
-                    CoC_Settings.error("");
+                    Logger.error("");
                     outputText("FUKKKK ERROR NO COCK XFORMED", true);
                 }
                 // Already have a sheath

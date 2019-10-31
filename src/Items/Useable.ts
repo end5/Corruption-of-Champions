@@ -17,7 +17,7 @@ export class Useable extends CommonItem {
     // 		public function hasSubMenu():Boolean { return false; } //Only GroPlus and Reducto use this. //Replaced with a return
 
     public useItem(): boolean {
-        CoC_Settings.errorAMC("Useable", "useItem", id);
+        Logger.errorAMC("Useable", "useItem", id);
         return (false);
     }
 
@@ -31,7 +31,7 @@ export class Useable extends CommonItem {
     /* New version removes the need for any parameters - item is always used on the player, item always outputs text if needed, item is never consumed from inventory (That's up to the calling code).
             public function useItem(player:Player,output:Boolean,external:Boolean):void
             {
-                CoC_Settings.errorAMC("Useable", "useItem", id);
+                Logger.errorAMC("Useable", "useItem", id);
             }
     */
 }

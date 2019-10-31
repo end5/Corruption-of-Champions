@@ -68,7 +68,7 @@ export class ItemType {
         this._description = _description || this.longName;
         this._value = _value;
         if (ITEM_LIBRARY[_id] != null) {
-            CoC_Settings.error("Duplicate itemid " + _id + ", old item is " + (ITEM_LIBRARY[_id] as ItemType).longName);
+            Logger.error("Duplicate itemid " + _id + ", old item is " + (ITEM_LIBRARY[_id] as ItemType).longName);
         }
         if (ITEM_SHORT_LIBRARY[_shortName] != null) {
             trace("WARNING: Item with duplicate shortname: '" + _id + "' and '" + (ITEM_SHORT_LIBRARY[this._shortName] as ItemType)._id + "' share " + this._shortName);

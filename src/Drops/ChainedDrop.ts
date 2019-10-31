@@ -11,7 +11,7 @@ export class ChainedDrop implements RandomDrop {
     }
     public add(item: any, prob: number): ChainedDrop {
         if (prob < 0 || prob > 1) {
-            CoC_Settings.error("Invalid probability value " + prob);
+            Logger.error("Invalid probability value " + prob);
         }
         items.push(item);
         probs.push(prob);

@@ -105,11 +105,11 @@ export class Appearance  {
     public static nippleDescription(i_creature: Creature, i_rowNum: number): string {
         // DEBUG SHIT!
         if (i_rowNum > (i_creature.breastRows.length - 1)) {
-            CoC_Settings.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
+            Logger.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
             return "<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>";
         }
         if (i_rowNum < 0) {
-            CoC_Settings.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
+            Logger.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
             return "<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>";
         }
         let haveDescription: boolean = false;
@@ -395,11 +395,11 @@ export class Appearance  {
             public static function cockDescription(i_creature:Creature, i_cockIndex:Number):String
             {
                 if (i_creature.cocks.length == 0) {
-                    CoC_Settings.error("<b>ERROR: CockDescript Called But No Cock Present</b>");
+                    Logger.error("<b>ERROR: CockDescript Called But No Cock Present</b>");
                     return "<b>ERROR: CockDescript Called But No Cock Present</b>";
                 }
                 if (i_creature.cocks.length <= i_cockIndex || (i_cockIndex == 99 || i_cockIndex == -1)) {
-                    CoC_Settings.error("<b>ERROR: CockDescript called with index of " + i_cockIndex + " - out of BOUNDS</b>");
+                    Logger.error("<b>ERROR: CockDescript called with index of " + i_cockIndex + " - out of BOUNDS</b>");
                     return "<b>ERROR: CockDescript called with index of " + i_cockIndex + " - out of BOUNDS</b>";
                 }
 
@@ -421,7 +421,7 @@ export class Appearance  {
                         case CockTypesEnum.TENTACLE:
                             return cockNoun(i_creature.cocks[i_cockIndex].cockType);
                         default:
-                            CoC_Settings.error("cockDescription failed to describe your cock");
+                            Logger.error("cockDescription failed to describe your cock");
                             trace("ERROR: Cock type failed to match. " + i_creature.cocks[i_cockIndex].cockType);
                             return "cockDescription failed to describe your cock";
                     }
@@ -1127,7 +1127,7 @@ export class Appearance  {
     {
         var description:String = "";
         if (i_creature.cocks.length < 1) {
-            CoC_Settings.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
+            Logger.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
             return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
         }
         if (i_creature.cocks.horseCocks() == i_creature.cocks.length) description += cockNoun(CockTypesEnum.HORSE);
@@ -1348,15 +1348,15 @@ export class Appearance  {
 
     public static vaginaDescript(i_creature: Creature, i_vaginaIndex: number = 0): string {
         if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
-            CoC_Settings.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
+            Logger.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
             return "<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>";
         }
         if (i_vaginaIndex < 0) {
-            CoC_Settings.error("<B>Error: Invalid vaginaNum (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
+            Logger.error("<B>Error: Invalid vaginaNum (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
             return "<B>Error: Invalid vaginaNum (" + i_vaginaIndex + ") passed to vaginaDescript()</b>";
         }
         if (i_creature.vaginas.length <= 0) {
-            CoC_Settings.error("ERROR: Called vaginaDescription with no vaginas");
+            Logger.error("ERROR: Called vaginaDescription with no vaginas");
             return "ERROR: Called vaginaDescription with no vaginas";
         }
 
@@ -1519,7 +1519,7 @@ export class Appearance  {
             }
         }
         else {
-            CoC_Settings.error("ERROR: CLITDESCRIPT WITH NO CLIT");
+            Logger.error("ERROR: CLITDESCRIPT WITH NO CLIT");
             return ("ERROR: CLITDESCRIPT WITH NO CLIT");
         }
 
@@ -2499,11 +2499,11 @@ export class Appearance  {
         const temp142: number = creature.breasts.biggestTitRow();
         // ERROR PREVENTION
         if (creature.breastRows.length - 1 < temp142) {
-            CoC_Settings.error("");
+            Logger.error("");
             return "<b>ERROR, biggestBreastSizeDescript() working with invalid breastRow</b>";
         }
         else if (temp142 < 0) {
-            CoC_Settings.error("");
+            Logger.error("");
             return "ERROR SHIT SON!  BIGGESTBREASTSIZEDESCRIPT PASSED NEGATIVE!";
         }
         if (creature.breastRows[temp142].breastRating < 1) return "flat breasts";
@@ -2595,7 +2595,7 @@ export class Appearance  {
     public static multiCockDescriptLight(creature: Creature): string {
         if (creature.cocks.length < 1) {
 
-            CoC_Settings.error("");
+            Logger.error("");
             return "<B>Error: multiCockDescriptLight() called with no penises present.</B>";
 
         }
@@ -2722,7 +2722,7 @@ export class Appearance  {
 
     public static multiCockDescript(creature: Creature): string {
         if (creature.cocks.length < 1) {
-            CoC_Settings.error("");
+            Logger.error("");
             return "<B>Error: multiCockDescript() called with no penises present.</B>";
         }
         // Get cock counts

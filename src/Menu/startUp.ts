@@ -5,11 +5,11 @@ export function mainMenu(e: MouseEvent = undefined): void {
 
     // if(CONFIG::debug)
     // {
-    // 	CoC_Settings.debugBuild = true;
+    // 	Logger.debugBuild = true;
     // }
     // else
     // {
-    CoC_Settings.debugBuild = false;
+    Logger.debugBuild = false;
     // }
 
     if (mainView.aCb.parent != null) {
@@ -29,7 +29,7 @@ export function mainMenu(e: MouseEvent = undefined): void {
 
     outputText("<b>Corruption of Champions (" + version + ")</b>", true);
 
-    if (CoC_Settings.debugBuild)
+    if (Logger.debugBuild)
         outputText(" Debug Build.");
     else
         outputText(" Release Build");
