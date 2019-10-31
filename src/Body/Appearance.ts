@@ -1,11 +1,10 @@
 
-export class Appearance  {
     // Eventually, this should contain the entire char appearance.
     // At the moment, it's pretty piecemeal.
     // TODO remove when we have proper enums for this
     // include "../../includes/appearanceDefs.as";
 
-    public static inverseMap(x: Record<string, any>): Record<string, any> {
+    export function inverseMap(x: Record<string, any>): Record<string, any> {
         const result: Record<string, any> = {};
         for (const i in x) {
             result[String(x[i])] = i;
@@ -13,14 +12,14 @@ export class Appearance  {
         return result;
     }
 
-    public static hairOrFur(i_creature: Creature): string {
+    export function hairOrFur(i_creature: Creature): string {
         if (i_creature.skinType == 1)
             return "fur";
         else
             return "hair";
     }
 
-    public static hairDescription(i_creature: Creature): string {
+    export function hairDescription(i_creature: Creature): string {
         let description: string = "";
         let options: any[];
         //
@@ -95,14 +94,14 @@ export class Appearance  {
      * @param    i_character Either Player or NonPlayer
      * @return    A beautiful description of a tongue.
      */
-    public static tongueDescription(i_character: Character): string {
+    export function tongueDescription(i_character: Character): string {
         if (i_character.tongueType == 1) return "serpentine tongue";
         else if (i_character.tongueType == 2) return "demonic tongue";
         else if (i_character.tongueType == 3) return "draconic tongue";
         else return "tongue";
     }
 
-    public static nippleDescription(i_creature: Creature, i_rowNum: number): string {
+    export function nippleDescription(i_creature: Creature, i_rowNum: number): string {
         // DEBUG SHIT!
         if (i_rowNum > (i_creature.breastRows.length - 1)) {
             Logger.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
@@ -307,7 +306,7 @@ export class Appearance  {
          */
     }
 
-    public static hipDescription(i_character: Character): string {
+    export function hipDescription(i_character: Character): string {
         let description: string = "";
         let options: any[];
         if (i_character.hipRating <= 1) {
@@ -456,7 +455,7 @@ export class Appearance  {
             }
     */
 
-    public static cockDescript(creature: Creature, cockIndex: number = 0): string {
+    export function cockDescript(creature: Creature, cockIndex: number = 0): string {
         if (creature.cocks.length == 0) return "<b>ERROR: CockDescript Called But No Cock Present</b>";
         let cockType: CockTypesEnum = CockTypesEnum.HUMAN;
         if (cockIndex != 99) { // CockIndex 99 forces a human cock description
@@ -471,7 +470,7 @@ export class Appearance  {
 
     // This function takes all the variables independently so that a creature object is not required for a cockDescription.
     // This allows a single cockDescription function to produce output for both cockDescript and the old NPCCockDescript.
-    public static cockDescription(cockType: CockTypesEnum, length: number, girth: number, lust: number = 50, cumQ: number = 10, isPierced: boolean = false, hasSock: boolean = false, isGooey: boolean = false): string {
+    export function cockDescription(cockType: CockTypesEnum, length: number, girth: number, lust: number = 50, cumQ: number = 10, isPierced: boolean = false, hasSock: boolean = false, isGooey: boolean = false): string {
         if (rand(2) == 0) {
             if (cockType == CockTypesEnum.HUMAN) return cockAdjective(cockType, length, girth, lust, cumQ, isPierced, hasSock, isGooey) + " " + cockNoun(cockType);
             else return cockAdjective(cockType, length, girth, lust, cumQ, isPierced, hasSock, isGooey) + ", " + cockNoun(cockType);
@@ -479,7 +478,7 @@ export class Appearance  {
         return cockNoun(cockType);
     }
 
-    public static cockNoun(cockType: CockTypesEnum): string {
+    export function cockNoun(cockType: CockTypesEnum): string {
         /*
         if (cockType is int) {
             trace("Someone is still calling cockNoun with an integer cock type");
@@ -660,7 +659,7 @@ export class Appearance  {
 
     // New cock adjectives.  The old one sucked dicks
     // This function handles all cockAdjectives. Previously there were separate functions for the player, monsters and NPCs.
-    public static cockAdjective(cockType: CockTypesEnum, length: number, girth: number, lust: number = 50, cumQ: number = 10, isPierced: boolean = false, hasSock: boolean = false, isGooey: boolean = false): string {
+    export function cockAdjective(cockType: CockTypesEnum, length: number, girth: number, lust: number = 50, cumQ: number = 10, isPierced: boolean = false, hasSock: boolean = false, isGooey: boolean = false): string {
         // First, the three possible special cases
         if (isPierced && rand(5) == 0) return "pierced";
         if (hasSock && rand(5) == 0) return randomChoice("sock-sheathed", "garment-wrapped", "smartly dressed", "cloth-shrouded", "fabric swaddled", "covered");
@@ -849,7 +848,7 @@ export class Appearance  {
     */
 
     // Cock adjectives for single cock
-    private static cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockType: CockTypesEnum, i_creature: Creature): string {
+    function cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockType: CockTypesEnum, i_creature: Creature): string {
         let description: string = "";
         let rando: number = 0;
         let descripts: number = 0;
@@ -972,7 +971,7 @@ export class Appearance  {
         return description;
     }
 
-    public static cockMultiNoun(cockType: CockTypesEnum): string {
+    export function cockMultiNoun(cockType: CockTypesEnum): string {
         /*
         if (cockType is int) {
             trace("Someone is still calling cockNoun with an integer cock type");
@@ -1159,7 +1158,7 @@ export class Appearance  {
      * @param    i_withArticle    Show description with article in front
      * @return    Full description of balls
      */
-    public static ballsDescription(i_forcedSize: boolean, i_plural: boolean, i_creature: Creature, i_withArticle: boolean = false): string {
+    export function ballsDescription(i_forcedSize: boolean, i_plural: boolean, i_creature: Creature, i_withArticle: boolean = false): string {
         if (i_creature.balls == 0) return "prostate";
 
         const haveDescription: boolean = false;
@@ -1320,7 +1319,7 @@ export class Appearance  {
     }
 
     // Returns random description of scrotum
-    public static sackDescript(i_creature: Creature): string {
+    export function sackDescript(i_creature: Creature): string {
         if (i_creature.balls == 0) return "prostate";
 
         let options: any[];
@@ -1346,7 +1345,7 @@ export class Appearance  {
             }
     */
 
-    public static vaginaDescript(i_creature: Creature, i_vaginaIndex: number = 0): string {
+    export function vaginaDescript(i_creature: Creature, i_vaginaIndex: number = 0): string {
         if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
             Logger.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
             return "<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>";
@@ -1443,7 +1442,7 @@ export class Appearance  {
         return description;
     }
 
-    public static clitDescription(i_creature: Creature): string {
+    export function clitDescription(i_creature: Creature): string {
         let description: string = "";
         let options: any[];
         let haveDescription: boolean = false;
@@ -1545,7 +1544,7 @@ export class Appearance  {
      * @param    i_character
      * @return    A full description of a Character's butt.
      */
-    public static buttDescription(i_character: Character): string {
+    export function buttDescription(i_character: Character): string {
         let description: string = "";
         let options: any[];
         if (i_character.buttRating <= 1) {
@@ -1854,7 +1853,7 @@ export class Appearance  {
      * @param    creature
      * @return Short description of a butt.
      */
-    public static buttDescriptionShort(i_creature: Creature): string {
+    export function buttDescriptionShort(i_creature: Creature): string {
         let description: string = "";
         let options: any[];
         if (i_creature.buttRating <= 1) {
@@ -1916,7 +1915,7 @@ export class Appearance  {
         return description;
     }
 
-    public static assholeDescript(i_creature: Creature): string {
+    export function assholeDescript(i_creature: Creature): string {
         let description: string = "";
 
         // The way this was setup didn't work. Trying to inline-define object key-values wasn't looking up the variable *VALUES* it was using the string representation
@@ -1961,7 +1960,7 @@ export class Appearance  {
         return description;
     }
 
-    public static wingsDescript(i_creature: Creature): string {
+    export function wingsDescript(i_creature: Creature): string {
         return DEFAULT_WING_NAMES[i_creature.wingType] + " wings";
     }
 
@@ -2064,7 +2063,7 @@ export class Appearance  {
             }
     */
 
-    public static BREAST_CUP_NAMES: any[] = [
+    export let BREAST_CUP_NAMES: any[] = [
         "flat", // 0
         // 				1			2			3			4			5				6			7		8			9
         "A-cup", "B-cup", "C-cup", "D-cup", "DD-cup", "big DD-cup", "E-cup", "big E-cup", "EE-cup", // 1-9
@@ -2079,7 +2078,7 @@ export class Appearance  {
         "Y-cup", "large Y-cup", "YY-cup", "large YY-cup", "Z-cup", "large Z-cup", "ZZ-cup", "large ZZ-cup", "ZZZ-cup", "large ZZZ-cup"// 90-99
     ];
 
-    public static breastCup(size: number): string {
+    export function breastCup(size: number): string {
         return BREAST_CUP_NAMES[Math.min(Math.floor(size), BREAST_CUP_NAMES.length - 1)];
     }
 
@@ -2087,7 +2086,7 @@ export class Appearance  {
      * Returns breast size from cup name.
      * Acceptable input: "flat","A","B","C","D","DD","DD+",... "ZZZ","ZZZ+" or exact match from BREAST_CUP_NAMES array
      */
-    public static breastCupInverse(name: string, defaultValue: number = 0): number {
+    export function breastCupInverse(name: string, defaultValue: number = 0): number {
         if (name.length == 0) return defaultValue;
         if (name == "flat") return 0;
         const big: boolean = name.charAt(name.length - 1) == "+";
@@ -2099,13 +2098,13 @@ export class Appearance  {
         return defaultValue;
     }
 
-    public static createMapFromPairs(src: any[]): Record<string, any> {
+    export function createMapFromPairs(src: any[]): Record<string, any> {
         const result: Record<string, any> = {};
         for (const i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
         return result;
     }
 
-    public static DEFAULT_GENDER_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_GENDER_NAMES: Record<string, any> = createMapFromPairs(
         [
             [GENDER_NONE, "genderless"],
             [GENDER_MALE, "male"],
@@ -2113,7 +2112,7 @@ export class Appearance  {
             [GENDER_HERM, "hermaphrodite"]
         ]
     );
-    public static DEFAULT_SKIN_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_SKIN_NAMES: Record<string, any> = createMapFromPairs(
         [
             [SKIN_TYPE_PLAIN, "skin"],
             [SKIN_TYPE_FUR, "fur"],
@@ -2122,7 +2121,7 @@ export class Appearance  {
             [SKIN_TYPE_UNDEFINED, "undefined flesh"]
         ]
     );
-    public static DEFAULT_SKIN_DESCS: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_SKIN_DESCS: Record<string, any> = createMapFromPairs(
         [
             [SKIN_TYPE_PLAIN, "skin"],
             [SKIN_TYPE_FUR, "fur"],
@@ -2131,7 +2130,7 @@ export class Appearance  {
             [SKIN_TYPE_UNDEFINED, "skin"]
         ]
     );
-    public static DEFAULT_HAIR_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_HAIR_NAMES: Record<string, any> = createMapFromPairs(
         [
             [HAIR_NORMAL, "normal"],
             [HAIR_FEATHER, "feather"],
@@ -2140,7 +2139,7 @@ export class Appearance  {
             [HAIR_ANEMONE, "tentacle"]
         ]
     );
-    public static DEFAULT_FACE_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_FACE_NAMES: Record<string, any> = createMapFromPairs(
         [
             [FACE_HUMAN, "human"],
             [FACE_HORSE, "horse"],
@@ -2161,7 +2160,7 @@ export class Appearance  {
             [FACE_MOUSE, "mouse"]
         ]
     );
-    public static DEFAULT_TONGUE_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_TONGUE_NAMES: Record<string, any> = createMapFromPairs(
         [
             [TONUGE_HUMAN, "human"],
             [TONUGE_SNAKE, "snake"],
@@ -2169,14 +2168,14 @@ export class Appearance  {
             [TONUGE_DRACONIC, "draconic"]
         ]
     );
-    public static DEFAULT_EYES_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_EYES_NAMES: Record<string, any> = createMapFromPairs(
         [
             [EYES_HUMAN, "human"],
             [EYES_FOUR_SPIDER_EYES, "4 spider"],
             [EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"]
         ]
     );
-    public static DEFAULT_EARS_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_EARS_NAMES: Record<string, any> = createMapFromPairs(
         [
             [EARS_HUMAN, "human"],
             [EARS_HORSE, "horse"],
@@ -2193,7 +2192,7 @@ export class Appearance  {
             [EARS_MOUSE, "mouse"]
         ]
     );
-    public static DEFAULT_HORNS_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_HORNS_NAMES: Record<string, any> = createMapFromPairs(
         [
             [HORNS_NONE, "non-existant"],
             [HORNS_DEMON, "demon"],
@@ -2203,20 +2202,20 @@ export class Appearance  {
             [HORNS_ANTLERS, "deer"]
         ]
     );
-    public static DEFAULT_ANTENNAE_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_ANTENNAE_NAMES: Record<string, any> = createMapFromPairs(
         [
             [ANTENNAE_NONE, "non-existant"],
             [ANTENNAE_BEE, "bee"]
         ]
     );
-    public static DEFAULT_ARM_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_ARM_NAMES: Record<string, any> = createMapFromPairs(
         [
             [ARM_TYPE_HUMAN, "human"],
             [ARM_TYPE_HARPY, "harpy"],
             [ARM_TYPE_SPIDER, "spider"]
         ]
     );
-    public static DEFAULT_TAIL_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_TAIL_NAMES: Record<string, any> = createMapFromPairs(
         [
             [TAIL_TYPE_NONE, "non-existant"],
             [TAIL_TYPE_HORSE, "horse"],
@@ -2237,7 +2236,7 @@ export class Appearance  {
             [TAIL_TYPE_MOUSE, "mouse"]
         ]
     );
-    public static DEFAULT_WING_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_WING_NAMES: Record<string, any> = createMapFromPairs(
         [
             [WING_TYPE_NONE, "non-existant"],
             [WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
@@ -2253,7 +2252,7 @@ export class Appearance  {
             [WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
         ]
     );
-    public static DEFAULT_WING_DESCS: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_WING_DESCS: Record<string, any> = createMapFromPairs(
         [
             [WING_TYPE_NONE, "non-existant"],
             [WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
@@ -2269,7 +2268,7 @@ export class Appearance  {
             [WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
         ]
     );
-    public static DEFAULT_LOWER_BODY_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_LOWER_BODY_NAMES: Record<string, any> = createMapFromPairs(
         [
             [LOWER_BODY_TYPE_HUMAN, "human"],
             [LOWER_BODY_TYPE_HOOFED, "hoofed"],
@@ -2293,7 +2292,7 @@ export class Appearance  {
             [LOWER_BODY_TYPE_RACCOON, "raccoon"]
         ]
     );
-    public static DEFAULT_PIERCING_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_PIERCING_NAMES: Record<string, any> = createMapFromPairs(
         [
             [PIERCING_TYPE_NONE, "none"],
             [PIERCING_TYPE_STUD, "stud"],
@@ -2303,13 +2302,13 @@ export class Appearance  {
             [PIERCING_TYPE_CHAIN, "chain"]
         ]
     );
-    public static DEFAULT_VAGINA_TYPE_NAMES: Record<string, any> = createMapFromPairs(
+    export let DEFAULT_VAGINA_TYPE_NAMES: Record<string, any> = createMapFromPairs(
         [
             [VAGINA_TYPE_HUMAN, "human"],
             [VAGINA_TYPE_BLACK_SAND_TRAP, "black sandtrap"]
         ]
     );
-    public static DEFAULT_VAGINA_WETNESS_SCALES: any[] = [
+    export let DEFAULT_VAGINA_WETNESS_SCALES: any[] = [
         [VAGINA_WETNESS_DRY, "dry"],
         [VAGINA_WETNESS_NORMAL, "normal"],
         [VAGINA_WETNESS_WET, "wet"],
@@ -2317,7 +2316,7 @@ export class Appearance  {
         [VAGINA_WETNESS_DROOLING, "drooling"],
         [VAGINA_WETNESS_SLAVERING, "slavering"],
     ];
-    public static DEFAULT_VAGINA_LOOSENESS_SCALES: any[] = [
+    export let DEFAULT_VAGINA_LOOSENESS_SCALES: any[] = [
         [VAGINA_LOOSENESS_TIGHT, "tight"],
         [VAGINA_LOOSENESS_NORMAL, "normal"],
         [VAGINA_LOOSENESS_LOOSE, "loose"],
@@ -2325,7 +2324,7 @@ export class Appearance  {
         [VAGINA_LOOSENESS_GAPING_WIDE, "gaping wide"],
         [VAGINA_LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"]
     ];
-    public static DEFAULT_ANAL_WETNESS_SCALES: any[] = [
+    export let DEFAULT_ANAL_WETNESS_SCALES: any[] = [
         [ANAL_WETNESS_DRY, "dry"],
         [ANAL_WETNESS_NORMAL, "normal"],
         [ANAL_WETNESS_MOIST, "moist"],
@@ -2333,7 +2332,7 @@ export class Appearance  {
         [ANAL_WETNESS_DROOLING, "drooling"],
         [ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
     ];
-    public static DEFAULT_ANAL_LOOSENESS_SCALES: any[] = [
+    export let DEFAULT_ANAL_LOOSENESS_SCALES: any[] = [
         [ANAL_LOOSENESS_VIRGIN, "virgin"],
         [ANAL_LOOSENESS_TIGHT, "tight"],
         [ANAL_LOOSENESS_NORMAL, "normal"],
@@ -2341,7 +2340,7 @@ export class Appearance  {
         [ANAL_LOOSENESS_STRETCHED, "stretched"],
         [ANAL_LOOSENESS_GAPING, "gaping"]
     ];
-    public static DEFAULT_HIP_RATING_SCALES: any[] = [
+    export let DEFAULT_HIP_RATING_SCALES: any[] = [
         [HIP_RATING_BOYISH, "boyish"],
         [HIP_RATING_SLENDER, "slender"],
         [HIP_RATING_AVERAGE, "average"],
@@ -2350,7 +2349,7 @@ export class Appearance  {
         [HIP_RATING_FERTILE, "fertile"],
         [HIP_RATING_INHUMANLY_WIDE, "inhumanly wide"]
     ];
-    public static DEFAULT_BUTT_RATING_SCALES: any[] = [
+    export let DEFAULT_BUTT_RATING_SCALES: any[] = [
         [BUTT_RATING_BUTTLESS, "buttless"],
         [BUTT_RATING_TIGHT, "tight"],
         [BUTT_RATING_AVERAGE, "average"],
@@ -2372,7 +2371,7 @@ export class Appearance  {
      *      value = 10  ->   "big"
      *      value > 10  ->   "more than big"
      */
-    public static describeByScale(value: number, scale: any[], lessThan: string = "less than", moreThan: string = "more than"): string {
+    export function describeByScale(value: number, scale: any[], lessThan: string = "less than", moreThan: string = "more than"): string {
         if (scale.length == 0) return "undescribeale";
         if (scale.length == 1) return "about " + scale[0][1];
         if (value < scale[0][0]) return lessThan + " " + scale[0][1];
@@ -2390,7 +2389,7 @@ export class Appearance  {
      * numberOfThings(2,"tail") = "2 tails"
      * numberOfThings(3,"hoof","hooves") = "3 hooves"
      */
-    public static numberOfThings(n: number, name: string, pluralForm: string = null): string {
+    export function numberOfThings(n: number, name: string, pluralForm: string = null): string {
         pluralForm = pluralForm || (name + "s");
         if (n == 0) return "no " + pluralForm;
         if (n == 1) return "one " + name;
@@ -2402,7 +2401,7 @@ export class Appearance  {
      * 5.5 -> 5.5"
      * Positive only!
      */
-    public static feetsAndInches(n: number): string {
+    export function feetsAndInches(n: number): string {
         const feet: number = Math.floor(n / 12);
         const inches: number = n - feet * 12;
         if (feet > 0) return feet + "'" + inches + "\"";
@@ -2412,12 +2411,12 @@ export class Appearance  {
     /**
      * 13 -> 13" (2'1")
      */
-    public static inchesAndFeetsAndInches(n: number): string {
+    export function inchesAndFeetsAndInches(n: number): string {
         if (n < 12) return n + "\"";
         return n + "\" (" + feetsAndInches(n) + ")";
     }
 
-    public static allBreastsDescript(creature: Creature): string {
+    export function allBreastsDescript(creature: Creature): string {
         let storage: string = "";
         if (creature.breastRows.length == 0) return "unremarkable chest muscles ";
         if (creature.breastRows.length == 2) {
@@ -2441,7 +2440,7 @@ export class Appearance  {
 
     }
 
-    public static tailDescript(i_creature: Creature): string {
+    export function tailDescript(i_creature: Creature): string {
         if (i_creature.tailType == TAIL_TYPE_NONE) {
             trace("WARNING: Creature has no tails to describe.");
             return "<b>!Creature has no tails to describe!</b>";
@@ -2470,7 +2469,7 @@ export class Appearance  {
         return descript;
     }
 
-    public static oneTailDescript(i_creature: Creature): string {
+    export function oneTailDescript(i_creature: Creature): string {
         if (i_creature.tailType == TAIL_TYPE_NONE) {
             trace("WARNING: Creature has no tails to describe.");
             return "<b>!Creature has no tails to describe!</b>";
@@ -2493,7 +2492,7 @@ export class Appearance  {
         return descript;
     }
 
-    public static biggestBreastSizeDescript(creature: Creature): string {
+    export function biggestBreastSizeDescript(creature: Creature): string {
         let temp14: number = Math.random() * 3;
         let descript: string = "";
         const temp142: number = creature.breasts.biggestTitRow();
@@ -2544,7 +2543,7 @@ export class Appearance  {
         return descript;
     }
 
-    public static breastSize(val: number): string {
+    export function breastSize(val: number): string {
         let descript: string = "";
         // Catch all for dudes.
         if (val < 1) return "manly ";
@@ -2587,12 +2586,12 @@ export class Appearance  {
             }
     */
 
-    public static assholeOrPussy(creature: Creature): string {
+    export function assholeOrPussy(creature: Creature): string {
         if (creature.vaginas.length > 0) return vaginaDescript(creature, 0);
         return assholeDescript(creature);
     }
 
-    public static multiCockDescriptLight(creature: Creature): string {
+    export function multiCockDescriptLight(creature: Creature): string {
         if (creature.cocks.length < 1) {
 
             Logger.error("");
@@ -2720,7 +2719,7 @@ export class Appearance  {
         return descript;
     }
 
-    public static multiCockDescript(creature: Creature): string {
+    export function multiCockDescript(creature: Creature): string {
         if (creature.cocks.length < 1) {
             Logger.error("");
             return "<B>Error: multiCockDescript() called with no penises present.</B>";
@@ -2851,4 +2850,3 @@ export class Appearance  {
         }
         return descript;
     }
-}

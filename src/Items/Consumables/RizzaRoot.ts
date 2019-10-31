@@ -28,7 +28,7 @@ export class RizzaRoot extends SimpleConsumable {
         if ((changes < changeLimit) && (player.earType != 4) && (rand(4) == 0)) {
             player.earType = 4;
             changes++;
-            outputText("\n\nA weird tingling runs through your scalp as your " + player.hairDescription(player) + " shifts slightly.  You reach up and your hand bumps against <b>your new pointed elfin ears</b>.  You bet they look cute!");
+            outputText("\n\nA weird tingling runs through your scalp as your " + hairDescription(player) + " shifts slightly.  You reach up and your hand bumps against <b>your new pointed elfin ears</b>.  You bet they look cute!");
         }
         if ((changes < changeLimit) && (player.tallness < 108)) {
             player.tallness += changeLimit - changes + rand(2); // Add remaining changes as additional height

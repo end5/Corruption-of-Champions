@@ -60,7 +60,7 @@ export class GooGirl extends Monster {
                 outputText("delivers a painful slap across your cheek.  You gasp when the light stinging becomes a searing burn that seems to get worse as time goes on!", false);
                 if (player.effects.findByType(StatusAffects.AcidSlap) < 0) player.effects.create(StatusAffects.AcidSlap, 0, 0, 0, 0);
             }
-            else outputText(", painfully smacking her gooey limbs against your head.  You shake your " + player.hairDescription(player) + ", clearing your head of the dazing slap.", false);
+            else outputText(", painfully smacking her gooey limbs against your head.  You shake your " + hairDescription(player) + ", clearing your head of the dazing slap.", false);
             outputText(" (" + damage + ")", false);
         }
         if (damage > 0) {

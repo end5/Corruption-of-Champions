@@ -245,7 +245,7 @@ export class Doppleganger extends Monster {
 
         str += mf(player, "His", "Her") + " face is " + faceDesc(player) + ".";
 
-        str += " " + mf(player, "His", "Her") + " " + player.hairDescription(player) + " is parted by";
+        str += " " + mf(player, "His", "Her") + " " + hairDescription(player) + " is parted by";
 
         switch (player.earType) {
             case EARS_HORSE:

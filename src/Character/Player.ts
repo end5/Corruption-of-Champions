@@ -552,10 +552,6 @@ export class Player extends Character {
             .length;
     }
 
-    public hairDescription(player): string {
-        return Appearance.hairDescription(this);
-    }
-
     public shrinkTits(ignore_hyper_happy: boolean = false): void {
         if (flags[kFLAGS.HYPER_HAPPY] && !ignore_hyper_happy) {
             return;
