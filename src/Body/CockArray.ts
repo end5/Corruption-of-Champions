@@ -1,6 +1,6 @@
 export class CockArray extends Array {
     public constructor(
-        private owner: Creature
+        private owner: Character
     ) { super(); }
 
     public cockArea(i_cockIndex: number): number {

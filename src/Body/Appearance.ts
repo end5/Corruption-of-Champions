@@ -12,14 +12,14 @@ export function inverseMap(x: Record<string, any>): Record<string, any> {
     return result;
 }
 
-export function hairOrFur(i_creature: Creature): string {
+export function hairOrFur(i_creature: Character): string {
     if (i_creature.skinType == 1)
         return "fur";
     else
         return "hair";
 }
 
-export function hairDescription(i_creature: Creature): string {
+export function hairDescription(i_creature: Character): string {
     let description: string = "";
     let options: any[];
     //
@@ -101,7 +101,7 @@ export function tongueDescription(i_character: Character): string {
     else return "tongue";
 }
 
-export function nippleDescription(i_creature: Creature, i_rowNum: number): string {
+export function nippleDescription(i_creature: Character, i_rowNum: number): string {
     // DEBUG SHIT!
     if (i_rowNum > (i_creature.breastRows.length - 1)) {
         Logger.error("<B>Error: Invalid breastRows (" + i_rowNum + ") passed to nippleDescription()</b>");
@@ -455,7 +455,7 @@ export function hipDescription(i_character: Character): string {
         }
 */
 
-export function cockDescript(creature: Creature, cockIndex: number = 0): string {
+export function cockDescript(creature: Character, cockIndex: number = 0): string {
     if (creature.cocks.length == 0) return "<b>ERROR: CockDescript Called But No Cock Present</b>";
     let cockType: CockTypesEnum = CockTypesEnum.HUMAN;
     if (cockIndex != 99) { // CockIndex 99 forces a human cock description
@@ -848,7 +848,7 @@ export function cockAdjective(cockType: CockTypesEnum, length: number, girth: nu
 */
 
 // Cock adjectives for single cock
-function cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockType: CockTypesEnum, i_creature: Creature): string {
+function cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockType: CockTypesEnum, i_creature: Character): string {
     let description: string = "";
     let rando: number = 0;
     let descripts: number = 0;
@@ -1158,7 +1158,7 @@ public static function cockMultiLDescriptionShort(i_creature:Creature):String
  * @param    i_withArticle    Show description with article in front
  * @return    Full description of balls
  */
-export function ballsDescription(i_forcedSize: boolean, i_plural: boolean, i_creature: Creature, i_withArticle: boolean = false): string {
+export function ballsDescription(i_forcedSize: boolean, i_plural: boolean, i_creature: Character, i_withArticle: boolean = false): string {
     if (i_creature.balls == 0) return "prostate";
 
     const haveDescription: boolean = false;
@@ -1319,7 +1319,7 @@ export function ballsDescription(i_forcedSize: boolean, i_plural: boolean, i_cre
 }
 
 // Returns random description of scrotum
-export function sackDescript(i_creature: Creature): string {
+export function sackDescript(i_creature: Character): string {
     if (i_creature.balls == 0) return "prostate";
 
     let options: any[];
@@ -1345,7 +1345,7 @@ export function sackDescript(i_creature: Creature): string {
         }
 */
 
-export function vaginaDescript(i_creature: Creature, i_vaginaIndex: number = 0): string {
+export function vaginaDescript(i_creature: Character, i_vaginaIndex: number = 0): string {
     if (i_vaginaIndex > (i_creature.vaginas.length - 1)) {
         Logger.error("<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>");
         return "<B>Error: Invalid vagina number (" + i_vaginaIndex + ") passed to vaginaDescript()</b>";
@@ -1442,7 +1442,7 @@ export function vaginaDescript(i_creature: Creature, i_vaginaIndex: number = 0):
     return description;
 }
 
-export function clitDescription(i_creature: Creature): string {
+export function clitDescription(i_creature: Character): string {
     let description: string = "";
     let options: any[];
     let haveDescription: boolean = false;
@@ -1853,7 +1853,7 @@ export function buttDescription(i_character: Character): string {
  * @param    creature
  * @return Short description of a butt.
  */
-export function buttDescriptionShort(i_creature: Creature): string {
+export function buttDescriptionShort(i_creature: Character): string {
     let description: string = "";
     let options: any[];
     if (i_creature.buttRating <= 1) {
@@ -1915,7 +1915,7 @@ export function buttDescriptionShort(i_creature: Creature): string {
     return description;
 }
 
-export function assholeDescript(i_creature: Creature): string {
+export function assholeDescript(i_creature: Character): string {
     let description: string = "";
 
     // The way this was setup didn't work. Trying to inline-define object key-values wasn't looking up the variable *VALUES* it was using the string representation
@@ -1960,7 +1960,7 @@ export function assholeDescript(i_creature: Creature): string {
     return description;
 }
 
-export function wingsDescript(i_creature: Creature): string {
+export function wingsDescript(i_creature: Character): string {
     return DEFAULT_WING_NAMES[i_creature.wingType] + " wings";
 }
 
@@ -2416,7 +2416,7 @@ export function inchesAndFeetsAndInches(n: number): string {
     return n + "\" (" + feetsAndInches(n) + ")";
 }
 
-export function allBreastsDescript(creature: Creature): string {
+export function allBreastsDescript(creature: Character): string {
     let storage: string = "";
     if (creature.breastRows.length == 0) return "unremarkable chest muscles ";
     if (creature.breastRows.length == 2) {
@@ -2440,9 +2440,9 @@ export function allBreastsDescript(creature: Creature): string {
 
 }
 
-export function tailDescript(i_creature: Creature): string {
+export function tailDescript(i_creature: Character): string {
     if (i_creature.tailType == TAIL_TYPE_NONE) {
-        trace("WARNING: Creature has no tails to describe.");
+        trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 
@@ -2469,9 +2469,9 @@ export function tailDescript(i_creature: Creature): string {
     return descript;
 }
 
-export function oneTailDescript(i_creature: Creature): string {
+export function oneTailDescript(i_creature: Character): string {
     if (i_creature.tailType == TAIL_TYPE_NONE) {
-        trace("WARNING: Creature has no tails to describe.");
+        trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 
@@ -2492,7 +2492,7 @@ export function oneTailDescript(i_creature: Creature): string {
     return descript;
 }
 
-export function biggestBreastSizeDescript(creature: Creature): string {
+export function biggestBreastSizeDescript(creature: Character): string {
     let temp14: number = Math.random() * 3;
     let descript: string = "";
     const temp142: number = creature.breasts.biggestTitRow();
@@ -2586,12 +2586,12 @@ export function breastSize(val: number): string {
         }
 */
 
-export function assholeOrPussy(creature: Creature): string {
+export function assholeOrPussy(creature: Character): string {
     if (creature.vaginas.length > 0) return vaginaDescript(creature, 0);
     return assholeDescript(creature);
 }
 
-export function multiCockDescriptLight(creature: Creature): string {
+export function multiCockDescriptLight(creature: Character): string {
     if (creature.cocks.length < 1) {
 
         Logger.error("");
@@ -2719,7 +2719,7 @@ export function multiCockDescriptLight(creature: Creature): string {
     return descript;
 }
 
-export function multiCockDescript(creature: Creature): string {
+export function multiCockDescript(creature: Character): string {
     if (creature.cocks.length < 1) {
         Logger.error("");
         return "<B>Error: multiCockDescript() called with no penises present.</B>";

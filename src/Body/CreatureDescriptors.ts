@@ -1,4 +1,4 @@
-export function cockAdjective(creature: Creature, index: number = -1): string {
+export function cockAdjective(creature: Character, index: number = -1): string {
     if (index < 0) index = creature.cocks.biggestCockIndex();
     const isPierced: boolean = (creature.cocks.length == 1) && (creature.cocks[index].isPierced); // Only describe as pierced or sock covered if the creature has just one cock
     const hasSock: boolean = (creature.cocks.length == 1) && (creature.cocks[index].sock != "");
@@ -6,7 +6,7 @@ export function cockAdjective(creature: Creature, index: number = -1): string {
     return Appearance.cockAdjective(creature.cocks[index].cockType, creature.cocks[index].cockLength, creature.cocks[index].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 }
 
-export function genderText(creature: Creature, male: string = "man", female: string = "woman", futa: string = "herm", eunuch: string = "eunuch"): string {
+export function genderText(creature: Character, male: string = "man", female: string = "woman", futa: string = "herm", eunuch: string = "eunuch"): string {
     if (creature.vaginas.length > 0) {
         if (creature.cocks.length > 0) return futa;
         return female;
@@ -17,7 +17,7 @@ export function genderText(creature: Creature, male: string = "man", female: str
     return eunuch;
 }
 
-export function manWoman(creature: Creature, caps: boolean = false): string {
+export function manWoman(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -49,7 +49,7 @@ export function manWoman(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function guyGirl(creature: Creature, caps: boolean = false): string {
+export function guyGirl(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -87,14 +87,14 @@ export function guyGirl(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function mfn(creature: Creature, male: string, female: string, neuter: string): string {
+export function mfn(creature: Character, male: string, female: string, neuter: string): string {
     if (creature.gender == 0)
         return neuter;
     else
         return mf(creature, male, female);
 }
 
-export function mf(creature: Creature, male: string, female: string): string {
+export function mf(creature: Character, male: string, female: string): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0)
@@ -114,7 +114,7 @@ export function mf(creature: Creature, male: string, female: string): string {
     }
 }
 
-export function boyGirl(creature: Creature, caps: boolean = false): string {
+export function boyGirl(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -152,7 +152,7 @@ export function boyGirl(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function heShe(creature: Creature, caps: boolean = false): string {
+export function heShe(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -190,7 +190,7 @@ export function heShe(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function himHer(creature: Creature, caps: boolean = false): string {
+export function himHer(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -228,7 +228,7 @@ export function himHer(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function maleFemale(creature: Creature, caps: boolean = false): string {
+export function maleFemale(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -266,7 +266,7 @@ export function maleFemale(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function hisHer(creature: Creature, caps: boolean = false): string {
+export function hisHer(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         if (creature.vaginas.length > 0) {
@@ -305,7 +305,7 @@ export function hisHer(creature: Creature, caps: boolean = false): string {
 }
 
 // sir/madam
-export function sirMadam(creature: Creature, caps: boolean = false): string {
+export function sirMadam(creature: Character, caps: boolean = false): string {
     // Dicks?
     if (creature.cocks.length > 0) {
         // herm
@@ -361,7 +361,7 @@ export function sirMadam(creature: Creature, caps: boolean = false): string {
     }
 }
 
-export function legs(creature: Creature): string {
+export function legs(creature: Character): string {
     let select: number = 0;
     // lowerBody:
     // 0 - normal
@@ -428,7 +428,7 @@ export function legs(creature: Creature): string {
     return "legs";
 }
 
-export function skinFurScales(creature: Creature): string {
+export function skinFurScales(creature: Character): string {
     let skinzilla: string = "";
     // Adjectives first!
     if (skinAdj != "")
@@ -443,7 +443,7 @@ export function skinFurScales(creature: Creature): string {
     return skinzilla;
 }
 
-export function leg(creature: Creature): string {
+export function leg(creature: Character): string {
     let select: number = 0;
     // lowerBody:
     // 0 - normal
@@ -509,7 +509,7 @@ export function leg(creature: Creature): string {
     return "leg";
 }
 
-export function feet(creature: Creature): string {
+export function feet(creature: Character): string {
     let select: number = 0;
     // lowerBody:
     // 0 - normal
@@ -584,7 +584,7 @@ export function feet(creature: Creature): string {
     return "feet";
 }
 
-export function foot(creature: Creature): string {
+export function foot(creature: Character): string {
     let select: number = 0;
     // lowerBody:
     // 0 - normal
@@ -654,7 +654,7 @@ export function foot(creature: Creature): string {
     return "foot";
 }
 
-export function breastCup(creature: Creature, rowNum: number): string {
+export function breastCup(creature: Character, rowNum: number): string {
     return Appearance.breastCup(creature.breastRows[rowNum].breastRating);
     // Should change this to make use of Appearance			return BreastStore.cupSize(breastRows[rowNum].breastRating);
     /*
@@ -881,23 +881,23 @@ export function breastCup(creature: Creature, rowNum: number): string {
 }
 
 // Simplified these cock descriptors and brought them into the creature class
-export function sMultiCockDesc(creature: Creature): string {
+export function sMultiCockDesc(creature: Character): string {
     return (creature.cocks.length > 1 ? "one of your " : "your ") + cockMultiLDescriptionShort(creature);
 }
 
-export function SMultiCockDesc(creature: Creature): string {
+export function SMultiCockDesc(creature: Character): string {
     return (creature.cocks.length > 1 ? "One of your " : "Your ") + cockMultiLDescriptionShort(creature);
 }
 
-export function oMultiCockDesc(creature: Creature): string {
+export function oMultiCockDesc(creature: Character): string {
     return (creature.cocks.length > 1 ? "each of your " : "your ") + cockMultiLDescriptionShort(creature);
 }
 
-export function OMultiCockDesc(creature: Creature): string {
+export function OMultiCockDesc(creature: Character): string {
     return (creature.cocks.length > 1 ? "Each of your " : "Your ") + cockMultiLDescriptionShort(creature);
 }
 
-function cockMultiLDescriptionShort(creature: Creature): string {
+function cockMultiLDescriptionShort(creature: Character): string {
     if (creature.cocks.length < 1) {
         Logger.error("<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>");
         return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
@@ -925,23 +925,23 @@ function cockMultiLDescriptionShort(creature: Creature): string {
     return Appearance.cockNoun(CockTypesEnum.HUMAN) + "s";
 }
 
-export function sheathDescription(creature: Creature): string {
+export function sheathDescription(creature: Character): string {
     if (creature.cocks.hasSheath()) return "sheath";
     return "base";
 }
 
-export function chestDesc(creature: Creature): string {
+export function chestDesc(creature: Character): string {
     if (creature.breasts.biggestTitSize() < 1) return "chest";
     return Appearance.biggestBreastSizeDescript(creature);
     // 			return Appearance.chestDesc(this);
 }
 
-export function allChestDesc(creature: Creature): string {
+export function allChestDesc(creature: Character): string {
     if (creature.breasts.biggestTitSize() < 1) return "chest";
     return allBreastsDescript(creature);
 }
 
-export function cockHead(creature: Creature, cockNum: number = 0): string {
+export function cockHead(creature: Character, cockNum: number = 0): string {
     if (cockNum < 0 || cockNum > creature.cocks.length - 1) {
         Logger.error("");
         return "ERROR";
@@ -985,7 +985,7 @@ export function cockHead(creature: Creature, cockNum: number = 0): string {
 }
 
 // Short cock description. Describes length or girth. Supports multiple cocks.
-export function cockDescriptShort(creature: Creature, i_cockIndex: number = 0): string {
+export function cockDescriptShort(creature: Character, i_cockIndex: number = 0): string {
     // catch calls where we're outside of combat, and eCockDescript could be called.
     if (creature.cocks.length == 0)
         return "<B>ERROR. INVALID CREATURE SPECIFIED to cockDescriptShort</B>";
@@ -1025,11 +1025,11 @@ export function cockDescriptShort(creature: Creature, i_cockIndex: number = 0): 
     return description;
 }
 
-export function ballsDescriptLight(creature: Creature, forcedSize: boolean = true): string {
+export function ballsDescriptLight(creature: Character, forcedSize: boolean = true): string {
     return Appearance.ballsDescription(forcedSize, true, creature);
 }
 
-export function breastDescript(creature: Creature, rowNum: number): string {
+export function breastDescript(creature: Character, rowNum: number): string {
     // ERROR PREVENTION
     if (creature.breastRows.length - 1 < rowNum) {
         Logger.error("");
@@ -1042,25 +1042,25 @@ export function breastDescript(creature: Creature, rowNum: number): string {
     return BreastStore.breastDescript(creature.breastRows[rowNum].breastRating, creature.breastRows[rowNum].lactationMultiplier);
 }
 
-export function ballDescript(creature: Creature): string {
+export function ballDescript(creature: Character): string {
     return Appearance.ballsDescription(false, false, creature);
 }
 
-export function ballsDescript(creature: Creature): string {
+export function ballsDescript(creature: Character): string {
     return Appearance.ballsDescription(false, true, creature, true);
 }
 
-export function simpleBallsDescript(creature: Creature): string {
+export function simpleBallsDescript(creature: Character): string {
     return Appearance.ballsDescription(false, true, creature);
 }
 
-export function cockClit(creature: Creature, number: number = 0): string {
+export function cockClit(creature: Character, number: number = 0): string {
     if (creature.cocks.length > 0 && number >= 0 && number < creature.cocks.length) return cockDescript(creature, number);
     else return clitDescription(creature);
 }
 
 // Allvagina descript
-export function allVaginaDescript(creature: Creature): string {
+export function allVaginaDescript(creature: Character): string {
     if (creature.vaginas.length == 1) return vaginaDescript(creature, rand(creature.vaginas.length - 1));
     if (creature.vaginas.length > 1) return (vaginaDescript(creature, rand(creature.vaginas.length - 1)) + "s");
 
