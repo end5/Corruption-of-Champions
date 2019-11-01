@@ -5,13 +5,13 @@ export class Creature {
     // "a" refers to how the article "a" should appear in text.
     private _short: string = "You";
     private _a: string = "a ";
-    public get short(): string { return _short; }
-    public set short(value: string): void { _short = value; }
-    public get a(): string { return _a; }
-    public set a(value: string): void { _a = value; }
+    public get short(): string { return this._short; }
+    public set short(value: string) { this._short = value; }
+    public get a(): string { return this._a; }
+    public set a(value: string) { this._a = value; }
     public get capitalA(): string {
-        if (_a.length == 0) return "";
-        return _a.charAt(0).toUpperCase() + _a.substr(1);
+        if (this._a.length == 0) return "";
+        return this._a.charAt(0).toUpperCase() + this._a.substr(1);
     }
 
     // Weapon
@@ -20,29 +20,29 @@ export class Creature {
     private _weaponAttack: number = 0;
     private _weaponPerk: string = "";
     private _weaponValue: number = 0;
-    public get weaponName(): string { return _weaponName; }
-    public get weaponVerb(): string { return _weaponVerb; }
-    public get weaponAttack(): number { return _weaponAttack; }
-    public get weaponPerk(): string { return _weaponPerk; }
-    public get weaponValue(): number { return _weaponValue; }
-    public set weaponName(value: string): void { _weaponName = value; }
-    public set weaponVerb(value: string): void { _weaponVerb = value; }
-    public set weaponAttack(value: number): void { _weaponAttack = value; }
-    public set weaponPerk(value: string): void { _weaponPerk = value; }
-    public set weaponValue(value: number): void { _weaponValue = value; }
+    public get weaponName(): string { return this._weaponName; }
+    public get weaponVerb(): string { return this._weaponVerb; }
+    public get weaponAttack(): number { return this._weaponAttack; }
+    public get weaponPerk(): string { return this._weaponPerk; }
+    public get weaponValue(): number { return this._weaponValue; }
+    public set weaponName(value: string) { this._weaponName = value; }
+    public set weaponVerb(value: string) { this._weaponVerb = value; }
+    public set weaponAttack(value: number) { this._weaponAttack = value; }
+    public set weaponPerk(value: string) { this._weaponPerk = value; }
+    public set weaponValue(value: number) { this._weaponValue = value; }
     // Clothing/Armor
     private _armorName: string = "";
     private _armorDef: number = 0;
     private _armorPerk: string = "";
     private _armorValue: number = 0;
-    public get armorName(): string { return _armorName; }
-    public get armorDef(): number { return _armorDef; }
-    public get armorPerk(): string { return _armorPerk; }
-    public get armorValue(): number { return _armorValue; }
-    public set armorValue(value: number): void { _armorValue = value; }
-    public set armorName(value: string): void { _armorName = value; }
-    public set armorDef(value: number): void { _armorDef = value; }
-    public set armorPerk(value: string): void { _armorPerk = value; }
+    public get armorName(): string { return this._armorName; }
+    public get armorDef(): number { return this._armorDef; }
+    public get armorPerk(): string { return this._armorPerk; }
+    public get armorValue(): number { return this._armorValue; }
+    public set armorValue(value: number) { this._armorValue = value; }
+    public set armorName(value: string) { this._armorName = value; }
+    public set armorDef(value: number) { this._armorDef = value; }
+    public set armorPerk(value: string) { this._armorPerk = value; }
 
     // Primary stats
     public str: number = 0;
@@ -68,8 +68,8 @@ export class Creature {
     // Gender 1M, 2F, 3H
     public gender: number = GENDER_NONE;
     private _tallness: number = 0;
-    public get tallness(): number { return _tallness; }
-    public set tallness(value: number): void { _tallness = value; }
+    public get tallness(): number { return this._tallness; }
+    public set tallness(value: number) { this._tallness = value; }
 
     /*Hairtype
     0- normal
@@ -87,11 +87,11 @@ export class Creature {
     2 - scaley
     3 - goopey*/
     private _skinType: number = SKIN_TYPE_PLAIN;
-    public get skinType(): number { return _skinType; }
-    public set skinType(value: number): void { _skinType = value; }
+    public get skinType(): number { return this._skinType; }
+    public set skinType(value: number) { this._skinType = value; }
     private _skinTone: string = "albino";
-    public get skinTone(): string { return _skinTone; }
-    public set skinTone(value: string): void { _skinTone = value; }
+    public get skinTone(): string { return this._skinTone; }
+    public set skinTone(value: string) { this._skinTone = value; }
     public skinDesc: string = "skin";
     public skinAdj: string = "";
 
@@ -158,8 +158,8 @@ export class Creature {
     12 - sandtrap wings*/
     private _wingType: number = WING_TYPE_NONE;
     public wingDesc: string = "non-existant";
-    public get wingType(): number { return _wingType; }
-    public set wingType(value: number): void { _wingType = value; }
+    public get wingType(): number { return this._wingType; }
+    public set wingType(value: number) { this._wingType = value; }
 
     /* lowerBody:
     0 - normal
@@ -271,31 +271,31 @@ export class Creature {
     // MALE STUFF
     // public var cocks:Array;
     // TODO: Tuck away into Male genital class?
-    public cocks = new CockArray();
+    public readonly cocks = new CockArray(this);
     // balls
     public balls: number = 0;
     public cumMultiplier: number = 1;
     public ballSize: number = 0;
 
     private _hoursSinceCum: number = 0;
-    public get hoursSinceCum(): number { return _hoursSinceCum; }
-    public set hoursSinceCum(v: number): void {
+    public get hoursSinceCum(): number { return this._hoursSinceCum; }
+    public set hoursSinceCum(v: number) {
         /*if (v == 0)
         {
             trace("noop");
         }*/
-        _hoursSinceCum = v;
+        this._hoursSinceCum = v;
     }
 
     // FEMALE STUFF
     // TODO: Box into Female genital class?
-    public vaginas: any[];
+    public readonly vaginas = new VaginaArray();
     // Fertility is a % out of 100.
     public fertility: number = 10;
     public clitLength: number = .5;
     public nippleLength: number = .25;
-    public breastRows = new BreastRowArray();
-    public ass: AssClass = new AssClass();
+    public readonly breastRows = new BreastRowArray();
+    public readonly ass = new AssClass();
 
     public validate(): string {
         let error: string = "";
@@ -325,34 +325,34 @@ export class Creature {
         for (const cock of this.cocks) {
             error += cock.validate();
         }
-        for (const vagina of vaginas) {
+        for (const vagina of this.vaginas) {
             error += vagina.validate();
         }
-        for (const row of breastRows) {
+        for (const row of this.breastRows) {
             error += row.validate();
         }
-        error += ass.validate();
+        error += this.ass.validate();
         // 4. Inconsistent fields
         // 4.1. balls
-        if (balls > 0 && ballSize <= 0) {
-            error += "Balls are present but ballSize = " + ballSize + ". ";
+        if (this.balls > 0 && this.ballSize <= 0) {
+            error += "Balls are present but ballSize = " + this.ballSize + ". ";
         }
-        if (ballSize > 0 && balls <= 0) {
-            error += "No balls but ballSize = " + ballSize + ". ";
+        if (this.ballSize > 0 && this.balls <= 0) {
+            error += "No balls but ballSize = " + this.ballSize + ". ";
         }
         // 4.2. hair
-        if (hairLength <= 0) {
-            if (hairType != HAIR_NORMAL) error += "No hair but hairType = " + hairType + ". ";
+        if (this.hairLength <= 0) {
+            if (this.hairType != HAIR_NORMAL) error += "No hair but hairType = " + this.hairType + ". ";
         }
         // 4.3. tail
-        if (tailType == TAIL_TYPE_NONE) {
-            if (tailVenom != 0) error += "No tail but tailVenom = " + tailVenom + ". ";
+        if (this.tailType == TAIL_TYPE_NONE) {
+            if (this.tailVenom != 0) error += "No tail but tailVenom = " + this.tailVenom + ". ";
         }
         // 4.4. horns
-        if (hornType == HORNS_NONE) {
-            if (horns > 0) error += "horns > 0 but hornType = HORNS_NONE. ";
+        if (this.hornType == HORNS_NONE) {
+            if (this.horns > 0) error += "horns > 0 but hornType = HORNS_NONE. ";
         } else {
-            if (horns == 0) error += "Has horns but their number 'horns' = 0. ";
+            if (this.horns == 0) error += "Has horns but their number 'horns' = 0. ";
         }
         return error;
     }
@@ -370,7 +370,7 @@ export class Creature {
     public constructor() {
         // cocks = new Array();
         // The world isn't ready for typed Arrays just yet.
-        vaginas = [];
+        // this.vaginas = [];
         // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
         // keyItems = new Array();
     }
@@ -378,47 +378,47 @@ export class Creature {
     // Functions
     public orgasm(): void {
         dynStats("lus=", 0, "res", false);
-        hoursSinceCum = 0;
+        this.hoursSinceCum = 0;
 
         if (this.cocks.countCockSocks("gilded") > 0) {
 
             const randomCock: number = rand(this.cocks.length);
             const bonusGems: number = rand(this.cocks[randomCock].cockThickness) + this.cocks.countCockSocks("gilded"); // int so AS rounds to whole numbers
             outputText("\n\nFeeling some minor discomfort in your " + cockDescript(this, randomCock) + " you slip it out of your [armor] and examine it. <b>With a little exploratory rubbing and massaging, you manage to squeeze out " + bonusGems + " gems from its cum slit.</b>\n\n");
-            gems += bonusGems;
+            this.gems += bonusGems;
         }
     }
 
     public wetness(): number {
-        if (vaginas.length == 0)
+        if (this.vaginas.length == 0)
             return 0;
         else
-            return vaginas[0].vaginalWetness;
+            return this.vaginas[0].vaginalWetness;
     }
 
     public looseness(vag: boolean = true): number {
         if (vag) {
-            if (vaginas.length == 0)
+            if (this.vaginas.length == 0)
                 return 0;
             else
-                return vaginas[0].vaginalLooseness;
+                return this.vaginas[0].vaginalLooseness;
         }
         else {
-            return ass.analLooseness;
+            return this.ass.analLooseness;
         }
     }
 
     public vaginalCapacity(): number {
         // If the player has no vaginas
-        if (vaginas.length == 0)
+        if (this.vaginas.length == 0)
             return 0;
         let total: number;
         let bonus: number = 0;
         // Centaurs = +50 capacity
-        if (lowerBody == 4)
+        if (this.lowerBody == 4)
             bonus = 50;
         // Naga = +20 capacity
-        else if (lowerBody == 3)
+        else if (this.lowerBody == 3)
             bonus = 20;
         // Wet pussy provides 20 point boost
         if (this.perks.findByType(PerkLib.WetPussy) >= 0)
@@ -433,14 +433,14 @@ export class Creature {
             bonus += 25;
         if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) >= 0)
             bonus += 40;
-        total = (bonus + this.effects.getValue1Of(StatusAffects.BonusVCapacity) + 8 * vaginas[0].vaginalLooseness * vaginas[0].vaginalLooseness) * (1 + vaginas[0].vaginalWetness / 10);
+        total = (bonus + this.effects.getValue1Of(StatusAffects.BonusVCapacity) + 8 * this.vaginas[0].vaginalLooseness * this.vaginas[0].vaginalLooseness) * (1 + this.vaginas[0].vaginalWetness / 10);
         return total;
     }
 
     public analCapacity(): number {
         let bonus: number = 0;
         // Centaurs = +30 capacity
-        if (lowerBody == 4)
+        if (this.lowerBody == 4)
             bonus = 30;
         if (this.perks.findByType(PerkLib.HistorySlut) >= 0)
             bonus += 20;
@@ -448,11 +448,10 @@ export class Creature {
             bonus += 30;
         if (this.perks.findByType(PerkLib.OneTrackMind) >= 0)
             bonus += 10;
-        if (ass.analWetness > 0)
+        if (this.ass.analWetness > 0)
             bonus += 15;
-        return ((bonus + this.effects.getValue1Of(StatusAffects.BonusACapacity) + 6 * ass.analLooseness * ass.analLooseness) * (1 + ass.analWetness / 10));
+        return ((bonus + this.effects.getValue1Of(StatusAffects.BonusACapacity) + 6 * this.ass.analLooseness * this.ass.analLooseness) * (1 + this.ass.analWetness / 10));
     }
-
 
     // Hacky code till I can figure out how to move appearance code out.
     // TODO: Get rid of this
@@ -484,9 +483,9 @@ export class Creature {
         }
     }
     public boostLactation(todo: number): number {
-        if (breastRows.length == 0)
+        if (this.breastRows.length == 0)
             return 0;
-        let counter: number = breastRows.length;
+        let counter: number = this.breastRows.length;
         let index: number = 0;
         let changes: number = 0;
         let temp2: number = 0;
@@ -505,52 +504,52 @@ export class Creature {
         }
         if (todo > 0) {
             while (todo > 0) {
-                counter = breastRows.length;
+                counter = this.breastRows.length;
                 todo -= .1;
                 while (counter > 0) {
                     counter--;
-                    if (breastRows[index].lactationMultiplier > breastRows[counter].lactationMultiplier)
+                    if (this.breastRows[index].lactationMultiplier > this.breastRows[counter].lactationMultiplier)
                         index = counter;
                 }
                 temp2 = .1;
-                if (breastRows[index].lactationMultiplier > 1.5)
+                if (this.breastRows[index].lactationMultiplier > 1.5)
                     temp2 /= 2;
-                if (breastRows[index].lactationMultiplier > 2.5)
+                if (this.breastRows[index].lactationMultiplier > 2.5)
                     temp2 /= 2;
-                if (breastRows[index].lactationMultiplier > 3)
+                if (this.breastRows[index].lactationMultiplier > 3)
                     temp2 /= 2;
                 changes += temp2;
-                breastRows[index].lactationMultiplier += temp2;
+                this.breastRows[index].lactationMultiplier += temp2;
             }
         }
         else {
             while (todo < 0) {
-                counter = breastRows.length;
+                counter = this.breastRows.length;
                 index = 0;
                 if (todo > -.1) {
                     while (counter > 0) {
                         counter--;
-                        if (breastRows[index].lactationMultiplier < breastRows[counter].lactationMultiplier)
+                        if (this.breastRows[index].lactationMultiplier < this.breastRows[counter].lactationMultiplier)
                             index = counter;
                     }
                     // trace(this.breasts.biggestLactation());
-                    breastRows[index].lactationMultiplier += todo;
-                    if (breastRows[index].lactationMultiplier < 0)
-                        breastRows[index].lactationMultiplier = 0;
+                    this.breastRows[index].lactationMultiplier += todo;
+                    if (this.breastRows[index].lactationMultiplier < 0)
+                        this.breastRows[index].lactationMultiplier = 0;
                     todo = 0;
                 }
                 else {
                     todo += .1;
                     while (counter > 0) {
                         counter--;
-                        if (breastRows[index].lactationMultiplier < breastRows[counter].lactationMultiplier)
+                        if (this.breastRows[index].lactationMultiplier < this.breastRows[counter].lactationMultiplier)
                             index = counter;
                     }
                     temp2 = todo;
                     changes += temp2;
-                    breastRows[index].lactationMultiplier += temp2;
-                    if (breastRows[index].lactationMultiplier < 0)
-                        breastRows[index].lactationMultiplier = 0;
+                    this.breastRows[index].lactationMultiplier += temp2;
+                    if (this.breastRows[index].lactationMultiplier < 0)
+                        this.breastRows[index].lactationMultiplier = 0;
                 }
             }
         }
@@ -563,11 +562,11 @@ export class Creature {
         if (this.cocks.length <= 0)
             return 0;
         let percent: number = 0.01;
-        if (cumQ() >= 250)
+        if (this.cumQ() >= 250)
             percent += 0.01;
-        if (cumQ() >= 800)
+        if (this.cumQ() >= 800)
             percent += 0.01;
-        if (cumQ() >= 1600)
+        if (this.cumQ() >= 1600)
             percent += 0.02;
         if (this.perks.findByType(PerkLib.BroBody) >= 0)
             percent += 0.05;
@@ -602,14 +601,14 @@ export class Creature {
         // Other things that affect it:
         // lust - 50% = normal output.  0 = half output. 100 = +50% output.
         // trace("CUM ESTIMATE: " + int(1.25*2*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(no balls), " + int(ballSize*balls*cumMultiplier*2*(lust + 50)/10 * (hoursSinceCum+10)/24)/10 + "(withballs)");
-        let lustCoefficient: number = (lust + 50) / 10;
+        let lustCoefficient: number = (this.lust + 50) / 10;
         // Pilgrim's bounty maxxes lust coefficient
         if (this.perks.findByType(PerkLib.PilgrimsBounty) >= 0)
             lustCoefficient = 150 / 10;
-        if (balls == 0)
-            quantity = int(1.25 * 2 * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
+        if (this.balls == 0)
+            quantity = int(1.25 * 2 * this.cumMultiplier * 2 * lustCoefficient * (this.hoursSinceCum + 10) / 24) / 10;
         else
-            quantity = int(ballSize * balls * cumMultiplier * 2 * lustCoefficient * (hoursSinceCum + 10) / 24) / 10;
+            quantity = int(this.ballSize * this.balls * this.cumMultiplier * 2 * lustCoefficient * (this.hoursSinceCum + 10) / 24) / 10;
         if (this.perks.findByType(PerkLib.BroBody) >= 0)
             quantity *= 1.3;
         if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
@@ -650,93 +649,93 @@ export class Creature {
         // web also makes false!
         if (this.effects.findByType(StatusAffects.Web) >= 0)
             return false;
-        return _wingType == 2 || _wingType == 7 || _wingType == 9 || _wingType == 11 || _wingType == 12;
+        return this._wingType == 2 || this._wingType == 7 || this._wingType == 9 || this._wingType == 11 || this._wingType == 12;
 
     }
 
     public genderCheck(): void {
         if (this.cocks.length > 0 && this.vaginas.length > 0)
-            gender = GENDER_HERM;
+            this.gender = GENDER_HERM;
         else if (this.cocks.length > 0)
-            gender = GENDER_MALE;
+            this.gender = GENDER_MALE;
         else if (this.vaginas.length > 0)
-            gender = GENDER_FEMALE;
+            this.gender = GENDER_FEMALE;
         else
-            gender = GENDER_NONE;
+            this.gender = GENDER_NONE;
     }
 
     public buttChangeNoDisplay(cArea: number): boolean {
         let stretched: boolean = false;
         // cArea > capacity = autostreeeeetch half the time.
-        if (cArea >= analCapacity() && rand(2) == 0) {
-            if (ass.analLooseness >= 5) { }
-            else ass.analLooseness++;
+        if (cArea >= this.analCapacity() && rand(2) == 0) {
+            if (this.ass.analLooseness < 5)
+                this.ass.analLooseness++;
             stretched = true;
             // Reset butt stretchin recovery time
             if (this.effects.findByType(StatusAffects.ButtStretched) >= 0) this.effects.setValue(StatusAffects.ButtStretched, 1, 0);
         }
         // If within top 10% of capacity, 25% stretch
-        if (cArea < analCapacity() && cArea >= .9 * analCapacity() && rand(4) == 0) {
-            ass.analLooseness++;
+        if (cArea < this.analCapacity() && cArea >= .9 * this.analCapacity() && rand(4) == 0) {
+            this.ass.analLooseness++;
             stretched = true;
         }
         // if within 75th to 90th percentile, 10% stretch
-        if (cArea < .9 * analCapacity() && cArea >= .75 * analCapacity() && rand(10) == 0) {
-            ass.analLooseness++;
+        if (cArea < .9 * this.analCapacity() && cArea >= .75 * this.analCapacity() && rand(10) == 0) {
+            this.ass.analLooseness++;
             stretched = true;
         }
         // Anti-virgin
-        if (ass.analLooseness == 0) {
-            ass.analLooseness++;
+        if (this.ass.analLooseness == 0) {
+            this.ass.analLooseness++;
             stretched = true;
         }
         // Delay un-stretching
-        if (cArea >= .5 * analCapacity()) {
+        if (cArea >= .5 * this.analCapacity()) {
             // Butt Stretched used to determine how long since last enlargement
             if (this.effects.findByType(StatusAffects.ButtStretched) < 0) this.effects.create(StatusAffects.ButtStretched, 0, 0, 0, 0);
             // Reset the timer on it to 0 when restretched.
             else this.effects.setValue(StatusAffects.ButtStretched, 1, 0);
         }
         if (stretched) {
-            trace("BUTT STRETCHED TO " + (ass.analLooseness) + ".");
+            trace("BUTT STRETCHED TO " + (this.ass.analLooseness) + ".");
         }
         return stretched;
     }
 
     public cuntChangeNoDisplay(cArea: number): boolean {
-        if (vaginas.length == 0) return false;
+        if (this.vaginas.length == 0) return false;
         let stretched: boolean = false;
-        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
+        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || this.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
             // cArea > capacity = autostreeeeetch.
-            if (cArea >= vaginalCapacity()) {
-                if (vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_LEVEL_CLOWN_CAR) { }
-                else vaginas[0].vaginalLooseness++;
+            if (cArea >= this.vaginalCapacity()) {
+                if (this.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LEVEL_CLOWN_CAR)
+                    this.vaginas[0].vaginalLooseness++;
                 stretched = true;
             }
             // If within top 10% of capacity, 50% stretch
-            else if (cArea >= .9 * vaginalCapacity() && rand(2) == 0) {
-                vaginas[0].vaginalLooseness++;
+            else if (cArea >= .9 * this.vaginalCapacity() && rand(2) == 0) {
+                this.vaginas[0].vaginalLooseness++;
                 stretched = true;
             }
             // if within 75th to 90th percentile, 25% stretch
-            else if (cArea >= .75 * vaginalCapacity() && rand(4) == 0) {
-                vaginas[0].vaginalLooseness++;
+            else if (cArea >= .75 * this.vaginalCapacity() && rand(4) == 0) {
+                this.vaginas[0].vaginalLooseness++;
                 stretched = true;
             }
         }
         // If virgin
-        if (vaginas[0].virgin) {
-            vaginas[0].virgin = false;
+        if (this.vaginas[0].virgin) {
+            this.vaginas[0].virgin = false;
         }
         // Delay anti-stretching
-        if (cArea >= .5 * vaginalCapacity()) {
+        if (cArea >= .5 * this.vaginalCapacity()) {
             // Cunt Stretched used to determine how long since last enlargement
             if (this.effects.findByType(StatusAffects.CuntStretched) < 0) this.effects.create(StatusAffects.CuntStretched, 0, 0, 0, 0);
             // Reset the timer on it to 0 when restretched.
             else this.effects.setValue(StatusAffects.CuntStretched, 1, 0);
         }
         if (stretched) {
-            trace("CUNT STRETCHED TO " + (vaginas[0].vaginalLooseness) + ".");
+            trace("CUNT STRETCHED TO " + (this.vaginas[0].vaginalLooseness) + ".");
         }
         return stretched;
     }
@@ -751,7 +750,7 @@ export class Creature {
 
     public bonusFertility(): number {
         let counter: number = 0;
-        if (inHeat)
+        if (this.inHeat)
             counter += this.effects.getValue1Of(StatusAffects.Heat);
         if (this.perks.findByType(PerkLib.FertilityPlus) >= 0)
             counter += 15;
@@ -767,54 +766,54 @@ export class Creature {
     }
 
     public totalFertility(): number {
-        return (bonusFertility() + fertility);
+        return (this.bonusFertility() + this.fertility);
     }
 
     public isBiped(): boolean {
         // Naga/Centaur
-        if (lowerBody == LOWER_BODY_TYPE_NAGA || lowerBody == LOWER_BODY_TYPE_CENTAUR)
+        if (this.lowerBody == LOWER_BODY_TYPE_NAGA || this.lowerBody == LOWER_BODY_TYPE_CENTAUR)
             return false;
-        if (lowerBody == LOWER_BODY_TYPE_GOO || lowerBody == LOWER_BODY_TYPE_PONY)
+        if (this.lowerBody == LOWER_BODY_TYPE_GOO || this.lowerBody == LOWER_BODY_TYPE_PONY)
             return false;
         return true;
     }
 
     public isNaga(): boolean {
-        if (lowerBody == LOWER_BODY_TYPE_NAGA)
+        if (this.lowerBody == LOWER_BODY_TYPE_NAGA)
             return true;
         return false;
     }
 
     public isTaur(): boolean {
-        if (lowerBody == LOWER_BODY_TYPE_CENTAUR || lowerBody == LOWER_BODY_TYPE_PONY)
+        if (this.lowerBody == LOWER_BODY_TYPE_CENTAUR || this.lowerBody == LOWER_BODY_TYPE_PONY)
             return true;
         return false;
     }
 
     public isDrider(): boolean {
-        return (lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY);
+        return (this.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY);
     }
 
     public isGoo(): boolean {
-        if (lowerBody == LOWER_BODY_TYPE_GOO)
+        if (this.lowerBody == LOWER_BODY_TYPE_GOO)
             return true;
         return false;
     }
 
     public canOvipositSpider(): boolean {
-        if (eggs() >= 10 && this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && isDrider() && tailType == 5)
+        if (this.eggs() >= 10 && this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && this.isDrider() && this.tailType == 5)
             return true;
         return false;
     }
 
     public canOvipositBee(): boolean {
-        if (eggs() >= 10 && this.perks.findByType(PerkLib.BeeOvipositor) >= 0 && tailType == 6)
+        if (this.eggs() >= 10 && this.perks.findByType(PerkLib.BeeOvipositor) >= 0 && this.tailType == 6)
             return true;
         return false;
     }
 
     public canOviposit(): boolean {
-        if (canOvipositSpider() || canOvipositBee())
+        if (this.canOvipositSpider() || this.canOvipositBee())
             return true;
         return false;
     }
@@ -834,13 +833,13 @@ export class Creature {
         else {
             if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                 this.perks.addValue(PerkLib.SpiderOvipositor, 1, arg);
-                if (eggs() > 50)
+                if (this.eggs() > 50)
                     this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
                 return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
             }
             else {
                 this.perks.addValue(PerkLib.BeeOvipositor, 1, arg);
-                if (eggs() > 50)
+                if (this.eggs() > 50)
                     this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
                 return this.perks.getValue1Of(PerkLib.BeeOvipositor);
             }
@@ -850,9 +849,9 @@ export class Creature {
     public dumpEggs(): void {
         if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return;
-        setEggs(0);
+        this.setEggs(0);
         // Sets fertile eggs = regular eggs (which are 0)
-        fertilizeEggs();
+        this.fertilizeEggs();
     }
 
     public setEggs(arg: number = 0): number {
@@ -861,13 +860,13 @@ export class Creature {
         else {
             if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                 this.perks.setValue(PerkLib.SpiderOvipositor, 1, arg);
-                if (eggs() > 50)
+                if (this.eggs() > 50)
                     this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
                 return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
             }
             else {
                 this.perks.setValue(PerkLib.BeeOvipositor, 1, arg);
-                if (eggs() > 50)
+                if (this.eggs() > 50)
                     this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
                 return this.perks.getValue1Of(PerkLib.BeeOvipositor);
             }
@@ -887,11 +886,10 @@ export class Creature {
         if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
             return -1;
         else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
-            this.perks.setValue(PerkLib.SpiderOvipositor, 2, eggs());
+            this.perks.setValue(PerkLib.SpiderOvipositor, 2, this.eggs());
         else
-            this.perks.setValue(PerkLib.BeeOvipositor, 2, eggs());
-        return fertilizedEggs();
+            this.perks.setValue(PerkLib.BeeOvipositor, 2, this.eggs());
+        return this.fertilizedEggs();
     }
-
 
 }

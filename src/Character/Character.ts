@@ -10,7 +10,7 @@ export class Character extends Creature {
     // calculation into methods of ContentClasses, so rather than having walls of logic, we just call the method reference with a value, and get back the modified value.
     // It's still shitty, but it would possibly be an improvement.
     public get femininity(): number {
-        let fem: number = _femininity;
+        let fem: number = this._femininity;
         const statIndex: number = this.effects.findByType(StatusAffects.UmasMassage);
 
         if (statIndex >= 0) {
@@ -26,7 +26,7 @@ export class Character extends Creature {
         return fem;
     }
 
-    public set femininity(value: number): void {
+    public set femininity(value: number) {
         if (value > 100) {
             value = 100;
         }
@@ -34,7 +34,7 @@ export class Character extends Creature {
             value = 0;
         }
 
-        _femininity = value;
+        this._femininity = value;
     }
 
     // BEARDS! Not used anywhere right now but WHO WANTS A BEARD?
@@ -48,16 +48,16 @@ export class Character extends Creature {
     public tone: number = 0;
 
     private _pregnancyType: number = 0;
-    public get pregnancyType(): number { return _pregnancyType; }
+    public get pregnancyType(): number { return this._pregnancyType; }
 
     private _pregnancyIncubation: number = 0;
-    public get pregnancyIncubation(): number { return _pregnancyIncubation; }
+    public get pregnancyIncubation(): number { return this._pregnancyIncubation; }
 
     private _buttPregnancyType: number = 0;
-    public get buttPregnancyType(): number { return _buttPregnancyType; }
+    public get buttPregnancyType(): number { return this._buttPregnancyType; }
 
     private _buttPregnancyIncubation: number = 0;
-    public get buttPregnancyIncubation(): number { return _buttPregnancyIncubation; }
+    public get buttPregnancyIncubation(): number { return this._buttPregnancyIncubation; }
 
     // Key items
     public keyItems = new KeyItemArray();
@@ -67,11 +67,11 @@ export class Character extends Creature {
     // return total fertility
 
     public hasBeard(): boolean {
-        return beardLength > 0;
+        return this.beardLength > 0;
     }
 
     public hasMuzzle(): boolean {
-        if (faceType == 1 || faceType == 2 || faceType == 6 || faceType == 7 || faceType == 9 || faceType == 11 || faceType == 12)
+        if (this.faceType == 1 || this.faceType == 2 || this.faceType == 6 || this.faceType == 7 || this.faceType == 9 || this.faceType == 11 || this.faceType == 12)
             return true;
         return false;
     }
@@ -85,16 +85,16 @@ export class Character extends Creature {
         // 12 - rootail
         // 13 - foxtail
         // 14 - dagron tail
-        if (isNaga())
+        if (this.isNaga())
             return true;
-        if (tailType == 2 || tailType == 3 || tailType == 4 || tailType == 7 || tailType == 8 || tailType == 9 || tailType == 12 || tailType == 13 || tailType == 14)
+        if (this.tailType == 2 || this.tailType == 3 || this.tailType == 4 || this.tailType == 7 || this.tailType == 8 || this.tailType == 9 || this.tailType == 12 || this.tailType == 13 || this.tailType == 14)
             return true;
         return false;
     }
 
-    public isPregnant(): boolean { return _pregnancyType != 0; }
+    public isPregnant(): boolean { return this._pregnancyType != 0; }
 
-    public isButtPregnant(): boolean { return _buttPregnancyType != 0; }
+    public isButtPregnant(): boolean { return this._buttPregnancyType != 0; }
 
     // fertility must be >= random(0-beat)
     // If arg == 1 then override any contraceptives and guarantee fertilization
@@ -110,15 +110,15 @@ export class Character extends Creature {
         if (arg <= -1)
             bonus = -9000;
         // If unpregnant and fertility wins out:
-        if (pregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * beat) && this.vaginas.length > 0) {
-            knockUpForce(type, incubation);
+        if (this.pregnancyIncubation == 0 && this.totalFertility() + bonus > Math.floor(Math.random() * beat) && this.vaginas.length > 0) {
+            this.knockUpForce(type, incubation);
             trace("PC Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
         }
         // Chance for eggs fertilization - ovi elixir and imps excluded!
         if (type != PregnancyStore.PREGNANCY_IMP && type != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS && type != PregnancyStore.PREGNANCY_ANEMONE) {
             if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || this.perks.findByType(PerkLib.BeeOvipositor) >= 0) {
-                if (totalFertility() + bonus > Math.floor(Math.random() * beat)) {
-                    fertilizeEggs();
+                if (this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
+                    this.fertilizeEggs();
                 }
             }
         }
@@ -127,8 +127,8 @@ export class Character extends Creature {
     // The more complex knockUp function used by the player is defined above
     // The player doesn't need to be told of the last event triggered, so the code here is quite a bit simpler than that in PregnancyStore
     public knockUpForce(type: number = 0, incubation: number = 0): void {
-        _pregnancyType = type;
-        _pregnancyIncubation = (type == 0 ? 0 : incubation); // Won't allow incubation time without pregnancy type
+        this._pregnancyType = type;
+        this._pregnancyIncubation = (type == 0 ? 0 : incubation); // Won't allow incubation time without pregnancy type
     }
 
     // fertility must be >= random(0-beat)
@@ -143,24 +143,24 @@ export class Character extends Creature {
         if (arg <= -1)
             bonus = -9000;
         // If unpregnant and fertility wins out:
-        if (buttPregnancyIncubation == 0 && totalFertility() + bonus > Math.floor(Math.random() * beat)) {
-            buttKnockUpForce(type, incubation);
+        if (this.buttPregnancyIncubation == 0 && this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
+            this.buttKnockUpForce(type, incubation);
             trace("PC Butt Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
         }
     }
 
     // The more complex buttKnockUp function used by the player is defined in Character.as
     public buttKnockUpForce(type: number = 0, incubation: number = 0): void {
-        _buttPregnancyType = type;
-        _buttPregnancyIncubation = (type == 0 ? 0 : incubation); // Won't allow incubation time without pregnancy type
+        this._buttPregnancyType = type;
+        this._buttPregnancyIncubation = (type == 0 ? 0 : incubation); // Won't allow incubation time without pregnancy type
     }
 
     public pregnancyAdvance(): boolean {
-        if (_pregnancyIncubation > 0) _pregnancyIncubation--;
-        if (_pregnancyIncubation < 0) _pregnancyIncubation = 0;
-        if (_buttPregnancyIncubation > 0) _buttPregnancyIncubation--;
-        if (_buttPregnancyIncubation < 0) _buttPregnancyIncubation = 0;
-        return pregnancyUpdate();
+        if (this._pregnancyIncubation > 0) this._pregnancyIncubation--;
+        if (this._pregnancyIncubation < 0) this._pregnancyIncubation = 0;
+        if (this._buttPregnancyIncubation > 0) this._buttPregnancyIncubation--;
+        if (this._buttPregnancyIncubation < 0) this._buttPregnancyIncubation = 0;
+        return this.pregnancyUpdate();
     }
 
     public pregnancyUpdate(): boolean { return false; }
@@ -206,11 +206,11 @@ export class Character extends Creature {
 
     public maxHP(): number {
         let max: number = 0;
-        max += int(tou * 2 + 50);
+        max += int(this.tou * 2 + 50);
         if (this.perks.findByType(PerkLib.Tank) >= 0) max += 50;
-        if (this.perks.findByType(PerkLib.Tank2) >= 0) max += Math.round(tou);
+        if (this.perks.findByType(PerkLib.Tank2) >= 0) max += Math.round(this.tou);
         if (this.perks.findByType(PerkLib.ChiReflowDefense) >= 0) max += UmasShop.NEEDLEWORK_DEFENSE_EXTRA_HP;
-        if (level <= 20) max += level * 15;
+        if (this.level <= 20) max += this.level * 15;
         else max += 20 * 15;
         max = Math.round(max);
         if (max > 999) max = 999;
