@@ -7,46 +7,25 @@ export class Character {
 
     // Short refers to player name and monster name. BEST VARIABLE NAME EVA!
     // "a" refers to how the article "a" should appear in text.
-    private _short: string = "You";
-    private _a: string = "a ";
-    public get short(): string { return this._short; }
-    public set short(value: string) { this._short = value; }
-    public get a(): string { return this._a; }
-    public set a(value: string) { this._a = value; }
+    public short: string = "You";
+    public a: string = "a ";
     public get capitalA(): string {
-        if (this._a.length == 0) return "";
-        return this._a.charAt(0).toUpperCase() + this._a.substr(1);
+        if (this.a.length == 0) return "";
+        return this.a.charAt(0).toUpperCase() + this.a.substr(1);
     }
 
     // Weapon
-    private _weaponName: string = "";
-    private _weaponVerb: string = "";
-    private _weaponAttack: number = 0;
-    private _weaponPerk: string = "";
-    private _weaponValue: number = 0;
-    public get weaponName(): string { return this._weaponName; }
-    public get weaponVerb(): string { return this._weaponVerb; }
-    public get weaponAttack(): number { return this._weaponAttack; }
-    public get weaponPerk(): string { return this._weaponPerk; }
-    public get weaponValue(): number { return this._weaponValue; }
-    public set weaponName(value: string) { this._weaponName = value; }
-    public set weaponVerb(value: string) { this._weaponVerb = value; }
-    public set weaponAttack(value: number) { this._weaponAttack = value; }
-    public set weaponPerk(value: string) { this._weaponPerk = value; }
-    public set weaponValue(value: number) { this._weaponValue = value; }
+    public weaponName: string = "";
+    public weaponVerb: string = "";
+    public weaponAttack: number = 0;
+    public weaponPerk: string = "";
+    public weaponValue: number = 0;
+
     // Clothing/Armor
-    private _armorName: string = "";
-    private _armorDef: number = 0;
-    private _armorPerk: string = "";
-    private _armorValue: number = 0;
-    public get armorName(): string { return this._armorName; }
-    public get armorDef(): number { return this._armorDef; }
-    public get armorPerk(): string { return this._armorPerk; }
-    public get armorValue(): number { return this._armorValue; }
-    public set armorValue(value: number) { this._armorValue = value; }
-    public set armorName(value: string) { this._armorName = value; }
-    public set armorDef(value: number) { this._armorDef = value; }
-    public set armorPerk(value: string) { this._armorPerk = value; }
+    public armorName: string = "";
+    public armorDef: number = 0;
+    public armorPerk: string = "";
+    public armorValue: number = 0;
 
     // Primary stats
     public str: number = 0;
@@ -71,9 +50,7 @@ export class Character {
     // Appearance Variables
     // Gender 1M, 2F, 3H
     public gender: number = GENDER_NONE;
-    private _tallness: number = 0;
-    public get tallness(): number { return this._tallness; }
-    public set tallness(value: number) { this._tallness = value; }
+    public tallness: number = 0;
 
     /*Hairtype
     0- normal
@@ -90,12 +67,8 @@ export class Character {
     1 - furry
     2 - scaley
     3 - goopey*/
-    private _skinType: number = SKIN_TYPE_PLAIN;
-    public get skinType(): number { return this._skinType; }
-    public set skinType(value: number) { this._skinType = value; }
-    private _skinTone: string = "albino";
-    public get skinTone(): string { return this._skinTone; }
-    public set skinTone(value: string) { this._skinTone = value; }
+    public skinType: number = SKIN_TYPE_PLAIN;
+    public skinTone: string = "albino";
     public skinDesc: string = "skin";
     public skinAdj: string = "";
 
@@ -160,10 +133,8 @@ export class Character {
     10 - small dagron
     11 - trogdor wings
     12 - sandtrap wings*/
-    private _wingType: number = WING_TYPE_NONE;
+    public wingType: number = WING_TYPE_NONE;
     public wingDesc: string = "non-existant";
-    public get wingType(): number { return this._wingType; }
-    public set wingType(value: number) { this._wingType = value; }
 
     /* lowerBody:
     0 - normal
@@ -235,8 +206,6 @@ export class Character {
     20 - inconceivably large/big/huge etc*/
     public buttRating: number = BUTT_RATING_BUTTLESS;
 
-    // Piercings
-    // TODO: Pull this out into it's own class and enum.
     public nipplesPierced: number = 0;
     public nipplesPShort: string = "";
     public nipplesPLong: string = "";
@@ -256,44 +225,22 @@ export class Character {
     public nosePShort: string = "";
     public nosePLong: string = "";
 
-    // Head ornaments. Definitely need to convert away from hard coded types.
     public antennae: number = ANTENNAE_NONE;
-
-    // Eyetype
     public eyeType: number = EYES_HUMAN;
-
-    // TongueType
     public tongueType: number = TONUGE_HUMAN;
-
-    // ArmType
     public armType: number = ARM_TYPE_HUMAN;
-
-    // Gills
     public gills: boolean = false;
 
-    // Sexual Stuff
-    // MALE STUFF
-    // public var cocks:Array;
-    // TODO: Tuck away into Male genital class?
     public readonly cocks = new CockArray(this);
-    // balls
+
     public balls: number = 0;
     public cumMultiplier: number = 1;
     public ballSize: number = 0;
 
-    private _hoursSinceCum: number = 0;
-    public get hoursSinceCum(): number { return this._hoursSinceCum; }
-    public set hoursSinceCum(v: number) {
-        /*if (v == 0)
-        {
-            trace("noop");
-        }*/
-        this._hoursSinceCum = v;
-    }
+    public hoursSinceCum: number = 0;
 
-    // FEMALE STUFF
-    // TODO: Box into Female genital class?
     public readonly vaginas = new VaginaArray();
+
     // Fertility is a % out of 100.
     public fertility: number = 10;
     public clitLength: number = .5;
@@ -363,25 +310,10 @@ export class Character {
         return error;
     }
 
-    // Monsters have few perks, which I think should be a status effect for clarity's sake.
-    // TODO: Move perks into monster status effects.
     public perks = new PerkArray();
 
-    // Current status effects. This has got very muddy between perks and status effects. Will have to look into it.
-    // Someone call the grammar police!
-    // TODO: Move monster status effects into perks. Needs investigation though.
     public effects = new EffectArray();
 
-    // Constructor
-    // public constructor() {
-        // cocks = new Array();
-        // The world isn't ready for typed Arrays just yet.
-        // this.vaginas = [];
-        // vaginas: Vector.<Vagina> = new Vector.<Vagina>();
-        // keyItems = new Array();
-    // }
-
-    // Functions
     public orgasm(): void {
         dynStats("lus=", 0, "res", false);
         this.hoursSinceCum = 0;
@@ -457,18 +389,6 @@ export class Character {
         if (this.ass.analWetness > 0)
             bonus += 15;
         return ((bonus + this.effects.getValue1Of(StatusAffects.BonusACapacity) + 6 * this.ass.analLooseness * this.ass.analLooseness) * (1 + this.ass.analWetness / 10));
-    }
-
-    // Hacky code till I can figure out how to move appearance code out.
-    // TODO: Get rid of this
-    public dogScore(): number {
-        throw new Error("Not implemented. BAD");
-    }
-
-    // Hacky code till I can figure out how to move appearance code out.
-    // TODO: Get rid of this
-    public foxScore(): number {
-        throw new Error("Not implemented. BAD");
     }
 
     public milked(): void {
@@ -655,8 +575,7 @@ export class Character {
         // web also makes false!
         if (this.effects.findByType(StatusAffects.Web) >= 0)
             return false;
-        return this._wingType == 2 || this._wingType == 7 || this._wingType == 9 || this._wingType == 11 || this._wingType == 12;
-
+        return this.wingType == 2 || this.wingType == 7 || this.wingType == 9 || this.wingType == 11 || this.wingType == 12;
     }
 
     public genderCheck(): void {
@@ -968,27 +887,6 @@ export class Character {
 
     public pregnancyUpdate(): boolean { return false; }
 
-    // Grow
-
-    // BreastCup
-
-    /*OLD AND UNUSED
-       public function breastCupS(rowNum:Number):String {
-       if(breastRows[rowNum].breastRating < 1) return "tiny";
-       else if(breastRows[rowNum].breastRating < 2) return "A";
-       else if(breastRows[rowNum].breastRating < 3) return "B";
-       else if(breastRows[rowNum].breastRating < 4) return "C";
-       else if(breastRows[rowNum].breastRating < 5) return "D";
-       else if(breastRows[rowNum].breastRating < 6) return "DD";
-       else if(breastRows[rowNum].breastRating < 7) return "E";
-       else if(breastRows[rowNum].breastRating < 8) return "F";
-       else if(breastRows[rowNum].breastRating < 9) return "G";
-       else if(breastRows[rowNum].breastRating < 10) return "GG";
-       else if(breastRows[rowNum].breastRating < 11) return "H";
-       else if(breastRows[rowNum].breastRating < 12) return "HH";
-       else if(breastRows[rowNum].breastRating < 13) return "HHH";
-       return "massive custom-made";
-     }*/
     public viridianChange(): boolean {
         let count: number = this.cocks.length;
         if (count == 0)
