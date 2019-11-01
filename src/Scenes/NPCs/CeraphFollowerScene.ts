@@ -109,7 +109,7 @@ function ceraphSexMenu(): void {
     let nipFuck: () => void = null;
     let portalFuck: () => void = null;
     let eggs: () => void = null;
-    if (player.canOviposit()) eggs = layEggsInSlaveCeraph;
+    if (player.ovipositor.canOviposit()) eggs = layEggsInSlaveCeraph;
     if (player.cocks.length > 0 && player.lust >= 33) {
         outputText("You could fuck her pussy.  ", false);
         maleFuck = fuckFollowerCeraphsVagoo;
@@ -1687,7 +1687,7 @@ function layEggsInSlaveCeraph(): void {
     outputText("\n\nFinally, after a few minutes that feel like a blissful eternity, you feel empty.  You let your slave know that you are going to pull out, and that if she lets a single egg out of her stretched-out pussy, you will sew it shut for her.  Your spent ovipositor slides from her packed cunt, accompanied by a gush of lube.  While Ceraph's sex gapes lewdly at you, you are proud to see she manages to keep all your eggs inside her.  You pat the slut's sensitive cunny, sending her into gasping spasms.");
 
     outputText("\n\nHumming a happy tune to yourself as you walk around Ceraph's twitching form, you grab a handful of her hair and pull her up off the ground.  Her face is crusted with dirt and her sparkling, gem-like eyes stare senselessly at you.  You rub your ovipositor over her head, carefully wiping your mingled lubes off on her hair before retracting the organ back into its holding sleeve.  \"<i>That will be all,</i>\" you tell her, and she smiles dreamily at you.  You turn around to gather your things, and don't bother to look back.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 }

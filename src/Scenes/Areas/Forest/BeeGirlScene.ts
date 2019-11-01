@@ -1285,7 +1285,7 @@ export function rapeTheBeeGirl(): void {
     let herm: () => void = null;
     let gentleman: () => void = null;
     let eggs: () => void = null;
-    if (player.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) {
+    if (player.ovipositor.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) {
         eggs = layEggsInABeeSpiderLike;
         outputText("(You could dose her with venom and lay YOUR eggs in her.)\n");
     }
@@ -2016,12 +2016,12 @@ function layEggsInABeeSpiderLike(): void {
     outputText("  You shudder in ecstasy as you feel the first egg slide out of your abdomen, slowing to a halt just shy of her clenched ring.  More eggs file in behind it, piling up outside her rear entrance, and finally the muscular contractions of your shaft win over her exhausted sphincter, eggs rushing forward into her awaiting warmth.");
 
     outputText("\n\nThe bee's groans take on a decidedly orgasmic note as she shudders beneath you, arms and legs going slack against her bonds, while her stomach swells out with the burden of your ");
-    if (player.fertilizedEggs() == 0) outputText("unfertilized");
+    if (player.ovipositor.fertilizedEggs() == 0) outputText("unfertilized");
     else outputText("fertilized");
     outputText(" eggs.  By the time the last one shifts through your swollen pole, her bloated gut is nearly scraping the ground, leaving her panting and twitching with the weight of your eggs.");
 
     outputText("\n\nYou pull yourself free on unsteady legs, her gaping hole gushing emerald lube while her chitinous abdomen flops listlessly over her egg-filled ass.  You cut her free from your sticky webbing and gather up your [armor], shuffling back to camp as she collapses exhausted on her side, both hands wrapped around her tremendously swollen midsection.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

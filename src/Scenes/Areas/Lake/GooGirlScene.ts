@@ -281,7 +281,7 @@ export function beatUpGoo(): void {
         let valeria: () => void = Valeria.valeriaAndGooThreeStuff;
         if (player.armorName != "goo armor" || player.isButtPregnant() || player.isPregnant()) valeria = null;
         let eggs: () => void = null;
-        if (player.canOvipositBee()) eggs = layBeeEggsInGoo;
+        if (player.ovipositor.canOvipositBee()) eggs = layBeeEggsInGoo;
         if (player.cocks.length > 0) {
             if (player.cocks[player.cocks.smallestCockIndex()].cockLength < 24) {
                 sex1S = "DickSex";
@@ -507,7 +507,7 @@ function layBeeEggsInGoo(): void {
     outputText("\n\nThe sudden appearance of a bulge in your honey-belching member excites the goo and she brings up her hands to work your tube, helping the bulging surprise along.  The first egg finally escapes with a large burst of honey, startling the goo's core.  The core and the egg bounce against each other for a moment, but are suddenly joined by a second egg and another flood of golden nectar.  You look over your shoulder at your honey-dump goo lover and watch as her form begins to become stained throughout by your fluids.  Splotches of amber goo begin to replace her normal coloration and by the third egg, her entire body is colored gold.");
 
     outputText("\n\nThis continues on for quite some time with the honey googirl greedily sucking down everything it can from your ovipositor, stroking it and squeezing your abdomen to work out all of its sweet fluid and eggs.  When you finally decide enough is enough, you retract your black tube and rise back up to your [feet].  Turning to look at the goo, you see her idly rubbing at her distended honey-colored belly, imitating a pregnant mother before she slides back down the lakeshore; your numerous eggs bounce around inside her infused body.  She turns one last time to you and waves before sinking below the surface.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

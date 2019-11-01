@@ -1578,7 +1578,7 @@ export function displayStats(e: MouseEvent = null): void {
         bodyStats += "<b>Vaginal Capacity:</b> " + Math.round(player.vaginalCapacity()) + "\n" + "<b>Vaginal Looseness:</b> " + Math.round(player.looseness()) + "\n";
 
     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
-        bodyStats += "<b>Ovipositor Total Egg Count: " + player.eggs() + "\nOvipositor Fertilized Egg Count: " + player.fertilizedEggs() + "</b>\n";
+        bodyStats += "<b>Ovipositor Total Egg Count: " + player.ovipositor.eggs() + "\nOvipositor Fertilized Egg Count: " + player.ovipositor.fertilizedEggs() + "</b>\n";
 
     if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0) {
         if (player.effects.getValue1Of(StatusAffects.SlimeCraving) >= 18)

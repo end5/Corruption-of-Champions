@@ -818,9 +818,9 @@ export class Player extends Character {
                 min += 30;
         }
         // SPOIDAH BOOSTS
-        if (eggs() >= 20) {
+        if (ovipositor.eggs() >= 20) {
             min += 10;
-            if (eggs() >= 40) min += 10;
+            if (ovipositor.eggs() >= 40) min += 10;
         }
         if (min < 30 && armorName == "lusty maiden's armor") min = 30;
         return min;

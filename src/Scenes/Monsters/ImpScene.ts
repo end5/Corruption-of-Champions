@@ -18,7 +18,7 @@ export function impVictory(): void {
             outputText("  Sadly you realize your own needs have not been met.  Of course you could always rape the poor thing, but it might be more fun to force it to guzzle your breast-milk.\n\nWhat do you do?");
         else outputText("  You're not really turned on enough to rape it, but it might be fun to force it to guzzle your breast-milk.\n\nDo you breastfeed it?");
     }
-    else if (player.lust >= 33 || canBikiniTits || player.canOvipositBee()) {
+    else if (player.lust >= 33 || canBikiniTits || player.ovipositor.canOvipositBee()) {
         outputText("  Sadly you realize your own needs have not been met.  Of course you could always rape the poor thing...\n\nDo you rape him?");
     }
     else {
@@ -39,7 +39,7 @@ export function impVictory(): void {
             }
             else addButton(1, "Female Rape", rapeImpWithPussy);
         }
-        else if (maleRape == null && !player.breasts.hasFuckableNipples() && !canFeed && !canBikiniTits && !player.canOvipositBee()) {
+        else if (maleRape == null && !player.breasts.hasFuckableNipples() && !canFeed && !canBikiniTits && !player.ovipositor.canOvipositBee()) {
             cleanupAfterCombat(); // Only happens when there's no way to fuck the imp
             return;
         }
@@ -48,7 +48,7 @@ export function impVictory(): void {
     }
     if (canFeed) addButton(3, "Breastfeed", areImpsLactoseIntolerant);
     if (canBikiniTits) addButton(4, "B.Titfuck", (player.armor as LustyMaidensArmor).lustyMaidenPaizuri);
-    if (player.canOvipositBee()) addButton(8, "Oviposit", putBeeEggsInAnImpYouMonster);
+    if (player.ovipositor.canOvipositBee()) addButton(8, "Oviposit", putBeeEggsInAnImpYouMonster);
 }
 
 function rapeImpWithDick(): void {
@@ -1858,6 +1858,6 @@ function putBeeEggsInAnImpYouMonster(): void {
     outputText("\n\nYou blink then stand up.  You shake your head as you walk away, chalking the odd thoughts up to your egg-laying instincts.  Some of these mutations have some weird effects, after all...");
     player.orgasm();
     dynStats("sen", -1);
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     cleanupAfterCombat();
 }

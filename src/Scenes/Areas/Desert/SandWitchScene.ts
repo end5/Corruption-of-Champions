@@ -610,7 +610,7 @@ export function beatSandwitch(): void {
     if (ShouldraFollower.followerShouldra() && player.gender > 0) shouldra = ShouldraFollower.sandWitchGetsGhostly;
     // doYesNo(sandwitchRaped, cleanupAfterCombat);
     let ovi: () => void = null;
-    if (player.gender > 0 && player.canOviposit()) ovi = ovipositSandWitches;
+    if (player.gender > 0 && player.ovipositor.canOviposit()) ovi = ovipositSandWitches;
 
     choices("Yes", sandwitchRaped, "Dildo Rape", temp2, "Use 3i@-", temp3, "Use Shouldra", shouldra, "Lay Eggs", ovi,
         "Taunt Her", sandwitchSpanking, "", null, "", null, "", null, "Leave", cleanupAfterCombat);
@@ -737,7 +737,7 @@ function ovipositSandWitches(): void {
     outputText("-sexed form, allowing the sun to glisten off her bare body.");
 
     outputText("\n\nDrawing closer to the prone woman, you can see her ardent lust accumulating on her tender sexes; yet you can clearly see the remnants of her wariness, no doubt having heard what ");
-    if (player.canOvipositBee()) outputText("bee-morphs");
+    if (player.ovipositor.canOvipositBee()) outputText("bee-morphs");
     else outputText("driders");
     outputText(" can do to their partners and unsure if this is really what she wants.  The poor girl seems to need a little 'encouragement'... of course, you could just skip all that regardless if you really wanted.");
 
@@ -762,7 +762,7 @@ function eggwitchForeplay(): void {
     outputText("\n\nHaving warmed this sorceress up ");
     if (player.cor > 50) outputText("enough ");
     outputText("to giving your way of breeding a shot, you quickly get into position on top of the sand witch.  ");
-    if (player.canOvipositBee()) outputText("Sitting");
+    if (player.ovipositor.canOvipositBee()) outputText("Sitting");
     else outputText("Laying");
     outputText(" against your mate, you both take the moment to revel in the anticipation of coitus.");
     dynStats("lus", 25, "cor", -.35);
@@ -833,7 +833,7 @@ function laySomeEggsInThatWitchFinally(): void {
 
     outputText("\n\n\"<i>More... give me more...</i>\" the sand witch whimpers, caressing your ");
     // (Bee, non-horse:
-    if (player.canOvipositBee() && !player.isTaur()) outputText("torso");
+    if (player.ovipositor.canOvipositBee() && !player.isTaur()) outputText("torso");
     else outputText("pelvis");
     outputText(" to spur you on.  Of course you don't have a problem with fulfilling her wishes; the neglect of your throbbing sex");
     if (player.cocks.length > 1 || player.gender > 2) outputText("es");
@@ -853,17 +853,17 @@ function laySomeEggsInThatWitchFinally(): void {
     if (facial == 0) outputText("her facial features with proof of your climax");
     else if (facial == 1) outputText("the interior of her mouth with sweltering streams of your cum");
     outputText(".  Having finally achieved release, and also having run out of eggs, you pull yourself free of the desert woman with a loud pop, the ");
-    if (player.canOvipositBee()) outputText("honey-like");
+    if (player.ovipositor.canOvipositBee()) outputText("honey-like");
     else outputText("goopy");
     outputText(" lubricant drooling out of her in the absence of your intimate plug.  Utterly overwhelmed and exhausted, the sand witch resigns herself to gathering strength in the bright, blistering gaze of the desert sun.  Smiling to yourself, you take to re-donning your discarded [armor], remarking as you leave that you look forward to the next encounter; a sentiment the sorceress must agree with as she weakly waves to you, holding her stomach with her arms and filled with motherly delight at the thought of carrying your brood.");
     // Give her ze eggs!
-    if (player.fertilizedEggs() > 0) {
-        if (player.canOvipositBee())
+    if (player.ovipositor.fertilizedEggs() > 0) {
+        if (player.ovipositor.canOvipositBee())
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 192);
         else
             pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 192);
     }
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

@@ -370,7 +370,7 @@ export function urtaBarApproach(): void {
             outputText(images.showImage("urta-bar-drunk"), false);
             outputText("You walk up to Urta and you see her pivot herself to the side.  Her dress visibly tents at the sight of you, and you smirk as you realize she shifted in position to avoid slamming her hardening cock into the bottom of the table.  You cuddle close and wrap an arm around your lover, giving her a quick kiss on the lips and fondling her through her dress.  The tent immediately darkens as a rush of pre soaks into the material, and Urta half-pants, half-asks, \"<i>Oooh, lover, what do you have in mind today?</i>\"\n\n", false);
             outputText("You could go back to her place, suck her off under the table, or eat her out under the table.", false);
-            if (player.canOviposit()) {
+            if (player.ovipositor.canOviposit()) {
                 if (flags[kFLAGS.URTA_TIMES_EGG_PREGGED] == 0) outputText("\n\nYou contemplate asking Urta to help you take a load off your abdomen, but decide against it; Urta's probably too shy and pent up to let you fill her with your eggs. Maybe when she's gotten herself drunk and is more pliable, though...");
                 else outputText("\n\nYou don't think it's likely Urta would agree to host your eggs in her present state; wait until she's turned down her inhibitions before asking.");
             }
@@ -389,7 +389,7 @@ export function urtaBarApproach(): void {
             outputText("You walk up to Urta and chuckle as the sloshed fox-girl latches onto you.  She squeals happily and crushes you into a tight hug.  Her hard cock rubs against you under the silken covering of her dress, slowly soaking it through with pre-cum.  She purrs drunkenly under your ear, \"<i>Mmmm, I was hoping you'd show up, lover.  Would you mind if I blew a load over your face while everyone watched?  Or maybe you could just crawl up into my lap and let me pump you full of cum?</i>\"\n\n", false);
             outputText("You could let her make a show of you sucking her off, try to ride her discreetly, or walk out and leave her disappointed.", false);
             temp = null;
-            if (player.canOviposit()) {
+            if (player.ovipositor.canOviposit()) {
                 if (flags[kFLAGS.URTA_TIMES_EGG_PREGGED] == 0) outputText("\n\nHmm... sounds like she wants to fuck almost as badly as you want to get these eggs out of you.  Besides, didn't Urta say to you once that she's basically barren and sterile?  You'd be doing her a favor by letting her carry your eggs, wouldn't you?  Let's see if she's drunk enough to let you fill her full...");
                 temp = giveTheFoxSomeEggs;
             }
@@ -429,7 +429,7 @@ export function urtaBarApproach(): void {
         outputText("let the beast loose and bounce you on my lap while we drink, ", false);
         outputText("jerk off onto your face in front of everyone, or have to remember your ass for later when you bolt for the door.  What'll it be, hun?</i>\"", false);
         temp = null;
-        if (player.canOviposit()) {
+        if (player.ovipositor.canOviposit()) {
             if (flags[kFLAGS.URTA_TIMES_EGG_PREGGED] == 0) outputText("\n\nHmm... sounds like she wants to fuck almost as badly as you want to get these eggs out of you.  Besides, didn't Urta say to you once that she's basically barren and sterile?  You'd be doing her a favor by letting her carry your eggs, wouldn't you?  Let's see if she's drunk enough to let you fill her full...");
             temp = giveTheFoxSomeEggs;
         }
@@ -461,7 +461,7 @@ export function urtaBarApproach(): void {
         }
         else outputText("She asks, \"<i>Would you like to go back to my place and help me play with my 'little' friend again?  Or maybe you could climb under the table and give me some relief?</i>\"", false);
     }
-    if (player.canOviposit()) {
+    if (player.ovipositor.canOviposit()) {
         if (flags[kFLAGS.URTA_TIMES_EGG_PREGGED] == 0) outputText("\n\nYou contemplate asking Urta to help you take a load off your abdomen, but decide against it; Urta's probably too shy and pent up to let you fill her with your eggs. Maybe when she's gotten herself drunk and is more pliable, though...");
         else outputText("\n\nYou don't think it's likely Urta would agree to host your eggs in her present state; wait until she's turned down her inhibitions before asking.");
     }
@@ -3542,10 +3542,10 @@ export function giveTheFoxSomeEggs(): void {
     outputText(".");
 
     // [Egg Level 1:
-    if (player.eggs() < 20) outputText("  Urta's stomach starts to swell as your clutch of eggs fills her once-empty womb, stretching into a noticeable bulge, though not one that she couldn't hide if she wanted.");
+    if (player.ovipositor.eggs() < 20) outputText("  Urta's stomach starts to swell as your clutch of eggs fills her once-empty womb, stretching into a noticeable bulge, though not one that she couldn't hide if she wanted.");
 
     // [Egg Level 2:
-    else if (player.eggs() < 40) outputText("  As the eggs keep on coming, Urta's womb swells and bulges, crammed full of goo and eggs, growing larger and larger until Urta could easily pass for an expectant mother, ready to give birth any day now.");
+    else if (player.ovipositor.eggs() < 40) outputText("  As the eggs keep on coming, Urta's womb swells and bulges, crammed full of goo and eggs, growing larger and larger until Urta could easily pass for an expectant mother, ready to give birth any day now.");
 
     // [Egg Level 3:
     else outputText("  You stuff Urta with eggs until you're wondering how many either of you can hold. Her belly just keeps getting rounder and rounder even as your eggs keep coming; soon, not only does she look like a woman pregnant with multiples, her skin is visibly stretched over the eggs, giving it a distinctively lumpy look rather than the round, smooth bulge she might have if your load was smaller.");
@@ -3557,12 +3557,12 @@ export function giveTheFoxSomeEggs(): void {
     // [Corruption <50:
     if (player.cor < 50) {
         outputText("\n\nWell, you can't leave her here like this, ");
-        if (player.fertilizedEggs() == 0) outputText("even if your eggs weren't fertile, ");
+        if (player.ovipositor.fertilizedEggs() == 0) outputText("even if your eggs weren't fertile, ");
         outputText("and so you painstakingly heave the drunken, egg-swollen fox upright.  Supporting her on your shoulder, you awkwardly carry-drag her back to her house, stopping for the occasional orientations in the city's still-unfamiliar streets.  Once there, you gratefully lay her down on her bed, give her bloated belly a pat, and head back to camp, feeling much lighter now.");
     }
     else outputText("\n\nWith a shrug, figuring Urta's probably slept more than one drunken debauch off in this very alley, you turn and start walking back to camp, whistling in pleasure.  A weight is off your abdomen, a certain itch has been scratched very pleasantly, and all is right with the world.");
-    flags[kFLAGS.URTA_EGGS] = player.eggs();
-    flags[kFLAGS.URTA_FERTILE_EGGS] = player.fertilizedEggs();
+    flags[kFLAGS.URTA_EGGS] = player.ovipositor.eggs();
+    flags[kFLAGS.URTA_FERTILE_EGGS] = player.ovipositor.fertilizedEggs();
     flags[kFLAGS.URTA_TIMES_EGG_PREGGED]++;
     if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 72);
@@ -3571,7 +3571,7 @@ export function giveTheFoxSomeEggs(): void {
     flags[kFLAGS.URTA_FLATBELLY_NOTICE] = 0;
     // First time, tag for triggering freakout!
     if (flags[kFLAGS.URTA_EGG_FORCE_EVENT] == 0) flags[kFLAGS.URTA_EGG_FORCE_EVENT] = 48;
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 }
@@ -3645,7 +3645,7 @@ function repeatUrtaEgging(): void {
         outputText(", ");
     }
     outputText("and release your ovipositor from its usual hiding slit, already dripping with ");
-    if (player.canOvipositBee()) outputText("honey");
+    if (player.ovipositor.canOvipositBee()) outputText("honey");
     else outputText("green slime");
     outputText(" in anticipation of laying.  The appendage droops down, curling around to slide its wet length against Urta's balls and the base of her cock.  In her present state, there's no need to tell her to relax; indeed, she whimpers eagerly in anticipation of what's to come.  With a little effort, you bring it slithering back up to pry at the dampness of her netherlips...");
 
@@ -3661,7 +3661,7 @@ function repeatUrtaEgging(): void {
     else outputText("\n\nThe entirety of your sexual world begins and ends with your ovipositor, with the sensation of the mock-cock burrowing inexorably towards Urta's womb overwhelming you with pleasure.  Having no other sexual organs to distract you allows you to fully embrace it; you thrust harder and harder, desperate to ensure you have reached the womb before you start to lay.");
 
     outputText("\n\nFinally, blissfully, you reach the cervix; with one last mighty thrust, eliciting a shriek of arousal-tinged pain and an explosive gout of cum from your vulpine brood-host, you penetrate her all the way into the womb.  You both hover there, gasping as you recover from your mutual exertions, when the wonderful tingling of your eggs moving emanates from your insectile fuckspear.  You moan and groan as contractions push the first of your eggs down, pumping a steady stream of ");
-    if (player.canOvipositBee()) outputText("honey");
+    if (player.ovipositor.canOvipositBee()) outputText("honey");
     else outputText("spider-goo");
     outputText(" to keep Urta moist and slick and pliable.");
 
@@ -3684,10 +3684,10 @@ function repeatUrtaEgging(): void {
     outputText(".");
 
     // [Egg Level 1:
-    if (player.eggs() < 20) outputText("  Urta's stomach starts to swell as your clutch of eggs fills her once-empty womb, stretching into a noticeable bulge, though not one that she couldn't hide if she wanted.");
+    if (player.ovipositor.eggs() < 20) outputText("  Urta's stomach starts to swell as your clutch of eggs fills her once-empty womb, stretching into a noticeable bulge, though not one that she couldn't hide if she wanted.");
 
     // [Egg Level 2:
-    else if (player.eggs() < 40) outputText("  As the eggs keep on coming, Urta's womb swells and bulges, crammed full of goo and eggs, growing larger and larger until Urta could easily pass for an expectant mother, ready to give birth any day now.");
+    else if (player.ovipositor.eggs() < 40) outputText("  As the eggs keep on coming, Urta's womb swells and bulges, crammed full of goo and eggs, growing larger and larger until Urta could easily pass for an expectant mother, ready to give birth any day now.");
 
     // [Egg Level 3:
     else outputText("  You stuff Urta with eggs until you're wondering how many either of you can hold. Her belly just keeps getting rounder and rounder even as your eggs keep coming; soon, not only does she look like a woman pregnant with multiples, her skin is visibly stretched over the eggs, giving it a distinctively lumpy look rather than the round, smooth bulge she might have if your load was smaller.");
@@ -3700,15 +3700,15 @@ function repeatUrtaEgging(): void {
     else outputText("\n\nShe gives you a dopey grin and nods, but then looks sad.  \"<i>I do like the sex, but... I kinda wish these were our babies for real, y'know?</i>\" She mumbles.");
 
     outputText("\n\nAwkwardly hauling her distended form to its feet, she gives you a sloppy kiss, grabs her clothes and starts waddling back home, clearly intending to sleep it off.  You watch her go, then pick yourself up and head back to camp.");
-    flags[kFLAGS.URTA_EGGS] = player.eggs();
-    flags[kFLAGS.URTA_FERTILE_EGGS] = player.fertilizedEggs();
+    flags[kFLAGS.URTA_EGGS] = player.ovipositor.eggs();
+    flags[kFLAGS.URTA_FERTILE_EGGS] = player.ovipositor.fertilizedEggs();
     flags[kFLAGS.URTA_TIMES_EGG_PREGGED]++;
     if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0)
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 72);
     else
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
     flags[kFLAGS.URTA_FLATBELLY_NOTICE] = 0;
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 }

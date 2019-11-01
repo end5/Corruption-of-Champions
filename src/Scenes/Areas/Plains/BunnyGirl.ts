@@ -61,8 +61,8 @@ export function bunnbunbunMeet(): void {
             outputText("  Sixty-nine her?", false);
         }
 
-        if (player.canOviposit() && player.lust >= 33) {
-            if (!player.canOvipositBee() || rand(2) == 0)
+        if (player.ovipositor.canOviposit() && player.lust >= 33) {
+            if (!player.ovipositor.canOvipositBee() || rand(2) == 0)
                 eggs = ovipositBunnyEaster;
             else
                 eggs = layEggsInBunbuns;
@@ -618,8 +618,8 @@ function bunbun69(): void {
 export function layEggsInBunbuns(): void {
     clearOutput();
     outputText("The displayed lapin in front of you has you excited, but not for a simple roll in the grass.  Your ");
-    if (player.eggs() < 20) outputText("eager egg-tube slips free, ready to show the rabbit you can play the egg game too.");
-    else if (player.eggs() < 40) outputText("distended bug part quivers in anticipation, the ovipositor pushing into view with a drop of honeyed pre on its tip.");
+    if (player.ovipositor.eggs() < 20) outputText("eager egg-tube slips free, ready to show the rabbit you can play the egg game too.");
+    else if (player.ovipositor.eggs() < 40) outputText("distended bug part quivers in anticipation, the ovipositor pushing into view with a drop of honeyed pre on its tip.");
     else outputText("low-hanging bee abdomen drools honey-like ichor down its carapace from the bulge where the thick black organ shows its need to relieve your burden.");
     outputText("  The bunny gasps upon noticing it, the herm's hips wiggling. \"<i>Oh my, could... could you mount me with that?  I need to egg so badly.</i>\"  Not needing to be urged further, you arch your bee-section up underneath you while lifting the lusty bunny against you.");
     outputText("\n\nPulling her so that she presses her tits against your [chest], the throbbing egg-depositor rubs between her legs.  With a high squeal she pushes forward harder, the long lapin cock twitching with her heartbeat");
@@ -657,7 +657,7 @@ export function layEggsInBunbuns(): void {
         outputText(".");
     }
     outputText("\n\nFinally you find you no longer have any to give to the egg-obsessed rabbit girl and the ovipositor retracts into its slit.  Tired but blissful, she curls up to slumber, and you leave her to deal with having a stomach chock full of eggs 'n honey, returning to camp until you once again need a warm body to play host.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 }
@@ -670,7 +670,7 @@ export function ovipositBunnyEaster(): void {
     outputText("\n\nThe confused, almost clueless look in her eyes betrays her hesitancy, but she obeys, spurred by needs she doesn't even seem to truly understand.  Her poofy little tail flips up as far as it can, and you're treated to the sight of her big, surprisingly muscular rump.  All that hopping around has done wonderful things for her rear, and the bunny-girl's thighs are similarly toned, obscured only by a hint of fat and her down-soft fur.  You can see moisture running freely from a puffy pink mound, much of it clinging to her smooth sack's gentle, oblong curves.  She shudders slightly as the enormity of the pose she has struck settles into her mind.");
 
     outputText("\n\nYou don't give her a chance to regret adopting such a sensual stance.  Instead, you grab two big handfuls of furry butt and squeeze as you climb atop her, not as a male taking a female but as an ");
-    if (player.canOvipositBee()) outputText("insect");
+    if (player.ovipositor.canOvipositBee()) outputText("insect");
     else outputText("arachnid");
     outputText(" claiming an incubator.  When she feels your groin pressing on the small of her back, the fluffy hare grows concerned, looking over her shoulder and declaring, \"<i>You... you can't put eggs in me like THAT!</i>\"");
     outputText("\n\nYou snicker and pat her right between the ears, even stretching down to lick at the flawless, dusky skin of her shoulder, tasting the salty flavor of the sweat she's started to bead.  Suggestively, you whisper, \"<i>Oh, I brought you LOTS of eggs...</i>\"");
@@ -686,13 +686,13 @@ export function ovipositBunnyEaster(): void {
     outputText("\n\nSuddenly shifting, the hare-woman's body tilts as her arms give out, uselessly splayed alongside her.  Her dick is still barely inside her mouth, but the flow of pre-cum seems to be even faster than before.  Her cheeks keep puffing out with whenever a fresh wave of the stuff rolls into her maw, and though her throat is swallowing and unchecked rivers of the stuff leak out through the loosening seal around her shaft, you can tell she's just getting started.  Of course, the way she's just completely relaxing into your fuck hasn't stopped her from humping her own mouth or having her pussy caress your prong.  Sexual instinct seems largely unaffected by whatever her pre-cum is doing to her...");
     outputText("\n\nYou let your muses fade into the gentle thrum breeding pleasure that's taken hold of your mind.  Moving with swift contractions down your fleshy tube, many of your eggs are already stretching you and the bunny-girl out.  They glide through you and her together, setting off cascades of delightful nerve-impulses in both your bodies.  When the first one crests through her opened cervix, you're transported to an ecstatic nirvana.   Gentle, muffled 'pops' can be heard whenever one of your spheres is released from your prong.");
     // {Some Eggs}
-    if (player.eggs() < 20) {
+    if (player.ovipositor.eggs() < 20) {
         outputText("\n\nOne after another, your eggs are perfectly deposited in the lapine's now-conquered womb.  It does not take long, as you didn't have that many eggs built up, but the pleasure from your organ is too great to simply withdraw.  You keep yourself buried inside and continue to slowly ply the slippery quim with your insectile tool, releasing plenty of lubricant for your eggs to swim in.  Your rutting [hips] keep their slow tempo until you run out of liquid to inject.  The orgasms are all blurred together, one after another, such that all you can really remember is a haze of pleasure and grinding bodies.");
     }
     // {Plenty of eggs}
-    else if (player.eggs() < 40) {
+    else if (player.ovipositor.eggs() < 40) {
         outputText("\n\nOne after another, your eggs lurch into the conquered womb in a steady stream of oviposition, each one coming closer on the heels of the previous one.  You release a whimper of bliss at the same time as your incubator, her tight pussy actually trying to milk you of sperm.  Of course, that just makes your eggs flow into her that much faster.  Her uterus is soon stuffed with your ");
-        if (!player.canOvipositBee()) outputText("arachnid");
+        if (!player.ovipositor.canOvipositBee()) outputText("arachnid");
         else outputText("insectile");
         outputText(" cargo, but you aren't empty, so you force more and more inside her.  She's so stretchy that it's easy to do, and before long she has a nicely rounded, pregnant belly (even if it is a little bit bumpy).  Shuddering, you release a few long, thick squirts of lubricant over your leavings and sag down, spent.");
     }
@@ -707,7 +707,7 @@ export function ovipositBunnyEaster(): void {
     outputText("\n\nYou climb off as your ovipositor retracts into its slot.  The emptiness is a blessed change from the constant, needy weight of an unlaid brood.  As you gather your wits, you realize that the bunny-girl is still orgasming.  Her dick finally popped out of her mouth, and you're treated to the sight of her bukkaking herself with thick, clear sex-juice.  A huge bulge distends her urethra as it's forced through her shaft, erupting out into a bright pink egg.  It bounces off her drugged, dopey cheek as her nerveless lips try to moan, followed shortly after by a second.  In the wake of the two surprises, a wave of jism splatters across her head, plastering her ears back into her hair.");
     outputText("\n\nThe hare goes limp after that, her eyes drifting shut as her tongue idly licks her spent seed from her face.  It looks like she got more eggs than she reckoned for.");
     // ITS OVER
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     dynStats("sen", -2);
     doNext(Camp.returnToCampUseOneHour);

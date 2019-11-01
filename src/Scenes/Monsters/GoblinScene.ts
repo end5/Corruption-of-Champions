@@ -207,7 +207,7 @@ export function gobboRapeIntro(): void {
     let spiderCondom: () => void = null;
     let jog: () => void = null;
     let eggs: () => void = null;
-    if (player.canOvipositSpider()) {
+    if (player.ovipositor.canOvipositSpider()) {
         eggs = laySomeDriderEggsInGobboTwat;
     }
     // cunt stuff
@@ -699,7 +699,7 @@ function laySomeDriderEggsInGobboTwat(): void {
     outputText("\n\nYou keep her pinned against your body as you fill her up, one orb at a time, each sphere bloating her stretched stomach a little further, until she's so full you can feel your eggs through the taut skin of her belly.  The goblin is nearly unconscious, insensibly gurgling as the pleasure of her instant pregnancy numbs her mind.  You pull her off with a loud wet plop, her twitching snatch leaking an unending stream of her own clear fluids as well as a sticky string of your green egg-mucus.");
 
     outputText("\n\nLaying her down in the shade, you put your clothes back on, glad to be free of the extra weight and ready to continue your adventure.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

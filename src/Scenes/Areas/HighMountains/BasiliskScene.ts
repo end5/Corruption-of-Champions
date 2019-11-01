@@ -50,8 +50,8 @@ export function defeatBasilisk(): void {
     outputText("", true);
     let evil: () => void = null;
     let eggs: () => void = null;
-    if (player.canOvipositSpider()) eggs = driderPCEggLaysBasilisk;
-    if (player.canOvipositBee() && player.gender > 0) eggs = layBeeEggsInABasilisk;
+    if (player.ovipositor.canOvipositSpider()) eggs = driderPCEggLaysBasilisk;
+    if (player.ovipositor.canOvipositBee() && player.gender > 0) eggs = layBeeEggsInABasilisk;
     if (player.cocks.cockThatFits(monster.analCapacity()) >= 0 && player.cor >= 66) evil = defeatBasiliskAndAnal;
     // Player HP victory:
     if (monster.HP < 1) outputText("Unable to stand anymore, the basilisk shakily sinks down on one knee, drops its head and looks at the ground, evidently demonstrating submission.", false);
@@ -608,7 +608,7 @@ function driderPCEggLaysBasilisk(): void {
     else outputText("burrow deep into your needy slit");
     outputText(".  You coo in delight at the sensation, and begin to grind yourself against his face as you wait for your egg-laying to begin.");
     outputText("\n\nThe monster's stomach bloats as a final rush of goo fills his bowels in preparation for your ");
-    if (player.fertilizedEggs() == 0) outputText("un");
+    if (player.ovipositor.fertilizedEggs() == 0) outputText("un");
     outputText("fertilized orbs, providing you with a moment's warning before the ecstasy-inducing ripple of an egg sliding deep into him rolls your eyes backwards in pleasure.  You twitch and squirm atop the bound basilisk, mashing your ");
     if (player.cocks.length > 0) outputText("dick");
     else outputText("cunt");
@@ -620,7 +620,7 @@ function driderPCEggLaysBasilisk(): void {
     // (if corruption >= 50
     if (player.cor >= 50) outputText(" before heading off towards your camp. The harpies will probably free him from your webs... eventually.");
     else outputText(".  You reach up and slice him free from the webbing, carefully placing him on the ground below.  The blindfold stays, though.  You're kind, not stupid.  With your good deed for the day complete, you gather yourself up and head back to camp.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }
@@ -653,7 +653,7 @@ function layBeeEggsInABasilisk(): void {
     if (player.isTaur()) outputText("above");
     else outputText("behind");
     outputText(" the desperately-squirming lizard, delighting in the fear-scented air around the beast as your ovipositor slaps his cheeks in search of his tight little black hole.  Aside from the difference in feel, you know once you hit the sweet spot by the rigid jolt from the basilisk as his worst fear is confirmed.  You openly laugh this time, and enjoy the feel of the lizard squirming under you as your bulbous appendage painstakingly, slowly works its way inside his anus.  Dry and tight, you really have to force your way, but the feeling is amazing, and it just keeps getting better.  It probably doesn't feel too great for the basilisk, but that's not exactly your problem.  The slit at the end of your ovipositor widens, leaking golden liquid, and the squirming basilisk halts its struggles and relaxes as the narcotics in the slime work their way into the bloodstream.  You begin humming in a fashion similar to the giant bees you now resemble as you enjoy the blissful sensation of the eggs progressing through the long tubular organ, stretching the reptile's pucker to accommodate your ");
-    if (player.fertilizedEggs()) outputText("fertilized offspring");
+    if (player.ovipositor.fertilizedEggs()) outputText("fertilized offspring");
     else outputText("burdensome load");
     outputText(".");
 
@@ -680,7 +680,7 @@ function layBeeEggsInABasilisk(): void {
         outputText("\n\nYour body demanding more feeling to push it over the edge, you begin simultaneously massaging your [nipple] and frigging your [clit] joy buzzer.  More of your juices drip out and leak down your thighs; the basilisk shudders again and you imagine how bizarre it must feel for the beast to be invaded in such a way.  You lick your lower lip before biting into it gently, then pinch and tug at your hardened nipples, moaning as you climb higher and higher towards your peak.  Your lower lips try to clench around empty air, wanting fulfillment.  Today's orgasm is meant for something else though, and you let out a cry as you forcefully jam shut the basilisk's back door and leak girl cum all over the floor.");
     }
     outputText("\n\nAs you remove your depleted appendage from the violated basilisk's ass, he falls to the side, no longer able to keep himself upright.  Laying like this, you can see the beast's horribly-distended stomach, almost able to make out the outline of each individual egg but for the scales in the way. You nod approvingly and bend down to give to the lizard a quick kiss on the cheek for being such a good sport about the whole thing - though, not being an idiot, you don't untie him.  After that, you buzz away contentedly, idly thinking about returning the next time you'll need a receptacle for your eggs.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

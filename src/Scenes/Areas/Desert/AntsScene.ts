@@ -610,7 +610,7 @@ function phyllaFirstTimePureBabiesFuckEnding(): void {
 
     outputText("\n\nSpent, you drop your head down next to Phylla's, panting and breathing heavily as you resign yourself to rest.  Bits of the link remain as you feel Phylla's contentment.  She strokes your head lovingly, and pats her stomach.  Clearly her thoughts dwell on the package you just deposited inside her.  With the sync quickly fading you probe her mind one last time.  You can almost feel the sensation of your hot, sticky semen as it clings heavily on her vaginal walls.  A warm feeling flows over you as the excited thoughts of you getting her pregnant on her first try, making her a mother at long last... or so Phylla seemingly hopes.  Finally you sense at long last the closeness and intimate bond that she feels she shares with you at this very moment.  A sense of not wanting to let go, and wanting the breeding that has just past to continue forever and ever.  She yearns to pop out as many children as her body will allow her to and fulfill her need to breed.");
     // PC is a Female/Herm Drider:
-    if (player.canOvipositSpider()) {
+    if (player.ovipositor.canOvipositSpider()) {
         outputText("\n\nThis overwhelming maternal feeling brings forth an interesting idea!  Turning to Phylla, you tell her that you can help to make her desire come true.  She looks at you a bit taken back, as if what you already did wasn't enough already.");
         outputText("\n\nYou go on to explain, telling her that your body is chock full of eggs that eagerly await a willing host to gestate in.  If she wants to birth as many children as possible, your union can grant her wishes; albeit, she will be birthing both Ant and Spider children.");
         // Persuade Phylla: Random chance of failing, affected by INT level and whether she's already housing eggs in her vagina.
@@ -634,7 +634,7 @@ function phyllaFirstTimePureBabiesFuckEnding(): void {
             outputText("\n\nShe squints and braces for the inevitable egg forcing its way into her, gasping as the oval mass finally makes contact and works its way into her.  You can feel the egg as it makes it way into Phylla, stretching her pussy out to accommodate future deposits as the frontrunner hits her cervix, and manages it to make its way inside.");
             outputText("\n\n\"<i>UGH! It hurts... a little~ feels so strange... I-mea~ good!</i>\" she cries out.");
             outputText("\n\nYou comfort her while telling her that you have a few more on the way; something that causes Phylla to beam with pride at the thought of being filled with so much new life that she will eventually birth.  Egg after egg slides into Phylla, causing her stomach to bulge bigger and bigger with your brood as you stuff more into her.  At last, the final egg is laid inside of Phylla, and with a loud pop, you  retract your ovipositor from her love hole;  you know it'll recover in time.  Phylla rubs her belly and gleams with delight, filled with her lover's future children that will help the colony to grow strong.");
-            player.dumpEggs();
+            player.ovipositor.dumpEggs();
             if (!pregnancy.isPregnant) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 8 * 24); // Supposed to be eight days, not eight hours
         }
         // (End Drider Continuation)
@@ -1050,7 +1050,7 @@ function phyllaSexMenu(): void {
     }
     // Drider/Bee impregnation scene for Phylla (universal unless otherwise specified, which will include varied intros and stuff.
     // Sex > [Egg Phylla]
-    if (player.canOvipositSpider()) addButton(5, "Oviposit", eggDatBitch);
+    if (player.ovipositor.canOvipositSpider()) addButton(5, "Oviposit", eggDatBitch);
     addButton(9, "Back", introductionToPhyllaFollower);
 }
 
@@ -2412,7 +2412,7 @@ function phyllaLaysSomeDriderEggs(): void {
         // If Phylla is Laying (her) Eggs while Drider eggs hatch:
         if (flags[kFLAGS.PHYLLA_EGG_LAYING] > 0) outputText("\n\nThough judging by the size of her abdomen, you're sure she still has a few left.  Her own eggs don't seem to cause her as many 'problems' as your eggs do.  Phylla tiredly slumps back to her bed, completely spent.");
         dynStats("lus", 45);
-        if (player.canOvipositSpider()) {
+        if (player.ovipositor.canOvipositSpider()) {
             outputText("\n\nGods DAMN!  You want to knock her up so bad!  Your Drider urges to mount her are in danger of overwhelming you and reducing you to a brainless breeder... maybe that isn't so bad after all, but you need to make a decision now before you're consumed by lust!");
             menu();
             // [Leave her to recover] - Let Phylla Recover  [Mount] - Mount Phylla
@@ -2442,7 +2442,7 @@ function driderDoublePhllaMount(): void {
     outputText("\n\nAt last, your egg supply is exhausted and you pull free of the Ant Morph, carefully walking over broken and soon to be broken egg shells as your children skitter up to their mother's nourishing breasts.  Phylla only coos with deep content as she cradles her stomach, barely taking notice of the young spiders that squabble over who gets to suckle first.");
     player.orgasm();
     // empty eggs and such!
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     // set phylla drider preggo timer
     if (!pregnancy.isPregnant) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 8 * 24); // Supposed to be eight days, not eight hours
     doNext(Camp.returnToCampUseOneHour);
@@ -2560,7 +2560,7 @@ function phyllaDigsForGems(): void {
 function eggDatBitch(): void {
     clearOutput();
     // PC is a Female/Herm Drider:
-    if (player.canOvipositSpider()) outputText("While Phylla appears to be sexually sated, the heaviness in your spider abdomen begs for release.\n\n");
+    if (player.ovipositor.canOvipositSpider()) outputText("While Phylla appears to be sexually sated, the heaviness in your spider abdomen begs for release.\n\n");
     // First Time:
     if (flags[kFLAGS.TIMES_EGG_IMPREGNATING_PHYLLA] == 0) {
         outputText("Turning to Phylla, you tell her that you can help to make her wishes of being a brood-mother come true.  She looks at you a bit taken back, as if what you already did wasn't enough already.");
@@ -2608,7 +2608,7 @@ function eggDatBitch(): void {
         if (!pregnancy.isPregnant) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 8 * 24); // Supposed to be eight days, not eight hours
         flags[kFLAGS.TIMES_EGG_IMPREGNATING_PHYLLA]++;
         player.orgasm();
-        player.dumpEggs();
+        player.ovipositor.dumpEggs();
     }
     doNext(Camp.returnToCampUseOneHour);
 }

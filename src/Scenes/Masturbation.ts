@@ -31,10 +31,10 @@ export function masturbateMenu(): void {
     if (player.cocks.tentacleCocks() > 0) {
         addButton(button++, "Tentabutt", tentacleGoesUpYerPooperNewsAtEleven);
     }
-    if (player.canOvipositBee() && player.lust >= 33 && player.cocks.biggestCockArea() > 100) {
+    if (player.ovipositor.canOvipositBee() && player.lust >= 33 && player.cocks.biggestCockArea() > 100) {
         addButton(button++, "LayInCock", getHugeEggsInCawk);
     }
-    if (player.canOviposit() && player.breasts.hasFuckableNipples() && player.lust >= 33 && player.breasts.biggestTitSize() >= 21) {
+    if (player.ovipositor.canOviposit() && player.breasts.hasFuckableNipples() && player.lust >= 33 && player.breasts.biggestTitSize() >= 21) {
         addButton(button++, "LayInTits", layEggsInYerTits);
     }
     if (fappingItems(false))
@@ -2627,7 +2627,7 @@ function getHugeEggsInCawk(): void {
         // [If balls:]
         if (player.balls > 0) {
             outputText("\n\nThe eggs push toward your testicles; you begin to anticipate once again just what's going to happen when they reach those overfull orbs resting against the ground.  You feel one egg pushing against some kind of entrance and squint your eyes as pressure builds within your cock; the eggs are beginning to back up against one another.  You strain and push, and finally feel something give way.  The sensations are an exquisite mix of pleasure and sickness as one egg after another forces its way into your heavy sack");
-            if (player.fertilizedEggs() > 0) outputText(", and you know beyond a doubt that they'll be fertilized before much longer and you'll be able to lay your own eggs");
+            if (player.ovipositor.fertilizedEggs() > 0) outputText(", and you know beyond a doubt that they'll be fertilized before much longer and you'll be able to lay your own eggs");
             outputText(".");
         }
         // [If no balls:]
@@ -2711,10 +2711,10 @@ function getHugeEggsInCawk(): void {
         }
         outputText(", and you dream of laying your own eggs some time in the future.");
     }
-    if (player.fertilizedEggs() > 0 && flags[kFLAGS.DICK_EGG_INCUBATION] == 0) {
+    if (player.ovipositor.fertilizedEggs() > 0 && flags[kFLAGS.DICK_EGG_INCUBATION] == 0) {
         flags[kFLAGS.DICK_EGG_INCUBATION] = 48;
     }
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     flags[kFLAGS.TIMES_EGGED_IN_COCK]++;
     doNext(Camp.returnToCampUseOneHour);
@@ -2831,7 +2831,7 @@ function layEggsInYerTits(): void {
         outputText("\n\nFinally, your ovipositor begins to peek out from its hiding place, and you seize it with one hand, rapidly stroking it and encouraging it to elongate further, and then, tucking your abdomen tight against you, you pull it through your [legs] and up [if (cocks > 0) past your maleness] to your [chest].");
 
         outputText("\n\nWith your free hand, you pull your [nipple] open wide, painfully wide, and squeeze the tip of your ovipositor into it, simultaneously stretching your ovipositor to its maximum.  With a frustrated sigh, you attempt to coax more length out of it while doubling over, inadvertently pushing the ovipositor into your [nipple].  You spasm a moment, and [if (isLactating = true) a mixture of milk and ] ");
-        if (player.canOvipositBee())
+        if (player.ovipositor.canOvipositBee())
             outputText("honey ");
         else outputText("green fluid ");
         outputText("squirts out of you under the sudden pressure from your penetration.");
@@ -2846,9 +2846,9 @@ function layEggsInYerTits(): void {
         outputText("\n\nYour ovipositor has already begun its task.  You can see rounded distortions making their way up the tube.  As the leader of the pack begins nearing the end of its journey, you double over tightly, driving the ovipositor as deep into your chest as you can.  Your [nipple] aches delightfully as it is spread yet further open by the bulging intrusion, and just as the egg pops from the tip of the ovipositor, a low, gentle orgasm spreads through you, radiating out from your [chest].");
 
         // Stage 1 - low/no chance of pregnancy
-        if (player.eggs() < 20) {
+        if (player.ovipositor.eggs() < 20) {
             outputText("\n\nWith a contented glow, you let your eggs go in, each time crashing into your consciousness like waves slowly eating away your mind, until you start to feel some discomfort in your breast. You let one more egg pass, and then you pull your ovipositor out, causing a small explosion of[if (isLactating = true)  milk and]");
-            if (player.canOvipositBee())
+            if (player.ovipositor.canOvipositBee())
                 outputText("honey");
             else outputText("goo");
             outputText(".  Quickly, you thrust it into your other breast and let the egging continue.  Suddenly conscious of your situation, you hold your previous [nipple] closed.");
@@ -2856,7 +2856,7 @@ function layEggsInYerTits(): void {
             outputText("\n\nEventually, no more eggs come down the tube, and with a contented sigh, you release your ovipositor and, clutching your [chest] tightly to prevent the eggs' escape, pass out for the remainder of the hour.");
         }
         // Stage 2 no/moderate chance of pregnancy
-        else if (player.eggs() < 40) {
+        else if (player.ovipositor.eggs() < 40) {
             outputText("\n\nYour [chest] begins to tingle and your heart begins to race as the eggs continue to bring orgasmic waves with each transfer. Your breast rapidly begins to feel full, and your abdomen has only just begun to deflate. With a mixture of concern and desperation for every last egg, you hold the ovipositor until no more eggs could possibly fit. Your egg-laden tit has ballooned considerably in size, and you have to squeeze your [nipple] shut to keep the eggs in after you remove your ovipositor.[if (isLactating = true)   Under the sheer pressure, milk constantly streams out of your [nipple].]");
             outputText("\n\nDraping your arm tight over the newly egged tit, you use that hand to hold open your other [nipple] so that you can insert your egg tube.  You begin to giggle under the assault of the constant euphoria[if (cocks > 0) , and your tits and ovipositor have long since had their natural color obscured by your constant streams of cum, which has begun to pool underneath you].  Soon, even the second breast begins to feel uncomfortably full, and not for the first time you start to worry about the wisdom of this course of action.");
             outputText("\n\nAt long last, your egg sac has nothing more to feed into your [chest]. You pop out the shriveling organ and try to watch it shrivel back up, but your newly plumped [chest][if (cocks > 0)  and your diminishing erection][if (cocks > 1) s] make it impossible to see.  You spend several long moments caressing your swollen [chest], now dimpled slightly by the orbs inside them, and those long moments stretch into eternity as you pass out.");
@@ -2882,7 +2882,7 @@ function layEggsInYerTits(): void {
     }
     player.orgasm();
     dynStats("sen", 1);
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     doNext(Camp.returnToCampUseOneHour);
 }
 

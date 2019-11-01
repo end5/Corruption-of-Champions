@@ -885,8 +885,8 @@ export function tamaniBeaten(): void {
     outputText("\n\nAt last, the bloated bitch slides into the gooey green puddle with a splash, freeing your ovipositor to retract.  She immediately begins snoring, clearly as satisfied as you.  What a strange creature.");
     flags[kFLAGS.TIMES_OVIPOSITED_TAMANI]++;
     // Don't encounter Tamani for 3 days if fertilized
-    if (player.fertilizedEggs() == 0) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
-    player.dumpEggs();
+    if (player.ovipositor.fertilizedEggs() == 0) pregnancy.knockUpForce(PregnancyStore.PREGNANCY_DRIDER_EGGS, 72);
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

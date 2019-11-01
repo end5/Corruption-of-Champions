@@ -18,7 +18,7 @@ export function harpyVictoryuuuuu(): void {
         return;
     }
     let eggs: () => void = null;
-    if (player.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) eggs = spoidahsLegEggsInHarpeis;
+    if (player.ovipositor.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) eggs = spoidahsLegEggsInHarpeis;
     let anal: () => void = null;
     let pussy: () => void = null;
     let scissor: () => void = null;
@@ -619,7 +619,7 @@ function spoidahsLegEggsInHarpeis(): void {
 
     outputText("\n\nFinally relieved of your uncountable eggs, you pull out of your surrogate, ovipositor retracting, and watch as she slowly slides down the boulder face; she comes to rest on her knees, feathered arms wrapping around her swollen midsection.  The harpy looks back at you, her eyelids drooping as her breathing slows, and you lean in to give her a quick kiss on the cheek before you suit up and head back to camp.");
 
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

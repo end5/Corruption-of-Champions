@@ -42,7 +42,7 @@ export function minoVictoryRapeChoices(): void {
     let temp2: () => void = null;
     if (player.perks.findByType(PerkLib.Feeder) >= 0) temp2 = minotaurDrinksMilkNewsAtEleven;
     // Oviposit overlaps feeder
-    if (player.canOvipositSpider() || (player.canOvipositBee() && player.gender > 0)) {
+    if (player.ovipositor.canOvipositSpider() || (player.ovipositor.canOvipositBee() && player.gender > 0)) {
         feedposit = "Lay Eggs";
         temp2 = layEggsInAMinotaurSpiderLike;
     }
@@ -928,7 +928,7 @@ function minotaurBlowjob(): void {
 
 function layEggsInAMinotaurSpiderLike(): void {
     clearOutput();
-    if (player.canOvipositBee()) {
+    if (player.ovipositor.canOvipositBee()) {
         layBeeEggsInCowbutt();
         return;
     }
@@ -969,7 +969,7 @@ function layEggsInAMinotaurSpiderLike(): void {
     if (player.cor < 50) outputText("\n\nYou carefully unwrap his limbs, then pull his snout around to force him to look at you.");
     else outputText("\n\nChuckling at the thought of the fun the other mountain denizens will have with your well-trussed side of beef, you grab his snout and force him to look you in the eyes.");
     outputText("\n\n\"<i>We'll have to do this again.  In fact, every time you cross my path, we will do this again, my little cow-poke.</i>\"");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
     // satisfy mino cum addiction if addicted
@@ -1010,7 +1010,7 @@ function layBeeEggsInCowbutt(): void {
     // (If Silly mode:
     if (silly()) outputText("\n\nLooking down at the mass of bull-meat filled with eggs, you lean down and whisper into his ear, \"<i>And that's how you make Scotch Eggs, cowboy.</i>\"");
     // i like this writer, can we keep him?
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

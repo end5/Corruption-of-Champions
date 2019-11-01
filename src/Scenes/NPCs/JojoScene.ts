@@ -159,7 +159,7 @@ export function corruptCampJojo(): void {
     let milkHim: () => void = null;
     let tentaMilk: () => void = null;
     let eggs: () => void = null;
-    if (player.canOvipositBee()) eggs = beeEggsInCorruptJojo;
+    if (player.ovipositor.canOvipositBee()) eggs = beeEggsInCorruptJojo;
     if (player.keyItems.has("Cock Milker - Installed At Whitney's Farm") >= 0) {
         if (flags[kFLAGS.JOJO_COCK_MILKING_COOLDOWN] > 0) outputText("\n\n<b>Jojo is still drained from his last visit to the milkers - you should wait a few hours before taking him back.</b>", false);
         // First time:
@@ -2138,16 +2138,16 @@ function beeEggsInCorruptJojo(): void {
         outputText(" gushing all over Jojo's back, but you don't feel particularly inclined to deal with your regular genitals.  ");
     }
     outputText("You're utterly focused on the silky feel of those smooth spheres rolling out of you, being implanted into a host, willing or not.  Thankfully, Jojo is willing, creaming the ground, sputtering strings of spunk with each new egg that you force inside his once-tight anus.  Orb after orb slides inside him, drawing shivers of ecstasy from your alien-looking egg-cock.  With an explosive clench, you cum and force the remainder of your eggs into the mouse-bitch's butt-cunt.");
-    if (player.eggs() > 30) outputText("  His belly is slightly rounded by the time you finish, with small, egg-shaped bumps visible through his fur.");
+    if (player.ovipositor.eggs() > 30) outputText("  His belly is slightly rounded by the time you finish, with small, egg-shaped bumps visible through his fur.");
 
     outputText("\n\nYou pull out with a self-satisfied smile, the ovipositor swiftly retracting into your body.  A trickle of golden honey pours from the mouse's abused anus to mix with his puddling spunk.  The relief you feel is palpable - you're light on your [feet] when you climb off him, and Jojo sighs, \"<i>Thank you for the orgasm!</i>\"");
 
     outputText("\n\nHe shambles off towards the woods when you dismiss him, his hard cock still dribbling mousey sperm the whole way.  You have to wonder if the eggs are sliding over his prostate with every step he takes?  Oh well, it's no concern of yours.");
-    if (player.fertilizedEggs() > 0 && !pregnancy.isButtPregnant) {
+    if (player.ovipositor.fertilizedEggs() > 0 && !pregnancy.isButtPregnant) {
         pregnancy.buttKnockUpForce(PregnancyStore.PREGNANCY_BEE_EGGS, 80);
     }
     flags[kFLAGS.TIMES_EGGED_JOJO]++;
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

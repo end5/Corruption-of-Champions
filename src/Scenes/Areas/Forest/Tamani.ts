@@ -81,7 +81,7 @@ export class Tamani extends Goblin {
             let temp2: () => void = null;
             if (player.cocks.length > 0 && player.cocks.cockThatFits(analCapacity()) >= 0) temp = TamaniScene.tamaniAnalShits;
             // NOT PREGGERS
-            if (!TamaniScene.pregnancy.isPregnant && player.canOvipositSpider()) {
+            if (!TamaniScene.pregnancy.isPregnant && player.ovipositor.canOvipositSpider()) {
                 temp2 = TamaniScene.tamaniBeaten;
             }
             simpleChoices("Fuck", TamaniScene.tamaniSexWon, "Buttfuck", temp, "", null, "Lay Eggs", temp2, "Leave", cleanupAfterCombat);

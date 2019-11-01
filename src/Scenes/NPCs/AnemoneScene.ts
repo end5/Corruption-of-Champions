@@ -138,7 +138,7 @@ export function defeatAnemone(): void {
         let vaginaRape: () => void = null;
         let anal: () => void = null;
         let eggs: () => void = null;
-        if (player.canOviposit()) eggs = anemoneGetsLayedByBeePositor;
+        if (player.ovipositor.canOviposit()) eggs = anemoneGetsLayedByBeePositor;
         if (player.vaginas.length > 0 && player.clitLength >= 4) anal = anemoneButtPlugginz;
         else if (player.cocks.length > 0 && player.cocks.cockThatFits(48) >= 0) anal = anemoneButtPlugginz;
         // Normal male: -requires dick of area < 36
@@ -863,7 +863,7 @@ function fuckingAssholelessAnemoneeeez(): void {
 // madzeikfried@gmail.com
 // [Ovipositor] option in rape menu
 function anemoneGetsLayedByBeePositor(): void {
-    if (player.canOvipositSpider()) {
+    if (player.ovipositor.canOvipositSpider()) {
         spiderOvipositAnAnemone();
         return;
     }
@@ -900,7 +900,7 @@ function anemoneGetsLayedByBeePositor(): void {
             outputText(" in sympathy, lancing semen over your partner.  Surprisingly, the anemone doesn't even notice, so absorbed is she in experimenting with your modified stinger.");
         }
         // [(Lev3 eggs)
-        if (player.eggs() > 40) {
+        if (player.ovipositor.eggs() > 40) {
             outputText("  Eventually there are so many eggs ");
             if (player.cocks.length > 0 && player.cumQ() > 1000) outputText("and so much cum ");
             outputText("that they begin to collect around her, clumping and layering around her midriff like white, slimy algae on a pier post.");
@@ -916,10 +916,10 @@ function anemoneGetsLayedByBeePositor(): void {
         outputText("\n\nYou have no such vacillations; you're gonna violate her.  As good as the tongue felt, your body wants to put these eggs in something.  Boneless, you'll never make it to her pussy, but... any hole's a goal.  Grabbing the anemone's face in both hands, you stuff your black organ into her mouth, right to the hilt.");
 
         outputText("\n\n\"<i>Mmmf!</i>\"  The blue girl struggles and tries to pull away as the next batch of eggs slides into her; her hands dart to yours, trying to pry fingers loose, but your grip is vice-like with renewed intensity as you focus on your release.  The slippery spheres barrel down her throat like marbles as the madness washes over you and settle heavily on her stomach.  ");
-        if (player.eggs() < 20) outputText("It doesn't take long before you finish, pushing your cargo down her passageway in a neat, orderly line.");
+        if (player.ovipositor.eggs() < 20) outputText("It doesn't take long before you finish, pushing your cargo down her passageway in a neat, orderly line.");
         else {
             outputText("So many come that you can see them under her skin, a myriad of tiny bumps");
-            if (player.eggs() >= 40) outputText("; these same bumps multiply upward as your long-suffering abdomen pushes out line upon line of eggs, and soon you can feel them pressing back against the tip of your ovipositor.  You squeeze the girl's head in your hands, holding her against the base, and concentrate; slowly, the deposited eggs give way to their siblings, stretching her elastic stomach and chest wide");
+            if (player.ovipositor.eggs() >= 40) outputText("; these same bumps multiply upward as your long-suffering abdomen pushes out line upon line of eggs, and soon you can feel them pressing back against the tip of your ovipositor.  You squeeze the girl's head in your hands, holding her against the base, and concentrate; slowly, the deposited eggs give way to their siblings, stretching her elastic stomach and chest wide");
             outputText(".");
         }
 
@@ -929,10 +929,10 @@ function anemoneGetsLayedByBeePositor(): void {
 
         outputText("\n\nThat's too bad.");
         // [(silly mode and fert eggs)
-        if (silly() && player.fertilizedEggs() > 1) outputText("  You briefly amuse yourself imagining her carrying your eggs to term and having them hatch in her mouth, so that when she talks, she shoots bees.  Nicholas Cage would be proud.");
+        if (silly() && player.ovipositor.fertilizedEggs() > 1) outputText("  You briefly amuse yourself imagining her carrying your eggs to term and having them hatch in her mouth, so that when she talks, she shoots bees.  Nicholas Cage would be proud.");
         outputText("  Gathering your things, you " + mf(player, "laugh", "giggle") + " at her and depart.");
     }
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }
@@ -992,7 +992,7 @@ function spiderOvipositAnAnemone(): void {
         if (player.cocks.length > 1) outputText("s");
     }
     // (egg level 3)
-    if (player.eggs() >= 40) outputText("; so many eggs pump into her that she gives a little start when her distended belly touches the lukewarm water below");
+    if (player.ovipositor.eggs() >= 40) outputText("; so many eggs pump into her that she gives a little start when her distended belly touches the lukewarm water below");
     outputText("... finally you let her go when you're completely empty, pulling your stalk from her with a lewd sucking noise.  A little bit of green goo drools from her pussy as she slumps over on her side, and you make ready to leave her there - bloated and pregnant, with a squiggle of her semen floating in the water next to her.");
 
     outputText("\n\n\"<i>W-wait,</i>\" she pants, and you turn back.  \"<i>Off...</i>\"  The begging anemone fixes you with a desperate, pleading gaze, trying to reach around her body to her hair.");
@@ -1009,7 +1009,7 @@ function spiderOvipositAnAnemone(): void {
         outputText("\n\nThe girl graces your retreating back with a look of horror, struggling to pull her suddenly-heavy body upright and reach her hair, and you can hear her plaintive whines for quite a while as you walk.");
     }
     // ponytailed anemone with Lisa Loeb glasses WHEN
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

@@ -192,17 +192,17 @@ export class PlayerEvents implements TimeAwareInterface {
                 needNext = true;
             }
             else { // Update stuff!
-                const prevEggs: number = player.eggs();
+                const prevEggs: number = player.ovipositor.eggs();
                 if (prevEggs < 10) {
-                    player.addEggs(2);
+                    player.ovipositor.addEggs(2);
                 }
                 else if (prevEggs < 20 && game.time.hours % 2 == 0) {
-                    player.addEggs(1);
+                    player.ovipositor.addEggs(1);
                 }
                 else if (game.time.hours % 4 == 0) {
-                    player.addEggs(1);
+                    player.ovipositor.addEggs(1);
                 }
-                if (prevEggs < 10 && player.eggs() >= 10) { // Stage 1 egg message
+                if (prevEggs < 10 && player.ovipositor.eggs() >= 10) { // Stage 1 egg message
                     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                         outputText("\nYou feel a certain fullness building in your spider-half's abdomen.");
                     }
@@ -213,7 +213,7 @@ export class PlayerEvents implements TimeAwareInterface {
                     outputText("  <b>You have enough eggs to lay!</b>\n");
                     needNext = true;
                 }
-                else if (prevEggs < 20 && player.eggs() >= 20) { // Stage 2 egg message
+                else if (prevEggs < 20 && player.ovipositor.eggs() >= 20) { // Stage 2 egg message
                     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                         outputText("\nYour spider body feels like it's stretched taut, and a heavy warmth has spread throughout it.  The sensation of eggs piling up inside you is enough to drive you to distraction.  It would be a good idea to find somewhere to deposit them - but, oh, how great it would feel to get them fertilized by a nice hard cock first!");
                         if (!player.vaginas.length > 0) outputText("  Wait, that's not right...");
@@ -224,7 +224,7 @@ export class PlayerEvents implements TimeAwareInterface {
                     outputText("\n\n<b>Minimum Lust raised!</b>\n");
                     needNext = true;
                 }
-                else if (prevEggs < 40 && player.eggs() >= 40) { // Stage 3 egg message
+                else if (prevEggs < 40 && player.ovipositor.eggs() >= 40) { // Stage 3 egg message
                     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                         outputText("\nYour lower half has become so heavy that it's difficult to move now, the weight of your eggs bearing down on your lust-addled frame.  Your ovipositor pokes from its hiding place, dripping its slick lubrication in anticipation of filling something, anything with its burden.  You're going to have to find someone to help relieve you of your load, and soon...\n\n<b>Minimum Lust raised!</b>\n");
                     }
@@ -754,7 +754,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 dayTenDreams();
                 return true;
             }
-            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Bee dreams proc
+            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && (player.ovipositor.eggs() >= 20 && rand(6) == 0)) { // Bee dreams proc
                 // happens at first sleep after hitting stage 3 unfertilized
                 // To Wong Foo, Thanks for Everything, Julie Newmar
                 outputText("\nYou sit atop your favorite flower, enjoying the smell of verdure and the sounds of the forest.  The sun is shining brightly and it feels wonderful on your chitin.  Your wings twitch happily in the soft breeze, and it feels good to be alive and doing the colony's work... the only sour note is your heavy, bloated abdomen, so full of unfertilized eggs that it droops, so full it strains your back and pinches your nerves.  Still, it's too nice a day to let that depress you, and you take up your customary song, humming tunelessly but mellifluously as you wait for passers-by.");
@@ -768,7 +768,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 outputText("\n\nYou snap awake, sitting bolt upright.  What in the name of... your " + multiCockDescriptLight(player) + " is softening rapidly, and as you shift, you can feel your cum sloshing in your [armor].  For fuck's sake.");
                 if (player.cumQ() >= 1000) outputText("  It's completely soaked your bedroll, too... you won't be sleeping on this again until you wash it out.  Grumbling, you roll the soggy, white-stained fabric up and stow it.");
                 outputText("  The sensation of wetness inside your own clothes torments you as you try to return to sleep, driving up your lust and making you half-hard once again... the rumbling of eggs in your abdomen, as if they're ready to be laid, doesn't help either.");
-                player.fertilizeEggs(); // convert eggs to fertilized based on player cum output, reduce lust by 100 and then add 20 lust
+                player.ovipositor.fertilizeEggs(); // convert eggs to fertilized based on player cum output, reduce lust by 100 and then add 20 lust
                 player.orgasm(); // reduce lust by 100 and add 20, convert eggs to fertilized depending on cum output
                 dynStats("lus", 20);
                 doNext(playerMenu);
@@ -776,7 +776,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 // Hey whoever, maybe you write them? -Z
                 return true;
             }
-            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (player.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
+            if (player.cocks.length > 0 && player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (player.ovipositor.eggs() >= 20 && rand(6) == 0)) { // Drider dreams proc
                 outputText("\nIn a moonlit forest, you hang upside down from a thick tree branch suspended by only a string of webbing.  You watch with rising lust as a hapless traveler strolls along below, utterly unaware of the trap you've set.  Your breath catches as " + mf(player, "he", "she") + " finally encounters your web, flailing against the sticky strands in a futile attempt to free " + mf(player, "him", "her") + "self.  Once the traveller's struggles slow in fatigue, you descend easily to the forest floor, wrapping " + mf(player, "him", "her") + " in an elegant silk cocoon before pulling " + mf(player, "him", "her") + " up into the canopy.  Positioning your catch against the tree's trunk, you sink your fangs through the web and into flesh, feeling " + mf(player, "his", "her") + " body heat with every drop of venom.  Cutting " + mf(player, "his", "her") + " crotch free of your webbing, you open " + mf(player, "his", "her") + " [armor] and release the ");
                 if (player.vaginas.length > 0) outputText(vaginaDescript(player, 0) + " and ");
                 outputText(cockDescript(game.player, 0) + " therein; you lower yourself onto " + mf(player, "him", "her") + " over and over again, spearing your eager pussy with " + mf(player, "him", "her") + " prick");
@@ -788,7 +788,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 outputText("\n\nYour eyes flutter open.  What a strange dream... aw, dammit.  You can feel your [armor] rubbing against your crotch, sodden with cum.  ");
                 if (player.cumQ() > 1000) outputText("It's all over your bedroll, too...");
                 outputText("  Turning over and trying to find a dry spot, you attempt to return to sleep... the wet pressure against your crotch doesn't make it easy, nor do the rumbles in your abdomen, and you're already partway erect by the time you drift off into another erotic dream.  Another traveler passes under you, and you prepare to snare her with your web; your ovipositor peeks out eagerly and a bead of slime drips from it, running just ahead of the first fertilized egg you'll push into your poor victim...");
-                player.fertilizeEggs(); // reduce lust by 100 and add 20, convert eggs to fertilized depending on cum output
+                player.ovipositor.fertilizeEggs(); // reduce lust by 100 and add 20, convert eggs to fertilized depending on cum output
                 player.orgasm();
                 dynStats("lus", 20);
                 doNext(playerMenu);

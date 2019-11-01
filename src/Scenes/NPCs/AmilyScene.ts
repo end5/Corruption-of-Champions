@@ -2463,7 +2463,7 @@ export function amilyPreggoChance(): void {
 // Approach Amily:
 // EVENT 2427
 export function amilyFollowerEncounter(): void {
-    if (!amilyCorrupt() && player.eggs() >= 20 && player.canOviposit() && flags[kFLAGS.AMILY_OVIPOSITION_UNLOCKED] == 0) {
+    if (!amilyCorrupt() && player.ovipositor.eggs() >= 20 && player.ovipositor.canOviposit() && flags[kFLAGS.AMILY_OVIPOSITION_UNLOCKED] == 0) {
         amilyEggStuff();
         return;
     }
@@ -2566,7 +2566,7 @@ function amilyMenu(output: boolean = true): void {
         // outputText("Options:\nAppearance\nTalk\nMake Love\n", false);
         // MOAR OPTIONS: Give Present\nAlchemy\nTeach Blowpipe
         let eggs: () => void = null;
-        if (flags[kFLAGS.AMILY_OVIPOSITION_UNLOCKED] > 0 && player.canOviposit()) eggs = layEggsInAmily;
+        if (flags[kFLAGS.AMILY_OVIPOSITION_UNLOCKED] > 0 && player.ovipositor.canOviposit()) eggs = layEggsInAmily;
         choices("Appearance", amilyAppearance, "Talk", talkToAmilyCamp, "Make Love", fuckTheMouseBitch, "Give Present", giveAmilyAPresent, "Date", date,
             "Lay Eggs", eggs, "Defur", defur, "", null, "", null, "Back", Camp.campLoversMenu);
     }
@@ -7275,8 +7275,8 @@ function amilyEggStuff(): void {
 export function layEggsInAmily(): void {
     clearOutput();
     outputText("Feeling your ");
-    if (player.eggs() < 20) outputText("engorged");
-    else if (player.eggs() < 40) outputText("heaving");
+    if (player.ovipositor.eggs() < 20) outputText("engorged");
+    else if (player.ovipositor.eggs() < 40) outputText("heaving");
     else outputText("unbelievably swollen");
     outputText(" abdomen stir your mind drifts back to Amily's offer.  Dipping into her neck, you start to kiss her softly as your ovipositor begins to thicken, slowly peeking out into the air.  She shivers in your arms, your hands sliding around her sides to pull her close.  Barely able to pull your lips away, you nip along her jaw as you ask her if she's up for a little egging.");
     outputText("\n\n\"<i>I suppose I could be persuaded, you <b>do</b> look like you need a little attention...</i>\"  You feel a hand slipping down into your [armor] as she cranes her neck, moaning quietly as her searching fingers find their way to your [if (hasCock = true) stiffening shaft][if (isHerm = true)  and ][if (hasVagina = true) slick snatch]");
@@ -7366,16 +7366,16 @@ function layEggsInAmilysCorruptedHole(): void {
     outputText("penis, a rush of eggs engorges your shaft, leaving your abdomen feeling as light as air.  Amily moans as egg after egg pushes past her ring, still playing with her rear whilst you finish filling her with your clutch, her stomach pressing gently against yours as it bulges with her new load.  Before long the last egg slips out of the tip of your ovipositor and it begins to withdraw reflexively, slipping from its tight confines far more easily that it entered due to the impossible amount of slime that lines Amily's passage.  It cascades from her once you fully withdraw, covering you with a thick layer of the stuff as you both lie there, slowly drifting off to sleep.");
     // [Next]
     player.orgasm();
-    if (player.fertilizedEggs() > 0) {
-        if (player.canOvipositSpider()) {
+    if (player.ovipositor.fertilizedEggs() > 0) {
+        if (player.ovipositor.canOvipositSpider()) {
             pregnancy.buttKnockUp(PregnancyStore.PREGNANCY_DRIDER_EGGS, PregnancyStore.INCUBATION_DRIDER - 304); // (96)
         }
-        else if (player.canOvipositBee()) {
+        else if (player.ovipositor.canOvipositBee()) {
             pregnancy.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE + 48); // (96)
         }
-        flags[kFLAGS.AMILY_OVIPOSITED_COUNT] = player.eggs();
+        flags[kFLAGS.AMILY_OVIPOSITED_COUNT] = player.ovipositor.eggs();
     }
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     doNext(layEggsInAmilysButtPt2);
 
 }
@@ -7400,7 +7400,7 @@ export function amilyLaysEggsLikeABitch(): void {
 
     outputText("\n\nYou decide to leave the girl to her ministrations, ");
     // if abdomen
-    if (player.canOviposit()) outputText("though the sight has certainly gotten you thinking about what you'll be doing with your next clutch.\n");
+    if (player.ovipositor.canOviposit()) outputText("though the sight has certainly gotten you thinking about what you'll be doing with your next clutch.\n");
     else outputText("though a distinct heat in your nethers leaves you wishing you had another clutch to unload right now\n");
     dynStats("lus", (5 + player.lib / 10), "resisted", false);
     flags[kFLAGS.AMILY_OVIPOSITED_COUNT] = 0;

@@ -69,7 +69,7 @@ function urtaSexMenu(): void {
             menu();
             addButton(0, "Jerkoff", Urta.getAPublicFacialFromUrta);
             addButton(1, "Anal Ride", Urta.takeUrtaInTheButtPublically);
-            if (player.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
+            if (player.ovipositor.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
             addButton(3, "Spank Her", spank);
             if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
                 addButton(8, "3SomeSurprise", Urta.urtaAndRaphaelSurprise);
@@ -81,7 +81,7 @@ function urtaSexMenu(): void {
             menu();
             addButton(0, "Jerkoff", Urta.getAPublicFacialFromUrta);
             addButton(1, "Anal Ride", Urta.takeUrtaInTheButtPublically);
-            if (player.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
+            if (player.ovipositor.canOviposit()) addButton(2, "Lay Eggs", Urta.giveTheFoxSomeEggs);
             addButton(3, "Spank Her", spank);
             if (flags[kFLAGS.RAPHEAL_COUNTDOWN_TIMER] == -2 && Raphael.RaphaelLikes() && flags[kFLAGS.URTA_X_RAPHAEL_HAPPENED] == 0) {
                 addButton(8, "3SomeSurprise", Urta.urtaAndRaphaelSurprise);

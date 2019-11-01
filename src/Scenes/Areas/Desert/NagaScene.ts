@@ -668,8 +668,8 @@ export function nagaRapeChoice(): void {
     else outputText("The naga writhes in the sand, masturbating feverishly!  She's completely forgotten about fighting you.  ", true);
 
     let eggs: () => void = null;
-    if (player.canOvipositSpider()) eggs = eggUpANagaSpiderLike;
-    if (player.canOvipositBee() && player.gender > 0) eggs = beePositANagaPlease;
+    if (player.ovipositor.canOvipositSpider()) eggs = eggUpANagaSpiderLike;
+    if (player.ovipositor.canOvipositBee() && player.gender > 0) eggs = beePositANagaPlease;
     if (player.lust >= 33) {
         outputText("Your body aches for further satisfaction - do you rape the snake woman?", false);
         if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
@@ -919,7 +919,7 @@ function eggUpANagaSpiderLike(): void {
     outputText(".  You crumple into a heap on top of your reptilian lover, unconscious before you hit the sand.  Her eyes drift closed as well, as she coils around you, settling in for a well-deserved rest.");
 
     outputText("\n\nA while later, you awaken alone in the desert sand.  Getting your shaky legs under you and stifling a yawn, you head back to camp.  You should come to the desert more often.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }
@@ -955,13 +955,13 @@ function beePositANagaPlease(): void {
     if (player.gender > 0) outputText(".");
 
     outputText("\n\nPanting softly, the confused, climax-addled snake weakly kisses you again, though it falls apart once you withdraw your spent egg-tube from the gushing, honey-scented snatch.  A small river of amber goo runs from her slightly-gaped pussy as you withdraw, though your eggs are pushed so deep as to be invisible");
-    if (player.eggs() > 30) outputText(" from the outside at least.  You stuffed her so full that she looks positively pregnant, bulging to a picture of utter fertility");
+    if (player.ovipositor.eggs() > 30) outputText(" from the outside at least.  You stuffed her so full that she looks positively pregnant, bulging to a picture of utter fertility");
     outputText(".  She idly runs her hands across her body, pinching her nipples and gasping in delight.  Your venom is clearly keeping her quite aroused, even with such a powerful orgasm.  After such a workout, you feel like you might have a little bit of venom left, so you give the new ");
-    if (player.fertilizedEggs() == 0) outputText("egg-bearer");
+    if (player.ovipositor.fertilizedEggs() == 0) outputText("egg-bearer");
     else outputText("mother");
     outputText(" a parting sting.  Her moans of excitement jump an octave, and you listen to them with a happy, almost gloating smile while you get dressed.");
     outputText("\n\nYou should definitely come to the desert more often.");
-    player.dumpEggs();
+    player.ovipositor.dumpEggs();
     player.orgasm();
     cleanupAfterCombat();
 }

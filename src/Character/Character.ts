@@ -301,6 +301,8 @@ export class Character {
     public readonly breastRows = new BreastRowArray();
     public readonly ass = new AssClass();
 
+    public readonly ovipositor = new Ovipositor(this);
+
     public validate(): string {
         let error: string = "";
         // 2. Value boundaries etc
@@ -804,98 +806,6 @@ export class Character {
         return false;
     }
 
-    public canOvipositSpider(): boolean {
-        if (this.eggs() >= 10 && this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && this.isDrider() && this.tailType == 5)
-            return true;
-        return false;
-    }
-
-    public canOvipositBee(): boolean {
-        if (this.eggs() >= 10 && this.perks.findByType(PerkLib.BeeOvipositor) >= 0 && this.tailType == 6)
-            return true;
-        return false;
-    }
-
-    public canOviposit(): boolean {
-        if (this.canOvipositSpider() || this.canOvipositBee())
-            return true;
-        return false;
-    }
-
-    public eggs(): number {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return -1;
-        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
-            return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
-        else
-            return this.perks.getValue1Of(PerkLib.BeeOvipositor);
-    }
-
-    public addEggs(arg: number = 0): number {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return -1;
-        else {
-            if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
-                this.perks.addValue(PerkLib.SpiderOvipositor, 1, arg);
-                if (this.eggs() > 50)
-                    this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
-                return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
-            }
-            else {
-                this.perks.addValue(PerkLib.BeeOvipositor, 1, arg);
-                if (this.eggs() > 50)
-                    this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
-                return this.perks.getValue1Of(PerkLib.BeeOvipositor);
-            }
-        }
-    }
-
-    public dumpEggs(): void {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return;
-        this.setEggs(0);
-        // Sets fertile eggs = regular eggs (which are 0)
-        this.fertilizeEggs();
-    }
-
-    public setEggs(arg: number = 0): number {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return -1;
-        else {
-            if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
-                this.perks.setValue(PerkLib.SpiderOvipositor, 1, arg);
-                if (this.eggs() > 50)
-                    this.perks.setValue(PerkLib.SpiderOvipositor, 1, 50);
-                return this.perks.getValue1Of(PerkLib.SpiderOvipositor);
-            }
-            else {
-                this.perks.setValue(PerkLib.BeeOvipositor, 1, arg);
-                if (this.eggs() > 50)
-                    this.perks.setValue(PerkLib.BeeOvipositor, 1, 50);
-                return this.perks.getValue1Of(PerkLib.BeeOvipositor);
-            }
-        }
-    }
-
-    public fertilizedEggs(): number {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return -1;
-        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
-            return this.perks.getValue2Of(PerkLib.SpiderOvipositor);
-        else
-            return this.perks.getValue2Of(PerkLib.BeeOvipositor);
-    }
-
-    public fertilizeEggs(): number {
-        if (this.perks.findByType(PerkLib.SpiderOvipositor) < 0 && this.perks.findByType(PerkLib.BeeOvipositor) < 0)
-            return -1;
-        else if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0)
-            this.perks.setValue(PerkLib.SpiderOvipositor, 2, this.eggs());
-        else
-            this.perks.setValue(PerkLib.BeeOvipositor, 2, this.eggs());
-        return this.fertilizedEggs();
-    }
-
     private _femininity: number = 50;
 
     // This is the easiest way I could think of to apply "flat" bonuses to certain stats without having to write a whole shitload of crazyshit
@@ -1011,7 +921,7 @@ export class Character {
         if (type != PregnancyStore.PREGNANCY_IMP && type != PregnancyStore.PREGNANCY_OVIELIXIR_EGGS && type != PregnancyStore.PREGNANCY_ANEMONE) {
             if (this.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || this.perks.findByType(PerkLib.BeeOvipositor) >= 0) {
                 if (this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
-                    this.fertilizeEggs();
+                    this.ovipositor.fertilizeEggs();
                 }
             }
         }
