@@ -2842,7 +2842,7 @@ function removeIzmasPenis(): void {
     let pMilk: number = 0;
     let count: number = 5;
     while (count > 0) {
-        if (player.hasItem(ConsumableLib.SUCMILK, count)) {
+        if (player.inv.hasItem(ConsumableLib.SUCMILK, count)) {
             succMilk = count;
             break;
         }
@@ -2850,7 +2850,7 @@ function removeIzmasPenis(): void {
     }
     count = 5;
     while (count > 0) {
-        if (player.hasItem(ConsumableLib.P_S_MLK, count)) {
+        if (player.inv.hasItem(ConsumableLib.P_S_MLK, count)) {
             pMilk = count;
             break;
         }
@@ -2877,7 +2877,7 @@ function forceIzmaPenis(): void {
     let pMilk: number = 0;
     let count: number = 5;
     while (count > 0) {
-        if (player.hasItem(ConsumableLib.SUCMILK, count)) {
+        if (player.inv.hasItem(ConsumableLib.SUCMILK, count)) {
             succMilk = count;
             break;
         }
@@ -2885,7 +2885,7 @@ function forceIzmaPenis(): void {
     }
     count = 5;
     while (count > 0) {
-        if (player.hasItem(ConsumableLib.P_S_MLK, count)) {
+        if (player.inv.hasItem(ConsumableLib.P_S_MLK, count)) {
             pMilk = count;
             break;
         }
@@ -2915,12 +2915,12 @@ function izmaDickToggle(): void {
         outputText("\n\nYou carry her to the stream to keep her moist, tending to her for a half-hour before she wakens.  When her eyes open, Izma says, \"<i>Tch, that wasn't too bad.  Maybe I can get used to it, if that's what it's like for 'pure' women.</i>\"  Izma's tail wags back and forth mischievously, splashing up a storm as she suggests, \"<i>Just let me know if I'm ever allowed my penis again, okay?</i>\"  You sigh and agree.  <b>Izma is a female!</b>");
         flags[kFLAGS.IZMA_NO_COCK] = 1;
         let count: number = 0;
-        while (player.hasItem(ConsumableLib.P_S_MLK) && count < 5) {
-            player.consumeItem(ConsumableLib.P_S_MLK);
+        while (player.inv.hasItem(ConsumableLib.P_S_MLK) && count < 5) {
+            player.inv.consumeItem(ConsumableLib.P_S_MLK);
             count++;
         }
-        while (player.hasItem(ConsumableLib.SUCMILK) && count < 5) {
-            player.consumeItem(ConsumableLib.SUCMILK);
+        while (player.inv.hasItem(ConsumableLib.SUCMILK) && count < 5) {
+            player.inv.consumeItem(ConsumableLib.SUCMILK);
             count++;
             dynStats("cor", 3);
         }

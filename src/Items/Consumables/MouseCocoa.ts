@@ -91,7 +91,7 @@ export function mouseCocoa(player: Player): void {
             if (intensified) {
                 outputText("\n\nYour womb feels achingly empty, and your temperature shoots up.  Try as you might, you can't stop fantasizing about being filled with semen, drenched inside and out with it, enough to make a baker's dozen offspring.  ");
                 // [(no mino cum in inventory)]
-                if (!player.hasItem(ConsumableLib.MINOCUM)) {
+                if (!player.inv.hasItem(ConsumableLib.MINOCUM)) {
                     outputText("<b>Your heat has intensified as much as your fertility has increased, which is a considerable amount!</b>");
                 }
                 else if (player.lust < 100 || player.isTaur())
@@ -102,7 +102,7 @@ export function mouseCocoa(player: Player): void {
                     // (consumes item, increment addiction/output addict message, small chance of mino preg, reduce lust)]", false);
                     player.minoCumAddiction(5);
                     player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR, 175);
-                    player.consumeItem(ConsumableLib.MINOCUM);
+                    player.inv.consumeItem(ConsumableLib.MINOCUM);
                 }
             }
             else {

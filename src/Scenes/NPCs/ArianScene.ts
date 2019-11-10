@@ -2586,7 +2586,7 @@ function giveArianAnItem(): void {
         outputText("\n\n\"<i>Is it medicine you've brought me?  If so I'll be happy to take it; otherwise I think we should wait until I'm better; especially after that scolding you gave me earlier...</i>\"");
 
         // If PC has Vitality T. go to Give VT section. Otherwise, play below:
-        if (!player.hasItem(ConsumableLib.VITAL_T)) {
+        if (!player.inv.hasItem(ConsumableLib.VITAL_T)) {
             outputText("\n\nYou admit you don't have any medicine on you at the moment, and change the subject.");
             arianHomeMenu();
             return;
@@ -2606,13 +2606,13 @@ function giveArianAnItem(): void {
     else if (flags[kFLAGS.ARIAN_S_DIALOGUE] == 4 && arianHealth() >= 75) arianPlot4();
     else if (flags[kFLAGS.ARIAN_S_DIALOGUE] == 5 && arianHealth() >= 100) arianPlot5();
     else {
-        if (player.hasItem(ConsumableLib.VITAL_T)) addButton(0, "Vital Tinct", arianVitalityTincture);
+        if (player.inv.hasItem(ConsumableLib.VITAL_T)) addButton(0, "Vital Tinct", arianVitalityTincture);
         if (flags[kFLAGS.ARIAN_HEALTH] >= 20) {
-            if (player.hasItem(ConsumableLib.P_DRAFT)) addButton(1, "P. Incubi D", giveIncubusDraftToArian);
-            if (player.hasItem(ConsumableLib.P_S_MLK)) addButton(2, "P. Suc.Milk", succubiMilkForArian);
-            if (player.hasItem(ConsumableLib.LACTAID)) addButton(3, "Lactaid", giveArianLactaid);
-            if (player.hasItem(ConsumableLib.REDUCTO)) addButton(4, "Reducto", giveArianReducto);
-            if (player.hasItem(ConsumableLib.REPTLUM)) addButton(5, "Reptilum", giveArianReptilum);
+            if (player.inv.hasItem(ConsumableLib.P_DRAFT)) addButton(1, "P. Incubi D", giveIncubusDraftToArian);
+            if (player.inv.hasItem(ConsumableLib.P_S_MLK)) addButton(2, "P. Suc.Milk", succubiMilkForArian);
+            if (player.inv.hasItem(ConsumableLib.LACTAID)) addButton(3, "Lactaid", giveArianLactaid);
+            if (player.inv.hasItem(ConsumableLib.REDUCTO)) addButton(4, "Reducto", giveArianReducto);
+            if (player.inv.hasItem(ConsumableLib.REPTLUM)) addButton(5, "Reptilum", giveArianReptilum);
         }
         addButton(9, "Back", arianHomeMenu);
     }
@@ -2641,7 +2641,7 @@ function arianVitalityTincture(): void {
 
     outputText("\n\nYou smile and stroke the lizan gently on [Arian eir] head, telling [Arian em] that [Arian ey]'s welcome.  Now, you think it's time [Arian ey] laid [Arian em]self back down and got some rest; give the medicine time to work.  You promise you'll try and come back to see [Arian em] later, but right now, [Arian ey] needs to get some more rest.  Arian nods and settles [Arian em]self on [Arian eir] bed.");
 
-    player.consumeItem(ConsumableLib.VITAL_T);
+    player.inv.consumeItem(ConsumableLib.VITAL_T);
     arianHealth(10);
     menu();
     addButton(0, "Next", giveArianAnItem);
@@ -2653,7 +2653,7 @@ function arianVitalityTincture(): void {
 // If at min breast size, next dose reverts Arian to male. (Lose breasts and vagina.)
 function giveIncubusDraftToArian(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.P_DRAFT);
+    player.inv.consumeItem(ConsumableLib.P_DRAFT);
     outputText("Fishing around in your pockets, your hand closes on the vial of purified incubus draft.  You offer this to Arian, asking ");
     if (flags[kFLAGS.ARIAN_COCK_SIZE] > 0) outputText("if [Arian ey] would like to make [Arian eir] cock bigger");
     else outputText("if she'd like to have a touch of her old malehood back");
@@ -2791,7 +2791,7 @@ function giveIncubusDraftToArian(): void {
 // If breasts is at maximum size, extra doses reduce Cock Size. Removing first the second cock and then the first one if necessary.
 function succubiMilkForArian(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.P_S_MLK);
+    player.inv.consumeItem(ConsumableLib.P_S_MLK);
     outputText("Fishing out the bottle of purified demon's milk, you ask if Arian is willing to get ");
     if (flags[kFLAGS.ARIAN_VAGINA] > 0) outputText("further ");
     outputText("in touch with [Arian eir] feminine side.  For you?");
@@ -2911,7 +2911,7 @@ function succubiMilkForArian(): void {
 // If Arian has breasts, Increases breasts size by 1.
 function giveArianLactaid(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.LACTAID);
+    player.inv.consumeItem(ConsumableLib.LACTAID);
     outputText("Your hand closes around the vial of lactation-inducing potion that is Lactaid.  You almost reject it automatically, but then you stop and think.  There's odder things in this world, after all.  You remove the vial and ask Arian if [Arian ey] would be willing to let you see what lizan milk tastes like.");
 
     outputText("\n\n\"<i>I don't know.  Lizans don't actually lactate, since we lay eggs, so I don't know if this...</i>\"  Arian squints [Arian eir] eyes to read the label on the vial you're holding.  \"<i>...Lactaid will even work.  But if you want to try, I suppose it couldn't hurt... right?</i>\"  Arian smiles nervously.");
@@ -2996,7 +2996,7 @@ function giveArianReducto(): void {
 // Cannot go flat
 function useReductoOnAriansBreasts(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     outputText("You point at Arian's ");
     if (flags[kFLAGS.ARIAN_BREASTS] == 1) outputText("small");
     else if (flags[kFLAGS.ARIAN_BREASTS] == 2) outputText("generous");
@@ -3024,7 +3024,7 @@ function useReductoOnAriansBreasts(): void {
 // Cannot remove cocks.
 function useReductoOnArianCocks(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     outputText("You point at [Arian eir] crotch, mentioning that you'd like [Arian em] to be smaller.");
     outputText("\n\n\"<i>Oh, ok then.</i>\"  Arian opens [Arian eir] robes and squeezes the tube of Reducto on an open palm.");
 
@@ -3087,7 +3087,7 @@ function useReductoOnArianCocks(): void {
 // How much AnalXP should be lost per use is up to Fen.
 function useReductoOnAriansAsshole(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     outputText("You ask Arian to hand the tube of reducto back over to you, telling [Arian em] that you want to make [Arian em] a little tighter when you do [Arian em] from behind.  The lizard-");
     if (flags[kFLAGS.ARIAN_COCK_SIZE] > 0) {
         if (flags[kFLAGS.ARIAN_VAGINA] == 0) outputText("man");
@@ -3156,7 +3156,7 @@ function useReductoOnAriansAsshole(): void {
 // Chance to make Arian grow a second dick, if [Arian ey] has only one. (high chance: 50%)
 function giveArianReptilum(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.REPTLUM);
+    player.inv.consumeItem(ConsumableLib.REPTLUM);
     outputText("Fingering the vial of reptilium, you smirk to yourself.  Quickly wiping it off your face, you instruct Arian to close [Arian eir] eyes and open [Arian eir] mouth, as you have a special surprise for [Arian em].");
 
     outputText("\n\nArian, quickly complies.  \"<i>Okay, but can you at least tell me what is this about?</i>\"  [Arian ey] asks in curiosity.");
@@ -3356,8 +3356,8 @@ function imbueTalisman(): void {
     outputText("\n\n<b>Shielding Spell:</b> Two Black Chitin and One Tough Silk - Increases defense for the duration of the battle.");
     outputText("\n<b>Immolation Spell:</b> 2x Goblin Ale and 1x Sweet Gossamer - Deals damage over time.");
     menu();
-    if (player.hasItem(UseableLib.B_CHITN, 2) && player.hasItem(UseableLib.T_SSILK)) addButton(0, "Shielding", arianSpellPlace, "Shielding Spell");
-    if (player.hasItem(ConsumableLib.GOB_ALE, 2) && player.hasItem(ConsumableLib.S_GOSSR)) addButton(1, "Immolation", arianSpellPlace, "Immolation Spell");
+    if (player.inv.hasItem(UseableLib.B_CHITN, 2) && player.inv.hasItem(UseableLib.T_SSILK)) addButton(0, "Shielding", arianSpellPlace, "Shielding Spell");
+    if (player.inv.hasItem(ConsumableLib.GOB_ALE, 2) && player.inv.hasItem(ConsumableLib.S_GOSSR)) addButton(1, "Immolation", arianSpellPlace, "Immolation Spell");
     addButton(9, "Back", arianHomeMenu);
 }
 
@@ -3382,14 +3382,14 @@ function arianSpellPlace(spell: string): void {
     if (spell == "Shielding Spell") {
         player.effects.create(StatusAffects.ShieldingSpell, 0, 0, 0, 0);
         // Shielding Spell: 2x Black Chitin and 1x Tough Silk. - Increases defense for the duration of the battle.
-        player.consumeItem(UseableLib.B_CHITN, 2);
-        player.consumeItem(UseableLib.T_SSILK);
+        player.inv.consumeItem(UseableLib.B_CHITN, 2);
+        player.inv.consumeItem(UseableLib.T_SSILK);
     }
     if (spell == "Immolation Spell") {
         player.effects.create(StatusAffects.ImmolationSpell, 0, 0, 0, 0);
         // Immolation Spell: 2x Goblin Ale and 1x Sweet Gossamer. - Deals damage over time.
-        player.consumeItem(ConsumableLib.GOB_ALE, 2);
-        player.consumeItem(ConsumableLib.S_GOSSR);
+        player.inv.consumeItem(ConsumableLib.GOB_ALE, 2);
+        player.inv.consumeItem(ConsumableLib.S_GOSSR);
     }
     // If charged, stay chargggggeeed
     if (player.keyItems.has("Arian's Talisman") >= 0) {

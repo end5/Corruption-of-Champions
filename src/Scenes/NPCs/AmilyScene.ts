@@ -648,7 +648,7 @@ export function exploreVillageRuin(): void {
     // Sex / Talk / Talk then sex
     let efficiency: () => void = null;
     // Amily is not a herm but is ok with herm-daddying!
-    if (player.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
+    if (player.inv.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.AMILY_WANG_LENGTH] == 0 && flags[kFLAGS.AMILY_HERM_QUEST] == 2 && flags[kFLAGS.AMILY_AFFECTION] >= 40 && player.gender == 3) {
         efficiency = makeAmilyAHerm;
         outputText("You could probably bring up the efficiency of having two hermaphrodite mothers, particularly since you have this purified incubi draft handy.\n\n", false);
     }
@@ -1523,7 +1523,7 @@ export function talkWithCuntIMeanAmily(sexAfter: boolean = false): void {
         outputText("\"<i>You know...  I don't have the equipment needed to practice alchemy, but I do know a few things about it.</i>\" Amily says.  \"<i>If you can bring me a potion or a reagent, I may be able to remember some of the things my father taught me.</i>\"\n\n", false);
 
         // (If player has no main item:)
-        if (player.itemSlot1.quantity == 0) {
+        if (player.inv.itemSlot1.quantity == 0) {
             outputText("Promising you'll keep that in mind, you take your leave of Amily.\n\n", false);
             if (sexAfter) doNext(determineAmilySexEvent());
             else doNext(Camp.returnToCampUseOneHour);
@@ -1533,59 +1533,59 @@ export function talkWithCuntIMeanAmily(sexAfter: boolean = false): void {
         else {
             outputText("You remember that you have something in your pockets that might be of interest, and show it to Amily.\n\n", false);
         }
-        if (player.itemSlot1.itype == ConsumableLib.EQUINUM) {
+        if (player.inv.itemSlot1.itype == ConsumableLib.EQUINUM) {
             outputText("\"<i>That's a distillation of horse essence, I think.</i>\" Amily says.  \"<i>I guess it would probably make you stronger and tougher... but horses aren't smart, and it might be too strong for a human to handle without changing them,</i>\" she warns you.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.CANINEP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.CANINEP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.LARGEPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.LARGEPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.DBLPEPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.DBLPEPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.BLACKPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BLACKPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.KNOTTYP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.KNOTTYP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.BULBYPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BULBYPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it?  Especially this one with the big knot-like bulge or this one with the ball-like bulbs.  I suppose it would make you more dog-like... but I'm pretty sure you should avoid these jet-black ones.  I can't remember why...</i>\" she trails off, wracking her brain.\n\n", false);
         }
         // Succubus Milk/Incubus Draft:
-        else if (player.itemSlot1.itype == ConsumableLib.INCUBID || player.itemSlot1.itype == ConsumableLib.SUCMILK) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.INCUBID || player.inv.itemSlot1.itype == ConsumableLib.SUCMILK) {
             outputText("She recoils with a hiss.  \"<i>That's demon fluid, it is - like drinking liquid corruption! Avoid that stuff if you can; it'll turn you into a demon, and supercharge your sex-drive.  I've heard it can even mess with your gender if you drink too much of the opposite stuff.</i>\"\n\n", false);
         }
         // Succubi's Delight:
-        else if (player.itemSlot1.itype == ConsumableLib.SDELITE) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.SDELITE) {
             outputText("\"<i>Full of taint, no question of that.  Succubi give it to males who haven't become demons yet; makes them better able to produce cum, and pushes them towards demonhood.</i>\"\n\n", false);
         }
         // Wet Cloth:
-        else if (player.itemSlot1.itype == ConsumableLib.WETCLTH) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.WETCLTH) {
             outputText("\"<i>I... have no idea what that is.</i>\" she says, looking confused.  \"<i>I guess it's... slimey?  Concentrate of goo?  I think it's got something to do with whatever's been polluting the lake, so I wouldn't rub it into your skin.</i>\"\n\n", false);
         }
         // Bee Honey:
-        else if (player.itemSlot1.itype == ConsumableLib.BEEHONY) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BEEHONY) {
             outputText("\"<i>Honey from a giant bee?</i>\" she asks eagerly, perking up.  \"<i>Oh, that stuff's delicious! I hear it's full of special essences secreted by the giant bees, though, so it could have transformative effects.</i>\"\n\n", false);
         }
         // Pure Honey:
-        else if (player.itemSlot1.itype == ConsumableLib.PURHONY) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.PURHONY) {
             outputText("\"<i>You managed to get your hands on ultra-pure giant bee honey?</i>\" she asks, sounding impressed.  \"<i>I hear that stuff's so pure it can actually help purge the eater of demonic taint - but it's probably otherwise the same as regular bee honey.</i>\"\n\n", false);
         }
         // Green Glob:
-        else if (player.itemSlot1.itype == UseableLib.GREENGL) {
+        else if (player.inv.itemSlot1.itype == UseableLib.GREENGL) {
             outputText("\"<i>A blob of slime from a green gel?  Hmm...</i>\" she looks thoughtful.  \"<i>I think I remember my dad once telling me you could make a really strong armor out of a special distillation of green oozes.  I can't say for sure, and I wouldn't have the equipment even if I did remember.</i>\"\n\n", false);
         }
         // Bee Chitin:
-        else if (player.itemSlot1.itype == UseableLib.B_CHITN) {
+        else if (player.inv.itemSlot1.itype == UseableLib.B_CHITN) {
             outputText("\"<i>If you had a sufficient mass of this stuff, you could make a suit of armor out of it.  It needs special alchemical reagents, though, otherwise it'll just get all brittle and smashed up.</i>\"\n\n", false);
         }
         else {
@@ -2494,7 +2494,7 @@ export function amilyFollowerEncounter(): void {
         return;
     }
     // Amily
-    if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] == 1 && player.hasItem(ConsumableLib.PURHONY) && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.JOJO_FIXED_STATUS] == 0) {
+    if (flags[kFLAGS.AMILY_FOLLOWER] == 1 && flags[kFLAGS.AMILY_WAIT_FOR_PC_FIX_JOJO] == 1 && player.inv.hasItem(ConsumableLib.PURHONY) && flags[kFLAGS.AMILY_BLOCK_COUNTDOWN_BECAUSE_CORRUPTED_JOJO] == 0 && flags[kFLAGS.JOJO_FIXED_STATUS] == 0) {
         FollowerInteractions.fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM();
         return;
     }
@@ -3207,56 +3207,56 @@ function giveAmilyAPresent(): void {
     else {
         outputText("You look at the horny cum-bucket and wonder what you should make her take this time.\n\n");
     }
-    if (player.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
+    if (player.inv.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
         addButton(0, "Incubus D.", giveAmilyPureIncubusDraft);
         haveGift = true;
     }
-    else if (player.hasItem(ConsumableLib.P_DRAFT)) {
+    else if (player.inv.hasItem(ConsumableLib.P_DRAFT)) {
         addButton(0, "P. Incubus D.", giveAmilyPureIncubusDraft);
         haveGift = true;
     }
-    if (player.hasItem(ConsumableLib.P_S_MLK) || (player.hasItem(ConsumableLib.SUCMILK) && flags[kFLAGS.AMILY_FOLLOWER] == 2)) {
+    if (player.inv.hasItem(ConsumableLib.P_S_MLK) || (player.inv.hasItem(ConsumableLib.SUCMILK) && flags[kFLAGS.AMILY_FOLLOWER] == 2)) {
         addButton(1, "Succ Milk", giveAmilyPurifiedSuccubusMilk);
         haveGift = true;
     }
-    if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0 && (player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG))) {
+    if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0 && (player.inv.hasItem(ConsumableLib.PINKEGG) || player.inv.hasItem(ConsumableLib.L_PNKEG))) {
         addButton(2, "Pink Egg", giveAmilyAPinkEgg);
         haveGift = true;
     }
-    if (player.hasItem(ConsumableLib.WHITEEG) || player.hasItem(ConsumableLib.L_WHTEG)) {
+    if (player.inv.hasItem(ConsumableLib.WHITEEG) || player.inv.hasItem(ConsumableLib.L_WHTEG)) {
         addButton(3, "White Egg", giveAmilyAWhiteEgg);
         haveGift = true;
     }
-    if (player.hasItem(ConsumableLib.BROWNEG) || player.hasItem(ConsumableLib.L_BRNEG)) {
+    if (player.inv.hasItem(ConsumableLib.BROWNEG) || player.inv.hasItem(ConsumableLib.L_BRNEG)) {
         addButton(4, "Brown Egg", giveAmilyABrownEgg);
         haveGift = true;
     }
-    if (player.hasItem(ConsumableLib.PURPLEG) || player.hasItem(ConsumableLib.L_PRPEG)) {
+    if (player.inv.hasItem(ConsumableLib.PURPLEG) || player.inv.hasItem(ConsumableLib.L_PRPEG)) {
         addButton(5, "Purple Egg", giveAmilyAPurpleEgg);
         haveGift = true;
     }
     // Reducto not yet implemented
     // Lactaid not yet implemented
-    if (player.hasItem(ConsumableLib.SDELITE) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
+    if (player.inv.hasItem(ConsumableLib.SDELITE) && flags[kFLAGS.AMILY_FOLLOWER] == 2) {
         addButton(7, "Suc. Delite", giveCorruptAmilySuccubusDelight);
         haveGift = true;
     }
-    if (player.hasItem(ArmorLib.C_CLOTH)) {
+    if (player.inv.hasItem(ArmorLib.C_CLOTH)) {
         addButton(8, "Clothes", giveAmilySomePants);
         haveGift = true;
     }
-    else if (player.hasItem(ArmorLib.S_SWMWR) && flags[kFLAGS.AMILY_OWNS_BIKINI] == 0 && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0 && !amilyCorrupt()) {
+    else if (player.inv.hasItem(ArmorLib.S_SWMWR) && flags[kFLAGS.AMILY_OWNS_BIKINI] == 0 && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0 && !amilyCorrupt()) {
         outputText("You could give her a bikini, then invite her for a swim in the stream to show it off.\n\n");
         addButton(8, "Bikini", amilySwimFuckIntro);
         haveGift = true;
     }
     else if (flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] == 0 && !amilyCorrupt()) {
-        if (player.hasItem(ArmorLib.NURSECL) && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0) {
+        if (player.inv.hasItem(ArmorLib.NURSECL) && player.cocks.length > 0 && player.cocks.cockThatFits(61) >= 0) {
             outputText("You could give Amily the nurse's outfit you got, though it barely covers anything at all, and would likely be inviting some roleplay from the kinky mouse-girl.\n\n");
             addButton(8, "NurseClothes", amilyNurseCheckup);
             haveGift = true;
         }
-        else if (player.hasItem(ArmorLib.NURSECL))
+        else if (player.inv.hasItem(ArmorLib.NURSECL))
             outputText("You have a hunch if you had a penis that wasn't too big, giving Amily a nurse's outfit might set off some kinky roleplay.\n\n");
         else {
             outputText("You have a hunch that if you had a nurse's outfit you could get Amily to give you a rather erotic checkup, provided ");
@@ -3313,7 +3313,7 @@ export function giveAmilyPureIncubusDraft(): void {
             }
             // [Purified Incubus Draft - If Amily is Hermaphrodite]
             outputText("She looks disdainfully at the vial in your hand. \"<i>What, am I not big enough for you already? Oh well, I suppose if it makes you happy.</i>\" She snatches it from your hand and gulps it down. She tries her best to look apathetic, but is unable to help either the pleased moan or the dribbles of pre-cum that stain her clothes as her penis grows erect and then longer, at least a full inch so.  Breathing heavily, she pants, \"<i>Why does this have to actually feel good?</i>\"  Then she turns and lurches drunkenly away. You decide against following her and wander off in the other direction.\n\n", false);
-            player.consumeItem(ConsumableLib.P_DRAFT);
+            player.inv.consumeItem(ConsumableLib.P_DRAFT);
             amilyDickGrow();
             doNext(amilyFollowerEncounter);
         }
@@ -3334,8 +3334,8 @@ export function giveAmilyPureIncubusDraft(): void {
         // No wang yet
         if (flags[kFLAGS.AMILY_WANG_LENGTH] == 0) {
             // Consume dah goodies!
-            if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
-            else player.consumeItem(ConsumableLib.P_DRAFT);
+            if (player.inv.hasItem(ConsumableLib.INCUBID)) player.inv.consumeItem(ConsumableLib.INCUBID);
+            else player.inv.consumeItem(ConsumableLib.P_DRAFT);
             outputText("You pick up a vial of incubus draft and show it to Amily. \"<i>Drink this,</i>\" you tell her, passing the bottle to her. \"<i>" + mf(player, "Master", "Mistress") + ", this will make me grow a cock. Are you sure you wish to do that?</i>\"\n\n", false);
 
             outputText("You tell her yes, this is exactly what you want. Amily smiles and replies seductively, \"<i>As you wish " + mf(player, "master", "mistress") + ".</i>\"\n\n", false);
@@ -3351,8 +3351,8 @@ export function giveAmilyPureIncubusDraft(): void {
         }
         else if (flags[kFLAGS.AMILY_WANG_LENGTH] < maxSizeCorr && flags[kFLAGS.AMILY_WANG_GIRTH] < 3) {
             // Consume dah goodies!
-            if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
-            else player.consumeItem(ConsumableLib.P_DRAFT);
+            if (player.inv.hasItem(ConsumableLib.INCUBID)) player.inv.consumeItem(ConsumableLib.INCUBID);
+            else player.inv.consumeItem(ConsumableLib.P_DRAFT);
 
             outputText("You pick up a vial of incubus draft and show it to Amily. \"<i>I want you to have a bigger cock; drink this.</i>\" You order her, passing the bottle to her. Amily smiles and says, \"<i>As you wish, " + mf(player, "master", "mistress") + ", your orders are my pleasure.</i>\"\n\n", false);
 
@@ -3409,7 +3409,7 @@ function corruptAmilyGetsDickMaxxedOut(): void {
 function giveAmilyPureIncubusDraft4Realz(): void {
     outputText("", true);
     amilySprite();
-    player.consumeItem(ConsumableLib.P_DRAFT);
+    player.inv.consumeItem(ConsumableLib.P_DRAFT);
 
     outputText("Assuring her that this is what you want, you pass it over. Amily takes it reluctantly, then downs it, shuddering - first in disgust at what she actually drank, then with pleasure. Moaning ecstatically, she pulls off her pants to give you a full view as her clitoris swells, longer and thicker; finally, skin peels back at the tip to reveal what is unmistakably the glans of a penis, complete with a cum-gouting slit as she experiences her first male orgasm.\n\n", false);
 
@@ -3474,7 +3474,7 @@ export function giveAmilyPurifiedSuccubusMilk(): void {
         if ((flags[kFLAGS.AMILY_CUP_SIZE] < maxSizePure) || (flags[kFLAGS.AMILY_CUP_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
             outputText("She smiles at you. \"<i>I always did kind of want bigger breasts.</i>\" She admits, sheepishly. She takes it from you and eagerly chugs. She then drops the empty bottle, allowing it to smash on the ground, clutching her breasts and moaning ecstatically as they visibly swell, her clothes growing tighter as they do. When they finish, she squeezes them with glee. \"<i>Mmm... That feels nice. Did you want something else?</i>\"\n\n", false);
             flags[kFLAGS.AMILY_CUP_SIZE]++;
-            player.consumeItem(ConsumableLib.P_S_MLK);
+            player.inv.consumeItem(ConsumableLib.P_S_MLK);
         }
         // (If Amily's breast size is DD-cup):
         else {
@@ -3486,8 +3486,8 @@ export function giveAmilyPurifiedSuccubusMilk(): void {
     // CORRUPT UNZ
     else {
         // [Give Succubi's Milk]
-        if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
-        else player.consumeItem(ConsumableLib.P_S_MLK);
+        if (player.inv.hasItem(ConsumableLib.SUCMILK)) player.inv.consumeItem(ConsumableLib.SUCMILK);
+        else player.inv.consumeItem(ConsumableLib.P_S_MLK);
         // Doesn't matter if purified or not, she takes it the same way.
         // Amily's vagina is already at wetness 1, goes up to 4 (squirter).
         // You can give it Amily more Succubi's Milk after she's at 4, but it'll have no effect.
@@ -3527,7 +3527,7 @@ function amilyDrinksSuccubusDelight(): void {
     if (flags[kFLAGS.AMILY_NOT_FURRY] == 0)
         footpaw += "paw";
     if (flags[kFLAGS.AMILY_HAS_BALLS_AND_SIZE] == 0) {
-        player.consumeItem(ConsumableLib.SDELITE);
+        player.inv.consumeItem(ConsumableLib.SDELITE);
         outputText("You tell her you need her to be able to cum more, so balls would help with that. Amily smiles and says, \"<i>Of course, " + mf(player, "master", "mistress") + ". Forgive your stupid mouse slut for questioning you.</i>\"\n\n", false);
         outputText("She opens her legs so you can watch and downs the bottle in one go.", false);
         if (flags[kFLAGS.AMILY_WANG_LENGTH] > 0) outputText("Her cock grows hard, but nothing else seems to happen...", false);
@@ -3561,7 +3561,7 @@ function amilyDrinksSuccubusDelight(): void {
     }
     // [Give Succubus' Delight - repeat]
     else {
-        player.consumeItem(ConsumableLib.SDELITE);
+        player.inv.consumeItem(ConsumableLib.SDELITE);
         outputText("You pick up a vial of Succubi's Delight and show it to Amily. \"<i>Drink this; you need bigger balls,</i>\" you order her, passing the bottle to her. Amily replies, \"<i>Yes, " + mf(player, "master", "mistress") + "</i>.\" Then she opens her legs and downs the bottle. She moans as her balls grow bigger and denser, churning with the extra cum her sack now holds.", false);
         flags[kFLAGS.AMILY_HAS_BALLS_AND_SIZE]++;
     }
@@ -3597,8 +3597,8 @@ export function giveAmilyAPinkEgg(): void {
         outputText("You offer her a pink egg, explaining that it will remove her penis.  Amily looks completely devastated as she says, \"<i>Did fuck-slut not use her dick well enough?  Cum-bucket is so sorry " + mf(player, "master", "mistress") + ", it won't happen again!</i>\"  Before you can respond she snatches the egg from your hand and begins to eat it, messily devouring it until she's licking her fingers.  Once she has finished, she drops her pants to watch as <b>her penis shrinks and blurs, eventually resolving itself once more into the dainty form of her clitoris</b>.\n\n", false);
         outputText("\"<i>Well, is there something else this worthless cum-collector can do to please her " + mf(player, "master", "mistress") + "?  Slut is so sorry she disappointed you,</i>\" she squeaks sadly, still trying to entice you into sex.", false);
     }
-    if (player.hasItem(ConsumableLib.PINKEGG)) player.consumeItem(ConsumableLib.PINKEGG);
-    else player.consumeItem(ConsumableLib.L_PNKEG);
+    if (player.inv.hasItem(ConsumableLib.PINKEGG)) player.inv.consumeItem(ConsumableLib.PINKEGG);
+    else player.inv.consumeItem(ConsumableLib.L_PNKEG);
     flags[kFLAGS.AMILY_WANG_LENGTH] = 0;
     flags[kFLAGS.AMILY_WANG_GIRTH] = 0;
     doNext(amilyFollowerEncounter);
@@ -3618,13 +3618,13 @@ export function giveAmilyAWhiteEgg(): void {
         // (If Nipples are smaller than 4 inches:
         if (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizePure || (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
             outputText("She looks at it skeptically. \"<i>I guess bigger nipples would be more sensitive...</i>\" She mutters, but she takes it from you all the same. Unthinkingly biting off the top, she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and grow until they stop. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Well... I guess that they do feel kind of nice... Was there anything else?</i>\"\n\n", false);
-            if (player.hasItem(ConsumableLib.WHITEEG)) {
-                player.consumeItem(ConsumableLib.WHITEEG);
+            if (player.inv.hasItem(ConsumableLib.WHITEEG)) {
+                player.inv.consumeItem(ConsumableLib.WHITEEG);
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .25;
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
             }
             else {
-                player.consumeItem(ConsumableLib.L_WHTEG);
+                player.inv.consumeItem(ConsumableLib.L_WHTEG);
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .7;
                 flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
             }
@@ -3642,13 +3642,13 @@ export function giveAmilyAWhiteEgg(): void {
         // (If Nipples are smaller than 4 inches:
         if (flags[kFLAGS.AMILY_NIPPLE_LENGTH] < maxSizeCorr) outputText("She looks at it and smiles knowingly. \"<i>Is " + mf(player, "master", "mistress") + " going to make this one's nipples into obscene toys?</i>\" she asks while accepting the egg.  She bites off the top and sucks down the contents in a practiced gulp.  Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and grow until they stop. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Thank you " + mf(player, "master", "mistress") + " for giving your slut such wonderful nipple-toys.  Would you like to abuse your slut's needy fuck-hole now?</i>\"\n\n", false);
         else outputText("She looks at it and moans lewdly, \"<i>My nipples are going to be sure huge for you " + mf(player, "master", "mistress") + ".  No, nipples isn't right.  They're teats now.  Huge, swollen cow-teats on your mousey fuck-pet.  Lets make them bigger!</i>\" She bites off the top and sucks down the contents in a practiced gulp.  Crushing the shell in her hand, she pulls at her top, allowing you to see her nipples swell and hang even lower. She experimentally tweaks one, squeaking in shock at the sensation. \"<i>Thank you " + mf(player, "master", "mistress") + " for making your slut's body useless for anything but sex.  Would you like to abuse your slut's needy fuck-hole now?</i>\"\n\n", false);
-        if (player.hasItem(ConsumableLib.WHITEEG)) {
-            player.consumeItem(ConsumableLib.WHITEEG);
+        if (player.inv.hasItem(ConsumableLib.WHITEEG)) {
+            player.inv.consumeItem(ConsumableLib.WHITEEG);
             flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .25;
             flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
         }
         else {
-            player.consumeItem(ConsumableLib.L_WHTEG);
+            player.inv.consumeItem(ConsumableLib.L_WHTEG);
             flags[kFLAGS.AMILY_NIPPLE_LENGTH] += .7;
             flags[kFLAGS.AMILY_NIPPLE_LENGTH] = int(flags[kFLAGS.AMILY_NIPPLE_LENGTH] * 100) / 100;
         }
@@ -3672,12 +3672,12 @@ export function giveAmilyABrownEgg(): void {
         if (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizePure || (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
             outputText("\"<i>So, you want me to have a little more junk in the trunk, huh?</i>\" She giggles. \"<i>Well, I guess a little padding down there wouldn't hurt...</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, her hands then press themselves to her butt as she spins around so that it faces you, trying to look over her shoulder as it visibly swells, straining her pants. She pats it a few times, then shakes her head. \"<i>I'm going to have to go and let these pants out a little now.</i>\" She apologizes, and then walks away.\n\n", false);
             dynStats("lus", 5);
-            if (player.hasItem(ConsumableLib.BROWNEG)) {
-                player.consumeItem(ConsumableLib.BROWNEG);
+            if (player.inv.hasItem(ConsumableLib.BROWNEG)) {
+                player.inv.consumeItem(ConsumableLib.BROWNEG);
                 flags[kFLAGS.AMILY_ASS_SIZE] += 1 + rand(2);
             }
             else {
-                player.consumeItem(ConsumableLib.L_BRNEG);
+                player.inv.consumeItem(ConsumableLib.L_BRNEG);
                 flags[kFLAGS.AMILY_ASS_SIZE] += 2 + rand(3);
             }
             if (flags[kFLAGS.HYPER_HAPPY] && flags[kFLAGS.AMILY_ASS_SIZE] > maxSizeHypr) {
@@ -3699,12 +3699,12 @@ export function giveAmilyABrownEgg(): void {
         if (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeCorr || (flags[kFLAGS.AMILY_ASS_SIZE] < maxSizeHypr && flags[kFLAGS.HYPER_HAPPY])) {
             outputText("\"<i>So, " + mf(player, "master", "mistress") + " would like " + mf(player, "his", "her") + " toy to have a little more padding around her horny puss and asshole?</i>\" she giggles. \"<i>I obey.</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, her hands then press themselves to her butt as she spins around so that it faces you, trying to look over her shoulder as it visibly swells, jiggling slightly. She pats it a few times, then shakes her head. \"<i>Will you be using your newly-improved cum-dumpster now?</i>\" she asks.\n\n", false);
             dynStats("lus", 5);
-            if (player.hasItem(ConsumableLib.BROWNEG)) {
-                player.consumeItem(ConsumableLib.BROWNEG);
+            if (player.inv.hasItem(ConsumableLib.BROWNEG)) {
+                player.inv.consumeItem(ConsumableLib.BROWNEG);
                 flags[kFLAGS.AMILY_ASS_SIZE] += 1 + rand(2);
             }
             else {
-                player.consumeItem(ConsumableLib.L_BRNEG);
+                player.inv.consumeItem(ConsumableLib.L_BRNEG);
                 flags[kFLAGS.AMILY_ASS_SIZE] += 2 + rand(3);
             }
             if (flags[kFLAGS.AMILY_ASS_SIZE] > maxSizeHypr) {
@@ -3732,12 +3732,12 @@ export function giveAmilyAPurpleEgg(): void {
         // (If Amily doesn't have "full, womanly hips":
         if (flags[kFLAGS.AMILY_HIP_RATING] < maxSizePure || (flags[kFLAGS.AMILY_HIP_RATING] < maxSizeCorr && flags[kFLAGS.HYPER_HAPPY])) {
             outputText("She looks at it thoughtfully. \"<i>Wider hips...? Well, if you really want, I guess I can try it.</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she almost loses her balance as her hips suddenly jut wider, the growth happening much faster than she expected. \"<i>I'm going to have to get used to walking like this, now.</i>\" She mutters, and then she awkwardly walks away.\n\n", false);
-            if (player.hasItem(ConsumableLib.PURPLEG)) {
-                player.consumeItem(ConsumableLib.PURPLEG);
+            if (player.inv.hasItem(ConsumableLib.PURPLEG)) {
+                player.inv.consumeItem(ConsumableLib.PURPLEG);
                 flags[kFLAGS.AMILY_HIP_RATING] += 1 + rand(2);
             }
             else {
-                player.consumeItem(ConsumableLib.L_PRPEG);
+                player.inv.consumeItem(ConsumableLib.L_PRPEG);
                 flags[kFLAGS.AMILY_HIP_RATING] += 2 + rand(3);
             }
 
@@ -3759,12 +3759,12 @@ export function giveAmilyAPurpleEgg(): void {
         // (If Amily doesn't have "full, womanly hips":
         if (flags[kFLAGS.AMILY_HIP_RATING] < maxSizeCorr) {
             outputText("She looks at it thoughtfully. \"<i>" + mf(player, "Master", "Mistress") + " wants my hips even wider?  Are you going to use me as your private breeding stock?  Mmm, that turns me on!</i>\" She takes the egg from you, her prominent front-teeth effortlessly biting off the top, whereupon she sucks down the contents in a practiced gulp. Crushing the shell in her hand, she almost loses her balance as her hips suddenly jut wider, the growth happening much faster than she expected. \"<i>Gods that made me wet!  Take me... let's fuck right now, please!</i>\" she begs.\n\n", false);
-            if (player.hasItem(ConsumableLib.PURPLEG)) {
-                player.consumeItem(ConsumableLib.PURPLEG);
+            if (player.inv.hasItem(ConsumableLib.PURPLEG)) {
+                player.inv.consumeItem(ConsumableLib.PURPLEG);
                 flags[kFLAGS.AMILY_HIP_RATING] += 1 + rand(2);
             }
             else {
-                player.consumeItem(ConsumableLib.L_PRPEG);
+                player.inv.consumeItem(ConsumableLib.L_PRPEG);
                 flags[kFLAGS.AMILY_HIP_RATING] += 2 + rand(3);
             }
             if (flags[kFLAGS.AMILY_HIP_RATING] > 16) flags[kFLAGS.AMILY_ASS_SIZE] = 16;
@@ -3803,7 +3803,7 @@ export function giveAmilySomePants(): void {
         outputText("\"<i>More new clothes? Ooh, you're spoiling me, " + player.short + "</i>!\" she teases you. Unabashed in the slightest at being naked in front of you, she strips down, doing her best to give you a little show as she does so. She then redresses herself in her new offering. \"<i>How do I look?</i>\" she giggles.\n\n", false);
         outputText("You assure her that she looks beautiful. \"<i>Flatterer.</i>\" She smirks, and then wanders off to the stream.", false);
     }
-    player.consumeItem(ArmorLib.C_CLOTH);
+    player.inv.consumeItem(ArmorLib.C_CLOTH);
     doNext(amilyFollowerEncounter);
 }
 /*
@@ -5224,7 +5224,7 @@ export function makeAmilyAHerm(): void {
     outputText("You agree, and allow her to begin leading you to the \"<i>bedroom</i>\".", false);
     flags[kFLAGS.AMILY_WANG_LENGTH] = 4;
     flags[kFLAGS.AMILY_WANG_GIRTH] = 1;
-    player.consumeItem(ConsumableLib.P_DRAFT);
+    player.inv.consumeItem(ConsumableLib.P_DRAFT);
     // [Herm Amily on Female PC, First Time, scene plays]
     doNext(hermilyOnFemalePC);
 }
@@ -5439,7 +5439,7 @@ function cookAmilyASnack(): void {
         // Potent Mixture key-item added to inventory.
         // Takes 1 hour.
         // (if PC doesn't have the required items)
-        if (!(player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) || !player.hasItem(ConsumableLib.GOB_ALE)) {
+        if (!(player.inv.hasItem(ConsumableLib.L_DRAFT) || player.inv.hasItem(ConsumableLib.F_DRAFT)) || !player.inv.hasItem(ConsumableLib.GOB_ALE)) {
             outputText("You think about going into the Ruined Village, but you don't have the ingredients to create more of Amily's medicine. You return to your camp.", false);
             doNext(Camp.returnToCampUseOneHour);
             return;
@@ -5474,9 +5474,9 @@ function cookAmilyASnack(): void {
             }
             outputText("After taking a few minutes to rest you look inside the bowl; the mixture has become pinkish-white in color and it bubbles omniously. You take one of the empty bottles and fill it with as much of the mixture as you can, before putting the cork back and putting it back into your pouch. Now all you have to do is find Amily... You smile wickedly as you head back to camp.", false);
             // Consume items
-            if (player.hasItem(ConsumableLib.L_DRAFT)) player.consumeItem(ConsumableLib.L_DRAFT);
-            else player.consumeItem(ConsumableLib.F_DRAFT);
-            player.consumeItem(ConsumableLib.GOB_ALE);
+            if (player.inv.hasItem(ConsumableLib.L_DRAFT)) player.inv.consumeItem(ConsumableLib.L_DRAFT);
+            else player.inv.consumeItem(ConsumableLib.F_DRAFT);
+            player.inv.consumeItem(ConsumableLib.GOB_ALE);
             player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
         }
@@ -5484,7 +5484,7 @@ function cookAmilyASnack(): void {
     // First Time
     else {
         // (if PC doesn't have the required items and has >= 25 Corruption)
-        if (!(player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) || !player.hasItem(ConsumableLib.GOB_ALE)) {
+        if (!(player.inv.hasItem(ConsumableLib.L_DRAFT) || player.inv.hasItem(ConsumableLib.F_DRAFT)) || !player.inv.hasItem(ConsumableLib.GOB_ALE)) {
             outputText("You think about going into the Ruined Village, but decide it's best to wait until you have a plan underway (maybe some lust draft and a goblin ale to get the ball rolling... you return to your camp.", false);
             doNext(Camp.returnToCampUseOneHour);
             return;
@@ -5498,7 +5498,7 @@ function cookAmilyASnack(): void {
         // (else)
         else {
             outputText("You pick up a bowl and carefully pour the contents of the ", false);
-            if (player.hasItem(ConsumableLib.L_DRAFT)) outputText("Lust Draft ", false);
+            if (player.inv.hasItem(ConsumableLib.L_DRAFT)) outputText("Lust Draft ", false);
             else outputText("Fuck Draft ", false);
             outputText("and Goblin Ale inside, then you produce a wooden branch and begin stirring the contents until they are mixed together. Slowly you dip a finger and take a experimental lick; you're almost knocked back by the strong taste, your ", false);
             if (player.cocks.length > 0) outputText(cockDescript(game.player, 0) + " jumps up to attention", false);
@@ -5526,9 +5526,9 @@ function cookAmilyASnack(): void {
             }
             outputText("After taking a few minutes to rest you look inside the bowl; the mixture has become pinkish-white in color and it bubbles omniously. You take one of the empty bottles and fill it with as much of the mixture as you can, before putting the cork back and putting it back into your pouch. Now all you have to do is find Amily... You smile wickedly as you head back to camp.\n\n", false);
             // Consume items
-            if (player.hasItem(ConsumableLib.L_DRAFT)) player.consumeItem(ConsumableLib.L_DRAFT);
-            else player.consumeItem(ConsumableLib.F_DRAFT);
-            player.consumeItem(ConsumableLib.GOB_ALE);
+            if (player.inv.hasItem(ConsumableLib.L_DRAFT)) player.inv.consumeItem(ConsumableLib.L_DRAFT);
+            else player.inv.consumeItem(ConsumableLib.F_DRAFT);
+            player.inv.consumeItem(ConsumableLib.GOB_ALE);
             player.keyItems.create("Potent Mixture", 0, 0, 0, 0);
             flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00169]++;
         }
@@ -5612,7 +5612,7 @@ function talkWithCORRUPTCUNT(sexAfter: boolean = false): void {
         outputText("\"<i>" + mf(player, "Master", "Mistress") + ", I have some experience in alchemy, so if you wish I can share some of what I know with you,</i>\" she says.\n\n", false);
 
         // (If player has no main item:)
-        if (player.itemSlot1.quantity == 0) {
+        if (player.inv.itemSlot1.quantity == 0) {
             outputText("You tell her that you'll call for her, if you ever need her knowledge.\n\n", false);
             if (sexAfter) doNext(amilySexHappens);
             else doNext(Camp.returnToCampUseOneHour);
@@ -5622,59 +5622,59 @@ function talkWithCORRUPTCUNT(sexAfter: boolean = false): void {
         else {
             outputText("You remember that you have something in your pockets that might be of interest, and show it to Amily.\n\n", false);
         }
-        if (player.itemSlot1.itype == ConsumableLib.EQUINUM) {
+        if (player.inv.itemSlot1.itype == ConsumableLib.EQUINUM) {
             outputText("\"<i>That's a distillation of horse essence, I think,</i>\" Amily says. \"<i>It would probably make you stronger and tougher... Perhaps it could also give you a horse cock. Or perhaps give you a pussy as wet as mine,</i>\" she giggles. \"<i>Whatever happens, could you come test it on me?</i>\" she asks seductively.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.CANINEP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.CANINEP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.LARGEPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.LARGEPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.DBLPEPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.DBLPEPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.BLACKPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BLACKPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you tried this black one?  It looks yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.KNOTTYP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.KNOTTYP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Canine Pepper & Variants:
-        else if (player.itemSlot1.itype == ConsumableLib.BULBYPP) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BULBYPP) {
             outputText("\"<i>Looks kind of like a dog's dick, doesn't it? Especially this one with the big knot-like bulge or this one with the ball-like bulbs. I suppose it would make you more dog-like... Have you ever tried one of the jet-black ones?  Those look yummy...</i>\" she says, licking her lips.\n\n", false);
         }
         // Succubus Milk/Incubus Draft:
-        else if (player.itemSlot1.itype == ConsumableLib.INCUBID || player.itemSlot1.itype == ConsumableLib.SUCMILK) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.INCUBID || player.inv.itemSlot1.itype == ConsumableLib.SUCMILK) {
             outputText("She hums at the scent. \"<i>That's demon fluid, " + mf(player, "master", "mistress") + ". It'd be like drinking liquid corruption. It could turn you into a demon, or supercharge your feminity or masculinity. I've heard it can even mess with your gender if you drink too much of the opposite stuff. But none of that is important, I'd be happy to drink from you no matter what gender you are " + mf(player, "master", "mistress") + ",</i>\" she says with a grin.\n\n", false);
         }
         // Succubi's Delight:
-        else if (player.itemSlot1.itype == ConsumableLib.SDELITE) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.SDELITE) {
             outputText("\"<i>Full of taint, no question of that. Succubi give it to males who haven't become demons yet; makes them better able to produce cum, and pushes them towards demonhood. Why don't you try some?</i>\" she asks with a smile.\n\n", false);
         }
         // Wet Cloth:
-        else if (player.itemSlot1.itype == ConsumableLib.WETCLTH) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.WETCLTH) {
             outputText("\"<i>Forgive your useless cumslut for her ignorance, " + mf(player, "master", "mistress") + ",</i>\" she says, looking down. \"<i>I don't really know what this is; but it looks like some sort of... concentrate of goo?  I think it's got something to do with whatever's been polluting the lake, but it does smell great, doesn't it?</i>\" she asks, smiling at you.\n\n", false);
         }
         // Bee Honey:
-        else if (player.itemSlot1.itype == ConsumableLib.BEEHONY) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.BEEHONY) {
             outputText("\"<i>That is honey from a giant bee, " + mf(player, "master", "mistress") + "!</i>\" she tells you eagerly, perking up. \"<i>Oh, that stuff's delicious!</i>\" Then she diverts her stare to you, looking at you with half-lidded eyes, idly sucking on a clawed finger. \"<i>But I prefer having your honey, " + mf(player, "master", "mistress") + ",</i>\" she says seductively, licking at her finger, a tiny strand of saliva connecting it to her mouth.\n\n", false);
         }
         // Pure Honey:
-        else if (player.itemSlot1.itype == ConsumableLib.PURHONY) {
+        else if (player.inv.itemSlot1.itype == ConsumableLib.PURHONY) {
             outputText("\"<i>You managed to get your hands on ultra-pure giant bee honey?</i>\" she asks, sounding impressed. \"<i>I hear that stuff's so pure it can actually help purge the eater of demonic taint - but why would you want to do that?</i>\" she asks mockingly.\n\n", false);
         }
         // Green Glob:
-        else if (player.itemSlot1.itype == UseableLib.GREENGL) {
+        else if (player.inv.itemSlot1.itype == UseableLib.GREENGL) {
             outputText("\"<i>A blob of slime from a green gel? Hmm...</i>\" She looks thoughtful. \"<i>I think I remember my dad once telling  me you could make a really strong armor out of a special distillation of green oozes. Slut doesn't remember for sure, but she thinks you look better naked " + mf(player, "master", "mistress") + "</i>,\" she says seductively.</i>\"\n\n", false);
         }
         // Bee Chitin:
-        else if (player.itemSlot1.itype == UseableLib.B_CHITN) {
+        else if (player.inv.itemSlot1.itype == UseableLib.B_CHITN) {
             outputText("\"<i>If you had a sufficient mass of this stuff, you could make a suit of armor out of it. It needs special alchemical reagents, though, otherwise it'll just get all brittle and smashed up. But why bother? That would hide your perfect body, " + mf(player, "master", "mistress") + "</i>,\" she says seductively.\n\n", false);
         }
         else {
@@ -6717,20 +6717,20 @@ function amilyCanHaveTFNow(): boolean {
     // some purified <b>succubus milk</b> to round things off
     return flags[kFLAGS.AMILY_NOT_FURRY] == 0  // Amily isn't already defurried
         && flags[kFLAGS.AMILY_OFFERED_DEFURRY] == 1  // Amily has been offered to be dehaired
-        && player.hasItem(ConsumableLib.GLDSEED)     // And we have all the shit we need
-        && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))
-        && (player.hasItem(ConsumableLib.P_S_MLK) || (amilyCorrupt() && player.hasItem(ConsumableLib.SUCMILK)));
+        && player.inv.hasItem(ConsumableLib.GLDSEED)     // And we have all the shit we need
+        && (player.inv.hasItem(ConsumableLib.BLACKEG) || player.inv.hasItem(ConsumableLib.L_BLKEG))
+        && (player.inv.hasItem(ConsumableLib.P_S_MLK) || (amilyCorrupt() && player.inv.hasItem(ConsumableLib.SUCMILK)));
 }
 // Arrive with all the stuff you need to make Amily not look completely rediculous.
 function amilyDefurrify(): void {
-    player.consumeItem(ConsumableLib.GLDSEED);
-    if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
-    else player.consumeItem(ConsumableLib.L_BLKEG);
+    player.inv.consumeItem(ConsumableLib.GLDSEED);
+    if (player.inv.hasItem(ConsumableLib.BLACKEG)) player.inv.consumeItem(ConsumableLib.BLACKEG);
+    else player.inv.consumeItem(ConsumableLib.L_BLKEG);
     if (amilyCorrupt()) {
-        if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
-        else player.consumeItem(ConsumableLib.P_S_MLK);
+        if (player.inv.hasItem(ConsumableLib.SUCMILK)) player.inv.consumeItem(ConsumableLib.SUCMILK);
+        else player.inv.consumeItem(ConsumableLib.P_S_MLK);
     }
-    else player.consumeItem(ConsumableLib.P_S_MLK);
+    else player.inv.consumeItem(ConsumableLib.P_S_MLK);
     flags[kFLAGS.AMILY_OFFERED_DEFURRY] = 2; // We're now completing this dumb little quest.
     flags[kFLAGS.AMILY_NOT_FURRY] = 1;
     flags[kFLAGS.AMILY_OFFER_ACCEPTED] = 1;
@@ -6763,14 +6763,14 @@ export function amilyDefurryOfferAtCamp(): void {
         return;
     }
     // EAT ZE ITEMS!
-    player.consumeItem(ConsumableLib.GLDSEED);
-    if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
-    else player.consumeItem(ConsumableLib.L_BLKEG);
+    player.inv.consumeItem(ConsumableLib.GLDSEED);
+    if (player.inv.hasItem(ConsumableLib.BLACKEG)) player.inv.consumeItem(ConsumableLib.BLACKEG);
+    else player.inv.consumeItem(ConsumableLib.L_BLKEG);
     if (amilyCorrupt()) {
-        if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
-        else player.consumeItem(ConsumableLib.P_S_MLK);
+        if (player.inv.hasItem(ConsumableLib.SUCMILK)) player.inv.consumeItem(ConsumableLib.SUCMILK);
+        else player.inv.consumeItem(ConsumableLib.P_S_MLK);
     }
-    else player.consumeItem(ConsumableLib.P_S_MLK);
+    else player.inv.consumeItem(ConsumableLib.P_S_MLK);
 
     if (amilyCorrupt()) {
         const master: string = mf(player, "master", "mistress");
@@ -7430,7 +7430,7 @@ export function amilySwimFuckIntro(): void {
         outputText("\n\n\"<i>How do I look,</i>\" your lover asks demurely, toeing at the dirt.  The usually confident little mouse is clearly out of her element but excited as well.");
         outputText("\n\n\"<i>Stunning,</i>\" you answer, and remembering your earlier offer, you ask, \"<i>Shall we hit the water, then?</i>\"");
         outputText("\n\nAmily seductively sashays up to your side and takes your hand, leaning heavily against you as the two of you head toward the stream.");
-        player.consumeItem(ArmorLib.S_SWMWR);
+        player.inv.consumeItem(ArmorLib.S_SWMWR);
         flags[kFLAGS.AMILY_OWNS_BIKINI] = 1;
     }
     // Repeat Swim Intro
@@ -7805,7 +7805,7 @@ export function amilyNurseCheckup(): void {
     clearOutput();
     // First Time
     if (flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] == 0) {
-        player.consumeItem(ArmorLib.NURSECL);
+        player.inv.consumeItem(ArmorLib.NURSECL);
         flags[kFLAGS.GIVEN_AMILY_NURSE_OUTFIT] = 1;
         outputText("You hand Amily the enticing garments with a roguish smile.  Her eyes seem confused at first, but a knowing, playful grin spreads over her features.  Slapping you with the costume, she teases, \"<i>What is this supposed to be, [name]?</i>\"  The fabric stretches across her as she holds it up in front of her 'assets'.  \"<i>This is barely modest!</i>\"");
         outputText("\n\nShe rounds on you, her tail rubbing on your leg as she steps closer, holding the thin fabric tight to her lithe body.  \"<i>Did you want me to look obscene for you?  To look like a naughty nurse?</i>\"  Her ears twitch as she mulls it over.");

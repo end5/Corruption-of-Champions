@@ -52,7 +52,7 @@ export function gnoll2Encounter(): void {
 export function hyenaSpearLossAnal(): void {
     spriteSelect(54);
     // Oh shit get anal raped.
-    if (player.hasItem(ConsumableLib.S_DREAM)) {
+    if (player.inv.hasItem(ConsumableLib.S_DREAM)) {
         GnollScene.yoDawgIHeardULiekGNollBallzzzdahdakjldh();
         return;
     }

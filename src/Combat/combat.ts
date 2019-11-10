@@ -1404,7 +1404,7 @@ export function dropItem(monster: Monster): void {
     }
     // Chance of armor if at level 1 pierce fetish
     if (!plotFight && !(monster instanceof Ember) && !(monster instanceof Kiha) && !(monster instanceof Hel) && !(monster instanceof Isabella)
-        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.hasItem(ArmorLib.SEDUCTA, 1) && !CeraphFollowerScene.ceraphIsFollower()) {
+        && flags[kFLAGS.PC_FETISH] == 1 && rand(10) == 0 && !player.inv.hasItem(ArmorLib.SEDUCTA, 1) && !CeraphFollowerScene.ceraphIsFollower()) {
         itype = ArmorLib.SEDUCTA;
     }
 

@@ -164,11 +164,11 @@ export function infertilityQuestions(): void {
 
 function resetToPC(): void {
     player = player2;
-    player.itemSlot1 = urtaQItems1;
-    player.itemSlot2 = urtaQItems2;
-    player.itemSlot3 = urtaQItems3;
-    player.itemSlot4 = urtaQItems4;
-    player.itemSlot5 = urtaQItems5;
+    player.inv.itemSlot1 = urtaQItems1;
+    player.inv.itemSlot2 = urtaQItems2;
+    player.inv.itemSlot3 = urtaQItems3;
+    player.inv.itemSlot4 = urtaQItems4;
+    player.inv.itemSlot5 = urtaQItems5;
     game.player = player;
 
     // See called method comment.
@@ -180,16 +180,16 @@ export function startUrtaQuest(): void {
     clearOutput();
     trace("Cloning PC's items");
     // *SERIALIZE* out the players current Player object + items
-    urtaQItems1 = player.itemSlot1;
-    urtaQItems2 = player.itemSlot2;
-    urtaQItems3 = player.itemSlot3;
-    urtaQItems4 = player.itemSlot4;
-    urtaQItems5 = player.itemSlot5;
-    player.itemSlot1 = new ItemSlotClass();
-    player.itemSlot2 = new ItemSlotClass();
-    player.itemSlot3 = new ItemSlotClass();
-    player.itemSlot4 = new ItemSlotClass();
-    player.itemSlot5 = new ItemSlotClass();
+    urtaQItems1 = player.inv.itemSlot1;
+    urtaQItems2 = player.inv.itemSlot2;
+    urtaQItems3 = player.inv.itemSlot3;
+    urtaQItems4 = player.inv.itemSlot4;
+    urtaQItems5 = player.inv.itemSlot5;
+    player.inv.itemSlot1 = new ItemSlotClass();
+    player.inv.itemSlot2 = new ItemSlotClass();
+    player.inv.itemSlot3 = new ItemSlotClass();
+    player.inv.itemSlot4 = new ItemSlotClass();
+    player.inv.itemSlot5 = new ItemSlotClass();
     player2 = player;
 
     player = new Player();

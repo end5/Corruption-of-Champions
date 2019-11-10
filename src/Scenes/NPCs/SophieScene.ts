@@ -912,7 +912,7 @@ export function sophieLostCombat(): void {
             // big clit girls
             if (player.clitLength >= 5) clitFuck = fuckDatClit;
         }
-        if (player.hasItem(ConsumableLib.BIMBOLQ)) bimbo = SophieBimbo.bimbotizeMeCaptainSophie;
+        if (player.inv.hasItem(ConsumableLib.BIMBOLQ)) bimbo = SophieBimbo.bimbotizeMeCaptainSophie;
     }
     if (dickRape != null || cuntFuck != null || clitFuck != null || bimbo != null) {
         outputText("  What do you do to her?", false);

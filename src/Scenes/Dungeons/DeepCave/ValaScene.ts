@@ -83,8 +83,8 @@ export function freeValazLooseCoochie(): void {
 
     // [Heal (if the player has Pure Honey)] [Sex] [Reject]
     let heal: () => void = null;
-    if (player.hasItem(ConsumableLib.PURHONY, 1)) heal = healVala;
-    if (player.hasItem(ConsumableLib.P_PEARL, 1)) heal = healVala;
+    if (player.inv.hasItem(ConsumableLib.PURHONY, 1)) heal = healVala;
+    if (player.inv.hasItem(ConsumableLib.P_PEARL, 1)) heal = healVala;
     // Choicez go here.  I can haz fucks?
     simpleChoices("Fix Her", heal, "Sex", (player.gender > 0 ? ValaGetsSexed : null), "Reject", rejectFuckingVala, "", null, "", null);
 }
@@ -93,8 +93,8 @@ export function freeValazLooseCoochie(): void {
 export function healVala(): void {
     spriteSelect(85);
     outputText("", true);
-    if (player.hasItem(ConsumableLib.PURHONY, 1)) {
-        player.consumeItem(ConsumableLib.PURHONY, 1);
+    if (player.inv.hasItem(ConsumableLib.PURHONY, 1)) {
+        player.inv.consumeItem(ConsumableLib.PURHONY, 1);
         flags[kFLAGS.VALA_HEALED_HONEY] = 1;
         outputText("You're not sure if Pure Honey will do the trick, but it seems like the most likely candidate. You set the broken girl down and step over to the alchemy table. She clings onto your ", false);
         if (player.lowerBody == LowerBodyType.NAGA) outputText("tail", false);
@@ -107,7 +107,7 @@ export function healVala(): void {
     }
     // Pearl!
     else {
-        player.consumeItem(ConsumableLib.P_PEARL, 1);
+        player.inv.consumeItem(ConsumableLib.P_PEARL, 1);
         outputText("A soft, warm breeze rustles your " + hairDescription(player) + " and for a moment the foul stench of the dungeon vanishes, setting your mind at ease and draining the tension that has been building in your gut. In a moment of clarity, you remember the beautiful Pure Pearl that Marae granted you as a reward for shutting down the demons' factory. It seems only right to use the goddess' gift to rescue one of her wayward children. Perhaps she gave it to you for this very reason? The oblivious girl has managed to work her way to a sitting position and is grinding her dripping sex against your " + foot(player) + ". You lean down and gently lift her chin up, bringing her empty, pink eyes to stare into yours. Mistaking the gentle motion for a command, she gleefully opens wide, tongue thrashing about in anticipation. You place the pink pearl at the fairy's lips and she wraps her mouth around the pale jewel, trying obediently to swallow it. However, the little fairy's mouth is far smaller than you would've thought and it seems to get stuck just behind her teeth, like a pink ball-gag. She coos a muffled moan and begins to masturbate without breaking eye contact with you.\n\n", false);
 
         outputText("Not exactly what you had in mind. It looks like you're going to have to be a bit more forceful.  You stoop down and take the fairy's head in your arms. Placing your fingers on the drool-soaked orb wrenching her mouth open, you begin to shove the pure pearl into her throat. With ecstatic joy, she swallows as hard as she can, trying to accommodate this new, exciting insertion. The gem squeezes past her tonsils and is forced into her esophagus with an audible 'pop!' the mass of the pearl leaving an orb-shaped bulge in her throat. Her masturbation becomes frenzied as she begins choking on the gem and you hurry to stroke the girl's neck, coaxing the pearl down, out of her windpipe. Finally, it drops into her stomach and the change is immediate. Just as she climaxes, her empty pink eyes focus and sharpen, the lusty haze fading as Marae's gift burns away the pollution of the imps' drugs and rape. She gives you a genuine smile and speaks with a voice like the rushing of wind over reeds. \"<i>Thank you. I cannot express my gratitude for what you've done. You are a godsend, hero. I will never forget what you've done for me.</i>\"\n\n", false);
@@ -557,13 +557,13 @@ export function tryToHealVala(): void {
     spriteSelect(85);
     outputText("", true);
     // (Without Pure Honey)
-    if (!(player.hasItem(ConsumableLib.PURHONY, 1) || player.hasItem(ConsumableLib.P_PEARL, 1))) {
+    if (!(player.inv.hasItem(ConsumableLib.PURHONY, 1) || player.inv.hasItem(ConsumableLib.P_PEARL, 1))) {
         outputText("You try your best with what you've got, but nothing seems to restore the broken fairy's mind to her sex-addled  body. You're going to have to go out and gather more materials. Surely there's something that can break the damage the imps have done to Vala.", false);
         doNext(playerMenu);
     }
     // (With Pure Honey)
-    else if (player.hasItem(ConsumableLib.PURHONY, 1)) {
-        player.consumeItem(ConsumableLib.PURHONY, 1);
+    else if (player.inv.hasItem(ConsumableLib.PURHONY, 1)) {
+        player.inv.consumeItem(ConsumableLib.PURHONY, 1);
         outputText("You're not sure if Pure Honey will do the trick, but it seems like the most likely candidate. You set the broken girl down and step over to the alchemy table. Vala clings onto your leg as you walk, and you end up dragging her across the dungeon floor. Before things can get too out of hand with the needy girl, you pull out the vial of Pure Honey and arrange the equipment in front of you. Using the cleanest of the pipettes, you take a small portion of the honey and mix it with what you hope to be water, diluting the rich mixture to a more viscous state. Working quickly, you manage to produce a draught that the weak girl can tolerate. By now, she's managed to work her way to a sitting position and is grinding her dripping sex against your shin. You lean down and hold her nose to make her open her mouth. She gleefully opens wide, tongue thrashing about in anticipation. You pour the sweet-smelling concoction down her anxious throat and begin to re-cork the rest of your honey.\n\n", false);
 
         outputText("The effects of your cure are more violent than you expected. The fairy thrashes wildly, causing you to drop your bottle of Pure Honey, sending it spilling over the table, shattering the delicate equipment and ruining the unlabeled concoctions within. Moving to keep the girl from hurting herself in her seizure, you hold her head against your chest and wait out the wild bucking. Gradually, her motions slow and her breath calms to a more normal pace. When she looks back up at you, her eyes are clear at last, the pollution of lust burned away by the honey's restorative properties. She gives you a genuine smile and speaks with a voice like the rushing of wind over reeds. \"<i>Thank you,</i>\" she gasps. \"<i>Thank you. I cannot express my gratitude for what you've done. The fate you've saved me from was worse than any death those wretched creatures could have subjected me to.</i>\"", false);
@@ -573,7 +573,7 @@ export function tryToHealVala(): void {
     }
     else {
         // Pure Pearl
-        player.consumeItem(ConsumableLib.P_PEARL, 1);
+        player.inv.consumeItem(ConsumableLib.P_PEARL, 1);
         outputText("A soft, warm breeze rustles your " + hairDescription(player) + " and for a moment the foul stench of the dungeon vanishes, setting your mind at ease and draining the tension that has been building in your gut. In a moment of clarity, you remember the beautiful Pure Pearl that Marae granted you as a reward for shutting down the demons' factory. It seems only right to use the goddess' gift to rescue one of her wayward children. Perhaps she gave it to you for this very reason? The oblivious girl has managed to work her way to a sitting position and is grinding her dripping sex against your " + foot(player) + ". You lean down and gently lift her chin up, bringing her empty, pink eyes to stare into yours. Mistaking the gentle motion for a command, she gleefully opens wide, tongue thrashing about in anticipation. You place the pink pearl at the fairy's lips and she wraps her mouth around the pale jewel, trying obediently to swallow it. However, the little fairy's mouth is far smaller than you would've thought and it seems stuck just behind her teeth, like a pink ball-gag. She coos a muffled moan and begins to masturbate without breaking eye contact with you.\n\n", false);
 
         outputText("Not exactly what you had in mind. It looks like you're going to have to be a bit more forceful.  You stoop down and take the fairy's head in your arms. Placing your fingers on the drool-soaked orb wrenching her mouth open, you begin to shove the pure pearl into her throat. With ecstatic joy, she swallows as hard as she can, trying to accommodate this new, exciting insertion. The gem squeezes past her tonsils and is forced into her esophagus with an audible 'pop!' the mass of the pearl leaving an orb-shaped bulge in her throat. Her masturbation becomes frenzied as she begins choking on the gem and you hurry to stroke the girl's neck, coaxing the pearl down, out of her windpipe. Finally, it drops into her stomach and the change is immediate. Just as she climaxes, her empty pink eyes focus and sharpen, the lusty haze fading as Marae's gift burns away the pollution of the imps' drugs and rape. She gives you a genuine smile and speaks with a voice like the rushing of wind over reeds. \"<i>Thank you. I cannot express my gratitude for what you've done. You are a godsend, hero. I will never forget what you've done for me.</i>\"\n\n", false);

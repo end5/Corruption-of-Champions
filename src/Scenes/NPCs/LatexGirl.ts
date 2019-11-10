@@ -120,10 +120,10 @@ export function meanGooGirlRecruitment(): void {
     clearOutput();
     flags[kFLAGS.GOO_TFED_MEAN] = 1;
     flags[kFLAGS.GOO_EYES] = monster.skinTone;
-    if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
-    else player.consumeItem(ConsumableLib.P_S_MLK);
-    if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
-    else player.consumeItem(ConsumableLib.L_BLKEG);
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) player.inv.consumeItem(ConsumableLib.SUCMILK);
+    else player.inv.consumeItem(ConsumableLib.P_S_MLK);
+    if (player.inv.hasItem(ConsumableLib.BLACKEG)) player.inv.consumeItem(ConsumableLib.BLACKEG);
+    else player.inv.consumeItem(ConsumableLib.L_BLKEG);
     outputText("You approach the horny gel-girl, admiring the marvelous, refractive hue of her soluble body for the last time.  Pulling the black egg from your pouches, you ");
     if (player.spe > 60) outputText("idly spin it on your finger, tossing it into the air and catching it on the next as you advance");
     else outputText("firmly grasp it in your hand as you approach");
@@ -314,10 +314,10 @@ export function pureGooRecruitmentStart(): void {
     clearOutput();
     flags[kFLAGS.GOO_TFED_NICE] = 1;
     flags[kFLAGS.GOO_EYES] = monster.skinTone;
-    if (player.hasItem(ConsumableLib.SUCMILK)) player.consumeItem(ConsumableLib.SUCMILK);
-    else player.consumeItem(ConsumableLib.P_S_MLK);
-    if (player.hasItem(ConsumableLib.BLACKEG)) player.consumeItem(ConsumableLib.BLACKEG);
-    else player.consumeItem(ConsumableLib.L_BLKEG);
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) player.inv.consumeItem(ConsumableLib.SUCMILK);
+    else player.inv.consumeItem(ConsumableLib.P_S_MLK);
+    if (player.inv.hasItem(ConsumableLib.BLACKEG)) player.inv.consumeItem(ConsumableLib.BLACKEG);
+    else player.inv.consumeItem(ConsumableLib.L_BLKEG);
     // Play after having defeated a Googirl, when you have a Black Egg & Succubi Milk in your inventory. Corruption less than 50.
     // NOTE: Starts with Obedience 30, Happiness 60~?
     outputText("The excitement of your scuffle proves too much for the goo-girl to keep up with and she collapses into the slime of her lower torso, her skin wiggling as she struggles to maintain cohesion.  Her expression is one of disappointment, and she looks at you with big, hopeful eyes, reaching out a hand, as if to offer an apology for her overexuberance.");
@@ -650,24 +650,24 @@ function changeGooDick(): void {
     }
     menu();
     if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) {
-        if (player.hasItem(ConsumableLib.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2, "Canine Pepper", latexyEatsADickItem, ConsumableLib.CANINEP);
-        if (player.hasItem(ConsumableLib.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3, "Equinum", latexyEatsADickItem, ConsumableLib.EQUINUM);
-        if (player.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4, "Pure Draft", latexyEatsADickItem, ConsumableLib.P_DRAFT);
-        if (player.hasItem(ConsumableLib.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5, "Whisker Fruit", latexyEatsADickItem, ConsumableLib.W_FRUIT);
-        if (player.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
-        if (player.hasItem(ConsumableLib.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
-        if (player.hasItem(ConsumableLib.GROPLUS)) addButton(6, "Gro Plus", latexyEatsADickItem, ConsumableLib.GROPLUS);
-        if (player.hasItem(ConsumableLib.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7, "Reducto", latexyEatsADickItem, ConsumableLib.REDUCTO);
+        if (player.inv.hasItem(ConsumableLib.CANINEP) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DOG) addButton(2, "Canine Pepper", latexyEatsADickItem, ConsumableLib.CANINEP);
+        if (player.inv.hasItem(ConsumableLib.EQUINUM) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(3, "Equinum", latexyEatsADickItem, ConsumableLib.EQUINUM);
+        if (player.inv.hasItem(ConsumableLib.P_DRAFT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HUMAN) addButton(4, "Pure Draft", latexyEatsADickItem, ConsumableLib.P_DRAFT);
+        if (player.inv.hasItem(ConsumableLib.W_FRUIT) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.CAT) addButton(5, "Whisker Fruit", latexyEatsADickItem, ConsumableLib.W_FRUIT);
+        if (player.inv.hasItem(ConsumableLib.INCUBID) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.DEMON) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
+        if (player.inv.hasItem(ConsumableLib.MINOBLO) && flags[kFLAGS.GOO_DICK_TYPE] != CockTypesEnum.HORSE) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
+        if (player.inv.hasItem(ConsumableLib.GROPLUS)) addButton(6, "Gro Plus", latexyEatsADickItem, ConsumableLib.GROPLUS);
+        if (player.inv.hasItem(ConsumableLib.REDUCTO) && flags[kFLAGS.GOO_DICK_LENGTH] >= 5) addButton(7, "Reducto", latexyEatsADickItem, ConsumableLib.REDUCTO);
     }
     else {
-        if (player.hasItem(ConsumableLib.INCUBID)) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
-        if (player.hasItem(ConsumableLib.MINOBLO)) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
+        if (player.inv.hasItem(ConsumableLib.INCUBID)) addButton(0, "Incubi Draft", latexyEatsADickItem, ConsumableLib.INCUBID);
+        if (player.inv.hasItem(ConsumableLib.MINOBLO)) addButton(1, "Mino Blood", latexyEatsADickItem, ConsumableLib.MINOBLO);
     }
     addButton(9, "Back", approachLatexy);
 }
 
 function latexyEatsADickItem(item: ItemType): void {
-    player.consumeItem(item, 1);
+    player.inv.consumeItem(item, 1);
     clearOutput();
     outputText(flags[kFLAGS.GOO_NAME] + " uses your proffered item without a second though.  Surprisingly she doesn't seem to react in any way, aside from closing her eyes and taking on a look of incredible concentration.  ");
     if (flags[kFLAGS.GOO_DICK_LENGTH] == 0) {
@@ -834,8 +834,8 @@ function feedLatexy(): void {
         addButton(3, "GirlCum, Dir.", feedLatexyGirlCumDirect);
     }
     if (gooHappiness() >= 50 && player.lactationQ() >= 100 && player.breasts.biggestTitSize() >= 3) addButton(4, "Milk", feedLatexySomeMilk);
-    if (player.hasItem(ConsumableLib.MINOCUM)) addButton(5, "MinoCum Nic", minotaurCumFeedingGoo, true);
-    if (player.hasItem(ConsumableLib.MINOCUM)) addButton(6, "MinoCum Ruf", minotaurCumFeedingGoo, false);
+    if (player.inv.hasItem(ConsumableLib.MINOCUM)) addButton(5, "MinoCum Nic", minotaurCumFeedingGoo, true);
+    if (player.inv.hasItem(ConsumableLib.MINOCUM)) addButton(6, "MinoCum Ruf", minotaurCumFeedingGoo, false);
 
     addButton(9, "Back", approachLatexy);
 }
@@ -938,7 +938,7 @@ function feedLatexyGirlCumIndirectly(): void {
 // Feed Her Minotaur Cum {Nice Vs Hard}:(F)
 function minotaurCumFeedingGoo(nice: boolean = false): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.MINOCUM);
+    player.inv.consumeItem(ConsumableLib.MINOCUM);
     outputText("You pull a vial of minotaur cum from the pouches at your waist");
     if (player.minotaurNeed() || player.minotaurAddicted()) outputText(" and hungrily lick at your lips, always eager to take such a treat yourself");
     outputText(".  The latex woman ");

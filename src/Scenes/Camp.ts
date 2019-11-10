@@ -2,16 +2,16 @@
 /*
         protected function hasItemsInStorage():Boolean
         {
-            return Inventory.hasItemsInStorage();
+            return Inventory.inv.hasItemsInStorage();
         }
         protected function hasItemsInRacks(armor:Boolean = false):Boolean
         {
-            return Inventory.hasItemsInRacks(armor);
+            return Inventory.inv.hasItemsInRacks(armor);
         }
 */
 
 function hasItemInStorage(itype: ItemType): boolean {
-    return Inventory.hasItemInStorage(itype);
+    return Inventory.inv.hasItemInStorage(itype);
 }
 
 /* Replaced with calls to playerMenu

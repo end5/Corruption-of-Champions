@@ -311,7 +311,7 @@ export function beatUpGoo(): void {
         let gooTF: () => void = null;
         // corrupt chances
         if ((flags[kFLAGS.GOO_TFED_MEAN] == 0 && flags[kFLAGS.GOO_TFED_NICE] == 0) && flags[kFLAGS.TIMES_FUCKED_NORMAL_GOOS] >= 2) {
-            if (player.cor < 50 && (player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))) {
+            if (player.cor < 50 && (player.inv.hasItem(ConsumableLib.SUCMILK) || player.inv.hasItem(ConsumableLib.P_S_MLK)) && (player.inv.hasItem(ConsumableLib.BLACKEG) || player.inv.hasItem(ConsumableLib.L_BLKEG))) {
                 LatexGirl.pureGooRecruitmentStart();
                 return;
             }
@@ -326,7 +326,7 @@ export function beatUpGoo(): void {
                 else {
                     outputText("\n\nAs you survey your victory, you remember the idea you had before - maybe if you drugged one of these things with a black egg and some succubi milk, you could make it your pet?");
                 }
-                if ((player.hasItem(ConsumableLib.SUCMILK) || player.hasItem(ConsumableLib.P_S_MLK)) && (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG))) {
+                if ((player.inv.hasItem(ConsumableLib.SUCMILK) || player.inv.hasItem(ConsumableLib.P_S_MLK)) && (player.inv.hasItem(ConsumableLib.BLACKEG) || player.inv.hasItem(ConsumableLib.L_BLKEG))) {
                     outputText("  Good thing you have those handy!");
                     gooTF = LatexGirl.meanGooGirlRecruitment;
                 }

@@ -1467,9 +1467,9 @@ export function giveLottieAnItem(): void {
     let bova: () => void = null;
     let gro: () => void = null;
     let reducto: () => void = null;
-    if (player.hasItem(ConsumableLib.LABOVA_)) bova = feedLottieLaBova;
-    if (player.hasItem(ConsumableLib.GROPLUS) && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) gro = giveLottieGroPlus;
-    if (player.hasItem(ConsumableLib.REDUCTO)) reducto = giveLottieReducto;
+    if (player.inv.hasItem(ConsumableLib.LABOVA_)) bova = feedLottieLaBova;
+    if (player.inv.hasItem(ConsumableLib.GROPLUS) && player.effects.findByType(StatusAffects.DungeonShutDown) >= 0) gro = giveLottieGroPlus;
+    if (player.inv.hasItem(ConsumableLib.REDUCTO)) reducto = giveLottieReducto;
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00321] == 0) {
         outputText("You tell Lottie you've been doing a little research on weight loss aids, discovering several items that could possibly have an effect on her figure if she's willing to try. Lottie nods, albeit rather hesitantly – she's mentioned her unsuccessful attempts at weight loss methods involving diets before, so you can't really blame her. However, you push the idea forward – it couldn't hurt to try some of them, and heck, she could be skinny before she knows it! Lottie easily falls for your flattery, and eagerly agrees to the idea. You look into your inventory – one of these things must have an effect, right?");
         // [LaBova][Gro+][Reducto]
@@ -1509,7 +1509,7 @@ export function feedLottieLaBova(): void {
     else {
         outputText("You pick up the bottle of LaBova, secretly pouring its contents into an opaque container before handing it over to Lottie, obscuring its milky contents. \"<i>W-what's this going to do? Do you know?</i>\" She asks, attempting to peak into the bottle without much success – it's far too dark to notice the misty elixir it contains. You tell her you're uncertain of its exact effects, but it definitely did mention something about changing your bust and thickness. \"<i>Oh! Well... if you say so,</i>\" Lottie remarks, convinced by the apparent assurance of a slimmer body. \"<i>Here goes nothing!</i>\" The pig-girl exclaims before downing the grainy mixture in one fell swoop, stopping to examine its familiar, sweet taste. She looks down at her body, keen to observe the instantaneous change expected to occur. \"<i>Hey babe, I'm... I'm getting that feeling again.</i>\" Lottie mutters, quickly looking towards you before squealing and turning down just in time to watch her breasts and hips grow slightly larger than before. \"<i>H-huh?! But I thought- what did you give me, " + player.short + "? Why would... w-wh...</i>\" Speechless, the now-chubbier girl drops to the floor, unable to comprehend your actions. You smile at her new figure, crouching down and giving her milky tits a good squeeze. \"<i>I-I don't understand...</i>\" she whimpers, flinching at your touch. It might be a while before she accepts anything else from you, but you can't help feeling like you've done some good. She'll understand, in due time.", false);
     }
-    player.consumeItem(ConsumableLib.LABOVA_);
+    player.inv.consumeItem(ConsumableLib.LABOVA_);
     lottieTone(-10);
     flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00322] = 40;
     doNext(Camp.returnToCampUseOneHour);
@@ -1524,7 +1524,7 @@ export function giveLottieGroPlus(): void {
         outputText("You take Lottie by the hand, surprising her with your suave movements. Spending a few minutes of her time, you reflect on the many situations you've found yourself caught in and how none of them seemed to have rewarded you well – until you took on the demonic factory. The porcine lady is glued to your every word as you describe the details of your adventure, distressed when you mention the enslaved humans and impressed by your (slightly exaggerated) recounting of your run-in with the omnibus. You hold up the now sacriligous needle in front of her, to clinch your epic tale. This, you tell her, was your reward. Without a second glance, Lottie seizes the needle and pokes it into the soft flesh of her breasts, ignorant of both the pain and the fact that you didn't mention the actual effects of the syringe. She waits with excited fervour for the reaction to begin, only to be surprised when her chest grows larger than before. Dropping the needle, she looks to you with tears beginning to well in her eyes and runs out of the cafe. If only she could see the glint in yours, she might be able to understand your intentions.", false);
         lottieTone(-20);
         lottieMorale(-1);
-        player.consumeItem(ConsumableLib.GROPLUS);
+        player.inv.consumeItem(ConsumableLib.GROPLUS);
     }
     // [Otherwise]
     else {
@@ -1551,7 +1551,7 @@ export function giveLottieReducto(): void {
         outputText("Lottie sits still, unsure about the convenience of the results. but glad that you've helped.", false);
     }
     lottieTone(10);
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     doNext(Camp.returnToCampUseOneHour);
 }
 

@@ -108,28 +108,28 @@ function lumiPurchase(itype: ItemType): void {
 export function lumiEnhance(justCheck: boolean = false): boolean {
     spriteSelect(37);
     let fox: () => void = null;
-    if (player.hasItem(ConsumableLib.FOXBERY))
+    if (player.inv.hasItem(ConsumableLib.FOXBERY))
         fox = lumiEnhanceFox;
     let laBova: () => void = null;
-    if (player.hasItem(ConsumableLib.LABOVA_))
+    if (player.inv.hasItem(ConsumableLib.LABOVA_))
         laBova = lumiEnhanceLaBova;
     let succuDelight: () => void = null;
-    if (player.hasItem(ConsumableLib.SDELITE))
+    if (player.inv.hasItem(ConsumableLib.SDELITE))
         succuDelight = lumiEnhanceSDelight;
     const oviElix: () => void = null;
-    // if(player.hasItem(ConsumableLib.OVIELIX))
+    // if(player.inv.hasItem(ConsumableLib.OVIELIX))
     // 	oviElix = lumiEnhanceOviElix;
     let lustDraft: () => void = null;
-    if (player.hasItem(ConsumableLib.L_DRAFT))
+    if (player.inv.hasItem(ConsumableLib.L_DRAFT))
         lustDraft = lumiEnhanceDraft;
     let seed: () => void = null;
-    if (player.hasItem(ConsumableLib.GLDSEED))
+    if (player.inv.hasItem(ConsumableLib.GLDSEED))
         seed = lumiEnhanceGoldenSeed;
     let kanga: () => void = null;
-    if (player.hasItem(ConsumableLib.KANGAFT))
+    if (player.inv.hasItem(ConsumableLib.KANGAFT))
         kanga = lumiEnhanceKanga;
     let kitsune: () => void = null;
-    if (player.hasItem(ConsumableLib.FOXJEWL))
+    if (player.inv.hasItem(ConsumableLib.FOXJEWL))
         kitsune = lumiEnhanceFoxJewel;
     if (justCheck) {
         return fox != null || kanga != null || seed != null || laBova != null || succuDelight != null || oviElix != null || lustDraft != null || kitsune != null;
@@ -213,7 +213,7 @@ function lumiEnhanceGo(itype: ItemType): void {
     }
     player.gems -= 100;
     statScreenRefresh();
-    player.consumeItem(itype);
+    player.inv.consumeItem(itype);
     outputText("", true);
     outputText("Lumi grabs the item from you and runs over to her table, stopping for only a second to put her apron on.  ", false);
     // start list of possible enhancement texts

@@ -175,7 +175,7 @@ export function callForFollowerIsabella(): void {
     let milk: () => void = null;
     if (flags[kFLAGS.ISABELLA_MILKED_YET] < 0) milk = getMilk;
     let pro: () => void = null;
-    if (player.hasItem(ConsumableLib.PROBOVA) && player.gender > 0) {
+    if (player.inv.hasItem(ConsumableLib.PROBOVA) && player.gender > 0) {
         pro = isabellaBurps;
         outputText("\n\n<b>Isabella would probably drink a bottle of Pro Bova if you gave it to her.</b>", false);
     }
@@ -923,7 +923,7 @@ function sparring(type: number = 1): void {
 
 // first time (Z)
 function isabellaBurps(): void {
-    player.consumeItem(ConsumableLib.PROBOVA);
+    player.inv.consumeItem(ConsumableLib.PROBOVA);
     spriteSelect(31);
     outputText("", true);
     // First time

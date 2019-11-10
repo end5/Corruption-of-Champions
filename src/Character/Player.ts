@@ -5,16 +5,6 @@
  */
 export class Player extends Character {
 
-    public constructor() {
-        // Item things
-        itemSlot1 = new ItemSlotClass();
-        itemSlot2 = new ItemSlotClass();
-        itemSlot3 = new ItemSlotClass();
-        itemSlot4 = new ItemSlotClass();
-        itemSlot5 = new ItemSlotClass();
-        itemSlots = [itemSlot1, itemSlot2, itemSlot3, itemSlot4, itemSlot5];
-    }
-
     // Autosave
     public slotName: string = "VOID";
     public autoSave: boolean = false;
@@ -42,13 +32,7 @@ export class Player extends Character {
         return game.updatePregnancy(); // Returns true if we need to make sure pregnancy texts aren't hidden
     }
 
-    // Inventory
-    public itemSlot1: ItemSlotClass;
-    public itemSlot2: ItemSlotClass;
-    public itemSlot3: ItemSlotClass;
-    public itemSlot4: ItemSlotClass;
-    public itemSlot5: ItemSlotClass;
-    public itemSlots: any[];
+    public readonly inv = new Inventory();
 
     private _armor: Armor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
     private _modArmorName: string = "";
@@ -1008,110 +992,6 @@ export class Player extends Character {
         if (this.effects.findByType(StatusAffects.LethicesShell) >= 0) this.effects.remove(StatusAffects.LethicesShell);
         if (this.effects.findByType(StatusAffects.WhipSilence) >= 0) this.effects.remove(StatusAffects.WhipSilence);
         if (this.effects.findByType(StatusAffects.PigbysHands) >= 0) this.effects.remove(StatusAffects.PigbysHands);
-    }
-
-    public consumeItem(itype: ItemType, amount: number = 1): boolean {
-        if (!hasItem(itype, amount)) {
-            Logger.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + itemCount(itype) + ".");
-            return false;
-        }
-        // From here we can be sure the player has enough of the item in inventory
-        let slot: ItemSlotClass;
-        while (amount > 0) {
-            slot = getLowestSlot(itype); // Always draw from the least filled slots first
-            if (slot.quantity > amount) {
-                slot.quantity -= amount;
-                amount = 0;
-            }
-            else { // If the slot holds the amount needed then amount will be zero after this
-                amount -= slot.quantity;
-                slot.emptySlot();
-            }
-        }
-        return true;
-        /*
-                    var consumed:Boolean = false;
-                    var slot:ItemSlotClass;
-                    while (amount > 0)
-                    {
-                        if(!hasItem(itype,1))
-                        {
-                            Logger.error("ERROR: consumeItem in items.as attempting to find an item to remove when the has none.");
-                            break;
-                        }
-                        trace("FINDING A NEW SLOT! (ITEMS LEFT: " + amount + ")");
-                        slot = getLowestSlot(itype);
-                        while (slot != null && amount > 0 && slot.quantity > 0)
-                        {
-                            amount--;
-                            slot.quantity--;
-                            if(slot.quantity == 0) slot.emptySlot();
-                            trace("EATIN' AN ITEM");
-                        }
-                        //If on slot 5 and it doesn't have any more to take, break out!
-                        if(slot == undefined) amount = -1
-
-                    }
-                    if(amount == 0) consumed = true;
-                    return consumed;
-        */
-    }
-
-    public getLowestSlot(itype: ItemType): ItemSlotClass {
-        let minslot: ItemSlotClass = null;
-        for (const slot of itemSlots) {
-            if (slot.itype == itype) {
-                if (minslot == null || slot.quantity < minslot.quantity) {
-                    minslot = slot;
-                }
-            }
-        }
-        return minslot;
-    }
-
-    public hasItem(itype: ItemType, minQuantity: number = 1): boolean {
-        return itemCount(itype) >= minQuantity;
-    }
-
-    public itemCount(itype: ItemType): number {
-        let count: number = 0;
-        for (const itemSlot of itemSlots) {
-            if (itemSlot.itype == itype) count += itemSlot.quantity;
-        }
-        return count;
-    }
-
-    // 0..5 or -1 if no
-    public roomInExistingStack(itype: ItemType): number {
-        for (const i = 0; i < itemSlots.length; i++) {
-            if (itemSlot(i).itype == itype && itemSlot(i).quantity != 0 && itemSlot(i).quantity < 5)
-                return i;
-        }
-        return -1;
-    }
-
-    public itemSlot(idx: number): ItemSlotClass {
-        return itemSlots[idx];
-    }
-
-    // 0..5 or -1 if no
-    public emptySlot(): number {
-        for (const i = 0; i < itemSlots.length; i++) {
-            if (itemSlot(i).isEmpty() && itemSlot(i).unlocked) return i;
-        }
-        return -1;
-    }
-
-    public destroyItems(itype: ItemType, numOfItemToRemove: number): boolean {
-        for (const slotNum = 0; slotNum < itemSlots.length; slotNum += 1) {
-            if (itemSlot(slotNum).itype == itype) {
-                while (itemSlot(slotNum).quantity > 0 && numOfItemToRemove > 0) {
-                    itemSlot(slotNum).removeOneItem();
-                    numOfItemToRemove--;
-                }
-            }
-        }
-        return numOfItemToRemove <= 0;
     }
 
     public lengthChange(temp2: number, ncocks: number): void {

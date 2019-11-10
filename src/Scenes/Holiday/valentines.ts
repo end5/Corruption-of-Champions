@@ -389,11 +389,11 @@ export function goVisitPastyVDay(): void {
 
     // Check inventory for Goblin Ale, Black Cat Beer, Bimbo Champagne; failing this, check if PC has female genitalia.
     // [BCBeer] [BimboCham][GoblinAle][vagina]
-    if (player.hasItem(ConsumableLib.BIMBOCH) || player.hasItem(ConsumableLib.BC_BEER) || player.hasItem(ConsumableLib.GOB_ALE) || player.vaginas.length > 0) {
+    if (player.inv.hasItem(ConsumableLib.BIMBOCH) || player.inv.hasItem(ConsumableLib.BC_BEER) || player.inv.hasItem(ConsumableLib.GOB_ALE) || player.vaginas.length > 0) {
         menu();
-        if (player.hasItem(ConsumableLib.BIMBOCH)) addButton(0, "BimboCham", pastieValentineIntro, ConsumableLib.BIMBOCH.id);
-        if (player.hasItem(ConsumableLib.BC_BEER)) addButton(1, "B.Cat Beer ", pastieValentineIntro, ConsumableLib.BC_BEER.id);
-        if (player.hasItem(ConsumableLib.GOB_ALE)) addButton(2, "Gob. Ale", pastieValentineIntro, ConsumableLib.GOB_ALE.id);
+        if (player.inv.hasItem(ConsumableLib.BIMBOCH)) addButton(0, "BimboCham", pastieValentineIntro, ConsumableLib.BIMBOCH.id);
+        if (player.inv.hasItem(ConsumableLib.BC_BEER)) addButton(1, "B.Cat Beer ", pastieValentineIntro, ConsumableLib.BC_BEER.id);
+        if (player.inv.hasItem(ConsumableLib.GOB_ALE)) addButton(2, "Gob. Ale", pastieValentineIntro, ConsumableLib.GOB_ALE.id);
         if (player.vaginas.length > 0) addButton(3, "Pussy", pastieValentineIntro, "vag");
     }
     else {
@@ -414,7 +414,7 @@ export function pastieValentineIntro(choice: string = ""): void {
     // ({Any other drink}.
     else {
         const itype: ItemType = ItemType.lookupItem(choice);
-        player.consumeItem(itype, 1);
+        player.inv.consumeItem(itype, 1);
         outputText("You present the drink to Pastie and she flashes you a grin as she flies up and away, leading you into an alley.  \"<i>Well, lemme at it!  A drink sure as hell sounds good right now and none of this seems like it'd be really bad.</i>\"");
         menu();
         addButton(0, "Next", curry(valentineDrinkPastie, itype));

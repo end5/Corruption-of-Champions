@@ -878,7 +878,7 @@ function tradeCeraphSomething(): void {
     let armor: () => void = null;
     outputText("Ceraph looks you up and down like an appraiser examining an antique, never stopping her languid masturbation.  You stand there, hands on your hips, waiting for her to finish while you try not to stare too long at her beading pre-cum or dripping twat-juice.\n\n", false);
     // (BIMBO LIQUER)
-    if (player.hasItem(ConsumableLib.BIMBOLQ)) {
+    if (player.inv.hasItem(ConsumableLib.BIMBOLQ)) {
         outputText("She finishes and smiles widely.  \"<i>Is that bimbo liqueur?  That stuff is so hard to find, even for a demon like me.  I tell you what, I'll release you from ", false);
         if (flags[kFLAGS.PC_FETISH] > 1) outputText("all the fetishes", false);
         else outputText("the fetish", false);
@@ -924,7 +924,7 @@ function tradeCeraphBimboLiqueur(): void {
     outputText("Ceraph grins as wide as the Cheshire Cat, groaning with happiness as she pulls her dripping tail from her snatch.  The pungent scent of her lusty, tainted puss hangs in the air while her tail extends towards you, looping around the liquer's top and pulling it from your pouch.  Ceraph plucks the bottle from her lust-drenched tail with great care and undoes the top.  She gives the liquer a tiny sniff, but it rocks her back on her heels all the same.  The demon starts giggling as she corks it, smiling with a slightly dopy look.  \"<i>Wheeeeeewww... heheheheee.. that stuff has got some kick!</i>\"\n\n", false);
 
     outputText("You mention the deal and she glares back at you in irritation.  Her beautiful features curl with anger, a hand coming out of nowhere to slap you squarely on the side of the temple.  \"<i>Don't interrupt me, pet.</i>\"  Ears ringing, you stagger back, clutching at your head in surprise.  By the time you glare back at her, she's walking away.  You briefly consider giving her payback, but you realize your head feels clearer, more normal.  The artificial fetishes are gone!  While you catalogue lewd acts in your head and marvel at how little they affect you, Ceraph makes good on her escape.", false);
-    player.consumeItem(ConsumableLib.BIMBOLQ);
+    player.inv.consumeItem(ConsumableLib.BIMBOLQ);
     player.takeDamage(4);
     flags[kFLAGS.PC_FETISH] = 0;
     dynStats("lus", -20);

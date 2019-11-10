@@ -1978,40 +1978,40 @@ function giveKatherineAnItem(): void {
     outputText("You tell Katherine that you have a present for her.\n\n");
     outputText("The cat-morph's face lights up, but then she guiltily lowers her eyes.  “<i>I can't - you're too good to me already...</i>”  You cut her off, insisting that you want to give it to her.  “<i>Okay, if you're sure... what is it?</i>”\n\n");
     const hasJob: boolean = flags[kFLAGS.KATHERINE_UNLOCKED] >= 4;
-    const blackEgg: boolean = player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG);
-    const honey: boolean = player.hasItem(ConsumableLib.BEEHONY) || player.hasItem(ConsumableLib.PURHONY);
-    const pinkEgg: boolean = player.hasItem(ConsumableLib.PINKEGG) || player.hasItem(ConsumableLib.L_PNKEG);
+    const blackEgg: boolean = player.inv.hasItem(ConsumableLib.BLACKEG) || player.inv.hasItem(ConsumableLib.L_BLKEG);
+    const honey: boolean = player.inv.hasItem(ConsumableLib.BEEHONY) || player.inv.hasItem(ConsumableLib.PURHONY);
+    const pinkEgg: boolean = player.inv.hasItem(ConsumableLib.PINKEGG) || player.inv.hasItem(ConsumableLib.L_PNKEG);
     let button: number = 0;
     menu();
-    if (hasJob && getHairColor() != "rich auburn" && player.hasItem(ConsumableLib.AUBURND)) addButton(button++, "Auburn Dye", giveKatDyeAuburn);
-    if (hasJob && getHairColor() != "jet black" && player.hasItem(ConsumableLib.BLACK_D)) addButton(button++, "Black Dye", giveKatDyeBlack);
-    if (hasJob && getHairColor() != "light blonde" && player.hasItem(ConsumableLib.BLOND_D)) addButton(button++, "Blonde Dye", giveKatDyeBlonde);
-    if (hasJob && getHairColor() != "bright blue" && player.hasItem(ConsumableLib.BLUEDYE)) addButton(button++, "Blue Dye", giveKatDyeBlue);
-    if (hasJob && !hasClothing(KBIT_CLOTHES_BODYSUIT) && player.hasItem(ArmorLib.T_BSUIT)) addButton(button++, "Bodysuit", giveKatClothesBodysuit);
-    if (player.hasItem(ConsumableLib.BULBYPP)) addButton(button++, "BulbPepper", giveKatABulbousPepper);
-    if (player.hasItem(ConsumableLib.CANINEP)) addButton(button++, "Canine Pep", giveKatACaninePepper);
-    if (hasJob && getFurry() && blackEgg && player.hasItem(ConsumableLib.P_S_MLK) && player.hasItem(ConsumableLib.GLDSEED)) addButton(button++, "Defur", giveKatDefurFormula);
-    if (player.hasItem(ConsumableLib.DBLPEPP)) addButton(button++, "DblPeppr", giveKatADoublePepper);
-    if (hasJob && player.hasItem(ConsumableLib.KNOTTYP)) addButton(button++, "KnotPepp", giveKatAKnottyPepper);
-    if (player.hasItem(ConsumableLib.LARGEPP)) addButton(button++, "LrgPepp", giveKatAOverlyLargePepper);
-    if (hasJob && player.hasItem(ConsumableLib.LACTAID)) addButton(button++, "Lactaid", giveKatTheGiftOFMilk);
-    if (hasJob && !hasClothing(KBIT_CLOTHES_B_DRESS) && player.hasItem(ArmorLib.B_DRESS)) addButton(button++, "Long Dress", giveKatClothesLongDress);
-    if (hasJob && !hasClothing(KBIT_CLOTHES_NURSECL) && player.hasItem(ArmorLib.NURSECL)) addButton(button++, "NurseClothes", giveKatClothesNurseOutfit);
-    if (hasJob && getHairColor() != "vibrant orange" && player.hasItem(ConsumableLib.ORANGDY)) addButton(button++, "Orange Dye", giveKatDyeOrange);
-    if (hasJob && getHairColor() != "neon pink" && player.hasItem(ConsumableLib.PINKDYE)) addButton(button++, "Pink Dye", giveKatDyePink);
+    if (hasJob && getHairColor() != "rich auburn" && player.inv.hasItem(ConsumableLib.AUBURND)) addButton(button++, "Auburn Dye", giveKatDyeAuburn);
+    if (hasJob && getHairColor() != "jet black" && player.inv.hasItem(ConsumableLib.BLACK_D)) addButton(button++, "Black Dye", giveKatDyeBlack);
+    if (hasJob && getHairColor() != "light blonde" && player.inv.hasItem(ConsumableLib.BLOND_D)) addButton(button++, "Blonde Dye", giveKatDyeBlonde);
+    if (hasJob && getHairColor() != "bright blue" && player.inv.hasItem(ConsumableLib.BLUEDYE)) addButton(button++, "Blue Dye", giveKatDyeBlue);
+    if (hasJob && !hasClothing(KBIT_CLOTHES_BODYSUIT) && player.inv.hasItem(ArmorLib.T_BSUIT)) addButton(button++, "Bodysuit", giveKatClothesBodysuit);
+    if (player.inv.hasItem(ConsumableLib.BULBYPP)) addButton(button++, "BulbPepper", giveKatABulbousPepper);
+    if (player.inv.hasItem(ConsumableLib.CANINEP)) addButton(button++, "Canine Pep", giveKatACaninePepper);
+    if (hasJob && getFurry() && blackEgg && player.inv.hasItem(ConsumableLib.P_S_MLK) && player.inv.hasItem(ConsumableLib.GLDSEED)) addButton(button++, "Defur", giveKatDefurFormula);
+    if (player.inv.hasItem(ConsumableLib.DBLPEPP)) addButton(button++, "DblPeppr", giveKatADoublePepper);
+    if (hasJob && player.inv.hasItem(ConsumableLib.KNOTTYP)) addButton(button++, "KnotPepp", giveKatAKnottyPepper);
+    if (player.inv.hasItem(ConsumableLib.LARGEPP)) addButton(button++, "LrgPepp", giveKatAOverlyLargePepper);
+    if (hasJob && player.inv.hasItem(ConsumableLib.LACTAID)) addButton(button++, "Lactaid", giveKatTheGiftOFMilk);
+    if (hasJob && !hasClothing(KBIT_CLOTHES_B_DRESS) && player.inv.hasItem(ArmorLib.B_DRESS)) addButton(button++, "Long Dress", giveKatClothesLongDress);
+    if (hasJob && !hasClothing(KBIT_CLOTHES_NURSECL) && player.inv.hasItem(ArmorLib.NURSECL)) addButton(button++, "NurseClothes", giveKatClothesNurseOutfit);
+    if (hasJob && getHairColor() != "vibrant orange" && player.inv.hasItem(ConsumableLib.ORANGDY)) addButton(button++, "Orange Dye", giveKatDyeOrange);
+    if (hasJob && getHairColor() != "neon pink" && player.inv.hasItem(ConsumableLib.PINKDYE)) addButton(button++, "Pink Dye", giveKatDyePink);
     if (hasJob && hasCock() && pinkEgg) addButton(button++, "Pink Egg", usePinkEggOnKath);
-    if (hasJob && player.hasItem(ConsumableLib.P_DRAFT)) addButton(button++, (hasCock() ? ConsumableLib.P_DRAFT.shortName : "Grow Cock"), useIncubiDraftOnKath);
-    if (hasJob && hasCock() && player.hasItem(ConsumableLib.PSDELIT)) addButton(button++, "P. Suc Delight", giveKatPureSuccubusDelight);
-    if (hasJob && player.hasItem(ConsumableLib.P_S_MLK)) addButton(button++, "P. Suc Milk", giveKatPureSuccubusMilk);
-    if (hasJob && getHairColor() != "deep purple" && player.hasItem(ConsumableLib.PURPDYE)) addButton(button++, "Purple Dye", giveKatDyePurple);
-    if (hasJob && getHairColor() != "flaming red" && player.hasItem(ConsumableLib.RED_DYE)) addButton(button++, "Red Dye", giveKatDyeRed);
-    if (player.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Reducto", useReductoOnKat);
-    if (hasJob && !getFurry() && honey && player.hasItem(ConsumableLib.W_FRUIT) && player.hasItem(ConsumableLib.EXTSERM)) addButton(button++, "Refuzz", giveKatRefuzzFormula);
-    if (hasJob && hasCock() && getBallSize() == 1 && pinkEgg && player.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Rem Balls", useReductoAndPinkEgg);
-    if (hasJob && !hasClothing(KBIT_CLOTHES_SS_ROBE) && player.hasItem(ArmorLib.SS_ROBE)) addButton(button++, "Silk Robe", giveKatClothesSilkRobe);
-    if (hasJob && !hasClothing(KBIT_CLOTHES_TUBETOP) && player.hasItem(ArmorLib.TUBETOP)) addButton(button++, "Tube Top", giveKatClothesTubeTop);
-    if (hasJob && player.hasItem(ConsumableLib.W_FRUIT)) addButton(button++, "W. Fruit", giveKatWhiskerFruit);
-    if (hasJob && getHairColor() != "snow white" && player.hasItem(ConsumableLib.WHITEDY)) addButton(button++, "White Dye", giveKatDyeWhite);
+    if (hasJob && player.inv.hasItem(ConsumableLib.P_DRAFT)) addButton(button++, (hasCock() ? ConsumableLib.P_DRAFT.shortName : "Grow Cock"), useIncubiDraftOnKath);
+    if (hasJob && hasCock() && player.inv.hasItem(ConsumableLib.PSDELIT)) addButton(button++, "P. Suc Delight", giveKatPureSuccubusDelight);
+    if (hasJob && player.inv.hasItem(ConsumableLib.P_S_MLK)) addButton(button++, "P. Suc Milk", giveKatPureSuccubusMilk);
+    if (hasJob && getHairColor() != "deep purple" && player.inv.hasItem(ConsumableLib.PURPDYE)) addButton(button++, "Purple Dye", giveKatDyePurple);
+    if (hasJob && getHairColor() != "flaming red" && player.inv.hasItem(ConsumableLib.RED_DYE)) addButton(button++, "Red Dye", giveKatDyeRed);
+    if (player.inv.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Reducto", useReductoOnKat);
+    if (hasJob && !getFurry() && honey && player.inv.hasItem(ConsumableLib.W_FRUIT) && player.inv.hasItem(ConsumableLib.EXTSERM)) addButton(button++, "Refuzz", giveKatRefuzzFormula);
+    if (hasJob && hasCock() && getBallSize() == 1 && pinkEgg && player.inv.hasItem(ConsumableLib.REDUCTO)) addButton(button++, "Rem Balls", useReductoAndPinkEgg);
+    if (hasJob && !hasClothing(KBIT_CLOTHES_SS_ROBE) && player.inv.hasItem(ArmorLib.SS_ROBE)) addButton(button++, "Silk Robe", giveKatClothesSilkRobe);
+    if (hasJob && !hasClothing(KBIT_CLOTHES_TUBETOP) && player.inv.hasItem(ArmorLib.TUBETOP)) addButton(button++, "Tube Top", giveKatClothesTubeTop);
+    if (hasJob && player.inv.hasItem(ConsumableLib.W_FRUIT)) addButton(button++, "W. Fruit", giveKatWhiskerFruit);
+    if (hasJob && getHairColor() != "snow white" && player.inv.hasItem(ConsumableLib.WHITEDY)) addButton(button++, "White Dye", giveKatDyeWhite);
     addButton(9, "Back", katherineMenu);
 }
 
@@ -2074,7 +2074,7 @@ function useRedoctoOnKatsKnot(): void {
     setKnotSize(getKnotSize() - 2);
     if (getKnotSize() < 2) setKnotSize(2);
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     katSexMenu();
 }
 
@@ -2108,7 +2108,7 @@ function useReductoOnKatsKock(): void {
     const dickMin: number = (flags[kFLAGS.KATHERINE_UNLOCKED] >= 4 ? 6 : 8); // If she's employed she'll go as low as 6 inches
     if (getCockLength() < dickMin) setCockLength(dickMin);
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     katSexMenu();
 }
 
@@ -2123,7 +2123,7 @@ function reductoBallSize(): void {
     setBallSize(getBallSize() - 2);
     if (getBallSize() < 1) setBallSize(1);
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     katSexMenu();
 }
 
@@ -2151,7 +2151,7 @@ function useRreductoOnKatsBreasts(): void {
     else outputText("“<i>Yes, I think I’ll get used to these smaller sweater puppies pretty quickly.</i>”");
     outputText("\n\nShe lies back on the bed and spreads her legs wide, her cock" + cockMultiple("", "s") + " aimed at the ceiling.  “<i>Now since you’ve pawed my breasts and got me all excited I hope you aren’t planning on leaving anytime soon.</i>”");
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.REDUCTO);
+    player.inv.consumeItem(ConsumableLib.REDUCTO);
     katSexMenu();
 }
 
@@ -2163,7 +2163,7 @@ function giveKatABulbousPepper(): void {
         outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she replies.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
         outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.BULBYPP);
+        player.inv.consumeItem(ConsumableLib.BULBYPP);
         katSexMenu();
     }
     else if (!hasBalls()) {
@@ -2177,7 +2177,7 @@ function giveKatABulbousPepper(): void {
         outputText("\n\nKath rubs her newly formed balls and you see a " + cockAdj() + "bulge developing as her " + cockMultiple("cock stands", "twin cocks stand") + " to attention.  She gives you a toothy smile and asks, “<i>So... you wanna give them a test run?</i>”\n\n");
         setBallSize(1);
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.BULBYPP);
+        player.inv.consumeItem(ConsumableLib.BULBYPP);
         katSexMenu();
     }
     else if (getBallSize() < 5) {
@@ -2192,7 +2192,7 @@ function giveKatABulbousPepper(): void {
         setBallSize(getBallSize() + 2);
         if (getBallSize() > 5) setBallSize(5);
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.BULBYPP);
+        player.inv.consumeItem(ConsumableLib.BULBYPP);
         katSexMenu();
     }
     else if (submissiveness() >= 4 && getBallSize() < 9) {
@@ -2214,7 +2214,7 @@ function giveKatABulbousPepper(): void {
         setBallSize(getBallSize() + 2);
         if (getBallSize() > 9) setBallSize(9);
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.BULBYPP);
+        player.inv.consumeItem(ConsumableLib.BULBYPP);
         katSexMenu();
     }
     else { // Too big
@@ -2245,7 +2245,7 @@ function giveKatACaninePepper(): void {
         outputText("You feed the canine pepper into her mouth and Kath rolls it around before snapping her jaws shut and giving you a spicy peck on the cheek.  Quickly, she " + clothesLowerChoice("slips off her pants", "raises her skirt and slips off her panties", "open the folds of her bodysuit", "raises her skirt and slips off her panties", "unties her robe and slips off her panties") + ", exposing her barbed prick" + cockMultiple("", "s") + ".\n\n");
         outputText("The pepper doesn't disappoint and you watch the magic stretch her cock" + cockMultiple("", "s") + " outwards, absorbing " + cockMultiple("its", "their") + " barbs.  Kath once again sports a " + cockMultiple("", "pair of") + cockAdj() + " canine cock" + cockMultiple("", "s") + " and a happy, horny grin to go with " + cockMultiple("it", "them") + ".");
         flags[kFLAGS.KATHERINE_DICK_FORM] = 0;
-        player.consumeItem(ConsumableLib.CANINEP);
+        player.inv.consumeItem(ConsumableLib.CANINEP);
     }
     katSexMenu();
 }
@@ -2287,7 +2287,7 @@ function giveKatADoublePepper(): void {
         outputText(".\n\n“<i>Oh dear...  I think that was maybe a bit too spicy.  You want to help me out with this?</i>” she purrs, already starting to stroke her twin shafts.\n\n");
     }
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.DBLPEPP);
+    player.inv.consumeItem(ConsumableLib.DBLPEPP);
     katSexMenu();
 }
 
@@ -2300,7 +2300,7 @@ function giveKatAOverlyLargePepper(): void {
         outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she says.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
         outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.LARGEPP);
+        player.inv.consumeItem(ConsumableLib.LARGEPP);
         katSexMenu();
     }
     else if (getCockLength() < 16) {
@@ -2316,7 +2316,7 @@ function giveKatAOverlyLargePepper(): void {
         dynStats("lus", 10 + player.lib / 20);
         setCockLength(getCockLength() + 2);
         if (getCockLength() > 16) setCockLength(16);
-        player.consumeItem(ConsumableLib.LARGEPP);
+        player.inv.consumeItem(ConsumableLib.LARGEPP);
         katSexMenu();
     }
     else if (getCockLength() < 20 && kathSubEnough) {
@@ -2346,7 +2346,7 @@ function giveKatAOverlyLargePepper(): void {
         addSubmissive(KBIT_SUB_GROW_BIG_DICK); // Have made her supersize her cock(s) at least once
         setCockLength(getCockLength() + 2);
         if (getCockLength() > 20) setCockLength(20);
-        player.consumeItem(ConsumableLib.LARGEPP);
+        player.inv.consumeItem(ConsumableLib.LARGEPP);
         katSexMenu();
     }
     else if (kathSubEnough) { // Too big, even for submissive Kath
@@ -2415,11 +2415,11 @@ function giveKatDefurFormula(): void {
     setFurry(false);
     addSubmissive(KBIT_SUB_CAT_GIRL); // Have defurred her at least once
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.P_S_MLK);
-    player.consumeItem(ConsumableLib.GLDSEED);
-    if (player.hasItem(ConsumableLib.BLACKEG))
-        player.consumeItem(ConsumableLib.BLACKEG);
-    else player.consumeItem(ConsumableLib.L_BLKEG);
+    player.inv.consumeItem(ConsumableLib.P_S_MLK);
+    player.inv.consumeItem(ConsumableLib.GLDSEED);
+    if (player.inv.hasItem(ConsumableLib.BLACKEG))
+        player.inv.consumeItem(ConsumableLib.BLACKEG);
+    else player.inv.consumeItem(ConsumableLib.L_BLKEG);
     katSexMenu();
 }
 
@@ -2431,7 +2431,7 @@ function giveKatAKnottyPepper(): void {
         outputText("“<i>I'm pretty sure that won't have any effect on me,</i>” she says.  “<i>But they do taste nice, so as long as you don't mind...</i>”  She smiles and and takes the pepper, munching it down.  With a moan she " + clothesLowerChoice("pushes a hand down her shorts", "hikes up her skirt", "opens the folds of her bodysuit", "hikes up her dress", "parts her robe") + " and starts rubbing her clit.\n\n");
         outputText("“<i>Oh please " + playerText() + ", don't leave me to deal with this feeling on my own.</i>”");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.KNOTTYP);
+        player.inv.consumeItem(ConsumableLib.KNOTTYP);
     }
     else if (getKnotSize() >= 6) { // Original size - it won’t grow any further
         outputText("Kath gestures towards her cock" + cockMultiple("", "s") + " and says, “<i>I don’t think it can get any bigger.  I ate a ton of those peppers all at once and they never pushed me past this.</i>”\n\n");
@@ -2446,7 +2446,7 @@ function giveKatAKnottyPepper(): void {
             flags[kFLAGS.KATHERINE_DICK_FORM] = 0;
         }
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.KNOTTYP);
+        player.inv.consumeItem(ConsumableLib.KNOTTYP);
     }
     else if (getKnotSize() >= 4) { // Need submissiveness 1+ to grow
         outputText("Kath takes the pepper a little uncertainly.  “<i>It brings back some good memories, from after I met you; it also brings back memories of being an outcast among my own kind.</i>”\n\n");
@@ -2472,7 +2472,7 @@ function giveKatAKnottyPepper(): void {
             if (getKnotSize() > 6) setKnotSize(6);
             addSubmissive(KBIT_SUB_GROW_KNOT); // Have regrown her knot to full size at least once
             dynStats("lus", 10 + player.lib / 20);
-            player.consumeItem(ConsumableLib.KNOTTYP);
+            player.inv.consumeItem(ConsumableLib.KNOTTYP);
         }
     }
     else { // Knot is < 4", Always willing to grow if you ask
@@ -2490,7 +2490,7 @@ function giveKatAKnottyPepper(): void {
         setKnotSize(getKnotSize() + 2);
         if (getKnotSize() > 4) setKnotSize(4);
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.KNOTTYP);
+        player.inv.consumeItem(ConsumableLib.KNOTTYP);
     }
     if (hasCock()) outputText("\n\nHer tail flicks against your leg.  She looks down at her erection" + cockMultiple("", "s") + ", looks to you and then looks back at her erection" + cockMultiple("", "s") + " again.");
     katSexMenu();
@@ -2532,9 +2532,9 @@ function usePinkEggOnKath(): void {
         outputText("“<i>Wow - I thought that would hurt at least a little.  It just tickled like crazy and now it feels like someone’s been rubbing my cock.</i>”  Katherine smiles at you and adds, “<i>I could really use a hand getting this thing back under control " + playerText() + ".</i>”");
         setCockNumber(1);
     }
-    if (player.hasItem(ConsumableLib.PINKEGG))
-        player.consumeItem(ConsumableLib.PINKEGG);
-    else player.consumeItem(ConsumableLib.L_PNKEG);
+    if (player.inv.hasItem(ConsumableLib.PINKEGG))
+        player.inv.consumeItem(ConsumableLib.PINKEGG);
+    else player.inv.consumeItem(ConsumableLib.L_PNKEG);
     katSexMenu();
 }
 
@@ -2608,7 +2608,7 @@ function useIncubiDraftOnKath(): void {
         }
     }
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.P_DRAFT);
+    player.inv.consumeItem(ConsumableLib.P_DRAFT);
     katSexMenu();
 }
 
@@ -2660,7 +2660,7 @@ function giveKatPureSuccubusDelight(): void {
     }
     dynStats("lus", 10 + player.lib / 20);
     flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] += 24;
-    player.consumeItem(ConsumableLib.PSDELIT);
+    player.inv.consumeItem(ConsumableLib.PSDELIT);
     katSexMenu();
 }
 
@@ -2697,7 +2697,7 @@ function giveKatPureSuccubusMilk(): void {
         }
         outputText("Kath seems to be in a loving mood, why disappoint her?\n\n");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.P_S_MLK);
+        player.inv.consumeItem(ConsumableLib.P_S_MLK);
     }
     else if (breasts.cupSize < BreastCup.EE && kathSubEnough) { // Allows E-Cup, big E-Cup and EE-Cup
         outputText("You tell Katherine to disrobe.  You have a present for her.  She hops on the bed and takes her clothes off slowly, giving you a nice little striptease.  When she’s finished you place the bottle of succubi’ milk in her hand.\n\n");
@@ -2709,7 +2709,7 @@ function giveKatPureSuccubusMilk(): void {
         breasts.cupSize++;
         addSubmissive(KBIT_SUB_GROW_BIG_BOOBS); // Have grown her breasts to E-Cup or larger
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.P_S_MLK);
+        player.inv.consumeItem(ConsumableLib.P_S_MLK);
     }
     else if (kathSubEnough) { // Too big, even for more submissive Kath
         outputText("You tell Katherine to disrobe.  You have a present for her.  She hops on the bed and takes her clothes off slowly, teasing you with her striptease.  When she’s finished you place the bottle of succubus’ milk in her hand.\n\n");
@@ -2762,7 +2762,7 @@ function giveKatTheGiftOFMilk(): void {
         if (!doneSubmissive(KBIT_SUB_HIGH_LACTATION)) breasts.preventLactationIncrease == BreastStore.LACTATION_MODERATE;
         // This limit will remain in place until you are able to feed her enough Lactaid to push her up to strong lactation.
         breasts.lactationLevel++;
-        player.consumeItem(ConsumableLib.LACTAID);
+        player.inv.consumeItem(ConsumableLib.LACTAID);
     }
     else if (submissiveness() < 3) { // Not sub enough to go higher
         outputText("Kath cups her mammaries and gives them a gentle squeeze.  A few droplets of creamy liquid dribble from her nipples.  Kath sighs and wipes away the wetness with her fingers, saying, “<i>I don't think I should, " + playerText() + ".  I'm already so full all the time - even bumping into someone is enough for me to start leaking.  If I have any more of that stuff I'll smell like milk all the time, my bras will be soaked with it.  Any time I walk down the street I'll be a target for milk thieves.</i>”\n\n");
@@ -2782,7 +2782,7 @@ function giveKatTheGiftOFMilk(): void {
             default:
         }
         breasts.lactationLevel++;
-        player.consumeItem(ConsumableLib.LACTAID);
+        player.inv.consumeItem(ConsumableLib.LACTAID);
         if (!doneSubmissive(KBIT_SUB_HIGH_LACTATION)) { // First time turbocharging her mammaries
             outputText("Kath cups her mammaries and gives them a gentle squeeze.  A few droplets of creamy liquid dribble from her nipples.  Kath sighs and wipes away the wetness with her fingers, saying, “<i>I don't think I should, " + playerText() + ".  I'm already so full all the time - even bumping into someone is enough for me to start leaking.  If I have any more of that stuff I'll smell like milk all the time, my bras will be soaked with it.  Any time I walk down the street I'll be a target for milk thieves.</i>”\n\n");
             outputText("She tries to hand the bottle back but you ignore her and " + clothesLowerChoice("slide your hand under her belt and into her pants", "slip your hand under her skirt", "push your fingers into the crotch of her bodysuit", "slip your hand under her dress", "slide your hand inside her her robe") + ".  You start to play with her clit and find Kath's pussy is already wet.  She squirms at your touch and bites her lower lip.  You ask her if the idea of spilling milk everywhere is turning her on.\n\n");
@@ -2834,11 +2834,11 @@ function giveKatRefuzzFormulaChange(): void {
     outputText("pussy’s drenched.</i>”\n\n");
     setFurry(true);
     dynStats("lus", 10 + player.lib / 20);
-    player.consumeItem(ConsumableLib.W_FRUIT);
-    player.consumeItem(ConsumableLib.EXTSERM);
-    if (player.hasItem(ConsumableLib.BEEHONY))
-        player.consumeItem(ConsumableLib.BEEHONY);
-    else player.consumeItem(ConsumableLib.PURHONY);
+    player.inv.consumeItem(ConsumableLib.W_FRUIT);
+    player.inv.consumeItem(ConsumableLib.EXTSERM);
+    if (player.inv.hasItem(ConsumableLib.BEEHONY))
+        player.inv.consumeItem(ConsumableLib.BEEHONY);
+    else player.inv.consumeItem(ConsumableLib.PURHONY);
     katSexMenu();
 }
 
@@ -2882,8 +2882,8 @@ function useReductoAndPinkEgg(): void {
         outputText("You let yourself out quietly, hoping she'll soon be ready for a trial run.");
         orgasm();
         setBallSize(0);
-        player.consumeItem(ConsumableLib.PINKEGG);
-        player.consumeItem(ConsumableLib.REDUCTO);
+        player.inv.consumeItem(ConsumableLib.PINKEGG);
+        player.inv.consumeItem(ConsumableLib.REDUCTO);
         addSubmissive(KBIT_SUB_REM_BALLS); // Have removed her balls at least once
         doNext(TelAdre.telAdreMenu);
     }
@@ -2898,7 +2898,7 @@ function giveKatWhiskerFruit(): void {
     if (!hasCock() || !hasDogCock()) {
         outputText("She takes the fruit and gives you a big grin as she bites into it, sucking up all the juices.  Kath leans back on the bed and thrusts her chest toward you.  “<i>Oh Marae, do those ever put me in the mood.</i>”  She licks her lips seductively, closes her eyes and shudders with pent up energy.  In a barely controlled whisper she asks, “<i>How do you want me?</i>”");
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.W_FRUIT);
+        player.inv.consumeItem(ConsumableLib.W_FRUIT);
         katSexMenu();
         return;
     }
@@ -2935,7 +2935,7 @@ function giveKatWhiskerFruit(): void {
         setKnotSize(getKnotSize() - 2);
         if (getKnotSize() < 2) setKnotSize(2);
         dynStats("lus", 10 + player.lib / 20);
-        player.consumeItem(ConsumableLib.W_FRUIT);
+        player.inv.consumeItem(ConsumableLib.W_FRUIT);
     }
     katSexMenu();
 }
@@ -2958,7 +2958,7 @@ function giveKatClothesBodysuit(): void {
     outputText("Her tail swishes back and forth and Kath gives in to the feeling of your hands massaging her body.  Her nipples tent the gossamer fabric and you realize that you could probably make her cum while she’s still wearing the outfit.\n\n");
     outputText("“<i>Do you really want me to walk around town like this?</i>” she pants.  “<i>Everyone will " + (hasCock() ? "know I’m a herm" : "see everything") + ".</i>”");
     giveClothing(KBIT_CLOTHES_BODYSUIT);
-    player.consumeItem(ArmorLib.T_BSUIT);
+    player.inv.consumeItem(ArmorLib.T_BSUIT);
     simpleChoices("Yes", giveKatClothesBodysuitYes, "No", giveKatClothesBodysuitNo, "Always", (submissiveness() >= 2 ? giveKatClothesBodysuitAlways : null), "", null, "", null);
 }
 
@@ -2999,7 +2999,7 @@ function giveKatClothesLongDress(): void {
     outputText("“<i>I’ve never gone to a big party, but now I’ve got the perfect dress for it.  I think I was wrong before, princesses are going to be jealous,</i>” she says as she twirls left and right, watching the long dress flow in the mirror.  “<i>It’s perfect - it really is." + (hasCock() ? "  I bet even if I was rock hard under this gown no one could tell I’m a herm." : "") + "</i>”\n\n");
     outputText("She twirls a few more times before grabbing your arms and leading you in a silent dance.  “<i>" + (hasCock() ? "I am all woman, but in this dress I finally feel like it" : "In this dress I feel like I’m all woman, just like I wanted to be when I was really young and kids picked on me") + ".</i>”  You don’t know the slow dance she’s taking you through, but it doesn’t seem to matter.  Kath finally snaps out of her fantasy and says, “<i>This dress is so special; I don’t want anything to happen to it.  Maybe I should only put it on for special occasions.</i>”");
     giveClothing(KBIT_CLOTHES_B_DRESS);
-    player.consumeItem(ArmorLib.B_DRESS);
+    player.inv.consumeItem(ArmorLib.B_DRESS);
     simpleChoices("Wear It", giveKatClothesDressWearIt, "Agree", giveKatClothesDressAgree, "Always Wear", (submissiveness() >= 2 ? giveKatClothesDressAlways : null), "", null, "", null);
 }
 
@@ -3051,7 +3051,7 @@ function giveKatClothesNurseOutfit(): void {
     outputText(".  When she’s finished a vision of naughtiness stands before you.\n\n");
     outputText("She walks toward you, her hips swaying from side to side.  “<i>I know it’s racy, skimpy, probably even outright slutty, but I love how it looks.  " + catGirl("It feels nice walking around with all this exposed skin", "I really like how the whiteness of the outfit contrasts with the blackness of my fur") + ".  She slides her arms around your waist and you feel a great deal of heat radiating from under that skirt.  Mmmm, you’re too good to me " + playerText() + ".  Let me show you how much I appreciate you...</i>”\n\n");
     giveClothing(KBIT_CLOTHES_NURSECL);
-    player.consumeItem(ArmorLib.NURSECL);
+    player.inv.consumeItem(ArmorLib.NURSECL);
     katSexMenu();
 }
 
@@ -3064,7 +3064,7 @@ function giveKatClothesSilkRobe(): void {
     outputText("You convince her to put it on anyway.  She strips and then pulls on the robe.  “<i>It’s so smooth!  It feels like the wind brushing against my " + catGirl("skin", "fur") + ".  It makes me feel like I’m completely naked.</i>”\n\n");
     outputText("Katherine strikes a commanding pose and looks at herself in the mirror, then she seems to deflate slightly.  Looking very shy she says, “<i>I don’t know if I should wear this around town.  It seems way too special.</i>”");
     giveClothing(KBIT_CLOTHES_SS_ROBE);
-    player.consumeItem(ArmorLib.SS_ROBE);
+    player.inv.consumeItem(ArmorLib.SS_ROBE);
     simpleChoices("Wear It", giveKatClothesRobeWear, "Don’t Wear", giveKatClothesRobeDontWear, "Always Wear", (submissiveness() >= 2 ? giveKatClothesRobeAlways : null), "", null, "", null);
 }
 
@@ -3123,7 +3123,7 @@ function giveKatClothesTubeTop(): void {
     else outputText((flags[kFLAGS.KATHERINE_CLOTHES_WORN] == KBIT_CLOTHES_C_CLOTH ? "blouse" : "clothes, quickly slips on her knee length skirt") + " and then struggles with the tube top.  When it’s finally on right she starts posing in the mirror, her " + breasts.adj() + " breasts on display in the stretchy, clingy fabric.");
     outputText("\n\nYou come up behind her and rub her exposed" + (pregSize() > 4 ? ", bulging" : "") + " midriff.  Kath’s tail starts to dance and she falls back against you, purring.  “<i>Oh " + playerText() + ", I just got into this lovely outfit you gave me.  Do you want me out of it so soon?</i>”\n\n");
     giveClothing(KBIT_CLOTHES_TUBETOP);
-    player.consumeItem(ArmorLib.TUBETOP);
+    player.inv.consumeItem(ArmorLib.TUBETOP);
     katSexMenu();
 }
 
@@ -3143,14 +3143,14 @@ function giveKatDyeEnd(): void {
 
 function giveKatDyeAuburn(): void {
     giveKatDyeBegin("rich auburn");
-    player.consumeItem(ConsumableLib.AUBURND);
+    player.inv.consumeItem(ConsumableLib.AUBURND);
     outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>It’s not that flashy, but it looks good on me.  There’s a nice contrast with my " + catGirl("skin", "fur") + ".</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyeBlack(): void {
     giveKatDyeBegin("jet black");
-    player.consumeItem(ConsumableLib.BLACK_D);
+    player.inv.consumeItem(ConsumableLib.BLACK_D);
     outputText(", matching the fur ");
     if (getFurry()) {
         outputText("that covers the rest of her body.\n\n");
@@ -3172,49 +3172,49 @@ function giveKatDyeBlack(): void {
 
 function giveKatDyeBlonde(): void {
     giveKatDyeBegin("light blonde");
-    player.consumeItem(ConsumableLib.BLOND_D);
+    player.inv.consumeItem(ConsumableLib.BLOND_D);
     outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>When I was a little kitty I was always jealous of felines with lighter colored fur.  " + catGirl("Now I’ve got blonde hair and no fur, except on my ears and tail.  They’re the ones who ought to be jealous now", "I think it looks good on me, especially since there’s such a contrast with my fur") + ".</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyeBlue(): void {
     giveKatDyeBegin("bright blue");
-    player.consumeItem(ConsumableLib.BLUEDYE);
+    player.inv.consumeItem(ConsumableLib.BLUEDYE);
     outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Wow.  Nice and bright.  Really appropriate for an officer who’s part of the thin blue line.</i>”  She giggles a bit and says, “<i>This is a color I always wanted to try and I think it looks great!</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyeOrange(): void {
     giveKatDyeBegin("vibrant orange");
-    player.consumeItem(ConsumableLib.ORANGDY);
+    player.inv.consumeItem(ConsumableLib.ORANGDY);
     outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Wow.  Nice and bright.  No one is going to miss me now.  This is almost the same color the Watch paints on doors to mark dangerously unstable houses.</i>”  She giggles a bit and says, “<i>I always wanted to try orange and I think it looks great on me!</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyePink(): void {
     giveKatDyeBegin("neon pink");
-    player.consumeItem(ConsumableLib.PINKDYE);
+    player.inv.consumeItem(ConsumableLib.PINKDYE);
     outputText(".\n\nKath takes a look in the mirror and runs her fingers through her hair.  “<i>Back to the old classic.  Nothing wrong with hot pink.  I always used to wear it so people thought I was a girl, or at least a really girly herm.</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyePurple(): void {
     giveKatDyeBegin("deep purple");
-    player.consumeItem(ConsumableLib.PURPDYE);
+    player.inv.consumeItem(ConsumableLib.PURPDYE);
     outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>It’s not as bright as the colors I would have picked, but it looks does look good.  " + catGirl("I guess it’s the opposite of the black fur and bright pink hair I used to have.  Now I’ve got dark purple hair and light skin", "My fur is so dark the purple still stands out.  Not many girls could say that") + ".</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyeRed(): void {
     giveKatDyeBegin("flaming red");
-    player.consumeItem(ConsumableLib.RED_DYE);
+    player.inv.consumeItem(ConsumableLib.RED_DYE);
     outputText(".\n\nKath looks in the mirror and starts to pose.  “<i>I don’t know about you, but I’m getting turned on.  Everyone says redheads have more fun.  Maybe it’s attitude, maybe it’s something in this dye.  But who cares why?  I just plan to prove them right.</i>”\n\n");
     giveKatDyeEnd();
 }
 
 function giveKatDyeWhite(): void {
     giveKatDyeBegin("snow white");
-    player.consumeItem(ConsumableLib.WHITEDY);
+    player.inv.consumeItem(ConsumableLib.WHITEDY);
     outputText(".\n\nKath takes a look in the mirror and tries combing her hair several different ways.  “<i>When I was a little kitty I was always jealous of felines with lighter colored fur.  " + catGirl("Now I’ve got snow white hair and only a little bit of black fur on my ears and tail.  They’re the ones who ought to be jealous now.  In this desert heat I win!", "I think it looks good on me but the contrast is something else.  It almost hurts my eyes looking at my shoulders and it’s going to be even worse in sunlight.  No one is going to walk into me now.") + "</i>”\n\n");
     giveKatDyeEnd();
 }

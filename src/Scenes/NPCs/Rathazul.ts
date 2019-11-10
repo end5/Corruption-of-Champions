@@ -145,17 +145,17 @@ function rathazulWorkOffer(): boolean {
     let reductos: () => void = null;
     let lethiciteDefense: () => void = null;
     let dyes: () => void = null;
-    if (player.hasItem(ConsumableLib.BLACKEG) || player.hasItem(ConsumableLib.L_BLKEG)) {
+    if (player.inv.hasItem(ConsumableLib.BLACKEG) || player.inv.hasItem(ConsumableLib.L_BLKEG)) {
         flags[kFLAGS.PC_KNOWS_ABOUT_BLACK_EGGS] = 1;
         spoken = true;
         outputText("He eyes the onyx egg in your inventory and offers a little advice.  \"<i>Be careful with black eggs.  They can turn your skin to living latex or rubber.  The smaller ones are usually safer, but everyone reacts differently.  I'd get rid of them, if you want my opinion.</i>\"\n\n");
     }
     // Item crafting offer
-    if (player.hasItem(UseableLib.GREENGL, 2)) {
+    if (player.inv.hasItem(UseableLib.GREENGL, 2)) {
         if (player.effects.findByType(StatusAffects.RathazulArmor) < 0) outputText("He pipes up with a bit of hope in his voice, \"<i>I can smell the essence of the tainted lake-slimes you've defeated, and if you'd let me, I could turn it into something a bit more useful to you.  You see, the slimes are filled with the tainted essence of the world-mother herself, and once the taint is burned away, the remaining substance remains very flexible but becomes nearly impossible to cut through.  With the gel of five defeated slimes I could craft you a durable suit of armor.</i>\"\n\n", false);
         else outputText("He pipes up with a bit of excitement in his voice, \"<i>With just five pieces of slime-gel I could make another suit of armor...</i>\"\n\n", false);
         spoken = true;
-        if (player.hasItem(UseableLib.GREENGL, 5)) {
+        if (player.inv.hasItem(UseableLib.GREENGL, 5)) {
             showArmorMenu = true;
             totalOffers++;
         }
@@ -164,10 +164,10 @@ function rathazulWorkOffer(): boolean {
         }
     }
     // Item crafting offer
-    if (player.hasItem(UseableLib.B_CHITN)) {
+    if (player.inv.hasItem(UseableLib.B_CHITN)) {
         outputText("The elderly rat looks at you intently and offers, \"<i>I see you've gathered a piece of chitin from the giant bees of the forests.  If you bring me five pieces I could probably craft it into some tough armor.</i>\"\n\n", false);
         spoken = true;
-        if (player.hasItem(UseableLib.B_CHITN, 5)) {
+        if (player.inv.hasItem(UseableLib.B_CHITN, 5)) {
             showArmorMenu = true;
             totalOffers++;
         }
@@ -177,22 +177,22 @@ function rathazulWorkOffer(): boolean {
     }
     let pCounter: number = 0;
     // Item purification offer
-    if (player.hasItem(ConsumableLib.INCUBID)) {
+    if (player.inv.hasItem(ConsumableLib.INCUBID)) {
         purify = purifySomething;
         totalOffers++;
         pCounter++;
     }
-    if (player.hasItem(ConsumableLib.SUCMILK)) {
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) {
         purify = purifySomething;
         totalOffers++;
         pCounter++;
     }
-    if (player.hasItem(ConsumableLib.SDELITE)) {
+    if (player.inv.hasItem(ConsumableLib.SDELITE)) {
         purify = purifySomething;
         totalOffers++;
         pCounter++;
     }
-    if (player.hasItem(ConsumableLib.LABOVA_)) {
+    if (player.inv.hasItem(ConsumableLib.LABOVA_)) {
         purify = purifySomething;
         totalOffers++;
         pCounter++;
@@ -226,7 +226,7 @@ function rathazulWorkOffer(): boolean {
         reductos = buyReducto;
     }
     // SPOIDAH
-    if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.hasItem(UseableLib.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
+    if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.inv.hasItem(UseableLib.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
         showArmorMenu = true;
         spoken = true;
         totalOffers++;
@@ -246,11 +246,11 @@ function rathazulWorkOffer(): boolean {
         }
         else if (flags[kFLAGS.RATHAZUL_DEBIMBO_OFFERED] > 0) {
             outputText("You recall that Rathazul is willing to make something to cure bimbo liqueur for 250 gems and five Scholar's Teas.");
-            if (player.hasItem(ConsumableLib.SMART_T, 5) && player.gems >= 250) {
+            if (player.inv.hasItem(ConsumableLib.SMART_T, 5) && player.gems >= 250) {
                 totalOffers++;
                 debimbo = 1;
             }
-            else if (!player.hasItem(ConsumableLib.SMART_T, 5)) outputText("  You should probably find some if you want that...");
+            else if (!player.inv.hasItem(ConsumableLib.SMART_T, 5)) outputText("  You should probably find some if you want that...");
             else outputText("  You need more gems to afford that, though.");
             outputText("\n\n");
         }
@@ -284,16 +284,16 @@ function purifySomething(): void {
     outputText("Rathazul asks, \"<i>What would you like me to purify?</i>\"");
     menu();
     // Item purification offer
-    if (player.hasItem(ConsumableLib.INCUBID)) {
+    if (player.inv.hasItem(ConsumableLib.INCUBID)) {
         addButton(0, "Incubi Draft", rathazulPurifyIncubiDraft);
     }
-    if (player.hasItem(ConsumableLib.SUCMILK)) {
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) {
         addButton(1, "SuccubiMilk", rathazulPurifySuccubiMilk);
     }
-    if (player.hasItem(ConsumableLib.SDELITE)) {
+    if (player.inv.hasItem(ConsumableLib.SDELITE)) {
         addButton(2, "S. Delight", rathazulPurifySuccubiDelight);
     }
-    if (player.hasItem(ConsumableLib.LABOVA_)) {
+    if (player.inv.hasItem(ConsumableLib.LABOVA_)) {
         addButton(3, "LaBova", rathazulPurifyLaBova);
     }
     addButton(4, "Back", rathazulWorkOffer);
@@ -307,7 +307,7 @@ function rathazulPurifyIncubiDraft(): void {
         return;
     }
     if (!game.debug)
-        player.destroyItems(ConsumableLib.INCUBID, 1);
+        player.inv.destroyItems(ConsumableLib.INCUBID, 1);
     Inventory.takeItem(ConsumableLib.P_DRAFT, returnToRathazulMenu);
     player.gems -= 20;
     statScreenRefresh();
@@ -322,7 +322,7 @@ function rathazulPurifySuccubiMilk(): void {
         return;
     }
     if (!game.debug)
-        player.destroyItems(ConsumableLib.SUCMILK, 1);
+        player.inv.destroyItems(ConsumableLib.SUCMILK, 1);
     Inventory.takeItem(ConsumableLib.P_S_MLK, returnToRathazulMenu);
     player.gems -= 20;
     statScreenRefresh();
@@ -337,7 +337,7 @@ function rathazulPurifySuccubiDelight(): void {
         return;
     }
     if (!game.debug)
-        player.destroyItems(ConsumableLib.SDELITE, 1);
+        player.inv.destroyItems(ConsumableLib.SDELITE, 1);
     Inventory.takeItem(ConsumableLib.PSDELIT, returnToRathazulMenu);
     player.gems -= 20;
     statScreenRefresh();
@@ -352,7 +352,7 @@ function rathazulPurifyLaBova(): void {
         return;
     }
     if (!game.debug)
-        player.destroyItems(ConsumableLib.LABOVA_, 1);
+        player.inv.destroyItems(ConsumableLib.LABOVA_, 1);
     Inventory.takeItem(ConsumableLib.P_LBOVA, returnToRathazulMenu);
     player.gems -= 20;
     statScreenRefresh();
@@ -391,7 +391,7 @@ function makeADeBimboDraft(): void {
     outputText("\n\n\"<i>That <b>should</b> do,</i>\" he mutters to himself.  Rathazul turns, carefully handing you the mixture.  \"<i>This should counter the mental-inhibiting effects of the Bimbo Liqueur, but I have no idea to what extent those who imbibe it will retain of their time spent as a bimbo...</i>\"\n\n");
     // Take items
     player.gems -= 250;
-    player.consumeItem(ConsumableLib.SMART_T, 5);
+    player.inv.consumeItem(ConsumableLib.SMART_T, 5);
     statScreenRefresh();
     player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     Inventory.takeItem(ConsumableLib.DEBIMBO, returnToRathazulMenu);
@@ -400,11 +400,11 @@ function makeADeBimboDraft(): void {
 export function rathazulArmorMenu(): void {
     spriteSelect(49);
     clearOutput();
-    const beeArmor: () => void = (player.hasItem(UseableLib.B_CHITN, 5) ? craftCarapace : null);
-    const gelArmor: () => void = (player.hasItem(UseableLib.GREENGL, 5) ? craftOozeArmor : null);
+    const beeArmor: () => void = (player.inv.hasItem(UseableLib.B_CHITN, 5) ? craftCarapace : null);
+    const gelArmor: () => void = (player.inv.hasItem(UseableLib.GREENGL, 5) ? craftOozeArmor : null);
     let silk: () => void = null;
     outputText("Which armor project would you like to pursue with Rathazul?");
-    if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.hasItem(UseableLib.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
+    if (player.effects.findByType(StatusAffects.CampRathazul) >= 0 && player.inv.hasItem(UseableLib.T_SSILK) && flags[kFLAGS.RATHAZUL_SILK_ARMOR_COUNTDOWN] + flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00275] == 0) {
         silk = craftSilkArmor;
     }
     simpleChoices("BeeArmor", beeArmor, "GelArmor", gelArmor, "SpiderSilk", silk, "", null, "Back", returnToRathazulMenu);
@@ -415,7 +415,7 @@ function craftSilkArmor(): void {
     outputText("", true);
     outputText("You hand the bundled webbing to Rathazul carefully, lest you damage the elderly mouse.  He gives you a bemused smile and snatches the stuff from your grasp while he mutters, \"<i>I'm not falling apart you know.</i>\"\n\n", false);
     // (Not enough webs:
-    if (!player.hasItem(UseableLib.T_SSILK, 5)) {
+    if (!player.inv.hasItem(UseableLib.T_SSILK, 5)) {
         outputText("The rat shakes his head and hands it back to you.  \"<i>This isn't enough for me to make anything with.  I'll need at least five bundles of this stuff total, so you'll need to find more,</i>\" he explains.\n\n", false);
         // (optional spider bonus:
         if (player.tailType == TailType.SPIDER_ADBOMEN) {
@@ -441,7 +441,7 @@ function commissionSilkArmorForReal(): void {
     outputText("You sort 500 gems into a pouch and toss them to Rathazul, along with the rest of the webbing.  The wizened alchemist snaps the items out of the air with lightning-fast movements and goes to work immediately.  He bustles about with enormous energy, invigorated by the challenging task before him.  It seems Rathazul has completely forgotten about you, but as you turn to leave, he calls out, \"<i>What did you want me to make?  A mage's robe or some nigh-impenetrable armor?</i>\"\n\n", false);
     player.gems -= 500;
     statScreenRefresh();
-    player.destroyItems(UseableLib.T_SSILK, 5);
+    player.inv.destroyItems(UseableLib.T_SSILK, 5);
     menu();
     addButton(0, "Armor", chooseArmorOrRobes, 1);
     addButton(1, "Robes", chooseArmorOrRobes, 2);
@@ -492,7 +492,7 @@ function collectRathazulArmor(): void {
 
 function craftOozeArmor(): void {
     spriteSelect(49);
-    player.destroyItems(UseableLib.GREENGL, 5);
+    player.inv.destroyItems(UseableLib.GREENGL, 5);
     outputText("Rathazul takes the green gel from you and drops it into an empty cauldron.  With speed well beyond what you'd expect from such an elderly creature, he nimbly unstops a number of vials and pours them into the cauldron.  He lets the mixture come to a boil, readying a simple humanoid-shaped mold from what you had thought was piles of junk material.  In no time at all, he has cast the boiling liquid into the mold, and after a few more minutes he cracks it open, revealing a suit of glistening armor.\n\n", true);
     player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     Inventory.takeItem(ArmorLib.GELARMR, returnToRathazulMenu);
@@ -582,7 +582,7 @@ export function craftCarapace(): void {
     outputText(".  He still manages to look somewhat pleased with himself in spite of the blunder, even bragging a little bit, \"<i>Let me show you the different lengths of string I used.</i>\"\n\n", false);
     if (player.cocks.length > 0 && player.cocks.biggestCockArea() >= 40) outputText("The silken material does little to hide the bulge of your groin, if anything it looks a little lewd.  Rathazul mumbles and looks away, shaking his head.\n\n", false);
     if (player.breasts.biggestTitSize() >= 8) outputText("Your " + biggestBreastSizeDescript(player) + " barely fit into the breastplate, leaving you displaying a large amount of jiggling cleavage.\n\n", false);
-    player.destroyItems(UseableLib.B_CHITN, 5);
+    player.inv.destroyItems(UseableLib.B_CHITN, 5);
     player.effects.addValue(StatusAffects.MetRathazul, 2, 1);
     Inventory.takeItem(ArmorLib.BEEARMR, returnToRathazulMenu);
     doNext(Camp.returnToCampUseOneHour);

@@ -617,7 +617,7 @@ export function nieveBuilding(): void {
         outputText("\n\nIt still needs eyes and a mouth.  Coal is the best option, but who knows how common that is around here?  Gems, you decide, are an acceptable stand-by.  It'd probably take 9 gems to complete, two for the eyes and seven for the mouth.");
         // [Coal (Only available if PC has coal)] [Gems]
         menu();
-        if (player.hasItem(ConsumableLib.COAL___)) addButton(0, "Coal", nieveCoalEyes);
+        if (player.inv.hasItem(ConsumableLib.COAL___)) addButton(0, "Coal", nieveCoalEyes);
         addButton(1, "Gems", nieveGemEyes);
         addButton(4, "Back", Camp.returnToCampUseOneHour);
     }
@@ -647,7 +647,7 @@ export function nieveBuilding(): void {
 // Add to previous text if possible?
 export function nieveCoalEyes(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.COAL___);
+    player.inv.consumeItem(ConsumableLib.COAL___);
     outputText("Luckily, you happen to have two lumps of coal.");
     outputText("\n\nYou split the coal into smaller chunks, and place them evenly around the Snowman's face, creating a nice, vacant smile.  It still needs a nose, however, and for that, you'll need a carrot.  Perhaps there's a farm nearby, or maybe you could buy one somewhere?");
     flags[kFLAGS.NIEVE_MOUTH] = "coal";

@@ -314,7 +314,7 @@ export function turkeyGirlTwoTheTurkeningBySavinWhatADickInAButt(): void {
     // [Shoo Off] [Let her Come] [Hello again!]
     menu();
     if (player.cocks.length > 0) {
-        if (player.keyItems.has("Deluxe Dildo") >= 0 || player.hasItem(ConsumableLib.L_DRAFT) || player.hasItem(ConsumableLib.F_DRAFT)) {
+        if (player.keyItems.has("Deluxe Dildo") >= 0 || player.inv.hasItem(ConsumableLib.L_DRAFT) || player.inv.hasItem(ConsumableLib.F_DRAFT)) {
             outputText("\n\n<b>You could let her come, like last year, or great her in a whole new way (by clicking 'Hello Again')</b>");
             addButton(2, "Hello Again", helloAgain);
             flags[kFLAGS.MORE_TURKEY] = 0;
@@ -394,8 +394,8 @@ export function seasonHerDatTurkeyBitch(): void {
 
     outputText("\n\nBut what's a turkey without a little seasoning, hmm? Sweet as she is, and as eager to gobble your cock as can be, things could still turn up a notch.  Still servicing her box, you reach an arm out to your discarded pack, searching through it until you feel the familiar shape of ");
     if (player.keyItems.has("Deluxe Dildo") >= 0) outputText("Tamani's dildo");
-    else if (player.hasItem(ConsumableLib.L_DRAFT)) outputText("a bottle of Lust draft");
-    else if (player.hasItem(ConsumableLib.F_DRAFT)) outputText("a bottle of Fuck draft");
+    else if (player.inv.hasItem(ConsumableLib.L_DRAFT)) outputText("a bottle of Lust draft");
+    else if (player.inv.hasItem(ConsumableLib.F_DRAFT)) outputText("a bottle of Fuck draft");
     else outputText("A FUCKIN ERROR");
     outputText(".  You pull it out and squeeze a copious load of the bubblegum pink aphrodisiac out into your hand.  The second it touches your skin, you feel a palpable warmth spreading out through your nerves, skin burning with sensitivity as the roiling, viscous substance pools in your cupped hand.  You can't help but shudder as the pink veno's effect reaches out through your body, setting your whole person to tingling - and especially your " + multiCockDescriptLight(player) + ", which rises to an almost painful hardness.");
 

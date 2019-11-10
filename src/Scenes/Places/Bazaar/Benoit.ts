@@ -310,10 +310,10 @@ function benoitSellMenu(): void {
     menu();
     let totalItems: number = 0;
     for (const slot = 0; slot < 5; slot++) {
-        if (player.itemSlots[slot].quantity > 0 && int(player.itemSlots[slot].itype.value / sellMod) >= 1) {
-            outputText("\n" + int(player.itemSlots[slot].itype.value / sellMod) + " gems for " + player.itemSlots[slot].itype.longName + ".");
-            addButton(slot, (player.itemSlots[slot].itype.shortName + " x" + player.itemSlots[slot].quantity), createCallBackFunction2(benoitSellTransact, slot, sellMod));
-            totalItems += player.itemSlots[slot].quantity;
+        if (player.inv.itemSlots[slot].quantity > 0 && int(player.inv.itemSlots[slot].itype.value / sellMod) >= 1) {
+            outputText("\n" + int(player.inv.itemSlots[slot].itype.value / sellMod) + " gems for " + player.inv.itemSlots[slot].itype.longName + ".");
+            addButton(slot, (player.inv.itemSlots[slot].itype.shortName + " x" + player.inv.itemSlots[slot].quantity), createCallBackFunction2(benoitSellTransact, slot, sellMod));
+            totalItems += player.inv.itemSlots[slot].quantity;
         }
     }
     if (totalItems > 1) addButton(7, "Sell All", createCallBackFunction2(benoitSellAllTransact, totalItems, sellMod));
@@ -350,8 +350,8 @@ function benoitSellTransact(slot: number, sellMod: number): void {
     if (benoitLover())
         outputText("Benoit" + benoitMF("", "e") + " gives your object the briefest of goings-over with " + benoitMF("his", "her") + " fingers before stowing it away and handing over your gem reward with a trusting smile.");
     else outputText("Following a painstaking examination of what you've given him with his hands and nose, Benoit grudgingly accepts it and carefully counts out your reward.");
-    player.gems += int(player.itemSlots[slot].itype.value / sellMod);
-    player.itemSlots[slot].removeOneItem();
+    player.gems += int(player.inv.itemSlots[slot].itype.value / sellMod);
+    player.inv.itemSlots[slot].removeOneItem();
     statScreenRefresh();
     // (+1 Affection)
     benoitAffection(1);
@@ -362,9 +362,9 @@ function benoitSellAllTransact(totalItems: number, sellMod: number): void {
     clearOutput();
     let itemValue: number = 0;
     for (const slot = 0; slot < 5; slot++) {
-        if (player.itemSlots[slot].quantity > 0 && int(player.itemSlots[slot].itype.value / sellMod) >= 1) {
-            itemValue += player.itemSlots[slot].quantity * int(player.itemSlots[slot].itype.value / sellMod);
-            player.itemSlots[slot].quantity = 0;
+        if (player.inv.itemSlots[slot].quantity > 0 && int(player.inv.itemSlots[slot].itype.value / sellMod) >= 1) {
+            itemValue += player.inv.itemSlots[slot].quantity * int(player.inv.itemSlots[slot].itype.value / sellMod);
+            player.inv.itemSlots[slot].quantity = 0;
         }
     }
     if (benoitLover())
@@ -970,7 +970,7 @@ function tryToConvertToBassyWomb(): void {
     clearOutput();
     // [Ingredients not in inventory: ]
     // A double dose of ovi-elixer, a bottle of reptilum, goblin ale and some basilisk blood would probably do...
-    if (!(player.hasItem(ConsumableLib.OVIELIX, 2) && player.hasItem(ConsumableLib.REPTLUM) && player.hasItem(ConsumableLib.GOB_ALE))) {
+    if (!(player.inv.hasItem(ConsumableLib.OVIELIX, 2) && player.inv.hasItem(ConsumableLib.REPTLUM) && player.inv.hasItem(ConsumableLib.GOB_ALE))) {
         outputText("You don't have the necessary ingredients to attempt this yet.  You recall " + benoitMF("Benoit", "Benoite") + " mentioning that you would need Reptilum, two Ovi Elixirs, and Goblin Ale.");
         doNext(benoitIntro);
     }
@@ -982,9 +982,9 @@ function tryToConvertToBassyWomb(): void {
     }*/
     // Ingredients in inventory:
     else {
-        player.consumeItem(ConsumableLib.OVIELIX, 2);
-        player.consumeItem(ConsumableLib.REPTLUM);
-        player.consumeItem(ConsumableLib.GOB_ALE);
+        player.inv.consumeItem(ConsumableLib.OVIELIX, 2);
+        player.inv.consumeItem(ConsumableLib.REPTLUM);
+        player.inv.consumeItem(ConsumableLib.GOB_ALE);
         outputText("You ferret out the ingredients you have collected and begin to bang them onto the counter in front of Benoit, telling him that you've got what he needs.  Pierre barks excitedly at the noise.");
 
         outputText("\n\n\"<i>And what is zat?</i>\" the basilisk says, bewildered. You explain you can whip something up which will give you a basilisk womb - and hence, female basilisk kids.  Benoit opens his mouth then closes it again; it takes him a while to properly compute these words.  \"<i>But... but zat is completely impossible, [name]!</i>\" he says eventually, wringing his hands.  \"<i>'Ow do you know you won't just poison yourself?  Or, or turn yourself into a newt or somesing?  Please... don't 'urt... I should never 'ave said...</i>\"  He lapses into silence as you grab a pewter bowl from a nearby shelf and a wooden spoon from a container full of old utensils, and begin to mix the various ingredients together.  You pour the ovi-elixers into the goblin ale, beating them together until a fairly unpleasant sulfuric smell fills the close market stall.  Carefully you dribble the reptilum in whilst continuing to stir, until the smell changes to that of cooking sherry.  You frown at the mixture.  It feels like it's missing something...  Casually, you ask Benoit to open his hand to you, whilst plucking a kitchen knife from the utensil container.  He barks in pain as you run the blade across his palm and then hold his hand firmly over the bowl.  Drops of dark red blossom into the mixture, and as you carefully stir the potion turns a green-grey color: the color of Benoit's scales.");
@@ -1145,7 +1145,7 @@ export function femoitInitialTalk(): void {
     outputText("\n\nThe basilisk is silent for a time, running his claws along the counter pensively.  \"<i>Yes,</i>\" he says eventually, in a quiet tone.  \"<i>I 'ave.  Away from ze mountains, I 'ave 'ad time to sink.  I am not ze demons' slave anymore, and I am a funny joke of a basilisk anyway, so I 'ave often thought about making certain... zacrifices.  If we 'ad just one female, away from zeir corruption, zen...</i>\" he tails off, shrugging unhappily.  \"<i>But I just torment myself sinking about zis, [name].  Ze demons made us very resistant to change.  I would need somesing very powerful for me to become... somesing useful.</i>\"");
 
     /*
-        if (player.hasItem(ConsumableLib.BIMBOLQ))
+        if (player.inv.hasItem(ConsumableLib.BIMBOLQ))
         {
             outputText("\n\nA certain pink, effervescent liqueur suddenly feels very heavy in your pouch.  That would certainly be powerful enough to give Benoit what he wants... along with a lot of side effects.");
 
@@ -1175,16 +1175,16 @@ export function benoitFeminise(): void {
     clearOutput();
 
     // Ingredients not in inventory
-    if (!player.hasItem(ConsumableLib.P_S_MLK, 2) || !player.hasItem(ConsumableLib.L_PNKEG) || !player.hasItem(ConsumableLib.OVIELIX) || !player.hasItem(ConsumableLib.REPTLUM)) {
+    if (!player.inv.hasItem(ConsumableLib.P_S_MLK, 2) || !player.inv.hasItem(ConsumableLib.L_PNKEG) || !player.inv.hasItem(ConsumableLib.OVIELIX) || !player.inv.hasItem(ConsumableLib.REPTLUM)) {
         outputText("You don't have the necessary ingredients to attempt this yet.");
         outputText("\n\n<b>(Requires 2x Purified Succubus Milk, 1x Large Pink Egg, 1x Ovi Elixir, 1x Reptilium.)</b>");
         this.flushOutputTextToGUI();
     }
     else {
-        player.destroyItems(ConsumableLib.P_S_MLK, 2);
-        player.destroyItems(ConsumableLib.L_PNKEG, 1);
-        player.destroyItems(ConsumableLib.OVIELIX, 1);
-        player.destroyItems(ConsumableLib.REPTLUM, 1);
+        player.inv.destroyItems(ConsumableLib.P_S_MLK, 2);
+        player.inv.destroyItems(ConsumableLib.L_PNKEG, 1);
+        player.inv.destroyItems(ConsumableLib.OVIELIX, 1);
+        player.inv.destroyItems(ConsumableLib.REPTLUM, 1);
 
         outputText("You ferret out the ingredients you have collected and begin to bang them onto the counter in front of Benoit, telling him that you've got what he needs.  Pierre barks excitedly at the noise.");
 

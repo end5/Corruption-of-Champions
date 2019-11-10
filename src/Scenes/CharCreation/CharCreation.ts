@@ -111,16 +111,16 @@ export function newGameGo(): void {
     player.exploredMountain = 0;
     player.exploredLake = 0;
     // Inventory clear
-    player.itemSlot1.unlocked = true;
-    player.itemSlot1.emptySlot();
-    player.itemSlot2.unlocked = true;
-    player.itemSlot2.emptySlot();
-    player.itemSlot3.unlocked = true;
-    player.itemSlot3.emptySlot();
-    player.itemSlot4.unlocked = false;
-    player.itemSlot4.emptySlot();
-    player.itemSlot5.unlocked = false;
-    player.itemSlot5.emptySlot();
+    player.inv.itemSlot1.unlocked = true;
+    player.inv.itemSlot1.inv.emptySlot();
+    player.inv.itemSlot2.unlocked = true;
+    player.inv.itemSlot2.inv.emptySlot();
+    player.inv.itemSlot3.unlocked = true;
+    player.inv.itemSlot3.inv.emptySlot();
+    player.inv.itemSlot4.unlocked = false;
+    player.inv.itemSlot4.inv.emptySlot();
+    player.inv.itemSlot5.unlocked = false;
+    player.inv.itemSlot5.inv.emptySlot();
     // PIERCINGS
     player.nipplesPierced = 0;
     player.nipplesPShort = "";
@@ -1192,12 +1192,12 @@ function customGalatea(): void {
     player.fertility = 100;
     player.cor = 25;
     // Inventory: Lactaid, GroPlus, BimboLq
-    player.itemSlot1.setItemAndQty(ConsumableLib.LACTAID, 5);
-    player.itemSlot2.setItemAndQty(ConsumableLib.GROPLUS, 5);
-    player.itemSlot3.setItemAndQty(ConsumableLib.BIMBOLQ, 1);
-    player.itemSlot4.unlocked = true;
-    player.itemSlot4.setItemAndQty(ArmorLib.BIMBOSK, 1);
-    player.itemSlot5.unlocked = true;
+    player.inv.itemSlot1.setItemAndQty(ConsumableLib.LACTAID, 5);
+    player.inv.itemSlot2.setItemAndQty(ConsumableLib.GROPLUS, 5);
+    player.inv.itemSlot3.setItemAndQty(ConsumableLib.BIMBOLQ, 1);
+    player.inv.itemSlot4.unlocked = true;
+    player.inv.itemSlot4.setItemAndQty(ArmorLib.BIMBOSK, 1);
+    player.inv.itemSlot5.unlocked = true;
     outputText("You've got large breasts prone to lactation.  You aren't sure WHY you got chosen as a champion, but with your considerable strength, you're sure you'll do a good job protecting Ingnam.");
 }
 
@@ -1315,8 +1315,8 @@ function customLeah(): void {
     player.setArmor(ArmorLib.LEATHRA);
     // 		if(player.perks.findByType(PerkLib.WizardsEndurance) < 0) player.perks.create(PerkLib.WizardsEndurance,30,0,0,0);
     player.setWeapon(WeaponLib.W_STAFF);
-    player.itemSlot1.setItemAndQty(ConsumableLib.B__BOOK, 1);
-    player.itemSlot2.setItemAndQty(ConsumableLib.W__BOOK, 2);
+    player.inv.itemSlot1.setItemAndQty(ConsumableLib.B__BOOK, 1);
+    player.inv.itemSlot2.setItemAndQty(ConsumableLib.W__BOOK, 2);
 
     player.breasts.createBreastRow();
     player.vaginas.createVagina();
@@ -1657,8 +1657,8 @@ function customNami(): void {
     player.perks.create(PerkLib.Smart, 0, 0, 0, 0);
     // History- Schooling
     player.perks.create(PerkLib.HistoryScholar, 0, 0, 0, 0);
-    player.itemSlot1.setItemAndQty(ConsumableLib.W__BOOK, 1);
-    player.itemSlot2.setItemAndQty(ConsumableLib.B__BOOK, 1);
+    player.inv.itemSlot1.setItemAndQty(ConsumableLib.W__BOOK, 1);
+    player.inv.itemSlot2.setItemAndQty(ConsumableLib.B__BOOK, 1);
 
     player.gender = 2;
     player.tallness = 64;
@@ -2144,12 +2144,12 @@ function customTestChar(): void {
     player.gems += 30000;
     outputText("You're something of a powerhouse, and you wager that between your odd mutations, power strong enough to threaten the village order, and talents, you're the natural choice to send through the portal.");
 
-    player.itemSlot4.unlocked = true;
-    player.itemSlot5.unlocked = true;
-    player.itemSlot1.setItemAndQty(ConsumableLib.P_LBOVA, 5);
-    player.itemSlot2.setItemAndQty(ConsumableLib.L_PNKEG, 1);
-    player.itemSlot3.setItemAndQty(ConsumableLib.OVIELIX, 1);
-    player.itemSlot4.setItemAndQty(ConsumableLib.REPTLUM, 1);
+    player.inv.itemSlot4.unlocked = true;
+    player.inv.itemSlot5.unlocked = true;
+    player.inv.itemSlot1.setItemAndQty(ConsumableLib.P_LBOVA, 5);
+    player.inv.itemSlot2.setItemAndQty(ConsumableLib.L_PNKEG, 1);
+    player.inv.itemSlot3.setItemAndQty(ConsumableLib.OVIELIX, 1);
+    player.inv.itemSlot4.setItemAndQty(ConsumableLib.REPTLUM, 1);
 
     player.effects.create(StatusAffects.TelAdre, 1, 0, 0, 0);
     // player.effects.create(StatusAffects.MetWhitney, 2, 0, 0, 0);
@@ -2357,8 +2357,8 @@ function customVahdunbrii(): void {
     player.perks.create(PerkLib.Smart, 0.25, 0, 0, 0);
     player.perks.create(PerkLib.HistoryScholar, 0, 0, 0, 0);
     player.perks.create(PerkLib.StrongBack, 0, 0, 0, 0);
-    player.itemSlot4.unlocked = true;
-    player.itemSlot5.unlocked = true;
+    player.inv.itemSlot4.unlocked = true;
+    player.inv.itemSlot5.unlocked = true;
     player.perks.create(PerkLib.StrongBack2, 0, 0, 0, 0);
     player.perks.create(PerkLib.HistorySlacker, 0, 0, 0, 0);
     player.str += 4;

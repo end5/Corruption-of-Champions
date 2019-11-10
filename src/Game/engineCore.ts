@@ -551,8 +551,8 @@ export function applyPerk(perk: PerkClass): void {
     // Apply perk here.
     outputText("<b>" + perk.perkName + "</b> gained!");
     player.perks.create(perk.ptype, perk.value1, perk.value2, perk.value3, perk.value4);
-    if (perk.ptype == PerkLib.StrongBack2) player.itemSlot5.unlocked = true;
-    if (perk.ptype == PerkLib.StrongBack) player.itemSlot4.unlocked = true;
+    if (perk.ptype == PerkLib.StrongBack2) player.inv.itemSlot5.unlocked = true;
+    if (perk.ptype == PerkLib.StrongBack) player.inv.itemSlot4.unlocked = true;
     if (perk.ptype == PerkLib.Tank2) {
         HPChange(player.tou, false);
         statScreenRefresh();

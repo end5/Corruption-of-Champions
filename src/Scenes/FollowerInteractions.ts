@@ -87,7 +87,7 @@ export function fixJojoOOOOHYEEEEAHSNAPINTOASLIMJIM(): void {
     outputText("", true);
     outputText("\"<i>You brought it!  Yes!</i>\" cheers Amily.  She reaches into your pouches and pulls out the bottle of pure honey and takes off for the woods.  You're forced to chase after her, and by the time you catch up, she's already hit Jojo with a knock-out dart.  The corrupted mouse is still hard and dripping with spunk, even while unconscious.  Amily moans, \"<i>You poor dear... here, drink up.  This will help make you better.</i>\"\n\n", false);
     // She noms your honey
-    player.consumeItem(ConsumableLib.PURHONY);
+    player.inv.consumeItem(ConsumableLib.PURHONY);
 
     outputText("She only gives him a few sips before she turns back to you and says, \"<i>This is going to take me a few hours.  It would be best if you weren't here when he wakes up.  I doubt he'll want anything to do with you after this.  I'll give him directions to find our children.  I'm sure they'll be able to help him recover the rest of the way.</i>\"\n\n", false);
 
@@ -413,11 +413,11 @@ function srslyPimpinGuyz(): void {
 
     outputText("You wake up several hours later to find that neither of the two girls are still around, your camp is in shambles, and most of your equipment is gone.  After looking around camp, you realize that all of your expendable items, gems, and even your weapons and armor have been taken.  All that is left is a suit of comfortable clothes that you put on.  You also find a note in a rough script that says: <i>This is what you get for being an asshole.</i>  Those damn bitches.", false);
     player.gems = 0;
-    player.itemSlot1.quantity = 0;
-    player.itemSlot2.quantity = 0;
-    player.itemSlot3.quantity = 0;
-    player.itemSlot4.quantity = 0;
-    player.itemSlot5.quantity = 0;
+    player.inv.itemSlot1.quantity = 0;
+    player.inv.itemSlot2.quantity = 0;
+    player.inv.itemSlot3.quantity = 0;
+    player.inv.itemSlot4.quantity = 0;
+    player.inv.itemSlot5.quantity = 0;
     player.setArmor(ArmorLib.C_CLOTH); // Old armor disappears unless it's Valeria
     player.setWeapon(WeaponLib.FISTS);
     // 	player.armor = ArmorLib.C_CLOTH;

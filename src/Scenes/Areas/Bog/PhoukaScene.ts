@@ -84,7 +84,7 @@ function phoukaFaerieFireLeave(): void {
 
 function phoukaStuck(): void {
     clearOutput();
-    const hasAlcohol: boolean = player.hasItem(ConsumableLib.P_WHSKY, 1);
+    const hasAlcohol: boolean = player.inv.hasItem(ConsumableLib.P_WHSKY, 1);
     outputText("You follow some firmer ground into one of the many copses of dead trees.  The bog is quiet and still here.  Up ahead you see something glint in the hollow of a dead tree, but before you can investigate the firm ground beneath your feet liquefies and you begin to sink.\n\nYou try to leap to another muddy lump of exposed ground, but even before you land it has gone soft as well.  You are soon encased in mud almost to your waist.\n\nThat's when you feel something slick and warm dart past you in the muck.  Wherever it goes it drags a thick net behind it.  Your ");
     if (player.isNaga()) outputText("tail is");
     else outputText("legs are");
@@ -102,7 +102,7 @@ function phoukaStuckOfferWhiskey(): void {
     clearOutput();
     outputText("You pull out the bottle and ask the " + phoukaName() + " if he might be interested in a drink.  He looks at the bottle and says <i>“Well we both know where ya picked that up, hmmm?”</i>  Then he smiles and adds <i>“Course that’s some other phouka’s problem if he let ye beat him.”</i>");
     if (flags[kFLAGS.PHOUKA_LORE] == 0) flags[kFLAGS.PHOUKA_LORE] = 1; // Now you know what to call them
-    player.consumeItem(ConsumableLib.P_WHSKY, 1);
+    player.inv.consumeItem(ConsumableLib.P_WHSKY, 1);
     outputText("\n\nThe phouka zips over to a nearby tree and collects a pair of leather drinking cups while you pry the cork out of the bottle.  As he returns his form shifts and grows, becoming a bunny-morph.  You guess in faerie form these phouka are lightweights - that or they just can’t physically take in enough booze for their liking.  He takes the bottle and pours some of the clear amber liquid into the cups, offering one to you.");
     phoukaForm = PHOUKA_FORM_BUNNY;
 

@@ -13,7 +13,7 @@ export function gnollEncounter(): void {
 // Gnoll Rape
 export function getRapedByGnoll(): void {
     // Oh shit get anal raped.
-    if (player.hasItem(ConsumableLib.S_DREAM)) {
+    if (player.inv.hasItem(ConsumableLib.S_DREAM)) {
         yoDawgIHeardULiekGNollBallzzzdahdakjldh();
         return;
     }
@@ -254,7 +254,7 @@ function takeGnollClit(): void {
 
 export function yoDawgIHeardULiekGNollBallzzzdahdakjldh(): void {
     outputText("", true);
-    player.consumeItem(ConsumableLib.S_DREAM);
+    player.inv.consumeItem(ConsumableLib.S_DREAM);
     // [either Gnoll loss, if the player has a succubi's dream in inventory]
 
     outputText("A rolling, harsh laughter surrounds you as you sink to ground, no longer strong enough to remain upright.  The gnoll's mocking bark fills the air as she disposes of your " + player.armorName, false);

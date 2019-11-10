@@ -60,7 +60,7 @@ export function defeatDriderIntro(): void {
         if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0) {
             outputText("\nYou could fuck her pussy, though you'd be within easy reach of her lips.  If she gets any crazy ideas, it'd be hard to stop her.", false);
             vagFuck = winDriderPCDickInSpiderCunt;
-            if (player.tailType == TailType.SPIDER_ADBOMEN || player.hasItem(UseableLib.T_SSILK)) {
+            if (player.tailType == TailType.SPIDER_ADBOMEN || player.inv.hasItem(UseableLib.T_SSILK)) {
                 outputText("\nYou could bind her up with some webbing for some bondage.  Her lips are dangerous, after all.");
                 careful = driderVagSmartFuck;
             }
@@ -864,7 +864,7 @@ function driderVagSmartFuck(): void {
         driderTiedUpPartTwo(false);
     }
     // (Champion has some Tough Spider Silk on them)
-    else if (player.hasItem(UseableLib.T_SSILK)) {
+    else if (player.inv.hasItem(UseableLib.T_SSILK)) {
         outputText("\n\nRemembering the bundle of silk that you have with you, it doesn't take long to come up with a very enticing idea for dealing with the drider.  However, you have a feeling that you won't be able to do much else with the silk if you go through with your plan.  Are you sure you want to use it on her?");
         // [Yes] [No]
         doYesNo(createCallBackFunction(driderTiedUpPartTwo, true), dontSilkRapeDrider);
@@ -887,7 +887,7 @@ function driderTiedUpPartTwo(useItem: boolean): void {
     const y: number = x + 1;
     if (useItem) {
         clearOutput();
-        player.consumeItem(UseableLib.T_SSILK);
+        player.inv.consumeItem(UseableLib.T_SSILK);
         outputText("Smirking to yourself, you advance on the collapsed girl, [cock " + y + "] straining against your clothing in anticipation of what's to come.");
     }
     outputText("\n\nDarting forwards suddenly, you seize her wrists, pulling her arms above her head");

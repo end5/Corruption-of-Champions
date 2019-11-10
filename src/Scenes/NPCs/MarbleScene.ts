@@ -1588,7 +1588,7 @@ export function postAddictionCampMornings(extra: boolean = true): void {
     player.slimeFeed();
     if (!extra) return;
     // (if the player has less than 5 bottles of milk in their inventory or storage containers)
-    if (!player.hasItem(ConsumableLib.M__MILK, 5)) {
+    if (!player.inv.hasItem(ConsumableLib.M__MILK, 5)) {
         outputText("\n\nAs you are about to leave, Marble hands you a bottle of her milk.  ", false);
         // [if the player is no longer addicted]
         if (player.perks.findByType(PerkLib.MarbleResistant) >= 0) outputText("She assures you that you'll be fine as long as you don't drink directly from her breasts.", false);
@@ -1962,7 +1962,7 @@ export function interactWithMarbleAtCamp(): void {
     bottom row, the milk and gathered buttons do not appear if Marble has
     nothing to give for them, the talk button does not appear if the player's
     corruption is >=50, or if Marble's corruption is >=60.*/
-    if (player.itemCount(ConsumableLib.M__MILK) < 5) milkEvent = gotMilk;
+    if (player.inv.itemCount(ConsumableLib.M__MILK) < 5) milkEvent = gotMilk;
     // Determine if marble has an item for the player
     if (player.effects.findByType(StatusAffects.MarbleHasItem) >= 0) gatherEvent = marbleGathered;
     if (flags[kFLAGS.MARBLE_KIDS] > 0) playtime = marbleKidsPlaytime;
@@ -2318,19 +2318,19 @@ function marbleInfo(): void {
 }
 
 function canGiveItem(): boolean {
-    if (player.hasItem(ConsumableLib.OVIELIX, 1)) return true;
+    if (player.inv.hasItem(ConsumableLib.OVIELIX, 1)) return true;
     if (flags[kFLAGS.MARBLE_DICK_TYPE] == 0)
-        if (player.hasItem(ConsumableLib.P_DRAFT, 1)) return true;
+        if (player.inv.hasItem(ConsumableLib.P_DRAFT, 1)) return true;
         else if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
-            if (player.hasItem(ConsumableLib.PINKEGG, 1)) return true;
-            if (player.hasItem(ConsumableLib.L_PNKEG, 1)) return true;
+            if (player.inv.hasItem(ConsumableLib.PINKEGG, 1)) return true;
+            if (player.inv.hasItem(ConsumableLib.L_PNKEG, 1)) return true;
         }
-    if (player.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) return true;
-    if (player.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) return true;
+    if (player.inv.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) return true;
+    if (player.inv.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) return true;
     if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-        if (player.hasItem(ConsumableLib.P_S_MLK, 1)) return true;
-        if (player.hasItem(ConsumableLib.REDUCTO, 1)) return true;
-        if (player.hasItem(ConsumableLib.LACTAID, 1)) return true;
+        if (player.inv.hasItem(ConsumableLib.P_S_MLK, 1)) return true;
+        if (player.inv.hasItem(ConsumableLib.REDUCTO, 1)) return true;
+        if (player.inv.hasItem(ConsumableLib.LACTAID, 1)) return true;
     }
     else if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) return true;
     return false;
@@ -2340,19 +2340,19 @@ export function giveItem(): void {
     clearOutput();
     outputText("What item do you want to give Marble?");
     menu();
-    if (player.hasItem(ConsumableLib.OVIELIX, 1)) addButton(1, "OviElixir", marbleOvulatesLikeMadDawg);
+    if (player.inv.hasItem(ConsumableLib.OVIELIX, 1)) addButton(1, "OviElixir", marbleOvulatesLikeMadDawg);
     if (flags[kFLAGS.MARBLE_DICK_TYPE] == 0)
-        if (player.hasItem(ConsumableLib.P_DRAFT, 1)) addButton(2, "P.Incub Dr", MarbleDigsDraftsYo);
+        if (player.inv.hasItem(ConsumableLib.P_DRAFT, 1)) addButton(2, "P.Incub Dr", MarbleDigsDraftsYo);
         else if (flags[kFLAGS.MARBLE_DICK_TYPE] > 0) {
-            if (player.hasItem(ConsumableLib.PINKEGG, 1)) addButton(3, "Pink Egg", MarblepinkEgg);
-            if (player.hasItem(ConsumableLib.L_PNKEG, 1)) addButton(4, "L.Pink Egg", MarbleLPinkEgg);
+            if (player.inv.hasItem(ConsumableLib.PINKEGG, 1)) addButton(3, "Pink Egg", MarblepinkEgg);
+            if (player.inv.hasItem(ConsumableLib.L_PNKEG, 1)) addButton(4, "L.Pink Egg", MarbleLPinkEgg);
         }
-    if (player.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) addButton(5, "Pro Bova", giveMarbleTheProBovas4Sho);
-    if (player.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", MarblePurification.giveMarblePureQuestLabova);
+    if (player.inv.hasItem(ConsumableLib.PROBOVA, 1) && flags[kFLAGS.MARBLE_BOVA_LEVEL] < 2) addButton(5, "Pro Bova", giveMarbleTheProBovas4Sho);
+    if (player.inv.hasItem(ConsumableLib.P_LBOVA, 1) && flags[kFLAGS.MARBLE_PURIFICATION_STAGE] == 1) addButton(6, "P.LaBova", MarblePurification.giveMarblePureQuestLabova);
     if (flags[kFLAGS.MARBLE_PURIFICATION_STAGE] >= 5) {
-        if (player.hasItem(ConsumableLib.P_S_MLK, 1)) addButton(7, "P.SuccMilk", MarblePurification.purifiedSuccubusMilkForPureMarbles);
-        if (player.hasItem(ConsumableLib.REDUCTO, 1)) addButton(8, "ReductoBust", MarblePurification.pureMurbleUsesReducto);
-        if (player.hasItem(ConsumableLib.LACTAID, 1)) addButton(0, "Lactaid", MarblePurification.lactaidForPureMurble);
+        if (player.inv.hasItem(ConsumableLib.P_S_MLK, 1)) addButton(7, "P.SuccMilk", MarblePurification.purifiedSuccubusMilkForPureMarbles);
+        if (player.inv.hasItem(ConsumableLib.REDUCTO, 1)) addButton(8, "ReductoBust", MarblePurification.pureMurbleUsesReducto);
+        if (player.inv.hasItem(ConsumableLib.LACTAID, 1)) addButton(0, "Lactaid", MarblePurification.lactaidForPureMurble);
     }
     // else if (player.perks.findByType(PerkLib.MarblesMilk) >= 0) addButton(0, "Lactaid", giveMarbleLactaid);
     addButton(9, "Back", interactWithMarbleAtCamp);
@@ -2362,7 +2362,7 @@ export function giveItem(): void {
 export function giveMarbleLactaid(): void {
     spriteSelect(41);
     // Lactaid
-    player.consumeItem(ConsumableLib.LACTAID);
+    player.inv.consumeItem(ConsumableLib.LACTAID);
     // Give Marble a dose of Lactaid to gain powerful but temporary boost to your stats, it takes an hour to do.
     outputText("You show Marble the bottle of Lactaid that you found and ask her if she could drink it.  She gives you a knowing smile. \"<i>So you want a special treat?  Ok sweetie, give it here.</i>\"  She takes the bottle from you and easily drinks the liquid.  Within moments, she gasps and ", true);
     if (player.tallness < 60) outputText("lifts you up to her chest before saying breathlessly saying \"<i>Drink now!</i>\"  You waste no time obliging her.\n\n", false);
@@ -3540,7 +3540,7 @@ function marbleNomNoms(): void {
 export function MarbleDigsDraftsYo(): void {
     spriteSelect(41);
     outputText("", true);
-    player.consumeItem(ConsumableLib.P_DRAFT);
+    player.inv.consumeItem(ConsumableLib.P_DRAFT);
     // gives Marble a 7 inch long, 2 inch thick dick by default, no other effect.  Can only be given while she does not have a dick.
     outputText("You hand Marble the bottle.  She looks at it for a moment before ", false);
     if (player.effects.getValue4Of(StatusAffects.Marble) > 60) {
@@ -3562,11 +3562,11 @@ export function MarbleDigsDraftsYo(): void {
 
 // Pink egg or large pink egg
 export function MarblepinkEgg(): void {
-    player.consumeItem(ConsumableLib.PINKEGG);
+    player.inv.consumeItem(ConsumableLib.PINKEGG);
     MarblePEggEffects();
 }
 export function MarbleLPinkEgg(): void {
-    player.consumeItem(ConsumableLib.L_PNKEG);
+    player.inv.consumeItem(ConsumableLib.L_PNKEG);
     MarblePEggEffects();
 }
 function MarblePEggEffects(): void {
@@ -3608,7 +3608,7 @@ export function marbleOvulatesLikeMadDawg(): void {
         outputText("After taking the elixir, Marble tells you that her belly feels full.  It sounds like she'll be laying eggs soon.  ", false);
         pregnancy.knockUpForce(PregnancyStore.PREGNANCY_OVIELIXIR_EGGS, PregnancyStore.INCUBATION_OVIELIXIR_EGGS + 46);
     }
-    player.consumeItem(ConsumableLib.OVIELIX);
+    player.inv.consumeItem(ConsumableLib.OVIELIX);
     doNext(Camp.returnToCampUseOneHour);
 }
 
@@ -3647,7 +3647,7 @@ function giveMurbleProBova(): void {
 export function giveMarbleTheProBovas4Sho(): void {
     clearOutput();
     spriteSelect(41);
-    player.consumeItem(ConsumableLib.PROBOVA);
+    player.inv.consumeItem(ConsumableLib.PROBOVA);
 
     if (flags[kFLAGS.MARBLE_BOVA_LEVEL] == 0) {
         outputText("Marble nods and downs the contents.  Nothing happens for a moment... then she gasps and grabs at her chest, stumbling forward slightly.  The cow-girl straightens up and releases her grip, then pulls open her top to look at her breasts.  <b>Each is now decorated with sets of four nipples, like the teats of a cow.  She has also gained about 4 inches in height, judging against the backdrop of the camp.</b>  Marble takes a few minutes to test her new nipples, squeezing them gently and sighing as dribbles of milk decorate her areolae in fours instead of one, then looks at you and says, \"<i>This isn't really so bad.  Actually, it feels nice.  If you find another dose, I'm willing to drink it - just to see what happens, of course.</i>\"");

@@ -38,8 +38,8 @@ export function exploreHighMountain(): void {
         return;
     }
     // Harpy odds!
-    if (player.hasItem(ConsumableLib.OVIELIX)) {
-        if (player.hasItem(ConsumableLib.OVIELIX, 2)) {
+    if (player.inv.hasItem(ConsumableLib.OVIELIX)) {
+        if (player.inv.hasItem(ConsumableLib.OVIELIX, 2)) {
             if (rand(4) == 0) {
                 chickenHarpy();
                 return;
@@ -123,8 +123,8 @@ export function chickenHarpy(): void {
     flags[kFLAGS.TIMES_MET_CHICKEN_HARPY]++;
     // [Give Two][Give Three]		[Not Really, No]
     menu();
-    if (player.hasItem(ConsumableLib.OVIELIX, 2)) addButton(0, "Give Two", giveTwoOviElix);
-    if (player.hasItem(ConsumableLib.OVIELIX, 3)) addButton(1, "Give Three", giveThreeOviElix);
+    if (player.inv.hasItem(ConsumableLib.OVIELIX, 2)) addButton(0, "Give Two", giveTwoOviElix);
+    if (player.inv.hasItem(ConsumableLib.OVIELIX, 3)) addButton(1, "Give Three", giveThreeOviElix);
     addButton(4, "Leave", leaveChickenx);
 }
 
@@ -132,8 +132,8 @@ export function chickenHarpy(): void {
 export function giveTwoOviElix(): void {
     clearOutput();
     spriteSelect(90);
-    player.consumeItem(ConsumableLib.OVIELIX);
-    player.consumeItem(ConsumableLib.OVIELIX);
+    player.inv.consumeItem(ConsumableLib.OVIELIX);
+    player.inv.consumeItem(ConsumableLib.OVIELIX);
     outputText("You hand over two elixirs, the harpy more than happy to take them from you.  In return, she unties a corner of the sheet atop the cart, allowing you to take a look at her collection of eggs.");
     // [Black][Blue][Brown][Pink][Purple]
     menu();
@@ -149,7 +149,7 @@ export function giveTwoOviElix(): void {
 export function giveThreeOviElix(): void {
     clearOutput();
     spriteSelect(90);
-    player.consumeItem(ConsumableLib.OVIELIX, 3);
+    player.inv.consumeItem(ConsumableLib.OVIELIX, 3);
     outputText("You hand over three elixirs, the harpy ecstatic over the fact that you're willing to part with them.  In return, she unties a side of the sheet atop the cart, allowing you to take a look at a large collection of her eggs.");
     // [Black][Blue][Brown][Pink][Purple]
     menu();

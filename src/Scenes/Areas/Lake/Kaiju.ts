@@ -268,7 +268,7 @@ function repeatKaijuEncounter(): void {
     menu();
     const drafts: number = 0;
     // [If PC has 15 incubus drafts (regular or pure) and Venus is not already a herm]
-    if (player.itemCount(ConsumableLib.INCUBID) + player.itemCount(ConsumableLib.P_DRAFT) >= 10 && !kaijuCock()) {
+    if (player.inv.itemCount(ConsumableLib.INCUBID) + player.inv.itemCount(ConsumableLib.P_DRAFT) >= 10 && !kaijuCock()) {
         outputText("\n\nIt occurs to you that you have enough Incubi Drafts on you to even affect someone of the turtle girl’s great size.  Maybe you could give her a cock?");
         addButton(5, "Give Cock", yesTurnKaijuFuta);
     }
@@ -648,8 +648,8 @@ function yesTurnKaijuFuta(): void {
     let counter: number = 10;
     while (counter > 0) {
         counter--;
-        if (player.hasItem(ConsumableLib.P_DRAFT)) player.consumeItem(ConsumableLib.P_DRAFT);
-        else if (player.hasItem(ConsumableLib.INCUBID)) player.consumeItem(ConsumableLib.INCUBID);
+        if (player.inv.hasItem(ConsumableLib.P_DRAFT)) player.inv.consumeItem(ConsumableLib.P_DRAFT);
+        else if (player.inv.hasItem(ConsumableLib.INCUBID)) player.inv.consumeItem(ConsumableLib.INCUBID);
     }
     outputText("You wouldn’t have offered if you didn’t want to see a giant green futa-cock dangling between her legs.  Your declaration seems to have deepened her blush to almost beet red, but the lustful look in her eyes betrays her desire.");
     outputText("\n\nSince her hands are too large to fiddle with the small containers she has you stand on her bottom lip while she lies down, you pouring draft after draft into her open mouth.  By the time the tenth draft has been emptied the green girl can barely keep still, writhing in sexual pleasure and excitement.  She picks you up into one hand as she sits up spread legged, her other hand clasped to her pink nether regions, her palm rubbing furiously at her clit.  \"<i>Oh my goddess it feels too good!  I’m going to cum, I got to cum,</i>\" she cries out as her hand is pushed out away from her crotch by her expanding clitoris, the pink nub taking on a green color and a much more phallic shape.  As her clit-cock expands and changes she grabs it with her hand, getting in two good strokes before the change is complete and she ejaculates for the first time with her new green turtle herm cock!");

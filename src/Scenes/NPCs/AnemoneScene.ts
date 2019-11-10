@@ -98,13 +98,13 @@ export function kidAXP(diff: number = 0): number {
 export function mortalAnemoneeeeee(): void {
     spriteSelect(4);
     outputText("", true);
-    if (flags[kFLAGS.TIMES_MET_ANEMONE] == 0 || player.hasItem(ConsumableLib.MINOCUM)) {
+    if (flags[kFLAGS.TIMES_MET_ANEMONE] == 0 || player.inv.hasItem(ConsumableLib.MINOCUM)) {
         flags[kFLAGS.TIMES_MET_ANEMONE]++;
         outputText("You step into the boat and begin to slip off the mooring rope when you are distracted by a swirl of bright colors under the surface of the lake.  As you peer over the side to get a better look at the oscillating mass of greens and purples, the swirl begins drawing closer to the boat as if reciprocating your interest; it grows larger and brighter as it closes the distance.  The cloud parts to reveal an attractive feminine face cast in a deep blue shade.  It lightens responsively as its gaze takes you in from the depths of two opaque eyes.  The confusing mass of colors resolves itself into tresses of two-inch-thick anemone tentacles sprouting from the head in place of hair!\n\n", false);
 
         outputText("The anemone girl smiles at you flirtatiously as she bobs up to the surface.  More out of politeness than anything you smile back, not sure of what to make of her and unused to such unaggressive approaches by the denizens of this place.  A bloom of vibrant color offset by the blue outline of her body causes you to lean farther out as your attention refocuses below her waist, where you perceive a smaller ring of tentacles waving at you from behind the head of a hardening penis!  Turned on by the attention, the anemone grabs onto the saxboard in an attempt to pull herself up to you, but her added weight on the side overbalances you and pitches you overboard into her waiting tentacles!\n\n", false);
 
-        if (player.hasItem(ConsumableLib.MINOCUM)) {
+        if (player.inv.hasItem(ConsumableLib.MINOCUM)) {
             minoCumForAnemonieeeeez();
             return;
         }
@@ -626,7 +626,7 @@ function dontGiveMino(): void {
 function giveMino(): void {
     spriteSelect(4);
     outputText("", true);
-    player.consumeItem(ConsumableLib.MINOCUM);
+    player.inv.consumeItem(ConsumableLib.MINOCUM);
     outputText("You nod at the girl and she smiles and responds with a very quiet \"<i>Yay.</i>\"  As you pick up the rest of your stuff, she takes the top off of the bottle and chugs it like a champ, without even stopping to breathe.  Her eyes widen a bit as the drug hits her system, then narrow into a heavy-lidded stare.  Dropping the bottle with a splash, she falls to her knees with another.  She looks at you and licks her lips as she begins playing with her nipples. Obviously, she's feelin' good.  ", false);
     // [(lust<30)
     if (player.lust < 30) {
@@ -1206,8 +1206,8 @@ function giveAnemoneWeapon(): void {
     hideUpDown();
     let foundItem: boolean = false;
     for (const x = 0; x < 5; x++) {
-        if (player.itemSlots[x].quantity > 0 && giveableToAnemone(player.itemSlots[x].itype)) {
-            addButton(x, player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity, placeInAnemone, x);
+        if (player.inv.itemSlots[x].quantity > 0 && giveableToAnemone(player.inv.itemSlots[x].itype)) {
+            addButton(x, player.inv.itemSlots[x].itype.shortName + " x" + player.inv.itemSlots[x].quantity, placeInAnemone, x);
             foundItem = true;
         }
     }
@@ -1220,8 +1220,8 @@ function placeInAnemone(slot: number): void {
     outputText("You leave the item by her barrel.");
     spriteSelect(71);
     // (set Kidweapon to item name, remove from inventory)
-    flags[kFLAGS.ANEMONE_WEAPON_ID] = player.itemSlots[slot].itype.id;
-    player.itemSlots[slot].removeOneItem();
+    flags[kFLAGS.ANEMONE_WEAPON_ID] = player.inv.itemSlots[slot].itype.id;
+    player.inv.itemSlots[slot].removeOneItem();
     doNext(approachAnemoneBarrel);
 }
 

@@ -43,9 +43,9 @@ export function incubusShop(): void {
     addButton(1, ConsumableLib.SENSDRF.shortName, incubusBuy, ConsumableLib.SENSDRF);
     addButton(2, ConsumableLib.REDUCTO.shortName, incubusBuy, ConsumableLib.REDUCTO);
     addButton(3, WeaponLib.SUCWHIP.shortName, incubusBuy, WeaponLib.SUCWHIP);
-    if (player.hasItem(ConsumableLib.BIMBOCH) && flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] == 0) {
+    if (player.inv.hasItem(ConsumableLib.BIMBOCH) && flags[kFLAGS.NIAMH_SEAN_BREW_BIMBO_LIQUEUR_COUNTER] == 0) {
         outputText("\n\nSean could probably do something with the Bimbo Champagne if you had enough of it...");
-        if (player.hasItem(ConsumableLib.BIMBOCH, 5)) {
+        if (player.inv.hasItem(ConsumableLib.BIMBOCH, 5)) {
             outputText("  Luckily, you do!");
             addButton(4, ConsumableLib.BIMBOLQ.shortName, Niamh.seanBimboBrewing);
         }

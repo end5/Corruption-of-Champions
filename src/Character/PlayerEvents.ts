@@ -16,8 +16,8 @@ export class PlayerEvents implements TimeAwareInterface {
         checkedDream = 0;
         if (player.cumMultiplier > 19999) player.cumMultiplier = 19999;
         if (player.ballSize > 400) player.ballSize = 400;
-        if (player.perks.findByType(PerkLib.StrongBack) >= 0 && !player.itemSlot4.unlocked) player.itemSlot4.unlocked = true;
-        if (player.perks.findByType(PerkLib.StrongBack2) >= 0 && !player.itemSlot5.unlocked) player.itemSlot5.unlocked = true;
+        if (player.perks.findByType(PerkLib.StrongBack) >= 0 && !player.inv.itemSlot4.unlocked) player.inv.itemSlot4.unlocked = true;
+        if (player.perks.findByType(PerkLib.StrongBack2) >= 0 && !player.inv.itemSlot5.unlocked) player.inv.itemSlot5.unlocked = true;
         if (flags[kFLAGS.SOCK_COUNTER] > 0) {
             flags[kFLAGS.SOCK_COUNTER]--;
             if (flags[kFLAGS.SOCK_COUNTER] < 0) flags[kFLAGS.SOCK_COUNTER] = 0;

@@ -472,7 +472,7 @@ function rogarFuckMenu(): void {
     let getTied: () => void = null;
     let rubdub: () => void = null;
 
-    if (player.hasItem(ConsumableLib.BROBREW)) brodown = brobrobrobro;
+    if (player.inv.hasItem(ConsumableLib.BROBREW)) brodown = brobrobrobro;
     if (player.cocks.length > 0) {
         giveAnal = fuckRogarsButtPussyBoyCuntManMoundSissySlitQueerQuim;
         getAnal = loseButtGinity;
@@ -686,7 +686,7 @@ function rogarIsDumb(): void {
 // [Fukkin' Grab It!]
 function takeDatBroBrewFromDaBigMeanOlOrc(): void {
     flags[kFLAGS.ROGAR_FUCKED_TODAY] = 1;
-    player.consumeItem(ConsumableLib.BROBREW);
+    player.inv.consumeItem(ConsumableLib.BROBREW);
     let changed: boolean = false;
     let cocked: boolean = false;
     outputText("", true);

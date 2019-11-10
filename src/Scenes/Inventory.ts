@@ -49,8 +49,8 @@ export class Inventory {
         for (x = 0; x < player.keyItems.length; x++) outputText(player.keyItems[x].keyName + "\n");
         menu();
         for (x = 0; x < 5; x++) {
-            if (player.itemSlots[x].unlocked && player.itemSlots[x].quantity > 0) {
-                addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), useItemInInventory, x);
+            if (player.inv.itemSlots[x].unlocked && player.inv.itemSlots[x].quantity > 0) {
+                addButton(x, (player.inv.itemSlots[x].itype.shortName + " x" + player.inv.itemSlots[x].quantity), useItemInInventory, x);
                 foundItem = true;
             }
         }
@@ -139,16 +139,16 @@ export class Inventory {
         // Check for an existing stack with room in the inventory and return the value for it.
         let temp: number = player.roomInExistingStack(itype);
         if (temp >= 0) { // First slot go!
-            player.itemSlots[temp].quantity++;
-            outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch, giving you " + player.itemSlots[temp].quantity + " of them.");
+            player.inv.itemSlots[temp].quantity++;
+            outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch, giving you " + player.inv.itemSlots[temp].quantity + " of them.");
             itemGoNext();
             return;
         }
         // If not done, then put it in an empty spot!
         // Throw in slot 1 if there is room
-        temp = player.emptySlot();
+        temp = player.inv.emptySlot();
         if (temp >= 0) {
-            player.itemSlots[temp].setItemAndQty(itype, 1);
+            player.inv.itemSlots[temp].setItemAndQty(itype, 1);
             outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch.");
             itemGoNext();
             return;
@@ -253,16 +253,16 @@ export class Inventory {
 
     private useItemInInventory(slotNum: number): void {
         clearOutput();
-        if (player.itemSlots[slotNum].itype instanceof Useable) {
-            const item: Useable = player.itemSlots[slotNum].itype as Useable;
+        if (player.inv.itemSlots[slotNum].itype instanceof Useable) {
+            const item: Useable = player.inv.itemSlots[slotNum].itype as Useable;
             if (item.canUse()) { // If an item cannot be used then canUse should provide a description of why the item cannot be used
-                if (!game.debug) player.itemSlots[slotNum].removeOneItem();
-                useItem(item, player.itemSlots[slotNum]);
+                if (!game.debug) player.inv.itemSlots[slotNum].removeOneItem();
+                useItem(item, player.inv.itemSlots[slotNum]);
                 return;
             }
         }
         else {
-            outputText("You cannot use " + player.itemSlots[slotNum].itype.longName + "!\n\n");
+            outputText("You cannot use " + player.inv.itemSlots[slotNum].itype.longName + "!\n\n");
         }
         itemGoNext(); // Normally returns to the inventory menu. In combat it goes to the inventoryCombatHandler function
         /* menuLoc is no longer needed, after enemyAI game will always move to the next round
@@ -312,8 +312,8 @@ export class Inventory {
         outputText("There is no room for " + itype.longName + " in your inventory.  You may replace the contents of a pouch with " + itype.longName + " or abandon it.");
         menu();
         for (const x = 0; x < 5; x++) {
-            if (player.itemSlots[x].unlocked)
-                addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), createCallBackFunction2(replaceItem, itype, x));
+            if (player.inv.itemSlots[x].unlocked)
+                addButton(x, (player.inv.itemSlots[x].itype.shortName + " x" + player.inv.itemSlots[x].quantity), createCallBackFunction2(replaceItem, itype, x));
         }
         if (source != null) {
             currentItemSlot = source;
@@ -335,12 +335,12 @@ export class Inventory {
 
     private replaceItem(itype: ItemType, slotNum: number): void {
         clearOutput();
-        if (player.itemSlots[slotNum].itype == itype) // If it is the same as what's in the slot...just throw away the new item
+        if (player.inv.itemSlots[slotNum].itype == itype) // If it is the same as what's in the slot...just throw away the new item
             outputText("You discard " + itype.longName + " from the stack to make room for the new one.");
         else { // If they are different...
-            if (player.itemSlots[slotNum].quantity == 1) outputText("You throw away " + player.itemSlots[slotNum].itype.longName + " and replace it with " + itype.longName + ".");
-            else outputText("You throw away " + player.itemSlots[slotNum].itype.longName + "(x" + player.itemSlots[slotNum].quantity + ") and replace it with " + itype.longName + ".");
-            player.itemSlots[slotNum].setItemAndQty(itype, 1);
+            if (player.inv.itemSlots[slotNum].quantity == 1) outputText("You throw away " + player.inv.itemSlots[slotNum].itype.longName + " and replace it with " + itype.longName + ".");
+            else outputText("You throw away " + player.inv.itemSlots[slotNum].itype.longName + "(x" + player.inv.itemSlots[slotNum].quantity + ") and replace it with " + itype.longName + ".");
+            player.inv.itemSlots[slotNum].setItemAndQty(itype, 1);
         }
         itemGoNext();
     }
@@ -446,8 +446,8 @@ export class Inventory {
         menu();
         let foundItem: boolean = false;
         for (const x = 0; x < 5; x++) {
-            if (player.itemSlots[x].unlocked && player.itemSlots[x].quantity > 0 && typeAcceptableFunction(player.itemSlots[x].itype)) {
-                addButton(x, (player.itemSlots[x].itype.shortName + " x" + player.itemSlots[x].quantity), placeInStorageFunction, x);
+            if (player.inv.itemSlots[x].unlocked && player.inv.itemSlots[x].quantity > 0 && typeAcceptableFunction(player.inv.itemSlots[x].itype)) {
+                addButton(x, (player.inv.itemSlots[x].itype.shortName + " x" + player.inv.itemSlots[x].quantity), placeInStorageFunction, x);
                 foundItem = true;
             }
         }
@@ -474,10 +474,10 @@ export class Inventory {
         clearOutput();
         let x: number;
         let temp: number;
-        const itype: ItemType = player.itemSlots[slotNum].itype;
-        let qty: number = player.itemSlots[slotNum].quantity;
+        const itype: ItemType = player.inv.itemSlots[slotNum].itype;
+        let qty: number = player.inv.itemSlots[slotNum].quantity;
         const orig: number = qty;
-        player.itemSlots[slotNum].emptySlot();
+        player.inv.itemSlots[slotNum].inv.emptySlot();
         for (x = startSlot; x < endSlot && qty > 0; x++) { // Find any slots which already hold the item that is being stored
             if (storage[x].itype == itype && storage[x].quantity < 5) {
                 temp = 5 - storage[x].quantity;
@@ -497,6 +497,6 @@ export class Inventory {
             }
         }
         outputText("There is no room for " + (orig == qty ? "" : "the remaining ") + qty + "x " + itype.shortName + ".  You leave " + (qty > 1 ? "them" : "it") + " in your inventory.\n");
-        player.itemSlots[slotNum].setItemAndQty(itype, qty);
+        player.inv.itemSlots[slotNum].setItemAndQty(itype, qty);
     }
 }

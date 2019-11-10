@@ -60,7 +60,7 @@ export function BLUHBLUH(): void {
     outputText("\n\nYou tell her that you appreciate how strong she’s being, and ask if there’s any way you can help her to get over this problem of hers.");
     outputText("\n\nMarble hesitantly looks up at you, brows furrowed in thought. \"<i>Well, it’s the corruption that makes my milk addictive in the first place, so we need to find a way to purify me.  The most corrupted part of me is my milk, so that’s where we should start,</i>\" she suggests, rubbing her chin in thought.");
     outputText("\n\nYou contemplate the possibilities, and make some suggestions on things that could reduce her corruption.");
-    if (player.hasItem(ConsumableLib.PURHONY)) outputText("  You then recall that bottle of honey the bee-girl gave you, and ask if maybe it might work?");
+    if (player.inv.hasItem(ConsumableLib.PURHONY)) outputText("  You then recall that bottle of honey the bee-girl gave you, and ask if maybe it might work?");
     if (player.effects.findByType(StatusAffects.PureCampJojo) >= 0) outputText("  You remember how Jojo helped you become pure, and suggest maybe his meditations could assist Marble?");
 
     outputText("\n\nMarble shakes her head before continuing, \"<i>No, I think we should focus on something linked to my race.  Maybe we can use the LaBova stuff that my mother taught me to drink if I was ever turned into something else.  It’s probably corrupted in its raw form, but maybe there is some way it could be purified to counter the corrupt effects? I think you’d need an alchemist to purify it, though...</i>\" she trails off, musing at the possibility.");
@@ -80,7 +80,7 @@ export function BLUHBLUH(): void {
 // This option is only available if the PC’s corruption is under 50, and the purification quest is active.
 export function giveMarblePureQuestLabova(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.P_LBOVA);
+    player.inv.consumeItem(ConsumableLib.P_LBOVA);
     outputText("You tell Marble that you managed to get some LaBova alchemically purified, and you want her to drink some.");
     // First time
     if (flags[kFLAGS.TIMES_GIVEN_MARBLE_PURE_LABOVA] == 0) {
@@ -1274,7 +1274,7 @@ export function actuallyGrowPureMarblesTittiesForFunzies(): void {
             outputText("\n\nYour mate tentatively grips her massive mammaries.  \"<i>Wow, sweetie, isn't this a bit much?  I don't think I'll grow my girls any more than this.</i>\"  She stretches her shoulders a bit.  \"<i>Ow, I hope this pain in my shoulders doesn't last...</i>\"");
         }
         // remove a bottle of pure succubus milk from the PC's inventory
-        player.consumeItem(ConsumableLib.P_S_MLK);
+        player.inv.consumeItem(ConsumableLib.P_S_MLK);
         // increase Marble's lust by 5
         flags[kFLAGS.MARBLE_LUST] += 5;
         if (flags[kFLAGS.MARBLE_LUST] > 100) flags[kFLAGS.MARBLE_LUST] = 100;
@@ -1316,7 +1316,7 @@ export function pureMurblePCChoosesYesToShrinkeyTits(): void {
             outputText("\n\nYou mate gives her shoulders a roll, then stretches her back.  \"<i>Oh, that's such a relief!</i>\" she says to you with a huge smile, \"<i>Thank you so much sweetie, this is about the right size for me.</i>\"");
         }
         // remove a jar of reducto from the PC's inventory
-        player.consumeItem(ConsumableLib.REDUCTO);
+        player.inv.consumeItem(ConsumableLib.REDUCTO);
         // decrease Marble's lust by 5
         flags[kFLAGS.MARBLE_LUST] -= 5;
         if (flags[kFLAGS.MARBLE_LUST] < 0) flags[kFLAGS.MARBLE_LUST] = 0;
@@ -1337,7 +1337,7 @@ export function lactaidForPureMurble(): void {
     // increase Marble's lust by 20
     flags[kFLAGS.MARBLE_LUST] += 20;
     if (flags[kFLAGS.MARBLE_LUST] < 0) flags[kFLAGS.MARBLE_LUST] = 0;
-    player.consumeItem(ConsumableLib.LACTAID);
+    player.inv.consumeItem(ConsumableLib.LACTAID);
     doNext(MarbleScene.giveItem);
 }
 

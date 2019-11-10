@@ -795,30 +795,30 @@ export class Saves {
             saveFile.data.beeProgress = 0; // Now saved in a flag. beeProgress;
 
             // ITEMZ. Item1s
-            saveFile.data.itemSlot1 = [];
-            saveFile.data.itemSlot1.quantity = player.itemSlot1.quantity;
-            saveFile.data.itemSlot1.id = player.itemSlot1.itype.id;
-            saveFile.data.itemSlot1.unlocked = true;
+            saveFile.data.inv.itemSlot1 = [];
+            saveFile.data.inv.itemSlot1.quantity = player.inv.itemSlot1.quantity;
+            saveFile.data.inv.itemSlot1.id = player.inv.itemSlot1.itype.id;
+            saveFile.data.inv.itemSlot1.unlocked = true;
 
-            saveFile.data.itemSlot2 = [];
-            saveFile.data.itemSlot2.quantity = player.itemSlot2.quantity;
-            saveFile.data.itemSlot2.id = player.itemSlot2.itype.id;
-            saveFile.data.itemSlot2.unlocked = true;
+            saveFile.data.inv.itemSlot2 = [];
+            saveFile.data.inv.itemSlot2.quantity = player.inv.itemSlot2.quantity;
+            saveFile.data.inv.itemSlot2.id = player.inv.itemSlot2.itype.id;
+            saveFile.data.inv.itemSlot2.unlocked = true;
 
-            saveFile.data.itemSlot3 = [];
-            saveFile.data.itemSlot3.quantity = player.itemSlot3.quantity;
-            saveFile.data.itemSlot3.id = player.itemSlot3.itype.id;
-            saveFile.data.itemSlot3.unlocked = true;
+            saveFile.data.inv.itemSlot3 = [];
+            saveFile.data.inv.itemSlot3.quantity = player.inv.itemSlot3.quantity;
+            saveFile.data.inv.itemSlot3.id = player.inv.itemSlot3.itype.id;
+            saveFile.data.inv.itemSlot3.unlocked = true;
 
-            saveFile.data.itemSlot4 = [];
-            saveFile.data.itemSlot4.quantity = player.itemSlot4.quantity;
-            saveFile.data.itemSlot4.id = player.itemSlot4.itype.id;
-            saveFile.data.itemSlot4.unlocked = player.itemSlot4.unlocked;
+            saveFile.data.inv.itemSlot4 = [];
+            saveFile.data.inv.itemSlot4.quantity = player.inv.itemSlot4.quantity;
+            saveFile.data.inv.itemSlot4.id = player.inv.itemSlot4.itype.id;
+            saveFile.data.inv.itemSlot4.unlocked = player.inv.itemSlot4.unlocked;
 
-            saveFile.data.itemSlot5 = [];
-            saveFile.data.itemSlot5.quantity = player.itemSlot5.quantity;
-            saveFile.data.itemSlot5.id = player.itemSlot5.itype.id;
-            saveFile.data.itemSlot5.unlocked = player.itemSlot5.unlocked;
+            saveFile.data.inv.itemSlot5 = [];
+            saveFile.data.inv.itemSlot5.quantity = player.inv.itemSlot5.quantity;
+            saveFile.data.inv.itemSlot5.id = player.inv.itemSlot5.itype.id;
+            saveFile.data.inv.itemSlot5.unlocked = player.inv.itemSlot5.unlocked;
 
             // Keybinds
             saveFile.data.controls = inputManager.SaveBindsToObj();
@@ -1575,7 +1575,7 @@ export class Saves {
                     if (savedIS.quantity > 0)
                         storage.setItemAndQty(ItemType.lookupItem(savedIS.id || savedIS.shortName), savedIS.quantity);
                     else
-                        storage.emptySlot();
+                        storage.inv.emptySlot();
                     storage.unlocked = savedIS.unlocked;
                 }
             }
@@ -1596,7 +1596,7 @@ export class Saves {
                     if ((saveFile.data.gearStorage[i].shortName == undefined && saveFile.data.gearStorage[i].id == undefined)
                         || saveFile.data.gearStorage[i].quantity == undefined
                         || saveFile.data.gearStorage[i].quantity == 0)
-                        storage.emptySlot();
+                        storage.inv.emptySlot();
                     else
                         storage.setItemAndQty(ItemType.lookupItem(saveFile.data.gearStorage[i].id || saveFile.data.gearStorage[i].shortName), saveFile.data.gearStorage[i].quantity);
                     storage.unlocked = saveFile.data.gearStorage[i].unlocked;
@@ -1640,57 +1640,57 @@ export class Saves {
             // The flag will be zero for any older save that still uses beeProgress and newer saves always store a zero in beeProgress, so we only need to update the flag on a value of one.
 
             // ITEMZ. Item1
-            if (saveFile.data.itemSlot1.shortName) {
-                if (saveFile.data.itemSlot1.shortName.indexOf("Gro+") != -1)
-                    saveFile.data.itemSlot1.id = "GroPlus";
-                else if (saveFile.data.itemSlot1.shortName.indexOf("Sp Honey") != -1)
-                    saveFile.data.itemSlot1.id = "SpHoney";
+            if (saveFile.data.inv.itemSlot1.shortName) {
+                if (saveFile.data.inv.itemSlot1.shortName.indexOf("Gro+") != -1)
+                    saveFile.data.inv.itemSlot1.id = "GroPlus";
+                else if (saveFile.data.inv.itemSlot1.shortName.indexOf("Sp Honey") != -1)
+                    saveFile.data.inv.itemSlot1.id = "SpHoney";
             }
-            if (saveFile.data.itemSlot2.shortName) {
-                if (saveFile.data.itemSlot2.shortName.indexOf("Gro+") != -1)
-                    saveFile.data.itemSlot2.id = "GroPlus";
-                else if (saveFile.data.itemSlot2.shortName.indexOf("Sp Honey") != -1)
-                    saveFile.data.itemSlot2.id = "SpHoney";
+            if (saveFile.data.inv.itemSlot2.shortName) {
+                if (saveFile.data.inv.itemSlot2.shortName.indexOf("Gro+") != -1)
+                    saveFile.data.inv.itemSlot2.id = "GroPlus";
+                else if (saveFile.data.inv.itemSlot2.shortName.indexOf("Sp Honey") != -1)
+                    saveFile.data.inv.itemSlot2.id = "SpHoney";
             }
-            if (saveFile.data.itemSlot3.shortName) {
-                if (saveFile.data.itemSlot3.shortName.indexOf("Gro+") != -1)
-                    saveFile.data.itemSlot3.id = "GroPlus";
-                else if (saveFile.data.itemSlot3.shortName.indexOf("Sp Honey") != -1)
-                    saveFile.data.itemSlot3.id = "SpHoney";
+            if (saveFile.data.inv.itemSlot3.shortName) {
+                if (saveFile.data.inv.itemSlot3.shortName.indexOf("Gro+") != -1)
+                    saveFile.data.inv.itemSlot3.id = "GroPlus";
+                else if (saveFile.data.inv.itemSlot3.shortName.indexOf("Sp Honey") != -1)
+                    saveFile.data.inv.itemSlot3.id = "SpHoney";
             }
-            if (saveFile.data.itemSlot4.shortName) {
-                if (saveFile.data.itemSlot4.shortName.indexOf("Gro+") != -1)
-                    saveFile.data.itemSlot4.id = "GroPlus";
-                else if (saveFile.data.itemSlot4.shortName.indexOf("Sp Honey") != -1)
-                    saveFile.data.itemSlot4.id = "SpHoney";
+            if (saveFile.data.inv.itemSlot4.shortName) {
+                if (saveFile.data.inv.itemSlot4.shortName.indexOf("Gro+") != -1)
+                    saveFile.data.inv.itemSlot4.id = "GroPlus";
+                else if (saveFile.data.inv.itemSlot4.shortName.indexOf("Sp Honey") != -1)
+                    saveFile.data.inv.itemSlot4.id = "SpHoney";
             }
-            if (saveFile.data.itemSlot5.shortName) {
-                if (saveFile.data.itemSlot5.shortName.indexOf("Gro+") != -1)
-                    saveFile.data.itemSlot5.id = "GroPlus";
-                else if (saveFile.data.itemSlot5.shortName.indexOf("Sp Honey") != -1)
-                    saveFile.data.itemSlot5.id = "SpHoney";
+            if (saveFile.data.inv.itemSlot5.shortName) {
+                if (saveFile.data.inv.itemSlot5.shortName.indexOf("Gro+") != -1)
+                    saveFile.data.inv.itemSlot5.id = "GroPlus";
+                else if (saveFile.data.inv.itemSlot5.shortName.indexOf("Sp Honey") != -1)
+                    saveFile.data.inv.itemSlot5.id = "SpHoney";
             }
 
-            player.itemSlot1.unlocked = true;
-            player.itemSlot1.setItemAndQty(ItemType.lookupItem(
-                saveFile.data.itemSlot1.id || saveFile.data.itemSlot1.shortName),
-                saveFile.data.itemSlot1.quantity);
-            player.itemSlot2.unlocked = true;
-            player.itemSlot2.setItemAndQty(ItemType.lookupItem(
-                saveFile.data.itemSlot2.id || saveFile.data.itemSlot2.shortName),
-                saveFile.data.itemSlot2.quantity);
-            player.itemSlot3.unlocked = true;
-            player.itemSlot3.setItemAndQty(ItemType.lookupItem(
-                saveFile.data.itemSlot3.id || saveFile.data.itemSlot3.shortName),
-                saveFile.data.itemSlot3.quantity);
-            player.itemSlot4.unlocked = saveFile.data.itemSlot4.unlocked;
-            player.itemSlot4.setItemAndQty(ItemType.lookupItem(
-                saveFile.data.itemSlot4.id || saveFile.data.itemSlot4.shortName),
-                saveFile.data.itemSlot4.quantity);
-            player.itemSlot5.unlocked = saveFile.data.itemSlot5.unlocked;
-            player.itemSlot5.setItemAndQty(ItemType.lookupItem(
-                saveFile.data.itemSlot5.id || saveFile.data.itemSlot5.shortName),
-                saveFile.data.itemSlot5.quantity);
+            player.inv.itemSlot1.unlocked = true;
+            player.inv.itemSlot1.setItemAndQty(ItemType.lookupItem(
+                saveFile.data.inv.itemSlot1.id || saveFile.data.inv.itemSlot1.shortName),
+                saveFile.data.inv.itemSlot1.quantity);
+            player.inv.itemSlot2.unlocked = true;
+            player.inv.itemSlot2.setItemAndQty(ItemType.lookupItem(
+                saveFile.data.inv.itemSlot2.id || saveFile.data.inv.itemSlot2.shortName),
+                saveFile.data.inv.itemSlot2.quantity);
+            player.inv.itemSlot3.unlocked = true;
+            player.inv.itemSlot3.setItemAndQty(ItemType.lookupItem(
+                saveFile.data.inv.itemSlot3.id || saveFile.data.inv.itemSlot3.shortName),
+                saveFile.data.inv.itemSlot3.quantity);
+            player.inv.itemSlot4.unlocked = saveFile.data.inv.itemSlot4.unlocked;
+            player.inv.itemSlot4.setItemAndQty(ItemType.lookupItem(
+                saveFile.data.inv.itemSlot4.id || saveFile.data.inv.itemSlot4.shortName),
+                saveFile.data.inv.itemSlot4.quantity);
+            player.inv.itemSlot5.unlocked = saveFile.data.inv.itemSlot5.unlocked;
+            player.inv.itemSlot5.setItemAndQty(ItemType.lookupItem(
+                saveFile.data.inv.itemSlot5.id || saveFile.data.inv.itemSlot5.shortName),
+                saveFile.data.inv.itemSlot5.quantity);
 
             CoC.loadAllAwareClasses(getGame()); // Informs each saveAwareClass that it must load its values from the flags array
             unFuckSave();

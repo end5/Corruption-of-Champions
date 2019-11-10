@@ -36,7 +36,7 @@ export class Consumable extends Useable {
             override public function useItem(player:Player, output:Boolean, external:Boolean):void
             {
                 if (canUse(player,output)){
-                    if (!external && !game.debug) player.consumeItem(this,1);
+                    if (!external && !game.debug) player.inv.consumeItem(this,1);
                     doEffect(player,output);
                 }
             }

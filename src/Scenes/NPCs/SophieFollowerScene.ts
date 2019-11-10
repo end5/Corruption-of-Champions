@@ -49,7 +49,7 @@ function noDontDebimbo(): void {
 // Yes (God dammit what the fuck did I just say)*
 function yesDebimboSophie(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.DEBIMBO);
+    player.inv.consumeItem(ConsumableLib.DEBIMBO);
 
     outputText("You grab the air-headed harpy and pull her over to you, pressing her impressive chest against you as you ready your intellectual beverage.  \"<i>Oooh! Hey, babe, what'cha got there?</i>\" Sophie asks, staring wide-eyed at the tincture.  Telling her not to worry about it, you pop the cork and bring the vial's neck up to Sophie's mouth, her big, full lips parting eagerly.  \"<i>Hey, is it wine?  I could just <b>DIE</b> for some wine!  Then maybe, like, a good hard fucking afterwards!</i>\" she declares, jumping excitedly in your grasp - almost making you spill the drink.  You grasp her chin, steadying the harpy's head just long enough to upend the liquid into her mouth, making sure to drain every last drop into her before you tickle her throat, forcing her to swallow it all in one audible gulp.");
 
@@ -68,7 +68,7 @@ function yesDebimboSophie(): void {
         addButton(2, "WhyIDidIt", whyIDidItToDebimboSophie);
     }
     addButton(3, "Let Her Go", letDebimboSophieGo);
-    if (player.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
+    if (player.inv.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
 
 }
 
@@ -82,7 +82,7 @@ function bimboSophieAgain(): void {
     outputText("\n\nWell then, crisis averted!");
     flags[kFLAGS.SOPHIE_DEBIMBOED] = 0;
     flags[kFLAGS.SOPHIES_DAUGHTERS_DEBIMBOED] = 0;
-    player.consumeItem(ConsumableLib.BIMBOLQ);
+    player.inv.consumeItem(ConsumableLib.BIMBOLQ);
     if (game.inCombat)
         cleanupAfterCombat(); // (Display Sophie's normal options.You monster)
     else SophieBimbo.approachBimboSophieInCamp(false);
@@ -111,7 +111,7 @@ export function beatUpDebimboSophie(): void {
     addButton(1, "Apologize", apologizeToDebimboSophie);
     addButton(2, "WhyIDidIt", whyIDidItToDebimboSophie);
     addButton(3, "Let Her Go", letDebimboSophieGo);
-    if (player.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
+    if (player.inv.hasItem(ConsumableLib.BIMBOLQ)) addButton(4, "Bimbo Again", bimboSophieAgain);
 
 }
 // Get the Shit Beaten Out of You by a God-damn Bimbo (You (weakling) Monster)

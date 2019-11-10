@@ -1029,17 +1029,17 @@ export function defeatTheKitsunes(display: boolean = true): void {
     if (monster.hairColor == "blonde") {
         if (player.cocks.length > 0) {
             // [Fuck Draft]
-            if (player.hasItem(ConsumableLib.F_DRAFT)) {
+            if (player.inv.hasItem(ConsumableLib.F_DRAFT)) {
                 if (display) outputText("  You could dose her with a fuck draft...");
                 button = kitsuneButton(button, "Use F.Draft", fuckDraftBlond);
             }
             // [Lactaid]
-            if (player.hasItem(ConsumableLib.LACTAID)) {
+            if (player.inv.hasItem(ConsumableLib.LACTAID)) {
                 if (display) outputText("  You could dose her with lactad...");
                 button = kitsuneButton(button, "Use L-Aid", lactaidDoseAKitSune);
             }
             // [Ovi Elixir]
-            if (player.hasItem(ConsumableLib.OVIELIX)) {
+            if (player.inv.hasItem(ConsumableLib.OVIELIX)) {
                 if (display) outputText("  You could use an oviposition elixir on her...");
                 button = kitsuneButton(button, "Use OviElix", doseAKitsuneWithOviElixirs);
             }
@@ -1487,7 +1487,7 @@ function fuckDraftBlond(): void {
     // Advance time 1hr and return to camp. +Sensitivity, +Libido
     player.orgasm();
     dynStats("lib", 1, "sen", 1);
-    player.consumeItem(ConsumableLib.F_DRAFT);
+    player.inv.consumeItem(ConsumableLib.F_DRAFT);
     cleanupAfterCombat();
 }
 
@@ -1555,7 +1555,7 @@ function doseAKitsuneWithOviElixirs(): void {
         itype = ConsumableLib.SMALL_EGGS[rand(ConsumableLib.SMALL_EGGS.length)];
     }
     outputText(" about the size of ostrich eggs.  You pick one up and examine it, rolling it in your hand a bit.  A rustling in the bushes brings your focus back to the kitsune, but by the time you look up, all you see is a set of golden tails slipping into the underbrush.\n\n");
-    player.consumeItem(ConsumableLib.OVIELIX);
+    player.inv.consumeItem(ConsumableLib.OVIELIX);
     outputText("\"<i>Take good care of my little eggies, darling!</i>\"");
     // {replace normal kitsune loot tables with randomly colored eggs}
     flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = itype.id;
@@ -1621,7 +1621,7 @@ function lactaidDoseAKitSune(): void {
     player.orgasm();
     dynStats("lib", 1, "sen", 1);
     // consume lactaid
-    player.consumeItem(ConsumableLib.LACTAID);
+    player.inv.consumeItem(ConsumableLib.LACTAID);
     cleanupAfterCombat();
 }
 
@@ -2185,7 +2185,7 @@ export function kitsuneShrine(): void {
     menu();
     addButton(0, "Read Books", readKitsuneBooks);
     if (flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(1, "Meditate", meditateLikeAKitsuneEhQuestionMark);
-    if (player.hasItem(UseableLib.GLDSTAT) || flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(2, "Statue", stealAStatue);
+    if (player.inv.hasItem(UseableLib.GLDSTAT) || flags[kFLAGS.TOOK_KITSUNE_STATUE] == 0) addButton(2, "Statue", stealAStatue);
     addButton(4, "Leave", Camp.returnToCampUseOneHour);
 }
 
@@ -2218,7 +2218,7 @@ function readKitsuneBooks(): void {
 // [Meditate]
 function meditateLikeAKitsuneEhQuestionMark(): void {
     clearOutput();
-    if (player.hasItem(ConsumableLib.FOXJEWL) && player.tailType == TailType.FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EarType.FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
+    if (player.inv.hasItem(ConsumableLib.FOXJEWL) && player.tailType == TailType.FOX && player.tailVenom < 9 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && player.earType == EarType.FOX && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
         // 20% chance if PC has fox ears, 1 or more fox tails, carries a Fox Jewel, and meets level & INT requirements for the next tail:
         outputText("You sit down carefully on a small mat in front of the shrine and clear your mind.  Closing your eyes, you meditate on the things you've learned in your journey thus far, and resolve to continue fighting against the forces of corruption that permeate the land.\n\n");
 
@@ -2238,7 +2238,7 @@ function meditateLikeAKitsuneEhQuestionMark(): void {
             player.perks.create(PerkLib.EnlightenedNinetails, 0, 0, 0, 0);
             dynStats("int", 2, "lus", -20, "cor", -2);
         }
-        player.consumeItem(ConsumableLib.FOXJEWL);
+        player.inv.consumeItem(ConsumableLib.FOXJEWL);
         doNext(Camp.returnToCampUseOneHour);
     }
     else {
@@ -2282,7 +2282,7 @@ function putKitsuneStatueBack(): void {
     outputText("Regretting your decision, you replace the statue on the pedestal, your guilty conscience winning out over greed today.");
     // Advance 1hr and return to camp.
     flags[kFLAGS.TOOK_KITSUNE_STATUE] = 0;
-    player.consumeItem(UseableLib.GLDSTAT);
+    player.inv.consumeItem(UseableLib.GLDSTAT);
     doNext(Camp.returnToCampUseOneHour);
 }
 

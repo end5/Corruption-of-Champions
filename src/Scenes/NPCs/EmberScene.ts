@@ -274,7 +274,7 @@ function emberSexMenu(output: boolean = true): void {
     addButton(5, "Get Eaten Out", getEatenOut);
     addButton(6, "Penetrate Her", penetrateHer);
     addButton(7, "Get Penetrated", getPenetrated);
-    if (emberAffection() >= 95 && player.cocks.length > 0 && player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && (player.hasItem(ConsumableLib.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
+    if (emberAffection() >= 95 && player.cocks.length > 0 && player.cocks.cockThatFits(emberVaginalCapacity()) >= 0 && (player.inv.hasItem(ConsumableLib.L_DRAFT) || player.lib >= 50 || player.minLust() >= 40))
         addButton(8, "LustyFuck", highAffectionEmberLustFuck);
     addButton(9, "Leave", emberCampMenu);
 
@@ -509,19 +509,19 @@ export function emberEggInteraction(): void {
     let fap: () => void = null;
     if (player.lust >= 33) fap = masturbateOntoAnEgg;
     let draft: () => void = null;
-    if (player.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
+    if (player.inv.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
     let pDraft: () => void = null;
-    if (player.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
+    if (player.inv.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
     let milk: () => void = null;
-    if (player.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
     let pMilk: () => void = null;
-    if (player.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
+    if (player.inv.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
     let hair: () => void = null;
-    if (player.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
+    if (player.inv.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
     let ovi: () => void = null;
-    if (player.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
+    if (player.inv.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
     let lactaid: () => void = null;
-    if (player.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
+    if (player.inv.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
     let hatch: () => void = null;
     if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) {
         hatch = hatchZeMuzzles;
@@ -541,19 +541,19 @@ function dontEggFap(): void {
     let fap: () => void = null;
     if (player.lust >= 33) fap = masturbateOntoAnEgg;
     let draft: () => void = null;
-    if (player.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
+    if (player.inv.hasItem(ConsumableLib.INCUBID)) draft = createCallBackFunction(useIncubusDraftOnEmber, false);
     let pDraft: () => void = null;
-    if (player.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
+    if (player.inv.hasItem(ConsumableLib.P_DRAFT)) pDraft = createCallBackFunction(useIncubusDraftOnEmber, true);
     let milk: () => void = null;
-    if (player.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
+    if (player.inv.hasItem(ConsumableLib.SUCMILK)) milk = createCallBackFunction(useSuccubiMilkOnEmber, false);
     let pMilk: () => void = null;
-    if (player.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
+    if (player.inv.hasItem(ConsumableLib.P_S_MLK)) pMilk = createCallBackFunction(useSuccubiMilkOnEmber, true);
     let hair: () => void = null;
-    if (player.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
+    if (player.inv.hasItem(ConsumableLib.EXTSERM)) hair = hairExtensionSerum;
     let ovi: () => void = null;
-    if (player.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
+    if (player.inv.hasItem(ConsumableLib.OVIELIX)) ovi = useOviElixerOnEmber;
     let lactaid: () => void = null;
-    if (player.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
+    if (player.inv.hasItem(ConsumableLib.LACTAID)) lactaid = useLactaidOnEmber;
     let hatch: () => void = null;
     if (flags[kFLAGS.EMBER_EGG_FLUID_COUNT] >= 5 && flags[kFLAGS.EMBER_JACKED_ON] > 0 && flags[kFLAGS.EMBER_GENDER] > 0) hatch = hatchZeMuzzles;
 
@@ -577,12 +577,12 @@ function leaveWithoutUsingAnEmberItem(): void {
 function useIncubusDraftOnEmber(purified: boolean = false): void {
     clearOutput();
     if (purified) {
-        player.consumeItem(ConsumableLib.P_DRAFT);
+        player.inv.consumeItem(ConsumableLib.P_DRAFT);
         flags[kFLAGS.EMBER_COR] -= 10;
         if (flags[kFLAGS.EMBER_COR] < 0) flags[kFLAGS.EMBER_COR] = 0;
     }
     else {
-        player.consumeItem(ConsumableLib.INCUBID);
+        player.inv.consumeItem(ConsumableLib.INCUBID);
         flags[kFLAGS.EMBER_COR] += 10;
         if (flags[kFLAGS.EMBER_COR] > 100) flags[kFLAGS.EMBER_COR] = 100;
     }
@@ -603,12 +603,12 @@ function useIncubusDraftOnEmber(purified: boolean = false): void {
 function useSuccubiMilkOnEmber(purified: boolean = false): void {
     clearOutput();
     if (purified) {
-        player.consumeItem(ConsumableLib.P_S_MLK);
+        player.inv.consumeItem(ConsumableLib.P_S_MLK);
         flags[kFLAGS.EMBER_COR] -= 10;
         if (flags[kFLAGS.EMBER_COR] < 0) flags[kFLAGS.EMBER_COR] = 0;
     }
     else {
-        player.consumeItem(ConsumableLib.SUCMILK);
+        player.inv.consumeItem(ConsumableLib.SUCMILK);
         flags[kFLAGS.EMBER_COR] += 10;
         if (flags[kFLAGS.EMBER_COR] > 100) flags[kFLAGS.EMBER_COR] = 100;
     }
@@ -630,7 +630,7 @@ function useSuccubiMilkOnEmber(purified: boolean = false): void {
 // Ovi Elixir (Z)
 function useOviElixerOnEmber(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.OVIELIX);
+    player.inv.consumeItem(ConsumableLib.OVIELIX);
     // max uses 1
     outputText("Uncorking the crystalline bottle, you pour the strange green liquid inside onto the egg, briefly wondering what on earth it could want with this stuff, before catching your fallacy.  It's an egg, right?  It can't want things...  The fluid spills all over the shell, coating it, and then seeps inside, leaving the egg's previously pale surface marked with small green splotches.");
     flags[kFLAGS.EMBER_OVIPOSITION] = 1;
@@ -641,7 +641,7 @@ function useOviElixerOnEmber(): void {
 // Lactaid (Z)
 function useLactaidOnEmber(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.LACTAID);
+    player.inv.consumeItem(ConsumableLib.LACTAID);
     // max uses 1
     outputText("Feeling a little bemused, you pour the creamy fluid onto the egg.  It is absorbed through the shell, and a spiderwork of creamy yellow vein-like markings suddenly forms on the shell's surface.");
     flags[kFLAGS.EMBER_MILK] = 1;
@@ -652,7 +652,7 @@ function useLactaidOnEmber(): void {
 // Hair Extension Serum (Z)
 function hairExtensionSerum(): void {
     clearOutput();
-    player.consumeItem(ConsumableLib.EXTSERM);
+    player.inv.consumeItem(ConsumableLib.EXTSERM);
     // max uses 2
     outputText("Wondering at your motivations, you pour the goblin gunk onto the egg.  Most rolls harmlessly off of the shell, leaving you annoyed at the waste... until you see ");
     if (flags[kFLAGS.EMBER_HAIR] == 0) {
@@ -3924,7 +3924,7 @@ function highAffectionEmberLustFuck(): void {
         }
         else {
             outputText("\n\nEven if you can't, stamina won't be a problem.  You casually rummage through your pouches and fetch a vial of Lust Draft, displaying it to the dragon.");
-            player.consumeItem(ConsumableLib.L_DRAFT);
+            player.inv.consumeItem(ConsumableLib.L_DRAFT);
         }
     }
     else {
@@ -3933,7 +3933,7 @@ function highAffectionEmberLustFuck(): void {
         outputText("\n\nYou nod");
         if (player.lib < 50 && player.minLust() < 40) {
             outputText(", grabbing a vial of Lust Draft from your pouches");
-            player.consumeItem(ConsumableLib.L_DRAFT);
+            player.inv.consumeItem(ConsumableLib.L_DRAFT);
         }
         outputText(".");
     }

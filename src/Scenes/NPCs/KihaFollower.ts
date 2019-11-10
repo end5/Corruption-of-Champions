@@ -879,7 +879,7 @@ function kihaSexMenu(display: boolean = true, allowBack: boolean = true): void {
     if (followerKiha()) {
         if (player.gender > 0) dom = dominateKihasFaceWithStuffAndStuffOrSomethingIDunnoWhyImStillWritingThis;
         // Req: Gro+ (also soft ghost req!)
-        if (player.hasItem(ConsumableLib.GROPLUS)) {
+        if (player.inv.hasItem(ConsumableLib.GROPLUS)) {
             if (display) {
                 if (player.perks.findByType(PerkLib.Incorporeality) >= 0) outputText("\nYou could try and pump her boobs a bit with gro+, and if she decides against it, possess her and do it anyway!");
                 else outputText("\nYou could see if she'd let you pump her boobs with gro+.");
@@ -887,7 +887,7 @@ function kihaSexMenu(display: boolean = true, allowBack: boolean = true): void {
             gro = ghostboobiesKiha;
         }
         else if (display) outputText("\nIf you had some gro+, you could ask her about making her breasts bigger.");
-        if (player.hasItem(ConsumableLib.INCUBID) || player.hasItem(ConsumableLib.P_DRAFT)) {
+        if (player.inv.hasItem(ConsumableLib.INCUBID) || player.inv.hasItem(ConsumableLib.P_DRAFT)) {
             if (display) outputText("\nYou could slip her an incubi draft and let her fuck your ass with it.");
             incu = giveKihaIncubusDraft;
         }
@@ -899,7 +899,7 @@ function kihaSexMenu(display: boolean = true, allowBack: boolean = true): void {
             if (player.cocks.cockThatFits(67) >= 0) fuckVag = fuckKihasVagInCamp;
             else if (display) outputText("\nKiha's vagina is too small and tight for you to take.");
             // (requires 50+ minimum lust, or 80+ libido, or a lust/fuck draft)
-            if (player.cocks.cockThatFits(200) >= 0 && (player.minLust() > 50 || player.lib > 80 || player.hasItem(ConsumableLib.L_DRAFT))) {
+            if (player.cocks.cockThatFits(200) >= 0 && (player.minLust() > 50 || player.lib > 80 || player.inv.hasItem(ConsumableLib.L_DRAFT))) {
                 // Dick also can't be that small.
                 if (player.cocks.cockArea(player.cocks.cockThatFits(200)) >= 40) {
                     horse = boneTheShitOutofKihaHolesWithHorsecock;
@@ -1041,7 +1041,7 @@ function boneTheShitOutofKihaHolesWithHorsecock(): void {
     // {Variant: Low Lib/Minlust + Fuck/Lust draft}
     if (player.minLust() < 50 && player.lib < 80) {
         outputText("[pg]\"<i>No problem,</i>\" you think, reaching for a handy potion to spike your lagging libido back into the stratosphere.  The potion goes down smooth, with barely any effects at first.  However, after a few moments [eachCock] stiffens and tingles, hungry for more.  You can even faintly detect some new, odd scents in the air.");
-        player.consumeItem(ConsumableLib.L_DRAFT);
+        player.inv.consumeItem(ConsumableLib.L_DRAFT);
     }
     outputText("[pg]Kiha ");
     if (horse) {
@@ -1443,9 +1443,9 @@ function giveKihaIncubusDraft(): void {
     outputText("[pg]By the time Kiha's orgasm subsides, you're both covered in her hot white spunk, reeking of sex, sweat, and semen.  Shuddering from the sticky, slimy sensation up your ass, you crawl off your lover, her prick popping out of you with a wet POP.  Looking down at her, you see Kiha's eyes are crossed, her chest heaving; she's mumbling something about some pink eggs in her stash, but seems otherwise insensate.  You give her soon-to-be-gone cock a last loving little pat before gathering your [armorName] and heading out.");
     dynStats("sen", 4, "lus", 30, "cor", .5);
     player.orgasm();
-    if (player.hasItem(ConsumableLib.P_DRAFT)) player.consumeItem(ConsumableLib.P_DRAFT);
+    if (player.inv.hasItem(ConsumableLib.P_DRAFT)) player.inv.consumeItem(ConsumableLib.P_DRAFT);
     else {
-        player.consumeItem(ConsumableLib.INCUBID);
+        player.inv.consumeItem(ConsumableLib.INCUBID);
         dynStats("cor", 2);
     }
     doNext(Camp.returnToCampUseOneHour);
@@ -1580,7 +1580,7 @@ function ghostboobiesKiha(): void {
     outputText("[pg]Your lust spent and curiosity sated, you step over and past Kiha.  Glancing back over your shoulder, you notice her bosom has shrunken just a little already.  You realize, with a sigh, that you'd probably need to take more drastic measures to make more of a permanent effect on her cup size.  Oh well, you figure.  There's always next time.");
     player.orgasm();
     dynStats("cor", 2);
-    player.consumeItem(ConsumableLib.GROPLUS);
+    player.inv.consumeItem(ConsumableLib.GROPLUS);
     doNext(Camp.returnToCampUseOneHour);
 }
 

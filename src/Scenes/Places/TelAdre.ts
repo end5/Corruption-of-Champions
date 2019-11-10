@@ -959,10 +959,10 @@ function oswaldPawnMenu(): void { // Moved here from Inventory.as
     menu();
     let totalItems: number = 0;
     for (const slot = 0; slot < 5; slot++) {
-        if (player.itemSlots[slot].quantity > 0 && player.itemSlots[slot].itype.value >= 1) {
-            outputText("\n" + int(player.itemSlots[slot].itype.value / 2) + " gems for " + player.itemSlots[slot].itype.longName + ".");
-            addButton(slot, (player.itemSlots[slot].itype.shortName + " x" + player.itemSlots[slot].quantity), oswaldPawnSell, slot);
-            totalItems += player.itemSlots[slot].quantity;
+        if (player.inv.itemSlots[slot].quantity > 0 && player.inv.itemSlots[slot].itype.value >= 1) {
+            outputText("\n" + int(player.inv.itemSlots[slot].itype.value / 2) + " gems for " + player.inv.itemSlots[slot].itype.longName + ".");
+            addButton(slot, (player.inv.itemSlots[slot].itype.shortName + " x" + player.inv.itemSlots[slot].quantity), oswaldPawnSell, slot);
+            totalItems += player.inv.itemSlots[slot].quantity;
         }
     }
     if (totalItems > 1) addButton(7, "Sell All", oswaldPawnSellAll);
@@ -978,12 +978,12 @@ function oswaldPawnMenu(): void { // Moved here from Inventory.as
 
 function oswaldPawnSell(slot: number): void { // Moved here from Inventory.as
     spriteSelect(47);
-    const itemValue: number = int(player.itemSlots[slot].itype.value / 2);
+    const itemValue: number = int(player.inv.itemSlots[slot].itype.value / 2);
     clearOutput();
     if (itemValue == 0)
-        outputText("You hand over " + player.itemSlots[slot].itype.longName + " to Oswald.  He shrugs and says, “<i>Well ok, it isn't worth anything, but I'll take it.</i>”");
-    else outputText("You hand over " + player.itemSlots[slot].itype.longName + " to Oswald.  He nervously pulls out " + num2Text(itemValue) + " gems and drops them into your waiting hand.");
-    player.itemSlots[slot].removeOneItem();
+        outputText("You hand over " + player.inv.itemSlots[slot].itype.longName + " to Oswald.  He shrugs and says, “<i>Well ok, it isn't worth anything, but I'll take it.</i>”");
+    else outputText("You hand over " + player.inv.itemSlots[slot].itype.longName + " to Oswald.  He nervously pulls out " + num2Text(itemValue) + " gems and drops them into your waiting hand.");
+    player.inv.itemSlots[slot].removeOneItem();
     player.gems += itemValue;
     statScreenRefresh();
     doNext(oswaldPawn);
@@ -994,9 +994,9 @@ function oswaldPawnSellAll(): void {
     let itemValue: number = 0;
     clearOutput();
     for (const slot = 0; slot < 5; slot++) {
-        if (player.itemSlots[slot].quantity > 0 && player.itemSlots[slot].itype.value >= 1) {
-            itemValue += player.itemSlots[slot].quantity * int(player.itemSlots[slot].itype.value / 2);
-            player.itemSlots[slot].quantity = 0;
+        if (player.inv.itemSlots[slot].quantity > 0 && player.inv.itemSlots[slot].itype.value >= 1) {
+            itemValue += player.inv.itemSlots[slot].quantity * int(player.inv.itemSlots[slot].itype.value / 2);
+            player.inv.itemSlots[slot].quantity = 0;
         }
     }
     outputText("You lay out all the items you're carrying on the counter in front of Oswald.  He examines them all and nods.  Nervously, he pulls out " + num2Text(itemValue) + " gems and drops them into your waiting hand.");
