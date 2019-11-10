@@ -109,7 +109,7 @@ export function catTransformation(player: Player): void {
     // Heat
     if (rand(4) == 0 && changes < changeLimit) {
         const intensified: boolean = player.inHeat;
-        if (player.goIntoHeat(false)) {
+        if (goIntoHeat(player, false)) {
             if (intensified) {
                 if (rand(2) == 0)
                     outputText("\n\nThe itch inside your " + vaginaDescript(player, 0) + " is growing stronger, and you desperately want to find a nice cock to massage the inside.", false);

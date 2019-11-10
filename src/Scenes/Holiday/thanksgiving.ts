@@ -707,10 +707,10 @@ export function getDoneEatingOutPigSlut(): void {
     }
     if (player.breasts.biggestTitSize() < 20) {
         outputText(" Your boobs also grow, gaining size as it seems that every part of your body wants to join in on the growth.");
-        if (player.breasts.biggestTitSize() < 3) player.growTits(3, player.breasts.length, false, 1);
-        if (player.breasts.biggestTitSize() < 6) player.growTits(2, player.breasts.length, false, 1);
-        if (player.breasts.biggestTitSize() < 12) player.growTits(2, player.breasts.length, false, 1);
-        if (player.breasts.biggestTitSize() < 20) player.growTits(2, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 3) growTits(player, 3, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 6) growTits(player, 2, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 12) growTits(player, 2, player.breasts.length, false, 1);
+        if (player.breasts.biggestTitSize() < 20) growTits(player, 2, player.breasts.length, false, 1);
         changed = true;
     }
     outputText("\n\nYou sigh");

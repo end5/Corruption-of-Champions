@@ -247,8 +247,8 @@ export function sandWitchGetsGhostly(): void {
         outputText("\n\nHowever, you're determined not to go down without a proper fight.  You throw down the gauntlet by leaning up and eating the sand witch's pussy a new one.  With maddening concentration, your tongue teases her vulva, dashing all around as you attempt to cope with your own mounting passion.  Whichever of the witch's cunts isn't getting the oral treatment continues to receive your fingering speciality.  Soaked in the never ending geysers of breastmilk, your hands can easily keep up with your own lapping deliverance.  The sand sorceress' moaning picks up in pace as her breathing reaches its crescendo, her voice mixing with that of her paranormal invader.");
         outputText("\n\nYour extraordinary determination wins out as Shouldra's host concedes, a cocktail of breastmilk and femspunk blasting all over your bound body.  You fall in short order after her, your [vagina] letting loose its own juice[if (hasCock = true) , right alongside your spraying [cock]].  It's a wonder you haven't started seeing stars through all your convulsing.  Dragged through unnatural ecstasy and back, Shouldra and her host flop down [if (isBiped = true) between your [legs]][if (isBiped = false) on top of you], their dual voices still mixing together as the duo try and climb down from their sexual high.  After a few moments, you slide out from underneath the witch and rise to your [feet] - an action made most difficult by the continued orb penetration.");
         outputText("\n\nHelping the possessed desert seductress to her feet, you query as to how to get the damnable things to stop.  \"<i>Oh... oh... t-that's easy,</i>\" Shouldra replies, her voice cracking under the persisting frontal duress.  She leans heavily on your shoulder and with a merely a snap of her fingers, the orbs finally go silent, lifelessly rolling out from their targeted orifices.  Your relief is only shadowed by the incredibly odd tingling sensation left in the orbs' wake.  Peering back up at the sand witch, you find her eyes finally returned back to her normal shade of brown.  Her breathless gaze meets yours, the two of you staring at one another for a moment.");
-        player.cuntChange(20, true, true, false);
-        player.buttChange(20, true, true, false);
+        cuntChange(player, 20, true, true, false);
+        buttChange(player, 20, true, true, false);
         outputText("\n\nThe witch suddenly blushes beet red.  \"<i>What the fuck is wrong with you?</i>\" she shouts, slapping you across the face and back down to the desert ground.  The sand witch storms off into the horizon, muttering to herself as she glares down at her mutated tits.  Boisterous laughing off to your side catches your attention; Shouldra is entirely too pleased with herself it seems.  It appears that the deceased comedian snuck out of her host without catching your attention.");
         outputText("\n\n\"<i>The look on your face was priceless!</i>\" she says, doing her best to mimic you.  You give her a slightly perturbed stare as she stumbles back into your body, still laughing to herself.  ");
         if (!player.breasts.hasFuckableNipples()) outputText("\"<i>You know, maybe I should give you a couple of those chest-mounted treats.  They're pretty fun,</i>\" Shouldra teases, tweaking your [nipples].  ");
@@ -957,8 +957,8 @@ function shouldraGrowsYoTits(): void {
     spriteSelect(67);
     outputText("\"<i>I'll give you a rack that could hypnotize anyone into a faithful tit slave,</i>\" Shouldra boasts, stretching your shoulders in preparation.  Your hands grope your [fullChest] as the spirit slips into the arcane language you've come to grow so familiar with.\n\n");
     // same growtits() as Gro+
-    if (player.breastRows.length == 1) player.growTits((1 + rand(5)), 1, true, 1);
-    else player.growTits(1 + rand(2), player.breastRows.length, true, 1);
+    if (player.breastRows.length == 1) growTits(player, (1 + rand(5)), 1, true, 1);
+    else growTits(player, 1 + rand(2), player.breastRows.length, true, 1);
     dynStats("lus", 10);
     doNext(Camp.returnToCampUseOneHour);
 }
@@ -1087,7 +1087,7 @@ function shouldraReductosYourTits(): void {
     clearOutput();
     spriteSelect(67);
     outputText("Your arms clasp themselves around your [fullChest].  \"<i>Not the gals!  What monster would want to deflate their knockers?</i>\"  This monster, evidently.  Shouldra sighs, holding your hands in a weak casting stance as she gets the heinous act over with.");
-    player.shrinkTits();
+    shrinkTits(player);
     outputText("\n\nYou explore your [fullChest] carefully, confirming their new size.  As you brush over your right [nipple], a tiny burst of milk soaks your hand.  You suppose your mutinous friend isn't too thrilled with your new brassiere size.");
     doNext(Camp.returnToCampUseOneHour);
 }

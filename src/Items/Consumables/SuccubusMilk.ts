@@ -73,7 +73,7 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 temp++;
         }
         outputText("\n\n", false);
-        player.growTits(temp, player.breastRows.length, true, 3);
+        growTits(player, temp, player.breastRows.length, true, 3);
         if (player.breastRows.length == 0) {
             outputText("A perfect pair of B cup breasts, complete with tiny nipples, form on your chest.", false);
             player.breasts.createBreastRow();
@@ -108,10 +108,10 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 }
                 temp3 += player.increaseCock(temp, (rand(3) + 1) * -1);
                 outputText("\n\n", false);
-                player.lengthChange(temp3, 1);
+                lengthChange(player, temp3, 1);
                 if (player.cocks[temp].cockLength < 2) {
                     outputText("  ", false);
-                    player.killCocks(1);
+                    killCocks(player, 1);
                 }
             }
         }
@@ -144,10 +144,10 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 player.cocks[temp].cockLength -= .5;
             }
             temp3 = player.increaseCock(temp, -1 * (rand(3) + 1));
-            player.lengthChange(temp3, 1);
+            lengthChange(player, temp3, 1);
             if (player.cocks[temp].cockLength < 3) {
                 outputText("  ", false);
-                player.killCocks(1);
+                killCocks(player, 1);
             }
         }
         if (player.vaginas.length > 0) {

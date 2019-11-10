@@ -142,7 +142,7 @@ export function tentacleVictoryRape(): void {
         if (player.cor >= 66) {
             outputText("Seizing the opportunity, you rush the monster while it is stopped. You grab the fattest phallic tentacle you can find and summarily shit-kick the beast onto the ground. Holding the creature down with one foot, you take the tentacle-cock and poise it in front of your dripping cunt.\n\n", false);
             outputText("Laughing like a true psychotic, you stuff the tentacle into your womb.", false);
-            player.cuntChange(20, true, true, false);
+            cuntChange(player, 20, true, true, false);
             outputText("  Your vaginal muscles quickly go to work stroking, squeezing and kneading the appendage. The creature, more intent with escape than hammering your box, begins struggling. You summarily slug the beast as well as any professional pugilist to stop its throes.\n\n", false);
             outputText("\"<i>STOP STRUGGLING AND FUCK MY LITTLE PUSSY!</i>\", you screech.\n\n", false);
             outputText("The sensation of the beast ejaculating immediately gets your attention. As your womb fills with its warm load, a brutal idea takes you. The beast responded after you hit it. Smirking like a devil, you turn the beast into a punching bag. With each strike, the beast sprays a batch of goo deep inside your body. The sheer force of the spray is working your hole into an ecstatic frenzy. As you orgasm, you slug the creature again, forcing another batch of semen to flush your womanhood. After an hour of this, you reach a multi-orgasmic peak and release. The creature twitches weakly as you pull the limp tentacle from your body. The excess spunk flows out like an overturned bucket, leaving one hell of a mess. You walk away satisfied. It is unclear whether the tentacled horror survived your lust... but who cares. Your satisfaction is all you cared about, anyway.", false);
@@ -151,7 +151,7 @@ export function tentacleVictoryRape(): void {
         else {
             outputText("Seizing the opportunity, you rush the monster while it is stopped. You grab the fattest phallic tentacle you can find and summarily push the beast onto the ground. Holding the creature down with your body weight, you take the tentacle-cock and poise it in front of your dripping cunt.\n\n", false);
             outputText("You sit on the creature and begin using the tentacle as a living dildo. With your mass atop it, the creature cannot move or struggle, despite its lack of any attempts to do so. You push the limb deeper and deeper until you feel it bottom out against your cervix.", false);
-            player.cuntChange(20, true, true, false);
+            cuntChange(player, 20, true, true, false);
             outputText("\n\nSensing your needs, the tamed beast extends a tendril from the main tentacle that easily pushes past your cervical opening and breeches the deepest parts of your womb. The feeler penetrates past your uterus and lodges itself as deeply as possible. The beast begins rapidly vibrating and undulating its member, stimulating the deepest parts of your sex.\n\n", false);
             outputText("You quickly reach a cunt-cramping orgasm, which forces the creature to unload a torrent of hot, musky fluids inside you. You feel bloated and stuffed as the beast reflexively sprays the entire contents of its seminal sacs... or whatever it stores its cum in... inside you. With a quick squeeze, you start expelling the tentacle, which prompts the creature to withdraw its tendril and leave your body. You walk away well satisfied while the abomination is too exhausted to move.", false);
         }
@@ -297,7 +297,7 @@ export function tentacleLossRape(): void {
         // has vagina:
         if (player.vaginas.length > 0) {
             outputText("A squirming tentacle forces its way inside your " + vaginaDescript(player, 0) + ", undulating and squirming as it works its way deeper and deeper.  Your body responds by pumping out more fluid, making the passage of the monstrous thing easier.", false);
-            player.cuntChange(32, true, true, false);
+            cuntChange(player, 32, true, true, false);
             if (player.cocks.length > 0) {
                 if (player.cocks.cockArea(player.cocks.smallestCockIndex()) <= 50) outputText("  Your humping appears to not affect the creatures continuing efforts, despite the force of your body.", false);
             }
@@ -356,7 +356,7 @@ export function tentacleLossRape(): void {
         // has cock, normal cum amount, anus < gaping:
         if (player.cocks.length > 0 && player.cumQ() < 1500 && player.ass.analLooseness < 4) {
             outputText("Just as you think it's over, another tentacle rams into your " + assholeDescript(player) + " and begins roughly massaging your prostate as it swells massively, causing another surge of cum to leave you, and another, and another.", false);
-            player.buttChange(40, true, true, false);
+            buttChange(player, 40, true, true, false);
             outputText("  It continues to violate your ass until you black out from exhaustion, the number of loads you've released no longer countable.", false);
             // end (loss)
             player.orgasm();
@@ -378,7 +378,7 @@ export function tentacleLossRape(): void {
         // { has vagina, anus < gaping:
         if (player.vaginas.length > 0) {
             outputText("Just as you think it's over, a tentacle rams into your " + assholeDescript(player) + " and begins to swell massively, causing another surge of girlcum to leave you, and another, and another.", false);
-            player.buttChange(40, true, true, false);
+            buttChange(player, 40, true, true, false);
             outputText("  It continues to violate your ass until you black out from exhaustion, the number of times you've orgasmed no longer countable.", false);
             // end (loss)
             player.orgasm();
@@ -445,7 +445,7 @@ export function tentacleLossRape(): void {
             if (player.vaginalCapacity() < 30) outputText("The beast senses your excitement and with beguiling speed swiftly impales your " + vaginaDescript(player, 0) + " with one of its massive, knobbly tentacles.  You squeal in pain and pleasure as you feel every bumpy inch pound into you, your cunt being stretched to unbelievable proportions.  The tentacle quickly bottoms out in your shallow hole, pressing urgently against your cervix as it begins to rhythmically pound your " + vaginaDescript(player, 0) + ".\n", false);
             // [Female/Loose-Moist Cunt]
             else outputText("The beast senses your excitement and with beguiling speed swiftly impales your " + vaginaDescript(player, 0) + " with one of its massive, knobbly tentacles.  You moan like a whore as the beast's knobbly cock slides into with ease, every bump sending shivers through your spine as it finally bottoms out deep in your cunt, pressing into your cervix urgently.  The monster begins to pound heartily at your " + vaginaDescript(player, 0) + ", filling the air with lewd squishing sounds.\n", false);
-            if (player.cuntChange(20, true)) outputText("\n", false);
+            if (cuntChange(player, 20, true)) outputText("\n", false);
             outputText("\n", false);
         }// HERMS
         if (player.gender == 3) {
@@ -453,7 +453,7 @@ export function tentacleLossRape(): void {
             if (player.vaginalCapacity() < 30) outputText("The beast senses your excitement and with beguiling speed swiftly impales your " + vaginaDescript(player, 0) + " with one of its massive, knobbly tentacles.  You wail in excitement and pain, but before you can even digest the invasion, another tentacle impales itself on your " + cockDescript(game.player, 0) + ".  The anus-like opening gapes to envelope you, slowly devouring your member.  The double assault drives your body wild, and you begin pumping back against the invader and thrusting your " + cockDescript(game.player, 0) + " deeper into its tight fuck hole.\n\n", false);
             // [Herm/Loose-Wet Cunt]
             else outputText("The beast senses your excitement and with beguiling speed swiftly impales your " + vaginaDescript(player, 0) + " with one of its massive, knobbly tentacles but before you can even digest the invasion another tentacle impales itself on your " + cockDescript(game.player, 0) + ", the anus like opening gaping to envelope you.  The double assault drives your body wild, and you begin pumping back against the invader and thrusting your " + cockDescript(game.player, 0) + " deeper into its tight fuck hole.\n\n", false);
-            if (player.cuntChange(20, true)) outputText("\n", false);
+            if (cuntChange(player, 20, true)) outputText("\n", false);
             outputText("\n", false);
         }
         outputText("You slowly become aware that the beast has slowed its assault on your genitals and soon stops altogether, withdrawing entirely.  The beast lets out an audible gurgle and you smile as you feel the tentacles re-double their assault on your " + nippleDescription(player, 0) + "s.  The beast slowly lifts you off the ground with its strong tentacles, suspending you about three feet off the ground before flipping you over.  You hang suspended in the air, your " + allBreastsDescript(player) + " dangling lewdly under you.  Suddenly you feel the desire to \"<i>moo</i>\" as the attack on your aching " + nippleDescription(player, 0) + "s continues.  The tentacles continue their assault for what seems like hours, but then you gradually sense the tentacles beginning to slow.  Another gurgling sound confirms your suspicions - the beast wants your milk, but it's obvious you have far too much to offer!  You grin wickedly when the beast's tentacles begin to sag, quickly reaching up to fondle and massage your " + breastDescript(game.player, 0) + ".  The stimulation causes even more milk to gush down the tentacles length.  After a few moments of the increased assault the beast groans and releases you, the tentacles popping off your nipples audibly, spraying your milk about as they release you.\n\n", false);
@@ -506,7 +506,7 @@ export function tentacleLossRape(): void {
         if (player.cocks.length > 1) outputText(multiCockDescriptLight(game.player) + " immediately become fully erect and leak pre-cum liberally from their tips.  ", false);
         else outputText("member immediately becomes fully erect and pre-cum leaks liberally from your tip.  ", false);
         outputText("  " + Num2Text((player.breasts.totalNipples())) + " thorny tentacles pierce your nipples, and you feel as if someone shot acid into your tits, which immediately begin to swell.", false);
-        player.growTits(1, player.breastRows.length, false, 2);
+        growTits(player, 1, player.breastRows.length, false, 2);
         outputText("\n\nRealizing what is about to happen, you try to struggle. The beast responds by slamming you to the ground a few times, stunning you. In your daze you see a monstrous, hollow tentacle poised over your ", false);
         if (player.cocks.length > 1) outputText("furious cocks.  ", false);
         else outputText("furious cock.  ", false);
@@ -529,7 +529,7 @@ function tentacleRapeContinuation(): void {
             outputText("using a sucking-stroking motion on your helpless " + multiCockDescriptLight(game.player) + ". The swelling of the ass tentacle pressures your prostate in a paradoxically pleasurable and painful manner. You realize, much to your terror, that this beast is MILKING you of your semen!", false);
         else
             outputText("using a sucking-stroking motion on your " + multiCockDescriptLight(game.player) + ".  The swelling of the ass tentacle pressures your prostate in a paradoxical pleasurable and painful manner.  You realize, much to your terror, that this beast is MILKING you of your semen!", false);
-        player.buttChange(50, true);
+        buttChange(player, 50, true);
         outputText("\n\nHelpless and overwhelmed by the pleasure of such rough and primal stimulation, all you can do is give the creature what it wants; your hot cum. Your body only responds to the sensations from your ", false);
         if (player.cocks.length == 1)
             outputText(multiCockDescriptLight(game.player) + " and ass and in a very short time, your phallus explodes, launching stream upon stream of hot, thick cum into the horror. Your hips and pelvis buck violently with each thrust as the creature masterfully strokes your " + multiCockDescriptLight(game.player) + "  and milks your prostate of your fluids. You cry with each orgasm, prompting the thing to milk you harder. After an eternity of successive ejaculations, the creature withdraws its unholy arms and leaves you in a bruised, lacerated, overfucked heap on the ground, discarded like a person throws away a corn cob after a meal.", false);
@@ -553,7 +553,7 @@ function tentacleRapeContinuation(): void {
             outputText("clits. ", false);
         else
             outputText("clit. ", false);
-        player.cuntChange(player.vaginalCapacity() * .76, true);
+        cuntChange(player, player.vaginalCapacity() * .76, true);
         outputText(" Your body betrays your resistance as pleasure hammers you from crotch to head. After some time, you begin bucking your hips in tandem to the creature's thrusts, drunk with pleasure. As you peak for your orgasm, you feel the creature bottom out inside your womb. Oceans of hot cum flood your " + vaginaDescript(player, 0), false);
         if (player.vaginas.length > 1)
             outputText("s", false);
@@ -567,7 +567,7 @@ function tentacleRapeContinuation(): void {
     else if (player.gender == 3) {
         if (player.cocks.length == 1) {
             outputText("A sharp tug tells you that the creature has sealed itself upon your " + cockDescript(game.player, 0) + ". You see " + player.breasts.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped " + cockDescript(game.player, 0) + " until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".  ");
-            player.cuntChange(player.vaginalCapacity() * .76, true, false, true);
+            cuntChange(player, player.vaginalCapacity() * .76, true, false, true);
             outputText("With freakish coordination, the beast sucks your " + cockDescript(game.player, 0) + " and tits while hammering away at your " + vaginaDescript(player, 0) + ". The overwhelming pleasure courses through your body and triggers an immediate orgasm, sending gouts of cum into the tentacle sealed around your " + cockDescript(game.player, 0) + ". The sensation of your fluids entering the creature prompts it to suck your " + cockDescript(game.player, 0) + " harder as well as hammer your " + vaginaDescript(player, 0) + " faster, leading to a chain of orgasms.\n\n", false);
             outputText("Drunk with pleasure, you revel in the sensation of cumming into the creature while it breast feeds from you. All you can do is drown in the experience of being milked from top to bottom. The creature begins piledriving your box faster and you feel like the creature is going to impale you with its phallic tentacle.\n\n", false);
             outputText("The creature's milking tentacles stop moving and you feel the dick-tentacle press sharply against your womb. You feel the thunderous force of hot fluid lance into your body as the creature cums repeatedly inside you, triggering yet another orgasm. The creature cums in surges and shoots repeatedly inside you. Within moments, excess cum spews out of your " + vaginaDescript(player, 0) + " as it cannot hold anymore, but the creature keeps cumming.\n\n", false);
@@ -575,7 +575,7 @@ function tentacleRapeContinuation(): void {
         }
         else {
             outputText("A sharp tug tells you that the creature has sealed itself upon your " + multiCockDescriptLight(game.player) + ". You see " + player.breasts.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped cocks until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".");
-            player.cuntChange(player.vaginalCapacity() * .76, true, true, false);
+            cuntChange(player, player.vaginalCapacity() * .76, true, true, false);
             outputText("  With freakish coordination, the beast sucks your " + multiCockDescriptLight(game.player) + " and tits while hammering away at your " + vaginaDescript(player, 0) + ". The overwhelming pleasure courses through your body and triggers an immediate orgasm, sending gouts of cum into the tentacles sealed around your pricks. The sensation of your fluids entering the creature prompts it to suck your throbbing cocks harder as well as hammer your " + vaginaDescript(player, 0) + " faster, leading to a chain of orgasms.\n\n", false);
             outputText("Drunk with pleasure, you revel in the sensation of cumming into the creature while it breast feeds from you. All you can do is drown in the experience of being milked from top to bottom. The creature begins piledriving your box faster and you feel like the creature is going to impale you with its phallic tentacle.\n\n", false);
             outputText("The creature's milking tentacles stop moving and you feel the dick-tentacle press sharply against your womb. You feel the thunderous force of hot fluid lance into your body as the creature cums repeatedly inside you, triggering yet another orgasm. The creature cums in surges and shoots repeatedly inside you. Within moments, excess cum spews out of your " + vaginaDescript(player, 0) + " as it cannot hold anymore, but the creature keeps cumming.\n\n", false);

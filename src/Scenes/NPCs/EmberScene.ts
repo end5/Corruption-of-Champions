@@ -1691,13 +1691,13 @@ function emberTFs(): void {
         if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
             outputText("rut");
 
-            player.goIntoRut(false);
+            goIntoRut(player, false);
             changes++;
         }
         else {
             outputText("heat");
 
-            player.goIntoHeat(false);
+            goIntoHeat(player, false);
             changes++;
         }
         outputText("</b>.");
@@ -1924,12 +1924,12 @@ function getMilkFromEmber(): void {
             if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("rut");
 
-                player.goIntoRut(false);
+                goIntoRut(player, false);
             }
             else {
                 outputText("heat");
 
-                player.goIntoHeat(false);
+                goIntoHeat(player, false);
             }
             outputText("!</b>");
         }
@@ -1982,12 +1982,12 @@ function getMilkFromEmber(): void {
             if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("rut");
 
-                player.goIntoRut(false);
+                goIntoRut(player, false);
             }
             else {
                 outputText("heat");
 
-                player.goIntoHeat(false);
+                goIntoHeat(player, false);
             }
             outputText("!</b>");
         }
@@ -2078,12 +2078,12 @@ function getMilkFromEmber(): void {
             if (player.cocks.length > 0 && flags[kFLAGS.EMBER_GENDER] >= 2) {
                 outputText("rut");
 
-                player.goIntoRut(false);
+                goIntoRut(player, false);
             }
             else {
                 outputText("heat");
 
-                player.goIntoHeat(false);
+                goIntoHeat(player, false);
             }
             outputText("!</b>");
         }
@@ -2250,7 +2250,7 @@ function catchAnal(): void {
     else {
         outputText("; the looseness of your " + assholeDescript(player) + " gives " + emberMF("him", "her") + " no resistance whatsoever as " + emberMF("he", "she") + " glides in without trouble.  \"<i>Huh... that was easier than I expected,</i>\" " + emberMF("he", "she") + " remarks in surprise.  \"<i>What have you been getting yourself into?</i>\"");
     }
-    player.buttChange(32, true, true, false);
+    buttChange(player, 32, true, true, false);
 
     outputText("\n\nEmber settles for a slow rhythm, pumping with slow strokes; gently guiding " + emberMF("his", "her") + " ");
     if (flags[kFLAGS.EMBER_ROUNDFACE] == 0 || flags[kFLAGS.EMBER_INTERNAL_DICK] == 1) outputText("draconic ");
@@ -3115,13 +3115,13 @@ function getPenetratedByEmberLastSexSceneWoooo(): void {
     // (if Ember has a dragon cock)
     if (flags[kFLAGS.EMBER_ROUNDFACE] == 0 || flags[kFLAGS.EMBER_INTERNAL_DICK] > 0) {
         outputText("\n\nFirst comes the tapered spear-like head of Ember's penis; it slowly stretches you, sliding into you without resistance.  Then comes " + emberMF("his", "her") + " ridged shaft; each ridge driven inside feels like a milestone being conquered.  ");
-        player.cuntChange(32, true, false, true);
+        cuntChange(player, 32, true, false, true);
         outputText("Finally you arrive at the base of " + emberMF("his", "her") + " cock where a bulbous knot sits; thankfully it hasn't inflated yet, but still, you can't help but groan as you are stretched even more by its entrance.");
     }
     // else
     else {
         outputText("\n\nEmber's member drives itself inside you, tamping down your heat with its surprisingly cool flesh.");
-        player.cuntChange(32, true, true, false);
+        cuntChange(player, 32, true, true, false);
         outputText("  It's not as if it isn't still warm... but its lower temperature feels relieving and exciting all the same.");
     }
     outputText("\n\n\"<i>I-it's in!</i>\" Ember remarks happily as " + emberMF("his", "her") + " hips make contact with yours.  \"<i>I'm going to start moving now.</i>\"  You nod your permission.");
@@ -3319,7 +3319,7 @@ function getKnockedUpByEmbrahBroBaby(): void {
     outputText("\n\nFortunately, the dragon " + emberMF("himself", "herself") + " seems just as turned on and ready as you are.  \"<i>You're so hot I can feel your flesh burning against mine.  I-I can't hold back!</i>\" " + emberMF("he", "she") + " growls deep in " + emberMF("his", "her") + " throat.");
 
     outputText("\n\nEmber first thrust is awkward, missing its target and instead grinding against your netherlips; you almost curse the dragon's lousy aim, but fortunately " + emberMF("his", "her") + " second thrust hits true and you sigh in relief as you feel Ember's tapered shaft settle inside your contracting walls, pulsing, massaging your insides as much you work to massage " + emberMF("his", "her") + " own shaft.  You exchange moans of pleasure between kisses, Ember's rumbling purr massages your [chest] as " + emberMF("he", "she") + " grinds " + emberMF("his", "her") + " whole body against you.  Briefly, you open your eyes to gaze into " + emberMF("his", "hers") + "; you almost cum at the sight. Ember's eyes are set aglow with lust, burning with a primal, instinctual need...");
-    player.cuntChange(20, true, true, false);
+    cuntChange(player, 20, true, true, false);
 
     // (if Ember has a vagina)
     if (flags[kFLAGS.EMBER_GENDER] == 3) outputText("\n\nYour bedroll is growing slick underneath you as lubricant drools from the herm dragon's neglected cunt, her tail thrashing around madly before sliding into the wet orifice to help goad her on in her goal to breed you.  ");
@@ -3748,7 +3748,7 @@ export function giveBirthToEmberKids(): void {
         outputText("\n\nYou moan in equal parts pleasure and pain, telling " + emberMF("him", "her") + " that " + emberMF("his", "her") + " treatment feels good and is soothing.  \"<i>Please, keep going,</i>\" you plead.  You ask if " + emberMF("he", "she") + " can try to massage your stomach as well, to help relax the tension in your muscles.");
 
         outputText("\n\nEmber complies, digging deeper into your searing hot canal.  One of " + emberMF("his", "her") + " clawed hands gently reaches out to touch the slithering bulge within your belly, massaging you as best as " + emberMF("he", "she") + " can.  Slowly but steadily, the baby dragon within you starts making its way down your birth canal, stretching you out as it seeks freedom.");
-        player.cuntChange(80, true, true, false);
+        cuntChange(player, 80, true, true, false);
 
         outputText("\n\nYou strain with all your might, drawing on wells of inner strength you weren't even sure you had, hovering ");
         if (player.perks.findByType(PerkLib.Masochist) >= 0) outputText("deliciously ");
@@ -3841,7 +3841,7 @@ export function giveBirthToEmberKids(): void {
         outputText("\n\nEmber suddenly withdraws " + emberMF("his", "her") + " tongue and screams in joy, \"<i>I can see it! Push [name]!  You're almost done!</i>\"");
 
         outputText("\n\nWith one last hollow groan, you push as hard as you can, desperate to be free of the burdensome egg.  There is a sudden sensation as though you are being turned inside out, and then a wonderfully, blissfully numb sensation.  You slump down, drained and exhausted.");
-        player.cuntChange(80, true, true, false);
+        cuntChange(player, 80, true, true, false);
 
         outputText("\n\n\"<i>...you... all right?...</i>\" You faintly hear Ember asking you.  You look into " + emberMF("his", "her") + " eyes and manage to nod weakly.  Ember's worried face turns to one of relief, " + emberMF("he", "she") + " calmly tends to the egg while waiting for you to rest for a little while, licking it over to clean it from the fluids that came with and on the egg.");
 

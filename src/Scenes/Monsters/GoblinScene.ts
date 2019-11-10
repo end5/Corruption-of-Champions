@@ -69,7 +69,7 @@ export function goblinRapesPlayer(): void {
             outputText("It isn't hard these days, but you lose yourself in the sweet sensations of the bloated dildo that joins your simmering groins, pleasure whisking away whatever little intelligence you have left. Rocking back and forth, scissoring relentlessly against your green mistress, you moan, drowning yourself in a sea of drug-enhanced pleasure. The goblin cries out and thrashes in sudden orgasm, twisting the fat dildo violently around inside your slut-hole. The juices of her orgasm react with the toy, stretching you to a perfect level of vaginal gape – it's sooooo rare to, like, find someone who can stretch you out! Your bodies thrash together, wracked by twin orgasms that leave you smeared with a mixture of sweat and girl-cum.\n\n", false);
 
             outputText("Later, the wet goblin audibly pops off the dildo. She stumbles, bow-legged, before teasing your bimbo-clit and yanking her toy free of your needy pussy. Your lips gape wider than ever, but you've gotten used to your pussy getting stretched by now...", false);
-            player.cuntChange(player.vaginalCapacity(), true, true, false);
+            cuntChange(player, player.vaginalCapacity(), true, true, false);
             outputText("\n\n", false);
 
             outputText("She plants a kiss on your lips and mutters, \"<i>Can't forget this,</i>\" as she puts her dildo away. You find yourself smiling and watching her strap-covered form jiggle pleasantly as she bounds away from you into the distance. Your eyelids drift closed and your lips go numb as her drugged lipstick begins to put you out.\n\n", false);
@@ -176,7 +176,7 @@ export function goblinRapesPlayer(): void {
         else outputText("gape wider than ever, but only for a moment", false);
         outputText(".\n\n", false);
         outputText("She plants a kiss on your lips and mutters, \"<i>Can't forget this,</i>\" as she puts her dildo away.  You find yourself smiling and watching her strap-covered form jiggle pleasantly as she bounds away from you into the distance.  Your eyelids drift closed and your lips go numb as her drugged lipstick puts you out.  ", false);
-        player.cuntChange(player.vaginalCapacity(), true);
+        cuntChange(player, player.vaginalCapacity(), true);
         player.orgasm();
         cleanupAfterCombat();
     }

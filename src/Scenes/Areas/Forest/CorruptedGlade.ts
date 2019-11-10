@@ -145,7 +145,7 @@ function tentacleFun(): void {
             outputText("With a soft grunt, you manage to wrangle the fat tip of the vine between your nether-lips, feeling the swollen bulge pulse inside you penetrate yourself with it. The vine's lubricants combine with your own, turning your horny cunt into a sloppy slip-and-slide. You force in the rest of the vine's length, taking it all the way to your cervix, enjoying the feeling of fullness it gives you as you begin pumping it in and out like an obscene green dildo. Deep inside your " + vaginaDescript(player, 0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
         if (tentacle == 2) // Large
             outputText("With a desperate grunt, you barely manage to force the obscene cock-head of the vine between your nether-lips. The swollen bulge pulses inside you, stretching you uncomfortably as it reacts to the warmth and tightness of your " + vaginaDescript(player, 0) + ". The vine's lubricants begin to combine with your own, rapidly transforming your horny cunt into a sloppy slip-and-slide. You manage to cram the vine the rest of the way inside, bottoming it out against your cervix, reveling in the feeling of being stretched so wide, as you begin pumping it in and out of your " + vaginaDescript(player, 0) + " like an over-sized sex-toy. Deep inside your " + vaginaDescript(player, 0) + ", the vine's lubricants begin to make your passage tingle, intensifying until your entire channel is overloaded with clit-like levels of sensation.\n\n");
-        if (player.cuntChange(tentacleSize, true)) outputText("\n\n"); // Stretch cuuuuunt and newline if it gets stretched
+        if (cuntChange(player, tentacleSize, true)) outputText("\n\n"); // Stretch cuuuuunt and newline if it gets stretched
 
         outputText("The rest of the world disappears as your mind tries to cope with the sensation overload coming from your groin. You're dimly aware of your hands pumping the slippery vine in and out, in and out, over and over.  Hips bucking, " + vaginaDescript(player, 0) + " squeezing, thighs trembling, you achieve the first of many orgasms.  Incredibly, the sensitivity of your groin redoubles, nearly blacking you out from the pleasure.  Cumming over and over, you writhe in the dirt, pumping the corrupted prick-vine in and out of your spasming cunt.  Your eyes roll back in your head when the vine begins pumping you full of its strange fluid, and you finally lose your battle to remain conscious.\n\n");
 
@@ -233,16 +233,16 @@ function treeBoobFun(): void {
     if (rand(2) == 0) { // 50% Chance of breast-growth
         if (player.breasts.biggestTitSize() > 5) {
             outputText("  As you redress, you feel a sense of added weight on your chest.  After a few moments you realize your already-formidable chest has grown even larger.");
-            player.growTits(1, 1 + rand(3), false, 1);
+            growTits(player, 1, 1 + rand(3), false, 1);
         }
         else {
             if (player.breasts.biggestTitSize() == 0) { // No tits yet
                 outputText("  As you redress, you realize you have grown a pair of luscious breasts!  Perhaps this was a good idea after all...");
-                player.growTits(1, 2 + rand(3), false, 1);
+                growTits(player, 1, 2 + rand(3), false, 1);
             }
             else { // Small tits growth
                 outputText("  As you redress, you realize your breasts have gotten quite a bit larger!  Maybe you can come back later when you aren't so full and plump them up a bit more.");
-                player.growTits(1, 1 + rand(3), false, 1);
+                growTits(player, 1, 1 + rand(3), false, 1);
             }
         }
     }

@@ -163,7 +163,7 @@ function beeEncounterAfraidFirstTimeSex(): void {
     else if (player.vaginas.length > 0) {
         outputText("The bee girl giggles and says, <i>“I’ve never tried thizzz before, but my zzzizzzterzzz have told me itzzz a lot of fun.”</i>  She lifts you up and settles her abdomen underneath you.  The handmaiden opens up by stroking an odd part of her carapace just underneath your " + vaginaDescript(player, 0) + " moaning the whole while.  It does not take too much time before a long, knotted, and lubricated instrument emerges and rubs against your " + vaginaDescript(player, 0) + ".  <i>“Thizzz izzz where I lay my queen’zzz eggzzz from.  Today, it goezzz in a place it dozzzen’t normally belong.”</i>  She giggles once more before lifting you up again before setting you down on her ovipositor.\n\n");
         outputText("You wrap your arms around your insectoid lover from the shock of the stimulation as each of the knots bumps against your " + clitDescription(player) + " and then run against the inner walls of your " + vaginaDescript(player, 0) + ".");
-        player.cuntChange(25, true);
+        cuntChange(player, 25, true);
         outputText("  Your unearthly partner proceeds to use one hand to massage and tweek your " + clitDescription(player) + ", while the other moves to play with your " + chestDesc(game.player) + ".  Not wanting to be left behind, you bring your own ministrations into the mix on the bee girl’s own chest, and her currently neglected honeypot.  In moments, she gasps from the multitude of different sensations, and grabs onto your body in the same way you just were holding onto hers.\n\n");
         outputText("You rub your abdomen, feeling her ovipositor deep inside you.  You smile, it’s time to pick up the pace and lift up your body, then drop it back down, impaling yourself on the intruder.  You love every second of it, but the sensations aren’t as overwhelming as the handmaiden seems to be finding them.  All she can do at this point is hold onto you as tightly as she can, unable to to do anything else at this point as she pants, moans, and screams from the sensation overload from her ovipositor.  Suddenly there is a sharp stinging feeling in your " + nippleDescription(player, 0) + " as the bee girl bites down in orgasm, causing you to be pushed over the edge as well.  " + (player.vaginas[0].vaginalWetness >= VaginaWetness.WET ? "This leads to you liberally drenching your lower body and hers with" : "This brings out a small spray of") + " girl fluids from your " + vaginaDescript(player, 0) + ".  A few minutes later, the bee girl finally recovers.  It seems that she is looking forward to the next meeting between you two as well.  Leaving you with <i>“Next time, we’re putting that to itzzz proper uzzze!”</i> and a happy wave.");
     }
@@ -343,7 +343,7 @@ function beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs(clearScreen: boole
     dynStats("int", -.5);
     player.slimeFeed();
     if (rand(2) == 0) player.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE, 1, 1); // Anal bee pregnancy!
-    player.buttChange(25, true);
+    buttChange(player, 25, true);
     doNext(Camp.returnToCampUseFourHours);
 }
 
@@ -524,7 +524,7 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
         player.slimeFeed();
         // Anal bee pregnancy!
         if (rand(3) == 0) player.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE, 1, 1);
-        player.buttChange(25, true);
+        buttChange(player, 25, true);
     }
     // NON TAURS
     // Dicked version...
@@ -541,7 +541,7 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
         player.slimeFeed();
         // epilogue
         outputText("You awaken, your nose full of a honey like scent, some strange fluid on your back, and the feeling of something leaking from you.", false);
-        player.buttChange(25, true);
+        buttChange(player, 25, true);
         player.orgasm();
         dynStats("int", -.5);
         // Anal bee pregnancy!
@@ -595,7 +595,7 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
         player.slimeFeed();
         // Anal bee pregnancy!
         if (rand(3) == 0) player.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE, 1, 1);
-        player.buttChange(25, true);
+        buttChange(player, 25, true);
     }
     if (postCombat)
         cleanupAfterCombat(Camp.returnToCampUseFourHours);
@@ -1225,7 +1225,7 @@ export function beeRapesYou(): void {
             dynStats("int", -.5);
             // Anal bee pregnancy!
             if (rand(3) == 0) player.buttKnockUp(PregnancyStore.PREGNANCY_BEE_EGGS, PregnancyStore.INCUBATION_BEE, 1, 1);
-            player.buttChange(25, true, true, false);
+            buttChange(player, 25, true, true, false);
 
             cleanupAfterCombat();
             return;

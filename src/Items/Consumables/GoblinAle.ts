@@ -67,7 +67,7 @@ export function goblinAle(player: Player): void {
     // Multidick killa!
     if (player.cocks.length > 1 && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\n", false);
-        player.killCocks(1);
+        killCocks(player, 1);
         changes++;
     }
     // Boost vaginal capacity without gaping
@@ -96,7 +96,7 @@ export function goblinAle(player: Player): void {
                 temp3 -= .5;
             }
             temp3 += player.increaseCock(0, (rand(3) + 1) * -1);
-            player.lengthChange(temp3, 1);
+            lengthChange(player, temp3, 1);
         }
     }
     // GENERAL APPEARANCE STUFF BELOW

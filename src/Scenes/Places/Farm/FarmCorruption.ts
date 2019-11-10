@@ -2893,10 +2893,10 @@ function whitneyDomStraponDoggy(): void {
         outputText(" eagerly swallowing it up until her hard hips are pressed against your [butt].");
 
         if (player.vaginas.length > 0) {
-            player.cuntChange(36, true, true, false);
+            cuntChange(player, 36, true, true, false);
         }
         else {
-            player.buttChange(36, true, true, false);
+            buttChange(player, 36, true, true, false);
         }
 
         outputText("\n\n“<i>You’re no stranger to cock, are you [boy]?</i>” she breathes. You jerk in shock as the paddle lands with a sharp report on your ass cheek. “<i>When you aren’t strutting around here, I bet you ");
@@ -2913,10 +2913,10 @@ function whitneyDomStraponDoggy(): void {
         outputText(", pushing the other end of the dildo into her. An even louder moan is forced out of your throat by the intensity of your tunnel being packed full of cock, albeit an imitation.");
 
         if (player.vaginas.length > 0) {
-            player.cuntChange(36, true, true, false);
+            cuntChange(player, 36, true, true, false);
         }
         else {
-            player.buttChange(36, true, true, false);
+            buttChange(player, 36, true, true, false);
         }
 
         outputText("\n\n“<i>S’it,</i>” Whitney breathes exultantly, as her hard hips finally press against your [butt], the whole thing buried in you. “<i>Cry for me, [boy]! This is something you need, isn’t it? Something to think about when you’re lordin’ it over your ");

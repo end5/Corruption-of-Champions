@@ -87,7 +87,7 @@ export function mouseCocoa(player: Player): void {
     // not already in heat (add heat and lust)
     if (player.effects.getValue2Of(StatusAffects.Heat) < 30 && rand(2) == 0 && changes < changeLimit) {
         const intensified: boolean = player.inHeat;
-        if (player.goIntoHeat(false)) {
+        if (goIntoHeat(player, false)) {
             if (intensified) {
                 outputText("\n\nYour womb feels achingly empty, and your temperature shoots up.  Try as you might, you can't stop fantasizing about being filled with semen, drenched inside and out with it, enough to make a baker's dozen offspring.  ");
                 // [(no mino cum in inventory)]

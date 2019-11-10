@@ -50,7 +50,7 @@ export function appearance(e: MouseEvent = null): void {
     outputText("", true);
     if (race != "human") outputText("You began your journey as a human, but gave that up as you explored the dangers of this realm.  ", false);
     // Height and race.
-    outputText("You are a " + Math.floor(player.tallness / 12) + " foot " + player.tallness % 12 + " inch tall " + race + ", with " + player.bodyType() + ".", false);
+    outputText("You are a " + Math.floor(player.tallness / 12) + " foot " + player.tallness % 12 + " inch tall " + race + ", with " + bodyType(player) + ".", false);
     if (player.armorName == "comfortable clothes")
         outputText("  <b>You are currently wearing " + player.armorName + " and using your " + player.weaponName + " as a weapon.</b>", false);
     else outputText("  <b>You are currently wearing your " + player.armorName + " and using your " + player.weaponName + " as a weapon.</b>", false);

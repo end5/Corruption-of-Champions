@@ -1967,7 +1967,7 @@ function getButtWreckedByArian(): void {
 
     outputText("\n\nWell, that would be a shame; it might be a little rough, but you'll have to make do with what you've got.  With that in mind, you cease your stroking, and start sliding yourself up Arian's body, until your [ass] is positioned above [Arian eir] jutting prick.  With slow, deliberate motions, you slowly start to impale yourself upon it...");
 
-    player.buttChange(arianCockSize(), true, true, false);
+    buttChange(player, arianCockSize(), true, true, false);
 
     outputText("\n\n\"<i>Argh!  T-this is too much!</i>\"  With a groan of pleasure Arian shoots [Arian eir] cum into your bowels, lubricating it enough to allow you to easily slide down onto [Arian eir] shaft.");
     if (flags[kFLAGS.ARIAN_DOUBLE_COCK] > 0) {
@@ -2238,8 +2238,8 @@ function getPenetratedByArianAndHisHitlerMustache(): void {
 
         outputText("\n\nYou take hold of [Arian eir] arms and pull [Arian em] up towards you, making the lizan lose [Arian eir] balance and fully penetrate you.");
         // (Enlargement/Virginity loss messages)
-        player.cuntChange(arianCockSize(), true, true, false);
-        player.buttChange(arianCockSize(), true, true, false);
+        cuntChange(player, arianCockSize(), true, true, false);
+        buttChange(player, arianCockSize(), true, true, false);
 
         outputText("\n\nThe lizan moans in shock at the deed, as if [Arian ey] still can't believe this is actually happening.  [Arian Eir] fingers clutch you tightly, but [Arian ey] doesn't make any further motions - more likely [Arian ey] can't bring himself to thrust just yet, still full of that nervous virgin behavior.");
     }
@@ -2258,7 +2258,7 @@ function getPenetratedByArianAndHisHitlerMustache(): void {
 
         outputText("\n\nArian lets out a tiny squeak of shock at the pinching sensation, which instinctively makes [Arian em] thrust [Arian emself] forward, embedding [Arian emself] in you to the hilt.");
         // (Enlargement/Virginity loss messages)
-        player.cuntChange(arianCockSize(), true, true, false);
+        cuntChange(player, arianCockSize(), true, true, false);
 
         outputText("\n\nYou gasp in pleasure at the sudden intrusion; then hug your lizan lover closer, stroking [Arian eir] back.  You ask if that was so difficult?");
 

@@ -552,7 +552,7 @@ export function caninePepper(type: number, player: Player): void {
     }
     // Go into heat
     if (rand(2) == 0 && changes < changeLimit) {
-        if (player.goIntoHeat(true)) {
+        if (goIntoHeat(player, true)) {
             changes++;
         }
     }

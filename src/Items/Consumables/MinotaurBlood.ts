@@ -305,7 +305,7 @@ export function minotaurBlood(player: Player): void {
     }
     // Males go into rut
     if (rand(4) == 0) {
-        player.goIntoRut(true);
+        goIntoRut(player, true);
     }
     // Anti-masturbation status
     if (rand(4) == 0 && changes < changeLimit && player.effects.findByType(StatusAffects.Dysfunction) < 0) {

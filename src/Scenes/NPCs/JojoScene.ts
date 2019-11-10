@@ -590,8 +590,8 @@ export function useTentacleJojo(): void {
     }
     outputText(".  You moan in frustration, feeling the fluid soak into your skin, secretly wishing he could've fucked you into unconsciousness.  ", false);
     outputText("The mouse kneels over you and begins licking your body, cleaning you with his tongue.  The tentacles join in, noisily slurping up every ounce of fluid from your form until you're clean and sated.  Sighing dreamily from the attention, you close your eyes and murmer, \"<i>Good boy.</i>\" When you open them, he's trotting away towards the forest, his tentacles well-hidden again...\n\n", false);
-    player.buttChange(40, true);
-    player.cuntChange(40, true);
+    buttChange(player, 40, true);
+    cuntChange(player, 40, true);
     player.orgasm();
     dynStats("cor", .5);
     doNext(Camp.returnToCampUseOneHour);
@@ -1128,7 +1128,7 @@ function jojosFirstRape(): void {
 
         outputText("You smile when you realize how large he is for his frame, and mount him, taking care to keep him pinned hard to the ground.");
 
-        player.cuntChange(12, true, true, false);
+        cuntChange(player, 12, true, true, false);
 
         outputText("\n\n");
 
@@ -1216,7 +1216,7 @@ function jojosSecondRape(): void {
     }
     if (player.gender == 2 || player.gender == 3) {
         outputText("You throw him on the soft soil of the forest and mount him, skillfully guiding his member towards your now dripping wet hole.  As you slide down you marvel at how he feels larger and thicker than before, deliciously so.  Your " + vaginaDescript(player, 0) + " throbs in the most pleasant way as you rape his small form.  You play with your clit, watching Jojo's face flit between rapture and disgust.  You lick your lips and smile as the disgust vanishes, his hot jets of cum painting your cunt-walls.  You giggle and keep fucking him, hoping that somehow your corruption and lust are influencing him, turning him into your personal fucktoy.  The thought brings you over the edge.  You clamp down, your " + vaginaDescript(player, 0) + " milking, squeezing every last drop from him as his prick erupts inside you.  ");
-        player.cuntChange(1.5, true);
+        cuntChange(player, 1.5, true);
         if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) outputText("Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
         if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) outputText("Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
         if (player.breasts.biggestLactation() >= 3) outputText("Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
@@ -1285,7 +1285,7 @@ function jojosThirdRape(): void {
         outputText(" shaking your rump.  ");
         if (player.hasLongTail() > 0) outputText("Your tail swishes back and forth teasingly.  ");
         outputText("Your tantalizing backside is too much for him.  He pounces your ass in a second, penetrating your " + vaginaDescript(player, 0) + " forcefully.  The knowledge that your demonic influence is responsible for his state nearly makes you cream all over his cock.  You fantasize about your cunt making his cock grow longer and fatter as it corrupts him further, transforming his morals and values into cock and cum.  Jojo thrashes against you, brutally pounding your " + vaginaDescript(player, 0) + " as he orgasms.  His " + cockDescriptShort(monster, 0) + " erupts inside you, the feeling of being filled with mouse-spunk drives you over the edge with him.  More and more of his cum sprays inside you, unnatural amounts for a creature his size.  Thick streams of the stuff escape down your thighs as your belly distends.  ");
-        player.cuntChange(2, true);
+        cuntChange(player, 2, true);
         outputText("\n\n");
         outputText("You let the drained mouse pop free, reveling in the sensation of cum pouring from");
         if (player.isBiped()) outputText(" between your thighs");
@@ -1324,7 +1324,7 @@ function jojosThirdRape(): void {
         outputText(" shaking your rump.  ");
         if (player.hasLongTail() > 0) outputText("Your tail swishes back and forth teasingly.  ");
         outputText("Your tantalizing backside is too much for him.  He pounces your ass in a second, penetrating your " + vaginaDescript(player, 0) + " forcefully.  The knowledge that your demonic influence is responsible for his state nearly makes you cream all over his cock.  You fantasize about your cunt making his cock grow longer and fatter as it corrupts him further, transforming his morals and values into cock and cum.  Jojo thrashes against you, brutally pounding your " + vaginaDescript(player, 0) + " as he orgasms.  His " + cockDescriptShort(monster, 0) + " erupts inside you, the feeling of being filled with mouse-spunk drives you over the edge with him.  More and more of his cum sprays inside you, unnatural amounts for a creature his size.  Thick streams of the stuff escape down your thighs as your belly distends.  ");
-        player.cuntChange(2, true);
+        cuntChange(player, 2, true);
         if (player.cocks.length == 1) outputText("Your " + cockDescript(game.player, 0) + " trembles in orgasm, squirting your load into the thick forest loam.  ");
         if (player.cocks.length > 1) outputText("Your " + multiCockDescriptLight(game.player) + " tremble in orgasm, squirting their hot loads all over the thick forest loam.  ");
         outputText("\n\n");
@@ -1446,7 +1446,7 @@ function jojosFourthRape(): void {
                 player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length >= 20) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying in pulsing blasts, soaking the mouse.  Each nerve-wracking orgasm seems to wring more and more milk from you, until it puddles around.");
             if (player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length >= 35) outputText("Milk fountains from your " + breastDescript(game.player, 0) + ", soaking the mouse with a continuous river of cream.  For every blob of cum you feel pushing into your over-filled uterus, another torrent of milk sprays out.  As your mind-bending orgasms drag on, a small lake of milk forms around you.");
         }
-        player.cuntChange(3, true);
+        cuntChange(player, 3, true);
         // Preggers chance!
         player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); // Jojo's kids take longer for some reason
         // The end
@@ -1504,14 +1504,14 @@ export function loseToJojo(): void {
                 outputText("Too aroused to think, you just bend over, displaying your bum and letting your " + multiCockDescriptLight(player) + " dangle freely.  The mouse doesn't hesitate, and he thrusts his " + cockDescriptShort(monster, 0) + " with painful force.  You stagger from the size and struggle to stay conscious as he fucks you like a mad beast, hammering your ass with incredible force.  ");
                 if (player.cocks.length == 1) outputText("Pre and cum drip from your " + cockDescript(player, 0) + ", forced out of your prostate by the rough beating it's taking.  You feel a flash of warm wetness inside you, and realize Jojo is cumming.  A sense of relief washes over you as the last burst of cum squirts out from your cheeks, only to be replaced with a dawning sense of horror as he continues fucking you harder than ever.\n\nYou black out after a few dozen of his orgasms and one or two of your own, your gut painfully distended with semen.");
                 if (player.cocks.length > 1) outputText("Pre and cum drip from your " + cockDescript(player, 0) + "s, forced out of your prostate by the rough beating it's taking.  You feel a flash of warm wetness inside you, and realize Jojo is cumming.  A sense of relief washes over you as the last burst of cum squirts out from your cheeks, only to be replaced with a dawning sense of horror as he continues fucking you harder than ever.\n\nYou black out after a few dozen of his orgasms and one or two of your own, your gut painfully distended with semen.");
-                player.buttChange(monster.cocks.cockArea(0), true);
+                buttChange(player, monster.cocks.cockArea(0), true);
             }
             if (player.gender >= 2) {
                 outputText("Too aroused to think, you bend over, displaying your bum and " + vaginaDescript(player, 0) + " to Jojo as open targets.  The mouse obliges, plunging himself into you, hard.  He fucks you with abandon, pounding your wanton little pussy with no regard for your pleasure.  Despite yourself, you enjoy the rough treatment.  A spasm of warmth erupts inside you as Jojo cums.  You worry he might stop, but as the mouse's orgasm ends he resumes fucking with even greater energy. You cum powerfully, his jizz seeping down your thighs as you begin lose track of yourself.  ");
                 if (player.cocks.length > 1) outputText("Your " + cockDescript(player, 0) + " splatters the ground with cum repeatedly, until both your genders are raw and sore.  ");
                 else outputText("Your " + vaginaDescript(player, 0) + " cums on him many more times it until it is sore and tender, dripping with spunk.  ");
                 outputText("You black out as Jojo cums AGAIN, forcing a river of spunk from your already over-filled uterus.");
-                player.cuntChange(monster.cocks[0].cockThickness, true);
+                cuntChange(player, monster.cocks[0].cockThickness, true);
                 // Preggers chance!
                 player.knockUp(PregnancyStore.PREGNANCY_MOUSE, PregnancyStore.INCUBATION_MOUSE + 82, 101); // Jojo's kids take longer for some reason
             }
@@ -1621,17 +1621,17 @@ function corruptJojoVaginalGentle(): void {
     outputText("He swallows and nods, nervously obeying, stretching himself out on his back on the ground. He watches as you crawl slowly up his body and press a firm kiss to his muzzle, which he returns with the impossible lust you have planted within him. You can feel his member stirring between your legs, rising up firm against your " + (player.cocks.length > 0 ? "own endowments" : "crotch") + " as you grind your dripping slit along it.  ");
     if (player.vaginalCapacity() < 10) {
         outputText("You lower your hand to take hold of his cock, lining it up with your entrance, and then with a soft grunt, you start to lower your weight atop him.\n");
-        player.cuntChange(36.4, true);
+        cuntChange(player, 36.4, true);
         outputText("\n\nYou can feel every vein and ridge in his thick erection, stretching your tight pussy open around him. You start to ride him the best you can, taking barely half his length into your tight body with the knowledge that neither of you will last long. He cums first, however, and you can feel the seed surging into your body past the tight seal of your internal muscles.  ");
     }
     else if (player.vaginalCapacity() < 36) {
         outputText("You lower your hand to take hold of his cock, lining it up with your entrance, and then with a moan of pleasure, you lower your weight atop him. His cock slides into your pussy like a hand into a glove, fitting perfectly, as though he were made for you.\n");
-        player.cuntChange(36.4, true);
+        cuntChange(player, 36.4, true);
         outputText("\n\nYou begin to rise and fall over him, setting a loving pace as you roll your hips. It doesn't last near as long as you would wish, however, as soon enough you can feel him cumming within your body, filling you with his seed. Not dissuaded, you grind at him, working your clit against his sheath and belly fur.  ");
     }
     else {
         outputText("You shift forward, and then tilt your hips and drive back, taking his length into your wide stretched body.\n");
-        player.cuntChange(36.4, true);
+        cuntChange(player, 36.4, true);
         outputText("\n\nYou laugh at him, barely able to feel his dick within you, and whisper into his ear, \"<i>Just like a mouse to be tiny...</i>\" You watch his blush as you start to grind and roll atop his cock and belly, taking all the pleasure that you can from your slut.  ");
     }
     outputText("You cry out in pleasure as your orgasm floods through your body, causing your juices to splash out around your mouse slut's cock" + (player.cocks.length > 0 ? ", and your own " + multiCockDescriptLight(player) + " to explode with thick splashes of your hot cum across his chest and belly" : "") + ". You stay seated on his hips until your orgasm fades, then with a sigh of pleasure you stand off of him and dismiss him with a wave of your hand.  ");
@@ -1929,7 +1929,7 @@ function whisperJojobait(): void {
                     outputText("You cry out in pleasure as your orgasm floods through your body, causing your juices to splash out around your mouse slut's cock. You stay seated on his hips until your orgasm fades, then with a sigh of pleasure you stand up off of him and dismiss him with a wave of your hand.  ");
                     //Preggers chance!
                     player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
-                    player.cuntChange(36.4, true);
+                    cuntChange(player, 36.4, true);
                 }
                 //Cuntboy 2: Anal Gentle
                 if (selection == 1) {
@@ -2020,7 +2020,7 @@ function whisperJojobait(): void {
                     outputText("You cry out in pleasure as your orgasm floods through your body, causing your juices to splash out around your mouse slut's cock. You stay seated on his hips until your orgasm fades, then with a sigh of pleasure you stand off of him and dismiss him with a wave of your hand.  ");
                     //Preggers chance!
                     player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
-                    player.cuntChange(36.4, true);
+                    cuntChange(player, 36.4, true);
                 }
                 //Female 4: Smother Vaginal
                 if (selection == 3) {
@@ -2096,7 +2096,7 @@ function whisperJojobait(): void {
                     outputText("You stay seated on his hips until your orgasm fades, then with a sigh of pleasure you stand off of him and dismiss him with a wave of your hand.");
                     //Preggers chance!
                     player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
-                    player.cuntChange(36.4, true);
+                    cuntChange(player, 36.4, true);
                 }
             }
             doNext(Camp.returnToCampUseOneHour);

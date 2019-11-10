@@ -386,7 +386,7 @@ export function equinum(player: Player): void {
             }
         }
         if (player.effects.getValue2Of(StatusAffects.Heat) < 30 && rand(2) == 0 && changes < changeLimit) {
-            if (player.goIntoHeat(true)) {
+            if (goIntoHeat(player, true)) {
                 changes++;
             }
         }

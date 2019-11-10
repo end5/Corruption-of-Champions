@@ -232,7 +232,7 @@ export function rideCeraphsCockLikeaBAWSSexclamation11eleven(): void {
     else if (player.cor < 66) outputText("You groan, wondering why she just won't get over her little act.  Even though this wasn't your best idea, it isn't nearly as bad as she makes it out to be.  You get dressed and leave, eager to be rid of her.\n\n", false);
     else outputText("You bend over and rub your belly while whispering in her ear, \"<i>Like mother, like child.</i>\"\n\n", false);
     outputText("As you leave, you don't bother to spare a glance at the confused omnibus; she isn't worth your time.\n\n", false);
-    player.cuntChange(monster.cocks.cockArea(0), true);
+    cuntChange(player, monster.cocks.cockArea(0), true);
     player.orgasm();
     dynStats("lib", 3, "sen", 3, "cor", 1);
     player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP - 32, 61); // Ceraph causes faster pregnancies

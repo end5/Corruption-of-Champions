@@ -165,7 +165,7 @@ function rapeMinotaurTentacles(): void {
     // Vaginassss
     if (player.vaginas.length >= 1) {
         outputText("With your " + cockDescript(player, temp2) + " successfully embedded in the minotaur, you twist around, positioning your " + vaginaDescript(player, 0) + " to take the minotaur's enormous length into yourself.  You feel his member deliciously slide in, and feel the beast's hot breath radiate as he starts panting in lust.  ", false);
-        player.cuntChange(monster.cocks.cockArea(0), true, false, true);
+        cuntChange(player, monster.cocks.cockArea(0), true, false, true);
     }
     // Multivaginas...wtf
     if (player.vaginas.length > 1 && !mismatched && player.cocks.length > 2) outputText("Your tentacle cocks writhe upon themselves, each turning to an unattended " + vaginaDescript(player, 1) + " on your body, and quickly filling up the cavernous depths. You groan in ecstasy at the self-fucking you are receiving as all your pussies start leaking their wonderful fluids.  ", false);
@@ -427,7 +427,7 @@ function girlRapeAMinotaur(): void {
     // Resume!
     outputText("The minotaur picks up the pace, heartbeat thudding through his rigid meat, making it convulse and vibrate as he slams you down on it over and over again.  You feel his balls twitching against your ass as his cock visibly thickens, bulging out at the base and slowly fattening inside you until it feels fit to burst.  With a throaty roar he cums at last, fountaining seed directly into your womb.  Your eyes roll back as it fills you, swooning as you feel the liquid pleasure seeping into you.  Your " + vaginaDescript(player, 0) + " clamps down, trapping his seed inside, his orgasm dragging on as his balls begin to shrink.  The copious fluid fills your womb, distending your belly painfully.  The minotaur gives one last powerful spurt, the force pushing you off his " + cockDescriptShort(monster, 0) + ", just as you both reach total sexual satisfaction.\n\n", false);
     // Check for stetchiness!
-    player.cuntChange(monster.cocks.cockArea(0), true);
+    cuntChange(player, monster.cocks.cockArea(0), true);
 
     // ITS OVER
     outputText("He passes out with a contented sigh, balls shrunk down to the size of baseballs and his cock still dribbling cum.  You pull yourself to your feet unsteadily, drunk with pleasure as you stagger away, clamping your " + vaginaDescript(player, 0) + " down unconsciously to hold in his wonderful seed.", false);
@@ -446,7 +446,7 @@ function minotaurGetsRapedByHerms(): void {
     outputText("\n\nWith little care for the beast's feelings, you grip his cock with both hands, pulling it towards yourself, bending it up at an awkward angle that makes him give a trembling moo of pain.   You edge closer, your own " + cockDescript(game.player, 0) + " bumping into his pucker, his obscene equine-like cock dripping that wonderfully scented spunk as you pull it to your " + vaginaDescript(player, 0) + ", smearing it against your cunt-lips.\n\n", false);
     outputText("With a twisted grin and a grunt of pain, you push forward, slipping his " + cockDescriptShort(monster, 0) + " into your " + vaginaDescript(player, 0) + " as your " + cockDescript(game.player, 0) + " penetrates his tight but accommodating back-door.  You immediately feel a surge of his pre-cum squirt into you as you push forward, forcefully spearing yourself AND him at the same time.  The slick fluids spread warmth through your groin, making you feel light-headed and horny at the same time, spurring you to force the last of both cock-lengths into their respective holes.\n\n", false);
     temp = player.vaginas[0].vaginalLooseness;
-    player.cuntChange(monster.cocks.cockArea(0), true);
+    cuntChange(player, monster.cocks.cockArea(0), true);
     if (player.vaginas[0].vaginalLooseness < VaginaLooseness.GAPING) outputText("A small suppressed part of your mind dimly registers that this should be fairly painful, but the lust and drug-like pre-cum wash that thought away with waves of pleasure.  ", false);
     if (player.vaginas[0].vaginalLooseness >= VaginaLooseness.GAPING) outputText("The intense feelings seem to grow more and more powerful as he stays inside you, his drug-like pre-cum making your " + vaginaDescript(player, 0) + " tingle from the inside-out.", false);
     outputText("Your " + cockDescript(game.player, 0) + " quivers from his tightness, each beat of his powerful heart squeezing you tightly in his rear passage.   Through your foggy mind, you come to realize that your hips are pistoning against him with disturbing speed, burning away what's left of your reason with white-hot lust and minotaur spunk.  You slap his ass as you fuck him, humiliating the beast, leering down at him as he moos and moans hopelessly.   At last the pleasure overwhelms you, and you fire your spunk into him like a cannon, your hips still fucking him with unthinking determination.   Jizz sputters from his tail-hole with each thrust, splattering over his ass-cheeks.  A sudden blast of inhuman warmth fills you as the beast begins to cum, huge blasts pouring directly into your womb with every thrust of monstrous meat into your " + vaginaDescript(player, 0) + ".\n\n", false);
@@ -547,14 +547,14 @@ export function getRapedByMinotaur(autoRape: boolean = false): void {
     // BUTTSECKS!
     else {
         outputText("The bull-man roughly grabs your hair and repositions himself to press against your asshole, slowly building the pressure until suddenly, the flared head pops into you.  ", false);
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         minoCumAddiction(15);
     }
     if (player.lowerBody == LowerBodyType.CENTAUR) outputText("\n\nHe positions himself behind your rear legs, and roughly impales you onto his shaft, forcing himself as far into you as he can manage. You cry out, and you feel your stomach distending to accommodate his incredible size. Grabbing your ass, he begins to violently pound your backside with his massive member.  ", false);
     else outputText("\n\nHe lifts you into the air, hefting your insignificant weight with little effort, and roughly impales you onto his shaft, forcing himself as far into you as he can manage. You cry out, and looking down you can see your stomach distending to accommodate his incredible size. Using you like a human cock-sleeve, he simply holds you by the torso and begins lifting you up and down.  ", false);
 
     // Vag stretch texts
-    if (player.vaginas.length > 0) player.cuntChange((24 * 3), true, false, true);
+    if (player.vaginas.length > 0) cuntChange(player, (24 * 3), true, false, true);
 
     // Continue
     if (player.breasts.biggestTitSize() > 0 && player.breasts.mostBreastsPerRow() > 1 && player.breastRows.length > 0) {
@@ -691,7 +691,7 @@ function takeMinoCumDirectly(): void {
     else {
         outputText("Your muscles instantly relax on contact with the pre, and you feel the massive tool sliding up your spacious asshole with ease.", false);
     }
-    if (!player.buttChange(monster.cocks.cockArea(0), true)) outputText("  ", false);
+    if (!buttChange(player, monster.cocks.cockArea(0), true)) outputText("  ", false);
     outputText("The minotaur's eyes open wide as he lets out a lustful '<i>Moooooo</i>'.  He doesn't struggle or even move – you're giving him exactly what he wants, after all.\n\n", false);
 
     outputText("You bottom out, sighing happily as you feel his hot fluids leaking inside you, radiating pure pleasure out from your core.   Bestial hands grab your " + nippleDescription(player, 0) + "s and begin gently twisting them, taking surprising care for all their strength.  Spurred on by the feelings radiating from your ", false);

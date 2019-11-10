@@ -227,11 +227,11 @@ function heckelLovesAnal2(): void {
     outputText("Her legs bump against yours as she pulls herself up, the contact sending shivers through your sensitive body. \"<i>Even better than I thought,</i>\" she mumbles as you hear the sound of her stroking herself. Before the wetness around your ass can dry up, you feel something hard and slightly pointed poking the entrance of your " + assholeDescript(player) + ".\n\n", false);
 
     outputText("You open your mouth to gasp as she slides into you, but no sounds come out. You can feel inch after inch penetrate you, your asshole slowly stretching to accommodate her increasing thickness. She pushes as much as she can into you before pulling back slightly, then humping lightly as she works the rest in little by little.", false);
-    player.buttChange(28, true, true, false);
+    buttChange(player, 28, true, true, false);
     outputText("\n\n", false);
 
     outputText("As more and more doggie dick is pushed into your ass, you find your estimations of her size more and more ridiculous. There has to be an entire foot of cock in you already, but she's still going! When she does finally bottom out, your mind reels at the impossibility. Her dick must grow the longer she stays aroused, because she's at least 15 inches right now! The base of her dick stretches your ass painfully open, and she gives you a moment to adjust to it.", false);
-    player.buttChange(35, true, true, false);
+    buttChange(player, 35, true, true, false);
     outputText("\n\n", false);
 
     outputText("Just as the sting begins to fade, she draws herself out to the tip in one motion. You bite your lip in anticipation, but you still moan like a whore when she slams all 15 inches back into you. She draws back before pounding your " + assholeDescript(player) + " again, making your " + buttDescription(player) + " shake with the impact.\n\n", false);
@@ -256,7 +256,7 @@ function heckelLovesAnal2(): void {
 
     outputText("Heckel suddenly freezes up and bites down on your shoulder, throwing her hips forward. Her knot pushes against your backdoor as she tries to force it in, but your ass just won't expand that much. She growls and pushes again, making you yelp as it spreads you even further. It feels like she's shoving a melon up there! She growls even louder and bites down harder, and you can feel her dick flare inside you as her knot pushes you further and further apart. You cry out as it passes the midway point, your ass sucking the knot up greedily and contracting around the other side.", false);
     // <ASS BECOMES VERY LOOSE>
-    player.buttChange(45, true, true, false);
+    buttChange(player, 45, true, true, false);
     outputText("\n\n", false);
 
     // [<HERM PC>

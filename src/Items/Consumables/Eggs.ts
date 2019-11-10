@@ -40,7 +40,7 @@ export function pinkEgg(large: boolean, player: Player): void {
     if (!large) {
         // Remove a dick
         if (player.cocks.length > 0) {
-            player.killCocks(1);
+            killCocks(player, 1);
             outputText("\n\n", false);
             player.genderCheck();
         }
@@ -66,7 +66,7 @@ export function pinkEgg(large: boolean, player: Player): void {
     else {
         // Remove a dick
         if (player.cocks.length > 0) {
-            player.killCocks(-1);
+            killCocks(player, -1);
             outputText("\n\n", false);
             player.genderCheck();
         }
@@ -112,7 +112,7 @@ export function blueEgg(large: boolean, player: Player): void {
                     temp2 = player.increaseCock(temp, rand(3) + 2);
                     temp3 = player.cocks[temp].thickenCock(1);
                 }
-                player.lengthChange(temp2, player.cocks.length);
+                lengthChange(player, temp2, player.cocks.length);
                 // Display the degree of thickness change.
                 if (temp3 >= 1) {
                     if (player.cocks.length == 1)
@@ -139,7 +139,7 @@ export function blueEgg(large: boolean, player: Player): void {
                 outputText("\n\nYour " + multiCockDescriptLight(game.player) + " fills to its normal size... and begins growing... ", false);
                 temp3 = player.cocks[0].thickenCock(1);
                 temp2 = player.increaseCock(0, rand(3) + 2);
-                player.lengthChange(temp2, 1);
+                lengthChange(player, temp2, 1);
                 // Display the degree of thickness change.
                 if (temp3 >= 1) {
                     if (player.cocks.length == 1)
@@ -198,7 +198,7 @@ export function blueEgg(large: boolean, player: Player): void {
         }
         // Shrink tits!
         if (player.breasts.biggestTitSize() > 0) {
-            player.shrinkTits();
+            shrinkTits(player);
         }
         if (player.cocks.length > 0) {
             // Multiz
@@ -210,7 +210,7 @@ export function blueEgg(large: boolean, player: Player): void {
                     temp2 = player.increaseCock(temp, rand(3) + 5);
                     temp3 = player.cocks[temp].thickenCock(1.5);
                 }
-                player.lengthChange(temp2, player.cocks.length);
+                lengthChange(player, temp2, player.cocks.length);
                 // Display the degree of thickness change.
                 if (temp3 >= 1) {
                     if (player.cocks.length == 1)
@@ -237,7 +237,7 @@ export function blueEgg(large: boolean, player: Player): void {
                 outputText("\n\nYour " + multiCockDescriptLight(game.player) + " fills to its normal size... and begins growing...", false);
                 temp3 = player.cocks[0].thickenCock(1.5);
                 temp2 = player.increaseCock(0, rand(3) + 5);
-                player.lengthChange(temp2, 1);
+                lengthChange(player, temp2, 1);
                 // Display the degree of thickness change.
                 if (temp3 >= 1) {
                     if (player.cocks.length == 1)

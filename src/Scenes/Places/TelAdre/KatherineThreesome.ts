@@ -220,11 +220,11 @@ export function roastYou(): void { // Not available if Kath has no cock
     let wasButtStretched: boolean = false;
     if (Katherine.getCockNumber() > 1) {
         if (player.vaginas.length > 0) {
-            wasButtStretched = player.buttChange(Katherine.cockArea(), false);
+            wasButtStretched = buttChange(player, Katherine.cockArea(), false);
             outputText("knots seat themselves inside both your pussy and ass");
         }
         else {
-            wasButtStretched = player.buttChange(2 * Katherine.cockArea(), false);
+            wasButtStretched = buttChange(player, 2 * Katherine.cockArea(), false);
             outputText("twin knots hammer against your sphincter.  At last it gives out and opens wide, allowing first one, then the other inside.  They puff up to full size, stretching your tortured ass " + (wasButtStretched ? "even wider" : "to its limit"));
         }
         outputText(", sealing you up");
@@ -233,14 +233,14 @@ export function roastYou(): void { // Not available if Kath has no cock
         if (player.vaginas.length > 0)
             outputText("knot slides inside your pussy and expands to full size just as nature intended, sealing up your pussy");
         else {
-            wasButtStretched = player.buttChange(Katherine.cockArea(), false);
+            wasButtStretched = buttChange(player, Katherine.cockArea(), false);
             outputText("knot squeezes past your sphincter and pops into your rectum.  It quickly expands to full size, sealing up your colon");
         }
     }
     outputText(" for her coming deposit" + (player.vaginas.length > 0 && !player.isPregnant() ? " and ensuring your uterus will be awash with her seed" : "") + ".\n\n");
-    if (player.vaginas.length > 0) if (player.cuntChange(Katherine.cockArea(), true)) outputText("\n\n");
+    if (player.vaginas.length > 0) if (cuntChange(player, Katherine.cockArea(), true)) outputText("\n\n");
     if (wasButtStretched) {
-        player.buttChangeDisplay();
+        buttChangeDisplay(player);
         outputText("\n\n");
     }
     outputText("A little twitch in Urta’s balls tells you she’s ready to fire.  As encouragement you find her pussy by feel and twist her clit between your fingers.  Urta grabs your head in both hands and yanks, pressing your " + (Urta.pregnancy.isPregnant ? "forehead against her swollen belly" : "face against her groin") + ".  The first load creates such a bulge in Urta’s cock that it actually forces your jaws open even wider.  With her cock so far down your throat all her cum shoots straight into your stomach, bloating you until you look " + (player.isPregnant() ? "like you’re a few months further along than you are" : "several months pregnant") + ".\n\n");

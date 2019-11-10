@@ -91,8 +91,8 @@ function keepDrinking(): void {
     outputText("\n\nYou can't resist the soft melody and begin to feel sleepy; you stop your drinking and eating to yawn... now that you've stopped, you feel awfully hot.  You strip off your [armor] without a second thought, not even bothering to protect your modesty.  Once you feel the cool air against your " + skinFurScales(player) + " you sigh and lay to relax for a nap.");
     outputText("\n\nThe satyr keeps playing, smiling.  The last thing you see before unconsciousness takes you is an eager light in strangely goat-like eyes...");
     // [hymen check]
-    if (player.vaginas.length > 0) player.cuntChange(25, true, true, false);
-    else player.buttChange(25, true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, 25, true, true, false);
+    else buttChange(player, 25, true, true, false);
     outputText("\n\nYou wake up you don't know how many hours later, head spinning in pain at the heavy drinking you did earlier.  Come to think of it... all the bottles and dishes of food seem to be gone.  The only thing left are puddles of warm cum all around you and on you.  You get up, dazed, only to feel a strange feeling inside your [vagOrAss]; you double over as pain explodes from your [vagOrAss] and gasp as a flood of semen dribbles from your used ");
     if (player.vaginas.length > 0) outputText("vagina");
     else outputText("ass");
@@ -172,8 +172,8 @@ export function loseToSatyr(): void {
     if ((player.vaginas.length > 0 && player.vaginalCapacity() < monster.cocks.cockArea(0)) || (!player.vaginas.length > 0 && player.analCapacity() < monster.cocks.cockArea(0))) outputText(", not even bothered by the fact that his cock doesn't even fit inside you");
     outputText(".");
     // [cunt/buttchange]
-    if (player.vaginas.length > 0) player.cuntChange(monster.cocks.cockArea(0), true, true, false);
-    else player.buttChange(monster.cocks.cockArea(0), true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, monster.cocks.cockArea(0), true, true, false);
+    else buttChange(player, monster.cocks.cockArea(0), true, true, false);
     outputText("\n\nYou scream in pain and pleasure from the satyr's rough entry, and struggle in a vain attempt to escape his imposing shaft.");
 
     outputText("\n\nThe beast-man merely shifts his grip from your [butt] to your shoulders, grunting lewdly as he starts to roughly piston himself in and out of your abused orifice; he doesn't care anything about you, only that he can empty his aching, needy balls into your belly.");
@@ -324,8 +324,8 @@ function willinglyBoneSatyr(): void {
 
     outputText("\n\nHe takes hold of your hips and aligns his massive meat with your [vagOrAss]; then with a bleat he pushes in agonizingly slowly.  He slips a few inches in, then waits as his cock throbs, painting your [vagOrAss] walls with a slick dose of pre, then pulls out a couple inches and pushes more inches in. This process is repeated over and over, until finally he's hilted deep inside you.");
     // (cunt/buttchange)
-    if (player.vaginas.length > 0) player.cuntChange(25, true, true, false);
-    else player.buttChange(25, true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, 25, true, true, false);
+    else buttChange(player, 25, true, true, false);
 
     outputText("\n\nYou cry out as his massive manhood fills you, wrapping your [legs] around your caprine lover and pulling yourself fiercely against him, imploring him to hold you tight and fuck you senseless.  The satyr begins trembling and bucking lightly against you, slapping his balls on your [butt] softly with each small thrust.  Yet he resists letting his lust dominate him and smiles at you.  \"<i>I said I want you to remember me... and no matter how much I want to unload into you right now, this is exactly what I'm going to do.</i>\"");
 
@@ -408,8 +408,8 @@ export function satyrBirth(vag: boolean): void {
     if (vag) outputText("[vagina]");
     else outputText("[asshole]");
     outputText("; it's adorned with a pair of miniscule horns.  You groan in pain as its shoulders stretch you even wider, but the worst part of it is over and, within moments, you are delivered of your child.  ");
-    if (vag) player.cuntChange(40, true, false, true);
-    else player.buttChange(40, true, false, true);
+    if (vag) cuntChange(player, 40, true, false, true);
+    else buttChange(player, 40, true, false, true);
     outputText("Long minutes pass as your body recovers from the strain, bouncing back with unnatural vitality from the exhaustion and pain of giving birth, but finally you are ready to look at it.");
 
     outputText("\n\nIt looks like a cute little goat-man; the proof of such hangs between his legs, far larger than it should be on any infant.  He bleats at you meekly, and then begins to grow on his own!  His horns extend into curling, extravagant loops of bone, bending over his head; his soft flesh becomes tougher as his muscles develop, giving him a nice athletic build.  Finally his cock and balls grow to an impressive size, not only because of his natural - or unnatural - growth, but because it hardens with each passing moment; despite having been born only moments ago, your new son seems to be sexually aware.  Moments later he unbends and you get to take a good look at your newborn, and grown up, satyr.");

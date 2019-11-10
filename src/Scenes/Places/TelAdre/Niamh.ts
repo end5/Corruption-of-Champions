@@ -649,7 +649,7 @@ export function getBimboozeFromSean(): void {
 function leaveWithBeerTits(): void {
     clearOutput();
     outputText("The offer is tempting but right now you'd much rather deal with your boozy boobs privately.  You take off while trying to keep your [armor] modestly in place over your tits but it's difficult.  Your nipples constantly leak and drip a trail of alcohol all the way back to camp.  Thankfully by the time you arrive the effects seem to have mostly worn off.  Your nipples return to dripping milk, but although they've shrunk back down a bit they don't quite shrink all the way, leaving you with somewhat larger endowments than you had before.");
-    player.growTits(2, player.breasts.length, false, 2);
+    growTits(player, 2, player.breasts.length, false, 2);
     doNext(Camp.returnToCampUseOneHour);
 }
 
@@ -677,7 +677,7 @@ function sellYourBooze(): void {
     outputText(".");
     // If lust is low
     if (player.lust < 50 || player.gender == 0) {
-        player.growTits(2, player.breasts.length, false, 2);
+        growTits(player, 2, player.breasts.length, false, 2);
         outputText("\n\nYou feel flushed from the sensations, but finally you run dry.  Your breasts have shrunk back down, but they still feel a little larger than they were earlier.  As little droplets of milk instead of booze return to dripping from your nipples, Niamh hands you your cut of the gems you earned from the sales.");
         // [LEAVE]
         doNext(Camp.returnToCampUseOneHour);
@@ -732,7 +732,7 @@ function barBeerOrgyTits(): void {
     if (game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0 && player.vaginas.length > 0) {
         outputText("\n\nA pair of familiar paws grab your ankles and spread your legs wide.  Your labia practically spurt out girl cum in anticipation of what's about to happen.  \"<i>Oh, looks like someone's overly eager.</i>\"  You struggle to look over the mounds of your own tits to see who's standing between your legs.  The familiar sight of an oversized horse-cock waving in the air catches your attention shortly before the grinning smile of Urta comes into view.  \"<i>My, aren't you going to get reamed, lover.</i>\"  No sooner than she says that does the flared head of her cock plunges with a wet squish between your nether lips.  You feel her stretching your entrance apart as her massive horse meat bores into your body.  Blissful screams of pleasure are heard and it isn't until the head of Urta's cock breaks into your womb that you realize it's you that's screaming in ecstasy.");
         if (player.pregnancyIncubation == 0) outputText("  Some folks give yelps and cheers when they see the bulge that repeatedly forms in your abdomen each time Urta thrusts herself inside you.");
-        player.cuntChange(60, true, true, false);
+        cuntChange(player, 60, true, true, false);
     }
     // ELSE IF player has pussy and Urta is not in the bar.
     else if (player.vaginas.length > 0) {
@@ -821,7 +821,7 @@ function barBeerOrgyTits(): void {
         outputText("\n\nThe next thing you're aware of is feeling an intense pressure in your gut.  As your vision returns you weakly make out the desert outside Tel'Adre passing you by.  As your senses return you realize you're riding on Edryn's back and Urta is sitting behind you.  \"<i>Hellooooo...</i>\"  A very drunk Urta whispers in your ear.  \"<i>Looks like you're awake.</i>\"  She reaches around and pats your bloated belly.  \"<i>You really took a lot.  We sort of felt we overdid it, so we decided to give you a lift back to your camp.</i>\"  Urta's cum is still spilling out of your crotch, soaking Edryn's sides.  Edryn's own hindquarters are leaking from the many loads you gave her.");
         // IF [Player is pregnant but not with eggs] You pat your pregnant belly and silently hope Urta's ocean of cum hasn't drowned the child, if that's even possible.
         outputText("\n\nThe two of them drop you off along with your clothes and gear back at camp.  Each of them winks and blows you a kiss as they travel back to Tel'Adre.  Your breasts are leaking milk again, and they appear to have grown permanently larger.");
-        player.growTits(2, player.breasts.length, false, 2);
+        growTits(player, 2, player.breasts.length, false, 2);
     }
     // IF [Urta but not Edryn is present in the bar and sex with her is unlocked and character has pussy]
     else if (player.vaginas.length > 0 && game.time.hours < 15 && flags[kFLAGS.URTA_COMFORTABLE_WITH_OWN_BODY] > 0) {
@@ -838,7 +838,7 @@ function barBeerOrgyTits(): void {
         if (player.pregnancyIncubation == 0) outputText("  Urta's small ocean of sperm streams out from your pussy like a river down your legs as you try to stand.");
 
         outputText("\n\nWhen you're finally on your feet all the cum covering your body and filling your cleavage begins dripping down and pooling around your feet.  Milk is dripping from your nipples, signaling that the effects of Niamh's beer have finally worn off.  \"<i>Oi lass, I think ye be needin' a dip in a river.  Pity ye in a desert eh?</i>\"  She grins.  Still half drunk off booze and sex you haphazardly gather your things.  Urta graciously helps you out of the bar and through the streets of Tel'Adre until you've gathered your senses enough to find your way back to camp.  Your breasts ache from the pleasant ordeal, each one feeling fuller and larger than it was before this all began.");
-        player.growTits(2, player.breasts.length, false, 2);
+        growTits(player, 2, player.breasts.length, false, 2);
     }
     // =====
     // Generic ending if the first two don't trigger
@@ -846,7 +846,7 @@ function barBeerOrgyTits(): void {
         outputText("\n\nFor what seems like forever your body is used as a cum dump and fuck toy.");
         // IF [player has pussy]
         if (player.vaginas.length > 0) outputText("  The giant knot of the dog morph finally breaks its way inside causing your pussy to become overstretched.  The pleasurable torture only gets worse as he begins unloading a river of his cum inside you.  It begins squirting out around his cock and soaks both of your thighs in the process.");
-        player.cuntChange(60, true, true, false);
+        cuntChange(player, 60, true, true, false);
 
         outputText("  Niamh finally has her fill and dismounts you, but no sooner has her pussy left your face than a determined cock belonging to some sort of cat morph fills your mouth.  Your eyes bug out as it thrusts down your throat.");
         // If [player has pussy]
@@ -893,7 +893,7 @@ function barBeerOrgyTits(): void {
                     break;
             }
         }
-        player.growTits(2, player.breasts.length, false, 2);
+        growTits(player, 2, player.breasts.length, false, 2);
     }
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);

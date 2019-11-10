@@ -176,7 +176,7 @@ function bunbunFucksYourVag(): void {
     if (player.vaginalCapacity() < 20) outputText("By the time you're getting close to the bottom you have to work to encompass her length and girth within your velvet folds and grunt with discomfort from each new inch of throbbing fuck-stick, but you take it all.  ", false);
     else if (player.vaginalCapacity() < 50) outputText("By the time you get to the bottom you're panting and moaning, delighting in the feeling of being so perfectly impaled on a rigid fuck-stick.   With her entirely inside you, you're ready to fuck her in earnest.  ", false);
     else outputText("It doesn't take long to slide down the more-than footlong meat-pole, and to be honest you wish she was a bit bigger.  Your " + vaginaDescript(player, 0) + " is so ready for big dicks that this disproportionate member is average at best.  Still, you clench your thigh muscles to wring it a little tighter, and swoon from the feeling of warm maleness filling your loins.  ", false);
-    player.cuntChange(35, true);
+    cuntChange(player, 35, true);
     outputText("\n\n", false);
 
     outputText("While the bunny was content to remain passive up until this point, a fire lights in her eyes now that she's had a taste of pussy.  Her petite hands grab hold of your " + buttDescription(player) + " while she pulls her powerful, oddly-jointed legs underneath of her.  A split second later she pushes up with enough force to bounce you a few inches into the air before you drop down on top of her.  ", false);
@@ -197,7 +197,7 @@ function bunbunFucksYourVag(): void {
 
     outputText("Your eyes cross from a sudden, massive change in thickness of your lover's pole.  It starts out at your lower lips, spreading them until they're positively gaping.  Muscular contractions in the bunny's shaft make her dick pulse inside you, slowly pushing the bulge upwards and stretching your " + vaginaDescript(player, 0) + "'s walls as it travels towards your womb.  More and more fluid leaks inside of your channel until your " + legs(player) + " relax and go limp.  It isn't just pre-cum anymore – it's dulling the pain and relaxing your body!  You can actually feel your cervix starting to open involuntarily as the bulge passes the halfway point.  From the distended spot downwards, your cunt hangs loosely around the swollen cock, but another knot emerges at the base and starts to slide up your abused tunnel.  ", false);
     // (Cunt Change HERE)
-    player.cuntChange(70, true);
+    cuntChange(player, 70, true);
     outputText("\n\n", false);
 
     outputText("The girl underneath you is thrashing and moaning, chanting, \"<i>Yes... eggs eggs EGGS! YES!</i>\" while her ovipositor-like cock robs you of your strength and slides egg-shaped bulges inside you.  Amazingly, your " + vaginaDescript(player, 0) + " is awash with pleasure, and you reach down to ", false);
@@ -260,7 +260,7 @@ function bunbunFucksPCInAss(): void {
         outputText("'s lap, giggling as you feel it twitch happily inside you, but you're just getting started.", false);
     }
     // (BUTT CHANGE HERE)
-    player.buttChange(35, true);
+    buttChange(player, 35, true);
     outputText("\n\n", false);
 
     outputText("Your partner gasps in surprise as you pull yourself up, dragging her cock slowly through the tight ring of your pucker until she's about to slip out, and then dropping back down to envelop her again.  She involuntarily grunts wordless pleasure noises, thrilled with the sensation your warm body provides.  Her hands grab her nipples as you repeat your actions, working her with a slow, smooth rhythm that should bring her to orgasm... eventually.  ", false);
@@ -308,7 +308,7 @@ function bunbunFucksPCInAss(): void {
     }
     else outputText("and your arousal returns in force.", false);
     // (BUTT CHANGE HERE)
-    player.buttChange(70, true);
+    buttChange(player, 70, true);
     outputText("\n\n", false);
 
     outputText("A moment before the bulge reaches the tip of the rabbit-cock, you feel another sliding through your " + assholeDescript(player) + ".  The bunny-dick's head thickens for a moment before it dwindles down to its normal shape.  You feel something warm and orb shaped inside you – it's an egg!  The strangeness of the insemination can't hold back the excitement your body built up or the feelings the second egg's passage is leaving in its wake, and you cum hard.  Somehow your body gets enough control to squeeze the girl's penis tightly, but all it accomplishes is speeding the eggs passage as it spurts into your rectum along with another big burst of pleasant, relaxing fluids.", false);
@@ -900,7 +900,7 @@ function getEggflated(): void {
     if (!isEaster()) outputText("well-padded bedding");
     else outputText("sponge cakes baked for a giant");
     outputText(".");
-    player.cuntChange(28, true, true, false);
+    cuntChange(player, 28, true, true, false);
 
     outputText("\n\nAtop your perch, bound to the lapin by fourteen inches of caramel-colored flesh, you take a moment to rock back and forth atop the girl.  Merely being mounted has taken every ounce of her restraint, but you can tell it's a matter of seconds before her resolve crumbles.  Positioned perfectly to take the full geyser of her ");
     if (!isEaster()) outputText("gurgling seed");

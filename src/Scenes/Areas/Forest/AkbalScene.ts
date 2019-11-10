@@ -442,7 +442,7 @@ function girlsRapeAkbalPart2(): void {
         // Preggers chance!
         player.knockUp(PregnancyStore.PREGNANCY_IMP, PregnancyStore.INCUBATION_IMP, 101);
 
-        player.cuntChange(monster.cocks.cockArea(0), true, true, false);
+        cuntChange(player, monster.cocks.cockArea(0), true, true, false);
         player.orgasm();
         dynStats("cor", 1);
     }
@@ -577,7 +577,7 @@ function loseToAckballllllz(): void {
 
             outputText("Akbal snarls as he slams his hips into you, obviously happy that you're able to take his massive length. The demon appears to forget he's raping you and begins licking the back of your horse-like bottom half, sending shivers throughout your entire body as he roughly fucks you while painting your back with his saliva.", false);
         }
-        player.buttChange(new Akbal().cocks.cockArea(0), true);
+        buttChange(player, new Akbal().cocks.cockArea(0), true);
         outputText("\n\n", false);
 
         // (Ending)
@@ -603,7 +603,7 @@ function loseToAckballllllz(): void {
     else {
         outputText("Akbal begins to push into you, the barbs on his massive cockhead causing you to wince.  He bottoms out near-instantly, and he looks up at you with a feral grin.  Akbal begins to pump his engorged sex organ in and out of your " + assholeDescript(player) + " with a steadily mounting force.  You release a groan as the barbs covering Akbal's long cat-dick start to vibrate and begin to feel more like humming sex beads than anything else.  You widen your " + legs(player) + " in response and Akbal snarls as he slams his hips into you, obviously happy that you're able to take his massive length.  The demon seems to forget that he's raping you; he starts giving your neck licks that send shivers throughout your entire body as he roughly fucks you into the forest floor.", false);
     }
-    player.buttChange(new Akbal().cocks.cockArea(0), true);
+    buttChange(player, new Akbal().cocks.cockArea(0), true);
     outputText("\n\n", false);
 
     outputText("Akbal's embedded cock begins to hum inside you, causing you to cry out as he picks up the pace.  His every thrust is a hammer-like thump against your spread " + legs(player) + ".  Suddenly his thrusts become sloppy, and you feel his giant tool swelling inside you, stretching you out even more.  Akbal roars as he reaches his climax, and you feel his giant cock hosing down your insides, filling you with his corrupted demon seed as he rides out his orgasm.  His hips never stop.  You feel your own orgasm rising to the surface, only to suddenly fizzle out.  It is with horror that you realize that the corrupted seed inside you is actually stopping you from reaching climax.  Akbal, however, sprays his spunk into your " + assholeDescript(player) + " again and again, not slowing for even a moment.  Soon your stomach is obscenely swollen, and you even taste cat jizz in your throat.  Yet Akbal just keeps going, brutally fucking you into the ground.\n\n", false);
@@ -767,7 +767,7 @@ function akbalSubmit(): void {
 
             outputText("The weird spit he slathered your insides with begins to heat up instantly and the barbs covering his cock head start vibrating. The sensation of the vibrating barbs is like a dozen small slimy sex beads spinning and shaking as they are pushed inside you. Akbal wastes no time and begins forcibly fucking your " + assholeDescript(player) + " with reckless abandon, his every brutal thrust causing your body to slide forward through the dirt. You try to meet his deep thrusts but the jaguar fucks you with speed and force befitting a cheetah and the constantly vibrating barbs make your body shiver with each hammer blow to your insides.", false);
         }
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         outputText("\n\n", false);
 
         // (ending)
@@ -837,7 +837,7 @@ function akbalSubmit(): void {
             outputText("You feel him poking around your " + assholeDescript(player) + " and quickly realize his member is not only quite large but covered in almost a dozen tiny barbs.  When Akbal begins to penetrate you he groans in surprise as his large dick sinks into your " + buttDescription(player) + " easily, the sudden invasion causing you to croon.\n\n", false);
             outputText("The weird spit he slathered your insides with begins to heat up instantly and the barbs covering his cock head start vibrating.  The sensation is like a dozen small slimy sex beads spinning and shaking as they are pushed inside you.  Akbal wastes no time and begins forcibly fucking your " + assholeDescript(player) + " with reckless abandon, his every brutal thrust causing the tree you're shoved up against to shake back and forth.  You try to meet his deep thrusts but the jaguar fucks you with speed and force befitting a cheetah and the constantly vibrating barbs make your body shiver with each hammer blow to your insides.", false);
         }
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         outputText("\n\n", false);
 
         // (ending)
@@ -890,7 +890,7 @@ function akbalSubmit(): void {
     // [Small/virgin pucker]
     if (player.ass.analLooseness < 3) {
         outputText("You grit your teeth, expecting pain. However, thanks to the weird saliva he slathered your innards with, you feel none as his gargantuan member forcibly widens your " + assholeDescript(player) + ".", false);
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         outputText("\n\n", false);
 
         outputText("Being stretched by Akbal's long and slick member makes you shudder. The weird spit even begins to heat up, creating a steamy warmth inside you as Akbal's equally hot member stretches you out, your body spasming slightly in response.  After a few slow and shallow strokes, you can feel the barbs begin to vibrate.  The sudden motion sends your body into convulsions, the wicked-looking barbs acting more like humming sex beads than barbs.  When Akbal picks up the pace, you can only grit your teeth harder as you're stretched more and more beyond your natural limits.\n\n", false);
@@ -898,7 +898,7 @@ function akbalSubmit(): void {
     // [Medium Pucker]
     else if (player.ass.analLooseness < 5) {
         outputText("Thanks to the weird saliva he slathered your innards with, you feel no pain as his gargantuan member forcibly widens your " + assholeDescript(player) + ".", false);
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         outputText("\n\n", false);
 
         outputText("Akbal's titanic member stretching your " + assholeDescript(player) + " makes you groan beneath him, reveling in the slick heat and the fullness of your bowels.  His saliva heats up, creating a steamy and pleasurable warmth inside your body.  As he begins to pump his huge member in and out of you, the barbs covering his head begin to vibrate.  Your body is hit with waves of unbearable pleasure, the wicked-looking barbs acting more like humming sex beads than barbs.  Your body begins to act of its own accord; your " + buttDescription(player) + " grinds against his thrusts as his large sex slides in, his trunk slamming into your " + buttDescription(player) + " with rhythmic claps that echo throughout the forest.\n\n", false);
@@ -1011,7 +1011,7 @@ function akbalBigButtSubmit(): void {
     outputText("\n\nThat tongue goes so deep inside you that after a moment, you stop trying to judge just how far he's going.  Who are you to question HIM?  Your [asshole] is his to do with as he pleases, and the thought brings a happy squeeze through the muscles of your heiny.  His fingers squeeze and caress the feast of butt that you've placed before him, kneading as he licks and kisses, slobbering more and more of his bubbly, tingly spit everywhere.  It feels so good that it robs the strength from your [legs], but you fight to stay upright, trembling.  You must continue to present yourself to him!  That thought, alien as it seems at first, feels too right to resist, and you do as you always do with your lord - obey.");
     outputText("\n\nOnce he sees your [legs] shaking, Akbal gives your [asshole] a kiss and retracts his tongue, leaving you achingly empty, void of anything but a tingle and a hunger for something to enter you.  He does not keep you waiting.  Strong hands sink into the dirt on either side of you, and tufts of his fur skim along your moistened backside as he gets in position.  You shiver again, not struggling to remain ass-up as before, but in eagerness.  Something hot, something simply wondrously warm, presses up against you.  Every single nerve in your [butt] is demanding you push back and take him, smother him with your plush posterior.  You know what is expected of you, however.  You are his to claim, to take, and you will await his pleasure.");
     outputText("\n\nAkbal gives a few gentle pokes and prods, testing you, or perhaps, simply enjoying the feel of his barbed girth sliding through the slobbery valley of your butt-cleavage.  In any case, you wait for your god to finish, and he rewards you.  Throbbingly thick panther-cock plunges into your [asshole], sliding through your spit-soaked ring with ease.  The barbs that cover his cock don't hurt in the slightest, softening as they contact his spit so that they become little more than nubs of pleasure - the prize for obedience.  You moan, low and loud as you are taken, and soon, his furry sack comes to rest on your backside, his length hilted within.  Your rump tingles with the thrill of it all, hot and warm from his corrupt saliva and gleefully massaging his member with instinctive, muscular contractions throughout.");
-    player.buttChange(16, true, true, false);
+    buttChange(player, 16, true, true, false);
     outputText("\n\nYour eyes cross as you give yourself over to your fiery lord, lost in the sensation of being taken.  Part temple and part sex toy, your body is now his, and you love it.");
     if (player.cocks.length > 0)
         outputText("  [EachCock] is drooling freely by this point, and though Akbal doesn't bother to touch, the feeling of his warm pole inside you seems to reach all the way to your [cockHead].");
@@ -1263,9 +1263,9 @@ function topAkbitchFromBottomDuex(): void {
     else
         outputText("As you slide down the demon’s quivering dick your eyes roll back.  As the demonic saliva coating your [vagOrAss] comes into contact with the lube on his barbed, demon-cat dick, you cannot believe anything can feel this good.  Suddenly, you are bouncing as hard as you can while the demon thrusts up into you.  Your bodies slam together causing a thunderous applause to ring out across the clearing as you ride him as hard as you can.  The combination of the size and thickness of his ribbed, textured dick combined with the chemical stimulants makes your entire being cry out.  You feel as if you are drowning in ecstasy, as if an unending paradise is blooming inside you from your [vagOrAss].  All too soon the pleasure peaks.");
     if (player.vaginas.length > 0)
-        player.cuntChange(16, true, true, false);
+        cuntChange(player, 16, true, true, false);
     else
-        player.buttChange(16, true, true, false);
+        buttChange(player, 16, true, true, false);
 
     // [if (hasCock = true)]
     if (player.cocks.length > 0) {
@@ -1386,9 +1386,9 @@ function akbitchHighStrengthVariant(): void {
             outputText("\n\nAs soon as that giant erection touches your [vagOrAss], your face twists into a sexy grimace of pure euphoria.  The spit-drenched opening of your [vagOrAss] coming into contact with his lube soaked sex organ causes you to see stars.  Add to that the way the barbs inside seem to vibrate, and you are in heaven.  You slide down Akbal’s length without a problem.  Akbal attempts to move, to thrust up into your [vagOrAss] but you hold him here, asserting your dominance as you easily keep the bitch-boy pinned.");
 
         if (player.vaginas.length > 0)
-            player.cuntChange(16, true, true, false);
+            cuntChange(player, 16, true, true, false);
         else
-            player.buttChange(16, true, true, false);
+            buttChange(player, 16, true, true, false);
 
         outputText("\n\nYou place your hands on Akbal’s muscular calves and push down, causing the demon’s cock to tremble within you.  With your legs positioned outside of his, you squeeze his legs together and begin to rock back and forth.  As you slowly slide up and down the rigid length of Akbal’s pleasure rod, he goes crazy.  You can feel his muscles straining against your vice like grip as you tortuously slide up and down his length as slow as you can, willing yourself to not go wild as you silently assert your dominance over your bitch.  After a while you begin to speed up, slowly increasing tempo as you glide across his rock hard demon dick.");
 
@@ -1477,9 +1477,9 @@ function akbalBitchSpeed(): void {
         }
 
         if (player.vaginas.length > 0)
-            player.cuntChange(16, true, true, false);
+            cuntChange(player, 16, true, true, false);
         else
-            player.buttChange(16, true, true, false);
+            buttChange(player, 16, true, true, false);
 
         outputText("\n\nFrom his reaction you know he’s definitely enjoying this, but you could care less. He is nothing more than a living sex toy, a creature with a dick and tongue like no other which you are using to make your [vagOrAss] feel these electric sensations of cascading pleasure that steadily intensifies.  Beneath you, the demon begins to buck and soon you feel the heat of his exploding cock as he shoots you full of baby batter.  The euphoria you revelled it this entire time peeks.  Your body cringes involuntarily as your mouth opens in a silent scream.");
 
@@ -1626,9 +1626,9 @@ function akbitchToughness(): void {
         }
         // {cunt or butt change}
         if (player.vaginas.length > 0)
-            player.cuntChange(16, true, true, false);
+            cuntChange(player, 16, true, true, false);
         else
-            player.buttChange(16, true, true, false);
+            buttChange(player, 16, true, true, false);
 
         outputText("\n\nThe demon begins trying to slide his dick up into you to increase his own pleasure.  With a single raise of your hand, he stops and you’re free to control your own pace, and with that freedom, you increase tempo until the demon’s teeth are clenched and his toes curled.  He has to fight to keep still, which amuses you, as his fear of more pain wins out against his legendary lust.  Then you feel it.  His body begins to convulse.  You feel his dick explode inside you, filling you with a hot warmth that intensifies the chemical reactions taking place inside your [vagOrAss].");
 

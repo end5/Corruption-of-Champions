@@ -174,7 +174,7 @@ export class PlayerEvents implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.Eggchest, 1, -1);
             if (player.effects.getValue1Of(StatusAffects.Eggchest) <= 0) {
                 outputText("\n<b>You feel the rounded eggs within your [fullChest] vanishing, absorbed into your body.  </b>");
-                player.growTits(player.effects.getValue2Of(StatusAffects.Eggchest), player.breasts.length, true, 2);
+                growTits(player, player.effects.getValue2Of(StatusAffects.Eggchest), player.breasts.length, true, 2);
                 outputText("\n");
                 player.effects.remove(StatusAffects.Eggchest);
                 needNext = true;
@@ -634,7 +634,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (game.time.hours == 6 && player.armorName == "bimbo skirt" && rand(10) == 0) {
             outputText("\n<b>As you wake up, you feel a strange tingling starting in your nipples that extends down into your breasts.  After a minute, the tingling dissipates in a soothing wave.  As you cup your tits, you realize they've gotten larger!</b>");
-            player.growTits(1, player.breasts.length, false, 2);
+            growTits(player, 1, player.breasts.length, false, 2);
             dynStats("lus", 10);
             needNext = true;
         }

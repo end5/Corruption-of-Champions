@@ -534,10 +534,10 @@ function swimsuitVibrators(): void {
         // if (PC was a virgin)
         if (player.vaginas[0].virgin) {
             outputText("\n\n<b>Hell of a way to lose your virginity.</b>\n\n", false);
-            player.cuntChange(50, false, false, false);
+            cuntChange(player, 50, false, false, false);
         }
         else {
-            player.cuntChange(50, true, true, false);
+            cuntChange(player, 50, true, true, false);
             outputText("\n\n", false);
         }
         outputText("For hours you're left on the ground writhing in pain and pleasure from the cultist roughly forcing the false cock in and out of you while she moans with pleasure around the quivering shaft inside her.  The sensations are too much for you, and you can do nothing but just lie there and take it.  The cultist brings you to multiple orgasms before you finally pass out from the pain and overstimulation.", false);
@@ -562,7 +562,7 @@ function swimsuitVibrators(): void {
         if (player.vaginalCapacity() < 75) outputText("It takes some effort to get it inside you, but is well worth the effort.", false);
         else outputText("It easily slips inside your well-stretched hole.", false);
         outputText("  The cultist giggles at you and then starts to moan in an exaggerated manner from the feeling of being filled.  You can't help but let out your own (albeit less exaggerated) moan of pleasure when the arm comes into contact with your " + clitDescription(player) + ".  If feels so damn good having this massive false cock firmly clamped inside your " + vaginaDescript(player, 0) + " as it wriggles and jiggles around inside you, and its arm teases your clit...", false);
-        player.cuntChange(50, true, true, false);
+        cuntChange(player, 50, true, true, false);
         outputText("\n\n", false);
 
         outputText("\"<i>Oh wow, you're totally loving this, even though you just put it inside you!</i>\" the cultist squeals with glee.  \"<i>Just wait, it gets better,</i>\" she continues, taking a firm grip on the handle again while playing with her breasts with her free hand.  She starts to twist the toy around a bit, and then starts to pull it in and out.  You mimic her motions, wondering what might make this even better.  You soon realize just what she was getting at, and are surprised when the sensations start to make you squeal with glee as well.\n\n", false);

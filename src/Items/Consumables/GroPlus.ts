@@ -50,9 +50,9 @@ export class GroPlus extends Consumable {
         game.player.slimeFeed();
         outputText("You sink the needle into the flesh of your " + allBreastsDescript(game.player) + " injecting each with a portion of the needle.\n\n");
         if (game.player.breastRows.length == 1)
-            game.player.growTits(rand(5) + 1, 1, true, 1);
+            growTits(player, rand(5) + 1, 1, true, 1);
         else
-            game.player.growTits(rand(2) + 1, game.player.breastRows.length, true, 1);
+            growTits(player, rand(2) + 1, game.player.breastRows.length, true, 1);
         dynStats("lus", 10);
         Inventory.itemGoNext();
     }

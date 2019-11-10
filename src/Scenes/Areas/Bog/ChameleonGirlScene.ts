@@ -84,10 +84,10 @@ function loseToChameleonWithCockAnBallsAnCunt(): void {
     outputText("\n\nAs you set the last bit of your " + player.armorName + " aside in the water, you're suddenly struck in your chest and pushed to the ground.  The chameleon girl's wide foot keeps you pinned down, and she looks at you almost apologetically.  She shakes the worry from her face, and tries to appear stern once again.  \"<i>I'll... I'll show you who's the boss around here!</i>\"  Her tail darts towards you and uncoils at its end.  The tip starts probing around your " + vaginaDescript(player, 0) + ", brushing across your " + clitDescription(player) + " as it feels around for your entrance.");
 
     outputText("\n\nHer eyes are still locked to yours, and her expression betrays her frustration.  Finally she finds purchase and, unable to resist, you relax your cunt and allow her to slide a length of her smooth, round tail into you.");
-    player.cuntChange(8, true, true, false);
+    cuntChange(player, 8, true, true, false);
     outputText("  She keeps pushing in, thicker and thicker tail-flesh stretching your gash wider as she goes.  The stimulation arouses you despite your situation; lubricant drips from your pussy, allowing the chameleon girl to push a bit deeper into you.  Just when you think you can take no more, you feel the tip of her tail coil up, freeing a bit more room to be filled.  She grins maliciously, perhaps growing a tad more comfortable with being in charge, and forces into your innermost depths.");
     // (stretch check)
-    player.cuntChange(25, true, true, false);
+    cuntChange(player, 25, true, true, false);
 
     outputText("\n\nYou gasp as you're stretched wide and filled more completely than you can imagine; the girl standing over you looks extremely pleased with herself.  She starts to move her tail ever so slightly, its every movement filling you with a painful pleasure as your pussy is repeatedly stretched.  Too turned on by the sensation to be angry at her for taking advantage of you, your sexual fluids drip from your cunt and erect maleness like a faucet.");
 

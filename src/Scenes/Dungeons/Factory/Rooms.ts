@@ -66,7 +66,7 @@ function relieveTension(): void {
     if (player.effects.findByType(StatusAffects.TensionReleased) < 0) {
         outputText("You nod and step forwards, allowing her to hook up a modified harness and inject you with the demonic concoction.  In no time heat boils through your veins, pooling on your chest and crotch.  ");
         if (player.breasts.biggestTitSize() < 10) {
-            player.growTits(1, (2 + rand(3)), true, 1);
+            growTits(player, 1, (2 + rand(3)), true, 1);
             outputText("  ");
         }
         outputText("You glance over to the pile of glistening entwined bodies as they writhe in pleasure, and find yourself drawn in to the mass.  You spend the next four hours suckling tainted breast milk, fucking gaping pussies, and doing your damnedest to milk as much cum from the dick-girls around you.  Eventually the drugs work their way out of your system, leaving you to recover on the floor.  Cum, milk, and sweat drip from your nude form as you try to clean up and get dressed.");
@@ -82,7 +82,7 @@ function relieveTension(): void {
             outputText("You eagerly put on the modified harness and let them inject you with more of those body-altering chemicals.  As they fill you with artificial lust and desire, you cry out and beg for more.  They oblige you and give you a larger dose than the first time.  ");
             // Grow dick!
             if (player.cocks.length > 0) {
-                player.lengthChange(player.increaseCock(0, 5), player.cocks.length);
+                lengthChange(player, player.increaseCock(0, 5), player.cocks.length);
                 if (player.cocks.averageCockLength() >= 9 && player.cocks.averageCockThickness() < 2) {
                     outputText("You feel yourself gain in thickness as well, to match your new length.  ");
                     temp = player.cocks.length;
@@ -106,7 +106,7 @@ function relieveTension(): void {
                 player.breasts.createBreastRow();
                 outputText("Your chest tingles, revealing a pair of pink nipples on your new mammory glands.  ");
             }
-            player.growTits(1, (2 + rand(3)), true, 1);
+            growTits(player, 1, (2 + rand(3)), true, 1);
             outputText("  ");
             outputText("Your " + nippleDescription(player, 0) + "s ");
             if (player.cocks.length > 0) outputText("and " + multiCockDescript(player));
@@ -116,7 +116,7 @@ function relieveTension(): void {
             // FEMALE
             if (player.vaginas.length > 0 && player.cocks.length == 0) {
                 outputText("As you enter the sex-crazed crowd, you notice several \"girls\" with demonic cocks bloated by the use of drugs, getting drawn to you by the scent of your dripping wet " + vaginaDescript(player, 0) + ". Sitting on the floor, you spread your legs wide, facing the nearest one with an inviting lewd moan, while you hungrily grab another cum-covered cock, (one that just finished filling up an obscenely wide gaping vagina), to suck it.  You are soon penetrated and fucked hard and deep, one huge infernal dick after another, as they all cum into you in turn. ");
-                player.cuntChange(150, true);
+                cuntChange(player, 150, true);
             }
             // HERM
             if (player.vaginas.length > 0 && player.cocks.length > 0) outputText("You feel your " + multiCockDescript(player) + " getting milked by many wet holes, though you are too busy sucking cocks and moaning in ecstasy to notice who they belong to.  ");

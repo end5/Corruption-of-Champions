@@ -299,7 +299,7 @@ function winVSDriderTakeItsCockInCunt(): void {
     else if (player.vaginalCapacity() < monster.cocks.cockArea(0) * 2) outputText("fits tightly", false);
     else outputText("barely reaches halfway", false);
     outputText(" inside of you.", false);
-    player.cuntChange(monster.cocks.cockArea(0), true, true, false);
+    cuntChange(player, monster.cocks.cockArea(0), true, true, false);
     outputText("  You lean down, straddling her sides and reaching over to plant a kiss on one of the spider-woman's ", false);
     if (monster.nipplesPierced > 0) outputText("pierced nipples, circling the metallic stud", false);
     else outputText("nipples, circling the moist bud", false);
@@ -349,11 +349,11 @@ function victoryVSDriderRideOviVaginal(): void {
     outputText("Shifting back a bit, you place the entrance to your " + vaginaDescript(player) + " against the wiggling tip.  The drider sighs and warm green goop gushes inside you eagerly, spreading your canal wide and making you gasp with pleasure.  Subtly, you begin sliding your hips, seeking to soak in more sensation for your slit.  Cooing in delight, the drider grabs at her four ", false);
     if (monster.nipplesPierced > 0) outputText("pierced ", false);
     outputText("tits and begins to grope herself, squeezing hard on her breasts and tugging viciously at her pert, black nipples.  The segmented ovipositor wiggles excitably and plunges forward to bury the first few inches inside your sloppy snatch, the tube dilating and contracting inside you with alien rhythms.", false);
-    player.cuntChange(30, true, true, false);
+    cuntChange(player, 30, true, true, false);
     outputText("  You gasp, arching your back and sliding your " + vaginaDescript(player) + " forward, as if your quim could somehow devour the entire length on its own.\n\n", false);
 
     outputText("Once you get about halfway down the drider's ovipositor, it stops sliding in so easily, leaving you to hump away at the drider's abdomen in a futile quest for further penetration.  You mewl in disappointment and prepare to pull back and fuck the portion you've already taken like no tomorrow.  The flexible shaft undulates, then pistons forward, spear-like.  You feel your " + vaginaDescript(player) + " stretching wide, then relaxing as one of the segmented rings nestles into your canal's sopping embrace.  A fresh gush of green slime sprays out of your tightly-stretched labia, strings of the stuff shooting fanwise over the drider's glossy, black abdomen.", false);
-    player.cuntChange(50, true, true, false);
+    cuntChange(player, 50, true, true, false);
     outputText("\n\n", false);
 
     outputText("Throughout it all, the spider-girl is still mauling her tits, the once-perky nipples now distended and sore from the constant tugging, twisting, and flicking she subjects them to.  The skin of her breasts is rosy and pink, with imprints of her fingers highlighted in red where she's squeezed herself too hard.  In between exhaling blissful moans of contentment, the drider pants, \"<i>Just like that... yeah.  Ride my fat, egg-filled cock like that, you slut...</i>\"\n\n", false);
@@ -420,7 +420,7 @@ function victoryVSDriderRideOviAnal(): void {
     outputText("The ovipositor lurches over, bending and flexing to reach up to your exposed hole, barely touching you while it explores your cheeks.   You pant and grab your " + buttDescription(player) + ", pulling yourself wide to expose the clenching, dark circle that is your pucker.  It rubs across your hand before finally finding its way into your anal cleavage, ridges sliding between your backside and flopping against your ring while it blindly tries to get adjusted.  The moist, dripping slime it exudes quickly turns your ass into a green-glazed slip-'n-slide.  A sudden shock of sensation alerts you that yes, the ovipositor has finally found your asshole.\n\n", false);
 
     outputText("The tentacle-like tube prods forward, leaking ooze inside you as the first ring contracts to squeeze inside you.  You gasp when it pops into place, barely adjusting before the next ridge slides into the slightly-loosened sphincter.", false);
-    player.buttChange(30, true, true, false);
+    buttChange(player, 30, true, true, false);
     outputText("  Each segment somehow feels larger than the one preceding it, though it seems impossible given how widely stretched you feel by the time the fourth is inside you.", false);
     if (player.cocks.length > 0) {
         outputText("  The warm organ brushes past your prostate, the slippery caress making " + sMultiCockDesc(game.player) + " dribble a ", false);
@@ -438,7 +438,7 @@ function victoryVSDriderRideOviAnal(): void {
     outputText(" between you", false);
     if (player.clitLength >= 4 && player.vaginas.length > 0) outputText(", and pressing your monster chick-stick into it; the gooey heat sends a tingle of shock up your spine and your pussy convulses", false);
     outputText(".", false);
-    player.buttChange(50, true, true, false);
+    buttChange(player, 50, true, true, false);
     outputText("\n\n", false);
 
     outputText("Shivering, you glance back up at the defeated woman; she has a passionate, prideful look plastered on her face, though it seems to waver each time another inch of ovipositor pushes past your stretched-out ring.\n\n", false);
@@ -553,7 +553,7 @@ function loseVSDriderGetAnalledOvi(): void {
     outputText(" as she begins to enter inside of you.\n\n", false);
 
     outputText("Inch by inch, the bumps and curves of her nine-inch demonic dick massage your puckered hole as she plunges further in, working slowly to savor the feeling of being inside of you.  With a hearty grunt she fails to control her lust, driving in at full force and filling you with her corrupted member.", false);
-    player.buttChange(monster.cocks.cockArea(0), true, true, false);
+    buttChange(player, monster.cocks.cockArea(0), true, true, false);
     outputText("\n\n", false);
 
     outputText("\"<i>Ungh, if I knew your ass was this eager to s-swallow my cock I wouldn't have wasted my time tying you up...</i>\"  She gasps, clearly the more impassioned of the two of you as she manages to bottom out inside of your " + buttDescription(player) + ".  You have very little time to regain your breath as the horny drider-woman begins to thrust in and out of your " + assholeDescript(player) + " with fevered abandon, tongue lolling out of her open mouth while you're forced to bounce against her crotch, your ", false);
@@ -584,7 +584,7 @@ function loseVSDriderGetAnalledOvi(): void {
     if (player.tallness < 66) outputText(face(player) + ", sliding down across your cheeks and along your lips", false);
     else outputText("chest, trickling between your " + nippleDescription(player, 0) + "s", false);
     outputText(".  She pulls out her ovipositor slowly, though the bulge in your stomach remains as evidence of her work.", false);
-    player.buttChange(50, true, true, false);
+    buttChange(player, 50, true, true, false);
     outputText("  With a giggle, she removes herself from you and walks in front of your defeated form, bending down to kiss you gently on your lips and licking a pearl of semen from your face.  Your skin tingles with the brush of her venomous lips.  \"<i>Thanks for the fuck, pet!  Here's hoping my babies won't keep you for too long,</i>\" the arachnid-woman purrs, before turning around and walking towards the hazy embrace of the fog.  \"<i>Toodle-oo~!</i>\"\n\n", false);
     outputText("...\n\n", false);
     outputText("A few hours later and you wake up to the sound of loud croaking and the smell of the bog.  You try moving your limbs, finding that your bindings had partially dissolved since the encounter. Painfully removing yourself from the ground, you begin your journey back to camp - carrying a bit more than you were before.", false);
@@ -644,7 +644,7 @@ function loseVSDriderAndVaginallyImpreggleOvi(): void {
     outputText("Eventually she decides you've had enough, or perhaps grows impatient.  Her mouth closes, and her body rises.  Yours, incapable of either, merely burns.  The entirety of your body desires her, and your mind has a difficult time coming up with counterarguments.  Venom flows through you, commandeering your sensibilities and trading them in for a desire thus far unquenched.  She stands tall above you, straddling your body with her arachnid behind.  Something moist and ridged stretches out, caressing your thighs.  The degree to which you hope it's a cock is nearly immeasurable.  \"<i>I think you'll make a delectable little nest, morsel,</i>\" the drider croons.  \"<i>Let's start.</i>\"  Though you can't shift your head down to look at what she has in her behind, you can feel it.  It slaps messily against your thighs, searching out your " + vaginaDescript(player) + ".  The caress the tentacle gives your slit is mockingly affectionate, but any illusions of gentility that may have persisted are soon ended by the thrust that delves greedily and deeply into your " + vaginaDescript(player) + ".  If there is any small mercy, it's that the insatiable lust flooding your mind may wind up sated after all.\n\n", false);
 
     outputText("The thick, vile appendage twists inside of you as it advances.  Slick and obscene in its girth, each individual segmented ridge is palpable against your walls.  The prick practically breathes inside of you, pulsing with life and the ravenous desires that embody a phallus.  As it pushes it twists about in an attempt to wriggle in deeper, inadvertently showing the flexibility of its form.  \"<i>How many eggs have you lain, snack?</i>\" the drider coos.  Her fingers rub her sizeable swollen clit forebodingly.  It grows increasingly large, acquiring veins and bulges where no clit should.  \"<i>How swollen has your belly grown?</i>\"  Her tongue flicks across her venomous full lips.  \"<i>Time to enjoy it again.</i>\"  You can't see the tentacle shoved into your " + vaginaDescript(player) + ", but you are increasingly certain that it is in not, in fact, a dick.", false);
-    player.cuntChange(50, true, true, false);
+    cuntChange(player, 50, true, true, false);
     outputText("  With her body in the way, you cannot clearly see what transpires in your loins, yet a sight emerges before your eyes that dominates your mind. Her clit has finished growing, and is no longer a clit.\n\n", false);
 
     outputText("From her crotch a cock has erupted, demonic and terrible.  It drips with sweat and musk, dribbling onto your collarbone.  The position you're in has never seemed more ominous - or more exciting.  Her cockhead smacks against your lower lip, pre-cum bouncing off and lightly spattering on your forehead.  Venom-addled, breathing in her fragrant spunk sends a quake up your body.  Inadvertently your hips start to seize, your " + vaginaDescript(player) + " shuddering in surprising pleasure.", false);
@@ -717,14 +717,14 @@ function loseVSDriderAndGetFuckedANDAnalImpreggegity(): void {
     outputText("\"<i>So eager!  I'm not going to let you fuck me, but I do want your sperm.  After all, I'll need to fertilize some more eggs.</i>\"\n\n", false);
 
     outputText("Wait, eggs?  While you try to chew over the thought, you're battling with your raging, venom-enhanced libido in order to think about something other than how good her pussy feels.  Fuck it!  You go back to grinding against your mistress, nuzzling at her neck while she twists her spider-half around you, holding you tightly in her chitin and bringing her abdomen up behind you.  A weird, wet appendage rubs over your exposed " + buttDescription(player) + ", slapping at your cheeks until it finds the cleft between them.  Sliding deeper, it bumps into your sphincter, spurts something warm, wet, and sticky against it, then pushes through.", false);
-    player.buttChange(8, true, true, false);
+    buttChange(player, 8, true, true, false);
     outputText("  You shudder from the anal violation and twist against the legs holding you in place, but with your " + cockDescript(game.player, x) + " locked inside her, it's a useless endeavor.  It isn't shaped like a dick, and besides, that's currently dripping on your belly.  Oh gods... she mentioned eggs.\n\n", false);
 
     outputText("The strange organ keeps forcing its way deeper, slipping the steadily-widening, rib-like segments of its bulk into your " + assholeDescript(player) + ".  ", false);
     outputText("  Once it gets deep enough to push on your prostate, an upsurge of pleasure hits you hard enough to make " + sMultiCockDesc(game.player) + " dribble.  You moan against the drider's neck, pulsing pathetically inside the spider-woman's slit.  You know you'll soon be giving her exactly what she wants - all of it - and there's nothing you can do about it.\n\n", false);
 
     outputText("Another inch slides inside you, filling you uncomfortably full.  You shiver, clutching at your spidery mistress while she prepares both to deposit and to withdraw from the bank of you.   While you hang there, on the very edge of orgasm, it stops going deeper.  You've been given a reprieve, but it doesn't last long.  The drider kisses your forehead, her venomy lips spiking the sensitivity of your skin once again.  Suddenly, the fat tube in your " + assholeDescript(player) + " is dilating, stretching you wider.  Goo races up it, pumping into your guts, paving the way for the bigger bulk of the coming egg.  It stops at your pucker, battering against your muscles' resistance until it pops inside you, slamming into your prostate so hard that a huge rope of dick-milk erupts into the spider-woman's wet vagina.", false);
-    player.buttChange(50, true, true, false);
+    buttChange(player, 50, true, true, false);
     outputText("\n\n", false);
 
     outputText("The egg travels further up your butt, eventually flowing out the end of her stalk-like organ to rest deep in your digestive tract, ensconced in a bubble of slime.  Before you can adjust to this new sensation, another egg slips through your now-widened ring.  It squishes past your anal g-spot, rubbing it just as hard as the first, but before it even finishes traveling up your intestines, a third egg is forced inside you.  " + SMultiCockDesc(game.player) + " begins to cum wildly, squirting and leaking a torrent of jizz.  The first few ropes blast out with incredible force, hosing down her cunt", false);
@@ -749,7 +749,7 @@ export function birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY(): void {
     outputText("\nYour gut rumbles dangerously.  As if by instinct, you drop down and bend over, supporting half your weight on your hands while you lower your " + buttDescription(player) + " to just above ground level.  You grunt suddenly, your pregnant asshole dilating wide as a heavy weight seems to settle atop it, just inside you.  Clenching and tingling, your pucker slowly opens, releasing a torrent of green goop, along with a spherical white egg.  It drops into the messy puddle, cushioned from the fall by the heavy slime still leaking from your slightly agape anus.\n\n", false);
     outputText("The feeling of giving birth in such a way is oddly soothing, almost pleasant.  Your muscles move on their own, slowly and repeatedly clenching, relaxing, and forcing the eggs downward.  The next orb slips through your ring more easily than the first, shooting tingles of pleasure out from your pucker and making you gasp in surprise.  Hot on its heels, another egg follows, catching at your anal ring for a moment before your next contraction squeezes it out into the growing pile of goop.  It feels even better, good enough to make you cross your eyes and exhale contentedly.", false);
     // (buttstretch)
-    player.buttChange(40, true, true, false);
+    buttChange(player, 40, true, true, false);
     outputText("\n\n", false);
 
     outputText("You shift position slightly, if only to get more comfortable, and relax as the eggs work their way through your guts.  With each egg's passage, your sphincter seems to be looser, more pliant, and more sensitive.  You blush and squeeze, hurrying the process to make yourself feel even better, and egg after egg splats wetly into the growing pile, each one slick and soaked in slime.  One after another, the heavy orbs exit your body, until the last one is sliding out of your rectum and you're having a strange anal orgasm that feels as relaxing as it is pleasant.\n\n", false);
@@ -772,7 +772,7 @@ export function birthSpiderEggsFromAnusITSBLEEDINGYAYYYYY(): void {
 export function driderPregVagBirth(): void {
     spriteSelect(77);
     outputText("\nYou shudder violently, your stomach growling fiercely at you.  It feels as if something is moving around in your womb, and you bend over on all fours, raising your ass into the air as if it is the most natural thing in the world.  A slimy green fluid starts leaking out of your cunt, making a small puddle on the ground.  The sensation is extremely pleasurable as you feel it running down your thighs.  Groaning, you start to push out a small, smooth green ball, and the action makes your pussy so much wetter.  Groaning, you push out another, and another, each ball rubbing against your inner walls before dropping into the slimy pool of goo.  After the sixth, you orgasm, spraying your cum all over the ground underneath you, each egg squeezing out and prolonging the intense feeling.", false);
-    player.cuntChange(40, true, true, false);
+    cuntChange(player, 40, true, true, false);
     outputText("\n\n", false);
 
     outputText("After what seems like hours, you have lost count of the eggs pushed out.  ", false);

@@ -1698,7 +1698,7 @@ export function marbleSex2Continued(genders: number): void {
         if (player.cocks.length > 0) outputText(".  Your " + multiCockDescriptLight(game.player) + " erupts while clamped between your bodies", false);
         outputText(".  Her grip soon relents and the two of you lay there panting, the dildo still connecting you.  You can hear Marble say under her breath \"<i>That was way better than on my own...</i>\"\n\n", false);
         // (remove vaginal virginity?  "Your hymen is torn...")
-        player.cuntChange(8, true);
+        cuntChange(player, 8, true);
     }
     // (first time sex)
     if (player.effects.findByType(StatusAffects.FuckedMarble) < 0) {
@@ -1837,7 +1837,7 @@ export function marbleAddictionSex(newpage: boolean = true): void {
         if (player.tallness >= 48 && player.tallness <= 60) outputText(" and the breasts your head is clamped between", false);
         outputText(".  You can't help but think about how wonderful a person Marble is, and you bet that Marble feels the same way about you.  \"<i>I love you sweetie.</i>\" Marble says to you gently.  You assure her that you feel the same, and at the moment, nothing else matters.", false);
         // (remove vaginal virginity? "Your hymen is torn...")
-        player.cuntChange(8, true);
+        cuntChange(player, 8, true);
         outputText("\n\n", false);
     }
     // [after either]
@@ -3351,7 +3351,7 @@ function marbleNightSexChicks(): void {
     if (flags[kFLAGS.MARBLE_DICK_TYPE] == 0) {
         outputText("You gently lift yourself up as Marble produces her double dildo and slips it inside her womanhood.  Smiling at her, you slowly lower your body and impale your " + vaginaDescript(player, 0) + " onto the artificial rod.  ", false);
         // Loosen PC's vagina if they are really tight, also removes virginity
-        player.cuntChange(14, true);
+        cuntChange(player, 14, true);
         // (Message about vagina becoming looser)
         outputText("After adjusting to the feeling of the shaft inside you, you can't deny what a wonderful feeling it is to be connected like this.  ", false);
         // Does Marble take the initiative?
@@ -3436,7 +3436,7 @@ function marbleNightSexChicks(): void {
         outputText("The two of you give one more shudder from the wonderful stimulation, before collapsing on top of one another.  ", false);
         // Pregnancy chance for PC, ¼ their fertility
         player.knockUp(PregnancyStore.PREGNANCY_MARBLE, PregnancyStore.INCUBATION_MARBLE, 150);
-        player.cuntChange(flags[kFLAGS.MARBLE_DICK_THICKNESS] * flags[kFLAGS.MARBLE_DICK_LENGTH], true);
+        cuntChange(player, flags[kFLAGS.MARBLE_DICK_THICKNESS] * flags[kFLAGS.MARBLE_DICK_LENGTH], true);
     }
     marbleSexFinish();
 }
@@ -3995,7 +3995,7 @@ function milkMarbleTakeHerDick(): void {
     outputText("[pg]\"<i>Heh, good point.  Alright, here I go...</i>\"  She slowly works her way inside you, inch by inch.  ");
     if (player.vaginalCapacity() < flags[kFLAGS.MARBLE_DICK_LENGTH] * flags[kFLAGS.MARBLE_DICK_THICKNESS]) outputText("With each new bit of length inserted, she waits a few moments for you to adjust to her size, letting you fill out to accommodate her.  ");
     outputText("With the final bit of her inserted into you, her tail suddenly shoots straight up out of your sight, and she lets out a long exaggerated sigh of pleasure as the milking machine continues to whirl above her.");
-    player.cuntChange(8, true, true, false);
+    cuntChange(player, 8, true, true, false);
 
     outputText("[pg]\"<i>Oh sweetie, you feel so wonderful.  I actually feel a bit strange right now, like I want to....</i>\"  She starts thrusting into your entrance with great gusto, eliciting a surprised gasp from you; Marble isn't normally this energetic when it comes to sex!  Being milked is probably making her more aggressive than usual, though given how good she is making you feel, you can't really complain.");
 

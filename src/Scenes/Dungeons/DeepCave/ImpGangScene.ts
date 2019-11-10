@@ -34,14 +34,14 @@ export function loseToImpMob(): void {
     // (SINGLE PEN)
     if (!player.vaginas.length > 0) {
         outputText("Most of the crowd centers itself around your lower body, taking a good long look at your " + assholeDescript(player) + ".  An intrepid imp steps forwards and pushes his member into the unfilled orifice.  You're stretched wide by the massive and unexpectedly forceful intrusion.  The tiny corrupted nodules stroke every inch of your interior, eliciting uncontrollable spasms from your inner muscles.  The unintentional dick massage gives your rapist a wide smile, and he reaches down to smack your ass over and over again throughout the ordeal.", false);
-        player.buttChange(12, true, true, false);
+        buttChange(player, 12, true, true, false);
         outputText("\n\n", false);
     }
     // (DOUBLE PEN)
     else {
         outputText("Most of the crowd centers itself around your lower body, taking a good long look at your pussy and asshole.  Two intrepid imps step forward and push their members into the unplugged orifices.  You're stretched wide by the massive, unexpectedly forceful intrusions.  The tiny corrupted nodules stroke every inch of your interiors, eliciting uncontrollable spasms from your inner walls.  The unintentional dick massage gives your rapists knowing smiles, and they go to town on your ass, slapping it repeatedly as they double-penetrate you.", false);
-        player.buttChange(12, true, true, false);
-        player.cuntChange(12, true, true, false);
+        buttChange(player, 12, true, true, false);
+        cuntChange(player, 12, true, true, false);
         outputText("\n\n", false);
     }
     // (DICK!)
@@ -155,7 +155,7 @@ export function impGangGetsRapedByFemale(): void {
     outputText("You walk around to one of the demons and push him onto his back.  Your " + player.armorName + " falls to the ground around you as you disrobe, looking over your tiny conquest.  A quick ripping motion disposes of his tiny loincloth, leaving his thick demon-tool totally unprotected. You grab and squat down towards it, rubbing the corrupted tool between your legs ", false);
     if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLICK) outputText("and coating it with feminine drool ", false);
     outputText("as you become more and more aroused.  It parts your lips and slowly slides in.  The ring of tainted nodules tickles you just right as you take the oddly textured member further and further into your willing depths.", false);
-    player.cuntChange(15, true, true, false);
+    cuntChange(player, 15, true, true, false);
     outputText("\n\n", false);
 
     outputText("At last you feel it bottom out, bumping against your cervix with the tiniest amount of pressure.  Grinning like a cat with the cream, you swivel your hips, grinding your " + clitDescription(player) + " against him in triumph.  ", false);

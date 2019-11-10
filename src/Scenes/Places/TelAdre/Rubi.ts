@@ -941,7 +941,7 @@ export function dildoFuckRubi(): void {
     if (player.cocks.length > 0) outputText("  Meanwhile, [eachCock] stiffens, throbbing as the drug overtakes it.");
     if (player.lactationQ() > 0) outputText("  As the warmth spreads up your body, not even your breasts are left alone.  Your nipples harden and begin leaking milk, which pours down the sides of your body and is soaked up into the cushions beneath you.");
     // (Virginity/stretch check!)
-    player.cuntChange(30, true, true, false);
+    cuntChange(player, 30, true, true, false);
 
     outputText("\n\nYou let the dildo inch further inside the both of you as you wiggle your way closer to Rubi.  Your little demon partner \"<i>oohs</i>\" and \"<i>aahs</i>\" with every little movement.  You feel the thickness of the toy increasing as more of your bodily juices seep into it.  Wanting a little extra, you reach down and grab the middle of the toy, rocking it back and forth, fucking both you and Rubi at the same time.");
 
@@ -2430,8 +2430,8 @@ function getFuckedByRubi(): void {
     outputText(" emerges from the foreskin surrounding it as [rubi eir] cock strains, aching for something, anything to fill.");
 
     outputText("\n\nWith a look into your eyes, confirming [rubi eir] desires, [rubi ey] gives [rubi eir] cock what it wants.  One swift motion is all it takes as Rubi sinks [rubi eir] dick inside you several inches.  The feeling of penetration makes you moan suddenly, louder than you wanted to.  Rubi smiles, pulls out a few inches, and pushes back inside, just a little deeper.  This time it's your demonic lover's turn to moan as you clamp your [vagOrAss] around [rubi eir] invading member, tightening around [rubi em] like a vice.");
-    if (!player.vaginas.length > 0) player.buttChange(flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
-    else player.cuntChange(flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
+    if (!player.vaginas.length > 0) buttChange(player, flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
+    else cuntChange(player, flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
 
     outputText("\n\nRubi takes hold of one of your legs, lifting it up onto [rubi eir] shoulder and thrusts in just a little bit deeper.  The movement is just right, rubbing your ");
     if (!player.vaginas.length > 0) outputText("prostate");

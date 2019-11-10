@@ -6,9 +6,9 @@ export function lactaid(player: Player): void {
     if (player.breasts.averageBreastSize() < 8) {
         outputText("\n\n", false);
         if (player.breastRows.length == 1)
-            player.growTits((1 + rand(5)), 1, true, 1);
+            growTits(player, (1 + rand(5)), 1, true, 1);
         else
-            player.growTits(1 + rand(2), player.breastRows.length, true, 1);
+            growTits(player, 1 + rand(2), player.breastRows.length, true, 1);
     }
     // Player doesn't lactate
     if (player.breasts.biggestLactation() < 1) {

@@ -93,7 +93,7 @@ export function incubiDraft(tainted: boolean, player: Player): void {
         // TIT CHANGE 25% chance of shrinkage
         if (rand(4) == 0) {
             if (!flags[kFLAGS.HYPER_HAPPY]) {
-                player.shrinkTits();
+                shrinkTits(player);
             }
         }
     }
@@ -109,7 +109,7 @@ export function incubiDraft(tainted: boolean, player: Player): void {
                 if (temp3 < .1)
                     player.cocks[temp].cockThickness += .05;
             }
-            player.lengthChange(temp2, player.cocks.length);
+            lengthChange(player, temp2, player.cocks.length);
             // Display the degree of thickness change.
             if (temp3 >= 1) {
                 if (player.cocks.length == 1)
@@ -138,7 +138,7 @@ export function incubiDraft(tainted: boolean, player: Player): void {
             outputText("\n\nYour cock fills to its normal size and begins growing... ", false);
             temp3 = player.cocks[0].thickenCock(1);
             temp2 = player.increaseCock(0, rand(3) + 2);
-            player.lengthChange(temp2, 1);
+            lengthChange(player, temp2, 1);
             // Display the degree of thickness change.
             if (temp3 >= 1) {
                 if (player.cocks.length == 1)
@@ -178,7 +178,7 @@ export function incubiDraft(tainted: boolean, player: Player): void {
         // TIT CHANGE 50% chance of shrinkage
         if (rand(2) == 0) {
             if (!flags[kFLAGS.HYPER_HAPPY]) {
-                player.shrinkTits();
+                shrinkTits(player);
             }
         }
     }
@@ -198,8 +198,8 @@ export function incubiDraft(tainted: boolean, player: Player): void {
             }
         }
         if (!flags[kFLAGS.HYPER_HAPPY]) {
-            player.shrinkTits();
-            player.shrinkTits();
+            shrinkTits(player);
+            shrinkTits(player);
         }
     }
     // Demonic changes - higher chance with higher corruption.

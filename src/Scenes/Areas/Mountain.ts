@@ -305,8 +305,8 @@ function joinBeingAMinoCumSlut(): void {
     if (player.vaginas.length > 0) outputText("within your womb, knocked up by this manly beast");
     else outputText("within your bowels");
     outputText(".  \"<i>That's a good slut,</i>\" he grunts, pulling his cock off your belly and rubbing the slick, flat head against your awaiting [vagOrAss].  He teases you with the slight contact until you open your mouth to voice your complaints, then he suddenly thrusts inside.  Any words forming on your tongue fly away, replaced by a whine of relief as your hole gets stretched wide by the invading member.");
-    if (player.vaginas.length > 0) player.cuntChange(36, true, true, false);
-    else player.buttChange(36, true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, 36, true, true, false);
+    else buttChange(player, 36, true, true, false);
 
     outputText("\n\n\"<i>Ahh, yeah.  That's some good ");
     if (player.vaginas.length > 0) outputText("cow-pussy");

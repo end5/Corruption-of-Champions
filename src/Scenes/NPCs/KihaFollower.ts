@@ -1432,7 +1432,7 @@ function giveKihaIncubusDraft(): void {
     else if (player.ass.analLooseness < 4) outputText("welcoming");
     else outputText("loose");
     outputText(" passage.  Kiha whines and groans, until finally you relent and slide down, taking her thick prick into your ass.");
-    player.buttChange(14, true, true, false);
+    buttChange(player, 14, true, true, false);
     outputText("  Your lover screams, hurtling toward orgasm - until you stop perfectly still as your [butt] rests against her thighs.  You relax your anal muscles, careful not to give the cock snugly stuffed inside you any extra stimulation.  Made too submissive by sensation, Kiha cannot even attempt to defy your wishes and can only lie in a pool of her cum and fem-lube, pleading for mercy.");
     outputText("[pg]Graciously, you grant her request.  Once she's calmed down from the edge, you begin to rise and fall on her prick, slowly bouncing on her dragon-rod.  You let go of her hands, grinning as they instantly rush to your hips, attempting -- and failing -- to hasten your pace.  Kiha pants and thrusts her hips into you, though a quick, hard pinch of her nipples stops that.");
     if (silly()) outputText("  This is your game, you remind her: you control the horizontal and the vertical.");

@@ -172,7 +172,7 @@ export function goldenSeed(type: number, player: Player): void {
         changes++;
         // (Use standard breast shrinking mechanism if breasts are under 'h')
         if (player.breastRows[0].breastRating < 19) {
-            player.shrinkTits();
+            shrinkTits(player);
         }
         // (H+)
         else {

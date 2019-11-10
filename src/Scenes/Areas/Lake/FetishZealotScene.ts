@@ -266,7 +266,7 @@ function zealotWinRape(): void {
         else outputText("loose", false);
         outputText(" you are, he still seems to fit you like a glove.  With no need to adjust to his presence inside you, you immediately start to roughly fuck him.  To make sure he doesn't enjoy himself too much, you start to twist and pull at his nipples.  Between his gasps of pleasure and pain, he continues his prayer: \"<i>Gah, oh woe is me, ah-gha, my punishment is my pleas- agh!  My eternal torment will be –ugha, never being able to –hah, enjoy this forever.  Ugha!</i>\"  Finally tired of his antics, you punch him in the stomach, as his amazing rod pumping within your " + vaginaDescript(player, 0) + " pushes you over the edge of an orgasm.\n\n", false);
         outputText("Your lusts sated for now, you rise up off of him and put your " + player.armorName + " back on.  You decide to leave him lying there, still coughing from the blow to his stomach.  ", false);
-        player.cuntChange(monster.cocks.cockArea(0), true);
+        cuntChange(player, monster.cocks.cockArea(0), true);
     }
     player.orgasm();
     cleanupAfterCombat();

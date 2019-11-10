@@ -10,9 +10,9 @@ export function lustDraft(fuck: boolean, player: Player): void {
     // Heat/Rut for those that can have them if "fuck draft"
     if (fuck) {
         // Try to go into intense heat.
-        player.goIntoHeat(true, 2);
+        goIntoHeat(player, true, 2);
         // Males go into rut
-        player.goIntoRut(true);
+        goIntoRut(player, true);
     }
     // ORGAZMO
     if (player.lust >= 100 && !game.inCombat) {

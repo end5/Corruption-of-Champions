@@ -1045,7 +1045,7 @@ export function cockPumping(): void {
         outputText("It also shows a warning: <b>Not enough gems for full payment.  GEMS NOW EXHAUSTED.</b>  ", false);
     }
     if (payout > 0) {
-        if (player.cumQ() < 1000) player.modCumMultiplier(1);
+        if (player.cumQ() < 1000) modCumMultiplier(player, 1);
         if (payout == 1) outputText(Num2Text(payout) + " gem rolls ", false);
         else outputText(Num2Text(payout) + " gems roll", false);
 
@@ -1133,7 +1133,7 @@ function milkerBadEnd1(): void {
     // [(if vag)
     if (player.vaginas.length > 0) {
         outputText("  Another tube, likewise capped with a thick, firm end instead of a suction cup, reaches your " + vaginaDescript(player, 0) + " and pushes inside, secreting more of the fluid.  ", false);
-        player.cuntChange(15, true);
+        cuntChange(player, 15, true);
         // [(bigclit)
         if (player.clitLength > 3) outputText("A smaller suction tube fastens over your " + clitDescription(player) + " as it rouses from the vaginal stimulation.", false);
     }

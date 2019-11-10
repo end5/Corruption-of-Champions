@@ -2985,7 +2985,7 @@ function takeChargeAmilyMountHer(): void {
     outputText("Amily groans beneath you. \"<i>Please... stop teasing me. Let me put it in!</i>\" She pleads.\n\n", false);
 
     outputText("You reach down and stroke her cheek, a little worried that you may have seriously upset her, but happy to comply and fully impale yourself upon her length. ", false);
-    player.cuntChange((flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, false, true);
+    cuntChange(player, (flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, false, true);
     // (If pussy is gaping:
     if (player.looseness() >= 5) outputText("You can barely feel it within your stretched out depths, but you determine to do your best, for your sake and for hers.", false);
     // Otherwise:
@@ -3165,7 +3165,7 @@ function letAmilyLead(): void {
         outputText("\n\n", false);
 
         outputText("Once you are sufficiently wet for her tastes, Amily plunges her mouse-futa cock into you. ", false);
-        player.cuntChange((flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, false, true);
+        cuntChange(player, (flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, false, true);
         // (If player has a gaping pussy:
         if (player.looseness() >= 4) outputText("You are so large that you barely feel it, but Amily is determined to take what pleasure she can all the same.", false);
         // Otherwise:
@@ -4498,7 +4498,7 @@ function corruptAmilyCampBonesPCWithHerCock(): void {
 
     outputText("\"<i>Poor little bitch... you really do live for nothing but sex, don't you?</i>\" You taunt her, swiping up a stray drop of pre with your finger and slowly taking it inside your " + vaginaDescript(player) + ". Amily watches every little detail as it goes in. Finally, with a groan and an almost bestial scream, Amily loses her composure and pounces you.  As you hit the ground hard, you begin forming the words to scold her, but one glimpse of her eyes is enough to realize she's no longer thinking - the only things running through her head right now are fuck and breed. Amily rants and gibbers atop you, eyes blazing with unsated lust and the need, dearer to her than life itself, to fuck and breed. Her cock is as hard as an iron bar, slapping hard against your belly as she, made clumsy with her desires, struggles to position herself right to aim. She stabs clumsily against your " + vaginaDescript(player) + "'s lips, then, finally managing to hit the correct alignment, wastes no time in driving forward with a howl, impaling herself in you to her very hilt.", false);
     // (Play virginity lost message if appropriate.)
-    player.cuntChange((flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, true, false);
+    cuntChange(player, (flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, true, false);
     // [(If Amily's cock area > PC's capacity)
     if (flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH] > player.vaginalCapacity()) outputText("  You growl at her rough penetration, Amily stretches you out without regards for your pleasure; you'll definitely have to punish her for this later...", false);
     outputText("\n\n", false);
@@ -4733,7 +4733,7 @@ export function hermilyOnFemalePC(): void {
     // (If first time:
     if (flags[kFLAGS.AMILY_HERM_TIMES_FUCKED_BY_FEMPC] == 0) outputText("\"<i>Er... are you really sure about this? I mean...</i>\" Amily murmurs uncertainly, until, irritated, you suddenly wrap your " + legs(player) + " around her waist and pull her the last few inches needed to slam her dick into your needy pussy. She " + ((flags[kFLAGS.AMILY_NOT_FURRY] == 0) ? "squeaks" : "gasps") + " in shock and tries to pull out, but you still have your grip on her and pull her back, a process that repeats several times until the rhythm of it sinks in and Amily starts to thrust back and forth on her own.\n\n", false);
     else outputText("Amily grips your " + hipDescription(player) + ", gathering her courage, and then plunges her penis into your depths. Cautiously at first, she begins to thrust herself back and forth, growing faster and harder as her resolve builds.", false);
-    player.cuntChange((flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, true, false);
+    cuntChange(player, (flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH]), true, true, false);
     outputText("\n\n", false);
 
     outputText("Amily's ministrations are hardly the most expert of sexual techniques you've seen in Mareth, but her intentions to make it as pleasant as possible for you are obvious, and what she lacks in expertise she makes up for in enthusiasm, " + ((flags[kFLAGS.AMILY_NOT_FURRY] == 0) ? "squeaking" : "panting") + " and moaning as the unfamiliar sensations of your " + vaginaDescript(player) + " gripping her newfound penis fill her. You work your hardest to make it good as well, but Amily's inexperience with having a male sexual organ is evident in that she soon loses control and, with a loud " + ((flags[kFLAGS.AMILY_NOT_FURRY] == 0) ? "squeak" : "groan") + ", you feel her shooting cum into your thirsty " + vaginaDescript(player) + ". The hot fluid gushes from her futa-member, and when the last few drops have dripped from her, she collapses onto you, panting.\n\n", false);
@@ -6953,7 +6953,7 @@ export function urtaXAmilyCuntPussyVagSQUICK(): void {
     outputText("You are forced to suck Urta's cock or suffocate on it.  She shudders as your tongue rolls across her shaft, playing with the head and tickling her urethra.  You can still taste Amily all over her, a wonderful taste mixed with Urta's own sweat and musk.  You practically drink it up until Urta yanks her shaft out of your mouth.  You're almost giddy with anticipation as she runs it down your thigh and lines her horse-cock up with your " + vaginaDescript(player) + ".\n\n", false);
 
     outputText("You groan as Urta slowly slides into you, filling your cunt until it's stretched to the limit to take your lover's massive equine dong.  She finally bottoms out, pushing into you until you feel her flared head pressing against your womb.", false);
-    player.cuntChange(60, true, true, false);
+    cuntChange(player, 60, true, true, false);
     outputText("  She grabs your " + hipDescription(player) + " and starts to thrust, mercilessly hammering into you without respite until you're a moaning mess, panting like a whore as she jackhammers into you.  Your cervix feels like it could snap any moment, but it's a feeling of more pleasure than pain; your cunny contracts hard on Urta's cock, milking the already well-done fox for all she's worth until her tongue rolls out her mouth.\n\n", false);
 
     outputText("You grit your teeth as she makes one last brutal thrust into your eager womb and cums, spurting her scalding-hot horsemilk inside you. The sudden heat and force of her thick spunk flooding inside you sends you right over the edge - you cum, squeezing down on her deflating cock until it dribbles out its last drops of cum into you.\n\n", false);
@@ -7025,7 +7025,7 @@ export function pureAmilyPutsItInYourRectumDamnNearKilledEm(): void {
     outputText("  The ointment does its job admirably, allowing Amily to penetrate you fully with no pain whatsoever", false);
     if (player.analCapacity() > 60) outputText(", though you are sure you could easily handle her without it", false);
     outputText(".  Slowly, she begins to rock her hips back and forth, placing her hands on your " + hipDescription(player) + " for support.", false);
-    player.buttChange(flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH], true, true, false);
+    buttChange(player, flags[kFLAGS.AMILY_WANG_LENGTH] * flags[kFLAGS.AMILY_WANG_GIRTH], true, true, false);
     outputText("\n\n", false);
 
     if (flags[kFLAGS.AMILY_TIMES_BUTTFUCKED_PC] == 0) outputText("\"<i>Is this okay? Ah... it feels... really good...</i>\" she says with a low moan, to which you reply with a pleasure-filled groan of your own.\n\n", false);

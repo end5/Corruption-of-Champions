@@ -3,11 +3,11 @@ export function coal(player: Player): void {
     outputText("", true);
     outputText("You handle the coal rocks experimentally and they crumble to dust in your hands!  You cough as you breathe in the cloud, sputtering and wheezing.  After a minute of terrible coughing, you recover and realize there's no remaining trace of the rocks, not even a sooty stain on your hands!", false);
     // Try to go into intense heat
-    if (player.goIntoHeat(true, 2)) {
+    if (goIntoHeat(player, true, 2)) {
         changes++;
     }
     // Males go into rut
-    else if (player.goIntoRut(true)) {
+    else if (goIntoRut(player, true)) {
         changes++;
     }
     else {

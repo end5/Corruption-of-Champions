@@ -198,7 +198,7 @@ function victoryCowgirlRidingOnSpiderBoi(): void {
     if (player.balls > 0) outputText("lifting your balls and ", false);
     outputText("placing your " + vaginaDescript(player) + " atop the floppy, folded skin that obscures his cockhead.  The drippy arachnid-cock easily slides inside you while your labia push the skin back, exposing his pre-cum-drooling cum-slit to your hot, inner walls.  You can feel him swelling further from the stimulation, his twitching cock trying to stuff you as effectively as possible.", false);
     // (virgin check)
-    player.cuntChange(monster.cocks.cockArea(0), true, true, false);
+    cuntChange(player, monster.cocks.cockArea(0), true, true, false);
     outputText("\n\n", false);
 
     outputText("You pinch the arachnid male's nipple as you begin to bounce up and down upon him.  Each lewd slap of your " + buttDescription(player) + " on his groin is accompanied by a rippling spasm of pleasure in your " + vaginaDescript(player) + ", inadvertantly milking the thick-skinned member with the muscular spasms.  He moans and begins trying to lift his hips to meet you.  You deny him, slamming your body down harder with every downward motion to crush him back into the moist swamp-earth.\n\n", false);
@@ -262,7 +262,7 @@ function spiderBoyLossMaleButtfuck(): void {
     outputText("The penetration is ", false);
     if (player.analCapacity() < 40) outputText("mercifully easy due to the mess of pre-cum and the forgiving foreskin that clings to his shaft.  It rolls further and further back as he pushes in until his glans is exposed to your clenching guts.", false);
     else outputText("quite easy due to how well-stretched your " + assholeDescript(player) + " is.  Watching his fat little cock disappear into your roomy backside actually brings a smile to your lips.", false);
-    player.buttChange(monster.cocks.cockArea(0), true, true, false);
+    buttChange(player, monster.cocks.cockArea(0), true, true, false);
     outputText("  A firm, unforgiving hand grabs hold of " + oMultiCockDesc(game.player) + " and starts pumping it with short, fast strokes.  The slippery carapace gliding along your length feels absolutely marvelous, and in no time you're utterly relaxed against his invading member, dripping rivulets of sticky pre-cream onto your belly.  A round, hard digits circles your frenulum with a soft, repetitive motion, and you nearly blow your load on the spot.\n\n", false);
 
     outputText("Cruelly, the purple-eyed man stops touching you and puts his hands back on your hips and " + buttDescription(player) + ".  He admires you, his conquest, for a few moments while you leak onto yourself.  Time seems to drag on for an age, until you look up at him, still impaled on his thick tool, and ply him with questioning eyes.  The spider-morph gives you a reassuring squeeze and pulls back, his foreskin stretching inside of you while the hard cylindrical shape of his member vanishes from your rectum.  Your " + buttDescription(player) + " clenches repeatedly, feeling cold and empty after holding on to his hot, black-skinned cock for so long.\n\n", false);
@@ -355,7 +355,7 @@ function loseToSpiderBoyVagFucked(): void {
     outputText("You gurgle happily and wrap your arms around the man-spider's back, clutching your new mate tightly, lest he leave before he takes the time to fuck your sloppy, wanton little hole.  Meanwhile, his aphrodisiac toxins continue to slide unimpeded through his fangs into your body, taking your need higher and higher.  You claw at his back and hump against him, pressing your slobbering slit tightly against the underside of his manhood, rubbing back and forth over the slight bulge his urethra makes on the bottom of his shaft.  Tiny pulses ripple through the cock, letting you know just how much he's loving having your sloppy-wet lips rubbing on him.\n\n", false);
 
     outputText("The horny boy keeps his lips and fangs locked onto you, but he seems nearly as aroused as you at this point.  He raises his hips, removing the source of your pussy's pleasure and drawing a mewl of disappointment from your lips.  His cock doesn't disappoint you, and it returns a mere moment later, burying the entire shaft into your nethers with a smooth, confident stroke.  ", false);
-    player.cuntChange(monster.cocks.cockArea(0), true, false, true);
+    cuntChange(player, monster.cocks.cockArea(0), true, false, true);
     outputText("The rippling, fat cock rubs your " + vaginaDescript(player) + " perfectly, the foreskin dragging along your walls as soon as you start reciprocating and humping your wonderful mate's dripping dick.\n\n", false);
 
     outputText("You fuck him like an animal, a wanton beast lost in the throes of artificial heat.  The spider-boy hangs onto you for dear life, clutching tightly to your torso while your frenzied motions bounce him into the air on top of you, sliding his cock in and out of the quivering vice that is your " + vaginaDescript(player) + ".  Loud, wet slaps echo through the sex-musk-filled air while you put all of your body's strength and endurance into milking the spider-boy's cock.  Your thoughts vanished some time ago, replaced with hunger for orgasm and fantasies of getting an injection of hot spider-spunk.\n\n", false);

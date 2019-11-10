@@ -122,9 +122,9 @@ export function infestedHellhoundLossRape(): void {
         outputText("It's so wrong... but so hot.  He's filling you with them!  The fucking hell-mutt is cumming and plugging both your holes full of his parasitic cargo!  Gods, you're filled with wriggling worms, squirming and writhing against your tender cunt-walls and rectum.   You're getting fuller and fuller, and the spooge they're swimming in is so fucking hot it practically burns you.  You cum hard, clamping down on the invading members, and squealing with a mix of pain and pleasure, driven beyond rational thought by the absurdity and pleasure of the situation.\n\n", false);
 
         outputText("Unable to support yourself any longer, you collapse, your hips held up by the pair of demonic black dog-dicks lodged in your orifices.  They keep cumming and cumming, until your body takes a slow slide off to the ground.  Your eyes drift closed, lulled to sleep by the squirming warmth plugging both your holes.  ", false);
-        player.cuntChange(monster.cocks.cockArea(0), true);
+        cuntChange(player, monster.cocks.cockArea(0), true);
         outputText("  ", false);
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         // (Status applied – worm plugged) –
         // random chance of big lust boost as worms evacuate
         // your body.  When worms leave they take with them up
@@ -165,7 +165,7 @@ export function infestedHellhoundLossRape(): void {
 
         outputText("Unable to support yourself any longer, you collapse, your hips held up by the demonic black dog-dick lodged in your orifice.  They keep cumming and cumming, until your body takes a slow slide off to the ground.  Your eyes drift closed, lulled to sleep by the squirming warmth plugging your " + assholeDescript(player) + " and coating your back.", false);
         outputText("  ", false);
-        player.buttChange(monster.cocks.cockArea(0), true);
+        buttChange(player, monster.cocks.cockArea(0), true);
         player.orgasm();
         dynStats("lib", 1, "cor", 1);
         cleanupAfterCombat();

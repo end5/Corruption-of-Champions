@@ -140,13 +140,13 @@ function femFuckHerII(cockType: number): void {
         else outputText(" A bend in the cock grinds against your buzzer with particular intensity, effectively robbing any chance at protest from your lips.");
 
         outputText("\n\nIn an instant, two more vegatative pricks are unspooled from the centaur's crowded crotch to prod at your openings.  The first one unceremoniously slips past its brother's confused wriggling to pierce your [asshole].  You gasp at the suddenness of the unexpected penetration, which is all the third dick needs to find its home in your mouth.  The smooth length easily rams a solid nine or ten inches into your throat, and before you can gag, your throat tingles.  The uncomfortable reflex dies away as fast as it began, and with a happy wiggle, the two new cocks start to fuck your [face] and [butt]. Sliding deeper and deeper, the twin members pass to the point where can hear them wriggling through your guts more than feel them.");
-        player.buttChange(player.analCapacity(), true, true, false);
+        buttChange(player, player.analCapacity(), true, true, false);
 
         outputText("\n\nYou would probably be screaming at this, if you weren't effectively plugged with cock.  The first dick, the one that was grinding in such a confused manner, it pulls down, then rears up and tries again.  This time, its aim is true.  The hot, shape-shifted tool plows through your achingly hungry gates with a complete lack of skill and finesse.  Its passage does a fine job of battering the lips to either side.  The writhing tentacle seems utterly aimless its predations, slamming about your box and writhing madly");
         if (player.clitLength >= 6) outputText(" - you swear it spends as much time caressing your [clit] as squeezing it off");
         outputText(".  You buck your hips, dragging the butt-piercing wang along for the ride as you start to fuck in earnest.");
 
-        player.cuntChange(player.vaginalCapacity(), true, true, false);
+        cuntChange(player, player.vaginalCapacity(), true, true, false);
 
         outputText("\n\nThe trio of tentacle dongs burrow deeper inside you with each passing moment.  Sure, they'll pull an inch or two out at a time, in some semblance of a good fucking rhythm, but they always thrust deeper and faster.  The one in your [vagina] seems intent on cramming its whole length into your womb, but your cervix steadfastly resists the intrusion.  The hard fucking soon lifts your body clear of the ground, suspending you in a web of verdant, iron-hard spears that never stop their violation of your form.");
 
@@ -173,12 +173,12 @@ function femFuckHerII(cockType: number): void {
 
         outputText("\n\nSmirking, you reply, \"<i>That's more like it,</i>\" even as you shift down, letting the pointed crown of her cock finally taste the juicy vulva of your pussy.  From then on, you let your box do the talking, slowly sliding down and squeezing each freshly devoured inch with deliberate cuntractions.  The knot stops you when it presses on your labia, your unready pussy not quite ready to take it.  Small dollops of warm dick-juice slowly roll out inside you, mixing with your own copious lube as it soaks into the centaur's underfur.");
 
-        player.cuntChange(player.vaginalCapacity(), true, true, false);
+        cuntChange(player, player.vaginalCapacity(), true, true, false);
 
         outputText("\n\nRocking your [hips] slowly, you begin to properly ride your mount.  The demoness's cock slips almost the whole way out with ease, lubricated as it is, and it goes back in with a delicious squish of slippery pleasure.  You bounce upon your mastiff-endowed sex-toy with glee, listening with rapt attention to the hammering equine heart just above your head.  Reaching down, your hands find their way down to the swollen ballsack, and you roll the hefty orbs across your fingers as you ride their twitching spout.");
 
         outputText("\n\nAt last, your frantic fucking hits the doggie-dick hard enough to pop the slowly-swelling knot inside your snatch.");
-        player.cuntChange(player.vaginalCapacity() * 1.2, true, true, false);
+        cuntChange(player, player.vaginalCapacity() * 1.2, true, true, false);
         outputText("  The pleasure of being so fully stretched is enough to overwhelm any pain at such an act, and you switch over to smaller, faster strokes the leave most of the animal-cock inside you.  Bouncing atop the centaur's balls with a dopey grin on your [face], you sigh and moan.  This is how you're going to take down these demons, one fuck at a time!  The thought gives your " + skin(player) + " a fresh flush, and you pinch your nipple while imaging mounting a demon queen atop an orgy of her defeated lieutenants.");
 
         outputText("\n\nInside you, the knot stretches, interrupting your daydreams with its orgasm.  By the time you react, it's already dilated your cunt obscenely, rounding it into more of a sphere than a passage.  A second after, you feel the first splashes of dog-jizz spurting into your tunnel.  The first gushes of sperm effectively flood the love-canal, and those that follow just force the sealed juices deeper inside you, into your womb.  The heavy balls in your hand expand mid-orgasm, nearly doubling in size.  The taut scrotum skin is forced to stretch drum-tight while the prodigious orbs swell, the whole time somehow still pumping cum inside you.");
@@ -211,7 +211,7 @@ function femFuckHerII(cockType: number): void {
         outputText("\n\nWiping the showing spunk from your eyes, you give the throbbing member an affectionate pat, which only succeeds in coating your hand with a fresh layer of gooey glaze.  The centauress breathily exhales a satisfied sigh, at least, until you give her scrotum another encouraging squeeze.  Her flagging erection surges back to rock-hard life, and you quickly pivot, aligning the swollen tip with your ever-hungry muff.  Pressing back at it, you try to impale yourself upon the bestial girth but find it still thicker than you can easily handle.");
 
         outputText("\n\nYou're not going to give up that easy!  The dick presses harder against your [vagina] as you shift your body weight into it, the rubbery flesh of the flare flexing as it starts to part your lips at last.  Grunting, you try to relax, hoping it will ease the penetration, and to your delight, it does.  The veiny shaft pops into your waiting folds with surprising easy once the crown is inside you, sinking deeply into the well of feminine fluids.  You give up an unlady-like scream of pleasure at the feel of being filled so fully, that wonderful thick tip massaging every nerve ending along your walls as it plows deeper.");
-        player.cuntChange(player.vaginalCapacity(), true, true, false);
+        cuntChange(player, player.vaginalCapacity(), true, true, false);
 
         outputText("\n\nAfter taking all that, you begin to bounce up and down atop it, even though your [legs] are shaking and your [vagina] is");
         if (player.vaginas.wetness() < 4) outputText(" practically");
@@ -294,7 +294,7 @@ function femLoss(hpVictory: boolean): void {
     outputText("\n\n\"<i>Hold... still,</i>\" the demon grumbles as she fidgets, steel-shod feet cracking noisily against the pave-stones.  Her flat tip batters up against a different part of your anatomy with near bruising force every time she tries to hit your target, but she's as awkward as the beasts her lower body resembles.  You nearly scream in surprise when she smashes it into your [asshole], but thankfully, the heavy head is withdrawn, searching for more fertile pastures.  Again, she tries to spear your pussy, but misses, sliding beneath and glossing your [clit] with a heavy coating of horse-slime.");
 
     outputText("\n\nA hand reaches down to grab your " + hairDescription(player) + " and pull back sharply.  \"<i>Stay... put...</i>\" its owner pants.  You have been staying put!  At least, when you haven't been shaking with barely-contained need.  The angle is somewhat painful, flexing your spine into a dangerous arch even as the force of her tug shoots needles of discomfort into your abused crown.  Then, the horse-like lower body steps forward, and you're seeing stars and smiling dopily. The flared head smashed into your semi-stretched pussy for only the briefest moment before its body's momentum carried it through your entrance and deep into your canal.  Even now, you can feel the medial ring thrumming with each beat of the centaur's heart, just inside your entrance while the fat tip butts up against your cervix.");
-    player.cuntChange(monster.cocks.biggestCockArea(), true, true, false);
+    cuntChange(player, monster.cocks.biggestCockArea(), true, true, false);
 
     outputText("\n\nYou sag into the welcoming penetration, pushing back against the intruding maleness in a drug-fueled stupor.  Only after a few moments of fervent grinding do you realize that you truly want to push that beast the whole way into your womb - to feel it sliding wholly and completely inside you.  \"<i>Greedy little mare, aren't you</i>\" the confident centaur herm asks as she begins to rock with you, the soft flare stretching wider to scrape along every sensitive nerve of your interior with surprising tenderness.  She lets go of your hair, and you meekly look up and nod, pushing your body back hard with each thrust.");
 

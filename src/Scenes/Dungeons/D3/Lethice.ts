@@ -603,11 +603,11 @@ export class Lethice extends Monster {
             }
             else if (player.breasts.biggestTitSize() <= 0) {
                 outputText(" The inside of your [armor] is suddenly pressing back on your [nipples]. <b>You’ve grown breasts!</b> That bitch!");
-                player.growTits(3, player.breastRows.length, false, 2);
+                growTits(player, 3, player.breastRows.length, false, 2);
             }
             else {
                 outputText(" There’s suddenly a dearth of room in the chest of your [armor]. Your [chest] are expanding, bouncing distractingly and slowing you with the extra weight!");
-                player.growTits(2, player.breastRows.length, false, 2);
+                growTits(player, 2, player.breastRows.length, false, 2);
             }
 
             outputText(" (" + damage + ")");

@@ -493,11 +493,11 @@ function kihaVictoryPomfTail(): void {
     outputText(".\n\n", false);
 
     outputText("Satisfied that it is sufficiently lubricated, you squeeze the now-slippery tail and point its nubby tip at your entrance.  It bumps your " + clitDescription(player) + " as you wrangle with the struggling hind-limb, only turning you on all the more.  Feeling the tip circling your tunnel's opening, you push it up and seat the tentacle-like tail deep inside yourself.  ", false);
-    player.cuntChange(1, true, false, true);
+    cuntChange(player, 1, true, false, true);
     outputText("Gods she's so... warm, and the ridges, they're stroking every inch of your interior, even your g-spot!  Your " + legs(player) + " wobble unsteadily, but spurred by lust, you keep an iron grip on your new-found toy.  Kiha doesn't stop resisting either.\n\n", false);
 
     outputText("Leaning back against the tree the dragon previously occupied, you slide down, letting your " + legs(player) + " go completely nerveless.  Kiha's struggles unintentionally add to your pleasure, turning her tail into the world's warmest, most powerful vibrator.  Your hands begin to push more of her girthy thickness inside, stretching your poor puss further and further.  ", false);
-    player.cuntChange(35, true, false, true);
+    cuntChange(player, 35, true, false, true);
     outputText("Moaning, you look at her and meet her gaze.  She still looks mad, but her face also carries a hint of confusion.  Peeking down, you see she's dripping even faster, as evidenced by a massive puddle of lady-spunk that pools between her muscular, tightly-clenched thighs.  She must be turned on beyond belief, but she's still resisting!\n\n", false);
 
     outputText("Well, that's her loss.  You keep fucking yourself on her ridged posterior, enjoying the rapid twitches, hard wiggles, and other constant movements.  It almost feels like it's attacking your pussy, battering your womanhood with pleasurable strikes.  Your " + hipDescription(player) + " push back against the welcome intrusion, stuffing another inch or two inside yourself as you move closer and closer to the release you oh-so-desperately crave.  It feels so good!  You scream out in bliss and undulate your entire body, pumping, thrusting, and squirming yourself to the absolute highest peak of pleasure, the summit of sensation.  ", false);

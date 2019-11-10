@@ -453,7 +453,7 @@ function cottonFucksYou(): void {
         outputText("She reaches between her legs and lifts her cock, letting it rest on the small of your back while she wets it down with water from the shower and strokes it to its full length. You feel it inching across your back, growing hotter and harder. With a glance back, you estimate it must be at least two feet long! You gulp and put your head down, clenching your teeth for the inevitable.\n\n", false);
 
         outputText("\"<i>Oh now pet, don't be so scared,</i>\" Cotton whispers into your ear, then lifts her cock from your back and places it at your " + assholeDescript(player) + ". She reaches forwards and you hear the squeak of the temperature nozzle being turned. Seconds later, the water pouring down on you gets hotter, causing your whole body to heat up in response. Using this time, Cotton presses forwards, her equine cock invading your " + assholeDescript(player) + " like a charging army. She thrusts in and out slowly, being careful not to hurt you.", false);
-        player.buttChange(72, true, true, false);
+        buttChange(player, 72, true, true, false);
         outputText("\n\n", false);
 
         outputText("Before long you find yourself moaning beneath her, your " + assholeDescript(player) + " clenching and unclenching uncontrollably. \"<i>Ooh, my little pet likes it now, hmmm?</i>\" She whispers into your ear and nibbles on it ever-so-slightly. You can't help but give a breathless \"<i>Yes</i>\" in response. Cotton giggles and speeds up her thrusts. You find yourself pushing back into her, urging her to go deeper and deeper. Your own dick is completely limp in the presence of this godly cock, but tingles with pleasure and anticipation.\n\n", false);
@@ -477,7 +477,7 @@ function cottonFucksYou(): void {
         outputText("She reaches between her legs and lifts her cock, letting it rest on the small of your back while she wets it down with water from the shower and strokes it to its full length. You feel it inching across your back, growing hotter and harder. With a glance back, you estimate it must be at least two feet long! You gulp and put your head down, clenching your teeth for the inevitable.\n\n", false);
 
         outputText("\"<i>Oh now pet, don't be so scared,</i>\" Cotton whispers into your ear, then lifts her cock from your back and places it at your " + vaginaDescript(player, 0) + ". She reaches forwards and you hear the squeak of the temperature nozzle being turned. Seconds later, the water pouring down on you gets hotter, causing your whole body to heat up in response. Using this time, Cotton presses forwards, her equine cock invading your " + vaginaDescript(player, 0) + " like a charging army. She thrusts in and out slowly, being careful not to hurt you.", false);
-        player.cuntChange(72, true, true, false);
+        cuntChange(player, 72, true, true, false);
         outputText("\n\n", false);
 
         outputText("Before long you find yourself moaning beneath her, your cunt clenching and unclenching uncontrollably. \"<i>Ooh, my little pet likes it now, hmmm?</i>\" She whispers into your ear and nibbles on it ever-so-slightly. You can't help but give a breathless \"<i>Yes</i>\" in response. Cotton giggles and speeds up her thrusts. You find yourself pushing back into her, urging her to go deeper and deeper. Your clit twinges with pleasure after every thrust.\n\n", false);
@@ -500,7 +500,7 @@ function cottonFucksYou(): void {
         outputText("She reaches between her legs and lifts her cock, letting it rest on the small of your back while she wets it down with water from the shower and strokes it to its full length. You feel it inching across your back, growing hotter and harder. With a glance back, you estimate it must be at least two feet long! You gulp and put your head down, clenching your teeth for the inevitable.\n\n", false);
 
         outputText("\"<i>Oh now pet, don't be so scared,</i>\" Cotton whispers into your ear, then lifts her cock from your back and places it at your " + vaginaDescript(player) + ". She reaches forwards and you hear the squeak of the temperature nozzle being turned. Seconds later, the water pouring down on you gets hotter, causing your whole body to heat up in response. Using this time, Cotton presses forwards, her equine cock invading your " + vaginaDescript(player) + " like a charging army. She thrusts in and out slowly, being careful not to hurt you.", false);
-        player.cuntChange(72, true, true, false);
+        cuntChange(player, 72, true, true, false);
         outputText("\n\n", false);
 
         outputText("Before long you find yourself moaning beneath her, your cunt clenching and unclenching uncontrollably. \"<i>Ooh, my little pet likes it now, hmmm?</i>\" She whispers into your ear and nibbles on it ever-so-slightly. You can't help but give a breathless \"<i>Yes</i>\" in response. Cotton giggles and speeds up her thrusts. You find yourself pushing back into her, urging her to go deeper and deeper. Your " + clitDescription(player) + " twinges with pleasure after every thrust, and your own " + cockDescript(game.player, 0) + " is completely limp in the presence of this godly cock, but still it tingles with pleasure and anticipation.\n\n", false);
@@ -817,7 +817,7 @@ function cottonFucksYouInShowerRepeat(): void {
         outputText("Finally breaking the kiss, Cotton reaches down and hooks her arms under both your legs. You quickly wrap your arms around her neck as she lifts you off the ground. You carefully grip her with your legs as she uses one arm to position her dick at your waiting entrance. You give her a kiss just as she presses into you, and moan into her mouth. She gives a couple careful thrusts before her free hand returns to holding you.\n\n", false);
 
         outputText("At this angle she can't quite get her entire girth into you, but that doesn't matter, as it feels absolutely exquisite.", false);
-        player.buttChange(72,true,true,false);
+        buttChange(player, 72,true,true,false);
         outputText("  You take turns kissing each other's necks and nibbling each other's ears while she thrusts in and out. And after several minutes neither of you can take much more. She gives one last thrust, pulling you down further onto her cock as it explodes within you. Your whole body shudders with orgasmic energy and you bury your head into her neck, stifling a scream.\n\n", false);
 
         outputText("After a moment, Cotton pulls you up, letting her shrinking member flop to the floor, and sets you down. Only now you notice your flaccid cock also came at some point, covering both your bodies in seed. You share a deep kiss again and wash each other up before redressing and leaving the gym.\n\n", false);
@@ -829,7 +829,7 @@ function cottonFucksYouInShowerRepeat(): void {
         outputText("You decide to take her up on her offer, and she pulls you towards the showers, quickly disrobing the both of you. She turns only one shower-head on and pulls you into an embrace underneath the rapidly heating stream. Cotton's cock stirs between you, and your " + vaginaDescript(player) + " burns with anticipation.\n\n", false);
 
         outputText("Finally breaking the kiss, Cotton reaches down and hooks her arms under both your legs. You quickly wrap your arms around her neck as she lifts you off the ground. You carefully grip her with your legs as she uses one arm to position her dick at your waiting entrance. You give her a kiss just as she presses into you, and moan into her mouth. She gives a couple careful thrusts before her free hand returns to holding you.", false);
-        player.cuntChange(72,true,true,false);
+        cuntChange(player, 72,true,true,false);
         outputText("\n\n", false);
 
         outputText("At this angle she can't quite get her entire girth into you, but that doesn't matter, as it feels absolutely exquisite. You take turns kissing each other's necks and nibbling each other's ears while she thrusts in and out. And after several minutes neither of you can take much more. She gives one last thrust, pulling you down further onto her cock as it explodes within you. Your whole body shudders with orgasmic energy and you bury your head into her neck, stifling a scream.\n\n", false);
@@ -882,8 +882,8 @@ function cottonFucksYouInShowerRepeat(): void {
         outputText("Cotton continues the kisses down to your " + legs(player) + " and stands, dragging over a bench from the locker room before standing on it and giving your " + buttDescription(player) + " a good smack. You turn back and give her a coy look, which she returns and gives your flank another smack.", false);
         outputText("  She takes a moment to get some water from the shower over your rear end before pressing her cock against your " + assholeOrPussy(player) + ", slipping it in gently, careful not to go too quick. You moan slightly and blush, whispering back at her, urging her to continue.", false);
         // (Stretch and appropriate virginity check)
-        if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
-        else player.buttChange(72, true, true, false);
+        if (player.vaginas.length > 0) cuntChange(player, 72, true, true, false);
+        else buttChange(player, 72, true, true, false);
         outputText("\n\n", false);
 
         outputText("At this angle, she easily slips her entire length and girth into you, letting her balls slap against your crotch with a smack. She smacks your backside over and over while she thrusts, and you find yourself laying back on your centaur body in a blissful trance.  ");
@@ -952,8 +952,8 @@ function cottonFucksYouInShowerRepeat(): void {
         }
         outputText("  She gives you a quick kiss and moves her cock to your " + assholeOrPussy(player) + ", slipping it in gently, careful not to go too quick. You give her a submissive, but encouraging kiss, and whisper in her ear, urging her to continue.", false);
         // (Stretch and appropriate virginity check)
-        if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
-        else player.buttChange(72, true, true, false);
+        if (player.vaginas.length > 0) cuntChange(player, 72, true, true, false);
+        else buttChange(player, 72, true, true, false);
         outputText("\n\n", false);
 
         outputText("She can't quite fit her entire girth into you at this angle, but that doesn't matter as it feels absolutely exquisite. You take turns kissing each other's necks and nibbling on each other's ears while she thrusts in and out.  ");
@@ -986,7 +986,7 @@ export function cottonTantricSex(): void {
     outputText("She leads you to a private room in the gym and sets up a larger mat. She disrobes and you do the same. She sits on the mat and you sit opposite her. You spend a couple minutes just breathing, exploring your partner's body with your eyes only. Then Cotton slips her legs outwards, and leans backwards, letting her enormous member to waggle freely in the air. She curls a finger at you, and gives you your instructions.\n\n", false);
 
     outputText("You stand and straddle her hips, facing her, carefully lowering yourself down onto her length. You take your time, matching your breathing with hers, until you're completely impaled. Then you stretch your legs out behind your partner and also lean back. You both gyrate your hips as your bodies glisten with a light sheen of sweat.", false);
-    player.buttChange(72,true,true,false);
+    buttChange(player, 72,true,true,false);
     outputText("\n\n", false);
 
     outputText("After several minutes of this you switch positions, with Cotton leaning forward and grabbing you under the waist while you curl your legs under you. Then Cotton pulls herself up into a kneeling position while still inside you, pushing your head and shoulders down onto the mat and your legs up into the ceiling. Several more positions later, your breathing is a little ragged but still in sync, and it's clear neither of you can take much more of this.\n\n", false);
@@ -1017,8 +1017,8 @@ export function cottonTantricSex(): void {
     outputText("\n\n", false);
 
     outputText("Though there's no real thrusting or vulgar movements of any kind, the feelings are intense, likely heightened by your tantric link. You can simultaneously feel Cotton's long equine cock pulse within you, as well as feel your own " + assholeOrPussy(player) + " clamping down on a cock that is not your own.", false);
-    if (player.vaginas.length > 0) player.cuntChange(72, true, true, false);
-    else player.buttChange(72, true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, 72, true, true, false);
+    else buttChange(player, 72, true, true, false);
     // (If PC has a penis, add)
     if (player.cocks.length > 0) outputText("  Meanwhile, your own " + cockDescript(game.player, 0) + " hangs limply in front of you, tingling with arousal, but unable to harden. Cotton gives it a pat and says, \"<i>Worry not, pet, there's only room for one cock right now, but I'll want it some other time.</i>\"", false);
     outputText("\n\n", false);

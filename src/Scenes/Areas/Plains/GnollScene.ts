@@ -30,7 +30,7 @@ export function getRapedByGnoll(): void {
     if (!player.cocks.length > 0) {
         if (player.vaginas.length > 0) {
             outputText("The gnoll looks a little disappointed at the void between your legs.  \"<i>Aw, I was hoping for something substantial,</i>\" she titters.  That doesn't stop her from hefting her engorged clit-dick and slapping its tip onto the entrance of your " + vaginaDescript(player, 0) + ".  With one jittery lurch forward, she shoves her clit up inside you, her pubic mound mashing up against your " + clitDescription(player) + ".", false);
-            player.cuntChange(9, true, true, false);
+            cuntChange(player, 9, true, true, false);
             outputText("\n\n", false);
         }
         // (if cockTotal=0 AND vaginas=0)
@@ -242,7 +242,7 @@ function suckGnollClit(): void {
 function takeGnollClit(): void {
     outputText("", true);
     outputText("You roughly roll her onto her back and pull her long clit up to a vertical position.  She moans softly, and the rough skin beneath your fingers pulses as her arousal brings it harder and taller.  The end bloats larger, fuller, until it might be too wide for your purposes.  You line up your " + vaginaDescript(player, 0) + " and lower yourself onto the long, narrow faux-cock.", false);
-    player.cuntChange(9, true, true, false);
+    cuntChange(player, 9, true, true, false);
     outputText("\n\n", false);
     outputText("It slithers up your love canal with alacrity, and you quickly find yourself sitting on the gnoll's haunches.  You pump your hips up and down, relishing the feel of the thin spike slipping around within you.  This was not, however, what her anatomy was designed to do, and you can feel her monstrous clitoris flagging within you, collapsing down and denying you your well-deserved fucking.\n\n", false);
     outputText("\"<i>Hey!</i>\" you shout, and reach forward to slap the gnoll across the face.  Abruptly the clit-dick hardens inside you, even as the girl's face registers little response.  With a smirk, you try it again.  A second hard slap brings the hyena's pseudocock ramrod straight up inside you, and you roll your hips atop her appreciatively.\n\n", false);
@@ -276,7 +276,7 @@ function yoDawgHyenaBallz2(): void {
     if (player.balls > 0) outputText("your own " + ballsDescriptLight(player), false);
     else outputText("your sweat-slick thighs", false);
     outputText(".  The amazon wastes no time, guiding her monstrous clit to your " + assholeDescript(player) + " with gasping pleasure, thrusting the barrel-like pseudo-cock deeply inside your nethers, drawing a cry of penetration from your lips.  The plush interior of your anus parts before her energized clitoris, her cunt flowing with warm lubrication so heavily that its deluge inundates your bowels like a flood of pre-cum.", false);
-    player.buttChange(30, true, true, false);
+    buttChange(player, 30, true, true, false);
     outputText("\n\n", false);
 
     outputText("Roughly, she bucks against your hips, pushing your face against the grass and dirt, moving with relentless speed as she fucks you with every ounce of strength in her well-toned body.  She snarls and cries out, even laughing with a mad desperation, as she plunges her rock-hard joy buzzer into your loins trying to achieve release.  Your struggles are useless against the rutting passion of the hyena-girl, who uses you like a beast in heat.  In mere minutes, her body seizes, muscles straining with the blissful throes of imminent orgasm and you whisper a prayer that she'll be done shortly.  Gnashing her teeth, she hooks both spotted paws around your shoulders and drives her jet-black member into the velvet folds of your clenching asshole, her sweltering cunny gushing with her girl-cum.\n\n", false);

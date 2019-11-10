@@ -620,8 +620,8 @@ function ceraphTentacleGrape(): void {
     outputText(".  Even better, there are what feels like thousands of wriggling cilia squirming in the syrupy tunnel, each of them caressing and licking at " + sMultiCockDesc(game.player) + " repeatedly.  Like thousands of hungry tongues, they seem to set off every nerve in your " + multiCockDescriptLight(game.player) + ", nearly making you forget the rhythmic, pulsating suction of the tendril as it fellates you.\n\n", false);
 
     outputText("You get so distracted by this that you forget your " + vaginaDescript(player) + " for a moment, at least until the two fat cock-heads pressing at your lips and pucker jerk your attention back.  They hesitate for but a moment, just long enough to drool pre-cum over your orifices before slithering inside.  Each enormous, bulbous head spreads you wide.  They stretch your holes loose until each of them pops inside, the undulating tentacles pushing their tips as deeply inside you as they can.  Feeling utterly violated, completely full, and mercilessly fucked, you gasp and drool, every sexual part of your body being attended to by Ceraph's perfectly crafted sex-tools.", false);
-    player.cuntChange(24, true, true, false);
-    player.buttChange(24, true, true, false);
+    cuntChange(player, 24, true, true, false);
+    buttChange(player, 24, true, true, false);
     outputText("\n\n", false);
 
     outputText("Whipping through air increasingly humid with evaporating sweat and sexual juices, you find yourself suspended before Ceraph, hanging upside down.  Her eyes are low, lidded and filled with lust, much like you imagine your own must appear.  She's softly panting, small bursts of pleasure escaping her slightly parted lips with each thrust of the tentacles into your body and each pulsation of your trapped cock", false);
@@ -781,7 +781,7 @@ function ceraphUrtaRoleplayDrunk2(): void {
     if (player.isGoo() || player.isNaga()) outputText("wriggle to a wider stance", false);
     else outputText("spread your legs", false);
     outputText(" to make the penetration easier, but the vixen has your lower body firmly trapped between her knees, keeping your hips as tightly clenched as possible, heart-shaped rump throbbing at the fleshy weight within you. \"<i>Don't you love the long arm of the law?</i>\" she snickers, hiccupping  as she gives you another swat across your " + skin(player) + ", this time plunging half her length into your " + vaginaDescript(player) + ", stealing the breath from your lungs. Your squirting honey leaks from between your lips, lubricating the girl's shaft all the way to the ring of her sheath. You can feel the ten inches of her shaft inside you lifting your abdomen off the ground a few inches and it's all you can do to dig your fingers into the dirt as she thrusts rapidly, shallow pulses leaving every inch of your body jiggling under her.", false);
-    player.cuntChange(60, true, true, false);
+    cuntChange(player, 60, true, true, false);
     outputText("\n\n", false);
 
     outputText("Pounding you faster and faster, you can feel her cock swelling within you dangerously. Rutting frantically, she leans down, pressing her smooth sienna skin against your jizz-soaked back, her tits rubbing the fox-girl's spunk into your " + skin(player) + ". Lowering her head, she whispers into your ear, \"<i>No condoms for sneaky bitches who spike drinks,</i>\" her husky voice right on the edge.  \"<i>Fur isn't the only thing I've lost. I'm potent again,</i>\" she drunkenly insists. \"<i>I can feel it in my big, swollen balls.", false);
@@ -1790,7 +1790,7 @@ function barkToCeraphOnce(dog: boolean = true): void {
     else if (player.ass.analLooseness >= 4) outputText("The cunt-slick tool has no problem wiggling inside your well-used and abused asshole, hilted in a split second, the hundreds of nubs gently caressing your anal ring like a lover as they nestle inside you.");
     else outputText("The cunt-slick tool slides right on in thanks to your capacitative anus, the gentle nubs each massaging your snug ring as they slide on through.");
     outputText("  You groan as you're taken by your owner, catching yourself halfway and arresting the pleasured grunt as soon as you can, but it doesn't matter - the damage is already done.");
-    player.buttChange(16, true, true, false);
+    buttChange(player, 16, true, true, false);
 
     outputText("\n\nThere's a ring of larger bumps, just around the edges of Ceraph's glans, and they catch on something inside you as she grinds through your butthole, sending heat-spikes of inadvertent pleasure through ");
     if (player.cocks.length > 0) outputText("your twitching maleness");

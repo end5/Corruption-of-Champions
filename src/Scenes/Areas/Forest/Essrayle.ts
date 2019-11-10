@@ -167,7 +167,7 @@ function plantsForMe2(BE: number = 0): void {
     }
 
     outputText("\n\nAnother tentacle momentarily rubs over her breast, growing slimy with the sap before it moves around behind you and abruptly shoves into your [asshole].  Like a professional, she takes it slow to start, letting you adjust to the unique girth and contours of the tentacle as it plunges in deep.  It smoothly pulls nearly out only to pump in deeply once more.");
-    player.buttChange(10, true, true, false);
+    buttChange(player, 10, true, true, false);
 
     outputText("\n\nIt doesn't take long before you're screaming out in climax.  The pleasure swells and ebbs steadily, your planty friend making it sound like she's enjoying a four-course meal fit for a queen.  She continues to pump you on all fronts, not daring to stop until she's certain she's drained you for every drop she can get.");
     if (player.cumQ() >= 500 && player.cumQ() < 2000) outputText("  It takes some time for her to completely drain your virile reserves, humming happily as splurt after splurt bulges her cheeks and forces her throat to work.  By the time you start to go dry, you can swear the bulb that is her base looks a little bit bigger, and perhaps her breasts as well.");
@@ -201,7 +201,7 @@ function plantsForMe2(BE: number = 0): void {
         if (player.breasts.length > 1) outputText(", the top pair being largest, descending in size with each subsequent pair");
         outputText(".");
         // Boost size, set lactation quantity.
-        player.growTits(7, player.breasts.length, false, 2);
+        growTits(player, 7, player.breasts.length, false, 2);
         player.boostLactation(player.breasts.length);
         outputText("\n\nYou sit there for the next hour or two, milking your bloated bosom and giving the flora a generous watering in the process.  When all is taken care of, you stumble back upright with a brief struggle and don your gear once more.  The smell of fresh-cut flowers seems to linger on your [armor] as you depart.");
     }
@@ -377,7 +377,7 @@ function acceptEssyPrizes(): void {
     // if four+ breasts:
     else {
         outputText("your [fullChest] swell larger and larger under the expanding magic of the spell");
-        player.growTits(6, player.breasts.length, false, 2);
+        growTits(player, 6, player.breasts.length, false, 2);
     }
     player.boostLactation(player.breasts.length);
     outputText(", filling with warm, fluid weight.  They jiggle and wobble against each other and your belly as they adjust to their brimming plumpness.  You now proudly sport [fullChest].");

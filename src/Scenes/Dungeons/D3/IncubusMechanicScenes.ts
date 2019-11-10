@@ -416,7 +416,7 @@ function rideMechanicsCockII(cType: number): void {
         tightFit = true;
         outputText(" and feel the immensely girthy boner butt up against your lips, too wide to slip even the tiniest bit inside. Grunting in frustration, you grind against him, slicking his head further and applying more force. You push harder and harder, actually bending his rigid shaft slightly from the force. He groans in pain and pleasure. Suddenly, your voice joins his. His " + cockHead(monster) + " finally powers through your sopping gates and into your tunnel, stretching it painfully wide as it goes. The intensity of the combined pain and pleasure shocks you so badly that you nearly faint, and your [legs] go limp, forcing your body to slide down the belly-stretching meat-pole. You quiver and cry, sobbing words that sometimes sound like no and sometimes sound like yes, filled with more cock than you ever hoped to handle.");
     }
-    player.cuntChange(monster.cocks.cockArea(0), false, false, false);
+    cuntChange(player, monster.cocks.cockArea(0), false, false, false);
 
     // Merge together
     outputText("\n\nYou hold yourself atop him and let your abdominal muscles flutter around the incubus' " + cockDescriptShort(monster) + " like an organic sextoy, getting used to holding him inside you. Turning to look back over your shoulders, you place a hand upon his chest feel his well-defined muscles. You stop to admire his nipple, tugging at it a little bit. He growls in irritation, but you just squeeze his dick with your");

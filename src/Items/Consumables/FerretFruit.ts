@@ -156,7 +156,7 @@ export function ferretTF(player: Player): void {
     }
     // Go into heat
     if (rand(3) == 0 && changes < changeLimit) {
-        if (player.goIntoHeat(true)) {
+        if (goIntoHeat(player, true)) {
             changes++;
         }
     }

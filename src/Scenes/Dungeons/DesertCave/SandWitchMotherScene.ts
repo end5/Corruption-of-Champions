@@ -979,7 +979,7 @@ export function lesboMilkFilling(): void {
     // Both
     outputText("\n\nYou bite your own lip, trying to stifle a moan of delight when she presses herself harder against you, that remarkably firm nipple sliding inside you with only the slightest token of resistance.  It's so slippery with dribbling milk and your hot secretions that you almost wonder if she could press her whole, sordid breast inside you, but you know that's impossible.  Instinctively, you push back against the welcome, heated pressure, grinding your twat hard on her textured tit-skin.  Warm fluid rushes into your channel almost immediately, thicker and more copious than a minotaur's seed.  Some of it even squirts into your womb, while a few stray trickles leak out, dripping over your vulva and onto the creamy, chocolate skinned woman you're riding.");
     // CuntChange 3
-    player.cuntChange(3, true, true, false);
+    cuntChange(player, 3, true, true, false);
 
     outputText("\n\nYou ");
     if (player.isTaur()) outputText("squeeze your own [nipples]");
@@ -991,13 +991,13 @@ export function lesboMilkFilling(): void {
     if (player.pregnancyIncubation == 0) outputText("Your poor womb is flooding with the stuff.  It's getting so full that you're starting to feel like you should be labelled 'cream-filled', and a tiny bump has begun to swell on your midsection in response.");
     else outputText("Your poor pregnant womb is battered with the stuff, but since you're already full, jets of hot cream are spraying out from your [vagina] around nipple-shaped milk-injectors.");
     // CuntChange 6
-    player.cuntChange(6, true, true, false);
+    cuntChange(player, 6, true, true, false);
     outputText("\n\n\"<i>Yesssss,</i>\" you find yourself hissing, ");
     if (player.isTaur()) outputText("wishing you could rub your swollen belly");
     else outputText("rubbing your swollen belly");
     outputText(".  Your [vagina] feels like a living, breathing thing, taking in milk and producing nothing but lightning bolts of soul-filling pleasure.  Wracked by the erotic sensations, you shudder atop the Sand Mother, helplessly rutting her nipples.  She squeezes a third up against you, but fails to find purchase in your stuffed slit.  The extra teat merely hoses down your entrance, sloppily pressing itself against every moist, sexually-soaked fold.  Convulsing, your [vagina] spasms, pulling the tit-tips deeper into itself, and just when it relaxes in between suctioning compressions, the third one finds purchase, disappearing into your slavering honeypot in an explosion of white fluid.");
     // Cuntchange 9
-    player.cuntChange(9, true, true, false);
+    cuntChange(player, 9, true, true, false);
     outputText("\n\nThe Sand Mother gasps, \"<i>So good.  How's the milk, Champion?  Is it good?  Your pussy is slurping it down so well!</i>\"");
     outputText("\n\nIt IS good.  You nod to her, noting the way her tongue is lolling out and the rapidly increasing pace of her mastubatory noises.  She's going to cum soon and probably fountain from her nipples just as hard as she will from her two twats.  Your thoughts are interrupted by a sudden intrusion in your packed delta - is that... is that a FOURTH nipple inside you?  The answering injection of cream confirms what your startled consciousness is struggling to come to terms with.  Four nipples are spraying almost continually into you.  Gods, you're getting so full!  ");
     if (player.pregnancyIncubation == 0) outputText("You can feel your midsection going round, wobbling wildly.  POP!  Your belly-button has turned into an outie, accompanied by a wobbling, comforting weight inside you.  Four months... five, no - six... you give up on counting, but with every second that passes, you're getting bigger and bigger, visually matching any of the pregnant women you saw growing up.");

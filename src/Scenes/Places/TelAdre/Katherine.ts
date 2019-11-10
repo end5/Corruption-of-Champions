@@ -3878,7 +3878,7 @@ export function letKatKnotYourCuntPussyFuck(): void {
     }
     let cunt: number = player.vaginas[0].vaginalLooseness;
     // (hymen check and stretching)
-    player.cuntChange(cockArea(), true, true, false);
+    cuntChange(player, cockArea(), true, true, false);
     outputText("\n\n");
 
     if (cunt < player.vaginas[0].vaginalLooseness) {
@@ -3899,7 +3899,7 @@ export function letKatKnotYourCuntPussyFuck(): void {
     outputText("“<i>Ohhh!  Gonna plug you up; fill you fulla kitty-cat spunk!</i>” Katherine moans, her knot growing to its maximum size inside of you, anchoring you together so that she can no longer pull out.");
     // (stretch check again)
     cunt = player.vaginas[0].vaginalLooseness;
-    player.cuntChange(cockArea(), true, true, false);
+    cuntChange(player, cockArea(), true, true, false);
     outputText("  She lunges forward and grabs your shoulders, trying to push her way in deeper.");
     // (if stretched:
     if (cunt < player.vaginas[0].vaginalLooseness) outputText("  The amount of swollen cockmeat she's stuffing inside you is on the border of being painful, but mostly it's pleasure that fills you.");
@@ -3969,7 +3969,7 @@ export function getPenetrated(): void {
     outputText("“<i>Gonna - mmm - need just a bit of lube here...</i>” she mumbles, dragging her cock" + cockMultiple("", "s") + " between your buttcheeks.  As she says it, her body matches deed to her word and the " + cockType("puppy pecker", "kitty cock") + " begins drooling a slick, warm fluid into your asscrack" + cockMultiple("", ", as well as onto your cheeks, with the other bouncing around above them") + ".  With soft hands, she rubs the goo into your pucker and all over her pointed shaft, then there's a void of sensation as she pulls it from your asscheeks.  Before you can react, she pushes them open again and rams her cock into your anus!");
     // (butt hymen check + stretch check)
     const butts: number = player.ass.analLooseness;
-    player.buttChange(cockArea(), true, true, false);
+    buttChange(player, cockArea(), true, true, false);
     outputText("\n\n");
 
     if (butts > player.ass.analLooseness) outputText("You can't help but yelp in shock and look back over your shoulder at Katherine, who appears genuinely apologetic.  “<i>Sorry!  But I need to penetrate sooner rather than later - or would you rather wait until my knot's fully swollen?</i>”  You concede she has a point, but beg her to be more gentle if there's a next time.\n\n");
@@ -4053,14 +4053,14 @@ export function getDoublePennedByKat(): void {
     outputText("You indicate to Katherine that you want it in both holes.\n\n");
 
     outputText((doneBefore ? "She grins from ear to ear and says, " : "She starts in shock at the proposal, then slowly, she nods her head.  ") + "“<i>All right... if that's what you want.</i>”  " + (doneBefore ? "Her " : "Despite her tone, her ") + catGirl("soft", "furry") + " hands promptly begin to rub possessively over your " + buttDescription(player) + ", slowly moving up to take hold of your " + hipDescription(player) + ".  “<i>Hmm... this is so kinky" + (doneBefore ? "" : ", but I think it just might work") + "...</i>” she murmurs, mostly to herself, and you feel her running her " + cockAdj() + "cocks against your sensitive pussy lips and your tingling anus, letting you feel their " + cockType("rubbery-smooth", "barb-covered") + " length, then, drawing back her hips, she suddenly thrusts the bottom one home without any hesitation.  The other slides along your asscrack harmlessly.");
-    player.cuntChange(cockArea(), true, true, false);
+    cuntChange(player, cockArea(), true, true, false);
     // [check vag hymen and stretch it]
     outputText("\n\n");
 
     outputText("You can't help but look back over your shoulder at Katherine, who appears rapt with concentration.  “<i>Sorry!  But this will be tricky... I need to penetrate fast, but I need some lube, too - unless you want to try and take my other knot completely dry!</i>”  She looks down and pushes the upper shaft between your buttcheeks.\n\n");
 
     outputText("Fingers digging into your hips, she begins to thrust back and forth inside of you, dragging one shaft through your pussy and the other through your cheeks.  “<i>Mmm, you're so good... I could come from this alone,</i>” she moans.  As if to echo the sentiment, a slow stream of pre-cum infiltrates your asscrack.  “<i>Ahh, here it comes...</i>”  She pulls her shafts out just as you feel a minute stiffening of the knots at their bases, and you can hear her smearing her pre-cum and your copious girl-lube along her lengths.  Your " + assholeDescript(player) + " does not go neglected either; after she's done rubbing herself to slickness, a palmful of warm gooeyness is pushed into it.  She must already be drooling a huge amount if she's got this much to donate!  Almost on cue, she confirms your hunch with a moan.  “<i>Ahhh, gotta put it in now!  I can't hold back anymore, I'm sorry!</i>”  A hot pressure on both holes is the only warning you get before her twin talents are forced into you, sliding easily into your already wet vagina and pushing past your ring by virtue of the tapered shape and the slickness.");
-    player.buttChange(cockArea(), true, true, false);
+    buttChange(player, cockArea(), true, true, false);
     outputText("\n\n");
 
     outputText("She begins thrusting at once, grunting and groaning as if she were already near her peak.  “<i>Oh- Oh yeah, you're unbelievable!  " + (doneBefore ? "" : "It's so weird, ") + "I'm fucking two holes at once" + (doneBefore ? "; it's like I was born to do this" : ", but it's so good") + "!</i>” she cries out.  Her usually firm grip is shaky and unreliable, further evidence of the trouble she's having in controlling her climax.\n\n");
@@ -4140,10 +4140,10 @@ export function suckedNFuckedByKat(): void {
     else outputText(assholeOrPussy(player));
     outputText(".  Taking a bit of the pre-cum drooling from your prick, she slathers it over her cock" + cockMultiple("", "s") + ".  Then, without further ado, she slides herself into you.");
     if (player.vaginas.length > 0) {
-        if (getCockNumber() > 1) player.buttChange(cockArea(), true, true, false);
-        player.cuntChange(cockArea(), true, true, false);
+        if (getCockNumber() > 1) buttChange(player, cockArea(), true, true, false);
+        cuntChange(player, cockArea(), true, true, false);
     }
-    else player.buttChange(cockArea(), true, true, false);
+    else buttChange(player, cockArea(), true, true, false);
     outputText("\n\n");
 
     outputText("“<i>Now, then, let's give this a shot...</i>” she murmurs to herself, beginning to slowly rock back and forth within you, sliding her cock" + cockMultiple("", "s") + " out and then thrusting home, her knot" + cockMultiple("", "s") + " starting to swell and stretching you out in all the right ways... if only she wasn't going so slow, this would be so great.  But any complaints about the pace are lost when she bends over again and starts to lap at your " + cockDescript(game.player, x) + ", running her tongue over and around it several times before she takes it into her mouth, swallowing inch after inch of your shaft until her nose is pressed flat into the base of your belly.  She lets out a muffled grunt that might be “<i>right</i>”, then tries to manage the task of picking up the pace of her thrusts while sucking and slurping on your " + cockDescript(game.player, x) + " at the same time.\n\n");
@@ -4587,7 +4587,7 @@ function katDoubleHelixCraziness(): void {
     outputText("Shivering with delight as her hot, soaking wet walls envelop your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and her " + cockType("rubbery, pointy dog", "narrow, barbed kitty") + "-cock slides into your " + vaginaDescript(player) + ", you need no further encouragement, eagerly pumping your hips against hers, trying to push into her and push her into you without letting either cock slip free of its appointed hole.  Katherine gyrates her hips, attempting to stimulate both your parts, panting in pleasure.\n\n");
 
     outputText("You whine and whimper at the stimulus, moving your own hips likewise in an effort to intensify the sensations without accidentally enveloping her knot in your cunt.  Katherine mewls and yowls in pleasure in response, voicing her approval and pulling you dangerously close to her knot in an attempt to feel more of you.  Barely comprehending what's happening, your world shrinks down to the feeling of cock in cunt... then with a wet SCHLUCK Katherine's half-swollen knot slips inside your pussy and your hips collide.");
-    player.cuntChange(cockArea(), true, true, false);
+    cuntChange(player, cockArea(), true, true, false);
     outputText("\n\n");
 
     outputText("You gasp as you find yourself filled so full, with your cock sheathed to the hilt in her hot, wet depths.  The sensations are almost overwhelming... but you manage to stave them off and gasp out that she's knotted you.\n\n");

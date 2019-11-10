@@ -42,10 +42,10 @@ export class Reducto extends Consumable {
     private reductoBreasts(): void {
         clearOutput();
         outputText("You smear the foul-smelling ointment all over your " + allBreastsDescript(game.player) + ", covering them entirely as the paste begins to get absorbed into your " + game.player.skinDesc + ".\n");
-        game.player.shrinkTits(true);
+        shrinkTits(player, true);
         if (rand(2) == 0 && game.player.breasts.biggestTitSize() >= 1) {
             outputText("\nThe effects of the paste continue to manifest themselves, and your body begins to change again...");
-            game.player.shrinkTits(true);
+            shrinkTits(player, true);
         }
         outputText("\nThe last of it wicks away into your skin, completing the changes.");
         dynStats("sen", -2, "lus", -5);

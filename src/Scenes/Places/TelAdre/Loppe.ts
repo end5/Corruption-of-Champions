@@ -1247,7 +1247,7 @@ function getFuckedInYerTwatYaCunt(): void {
     else if (player.vaginalCapacity() < 35) outputText(", forcing your entrance wide to accommodate herself");
     outputText(".");
     // cuntchange, but suppress standard messages
-    player.cuntChange(35, true, true, false);
+    cuntChange(player, 35, true, true, false);
 
     outputText("\n\n\"<i>Ah, It feels even better than it tastes...</i>\" Loppe says airily as she begins humping you, her powerful hips working to bring both of you closer to the edge and beyond.");
     // [(not horse)
@@ -1383,7 +1383,7 @@ function getButtFuckedNonHoarseByLoppe(): void {
 
         outputText("\n\nHaving said that, she begins to push against your tightly-sealed sphincter, slowly increasing the pressure until her flared tip finally pops in.  You try to relax, like she said, but still can't restrain a soft groan of pleasure-pain as she forces her way inside of you, stretching you in a way you know you'll never completely recover from.");
         // insert anal virginity loss message
-        player.buttChange(35, true, true, false);
+        buttChange(player, 35, true, true, false);
         outputText("\n\nOnce inside, Loppe slowly slides forward, aided by the lube you've poured on her shaft earlier, until she's as far in as she's going to get.");
     }
     // (else if Anal Looseness < 3)
@@ -1394,13 +1394,13 @@ function getButtFuckedNonHoarseByLoppe(): void {
 
         outputText("\n\nYou manage to look at her over your shoulder and tell her it's no fun for your partners if you let yourself get too stretched out; you take good care of yourself.  Loppe leers at you.  \"<i>Don't worry, sugar. I'll take very good care of you, too.</i>\"  She licks her lips salaciously at the thought of what she intends.");
         outputText("\n\nYour eyes twinkle with eagerness; as much fun as banter is, you're waiting for the hard rod in your ass to start moving.  Loppe smiles back and gently humps you, sliding herself in inch by inch until she's as deep in your tight confines as she'll go.  You just purr in pleasure, wiggling your ass back into her crotch in appreciation.");
-        player.buttChange(35, true, true, false);
+        buttChange(player, 35, true, true, false);
     }
     else {
         outputText("\n\nLoppe presses her flared head against your [butt] and gasps in surprise as her tip all but glides inside without a hitch.  You croon in delight at the welcome feeling of cock up your trained ass once more.  \"<i>Whoa, sugar.  I can see you really enjoy some butt-fun.</i>\"");
         outputText("\n\nHaving an enormous cock and a libido as large as she claims, you would think she'd be pretty used to stimulating herself with a little ass-play as well.  \"<i>Of course I do, once in a while, but I'm not nearly as loose as you are.  But I won't lie and say this doesn't feel good; it's like a moist little pussy...</i>\" Loppe retorts.");
         outputText("\n\nWell, in that case, surely Loppe knows what to do.  You push back against her, sliding several more inches into yourself, and Loppe giggles.  \"<i>Of course I do, sugar.</i>\"  She bucks her hips into you, quickly hilting herself within your gaping, accommodating ass.  You gasp in pleasure and surprise as you suddenly find yourself filled with Loppe's equine-prick, moaning audibly as Loppe settles inside you, and turn to smile at her, eager to see what she can do once she really gets going.");
-        player.buttChange(35, true, true, false);
+        buttChange(player, 35, true, true, false);
     }
     outputText("\n\nLoppe grabs your [hips], leaning over your back to whisper into your ear.  \"<i>Should I get started, sugar?  Or do you want me to wait while you get used to me?</i>\"");
 
@@ -1534,7 +1534,7 @@ function getAssFuckedByLoppeAsACentaur(): void {
 
         outputText("\n\nHaving said that, she begins to push against your tightly-sealed sphincter, slowly increasing the pressure until her flared tip finally pops in.  You try to relax, like she said, but still can't restrain a soft groan of pleasure-pain as she forces her way inside of you, stretching you in a way you know you'll never completely recover from.");
         // insert anal virginity loss message
-        player.buttChange(35, true, true, false);
+        buttChange(player, 35, true, true, false);
 
         outputText("\n\nOnce inside, Loppe slowly slides forward, aided by the lube you've poured on her shaft earlier, until she's as far in as she's going to get.");
     }
@@ -1545,7 +1545,7 @@ function getAssFuckedByLoppeAsACentaur(): void {
 
         outputText("\n\nYou manage to look at her over your shoulder and tell her it's no fun for your partners if you let yourself get too stretched out; you take good care of yourself.  Loppe leers at you.  \"<i>Don't worry, sugar. I'll take very good care of you, too.</i>\"  She licks her lips salaciously at the thought of what she intends.");
         outputText("\n\nYour eyes twinkle with eagerness; as much fun as banter is, you're waiting for the hard rod in your ass to start moving.  Loppe smiles back and gently humps you, sliding herself in inch by inch until she's as deep in your tight confines as she'll go.  You just purr in pleasure, wiggling your ass back into her crotch in appreciation.");
-        player.buttChange(35, true, true, false);
+        buttChange(player, 35, true, true, false);
     }
     else {
         outputText("\n\nLoppe presses her flared head against your [butt] and gasps in surprise as her tip all but glides inside without a hitch.  You croon in delight at the welcome feeling of cock up your trained ass once more.  \"<i>Whoa, sugar.  I can see you really enjoy some butt-fun.</i>\"");

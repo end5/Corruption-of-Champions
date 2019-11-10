@@ -1421,7 +1421,7 @@ function femalePCDomFucksLatexGooFuta(): void {
     else if (player.tallness >= 60) outputText("into your neck");
     else outputText("over your head");
     outputText(", trying to pull herself up against you, deeper inside you.");
-    player.cuntChange(flags[kFLAGS.GOO_DICK_LENGTH] * flags[kFLAGS.GOO_DICK_LENGTH] / 6, true, true, false);
+    cuntChange(player, flags[kFLAGS.GOO_DICK_LENGTH] * flags[kFLAGS.GOO_DICK_LENGTH] / 6, true, true, false);
 
     outputText("\n\nYou bounce atop " + flags[kFLAGS.GOO_NAME] + " faster and faster");
     if (flags[kFLAGS.GOO_DICK_LENGTH] * flags[kFLAGS.GOO_DICK_LENGTH] / 6 <= player.vaginalCapacity()) outputText(", your [butt] clapping wetly against her onyx thighs");

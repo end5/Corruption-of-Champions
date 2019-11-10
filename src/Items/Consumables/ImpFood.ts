@@ -5,7 +5,7 @@ export function impFood(player: Player): void {
         if (player.cocks[0].cockLength < 12) {
             temp = player.increaseCock(0, rand(2) + 2);
             outputText("\n\n", false);
-            player.lengthChange(temp, 1);
+            lengthChange(player, temp, 1);
         }
         outputText("\n\nInhuman vitality spreads through your body, invigorating you!\n", false);
         HPChange(30 + player.tou / 3, true);

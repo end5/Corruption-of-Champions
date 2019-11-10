@@ -548,7 +548,7 @@ export function phoukaSexBunny(postCombat: boolean, lustLoss: boolean): void { /
         outputText("You nearly pass out from the pain as the " + phoukaName() + "'s cock lengthens and thickens inside you.");
     else if (!postCombat || (player.cor > 50))
         outputText("Even as the invader lengthens and thickens you push back against it. <i>“Good girl. Good little fuck slut,”</i> whispers the " + phoukaName());
-    player.cuntChange(50, true);
+    cuntChange(player, 50, true);
     outputText("\n\nThe bunny starts to use his powerful legs to thrust into you again and again with short, hard strokes.  You are pressed down into the muck and the bog fills with the noise of mud being slapped out of the way by your body.  You aren't sure how much more you can take when the bunny finally drives his cock into you right to the root.  You feel his overstuffed balls tightening as they slap against [if (isNaga = true)the base of your tail][if (isNaga = false)the flesh of your inner thighs].");
     phoukaSexPregnate(postCombat);
 }
@@ -587,7 +587,7 @@ export function phoukaSexGoat(postCombat: boolean, lustLoss: boolean): void { //
     else
         outputText("Once your [butt] has adjusted, the goat morph begins to thrust more quickly.  You are surprised when you feel his balls slapping against your [if (isNaga = true)tail][if (isNaga = false)inner thighs] - he can't already be in that deep, can he?");
     outputText("  Once the goat's cock is inside, he stops moving and tenses up.  You feel his cock growing larger and larger until you fear your abused anus is going to split apart.");
-    player.buttChange(45, true);
+    buttChange(player, 45, true);
     outputText("\n\nWith his cock expanded to full size and buried inside you, the goat begins rocking back and forth. <i>“How do ye like it?”</i> the " + phoukaName() + " bleats in your ear as he tries to force yet more of his cock inside you.  [if (corruption <= 50)You can't answer the goat, the pain of being split open is too great][if (corruption > 50)You pant with excitement from being dominated by this filthy shapeshifting goat].  The " + phoukaName() + " tenses once more, and this time you feel a thick deposit of semen being squirted into your violated ass.  ");
     if (postCombat)
         outputText("The goat-morph waits only a few seconds before unceremoniously yanking his deflating cock from your ass.");
@@ -649,7 +649,7 @@ export function phoukaSexHorse(postCombat: boolean, lustLoss: boolean): void { /
         outputText("You nearly pass out from the pain as the " + phoukaName() + "'s cock drives deeper and deeper inside you.  With such a wide head forcing its way in, you're sure the stretching will be permanent.  ");
     else if (!postCombat || (player.cor > 50))
         outputText("Even as the invader thrusts deeper you push back against it. <i>“Good girl, ya love horse cock, don't ya?”</i> whispers the " + phoukaName() + ".  ");
-    player.cuntChange(80, true);
+    cuntChange(player, 80, true);
     outputText("\n\n[if (isPregnant = true)You feel the head smack against your cervix, but with a child already inside your womb, there's no way for it to go any deeper.  The horse morph bears down on you in a futile attempt to force more of his length inside.][if (isPregnant = false)His cock finds your cervix and the horse morph pushes forward with his powerful hind legs.  You black out, you can't tell for how long, but when you awaken you can feel his cockhead and several inches of his thick shaft pulsing inside your womb.  Every time his heart beats you feel it along the veins that are being squeezed by your violated cervix.  He stops moving and sighs <i>“That's what I needed girly.”</i>]\n\n");
     if ((player.lust > 80) || (player.cor > 50))
         outputText("You pant and moan, waiting for the inevitable flood from his cantaloupe-sized nuts.  You're ready to get off just from the feeling of being so stuffed, so violated.");
@@ -677,13 +677,13 @@ function phoukaSexFaerie(postCombat: boolean): void {
         outputText("Not wanting him to think he's an equal partner in all this, you shove him onto his back and [if (isNaga = true)coil your tail over][if (isNaga = false)straddle] your full sized faerie lover while you strip off the last of your armor.  You can feel his hot and hard cock rubbing against your [if (isNaga = true)scales][if (isNaga = false)ass].  Maybe this isn't getting through to him.  Oh well, you're primed for a good fuck anyway.  He's already leaked enough pre for lubrication so you guide his dick to your waiting [vagOrAss].\n\nThe " + phoukaName() + " thrusts upward, trying to spear you from the ground.  'No more of that' you think, planting one hand on his belly.  You lower yourself slowly onto the oversized faerie's cock, hoping to get more out of this than him.  Now that you're holding him down you set the pace.  You also control the angle of his cock, making sure it hits all the high notes inside your ");
     if (player.vaginas.length > 0) {
         outputText("[vagina].");
-        player.cuntChange(20, true);
+        cuntChange(player, 20, true);
         outputText("\n\nYou're getting closer and closer to cumming when you feel the " + phoukaName() + "'s cock twitch inside you.  The bastard is already there!");
         phoukaSexPregnate(true);
     }
     else {
         outputText("[butt].");
-        player.buttChange(20, true);
+        buttChange(player, 20, true);
         outputText("\n\nYou're loving the feeling of this faerie's cock sliding around inside your asshole.  In fact you're loving it so much that you're surprised when he thrusts upward and you feel his prick jerking and twitching.  Your colon starts to stretch as the " + phoukaName() + " pumps gallon after gallon into your accomodating asshole.  Your gut expands slightly, making you look slightly pregnant.  ");
         if (player.isTaur())
             outputText("You sigh in frustration as the " + phoukaName() + " pulls free from your ass, obviously about to leave.  He notices your condition and thinks better of it. <i>“Just gimme a sec.  I’ll get ye off,”</i> he says. <i>“After all, I do want ye to come back fer more.”</i>\n\nHe starts jacking himself off, whispering something to himself under his breath.  When his cock looks nice and hard he grabs your flanks and drives the full length back inside you.  As he pistons into your rectum, you feel that denied orgasm building and at last you cum.");

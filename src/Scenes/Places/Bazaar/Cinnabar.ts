@@ -130,8 +130,8 @@ function cinnabarNonHugeDickings(): void {
     else outputText("release the butt-stretching pressure", false);
     outputText(" and settle to the business of sliding back and forth, caressing you from the inside out.", false);
     // Finger poke
-    if (player.vaginas.length > 0) player.cuntChange(8, true, true, false);
-    else player.buttChange(8, true, true, false);
+    if (player.vaginas.length > 0) cuntChange(player, 8, true, true, false);
+    else buttChange(player, 8, true, true, false);
     if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("  Unbidden, " + sMultiCockDesc(game.player) + " begins to harden, stiffening with every brush against your prostate.", false);
     else if (player.vaginas.length > 0) outputText("  Femcum begins to soak the rat's practiced fingers, drenching her finger-pads with liquid lust.", false);
     outputText("  You rock back, slamming your " + buttDescription(player) + " against the wall and moaning with need.  She's quite skilled, and ", false);
@@ -293,7 +293,7 @@ function fuckCinnabarHugerAndCorruptedEr(): void {
     outputText("Cinnabar's head looks absurdly tiny, perched as it is above her bloated belly.  She moans, \"<i>F-fucking asshole!  You went t-too f-ah-ahhh-st...</i>\"  Her voice trails off as her eyes narrow.  Somehow, even with her broken body, she's managed to get it together enough to yell at you.\n\n", false);
 
     outputText("\"<i>Fuck you!  You can't wait to get inside and then you sit there smirking?  Fuck that.  If you won't fill me right, I'll make you!</i>\" screams the red rat.  Her already-crimson eyes glow with eldritch light and her hand lifts, radiating with the same unholy power.  Cinnabar's hand punches through one of the mirrors on the wall, disappearing for the tiniest fraction of a second before punching through the ring of your " + assholeDescript(player) + ", HARD.  You scream, completely and utterly violated, just like Cinnabar.", false);
-    player.buttChange(30, true, true, false);
+    buttChange(player, 30, true, true, false);
     outputText("\n\n", false);
 
     outputText("She twists her fist inside you and reaches up to palm the tender lump of your prostate as she says, \"<i>Payback's a bitch.</i>\"  Her eyes flare, the magic exploding inside you, worming through your prostate and into your mind.  ", false);

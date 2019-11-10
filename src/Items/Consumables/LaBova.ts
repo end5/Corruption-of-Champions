@@ -110,7 +110,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             temp3 -= .5;
         }
         temp3 += player.increaseCock(temp, (rand(3) + 1) * -1);
-        player.lengthChange(temp3, 1);
+        lengthChange(player, temp3, 1);
         if (player.cocks[temp].cockLength < 2) {
             outputText("  ", false);
             if (player.cocks.length == 1 && !player.vaginas.length > 0) {
@@ -125,7 +125,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
                 player.cocks.removeCock(0, 1);
             }
             else {
-                player.killCocks(1);
+                killCocks(player, 1);
                 player.genderCheck();
             }
         }
@@ -151,7 +151,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             outputText("\n\nYour " + breastDescript(game.player, 0) + " tingle for a moment before becoming larger.", false);
         else
             outputText("\n\nYou feel a little weight added to your chest as your " + breastDescript(game.player, 0) + " seem to inflate and settle in a larger size.", false);
-        player.growTits(1 + rand(3), 1, false, 3);
+        growTits(player, 1 + rand(3), 1, false, 3);
         changes++;
         dynStats("sen", .5);
         boobsGrew = true;

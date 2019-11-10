@@ -35,7 +35,7 @@ export function hellhoundRapesPlayer(): void {
         if (player.vaginalCapacity() < monster.cocks.cockArea(0)) outputText("You feel an intense mixture of sensations in your lower body as your " + assholeDescript(player) + " feels like it is being torn apart, while your " + vaginaDescript(player, 0) + " is filled with an intense pleasure at being filled with the creature's large member.  ", false);
         else outputText("Your lower body explodes with pain as the hellhound forces himself in too quickly for either your " + assholeDescript(player) + " or your " + vaginaDescript(player, 0) + " to handle.  ", false);
         if (player.vaginas[0].virgin) outputText("<b>You are no longer a virgin!  </b>", false);
-        if (player.cuntChange(monster.cocks.cockArea(0), false)) outputText("The beast howls as your " + vaginaDescript(player, 0) + " is stretched to accommodate the large shaft.  ", false);
+        if (cuntChange(player, monster.cocks.cockArea(0), false)) outputText("The beast howls as your " + vaginaDescript(player, 0) + " is stretched to accommodate the large shaft.  ", false);
         outputText("The hellhound pants for a few seconds before continuing.  ", false);
         if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) outputText("The pause gives your " + vaginaDescript(player, 0) + " time to moisten, ensuring the next thrust won't be quite as rough.  ", false);
         outputText("This time the beast starts pumping in and out more gently, only a short distance at a time as the hellhound continues panting.  As the pain in your " + assholeDescript(player) + " fades, you start feeling pleasure to match the sensations rising from your " + vaginaDescript(player, 0) + ". Each thrust of the beast's twin manhoods bring you closer and closer to your peak.\n\n", false);
@@ -56,7 +56,7 @@ export function hellhoundRapesPlayer(): void {
     player.slimeFeed();
     // (after either of them)
     // (Lose player anal virginity; if player has vagina, lose vaginal virginity)
-    player.buttChange(monster.cocks.cockArea(0), true);
+    buttChange(player, monster.cocks.cockArea(0), true);
     player.orgasm();
     // [if not corrupt]
     if (player.cor < 40) dynStats("tou", -2, "cor", 1);
@@ -287,8 +287,8 @@ export function hellHoundPropahRape(): void {
     // --- ELSE (CORRUPTION >= 20) ---
     else {
         outputText("The musky scent sends pleasure all over your body, moistening your " + vaginaDescript(player, 0) + ". You decide the foreplay is over and remove the lower part of your " + player.armorName + ". You stroke both members, bringing them to full, overly-erect state. You grab one of them while you carefully position your butt over the first mastiff-like dong. Its pointy tip pushes against your asshole. Relaxing your sphincter, the pre-dripping cone-shaped rod easily slides into you. Having the first penis halfway buried into your ready asshole, you stop. Struggling with your balance, you grab the hellhound's other throbbing member, guiding it to your now soaking vagina. Slowly you let yourself down, impaling yourself on his gorgeous twin members.  ", false);
-        player.cuntChange(monster.cocks.cockArea(0), true, false, true);
-        player.buttChange(monster.cocks.cockArea(1), true, false, true);
+        cuntChange(player, monster.cocks.cockArea(0), true, false, true);
+        buttChange(player, monster.cocks.cockArea(1), true, false, true);
         // --- CORRUPTION < 40 (and not masocistic - I lost track if there is such a perk) ---
         if (player.cor < 40 && player.perks.findByType(PerkLib.Masochist) < 0) {
             outputText("As you bottom out on his sheath, you lean forward to engulf more of his hot cocks inside you. The hellhound enjoys the treatment you are giving him. As a result, the flames along his eyes and snout flicker back to life. Just as your hardening clit presses against the top of his ballsack, the hellhound's natural flames lick across your sex. The magical fire fills you with arousal, but also applies intense pain to your most sensitive spot. You practically jump off the corrupt creature, pulling the dicks from your holes in great speed. Nearly blacking out from the sensations, you cover your burnt button, not daring to touch it. You curse the creature, loudly swearing at the hellhound. In your fury, you barely notice that he looks disappointed and maybe even somewhat sorry.", false);
