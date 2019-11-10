@@ -156,3 +156,79 @@ export function fixFemininity(char: Character): string {
     }
     return output;
 }
+
+export function buttChangeNoDisplay(char: Character, cArea: number): boolean {
+    let stretched: boolean = false;
+    // cArea > capacity = autostreeeeetch half the time.
+    if (cArea >= char.analCapacity() && rand(2) == 0) {
+        if (char.ass.analLooseness < 5)
+            char.ass.analLooseness++;
+        stretched = true;
+        // Reset butt stretchin recovery time
+        if (char.effects.findByType(StatusAffects.ButtStretched) >= 0) char.effects.setValue(StatusAffects.ButtStretched, 1, 0);
+    }
+    // If within top 10% of capacity, 25% stretch
+    if (cArea < char.analCapacity() && cArea >= .9 * char.analCapacity() && rand(4) == 0) {
+        char.ass.analLooseness++;
+        stretched = true;
+    }
+    // if within 75th to 90th percentile, 10% stretch
+    if (cArea < .9 * char.analCapacity() && cArea >= .75 * char.analCapacity() && rand(10) == 0) {
+        char.ass.analLooseness++;
+        stretched = true;
+    }
+    // Anti-virgin
+    if (char.ass.analLooseness == 0) {
+        char.ass.analLooseness++;
+        stretched = true;
+    }
+    // Delay un-stretching
+    if (cArea >= .5 * char.analCapacity()) {
+        // Butt Stretched used to determine how long since last enlargement
+        if (char.effects.findByType(StatusAffects.ButtStretched) < 0) char.effects.create(StatusAffects.ButtStretched, 0, 0, 0, 0);
+        // Reset the timer on it to 0 when restretched.
+        else char.effects.setValue(StatusAffects.ButtStretched, 1, 0);
+    }
+    if (stretched) {
+        trace("BUTT STRETCHED TO " + (char.ass.analLooseness) + ".");
+    }
+    return stretched;
+}
+
+export function cuntChangeNoDisplay(char: Character, cArea: number): boolean {
+    if (char.vaginas.length == 0) return false;
+    let stretched: boolean = false;
+    if (char.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || char.vaginas[0].vaginalLooseness <= VaginaLooseness.NORMAL) {
+        // cArea > capacity = autostreeeeetch.
+        if (cArea >= char.vaginalCapacity()) {
+            if (char.vaginas[0].vaginalLooseness < VaginaLooseness.LEVEL_CLOWN_CAR)
+                char.vaginas[0].vaginalLooseness++;
+            stretched = true;
+        }
+        // If within top 10% of capacity, 50% stretch
+        else if (cArea >= .9 * char.vaginalCapacity() && rand(2) == 0) {
+            char.vaginas[0].vaginalLooseness++;
+            stretched = true;
+        }
+        // if within 75th to 90th percentile, 25% stretch
+        else if (cArea >= .75 * char.vaginalCapacity() && rand(4) == 0) {
+            char.vaginas[0].vaginalLooseness++;
+            stretched = true;
+        }
+    }
+    // If virgin
+    if (char.vaginas[0].virgin) {
+        char.vaginas[0].virgin = false;
+    }
+    // Delay anti-stretching
+    if (cArea >= .5 * char.vaginalCapacity()) {
+        // Cunt Stretched used to determine how long since last enlargement
+        if (char.effects.findByType(StatusAffects.CuntStretched) < 0) char.effects.create(StatusAffects.CuntStretched, 0, 0, 0, 0);
+        // Reset the timer on it to 0 when restretched.
+        else char.effects.setValue(StatusAffects.CuntStretched, 1, 0);
+    }
+    if (stretched) {
+        trace("CUNT STRETCHED TO " + (char.vaginas[0].vaginalLooseness) + ".");
+    }
+    return stretched;
+}

@@ -448,7 +448,7 @@ export class Player extends Character {
     public cuntChange(cArea: number, display: boolean, spacingsF: boolean = false, spacingsB: boolean = true): boolean {
         if (vaginas.length == 0) return false;
         const wasVirgin: boolean = vaginas[0].virgin;
-        const stretched: boolean = cuntChangeNoDisplay(cArea);
+        const stretched: boolean = cuntChangeNoDisplay(this, cArea);
         const devirgined: boolean = wasVirgin && !vaginas[0].virgin;
         if (devirgined) {
             if (spacingsF) outputText("  ");
@@ -476,7 +476,7 @@ export class Player extends Character {
     }
 
     public buttChange(cArea: number, display: boolean, spacingsF: boolean = true, spacingsB: boolean = true): boolean {
-        const stretched: boolean = buttChangeNoDisplay(cArea);
+        const stretched: boolean = buttChangeNoDisplay(this, cArea);
         // STRETCH SUCCESSFUL - begin flavor text if outputting it!
         if (stretched && display) {
             if (spacingsF) outputText("  ");
