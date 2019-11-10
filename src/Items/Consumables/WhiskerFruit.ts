@@ -118,7 +118,7 @@ export function catTransformation(player: Player): void {
             }
             else {
                 outputText("\n\nThe interior of your " + vaginaDescript(player, 0) + " clenches tightly, squeezing with reflexive, aching need.  Your skin flushes hot ", false);
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     outputText("underneath your fur ", false);
                 outputText("as images and fantasies ", false);
                 if (player.cor < 50)
@@ -241,9 +241,9 @@ export function catTransformation(player: Player): void {
     }
     // Body type changes.  Teh rarest of the rare.
     // DA EARZ
-    if (player.earType != EARS_CAT && rand(5) == 0 && changes < changeLimit) {
+    if (player.earType != EarType.CAT && rand(5) == 0 && changes < changeLimit) {
         // human to cat:
-        if (player.earType == EARS_HUMAN) {
+        if (player.earType == EarType.HUMAN) {
             if (rand(2) == 0)
                 outputText("\n\nThe skin on the sides of your face stretches painfully as your ears migrate upwards, towards the top of your head. They shift and elongate a little, fur growing on them as they become feline in nature. <b>You now have cat ears.</b>", false);
             else
@@ -256,12 +256,12 @@ export function catTransformation(player: Player): void {
             else
                 outputText("\n\nYour ears tingle and begin to change shape. Within a few moments, they've become long and feline.  Thanks to the new fuzzy organs, you find yourself able to hear things that eluded your notice up until now. <b>You now have cat ears.</b>", false);
         }
-        player.earType = EARS_CAT;
+        player.earType = EarType.CAT;
         changes++;
     }
     // DA TAIL (IF ALREADY HAZ URZ)
-    if (player.tailType != TAIL_TYPE_CAT && player.earType == EARS_CAT && rand(5) == 0 && changes < changeLimit) {
-        if (player.tailType == TAIL_TYPE_NONE) {
+    if (player.tailType != TailType.CAT && player.earType == EarType.CAT && rand(5) == 0 && changes < changeLimit) {
+        if (player.tailType == TailType.NONE) {
             temp = rand(3);
             if (temp == 0)
                 outputText("\n\nA pressure builds in your backside. You feel under your " + player.armorName + " and discover an odd bump that seems to be growing larger by the moment. In seconds it passes between your fingers, bursts out the back of your clothes and grows most of the way to the ground. A thick coat of fur springs up to cover your new tail. You instinctively keep adjusting it to improve your balance. <b>You now have a cat-tail.</b>", false);
@@ -272,43 +272,43 @@ export function catTransformation(player: Player): void {
         }
         else
             outputText("\n\nYou pause and tilt your head... something feels different.  Ah, that's what it is; you turn around and look down at your tail as it starts to change shape, narrowing and sprouting glossy fur. <b>You now have a cat tail.</b>", false);
-        player.tailType = TAIL_TYPE_CAT;
+        player.tailType = TailType.CAT;
         changes++;
     }
     // Da paws (if already haz ears & tail)
-    if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT &&
+    if (player.tailType == TailType.CAT && player.earType == EarType.CAT &&
         rand(5) == 0 && changes < changeLimit &&
-        player.lowerBody != LOWER_BODY_TYPE_CAT) {
+        player.lowerBody != LowerBodyType.CAT) {
         // hoof to cat:
-        if (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+        if (player.lowerBody == LowerBodyType.HOOFED || player.lowerBody == LowerBodyType.CENTAUR) {
             outputText("\n\nYou feel your hooves suddenly splinter, growing into five unique digits. Their flesh softens as your hooves reshape into furred cat paws. <b>You now have cat paws.</b>", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR)
+            if (player.lowerBody == LowerBodyType.CENTAUR)
                 outputText("  You feel woozy and collapse on your side.  When you wake, you're no longer a centaur and your body has returned to a humanoid shape.", false);
         }
         // Goo to cat
-        else if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
+        else if (player.lowerBody == LowerBodyType.GOO) {
             outputText("\n\nYour lower body rushes inward, molding into two leg-like shapes that gradually stiffen up.  In moments they solidify into digitigrade legs, complete with soft, padded cat-paws.  <b>You now have cat-paws!</b>", false);
         }
         // non hoof to cat:
         else
             outputText("\n\nYou scream in agony as you feel the bones in your " + feet(player) + " break and begin to rearrange. When the pain fades, you feel surprisingly well-balanced. <b>You now have cat paws.</b>", false);
-        player.lowerBody = LOWER_BODY_TYPE_CAT;
+        player.lowerBody = LowerBodyType.CAT;
         changes++;
     }
     // TURN INTO A FURRAH!  OH SHIT
-    if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT &&
+    if (player.tailType == TailType.CAT && player.earType == EarType.CAT &&
         rand(5) == 0 && changes < changeLimit &&
-        player.lowerBody == LOWER_BODY_TYPE_CAT && player.skinType != SKIN_TYPE_FUR) {
+        player.lowerBody == LowerBodyType.CAT && player.skinType != SkinType.FUR) {
         outputText("\n\nYour " + player.skinDesc + " begins to tingle, then itch. You reach down to scratch your arm absent-mindedly and pull your fingers away to find strands of " + player.hairColor + " fur. Wait, fur?  What just happened?! You spend a moment examining yourself and discover that <b>you are now covered in glossy, soft fur.</b>\n\n", false);
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         player.skinDesc = "fur";
         changes++;
     }
     // CAT-FACE!  FULL ON FURRY!  RAGE AWAY NEKOZ
-    if (player.tailType == TAIL_TYPE_CAT && player.earType == EARS_CAT &&
+    if (player.tailType == TailType.CAT && player.earType == EarType.CAT &&
         rand(5) == 0 && changes < changeLimit &&
-        player.lowerBody == LOWER_BODY_TYPE_CAT && player.skinType == SKIN_TYPE_FUR &&
-        player.faceType != FACE_CAT) {
+        player.lowerBody == LowerBodyType.CAT && player.skinType == SkinType.FUR &&
+        player.faceType != FaceType.CAT) {
         // Gain cat face, replace old face
         temp = rand(3);
         if (temp == 0)
@@ -317,7 +317,7 @@ export function catTransformation(player: Player): void {
             outputText("\n\nMind-numbing pain courses through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your facial characteristics with those of a feline. <b>You now have an anthropomorphic cat-face.</b>", false);
         else
             outputText("\n\nYour face is wracked with pain. You throw back your head and scream in agony as you feel your cheekbones breaking and shifting, reforming into something else. <b>Your facial features rearrange to take on many feline aspects.</b>", false);
-        player.faceType = FACE_CAT;
+        player.faceType = FaceType.CAT;
         changes++;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {

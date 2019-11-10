@@ -17,19 +17,19 @@ export function gooGasmic(player: Player): void {
     }
     /*Calculate goopiness
      var goopiness:Number = 0;
-     if(player.skinType == SKIN_TYPE_GOO) goopiness+=2;
+     if(player.skinType == SkinType.GOO) goopiness+=2;
      if(player.hair.indexOf("gooey") != -1) goopiness++;
      if(player.vaginas.length > 0) {
      if(player.vaginalCapacity() >= 9000) goopiness++;
      }*/
     // Cosmetic changes based on 'goopyness'
     // Remove wings
-    if (player.wingType > WING_TYPE_NONE) {
-        if (player.wingType == WING_TYPE_SHARK_FIN)
+    if (player.wingType > WingType.NONE) {
+        if (player.wingType == WingType.SHARK_FIN)
             outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your fin slowly turn to sludge, dripping to the ground as your body becomes more goo-like.", false);
         else
             outputText("\n\nYou sigh, feeling a hot wet tingling down your back.  It tickles slightly as you feel your wings slowly turn to sludge, dripping to the ground as your body becomes more goo-like.", false);
-        player.wingType = WING_TYPE_NONE;
+        player.wingType = WingType.NONE;
         return;
     }
     // Goopy hair
@@ -70,15 +70,15 @@ export function gooGasmic(player: Player): void {
     }
     // 1.Goopy skin
     if (player.hairType == 3 && (player.skinDesc != "skin" || player.skinAdj != "slimy")) {
-        if (player.skinType == SKIN_TYPE_PLAIN)
+        if (player.skinType == SkinType.PLAIN)
             outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your skin becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!", false);
-        else if (player.skinType == SKIN_TYPE_FUR)
+        else if (player.skinType == SkinType.FUR)
             outputText("\n\nYou sigh, suddenly feeling your fur become hot and wet.  You look down as your " + player.armorName + " sinks partway into you.  With a start you realize your fur has melted away, melding into the slime-like coating that now serves as your skin.  You've become partly liquid and incredibly gooey!", false);
-        else if (player.skinType == SKIN_TYPE_SCALES)
+        else if (player.skinType == SkinType.SCALES)
             outputText("\n\nYou sigh, feeling slippery wetness over your scales.  You reach to scratch it and come away with a slippery wet coating.  Your scales have transformed into a slimy goop!  Looking closer, you realize your entire body has become far more liquid in nature, and is semi-solid.  Your " + player.armorName + " has even sunk partway into you.", false);
-        else if (player.skinType > SKIN_TYPE_GOO)
+        else if (player.skinType > SkinType.GOO)
             outputText("\n\nYou sigh, feeling your " + player.armorName + " sink into you as your " + player.skinDesc + " becomes less solid, gooey even.  You realize your entire body has become semi-solid and partly liquid!", false);
-        player.skinType = SKIN_TYPE_GOO;
+        player.skinType = SkinType.GOO;
         player.skinDesc = "skin";
         player.skinAdj = "slimy";
         if (player.skinTone != "green" && player.skinTone != "purple" && player.skinTone != "blue" && player.skinTone != "cerulean" && player.skinTone != "emerald") {
@@ -101,22 +101,22 @@ export function gooGasmic(player: Player): void {
     //// 1a.Make alterations to dick/vaginal/nippular descriptors to match
     // DONE EXCEPT FOR TITS & MULTIDICKS (UNFINISHED KINDA)
     // 2.Goo legs
-    if (player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody != LOWER_BODY_TYPE_GOO) {
+    if (player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody != LowerBodyType.GOO) {
         outputText("\n\nYour viewpoint rapidly drops as everything below your " + buttDescription(player) + " and groin melts together into an amorphous blob.  Thankfully, you discover you can still roll about on your new slimey undercarriage, but it's still a whole new level of strange.", false);
         player.tallness -= 3 + rand(2);
         if (player.tallness < 36) {
             player.tallness = 36;
             outputText("  The goo firms up and you return to your previous height.  It would truly be hard to get any shorter than you already are!", false);
         }
-        player.lowerBody = LOWER_BODY_TYPE_GOO;
+        player.lowerBody = LowerBodyType.GOO;
         return;
     }
     // 3a. Grow vagina if none
     if (!player.vaginas.length > 0) {
         outputText("\n\nA wet warmth spreads through your slimey groin as a narrow gash appears on the surface of your groin.  <b>You have grown a vagina.</b>", false);
         player.vaginas.createVagina();
-        player.vaginas[0].vaginalWetness = VAGINA_WETNESS_DROOLING;
-        player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_GAPING;
+        player.vaginas[0].vaginalWetness = VaginaWetness.DROOLING;
+        player.vaginas[0].vaginalLooseness = VaginaLooseness.GAPING;
         player.clitLength = .4;
         player.genderCheck();
         return;

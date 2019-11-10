@@ -13,8 +13,8 @@ export class Lethice extends Monster {
         this.balls = 2;
         this.ballSize = 4;
 
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.TIGHT;
 
         initStrTouSpeInte(100, 100, 100, 100);
         initLibSensCor(100, 40, 100);

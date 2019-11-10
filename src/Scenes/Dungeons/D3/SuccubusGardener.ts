@@ -13,12 +13,12 @@ export class SuccubusGardener extends Monster {
         this.vaginas.createVagina(false, 3, 3);
         this.breasts.createBreastRow(Appearance.breastCupInverse("FF"));
 
-        this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.LOOSE;
+        this.ass.analWetness = AnalWetness.DRY;
 
         this.tallness = 8 * 12;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.TIGHT;
 
         this.weaponName = "tentacles";
         this.weaponVerb = "lash";

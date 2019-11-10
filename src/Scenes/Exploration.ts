@@ -70,10 +70,10 @@ export function tryDiscover(): void {
         }
         if (player.exploredLake >= 1 && rand(3) == 0 && player.exploredDesert == 0) {
             outputText("You stumble as the ground shifts a bit underneath you.  Groaning in frustration, you straighten up and discover the rough feeling of sand ", true);
-            if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) outputText("inside your footwear, between your toes", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText("in your hooves", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("in your paws", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_NAGA) outputText("in your scales", false);
+            if (player.lowerBody == LowerBodyType.HUMAN) outputText("inside your footwear, between your toes", false);
+            if (player.lowerBody == LowerBodyType.HOOFED) outputText("in your hooves", false);
+            if (player.lowerBody == LowerBodyType.DOG) outputText("in your paws", false);
+            if (player.lowerBody == LowerBodyType.NAGA) outputText("in your scales", false);
             outputText(".\n\n<b>You've discovered the Desert!</b>", false);
             player.exploredDesert = 1;
             player.explored++;
@@ -209,7 +209,7 @@ export function bigJunkDesertScene(): void {
         if (player.vaginas.length >= 1) {
             outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
             // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("  Juices stream from your womanhood and begin pooling on the hot sand beneath you.  Wisps of steam rise up into the air only to tease your genitals further.  ", false);
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) outputText("  Juices stream from your womanhood and begin pooling on the hot sand beneath you.  Wisps of steam rise up into the air only to tease your genitals further.  ", false);
         }
     }
     // FOR CENTAURS
@@ -223,7 +223,7 @@ export function bigJunkDesertScene(): void {
         if (player.vaginas.length >= 1) {
             outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
             // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("  The desert sun beats down on your body, its fiery heat inflaming the senses of your vaginal lips.  Juices stream from your womanhood and begin pooling on the hot sand beneath you.", false);
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) outputText("  The desert sun beats down on your body, its fiery heat inflaming the senses of your vaginal lips.  Juices stream from your womanhood and begin pooling on the hot sand beneath you.", false);
         }
     }
     outputText("\n\n", false);

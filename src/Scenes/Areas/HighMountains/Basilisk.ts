@@ -79,16 +79,16 @@ export class Basilisk extends Monster {
         this.balls = 2;
         this.ballSize = 2;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = 6 * 12 + 2;
-        this.hipRating = HIP_RATING_SLENDER + 1;
-        this.buttRating = BUTT_RATING_AVERAGE;
-        this.lowerBody = LOWER_BODY_TYPE_LIZARD;
+        this.hipRating = HipRating.SLENDER + 1;
+        this.buttRating = ButtRating.AVERAGE;
+        this.lowerBody = LowerBodyType.LIZARD;
         this.skinTone = "gray";
-        this.skinType = SKIN_TYPE_SCALES;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_SCALES];
+        this.skinType = SkinType.SCALES;
+        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.SCALES];
         this.hairColor = "none";
         this.hairLength = 0;
         initStrTouSpeInte(85, 70, 35, 70);
@@ -107,7 +107,7 @@ export class Basilisk extends Monster {
         this.level = 12;
         this.gems = rand(10) + 10;
         this.drop = new ChainedDrop().add(ConsumableLib.REPTLUM, 0.9);
-        this.tailType = TAIL_TYPE_COW;
+        this.tailType = TailType.COW;
         this.tailRecharge = 0;
         checkMonster();
     }

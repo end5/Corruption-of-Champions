@@ -45,42 +45,42 @@ export function snakeOil(player: Player): void {
         changes++;
     }
     // Removes wings
-    if (player.wingType > WING_TYPE_NONE && rand(3) == 0 && changes < changeLimit) {
-        if (player.wingType == WING_TYPE_SHARK_FIN)
+    if (player.wingType > WingType.NONE && rand(3) == 0 && changes < changeLimit) {
+        if (player.wingType == WingType.SHARK_FIN)
             outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into your spine.  After a moment the pain passes, though your fin is gone!", false);
         else
             outputText("\n\nA wave of tightness spreads through your back, and it feels as if someone is stabbing a dagger into each of your shoulder-blades.  After a moment the pain passes, though your wings are gone!", false);
-        player.wingType = WING_TYPE_NONE;
+        player.wingType = WingType.NONE;
         changes++;
     }
     // Removes antennae
-    if (player.antennae > ANTENNAE_NONE && rand(3) == 0 && changes < changeLimit) {
+    if (player.antennae > AntennaeType.NONE && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\nThe muscles in your brow clench tightly, and you feel a tremendous pressure on your upper forehead.  When it passes, you touch yourself and discover your antennae have vanished!", false);
-        player.antennae = ANTENNAE_NONE;
+        player.antennae = AntennaeType.NONE;
         changes++;
     }
     // 9c) II The tongue (sensitivity bonus, stored as a perk?)
-    if (changes == 0 && player.tongueType != TONUGE_SNAKE && rand(3) == 0 && changes < changeLimit) {
-        if (player.tongueType == TONUGE_HUMAN)
+    if (changes == 0 && player.tongueType != TongueType.SNAKE && rand(3) == 0 && changes < changeLimit) {
+        if (player.tongueType == TongueType.HUMAN)
             outputText("\n\nYour taste-buds start aching as they swell to an uncomfortably large size. Trying to understand what in the world could have provoked such a reaction, you bring your hands up to your mouth, your tongue feeling like it's trying to push its way past your lips. The soreness stops and you stick out your tongue to try and see what would have made it feel the way it did. As soon as you stick your tongue out you realize that it sticks out much further than it did before, and now appears to have split at the end, creating a forked tip. The scents in the air are much more noticeable to you with your snake-like tongue.", false);
         else
             outputText("\n\nYour inhuman tongue shortens, pulling tight in the very back of your throat.  After a moment the bunched-up tongue-flesh begins to flatten out, then extend forwards.  By the time the transformation has finished, your tongue has changed into a long, forked snake-tongue.", false);
-        player.tongueType = TONUGE_SNAKE;
+        player.tongueType = TongueType.SNAKE;
         dynStats("sen", 5);
         changes++;
     }
     // 9c) III The fangs
-    if (changes == 0 && player.tongueType == TONUGE_SNAKE && player.faceType != FACE_SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
+    if (changes == 0 && player.tongueType == TongueType.SNAKE && player.faceType != FaceType.SNAKE_FANGS && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\nWithout warning, you feel your canine teeth jump almost an inch in size, clashing on your gums, cutting yourself quite badly. As you attempt to find a new way to close your mouth without dislocating your jaw, you notice that they are dripping with a bitter, khaki liquid.  Watch out, and <b>try not to bite your tongue with your poisonous fangs!</b>", false);
-        if (player.faceType != FACE_HUMAN && player.faceType != FACE_SHARK_TEETH && player.faceType != FACE_BUNNY && player.faceType != FACE_SPIDER_FANGS) {
+        if (player.faceType != FaceType.HUMAN && player.faceType != FaceType.SHARK_TEETH && player.faceType != FaceType.BUNNY && player.faceType != FaceType.SPIDER_FANGS) {
             outputText("  As the change progresses, your " + face(player) + " reshapes.  The sensation is far more pleasant than teeth cutting into gums, and as the tingling transformation completes, <b>you've gained with a normal-looking, human visage.</b>");
         }
-        player.faceType = FACE_SNAKE_FANGS;
+        player.faceType = FaceType.SNAKE_FANGS;
         changes++;
     }
     // 9c) I The tail ( http://tvtropes.org/pmwiki/pmwiki.php/Main/TransformationIsAFreeAction ) (Shouldn't we try to avert this? -Ace)
     // Should the enemy "kill" you during the transformation, it skips the scene and immediately goes to tthe rape scene. (Now that I'm thinking about it, we should add some sort of appendix where the player realizes how much he's/she's changed. -Ace)
-    if (changes == 0 && player.faceType == FACE_SNAKE_FANGS && player.lowerBody != LOWER_BODY_TYPE_NAGA && rand(4) == 0 && changes < changeLimit) {
+    if (changes == 0 && player.faceType == FaceType.SNAKE_FANGS && player.lowerBody != LowerBodyType.NAGA && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nYou find it increasingly harder to keep standing as your legs start feeling weak.  You swiftly collapse, unable to maintain your own weight.", false);
         // (If used in combat, you lose a turn here. Half-corrupted Jojo and the Naga won't attack you during that period, but other monsters will)
         // FUCK NO
@@ -90,7 +90,7 @@ export function snakeOil(player: Player): void {
         if (player.balls > 0 && player.ballSize > 10)
             outputText("  You're happy not to have to drag those testicles around with you anymore.", false);
         outputText("  But then, scales start to form on the surface of your skin, slowly becoming visible, recoloring all of your body from the waist down in a snake-like pattern. The feeling is... not that bad actually, kind of like callous, except on your whole lower body. The transformation complete, you get up, standing on your newly formed snake tail. You can't help feeling proud of this majestic new body of yours.", false);
-        player.lowerBody = LOWER_BODY_TYPE_NAGA;
+        player.lowerBody = LowerBodyType.NAGA;
         changes++;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {

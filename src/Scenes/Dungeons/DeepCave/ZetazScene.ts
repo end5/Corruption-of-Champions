@@ -124,11 +124,11 @@ export function gigaArouse(): void {
         if (player.lust >= 30 && player.lust < 60 && player.cocks.length == 1) outputText(SMultiCockDesc(player) + " hardens and twitches, distracting you further.  ", false);
     }
     if (player.vaginas.length > 0) {
-        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " dampens perceptibly, feeling very empty.  ", false);
-        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET && player.vaginas.length > 0) outputText("Your crotch becomes sticky with girl-lust, making it clear to " + monster.a + monster.short + " just how welcome your body finds the spell.  ", false);
-        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " becomes sloppy and wet, dribbling with desire to be mounted and fucked.  ", false);
-        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING && player.vaginas.length > 0) outputText("Thick runners of girl-lube stream down the insides of your thighs as your crotch gives into the demonic magics.  You wonder what " + monster.a + monster.short + "'s cock would feel like inside you?  ", false);
-        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " instantly soaks your groin with the heady proof of your need.  You wonder just how slippery you could " + monster.a + monster.short + "'s dick when it's rammed inside you?  ", false);
+        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VaginaWetness.NORMAL && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " dampens perceptibly, feeling very empty.  ", false);
+        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VaginaWetness.WET && player.vaginas.length > 0) outputText("Your crotch becomes sticky with girl-lust, making it clear to " + monster.a + monster.short + " just how welcome your body finds the spell.  ", false);
+        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VaginaWetness.SLICK && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " becomes sloppy and wet, dribbling with desire to be mounted and fucked.  ", false);
+        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VaginaWetness.DROOLING && player.vaginas.length > 0) outputText("Thick runners of girl-lube stream down the insides of your thighs as your crotch gives into the demonic magics.  You wonder what " + monster.a + monster.short + "'s cock would feel like inside you?  ", false);
+        if (player.lust >= 60 && player.vaginas[0].vaginalWetness == VaginaWetness.SLAVERING && player.vaginas.length == 1) outputText("Your " + allVaginaDescript(player) + " instantly soaks your groin with the heady proof of your need.  You wonder just how slippery you could " + monster.a + monster.short + "'s dick when it's rammed inside you?  ", false);
     }
     if (player.lust >= 100) doNext(endLustLoss);
     else doNext(playerMenu);
@@ -309,7 +309,7 @@ export function femaleZetazOver(): void {
     outputText(" you as you're thrown atop one of the tables.   You grunt as leather straps are produced and laid over your form to restrain you.  In the span of a minute you're completely immobilized from the neck down, and your " + legs(player) + " are kept spread to allow easy access to your " + vaginaDescript(player, 0) + ".\n\n", false);
 
     outputText("Shuffling as they remove their garments, the entire gang of imps, as well as Zetaz, are completely nude.  They've all grown full and hard from the sight of your nubile, restrained body, and in spite of yourself you get ", false);
-    if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("even more wet ", false);
+    if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) outputText("even more wet ", false);
     else outputText("a little wet ", false);
     outputText("from the masculine scent the aroused penises are producing.  ", false);
     if (player.cor < 33) outputText("How could you be turned on by such a repulsive situation?  You're going to be raped, brainwashed, and either kept as a pet or tossed in a milking tube for the rest of your life and your body is acting like some horny slut!", false);
@@ -327,8 +327,8 @@ export function femaleZetazOver(): void {
     outputText("  Warm slipperiness slides over your lips again, feeling nearly as good as it would on your lower lips, and you pull your rebellious tongue back into your mouth with a gasp of pleasure.\n\n", false);
 
     outputText("This must be what Zetaz was waiting for, and the imp carefully injects the next chemical cocktail into the other side of your neck while you're distracted by orally masturbating your new mouth.  Your " + vaginaDescript(player, 0) + " ", false);
-    if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) outputText("gushes fresh fluids into a puddle on the table", false);
-    else if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_WET) outputText("drools a heavy flow of liquid arousal onto the hardwood table", false);
+    if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) outputText("gushes fresh fluids into a puddle on the table", false);
+    else if (player.vaginas[0].vaginalWetness >= VaginaWetness.WET) outputText("drools a heavy flow of liquid arousal onto the hardwood table", false);
     else outputText("begins to dribble a steady flow of liquid on to the table's girl-slicked boards", false);
     outputText(".  ", false);
     if (player.inHeat) outputText("D", false);
@@ -383,7 +383,7 @@ export function zetazBadEndEpilogue(): void {
     else if (player.gender == 3) {
         // [Epilogue]
         outputText("The champion was fucked and brainwashed repeatedly for a few more days until Zetaz was sure she understood her place in the world.  Once rendered completely obedient, they released her from her bindings.  It was time she was turned over to Lethice.  ", false);
-        if (player.wingType != WING_TYPE_BAT_LIKE_TINY || player.wingType != WING_TYPE_BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ", false);
+        if (player.wingType != WingType.BAT_LIKE_TINY || player.wingType != WingType.BAT_LIKE_LARGE) outputText("Zetaz gave her one of the weaker imps to penetrate and taught her to fly with her new, demonic wings.  ", false);
         else outputText("Zetaz gave her one of the weaker imps to penetrate during the journey.  ", false);
         outputText("With preparations complete, Zetaz, the champion, and a few dozen imps flew to the mountain peak.\n\n", false);
 
@@ -424,7 +424,7 @@ export function hermZetazOver(): void {
     outputText("The sounds of numerous footfalls and clinking glass signal that the mob of imps has returned, bringing what sounds like hundreds of vials worth of their foul concoctions.  Zetaz releases your tumescent member and reaches over for something, then returns to your view bearing a ring gag.  Even turned on, defeated, and immobilized on a table, you try your best to fight him, but all that gets you is slapped.  The imp's palm smacks you hard enough to stun you and leave your ears ringing, and when you blink the stars from your eyes, your mouth is forced open with your tongue hanging out lewdly.\n\n", false);
 
     outputText("Another of Zetaz's brothers, or perhaps sons, hands him a tube with a funnel, and he easily threads the funnel's tube through the ring gag.  Foul remnants of whatever it was used for last leave a sour taste on your tongue, but worse yet is the knowledge that you're going to be force-fed tainted, body-altering, mind-melting drugs.  A drop of pre-cum hits your belly and your thighs grow ", false);
-    if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("sticky", false);
+    if (player.vaginas[0].vaginalWetness < VaginaWetness.DROOLING) outputText("sticky", false);
     else outputText("soaked", false);
     outputText(" from the thoughts.  ", false);
     if (player.cor < 33) outputText("Are you really being turned on by such lewd, debased thoughts?", false);
@@ -444,8 +444,8 @@ export function hermZetazOver(): void {
     if (player.horns > 0) outputText(" and adding to your existing pair", false);
     else outputText(" and giving you an exotic, tainted appearance", false);
     outputText(".  ", false);
-    if (player.lowerBody != LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS) outputText("Your " + feet(player) + " have been changing throughout the ordeal, but you didn't notice your " + legs(player) + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ", false);
-    if (player.tailType != TAIL_TYPE_DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + vaginaDescript(player, 0) + ", then plunges in to fuck the squirting orifice while you drink.  ", false);
+    if (player.lowerBody != LowerBodyType.DEMONIC_HIGH_HEELS) outputText("Your " + feet(player) + " have been changing throughout the ordeal, but you didn't notice your " + legs(player) + " becoming such lissom, lengthy legs, or your heels growing long, high-heel-like spikes.  ", false);
+    if (player.tailType != TailType.DEMONIC) outputText("A tail snakes around your leg and begins to caress your " + vaginaDescript(player, 0) + ", then plunges in to fuck the squirting orifice while you drink.  ", false);
     else outputText("Your tail snakes around your leg and begins to caress your " + vaginaDescript(player, 0) + ", then plunges in to fuck the squirting orifice while you drink.  ", false);
     outputText("The imps start hooting and cat-calling, laughing and prodding your body with their twisted demonic members as your mind starts to come apart in the seething oven of unnatural lust.\n\n", false);
     // NEXT

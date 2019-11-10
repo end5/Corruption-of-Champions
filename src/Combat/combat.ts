@@ -2539,7 +2539,7 @@ export function tease(justText: boolean = false): void {
         if (player.ass.analLooseness >= 5) choices[choices.length] = 16;
     }
     // 17 Bee abdomen tease
-    if (player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+    if (player.tailType == TailType.BEE_ABDOMEN) {
         choices[choices.length] = 17;
         choices[choices.length] = 17;
     }
@@ -2567,7 +2567,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 21;
     }
     // 22 SPOIDAH SILK
-    if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) {
+    if (player.tailType == TailType.SPIDER_ADBOMEN) {
         choices[choices.length] = 22;
         choices[choices.length] = 22;
         choices[choices.length] = 22;
@@ -2686,7 +2686,7 @@ export function tease(justText: boolean = false): void {
     // 38 Kitsune Tease
     // 39 Kitsune Tease
     // 40 Kitsune Tease
-    if (kitsuneScore(player) >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (kitsuneScore(player) >= 2 && player.tailType == TailType.FOX) {
         choices[choices.length] = 37;
         choices[choices.length] = 37;
         choices[choices.length] = 37;
@@ -2705,7 +2705,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 40;
     }
     // 41 Kitsune Gendered Tease
-    if (kitsuneScore(player) >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (kitsuneScore(player) >= 2 && player.tailType == TailType.FOX) {
         choices[choices.length] = 41;
         choices[choices.length] = 41;
         choices[choices.length] = 41;
@@ -2724,7 +2724,7 @@ export function tease(justText: boolean = false): void {
         choices[choices.length] = 42;
     }
     // 43 - special mino + cowgirls
-    if (player.vaginas.length > 0 && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TAIL_TYPE_COW) {
+    if (player.vaginas.length > 0 && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TailType.COW) {
         choices[choices.length] = 43;
         choices[choices.length] = 43;
         choices[choices.length] = 43;
@@ -2758,7 +2758,7 @@ export function tease(justText: boolean = false): void {
     // =======================================================
     select = choices[rand(choices.length)];
     if (monster.short.indexOf("minotaur") != -1) {
-        if (player.vaginas.length > 0 && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TAIL_TYPE_COW)
+        if (player.vaginas.length > 0 && player.lactationQ() >= 500 && player.breasts.biggestTitSize() >= 6 && cowScore(player) >= 3 && player.tailType == TailType.COW)
             select = 43;
     }
     // Lets do zis!
@@ -3746,18 +3746,18 @@ export function spellArouse(): void {
     }
     if (monster.vaginas.length > 0) {
         if (monster.plural) {
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s dampen perceptibly.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotches become sticky with girl-lust.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s become sloppy and wet.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s instantly soak " + monster.pronoun2 + " groin.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.NORMAL) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s dampen perceptibly.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.WET) outputText(monster.capitalA + monster.short + "'s crotches become sticky with girl-lust.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.SLICK) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s become sloppy and wet.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.SLAVERING) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + "s instantly soak " + monster.pronoun2 + " groin.  ", false);
         }
         else {
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " dampens perceptibly.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET) outputText(monster.capitalA + monster.short + "'s crotch becomes sticky with girl-lust.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " becomes sloppy and wet.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ", false);
-            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " instantly soaks her groin.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.NORMAL) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " dampens perceptibly.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.WET) outputText(monster.capitalA + monster.short + "'s crotch becomes sticky with girl-lust.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.SLICK) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " becomes sloppy and wet.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.DROOLING) outputText("Thick runners of girl-lube stream down the insides of " + monster.a + monster.short + "'s thighs.  ", false);
+            if (monster.lust >= 60 && monster.vaginas[0].vaginalWetness == VaginaWetness.SLAVERING) outputText(monster.capitalA + monster.short + "'s " + vaginaDescript(monster) + " instantly soaks her groin.  ", false);
         }
     }
     outputText("\n\n", false);
@@ -4226,18 +4226,18 @@ export function kick(): void {
     }
     fatigue(15, 2);
     // Variant start messages!
-    if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
+    if (player.lowerBody == LowerBodyType.KANGAROO) {
         // (tail)
-        if (player.tailType == TAIL_TYPE_KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ", false);
+        if (player.tailType == TailType.KANGAROO) outputText("You balance on your flexible kangaroo-tail, pulling both legs up before slamming them forward simultaneously in a brutal kick.  ", false);
         // (no tail)
         else outputText("You balance on one leg and cock your powerful, kangaroo-like leg before you slam it forward in a kick.  ", false);
     }
     // (bunbun kick)
-    else if (player.lowerBody == LOWER_BODY_TYPE_BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ", false);
+    else if (player.lowerBody == LowerBodyType.BUNNY) outputText("You leap straight into the air and lash out with both your furred feet simultaneously, slamming forward in a strong kick.  ", false);
     // (centaur kick)
-    else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ", false);
+    else if (player.lowerBody == LowerBodyType.CENTAUR) outputText("You lurch up onto your backlegs, lifting your forelegs from the ground a split-second before you lash them out in a vicious kick.  ", false);
     // (bipedal hoof-kick)
-    else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ", false);
+    else if (player.lowerBody == LowerBodyType.HOOFED) outputText("You twist and lurch as you raise a leg and slam your hoof forward in a kick.  ", false);
 
     if (flags[kFLAGS.PC_FETISH] >= 3) {
         outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n", false);
@@ -4293,10 +4293,10 @@ export function kick(): void {
     damage = player.str;
     // Leg bonus
     // Bunny - 20, Kangaroo - 35, 1 hoof = 30, 2 hooves = 40
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) damage += 40;
-    else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) damage += 30;
-    else if (player.lowerBody == LOWER_BODY_TYPE_BUNNY) damage += 20;
-    else if (player.lowerBody == LOWER_BODY_TYPE_KANGAROO) damage += 35;
+    if (player.lowerBody == LowerBodyType.CENTAUR) damage += 40;
+    else if (player.lowerBody == LowerBodyType.HOOFED) damage += 30;
+    else if (player.lowerBody == LowerBodyType.BUNNY) damage += 20;
+    else if (player.lowerBody == LowerBodyType.KANGAROO) damage += 35;
     // Start figuring enemy damage resistance
     let reduction: number = rand(monster.tou);
     // Add in enemy armor if needed
@@ -4992,7 +4992,7 @@ export function runAway(callHook: boolean = true): void {
     let escapeMod: number = 20 + monster.level * 3;
     if (game.debug) escapeMod -= 300;
     if (player.canFly()) escapeMod -= 20;
-    if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) escapeMod -= 25;
+    if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) escapeMod -= 25;
 
     // Big tits doesn't matter as much if ya can fly!
     else {
@@ -5058,7 +5058,7 @@ export function runAway(callHook: boolean = true): void {
         // Fliers flee!
         if (player.canFly()) outputText(monster.capitalA + monster.short + " can't catch you.", false);
         // sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) {
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) {
             outputText("Using your running skill, you build up a head of steam and jump, then spread your arms and flail your tail wildly; your opponent dogs you as best " + monster.pronoun1 + " can, but stops and stares dumbly as your spastic tail slowly propels you several meters into the air!  You leave " + monster.pronoun2 + " behind with your clumsy, jerky, short-range flight.");
         }
         // Non-fliers flee
@@ -5094,7 +5094,7 @@ export function runAway(callHook: boolean = true): void {
             else outputText(monster.capitalA + monster.short + " manages to grab your " + legs(player) + " and drag you back to the ground before you can fly away!", false);
         }
         // fail
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.perks.findByType(PerkLib.Runner) >= 0) outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
         // Nonflyer messages
         else {
             // Huge balls messages
@@ -5250,13 +5250,13 @@ export function physicalSpecials(): void {
         addButton(0, "AnemoneSting", anemoneSting);
     }
     // Bitez
-    if (player.faceType == FACE_SHARK_TEETH) {
+    if (player.faceType == FaceType.SHARK_TEETH) {
         addButton(1, "Bite", bite);
     }
-    else if (player.faceType == FACE_SNAKE_FANGS) {
+    else if (player.faceType == FaceType.SNAKE_FANGS) {
         addButton(1, "Bite", nagaBiteAttack);
     }
-    else if (player.faceType == FACE_SPIDER_FANGS) {
+    else if (player.faceType == FaceType.SPIDER_FANGS) {
         addButton(1, "Bite", spiderBiteAttack);
     }
     // Bow attack
@@ -5264,15 +5264,15 @@ export function physicalSpecials(): void {
         addButton(2, "Bow", fireBow);
     }
     // Constrict
-    if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+    if (player.lowerBody == LowerBodyType.NAGA) {
         addButton(3, "Constrict", NagaScene.nagaPlayerConstrict);
     }
     // Kick attackuuuu
-    else if (player.isTaur() || player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_BUNNY || player.lowerBody == LOWER_BODY_TYPE_KANGAROO) {
+    else if (player.isTaur() || player.lowerBody == LowerBodyType.HOOFED || player.lowerBody == LowerBodyType.BUNNY || player.lowerBody == LowerBodyType.KANGAROO) {
         addButton(3, "Kick", kick);
     }
     // Gore if mino horns
-    if (player.hornType == HORNS_COW_MINOTAUR && player.horns >= 6) {
+    if (player.hornType == HornType.COW_MINOTAUR && player.horns >= 6) {
         addButton(4, "Gore", goreAttack);
     }
     // Infest if infested
@@ -5284,17 +5284,17 @@ export function physicalSpecials(): void {
         addButton(6, "Kiss", kissAttack);
     }
     switch (player.tailType) {
-        case TAIL_TYPE_BEE_ABDOMEN:
+        case TailType.BEE_ABDOMEN:
             addButton(7, "Sting", playerStinger);
             break;
-        case TAIL_TYPE_SPIDER_ADBOMEN:
+        case TailType.SPIDER_ADBOMEN:
             addButton(7, "Web", PCWebAttack);
             break;
-        case TAIL_TYPE_SHARK:
-        case TAIL_TYPE_LIZARD:
-        case TAIL_TYPE_KANGAROO:
-        case TAIL_TYPE_DRACONIC:
-        case TAIL_TYPE_RACCOON:
+        case TailType.SHARK:
+        case TailType.LIZARD:
+        case TailType.KANGAROO:
+        case TailType.DRACONIC:
+        case TailType.RACCOON:
             addButton(7, "Tail Whip", tailWhipAttack);
         default:
     }
@@ -5490,7 +5490,7 @@ export function tailWhipAttack(): void {
             temp--;
         }
         monster.effects.addValue(StatusAffects.CoonWhip, 2, 2);
-        if (player.tailType == TAIL_TYPE_RACCOON) monster.effects.addValue(StatusAffects.CoonWhip, 2, 2);
+        if (player.tailType == TailType.RACCOON) monster.effects.addValue(StatusAffects.CoonWhip, 2, 2);
     }
     outputText("\n\n");
     enemyAI();

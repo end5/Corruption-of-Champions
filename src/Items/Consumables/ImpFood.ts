@@ -17,7 +17,7 @@ export function impFood(player: Player): void {
         }
         // Red skin!
         if (rand(30) == 0 && player.skinTone != "red") {
-            if (player.skinType == SKIN_TYPE_FUR)
+            if (player.skinType == SkinType.FUR)
                 outputText("\n\nUnderneath your fur, your skin ", false);
             else
                 outputText("\n\nYour " + player.skinDesc + " ", false);
@@ -36,7 +36,7 @@ export function impFood(player: Player): void {
     }
     // Red skin!
     if (rand(30) == 0 && player.skinTone != "red") {
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText("\n\nUnderneath your fur, your skin ", false);
         else
             outputText("\n\nYour " + player.skinDesc + " ", false);

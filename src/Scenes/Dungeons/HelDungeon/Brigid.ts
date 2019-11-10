@@ -56,16 +56,16 @@ export class Brigid extends Monster {
         this.imageName = "brigid";
         this.long = "Brigid is a monster of a harpy, standing a foot taller than any other you've seen. She's covered in piercings, and her pink-dyed hair is shaved down to a long mohawk. She's nude, save for the hot poker in her right hand and the shield in her left, which jingles with every step she takes thanks to the cell keys beneath it.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
-        if (LOWER_BODY_TYPE_HARPY > 0) {
-            this.effects.create(StatusAffects.BonusVCapacity, LOWER_BODY_TYPE_HARPY, 0, 0, 0);
+        this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.LOOSE);
+        if (LowerBodyType.HARPY > 0) {
+            this.effects.create(StatusAffects.BonusVCapacity, LowerBodyType.HARPY, 0, 0, 0);
         }
         this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 70;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -83,9 +83,9 @@ export class Brigid extends Monster {
         this.level = 19;
         this.gems = rand(25) + 140;
         this.additionalXP = 50;
-        this.wingType = WING_TYPE_FEATHERED_LARGE;
-        this.tailType = TAIL_TYPE_DEMONIC;
-        this.hornType = HORNS_DEMON;
+        this.wingType = WingType.FEATHERED_LARGE;
+        this.tailType = TailType.DEMONIC;
+        this.hornType = HornType.DEMON;
         this.horns = 2;
         this.drop = NO_DROP;
         checkMonster();

@@ -148,7 +148,7 @@ export class Holli extends Monster {
         player.effects.addValue(StatusAffects.HolliConstrict, 1, 9);
         // Struggle Succeed
         // if demon/dragon tongue, automatic success
-        if (player.tongueType > TONUGE_HUMAN) {
+        if (player.tongueType > TongueType.HUMAN) {
             outputText("You can't move an arm nor a [leg] to bat the flower away... but she's literally holding your mouth open.  Your long tongue rolls out, gripping and ripping out several of the petals on the end of her stalk!  Holli screams and her roots slacken, allowing you to batter your way out of them.");
             player.effects.remove(StatusAffects.HolliConstrict);
         }
@@ -222,14 +222,14 @@ export class Holli extends Monster {
         this.ballSize = 0;
         this.cumMultiplier = 3;
         this.hoursSinceCum = 20;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_WET, VAGINA_LOOSENESS_LOOSE);
+        this.vaginas.createVagina(false, VaginaWetness.WET, VaginaLooseness.LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 20, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("E"));
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(12) + 55;
-        this.hipRating = HIP_RATING_CURVY;
-        this.buttRating = BUTT_RATING_LARGE;
+        this.hipRating = HipRating.CURVY;
+        this.buttRating = ButtRating.LARGE;
         this.skinTone = "black";
         this.hairColor = "sandy-blonde";
         this.hairLength = 15;

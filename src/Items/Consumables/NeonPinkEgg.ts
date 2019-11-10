@@ -100,7 +100,7 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         // Libido over 60? FUCK YEAH!
         else if (player.lib < 80) {
             outputText("\n\nYou fan your neck and start to pant as your " + player.skinTone + " skin begins to flush red with heat", false);
-            if (player.skinType > SKIN_TYPE_PLAIN)
+            if (player.skinType > SkinType.PLAIN)
                 outputText(" through your " + player.skinDesc, false);
             outputText(".  ", false);
             if (player.gender == 1)
@@ -297,47 +297,47 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         }
     }
     // Bunny feet! - requirez earz
-    if (player.lowerBody != LOWER_BODY_TYPE_BUNNY && changes < changeLimit && rand(5) == 0 && player.earType == EARS_BUNNY) {
+    if (player.lowerBody != LowerBodyType.BUNNY && changes < changeLimit && rand(5) == 0 && player.earType == EarType.BUNNY) {
         // Taurs
         if (player.isTaur())
             outputText("\n\nYour quadrupedal hind-quarters seizes, overbalancing your surprised front-end and causing you to stagger and fall to your side.  Pain lances throughout, contorting your body into a tightly clenched ball of pain while tendons melt and bones break, melt, and regrow.  When it finally stops, <b>you look down to behold your new pair of fur-covered rabbit feet</b>!", false);
         // Non-taurs
         else {
             outputText("\n\nNumbness envelops your " + legs(player) + " as they pull tighter and tighter.  You overbalance and drop on your " + buttDescription(player), false);
-            if (player.tailType > TAIL_TYPE_NONE)
+            if (player.tailType > TailType.NONE)
                 outputText(", nearly smashing your tail flat", false);
             else
                 outputText(" hard enough to sting", false);
             outputText(" while the change works its way through you.  Once it finishes, <b>you discover that you now have fuzzy bunny feet and legs</b>!", false);
         }
         changes++;
-        player.lowerBody = LOWER_BODY_TYPE_BUNNY;
+        player.lowerBody = LowerBodyType.BUNNY;
     }
     // BUN FACE!  REQUIREZ EARZ
-    if (player.earType == EARS_BUNNY && player.faceType != FACE_BUNNY && rand(3) == 0 && changes < changeLimit) {
+    if (player.earType == EarType.BUNNY && player.faceType != FaceType.BUNNY && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\n", false);
         changes++;
         // Human(ish) face
-        if (player.faceType == FACE_HUMAN || player.faceType == FACE_SHARK_TEETH)
+        if (player.faceType == FaceType.HUMAN || player.faceType == FaceType.SHARK_TEETH)
             outputText("You catch your nose twitching on its own at the bottom of your vision, but as soon as you focus on it, it stops.  A moment later, some of your teeth tingle and brush past your lips, exposing a white pair of buckteeth!  <b>Your face has taken on some rabbit-like characteristics!</b>", false);
         // Crazy furry TF shit
         else
             outputText("You grunt as your " + face(player) + " twists and reforms.  Even your teeth ache as their positions are rearranged to match some new, undetermined order.  When the process finishes, <b>you're left with a perfectly human looking face, save for your constantly twitching nose and prominent buck-teeth.</b>", false);
-        player.faceType = FACE_BUNNY;
+        player.faceType = FaceType.BUNNY;
     }
     // DAH BUNBUN EARZ - requires poofbutt!
-    if (player.earType != EARS_BUNNY && changes < changeLimit && rand(3) == 0 && player.tailType == TAIL_TYPE_RABBIT) {
+    if (player.earType != EarType.BUNNY && changes < changeLimit && rand(3) == 0 && player.tailType == TailType.RABBIT) {
         outputText("\n\nYour ears twitch and curl in on themselves, sliding around on the flesh of your head.  They grow warmer and warmer before they finally settle on the top of your head and unfurl into long, fluffy bunny-ears.  <b>You now have a pair of bunny ears.</b>", false);
-        player.earType = EARS_BUNNY;
+        player.earType = EarType.BUNNY;
         changes++;
     }
     // DAH BUNBUNTAILZ
-    if (player.tailType != TAIL_TYPE_RABBIT && rand(2) == 0 && changes < changeLimit) {
-        if (player.tailType > TAIL_TYPE_NONE)
+    if (player.tailType != TailType.RABBIT && rand(2) == 0 && changes < changeLimit) {
+        if (player.tailType > TailType.NONE)
             outputText("\n\nYour tail burns as it shrinks, pulling tighter and tighter to your backside until it's the barest hint of a stub.  At once, white, poofy fur explodes out from it.  <b>You've got a white bunny-tail!  It even twitches when you aren't thinking about it.</b>", false);
         else
             outputText("\n\nA burning pressure builds at your spine before dissipating in a rush of relief. You reach back and discover a small, fleshy tail that's rapidly growing long, poofy fur.  <b>You have a rabbit tail!</b>", false);
-        player.tailType = TAIL_TYPE_RABBIT;
+        player.tailType = TailType.RABBIT;
         changes++;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {
@@ -400,7 +400,7 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         // Libido over 60? FUCK YEAH!
         else if (player.lib < 80) {
             outputText("\n\nYou fan your neck and start to pant as your " + player.skinTone + " skin begins to flush red with heat", false);
-            if (player.skinType > SKIN_TYPE_PLAIN)
+            if (player.skinType > SkinType.PLAIN)
                 outputText(" through your " + player.skinDesc, false);
             outputText(".  ", false);
             if (player.gender == 1)

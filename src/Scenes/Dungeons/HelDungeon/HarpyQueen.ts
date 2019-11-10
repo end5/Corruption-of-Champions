@@ -19,16 +19,16 @@ export class HarpyQueen extends Monster {
         this.imageName = "harpyqueen";
         this.long = "You face the Harpy Queen, a broodmother of epic proportions - literally.  Her hips are amazingly wide, thrice her own width at the least, and the rest of her body is lushly voluptuous, with plush, soft thighs and a tremendous butt.  Her wide wings beat occasionally, sending ripples through her jiggly body.  She wields a towering whitewood staff in one hand, using the other to cast eldritch spells.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+        this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.LOOSE);
         this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 70;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
-        this.lowerBody = LOWER_BODY_TYPE_HARPY;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
+        this.lowerBody = LowerBodyType.HARPY;
         this.skinTone = "red";
-        this.skinType = SKIN_TYPE_PLAIN;
+        this.skinType = SkinType.PLAIN;
         this.skinDesc = "feathers";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -46,8 +46,8 @@ export class HarpyQueen extends Monster {
         this.level = 20;
         this.gems = rand(25) + 160;
         this.additionalXP = 50;
-        this.tailType = TAIL_TYPE_HARPY;
-        this.wingType = WING_TYPE_FEATHERED_LARGE;
+        this.tailType = TailType.HARPY;
+        this.wingType = WingType.FEATHERED_LARGE;
         this.drop = NO_DROP;
         checkMonster();
     }

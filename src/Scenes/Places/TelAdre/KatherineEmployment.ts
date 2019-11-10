@@ -102,7 +102,7 @@ export function talkToEdryn(): void {
     outputText("You smile and thank the centauress for her help.  “<i>It was nothing,</i>” she replies, looking quite pleased at your thanks all the same.\n\n");
     flags[kFLAGS.KATHERINE_TRAINING] |= KBIT_TRAINING_TALK_EDRYN; // Using a mask so it doesn’t matter what order you talk to Edryn and Urta in
     const cockFitIndex: number = player.cocks.cockThatFits(300);
-    if ((cockFitIndex >= 0 && player.cocks.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LOWER_BODY_TYPE_CENTAUR || player.cocks.horseCocks() > 0 || player.cor > 50 || player.effects.getValue1Of(StatusAffects.Edryn) > 0)) {
+    if ((cockFitIndex >= 0 && player.cocks.cockArea(cockFitIndex) >= 24) && (player.lowerBody == LowerBodyType.CENTAUR || player.cocks.horseCocks() > 0 || player.cor > 50 || player.effects.getValue1Of(StatusAffects.Edryn) > 0)) {
         outputText("“<i>So... I don’t suppose there’s anything else you might have on your mind...?</i>”  She gives you a coy look and fiddles with a nipple through her shirt.");
         doYesNo((Edryn.pregnancy.isPregnant ? pregnantEdrynSexSelector : Edryn.edrynSexSelecter), TelAdre.barTelAdre);
     }

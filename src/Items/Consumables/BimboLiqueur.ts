@@ -76,21 +76,21 @@ export class BimboLiqueur extends Consumable {
             if (!game.player.vaginas.length > 0) {
                 game.player.vaginas.createVagina();
                 game.player.clitLength = 0.25;
-                game.player.vaginas[0].vaginalWetness = Appearance.VAGINA_WETNESS_SLICK;
+                game.player.vaginas[0].vaginalWetness = Appearance.VaginaWetness.SLICK;
                 if (game.player.isTaur()) outputText("Wait!? Wet? You wish you could touch yourself between the " + legs(game.player) + ", but you can tell from the fluid running down your hind-legs just how soaked your new vagina is.");
                 else outputText("Wait!?  Wet?  You touch yourself between the " + legs(game.player) + " and groan when your fingers sink into a sloppy, wet cunt.");
             }
             else {
                 if (game.player.isTaur()) {
                     outputText("You wish you could sink your fingers into your sloppy, wet cunt, but as a centaur, you can't quite reach.");
-                    if (game.player.vaginas[0].vaginalWetness < Appearance.VAGINA_WETNESS_SLICK)
-                        game.player.vaginas[0].vaginalWetness = Appearance.VAGINA_WETNESS_SLICK;
+                    if (game.player.vaginas[0].vaginalWetness < Appearance.VaginaWetness.SLICK)
+                        game.player.vaginas[0].vaginalWetness = Appearance.VaginaWetness.SLICK;
                 }
                 else {
                     outputText("You sink your fingers into your ");
-                    if (game.player.vaginas[0].vaginalWetness < Appearance.VAGINA_WETNESS_SLICK) {
+                    if (game.player.vaginas[0].vaginalWetness < Appearance.VaginaWetness.SLICK) {
                         outputText("now ");
-                        game.player.vaginas[0].vaginalWetness = Appearance.VAGINA_WETNESS_SLICK;
+                        game.player.vaginas[0].vaginalWetness = Appearance.VaginaWetness.SLICK;
                     }
                     outputText("sloppy, wet cunt with a groan of satisfaction.");
                 }

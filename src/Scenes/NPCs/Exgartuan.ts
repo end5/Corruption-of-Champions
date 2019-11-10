@@ -362,9 +362,9 @@ export function exgartuanMasturbation(): void {
             outputText("You shrug off your top eagerly, ready to cooperate with the demon inside your " + allBreastsDescript(player) + " and enjoy a relaxing tit-massage.  You slide the offending material to the side and marvel at the wondrously large orbs on your chest.  Truly any place that can give you such wonderful endowments can't be evil.  You lean back, enjoying the warmth in the air as it flows over every extra-sensitive inch of your mounds, more than ready to get started.\n\n", false);
         }
         outputText("Both hands rise unbidden and begin to caress your " + breastDescript(game.player, 0) + ".  They slide over every sensitive inch of ", false);
-        if (player.skinType == SKIN_TYPE_PLAIN || player.skinType >= SKIN_TYPE_UNDEFINED) outputText("flesh", false);
-        else if (player.skinType == SKIN_TYPE_FUR) outputText("furry-covered flesh", false);
-        else if (player.skinType == SKIN_TYPE_SCALES) outputText("soft scaley flesh", false);
+        if (player.skinType == SkinType.PLAIN || player.skinType >= SkinType.UNDEFINED) outputText("flesh", false);
+        else if (player.skinType == SkinType.FUR) outputText("furry-covered flesh", false);
+        else if (player.skinType == SkinType.SCALES) outputText("soft scaley flesh", false);
         else outputText("gooey surface", false);
         outputText(", pausing to gently squeeze and caress any particularly sensitive spots.  Soft sighs escape your lips from the self-imposed pleasure-assault.  Your body relaxes totally, slouching down against a rock while you continue to happily play with your " + allBreastsDescript(player) + ".  The entire time your hands never touch one of your " + nippleDescription(player, 0) + "s, merely circling them from time to time, making you arch your back in need.\n\n", false);
         outputText("A voice taunts, \"<i>Oh, does my champion tit-massager need a little nipple-play?  And to think I thought I was the one needing to get off.  Go ahead then, submit to your desires and play with your nipples.  Wallow in the pleasure that I can give you and remember who your true master is!</i>\"\n\n", false);
@@ -880,11 +880,11 @@ function exgartuanSleepSurprise(): void {
             // (no balls)
             if (player.balls == 0) {
                 outputText("The ", false);
-                if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("puffy", false);
-                else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("glistening", false);
+                if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) outputText("puffy", false);
+                else if (player.vaginas[0].vaginalWetness < VaginaWetness.DROOLING) outputText("glistening", false);
                 else outputText("dripping", false);
                 outputText(" skin of your outer lips is engorged and ready, but there's no pleasure to be had for your greedy gash.  Cool night air washes over the exposed ", false);
-                if (player.skinType == SKIN_TYPE_SCALES) outputText("scales", false);
+                if (player.skinType == SkinType.SCALES) outputText("scales", false);
                 else outputText("skin", false);
                 outputText(" surrounding your sex, teasing you with the barest hint of sensation while your ignorant hands maul your " + cockDescript(game.player, 0) + " at Exgartuan's behest.  If only you had taken care of yourself earlier, you might have had the control to slip a digit into your " + vaginaDescript(player, 0), false);
                 if (player.clitLength > 3) outputText(" or stroke your " + clitDescription(player), false);
@@ -894,8 +894,8 @@ function exgartuanSleepSurprise(): void {
             // (Herms + Balls)
             else {
                 outputText("The ", false);
-                if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("puffy", false);
-                else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("glistening", false);
+                if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) outputText("puffy", false);
+                else if (player.vaginas[0].vaginalWetness < VaginaWetness.DROOLING) outputText("glistening", false);
                 else outputText("dripping", false);
                 outputText(" skin of your outer lips is engorged and ready, but with your hands so focused on your " + cockDescript(game.player, 0) + ", there's little for your " + vaginaDescript(player, 0) + " to feel.  The closest it gets to pleasure is the sensation of your " + sackDescript(player) + " slapping against it with the steady rhythm of your masturbation.  If only you had taken care of yourself earlier!  You might have had enough control over your rebellious tool to let a hand attend to your OTHER needs.\n\n", false);
             }

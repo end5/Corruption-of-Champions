@@ -153,7 +153,7 @@ export function impGangGetsRapedByMale(): void {
 export function impGangGetsRapedByFemale(): void {
     outputText("", true);
     outputText("You walk around to one of the demons and push him onto his back.  Your " + player.armorName + " falls to the ground around you as you disrobe, looking over your tiny conquest.  A quick ripping motion disposes of his tiny loincloth, leaving his thick demon-tool totally unprotected. You grab and squat down towards it, rubbing the corrupted tool between your legs ", false);
-    if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) outputText("and coating it with feminine drool ", false);
+    if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLICK) outputText("and coating it with feminine drool ", false);
     outputText("as you become more and more aroused.  It parts your lips and slowly slides in.  The ring of tainted nodules tickles you just right as you take the oddly textured member further and further into your willing depths.", false);
     player.cuntChange(15, true, true, false);
     outputText("\n\n", false);
@@ -163,7 +163,7 @@ export function impGangGetsRapedByFemale(): void {
     outputText("You begin riding the tiny demon, lifting up, and then dropping down, feeling each of the nodes gliding along your sex-lubed walls.   As time passes and your pleasure mounts, you pick up the pace, until you're bouncing happily atop your living demon-dildo.\n\n", false);
 
     outputText("The two of you cum together, though the demon's pleasure starts first.  A blast of his tainted seed pushes you over the edge.  You sink the whole way down, feeling him bump your cervix and twitch inside you, the bumps on his dick swelling in a pulsating wave in time with each explosion of fluid.  ", false);
-    if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLAVERING) outputText("Cunt juices splatter him as you squirt explosively, leaving a puddle underneath him.  ", false);
+    if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLAVERING) outputText("Cunt juices splatter him as you squirt explosively, leaving a puddle underneath him.  ", false);
     else outputText("Cunt juices drip down his shaft, oozing off his balls to puddle underneath him.  ", false);
     outputText("The two of you lie together, trembling happily as you're filled to the brim with tainted fluids.\n\n", false);
 

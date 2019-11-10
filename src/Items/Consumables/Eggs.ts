@@ -311,19 +311,19 @@ export function blackRubberEgg(large: boolean, player: Player): void {
         // Change skin to normal if not flawless!
         if ((player.skinAdj != "smooth" && player.skinAdj != "latex" && player.skinAdj != "rubber") || player.skinDesc != "skin") {
             outputText("\n\nYour " + player.skinDesc + " tingles delightfully as it ", false);
-            if (player.skinType == SKIN_TYPE_PLAIN)
+            if (player.skinType == SkinType.PLAIN)
                 outputText(" loses its blemishes, becoming flawless smooth skin.", false);
-            if (player.skinType == SKIN_TYPE_FUR)
+            if (player.skinType == SkinType.FUR)
                 outputText(" falls out in clumps, revealing smooth skin underneath.", false);
-            if (player.skinType == SKIN_TYPE_SCALES)
+            if (player.skinType == SkinType.SCALES)
                 outputText(" begins dropping to the ground in a pile around you, revealing smooth skin underneath.", false);
-            if (player.skinType > SKIN_TYPE_SCALES)
+            if (player.skinType > SkinType.SCALES)
                 outputText(" shifts and changes into flawless smooth skin.", false);
             player.skinDesc = "skin";
             player.skinAdj = "smooth";
             if (player.skinTone == "rough gray")
                 player.skinTone = "gray";
-            player.skinType = SKIN_TYPE_PLAIN;
+            player.skinType = SkinType.PLAIN;
         }
         // chance of hair change
         else {
@@ -370,19 +370,19 @@ export function blackRubberEgg(large: boolean, player: Player): void {
         // Change skin to normal if not flawless!
         if ((player.skinAdj != "smooth" && player.skinAdj != "latex" && player.skinAdj != "rubber") || player.skinDesc != "skin") {
             outputText("\n\nYour " + player.skinDesc + " tingles delightfully as it ", false);
-            if (player.skinType == SKIN_TYPE_PLAIN)
+            if (player.skinType == SkinType.PLAIN)
                 outputText(" loses its blemishes, becoming flawless smooth skin.", false);
-            if (player.skinType == SKIN_TYPE_FUR)
+            if (player.skinType == SkinType.FUR)
                 outputText(" falls out in clumps, revealing smooth skin underneath.", false);
-            if (player.skinType == SKIN_TYPE_SCALES)
+            if (player.skinType == SkinType.SCALES)
                 outputText(" begins dropping to the ground in a pile around you, revealing smooth skin underneath.", false);
-            if (player.skinType > SKIN_TYPE_SCALES)
+            if (player.skinType > SkinType.SCALES)
                 outputText(" shifts and changes into flawless smooth skin.", false);
             player.skinDesc = "skin";
             player.skinAdj = "smooth";
             if (player.skinTone == "rough gray")
                 player.skinTone = "gray";
-            player.skinType = SKIN_TYPE_PLAIN;
+            player.skinType = SkinType.PLAIN;
         }
         // chance of hair change
         else {

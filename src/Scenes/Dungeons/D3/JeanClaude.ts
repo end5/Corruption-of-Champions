@@ -77,13 +77,13 @@ export class JeanClaude extends Monster {
         ass.analLooseness = 0;
         ass.analWetness = 0;
 
-        hipRating = HIP_RATING_AVERAGE;
-        buttRating = BUTT_RATING_AVERAGE;
-        lowerBody = LOWER_BODY_TYPE_LIZARD;
+        hipRating = HipRating.AVERAGE;
+        buttRating = ButtRating.AVERAGE;
+        lowerBody = LowerBodyType.LIZARD;
         skinDesc = "green-purple mottled hide";
         initStrTouSpeInte(80, 100, 80, 60);
         initLibSensCor(40, 40, 80);
-        faceType = FACE_LIZARD;
+        faceType = FaceType.LIZARD;
 
         weaponName = "cutlass";
         weaponVerb = "slash";

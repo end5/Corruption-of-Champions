@@ -628,7 +628,7 @@ function tentacleRapeContinuationForFemales(): void {
     }
     // Mention that clit doesn't grow if your big enough.
     else outputText("In time it returns to its normal size, losing all the extra volume.");
-    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_TIGHT) player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_NORMAL;
+    if (player.vaginas[0].vaginalLooseness == VaginaLooseness.TIGHT) player.vaginas[0].vaginalLooseness = VaginaLooseness.NORMAL;
     player.slimeFeed();
     if (game.inCombat)
         cleanupAfterCombat();

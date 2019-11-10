@@ -140,25 +140,25 @@ export function foxJewel(mystic: boolean, player: Player): void {
     // BIG APPEARANCE CHANGES
     // **********************
     // [Grow Fox Tail]
-    if (player.tailType != TAIL_TYPE_FOX && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(4) == 0))) {
+    if (player.tailType != TailType.FOX && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(4) == 0))) {
         // if PC has no tail
-        if (player.tailType == TAIL_TYPE_NONE) {
+        if (player.tailType == TailType.NONE) {
             outputText("\n\nA pressure builds on your backside.  You feel under your " + player.armorName + " and discover a strange nodule growing there that seems to be getting larger by the second.  With a sudden flourish of movement, it bursts out into a long and bushy tail that sways hypnotically, as if it has a mind of its own.  <b>You now have a fox-tail.</b>");
         }
         // if PC has another type of tail
-        else if (player.tailType != TAIL_TYPE_FOX) {
+        else if (player.tailType != TailType.FOX) {
             outputText("\n\nPain lances through your lower back as your tail shifts and twitches violently.  With one final aberrant twitch, it fluffs out into a long, bushy fox tail that whips around in an almost hypnotic fashion.  <b>You now have a fox-tail.</b>");
         }
-        player.tailType = TAIL_TYPE_FOX;
+        player.tailType = TailType.FOX;
         player.tailVenom = 1;
         changes++;
     }
-    if (!mystic && player.earType == EARS_FOX && player.tailType == TAIL_TYPE_FOX && player.tailVenom == 8 && rand(3) == 0) {
+    if (!mystic && player.earType == EarType.FOX && player.tailType == TailType.FOX && player.tailVenom == 8 && rand(3) == 0) {
         outputText("\n\nYou have the feeling that if you could grow a ninth tail you would be much more powerful, but you would need to find a way to enhance one of these gems or meditate with one to have a chance at unlocking your full potential.");
     }
     // [Grow Addtl. Fox Tail]
     // (rare effect, up to max of 8 tails, requires PC level and int*10 = number of tail to be added)
-    else if (player.tailType == TAIL_TYPE_FOX && player.tailVenom < 8 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0))) {
+    else if (player.tailType == TailType.FOX && player.tailVenom < 8 && player.tailVenom + 1 <= player.level && player.tailVenom + 1 <= player.inte / 10 && changes < changeLimit && ((mystic && rand(2) == 0) || (!mystic && rand(3) == 0))) {
         // if PC has 1 fox tail
         if (player.tailVenom == 1) {
             outputText("\n\nA tingling pressure builds on your backside, and your bushy tail begins to glow with an eerie, ghostly light.  With a crackle of electrical energy, your tail splits into two!  <b>You now have a pair of fox-tails.</b>");
@@ -173,7 +173,7 @@ export function foxJewel(mystic: boolean, player: Player): void {
         changes++;
     }
     // [Grow 9th tail and gain Corrupted Nine-tails perk]
-    else if (mystic && rand(4) == 0 && changes < changeLimit && player.tailType == TAIL_TYPE_FOX && player.tailVenom == 8 && player.level >= 9 && player.earType == EARS_FOX && player.inte >= 90 && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
+    else if (mystic && rand(4) == 0 && changes < changeLimit && player.tailType == TailType.FOX && player.tailVenom == 8 && player.level >= 9 && player.earType == EarType.FOX && player.inte >= 90 && player.perks.findByType(PerkLib.CorruptedNinetails) < 0 && player.perks.findByType(PerkLib.EnlightenedNinetails) < 0) {
         outputText("Your bushy tails begin to glow with an eerie, ghostly light, and with a crackle of electrical energy, split into nine tails.  <b>You are now a nine-tails!  But something is wrong...  The cosmic power radiating from your body feels...  tainted somehow.  The corruption pouring off your body feels...  good.</b>");
         outputText("\n\nYou have the inexplicable urge to set fire to the world, just to watch it burn.  With your newfound power, it's a goal that is well within reach.");
         outputText("\n\n(Perk Gained: Corrupted Nine-tails - Grants two magical special attacks.)");
@@ -183,14 +183,14 @@ export function foxJewel(mystic: boolean, player: Player): void {
         changes++;
     }
     // [Grow Fox Ears]
-    if (player.tailType == TAIL_TYPE_FOX && ((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && player.earType != EARS_FOX && changes < changeLimit) {
+    if (player.tailType == TailType.FOX && ((mystic && rand(2) == 0) || (!mystic && rand(4) == 0)) && player.earType != EarType.FOX && changes < changeLimit) {
         // if PC has non-animal ears
-        if (player.earType == EARS_HUMAN)
+        if (player.earType == EarType.HUMAN)
             outputText("\n\nThe sides of your face painfully stretch as your ears morph and begin to migrate up past your hairline, toward the top of your head.  They elongate, becoming large vulpine triangles covered in bushy fur.  You now have fox ears.");
         // if PC has animal ears
         else
             outputText("\n\nYour ears change shape, shifting from their current shape to become vulpine in nature.  You now have fox ears.");
-        player.earType = EARS_FOX;
+        player.earType = EarType.FOX;
         changes++;
     }
     // [Change Hair Color: Golden-blonde, SIlver Blonde, White, Black, Red]
@@ -210,14 +210,14 @@ export function foxJewel(mystic: boolean, player: Player): void {
         changes++;
     }
     // [Change Skin Type: remove fur or scales, change skin to Tan, Olive, or Light]
-    if (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES && ((mystic) || (!mystic && rand(2) == 0))) {
+    if (player.skinType == SkinType.FUR || player.skinType == SkinType.SCALES && ((mystic) || (!mystic && rand(2) == 0))) {
         outputText("\n\nYou begin to tingle all over your " + skin(player) + ", starting as a cool, pleasant sensation but gradually worsening until you are furiously itching all over.");
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText("  You stare in horror as you pull your fingers away holding a handful of " + player.hairColor + " fur!  Your fur sloughs off your body in thick clumps, falling away to reveal patches of bare, " + player.skinTone + " skin.");
-        else if (player.skinType == SKIN_TYPE_SCALES)
+        else if (player.skinType == SkinType.SCALES)
             outputText("  You stare in horror as you pull your fingers away holding a handful of dried up scales!  Your scales continue to flake and peel off your skin in thick patches, revealing the tender " + player.skinTone + " skin underneath.");
         outputText("  Your skin slowly turns raw and red under your severe scratching, the tingling sensations raising goosebumps across your whole body.  Over time, the itching fades, and your flushed skin resolves into a natural-looking ");
-        player.skinType = SKIN_TYPE_PLAIN;
+        player.skinType = SkinType.PLAIN;
         player.skinAdj = "";
         player.skinDesc = "skin";
         if (!mystic && player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "light") {

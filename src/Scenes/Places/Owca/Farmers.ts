@@ -29,13 +29,13 @@ export class Farmers extends Monster {
         this.ballSize = 1;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_LOOSE);
+        this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.LOOSE);
         this.breasts.createBreastRow(Appearance.breastCupInverse("A"));
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(8) + 70;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -49,9 +49,9 @@ export class Farmers extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 10;
         this.gems = rand(25) + 40;
-        this.hornType = HORNS_DEMON;
+        this.hornType = HornType.DEMON;
         this.horns = 2;
-        this.tailType = TAIL_TYPE_DEMONIC;
+        this.tailType = TailType.DEMONIC;
         this.drop = NO_DROP;
         checkMonster();
     }

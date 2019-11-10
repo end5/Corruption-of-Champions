@@ -49,162 +49,182 @@ export class Character {
 
     // Appearance Variables
     // Gender 1M, 2F, 3H
-    public gender: number = GENDER_NONE;
-    public tallness: number = 0;
+    public gender = Gender.NONE;
+    public tallness = 0;
 
-    /*Hairtype
-    0- normal
-    1- feather
-    2- ghost
-    3- goo!
-    4- anemononeoenoeneo!*/
-    public hairType: number = HAIR_NORMAL;
-    public hairColor: string = "no";
-    public hairLength: number = 0;
+    /**
+     * Hairtype:
+     * 0 - normal
+     * 1 - feather
+     * 2 - ghost
+     * 3 - goo!
+     * 4 - anemononeoenoeneo!
+     */
+    public hairType = HairType.NORMAL;
+    public hairColor = "no";
+    public hairLength = 0;
 
-    /*Skintype
-    0 - skin
-    1 - furry
-    2 - scaley
-    3 - goopey*/
-    public skinType: number = SKIN_TYPE_PLAIN;
-    public skinTone: string = "albino";
-    public skinDesc: string = "skin";
-    public skinAdj: string = "";
+    /**
+     * Skintype:
+     * 0 - skin
+     * 1 - furry
+     * 2 - scaley
+     * 3 - goopey
+     */
+    public skinType = SkinType.PLAIN;
+    public skinTone = "albino";
+    public skinDesc = "skin";
+    public skinAdj = "";
 
-    /*		Facetype:
-            0 - human
-            1 - horse
-            2 - dogface
-            3 - cowface
-            4 - sharkface-teeth
-            5 - Human w/Naga fangz
-            6 - kittah face
-            7 - lizard face (durned argonians!)
-            8 - bunnah faceahhh bunbun
-            9 - kangaface
-            10 - spidah-face (humanish)
-            11 - foxface!
-            12 - dragon face
-            13 - Halfcoon
-            14 - fullcoon
-            15 - halfmouse
-            16 - fullmouse*/
-    public faceType: number = FACE_HUMAN;
+    /**
+     * Facetype:
+     * 0 - human
+     * 1 - horse
+     * 2 - dogface
+     * 3 - cowface
+     * 4 - sharkface-teeth
+     * 5 - Human w/Naga fangz
+     * 6 - kittah face
+     * 7 - lizard face (durned argonians!)
+     * 8 - bunnah faceahhh bunbun
+     * 9 - kangaface
+     * 10 - spidah-face (humanish)
+     * 11 - foxface!
+     * 12 - dragon face
+     * 13 - Halfcoon
+     * 14 - fullcoon
+     * 15 - halfmouse
+     * 16 - fullmouse
+     */
+    public faceType = FaceType.HUMAN;
 
-    /*EarType
-    -1 - none!
-    0 - human
-    1 - horse
-    2 - dog
-    3 - cow
-    4 - elf
-    5 - catzilla
-    6 - Snakezilla
-    7 - Bunbunz
-    8 - Roo Ears
-    9 - fox ears
-    10 - dragon
-    11 - coon
-    12 - mouse*/
-    public earType: number = EARS_HUMAN;
-    public earValue: number = 0;
+    /**
+     * EarType:
+     * -1 - none!
+     * 0 - human
+     * 1 - horse
+     * 2 - dog
+     * 3 - cow
+     * 4 - elf
+     * 5 - catzilla
+     * 6 - Snakezilla
+     * 7 - Bunbunz
+     * 8 - Roo Ears
+     * 9 - fox ears
+     * 10 - dragon
+     * 11 - coon
+     * 12 - mouse
+     */
+    public earType = EarType.HUMAN;
+    public earValue = 0;
 
-    /*Horntype
-    1 - demonic
-    2 - minotaur (cowlike)
-    3 - Draconic/Lizard
-    4 - Double draconic
-    5 - Antlers*/
-    public hornType: number = HORNS_NONE;
-    public horns: number = 0;
+    /**
+     * Horntype:
+     * 1 - demonic
+     * 2 - minotaur (cowlike)
+     * 3 - Draconic/Lizard
+     * 4 - Double draconic
+     * 5 - Antlers
+     */
+    public hornType = HornType.NONE;
+    public horns = 0;
 
-    /*Wingtype
-    0 - none
-    1 - bee
-    2 - large bee
-    3 - faerie?
-    4 - avian
-    5 - dragoooon?
-    6 - demon/bat
-    7 - large demon/bat
-    8 - shark wing lolololol
-    9 - harpy
-    10 - small dagron
-    11 - trogdor wings
-    12 - sandtrap wings*/
-    public wingType: number = WING_TYPE_NONE;
-    public wingDesc: string = "non-existant";
+    /**
+     * Wingtype:
+     * 0 - none
+     * 1 - bee
+     * 2 - large bee
+     * 3 - faerie?
+     * 4 - avian
+     * 5 - dragoooon?
+     * 6 - demon/bat
+     * 7 - large demon/bat
+     * 8 - shark wing lolololol
+     * 9 - harpy
+     * 10 - small dagron
+     * 11 - trogdor wings
+     * 12 - sandtrap wings
+     */
+    public wingType = WingType.NONE;
+    public wingDesc = "non-existant";
 
-    /* lowerBody:
-    0 - normal
-    1 - hooves
-    2 - paws
-    3 - snakelike body
-    4 - centaur!
-    5 - demonic heels
-    6 - demon foot-claws
-    7 - bee legs
-    8 - goo mound
-    9 - catfeet
-    10 - lizardfeet
-    11 - MLP.
-    12 - DAH BUNNY!
-    13 - Harpah Legz
-    14 - Roo feet!
-    15 - Spider Legz
-    16 - Drider Legs
-    17 - foxpaws
-    18 - dragonfeet
-    19 - raccoonfeet*/
-    public lowerBody: number = LOWER_BODY_TYPE_HUMAN;
+    /**
+     * LowerBody:
+     * 0 - normal
+     * 1 - hooves
+     * 2 - paws
+     * 3 - snakelike body
+     * 4 - centaur!
+     * 5 - demonic heels
+     * 6 - demon foot-claws
+     * 7 - bee legs
+     * 8 - goo mound
+     * 9 - catfeet
+     * 10 - lizardfeet
+     * 11 - MLP.
+     * 12 - DAH BUNNY!
+     * 13 - Harpah Legz
+     * 14 - Roo feet!
+     * 15 - Spider Legz
+     * 16 - Drider Legs
+     * 17 - foxpaws
+     * 18 - dragonfeet
+     * 19 - raccoonfeet
+     */
+    public lowerBody = LowerBodyType.HUMAN;
 
-    /*tailType:
-    0 - none
-    1 - horse
-    2 - dog
-    3 - demon
-    4 - cow!
-    5 - spider!
-    6 - bee!
-    7 - shark tail!
-    8 - catTAIIIIIL
-    9 - lizard tail
-    10 - bunbuntail
-    11 - harpybutt
-    12 - rootail
-    13 - foxtail
-    14 - dagron tail
-    15 - raccoon tail
-    16 - mousetail*/
-    public tailType: number = TAIL_TYPE_NONE;
+    /**
+     * TailType:
+     * 0 - none
+     * 1 - horse
+     * 2 - dog
+     * 3 - demon
+     * 4 - cow!
+     * 5 - spider!
+     * 6 - bee!
+     * 7 - shark tail!
+     * 8 - catTAIIIIIL
+     * 9 - lizard tail
+     * 10 - bunbuntail
+     * 11 - harpybutt
+     * 12 - rootail
+     * 13 - foxtail
+     * 14 - dagron tail
+     * 15 - raccoon tail
+     * 16 - mousetail
+     */
+    public tailType = TailType.NONE;
 
     // Tail venom is a 0-100 slider used for tail attacks. Recharges per hour.
-    public tailVenom: number = 0;
+    public tailVenom = 0;
     // Tail recharge determines how fast venom/webs comes back per hour.
-    public tailRecharge: number = 5;
+    public tailRecharge = 5;
 
-    /*hipRating
-    0 - boyish
-    2 - slender
-    4 - average
-    6 - noticable/ample
-    10 - curvy//flaring
-    15 - child-bearing/fertile
-    20 - inhumanly wide*/
-    public hipRating: number = HIP_RATING_BOYISH;
+    /**
+     * HipRating
+     * 0 - boyish
+     * 2 - slender
+     * 4 - average
+     * 6 - noticable/ample
+     * 10 - curvy//flaring
+     * 15 - child-bearing/fertile
+     * 20 - inhumanly wide
+     */
+    public hipRating = HipRating.BOYISH;
 
-    /*buttRating
-    0 - buttless
-    2 - tight
-    4 - average
-    6 - noticable
-    8 - large
-    10 - jiggly
-    13 - expansive
-    16 - huge
-    20 - inconceivably large/big/huge etc*/
-    public buttRating: number = BUTT_RATING_BUTTLESS;
+    /**
+     * ButtRating
+     * 0 - buttless
+     * 2 - tight
+     * 4 - average
+     * 6 - noticable
+     * 8 - large
+     * 10 - jiggly
+     * 13 - expansive
+     * 16 - huge
+     * 20 - inconceivably large/big/huge etc
+     */
+    public buttRating = ButtRating.BUTTLESS;
 
     public nipplesPierced: number = 0;
     public nipplesPShort: string = "";
@@ -225,10 +245,10 @@ export class Character {
     public nosePShort: string = "";
     public nosePLong: string = "";
 
-    public antennae: number = ANTENNAE_NONE;
-    public eyeType: number = EYES_HUMAN;
-    public tongueType: number = TONUGE_HUMAN;
-    public armType: number = ARM_TYPE_HUMAN;
+    public antennae = AntennaeType.NONE;
+    public eyeType = EyeType.HUMAN;
+    public tongueType = TongueType.HUMAN;
+    public armType = ArmType.HUMAN;
     public gills: boolean = false;
 
     public readonly cocks = new CockArray(this);
@@ -295,15 +315,15 @@ export class Character {
         }
         // 4.2. hair
         if (this.hairLength <= 0) {
-            if (this.hairType != HAIR_NORMAL) error += "No hair but hairType = " + this.hairType + ". ";
+            if (this.hairType != HairType.NORMAL) error += "No hair but hairType = " + this.hairType + ". ";
         }
         // 4.3. tail
-        if (this.tailType == TAIL_TYPE_NONE) {
+        if (this.tailType == TailType.NONE) {
             if (this.tailVenom != 0) error += "No tail but tailVenom = " + this.tailVenom + ". ";
         }
         // 4.4. horns
-        if (this.hornType == HORNS_NONE) {
-            if (this.horns > 0) error += "horns > 0 but hornType = HORNS_NONE. ";
+        if (this.hornType == HornType.NONE) {
+            if (this.horns > 0) error += "horns > 0 but hornType = HornType.NONE. ";
         } else {
             if (this.horns == 0) error += "Has horns but their number 'horns' = 0. ";
         }
@@ -580,13 +600,13 @@ export class Character {
 
     public genderCheck(): void {
         if (this.cocks.length > 0 && this.vaginas.length > 0)
-            this.gender = GENDER_HERM;
+            this.gender = Gender.HERM;
         else if (this.cocks.length > 0)
-            this.gender = GENDER_MALE;
+            this.gender = Gender.MALE;
         else if (this.vaginas.length > 0)
-            this.gender = GENDER_FEMALE;
+            this.gender = Gender.FEMALE;
         else
-            this.gender = GENDER_NONE;
+            this.gender = Gender.NONE;
     }
 
     public buttChangeNoDisplay(cArea: number): boolean {
@@ -630,10 +650,10 @@ export class Character {
     public cuntChangeNoDisplay(cArea: number): boolean {
         if (this.vaginas.length == 0) return false;
         let stretched: boolean = false;
-        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || this.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
+        if (this.perks.findByType(PerkLib.FerasBoonMilkingTwat) < 0 || this.vaginas[0].vaginalLooseness <= VaginaLooseness.NORMAL) {
             // cArea > capacity = autostreeeeetch.
             if (cArea >= this.vaginalCapacity()) {
-                if (this.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LEVEL_CLOWN_CAR)
+                if (this.vaginas[0].vaginalLooseness < VaginaLooseness.LEVEL_CLOWN_CAR)
                     this.vaginas[0].vaginalLooseness++;
                 stretched = true;
             }
@@ -696,31 +716,31 @@ export class Character {
 
     public isBiped(): boolean {
         // Naga/Centaur
-        if (this.lowerBody == LOWER_BODY_TYPE_NAGA || this.lowerBody == LOWER_BODY_TYPE_CENTAUR)
+        if (this.lowerBody == LowerBodyType.NAGA || this.lowerBody == LowerBodyType.CENTAUR)
             return false;
-        if (this.lowerBody == LOWER_BODY_TYPE_GOO || this.lowerBody == LOWER_BODY_TYPE_PONY)
+        if (this.lowerBody == LowerBodyType.GOO || this.lowerBody == LowerBodyType.PONY)
             return false;
         return true;
     }
 
     public isNaga(): boolean {
-        if (this.lowerBody == LOWER_BODY_TYPE_NAGA)
+        if (this.lowerBody == LowerBodyType.NAGA)
             return true;
         return false;
     }
 
     public isTaur(): boolean {
-        if (this.lowerBody == LOWER_BODY_TYPE_CENTAUR || this.lowerBody == LOWER_BODY_TYPE_PONY)
+        if (this.lowerBody == LowerBodyType.CENTAUR || this.lowerBody == LowerBodyType.PONY)
             return true;
         return false;
     }
 
     public isDrider(): boolean {
-        return (this.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY);
+        return (this.lowerBody == LowerBodyType.DRIDER_LOWER_BODY);
     }
 
     public isGoo(): boolean {
-        if (this.lowerBody == LOWER_BODY_TYPE_GOO)
+        if (this.lowerBody == LowerBodyType.GOO)
             return true;
         return false;
     }

@@ -114,11 +114,11 @@ export class SandTrap extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.breasts.createBreastRow(0, 0);
-        this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.NORMAL;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 150;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
         this.skinTone = "fair";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -136,7 +136,7 @@ export class SandTrap extends Monster {
         this.level = 4;
         this.gems = 2 + rand(5);
         this.drop = new ChainedDrop(ConsumableLib.TRAPOIL).add(ConsumableLib.OVIELIX, 1 / 3);
-        this.tailType = TAIL_TYPE_DEMONIC;
+        this.tailType = TailType.DEMONIC;
         this.effects.create(StatusAffects.Level, 4, 0, 0, 0);
         checkMonster();
     }

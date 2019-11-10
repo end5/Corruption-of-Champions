@@ -373,7 +373,7 @@ export function workFarm(): void {
         outputText("  The first thing that hits you is the smell, a mingling of sweat, milk, droppings, and rotting hay. There are also probably some cows in Whitney's herd ready for breeding.\n\n", false);
         outputText("Opening the door to one of the empty stalls, Whitney says, \"<i>I don't get to them as often as I should. Anything you can do would help.</i>\"\n\n", false);
         outputText("You steel yourself, ignore your ", false);
-        if (player.faceType == FACE_DOG) outputText("sensitive ", false);
+        if (player.faceType == FaceType.DOG) outputText("sensitive ", false);
         outputText("nose, and set to work.", false);
         // [Lust increase based on libido, degree of cow/mino features]
         dynStats("lus", cowScore(player) + minoScore(player));

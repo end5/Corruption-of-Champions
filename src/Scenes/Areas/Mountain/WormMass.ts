@@ -29,11 +29,11 @@ export class WormMass extends Monster {
         this.pronoun2 = "them";
         this.pronoun3 = "their";
         this.breasts.createBreastRow(0, 0);
-        this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.VIRGIN;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 1;
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_BUTTLESS;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.BUTTLESS;
         this.skinTone = "white";
         initStrTouSpeInte(35, 5, 10, 1);
         initLibSensCor(90, 60, 90);

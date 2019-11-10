@@ -71,12 +71,12 @@ export class ImpLord extends Imp {
         this.cumMultiplier = 3;
         this.hoursSinceCum = 20;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(14) + 40;
-        this.hipRating = HIP_RATING_BOYISH;
-        this.buttRating = BUTT_RATING_TIGHT;
-        this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+        this.hipRating = HipRating.BOYISH;
+        this.buttRating = ButtRating.TIGHT;
+        this.lowerBody = LowerBodyType.HOOFED;
         this.skinTone = "red";
         initStrTouSpeInte(55, 40, 75, 42);
         initLibSensCor(55, 35, 100);
@@ -96,7 +96,7 @@ export class ImpLord extends Imp {
             add(ConsumableLib.LABOVA_, 1).
             add(ConsumableLib.INCUBID, 6).
             add(ConsumableLib.SUCMILK, 6);
-        this.wingType = WING_TYPE_IMP;
+        this.wingType = WingType.IMP;
         this.special1 = lustMagicAttack;
         checkMonster();
     }

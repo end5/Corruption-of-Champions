@@ -38,11 +38,11 @@ export function minotaurCum(player: Player): void {
             outputText("parting your lips.", false);
         else
             outputText("bursting free of your lips and bobbing under its own weight.", false);
-        if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_NORMAL)
+        if (player.vaginas[0].vaginalWetness <= VaginaWetness.NORMAL)
             outputText("  Wetness builds inside you as your " + vaginaDescript(player, 0) + " tingles and aches to be filled.", false);
-        else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK)
+        else if (player.vaginas[0].vaginalWetness <= VaginaWetness.SLICK)
             outputText("  A trickle of wetness escapes your " + vaginaDescript(player, 0) + " as your body reacts to the desire burning inside you.", false);
-        else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING)
+        else if (player.vaginas[0].vaginalWetness <= VaginaWetness.DROOLING)
             outputText("  Wet fluids leak down your thighs as your body reacts to this new stimulus.", false);
         else
             outputText("  Slick fluids soak your thighs as your body reacts to this new stimulus.", false);

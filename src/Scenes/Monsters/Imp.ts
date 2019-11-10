@@ -37,19 +37,19 @@ export class Imp extends Monster {
         }
         if (player.lust >= 60 && player.vaginas.length > 0) {
             switch (player.vaginas[0].vaginalWetness) {
-                case VAGINA_WETNESS_NORMAL:
+                case VaginaWetness.NORMAL:
                     outputText("Your " + allVaginaDescript(player) + " dampen" + (player.vaginas.length > 1 ? "" : "s") + " perceptibly.");
                     break;
-                case VAGINA_WETNESS_WET:
+                case VaginaWetness.WET:
                     outputText("Your crotch becomes sticky with girl-lust.");
                     break;
-                case VAGINA_WETNESS_SLICK:
+                case VaginaWetness.SLICK:
                     outputText("Your " + allVaginaDescript(player) + " become" + (player.vaginas.length > 1 ? "" : "s") + " sloppy and wet.");
                     break;
-                case VAGINA_WETNESS_DROOLING:
+                case VaginaWetness.DROOLING:
                     outputText("Thick runners of girl-lube stream down the insides of your thighs.");
                     break;
-                case VAGINA_WETNESS_SLAVERING:
+                case VaginaWetness.SLAVERING:
                     outputText("Your " + allVaginaDescript(player) + " instantly soak" + (player.vaginas.length > 1 ? "" : "s") + " your groin.");
                 default: // Dry vaginas are unaffected
 
@@ -73,11 +73,11 @@ export class Imp extends Monster {
         this.balls = 2;
         this.ballSize = 1;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(24) + 25;
-        this.hipRating = HIP_RATING_BOYISH;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.BOYISH;
+        this.buttRating = ButtRating.TIGHT;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 5;
@@ -95,7 +95,7 @@ export class Imp extends Monster {
             add(ConsumableLib.INCUBID, 3).
             add(ConsumableLib.IMPFOOD, 4);
         this.special1 = lustMagicAttack;
-        this.wingType = WING_TYPE_IMP;
+        this.wingType = WingType.IMP;
         checkMonster();
     }
 

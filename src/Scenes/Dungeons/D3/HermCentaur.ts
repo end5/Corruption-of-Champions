@@ -21,8 +21,8 @@ export class HermCentaur extends Monster {
         this.balls = 2;
         this.ballSize = 3;
 
-        this.hipRating = HIP_RATING_FERTILE;
-        this.buttRating = BUTT_RATING_EXPANSIVE;
+        this.hipRating = HipRating.FERTILE;
+        this.buttRating = ButtRating.EXPANSIVE;
 
         initStrTouSpeInte(100, 100, 65, 65);
         initLibSensCor(85, 40, 100);

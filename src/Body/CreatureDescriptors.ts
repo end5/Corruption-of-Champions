@@ -2,7 +2,7 @@ export function cockAdjective(creature: Character, index: number = -1): string {
     if (index < 0) index = creature.cocks.biggestCockIndex();
     const isPierced: boolean = (creature.cocks.length == 1) && (creature.cocks[index].isPierced); // Only describe as pierced or sock covered if the creature has just one cock
     const hasSock: boolean = (creature.cocks.length == 1) && (creature.cocks[index].sock != "");
-    const isGooey: boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
+    const isGooey: boolean = (creature.skinType == SkinType.GOO);
     return Appearance.cockAdjective(creature.cocks[index].cockType, creature.cocks[index].cockLength, creature.cocks[index].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 }
 

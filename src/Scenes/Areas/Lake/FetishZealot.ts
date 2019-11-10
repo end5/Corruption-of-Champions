@@ -141,12 +141,12 @@ export class FetishZealot extends Monster {
         // this.plural = false;
         this.cocks.createCock(7, 1.5);
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.LOOSE;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);
         this.tallness = 6 * 12;
-        this.hipRating = HIP_RATING_BOYISH + 1;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.BOYISH + 1;
+        this.buttRating = ButtRating.TIGHT;
         this.skinTone = "tan";
         this.hairColor = "black";
         this.hairLength = 4;

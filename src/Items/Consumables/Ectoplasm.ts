@@ -65,14 +65,14 @@ export function ectoplasm(player: Player): void {
             player.skinTone = "white";
             player.skinAdj = "milky";
             player.skinDesc = "skin";
-            player.skinType = SKIN_TYPE_PLAIN;
+            player.skinType = SkinType.PLAIN;
         }
         else {
             outputText("\n\nA warmth begins in your belly, slowly spreading through your torso and appendages. The heat builds, becoming uncomfortable, then painful, then nearly unbearable. Your eyes unfocus from the pain, and by the time the burning sensation fades, you can already tell something's changed. You raise a hand, staring at the sable flesh. Your eyes are drawn to the veins in the back of your hand, brightening to an ashen tone as you watch.  <b>You have black skin, with white veins!</b>", false);
             player.skinTone = "sable";
             player.skinAdj = "ashen";
             player.skinDesc = "skin";
-            player.skinType = SKIN_TYPE_PLAIN;
+            player.skinType = SkinType.PLAIN;
         }
         changes++;
     }

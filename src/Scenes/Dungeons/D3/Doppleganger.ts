@@ -248,38 +248,38 @@ export class Doppleganger extends Monster {
         str += " " + mf(player, "His", "Her") + " " + hairDescription(player) + " is parted by";
 
         switch (player.earType) {
-            case EARS_HORSE:
+            case EarType.HORSE:
                 str += " a pair of horse-like ears";
                 break;
-            case EARS_FERRET:
+            case EarType.FERRET:
                 str += " a small pair of rounded ferret ears";
                 break;
-            case EARS_DOG:
+            case EarType.DOG:
                 str += " a pair of dog ears";
                 break;
-            case EARS_COW:
+            case EarType.COW:
                 str += " a pair of round, floppy cow ears";
                 break;
-            case EARS_ELFIN:
+            case EarType.ELFIN:
                 str += " a large pair of pointy ears";
                 break;
-            case EARS_CAT:
+            case EarType.CAT:
                 str += " a pair of cute, fuzzy cat ears";
                 break;
-            case EARS_LIZARD:
-            case EARS_DRAGON:
+            case EarType.LIZARD:
+            case EarType.DRAGON:
                 str += " a pair of rounded protrusions with small holes";
                 break;
-            case EARS_BUNNY:
+            case EarType.BUNNY:
                 str += " a pair of floppy rabbit ears";
                 break;
-            case EARS_FOX:
+            case EarType.FOX:
                 str += " a pair of large, adept fox ears";
                 break;
-            case EARS_RACCOON:
+            case EarType.RACCOON:
                 str += " a pair of vaugely egg-shaped, furry racoon ears";
                 break;
-            case EARS_MOUSE:
+            case EarType.MOUSE:
                 str += " a pair of large, dish-shaped mouse ears";
                 break;
             default:

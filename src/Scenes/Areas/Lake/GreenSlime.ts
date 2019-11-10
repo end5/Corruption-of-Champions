@@ -57,12 +57,12 @@ export class GreenSlime extends Monster {
         this.pronoun2 = "it";
         this.pronoun3 = "its";
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(8) + 80;
-        this.hipRating = HIP_RATING_AMPLE;
-        this.buttRating = BUTT_RATING_LARGE;
-        this.lowerBody = LOWER_BODY_TYPE_GOO;
+        this.hipRating = HipRating.AMPLE;
+        this.buttRating = ButtRating.LARGE;
+        this.lowerBody = LowerBodyType.GOO;
         this.skinTone = "green";
         initStrTouSpeInte(25, 20, 10, 5);
         initLibSensCor(50, 60, 20);

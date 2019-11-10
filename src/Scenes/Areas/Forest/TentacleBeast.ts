@@ -105,13 +105,13 @@ export class TentacleBeast extends Monster {
         this.pronoun2 = "it";
         this.pronoun3 = "its";
         this.breasts.createBreastRow(0, 0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 70;
-        this.hipRating = HIP_RATING_BOYISH;
-        this.buttRating = BUTT_RATING_BUTTLESS;
+        this.hipRating = HipRating.BOYISH;
+        this.buttRating = ButtRating.BUTTLESS;
         this.skinTone = "green";
-        this.skinType = SKIN_TYPE_PLAIN;
+        this.skinType = SkinType.PLAIN;
         this.skinDesc = "bark";
         this.hairColor = "green";
         this.hairLength = 1;
@@ -132,7 +132,7 @@ export class TentacleBeast extends Monster {
         this.special1 = tentaclePhysicalAttack;
         this.special2 = tentacleEntwine;
         this.special3 = tentaclePhysicalAttack;
-        this.tailType = TAIL_TYPE_DEMONIC;
+        this.tailType = TailType.DEMONIC;
         checkMonster();
     }
 

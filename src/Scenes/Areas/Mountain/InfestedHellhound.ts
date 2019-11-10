@@ -99,14 +99,14 @@ export class InfestedHellhound extends HellHound {
         this.breasts.createBreastRow();
         this.breasts.createBreastRow();
         this.breasts.createBreastRow();
-        this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.NORMAL;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = 47;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE + 1;
         this.skinTone = "black";
-        this.skinType = SKIN_TYPE_FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+        this.skinType = SkinType.FUR;
+        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "red";
         this.hairLength = 3;
         initStrTouSpeInte(65, 60, 50, 1);
@@ -129,7 +129,7 @@ export class InfestedHellhound extends HellHound {
         this.special1 = hellhoundFire;
         this.special2 = hellhoundScent;
         this.special3 = hellHoundWormCannon;
-        this.tailType = TAIL_TYPE_DOG;
+        this.tailType = TailType.DOG;
         checkMonster();
     }
 

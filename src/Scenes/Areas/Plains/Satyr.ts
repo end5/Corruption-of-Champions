@@ -132,17 +132,17 @@ export class Satyr extends Monster {
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = this.ballSize * 10;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);
         this.tallness = rand(37) + 64;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE + 1;
+        this.lowerBody = LowerBodyType.HOOFED;
         this.skinTone = "tan";
         this.hairColor = randomChoice("black", "brown");
         this.hairLength = 3 + rand(20);
-        this.faceType = FACE_COW_MINOTAUR;
+        this.faceType = FaceType.COW_MINOTAUR;
         initStrTouSpeInte(75, 70, 110, 70);
         initLibSensCor(60, 35, 45);
         this.weaponName = "fist";
@@ -155,7 +155,7 @@ export class Satyr extends Monster {
         this.level = 14;
         this.gems = rand(25) + 25;
         this.drop = new ChainedDrop().add(ConsumableLib.INCUBID, 1 / 2);
-        this.tailType = TAIL_TYPE_COW;
+        this.tailType = TailType.COW;
         checkMonster();
     }
 

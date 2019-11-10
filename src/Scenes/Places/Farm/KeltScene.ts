@@ -72,7 +72,7 @@ export function keltEncounter(): void {
             return;
         }
         // Centaur bad end
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR && player.effects.getValue2Of(StatusAffects.Kelt) >= 100 && player.gender > 1) {
+        if (player.lowerBody == LowerBodyType.CENTAUR && player.effects.getValue2Of(StatusAffects.Kelt) >= 100 && player.gender > 1) {
             if (player.inte > rand(40) && player.effects.getValue2Of(StatusAffects.Kelt) < 130 && player.effects.findByType(StatusAffects.KeltBadEndWarning) < 0) {
                 player.effects.create(StatusAffects.KeltBadEndWarning, 0, 0, 0, 0);
                 outputText("You approach the farm, ready for another archery lesson.  Kelt is oblivious to your presence, busy practicing with his own bow for the moment.  The wind shifts and blows his musk your way.  Unconsciously, you breathe deeply, sending heat racing between your rear legs.  Alarm bells go off in your mind as you realize what his presence is doing to you, and you run away to your camp before he can notice you.  It's clear to you that you can't resist him much longer; the next time you meet him, you'll probably volunteer to become his brood-mare.  Perhaps you should avoid Kelt and the farm until you feel his influence less keenly.", true);
@@ -118,7 +118,7 @@ function keltRequiresNakedness(): void {
     outputText("He slaps a hand on his bare chest proudly, and you realize that he means for you to strip down naked.  When you protest, his eyes narrow with irritation, and his sneer becomes more cruel.\r\r", false);
     outputText("\"<i>Didn't know you were a coward, too.  That's fine... go fuck off, then.  You can't handle it, then go back to your camp and braid your hair, or something.  If you wait long enough, I'm sure a nice minotaur will come along to make you his bitch.  'Bout all you're good for, right?</i>\"\r\r", false);
     outputText("Do you obey his demand?", false);
-    if (player.cor > 70 && player.inte > 40 && player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+    if (player.cor > 70 && player.inte > 40 && player.lowerBody != LowerBodyType.CENTAUR) {
         outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
         simpleChoices("Reluctantly", keltReluctantlyGetNaked, "Eagerly", keltEagerlyGetNaked, "Fight Back", keltResistance, "", null, "Never", keltRefuseNakedness);
         return;
@@ -274,7 +274,7 @@ function keltRequiresBlowjobs(): void {
         return;
     }
     // Never!			Shamefully			Eagerly
-    if (player.inte > 40 && player.cor > 70 && player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+    if (player.inte > 40 && player.cor > 70 && player.lowerBody != LowerBodyType.CENTAUR) {
         outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
         simpleChoices("Shamefully", keltBlowjobRequirementShamefully, "Eagerly", keltBlowjobRequirementEagerly, "Fight Back", keltResistance, "", null, "Never!", keltBlowjobRequirementNever);
     }
@@ -410,7 +410,7 @@ function keltMainEncounterAfterNakedReq(): void {
                 // (Yes[+5 Submissive]			No[Never event])
                 // Link this to reluctant && never
 
-                if (player.inte > 40 && player.cor > 70 && player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+                if (player.inte > 40 && player.cor > 70 && player.lowerBody != LowerBodyType.CENTAUR) {
                     outputText("\n\n<b>If you fight back and take him down a peg, you might never see him again...</b>");
                     simpleChoices("Yes", keltReluctantlyGetNaked, "No", keltRefuseNakedness, "Fight Back", keltResistance, "", null, "", null);
                 }
@@ -836,7 +836,7 @@ function keltBadEndEpilogue(): void {
 function keltResistance(): void {
     spriteSelect(35);
     outputText("You close your eyes, ", true);
-    if (player.faceType == FACE_HORSE || player.faceType == FACE_DOG) outputText("a low growl building in the back of your throat", false);
+    if (player.faceType == FaceType.HORSE || player.faceType == FaceType.DOG) outputText("a low growl building in the back of your throat", false);
     else outputText("fighting anger-fueled muscle-spasms", false);
     outputText(" as Kelt's insults go too far.  You've had just about enough of his disingenuous assertions!\r\r", false);
     outputText("An idea on how to put him in his place slowly forms in the back of your mind, though you're sure pulling it off would humiliate the puffed-up centaur into never his showing his face around the farm again.  Do you do it?", false);
@@ -854,7 +854,7 @@ function fuckKeltsShitUp(): void {
     spriteSelect(35);
     outputText("", true);
     // If naga folks
-    if (player.faceType == FACE_SNAKE_FANGS && player.tongueType == TONUGE_SNAKE && player.lowerBody == LOWER_BODY_TYPE_NAGA) {
+    if (player.faceType == FaceType.SNAKE_FANGS && player.tongueType == TongueType.SNAKE && player.lowerBody == LowerBodyType.NAGA) {
         outputText(images.showImage("kelt-farm-naga-subkelt"));
         outputText("Feigning a coy smile, you lick your lips with your forked tongue and beckon Kelt towards you.  The foolish stud trots over to you saying \"<i>That's more like it, worm.  Maybe when I'm done with your mouth, I'll let you have my dick in your ass, too.</i>\"  His sheath ripples and swells as his thick member begins to slowly droop out from the folded skin, hanging towards the ground.  It continues growing as he comes closer and closer, until it finally begins to grow rigid and arc towards your face.  You feel a moment of self-doubt as you breathe in his wonderful scent - wouldn't it be better, safer to just give in?  No, says a cold, reptile voice in your head.  You are the predator here and he, arrogant prey, has stepped into your trap.  Make him pay.  Make him know where his place in the world is.\r\r", false);
 
@@ -959,7 +959,7 @@ function fuckKeltsShitUp(): void {
         }
         else if (player.vaginas.length > 0 && (player.cocks.length == 0 || rand(2) == 0)) {
             outputText("You spread your " + legs(player) + " and expose your " + vaginaDescript(player, 0) + ".  \"<i>Lick it, bitch,</i>\" you command.  When he doesn't, you give the rope a pull, and his hooves paw at the dirt in pain.  \"<i>I said LICK!</i>\" you scream, and this time he does.  His tongue slips between your puffy folds ", false);
-            if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("tasting them experimentally.  ", false);
+            if (player.vaginas[0].vaginalWetness < VaginaWetness.SLICK) outputText("tasting them experimentally.  ", false);
             else outputText("immediately becoming slick with your fuck-me-juices.  ", false);
             outputText("\"<i>Deeper,</i>\" you sigh, and he complies, no longer capable of resistance.  You make him tonguefuck you until you come to a shuddering, cunt-clenching orgasm.", false);
             if (player.cocks.length > 0) outputText("Your " + cockDescript(game.player, 0) + " splatters cock-cream into his hair, further humiliating him.", false);

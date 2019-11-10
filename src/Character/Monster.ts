@@ -125,7 +125,7 @@ export class Monster extends Creature {
 
     public constructor() {
         // trace("Generic Monster Constructor!");
-        this.gender = GENDER_NONE;
+        this.gender = Gender.NONE;
 
         //// INSTRUCTIONS
         //// Copy-paste remaining code to the new monster constructor
@@ -153,7 +153,7 @@ export class Monster extends Creature {
         /// *OPTIONAL*/ //this.cumMultiplier = ; // default 1
         /// *OPTIONAL*/ //this.hoursSinceCum = ; // default 0
         //// 2.2. Female
-        /// *REQUIRED*/ this.vaginas.createVagina(virgin=true|false,VAGINA_WETNESS_,VAGINA_LOOSENESS_); // default true,normal,tight
+        /// *REQUIRED*/ this.vaginas.createVagina(virgin=true|false,VaginaWetness.,VaginaLooseness.); // default true,normal,tight
         /// *OPTIONAL*/ //this.effects.create(StatusAffects.BonusVCapacity, bonus, 0, 0, 0);
         //// 2.3. Hermaphrodite
         //// Just create cocks and vaginas. Last call determines pronouns.
@@ -180,15 +180,15 @@ export class Monster extends Creature {
         //// Note useful method: this.breasts.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
 
         //// 4. Ass
-        /// *OPTIONAL*/ //this.ass.analLooseness = ANAL_LOOSENESS_; // default TIGHT
-        /// *OPTIONAL*/ //this.ass.analWetness = ANAL_WETNESS_; // default DRY
+        /// *OPTIONAL*/ //this.ass.analLooseness = AnalLooseness.; // default TIGHT
+        /// *OPTIONAL*/ //this.ass.analWetness = AnalWetness.; // default DRY
         /// *OPTIONAL*/ //this.effects.create(StatusAffects.BonusACapacity, bonus, 0, 0, 0);
         //// 5. Body
         /// *REQUIRED*/ this.tallness = ;
-        /// *OPTIONAL*/ //this.hipRating = HIP_RATING_; // default boyish
-        /// *OPTIONAL*/ //this.buttRating = BUTT_RATING_; // default buttless
+        /// *OPTIONAL*/ //this.hipRating = HipRating.; // default boyish
+        /// *OPTIONAL*/ //this.buttRating = ButtRating.; // default buttless
         /// *OPTIONAL*/ //this.lowerBody = LOWER_BODY_; //default human
-        /// *OPTIONAL*/ //this.armType = ARM_TYPE_; // default human
+        /// *OPTIONAL*/ //this.armType = ArmType.; // default human
 
         //// 6. Skin
         /// *OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
@@ -202,8 +202,8 @@ export class Monster extends Creature {
         /// *OPTIONAL*/ //this.hairType = HAIR_; // default NORMAL
 
         //// 8. Face
-        /// *OPTIONAL*/ //this.faceType = FACE_; // default HUMAN
-        /// *OPTIONAL*/ //this.earType = EARS_; // default HUMAN
+        /// *OPTIONAL*/ //this.faceType = FaceType.; // default HUMAN
+        /// *OPTIONAL*/ //this.earType = EarType.; // default HUMAN
         /// *OPTIONAL*/ //this.tongueType = TONGUE_; // default HUMAN
         /// *OPTIONAL*/ //this.eyeType = EYES_; // default HUMAN
 
@@ -281,20 +281,20 @@ export class Monster extends Creature {
         /// *OPTIONAL*/ //this.special3 = ; //default 0
 
         //// 16. Tail
-        /// *OPTIONAL*/ //this.tailType = TAIL_TYPE_; // default NONE
+        /// *OPTIONAL*/ //this.tailType = TailType.; // default NONE
         /// *OPTIONAL*/ //this.tailVenom = ; // default 0
         /// *OPTIONAL*/ //this.tailRecharge = ; // default 5
 
         //// 17. Horns
-        /// *OPTIONAL*/ //this.hornType = HORNS_; // default NONE
+        /// *OPTIONAL*/ //this.hornType = HornType.; // default NONE
         /// *OPTIONAL*/ //this.horns = numberOfHorns; // default 0
 
         //// 18. Wings
-        /// *OPTIONAL*/ //this.wingType = WING_TYPE_; // default NONE
+        /// *OPTIONAL*/ //this.wingType = WingType.; // default NONE
         /// *OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
 
         //// 19. Antennae
-        /// *OPTIONAL*/ //this.antennae = ANTENNAE_; // default NONE
+        /// *OPTIONAL*/ //this.antennae = AntennaeType.; // default NONE
 
         //// REQUIRED !!!
         //// In debug mode will throw an error for uninitialized monster
@@ -851,19 +851,19 @@ export class Monster extends Creature {
             result += "no hair.\n";
         }
         result += Hehas
-            + (Appearance.DEFAULT_FACE_NAMES[faceType] || ("faceType#" + faceType)) + " face, "
-            + (Appearance.DEFAULT_EARS_NAMES[earType] || ("earType#" + earType)) + " ears, "
+            + (Appearance.DEFAULT_FaceType.NAMES[faceType] || ("faceType#" + faceType)) + " face, "
+            + (Appearance.DEFAULT_EarType.NAMES[earType] || ("earType#" + earType)) + " ears, "
             + (Appearance.DEFAULT_TONGUE_NAMES[tongueType] || ("tongueType#" + tongueType)) + " tongue and "
             + (Appearance.DEFAULT_EYES_NAMES[eyeType] || ("eyeType#" + eyeType)) + " eyes.\n";
         result += Hehas;
-        if (tailType == TAIL_TYPE_NONE) result += "no tail, ";
+        if (tailType == TailType.NONE) result += "no tail, ";
         else result += (Appearance.DEFAULT_TAIL_NAMES[tailType] || ("tailType#" + tailType)) + " tail with venom=" + tailVenom + " and recharge=" + tailRecharge + ", ";
-        if (hornType == HORNS_NONE) result += "no horns, ";
-        else result += horns + " " + (Appearance.DEFAULT_HORNS_NAMES[hornType] || ("hornType#" + hornType)) + " horns, ";
-        if (wingType == WING_TYPE_NONE) result += "no wings, ";
+        if (hornType == HornType.NONE) result += "no horns, ";
+        else result += horns + " " + (Appearance.DEFAULT_HornType.NAMES[hornType] || ("hornType#" + hornType)) + " horns, ";
+        if (wingType == WingType.NONE) result += "no wings, ";
         else result += wingDesc + " wings (type " + (Appearance.DEFAULT_WING_NAMES[wingType] || ("wingType#" + wingType)) + "), ";
-        if (antennae == ANTENNAE_NONE) result += "no antennae.\n\n";
-        else result += (Appearance.DEFAULT_ANTENNAE_NAMES[antennae] || ("antennaeType#" + antennae)) + " antennae.\n\n";
+        if (antennae == AntennaeType.NONE) result += "no antennae.\n\n";
+        else result += (Appearance.DEFAULT_AntennaeType.NAMES[antennae] || ("antennaeType#" + antennae)) + " antennae.\n\n";
 
         // GENITALS AND BREASTS
         for (const i = 0; i < this.cocks.length; i++) {

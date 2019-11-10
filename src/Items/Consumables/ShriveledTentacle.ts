@@ -34,15 +34,15 @@ export function shriveledTentacle(player: Player): void {
     // "The tingling of the tentacle
     // physical changes:
     // - may randomly remove bee abdomen, if present; always checks and does so when any changes to hair might happen
-    if (rand(4) == 0 && changes < changeLimit && player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+    if (rand(4) == 0 && changes < changeLimit && player.tailType == TailType.BEE_ABDOMEN) {
         outputText("\n\nAs the gentle tingling of the tentacle's remaining venom spreads through your body, it begins to collect and intensify above the crack of your butt.  Looking back, you notice your abdomen shivering and contracting; with a snap, the chitinous appendage parts smoothly from your backside and falls to the ground.  <b>You no longer have a bee abdomen!</b>\n\n", false);
-        player.tailType = TAIL_TYPE_NONE;
+        player.tailType = TailType.NONE;
         changes++;
     }
     // -may randomly remove bee wings:
-    if (rand(4) == 0 && (player.wingType == WING_TYPE_BEE_LIKE_SMALL || player.wingType == WING_TYPE_BEE_LIKE_LARGE) && changes < changeLimit) {
+    if (rand(4) == 0 && (player.wingType == WingType.BEE_LIKE_SMALL || player.wingType == WingType.BEE_LIKE_LARGE) && changes < changeLimit) {
         outputText("\n\nYour wings twitch and flap involuntarily.  You crane your neck to look at them as best you are able; from what you can see, they seem to be shriveling and curling up.  They're starting to look a lot like they did when they first popped out, wet and new.  <b>As you watch, they shrivel all the way, then recede back into your body.</b>", false);
-        player.wingType = WING_TYPE_NONE;
+        player.wingType = WingType.NONE;
         player.wingDesc = "non-existent";
         changes++;
     }

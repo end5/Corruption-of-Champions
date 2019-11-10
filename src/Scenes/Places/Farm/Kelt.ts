@@ -120,13 +120,13 @@ export class Kelt extends Monster {
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = player.ballSize * 10;
         this.breasts.createBreastRow(Appearance.breastCupInverse(breakLevel2 ? "B" : "A"));
-        this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.NORMAL;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 50, 0, 0, 0);
         this.tallness = 84;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_CENTAUR;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE + 1;
+        this.lowerBody = LowerBodyType.CENTAUR;
         this.skinTone = "tan";
         this.hairColor = randomChoice("black", "brown");
         this.hairLength = 3;
@@ -143,7 +143,7 @@ export class Kelt extends Monster {
         this.temperment = TEMPERMENT_LUSTY_GRAPPLES;
         this.level = 6;
         this.gems = rand(5) + 5;
-        this.tailType = TAIL_TYPE_HORSE;
+        this.tailType = TailType.HORSE;
         this.drop = NO_DROP;
         checkMonster();
     }

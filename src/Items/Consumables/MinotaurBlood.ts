@@ -108,34 +108,34 @@ export function minotaurBlood(player: Player): void {
         changes++;
     }
     // -Remove feather-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_HARPY && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.HARPY && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating.  The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove chitin-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_SPIDER && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.SPIDER && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your arms' chitinous covering is flaking away.  The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // +hooves
-    if (player.lowerBody != LOWER_BODY_TYPE_HOOFED && player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+    if (player.lowerBody != LowerBodyType.HOOFED && player.lowerBody != LowerBodyType.CENTAUR) {
         if (changes < changeLimit && rand(3) == 0) {
             changes++;
-            if (player.lowerBody == LOWER_BODY_TYPE_HUMAN)
+            if (player.lowerBody == LowerBodyType.HUMAN)
                 outputText("\n\nYou stagger as your feet change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_DOG)
+            if (player.lowerBody == LowerBodyType.DOG)
                 outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_NAGA)
+            if (player.lowerBody == LowerBodyType.NAGA)
                 outputText("\n\nYou collapse as your sinuous snake-tail tears in half, shifting into legs.  The pain is immense, particularly in your new feet as they curl inward and transform into hooves!", false);
             // Catch-all
-            if (player.lowerBody > LOWER_BODY_TYPE_NAGA)
+            if (player.lowerBody > LowerBodyType.NAGA)
                 outputText("\n\nYou stagger as your " + feet(player) + " change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
-            if (player.skinType != SKIN_TYPE_FUR)
+            if (player.skinType != SkinType.FUR)
                 outputText("  A fine coat of fur grows out below your waist, itching briefly as it fills in.");
             outputText("<b>  You now have hooves in place of your feet!</b>", false);
-            player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+            player.lowerBody = LowerBodyType.HOOFED;
             dynStats("spe", 1);
             changes++;
         }
@@ -143,7 +143,7 @@ export function minotaurBlood(player: Player): void {
     if (!flags[kFLAGS.HYPER_HAPPY]) {
         // Kills vagina size (and eventually the whole vagina)
         if (player.vaginas.length > 0) {
-            if (player.vaginas[0].vaginalLooseness > VAGINA_LOOSENESS_TIGHT) {
+            if (player.vaginas[0].vaginalLooseness > VaginaLooseness.TIGHT) {
                 // tighten that bitch up!
                 outputText("\n\nYour " + vaginaDescript(player, 0) + " clenches up painfully as it tightens up, becoming smaller and tighter.", false);
                 player.vaginas[0].vaginalLooseness--;
@@ -173,7 +173,7 @@ export function minotaurBlood(player: Player): void {
             else
                 outputText("chest", false);
             outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
-            if (player.skinType == SKIN_TYPE_FUR)
+            if (player.skinType == SkinType.FUR)
                 outputText(player.hairColor + " " + player.skinDesc, false);
             else
                 outputText(player.skinTone + " " + player.skinDesc, false);
@@ -340,21 +340,21 @@ export function minotaurBlood(player: Player): void {
         changes++;
     }
     // Face change, requires Ears + Height + Hooves
-    if (player.earType == EARS_COW && player.lowerBody == LOWER_BODY_TYPE_HOOFED && player.tallness >= 90
+    if (player.earType == EarType.COW && player.lowerBody == LowerBodyType.HOOFED && player.tallness >= 90
         && changes < changeLimit && rand(3) == 0) {
-        if (player.faceType != FACE_COW_MINOTAUR) {
+        if (player.faceType != FaceType.COW_MINOTAUR) {
             outputText("\n\nBones shift and twist painfully as your visage twists and morphs to resemble that of the beast whose blood you now drink.  <b>You now have a minotaur-like face.</b>", false);
             changes++;
-            player.faceType = FACE_COW_MINOTAUR;
+            player.faceType = FaceType.COW_MINOTAUR;
         }
     }
     // +mino horns require ears/tail
-    if (changes < changeLimit && rand(3) == 0 && player.earType == EARS_COW && player.tailType == TAIL_TYPE_COW) {
+    if (changes < changeLimit && rand(3) == 0 && player.earType == EarType.COW && player.tailType == TailType.COW) {
         temp = 1;
         // New horns or expanding mino horns
-        if (player.hornType == HORNS_COW_MINOTAUR || player.hornType == HORNS_NONE) {
+        if (player.hornType == HornType.COW_MINOTAUR || player.hornType == HornType.NONE) {
             // Get bigger if player has horns
-            if (player.hornType == HORNS_COW_MINOTAUR) {
+            if (player.hornType == HornType.COW_MINOTAUR) {
                 // Fems horns don't get bigger.
                 if (player.vaginas.length > 0) {
                     if (player.horns > 4) {
@@ -403,38 +403,38 @@ export function minotaurBlood(player: Player): void {
             // If no horns yet..
             else {
                 outputText("\n\nWith painful pressure, the skin on your forehead splits around two tiny nub-like horns, similar to those you would see on the cattle back in your homeland.", false);
-                player.hornType = HORNS_COW_MINOTAUR;
+                player.hornType = HornType.COW_MINOTAUR;
                 player.horns = 2;
                 changes++;
             }
         }
         // Not mino horns, change to cow-horns
-        if (player.hornType == HORNS_DEMON || player.hornType > HORNS_COW_MINOTAUR) {
+        if (player.hornType == HornType.DEMON || player.hornType > HornType.COW_MINOTAUR) {
             outputText("\n\nYour horns vibrate and shift as if made of clay, reforming into two horns with a bovine-like shape.", false);
-            player.hornType = HORNS_COW_MINOTAUR;
+            player.hornType = HornType.COW_MINOTAUR;
             changes++;
         }
     }
     // +cow ears	- requires tail
-    if (player.earType != EARS_COW && changes < changeLimit && player.tailType == TAIL_TYPE_COW && rand(2) == 0) {
+    if (player.earType != EarType.COW && changes < changeLimit && player.tailType == TailType.COW && rand(2) == 0) {
         outputText("\n\nYou feel your ears tug on your scalp as they twist shape, becoming oblong and cow-like.  <b>You now have cow ears.</b>", false);
-        player.earType = EARS_COW;
+        player.earType = EarType.COW;
         changes++;
     }
     // +cow tail
-    if (changes < changeLimit && rand(2) == 0 && player.tailType != TAIL_TYPE_COW) {
-        if (player.tailType == TAIL_TYPE_NONE)
+    if (changes < changeLimit && rand(2) == 0 && player.tailType != TailType.COW) {
+        if (player.tailType == TailType.NONE)
             outputText("\n\nYou feel the flesh above your " + buttDescription(player) + " knotting and growing.  It twists and writhes around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.", false);
         else {
-            if (player.tailType < TAIL_TYPE_SPIDER_ADBOMEN || player.tailType > TAIL_TYPE_BEE_ABDOMEN) {
+            if (player.tailType < TailType.SPIDER_ADBOMEN || player.tailType > TailType.BEE_ABDOMEN) {
                 outputText("\n\nYour tail bunches uncomfortably, twisting and writhing around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.", false);
             }
             // insect
-            if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+            if (player.tailType == TailType.SPIDER_ADBOMEN || player.tailType == TailType.BEE_ABDOMEN) {
                 outputText("\n\nYour insect-like abdomen tingles pleasantly as it begins shrinking and softening, chitin morphing and reshaping until it looks exactly like a <b>cow tail</b>.", false);
             }
         }
-        player.tailType = TAIL_TYPE_COW;
+        player.tailType = TailType.COW;
         changes++;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {

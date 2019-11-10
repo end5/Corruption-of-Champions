@@ -148,29 +148,29 @@ function omnibusVictoryNormalFace(): void {
     spriteSelect(16);
     clearOutput();
     let changed: boolean = false;
-    if (player.horns > 0 || player.antennae > ANTENNAE_NONE) {
+    if (player.horns > 0 || player.antennae > AntennaeType.NONE) {
         outputText("Your forehead itches intensely.  You cannot help but stratch madly at it.  ");
         if (player.horns > 0) {
             outputText("Your horns fall off, landing on the floor with a heavy thud.  ");
             player.horns = 0;
-            player.hornType = HORNS_NONE;
+            player.hornType = HornType.NONE;
         }
-        if (player.antennae > ANTENNAE_NONE) {
+        if (player.antennae > AntennaeType.NONE) {
             outputText("Antennae pop free, and float lightly down towards the floor.  ");
-            player.antennae = ANTENNAE_NONE;
+            player.antennae = AntennaeType.NONE;
         }
         changed = true;
     }
     // EARS
-    if (player.earType != EARS_HUMAN) {
+    if (player.earType != EarType.HUMAN) {
         outputText("Pain erupts from both sides of your head as your ears reform and move, returning to look like your old human ears!  ");
-        player.earType = EARS_HUMAN;
+        player.earType = EarType.HUMAN;
         changed = true;
     }
     // Face
-    if (player.faceType != FACE_HUMAN) {
+    if (player.faceType != FaceType.HUMAN) {
         outputText("Your facial structure rearranges itself into a normal human visage, exactly like yours was before you came to this horrid place.");
-        player.faceType = FACE_HUMAN;
+        player.faceType = FaceType.HUMAN;
         changed = true;
     }
     // Nothing changed
@@ -206,10 +206,10 @@ function omnibusVictoryNormalChest(): void {
         changed = true;
     }
     // Normal chest, normal skin
-    if (player.skinType != SKIN_TYPE_PLAIN) {
+    if (player.skinType != SkinType.PLAIN) {
         outputText("The skin on your body itches intensely as it sheds its " + player.skinDesc + ", revealing " + player.skinTone + " skin.  ");
         player.skinDesc = "skin";
-        player.skinType = SKIN_TYPE_PLAIN;
+        player.skinType = SkinType.PLAIN;
         changed = true;
     }
     // Nothing changed
@@ -264,9 +264,9 @@ function omnibusVictoryNormalGroin(): void {
     if (changed) outputText("\n\n");
     // Vajajay
     if (player.vaginas.length > 0) {
-        if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) {
+        if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLICK) {
             outputText("The constant fluids leaking from your " + vaginaDescript(player, 0) + " slow down, then stop.  ");
-            player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+            player.vaginas[0].vaginalWetness = VaginaWetness.WET;
             changed = true;
         }
     }
@@ -278,13 +278,13 @@ function omnibusVictoryNormalGroin(): void {
 function omnibusVictoryNormalLegs(): void {
     spriteSelect(16);
     clearOutput();
-    if (player.lowerBody == LOWER_BODY_TYPE_HUMAN)
+    if (player.lowerBody == LowerBodyType.HUMAN)
         outputText("You feel as if you should slap yourself for stupidy.  Your legs are already normal!  You flush hotly as the corrupt magics wash over you, changing nothing.");
     else outputText("You collapse as your " + legs(player) + " are unable to support you.  The sounds of bones breaking and reshaping fills the room, but oddly you feel no pain, only mild arousal.  You blink your eyes and sigh, and when you look down again <b>you have normal human legs</b>!");
-    player.lowerBody = LOWER_BODY_TYPE_HUMAN;
-    if (player.tailType > TAIL_TYPE_NONE) {
+    player.lowerBody = LowerBodyType.HUMAN;
+    if (player.tailType > TailType.NONE) {
         outputText("  A moment later, your feel something detach from above your backside.  <b>You no longer have a tail!</b>");
-        player.tailType = TAIL_TYPE_NONE;
+        player.tailType = TailType.NONE;
         player.tailVenom = 0;
         player.tailRecharge = 5;
     }
@@ -432,8 +432,8 @@ export function omnibusLossRape2(): void {
         else outputText("The demoness smiles with wicked intent and yanks your " + player.armorName + "'s bottom the rest of the way off.  She leans close, smiling and inhaling the scent of your sex, savoring it like a aroma of a fine wine.  Licking her perfect lips with anticipation, she inverts the panties and holds them up for you to see.\n\n", false);
         outputText("They aren't panties at all, but instead some living creature.  The entire inside surface of the living garment is covered with fleshy pink nodules that wriggle constantly, practically dripping with a pungent lubricant that smells not unlike your own juices.  Horrifyingly, there is a large lump of flesh towards the front.  Its surface is ribbed and pulses, constantly swelling and shrinking.  It's clearly designed to enter the passage of anyone who wears it.  Worse yet is a smaller narrower protrusion on the backside.  This... creature... will certainly do its best to plug both your holes.\n\n", false);
         outputText("Your captor pulls it back and leans closer, letting the scent of her own fragrant puss fill the air.  It smells tangy and sweet and makes you ", false);
-        if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_WET) outputText("wet ", false);
-        else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING) outputText("drip on the chair ", false);
+        if (player.vaginas[0].vaginalWetness <= VaginaWetness.WET) outputText("wet ", false);
+        else if (player.vaginas[0].vaginalWetness <= VaginaWetness.DROOLING) outputText("drip on the chair ", false);
         else outputText("soak the chair ", false);
         outputText("from the heady taste that clings to your nostrils.  She speaks with confidence, \"<i>You needn't worry my dear.  I call this little creature my slut-panties.  You see, when you wear them they will stimulate every part of you.  They'll suck on your clit while the two large mounds grow inside you, filling you with wriggling pleasure.  Their slime is a wonderful lubricant and a mild aphrodisiac.  Between the constant touches and its secretions, you'll be horny and on the edge of orgasm in no time.</i>\"\n\n", false);
         outputText("You shake your head in desperate denial and start to cry as you realize she intends to keep you locked in some kind of hellish pleasure-prison.  The panties slide up your legs with ease, and with a swift movement, the demon lifts your ass up and slips them into position with a wet 'SQUELCH'.  You moan as it goes to work, wrapping your " + clitDescription(player) + " in slippery tightness.  The two 'lumps' you observed elongate, the ridged surfaces making your " + vaginaDescript(player, 0) + " quiver and dance with pleasure.  In mere seconds you're panting hotly and ready to cum.  Your crying devolves into heated moans of pleasure and longing.\n\n", false);
@@ -490,7 +490,7 @@ export function demonBadEnd(): void {
             outputText("gushing with fluids as it shapes itself into a hungry demonic cunt.", false);
             player.gender = 2;
             player.vaginas.createVagina();
-            player.vaginas[0].vaginalWetness = VAGINA_WETNESS_SLICK;
+            player.vaginas[0].vaginalWetness = VaginaWetness.SLICK;
         }
         outputText("\n\n\"<i>Much better,</i>\" the demon coos, licking her lips as your ", false);
     }
@@ -563,7 +563,7 @@ export function demonBadEnd(): void {
         else outputText("You gasp as it curls around each of your " + nippleDescription(player, 0) + "s in turn, tugging them lewdly.\n\n", false);
         outputText("She fucks you like that for hours, until the table collapses under the pair of you and dumps you both on the floor. More than anything you find yourself craving release, and over time you cave in further and further to the need.  You start to feel the block weakening, melting, and eroding.  Your life has been distilled down into this one moment, this one desire, and this need for release.  The block shatters, melting away under the force of your need as you explosively orgasm.\n\n", false);
         outputText("Sparkling pink fluid splatters between the two of you as you cum, squirting hard", false);
-        if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText(" for the first time", false);
+        if (player.vaginas[0].vaginalWetness < VaginaWetness.SLAVERING) outputText(" for the first time", false);
         outputText(".  The succubus throws back her head and lets loose a moan of ecstasy, her entire body shivering with your own as both of your heads fill with fireworks of pleasure.  Nervelessly, she rolls off of you, her tail contracting hard around your leg while the two of you share the moment.\n\n", false);
         outputText("The succubus interrupts your delight by recovering far faster than you, rolling up to a standing position and watching something between your legs.  You prop yourself up on your elbows to see what the fuss is about.  Between your legs something curious is happening – a trickle of pinkish fluid is still escaping your nethers, rolling towards a rapidly expanding pool, along with every other drop of the pink goop.  Before your very eyes the pool grows until every drop of pink fluid has collected together, and it grows upwards, solidifying into a sparkling crystalline shape.\n\n", false);
         outputText("Before you can react, she grasps the newly-formed lethicite and noisily begins eating it, her eyes glowing with newfound power.  Watching her makes you more than a little jealous and angry with yourself.  You should've taken the lethicite and gained its power!  No use fretting about it, you can still fuck this succubus for a few hours before you go out in search of your own victims...\n\n", false);

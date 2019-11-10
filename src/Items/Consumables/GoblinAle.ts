@@ -52,15 +52,15 @@ export function goblinAle(player: Player): void {
         changes++;
     }
     // -Remove feather-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_HARPY && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.HARPY && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating.  The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove chitin-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_SPIDER && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.SPIDER && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your arms' chitinous covering is flaking away.  The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // SEXYTIEMS
@@ -102,32 +102,32 @@ export function goblinAle(player: Player): void {
     // GENERAL APPEARANCE STUFF BELOW
     // REMOVAL STUFF
     // Removes wings and antennaes!
-    if ((player.wingType == WING_TYPE_BEE_LIKE_SMALL || player.wingType == WING_TYPE_BEE_LIKE_LARGE || player.wingType >= WING_TYPE_HARPY) && changes < changeLimit && rand(4) == 0) {
-        if (player.wingType == WING_TYPE_SHARK_FIN)
+    if ((player.wingType == WingType.BEE_LIKE_SMALL || player.wingType == WingType.BEE_LIKE_LARGE || player.wingType >= WingType.HARPY) && changes < changeLimit && rand(4) == 0) {
+        if (player.wingType == WingType.SHARK_FIN)
             outputText("\n\nYour back tingles, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look, you see your fin has fallen off.  This might be the best (and worst) booze you've ever had!  <b>You no longer have a fin!</b>", false);
         else
             outputText("\n\nYour shoulders tingle, feeling lighter.  Something lands behind you with a 'thump', and when you turn to look you see your wings have fallen off.  This might be the best (and worst) booze you've ever had!  <b>You no longer have wings!</b>", false);
-        player.wingType = WING_TYPE_NONE;
+        player.wingType = WingType.NONE;
         changes++;
     }
     // Removes wings and antennaes!
-    if (player.antennae > ANTENNAE_NONE && changes < changeLimit && rand(3) == 0) {
+    if (player.antennae > AntennaeType.NONE && changes < changeLimit && rand(3) == 0) {
         outputText("\n\nYour " + hairDescription(player) + " itches so you give it a scratch, only to have your antennae fall to the ground.  What a relief.  <b>You've lost your antennae!</b>", false);
         changes++;
-        player.antennae = ANTENNAE_NONE;
+        player.antennae = AntennaeType.NONE;
     }
     // Remove odd eyes
-    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
-        if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
+    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EyeType.HUMAN) {
+        if (player.eyeType == EyeType.BLACK_EYES_SAND_TRAP) {
             outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
         }
         else {
             outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + feet(player) + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.", false);
-            if (player.eyeType == EYES_FOUR_SPIDER_EYES)
+            if (player.eyeType == EyeType.FOUR_SPIDER_EYES)
                 outputText("  Your multiple, arachnid eyes are gone!</b>", false);
             outputText("  <b>You have normal, humanoid eyes again.</b>", false);
         }
-        player.eyeType = EYES_HUMAN;
+        player.eyeType = EyeType.HUMAN;
         changes++;
     }
     // -Remove extra breast rows
@@ -139,7 +139,7 @@ export function goblinAle(player: Player): void {
         else
             outputText("chest", false);
         outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText(player.hairColor + " " + player.skinDesc, false);
         else
             outputText(player.skinTone + " " + player.skinDesc, false);
@@ -148,16 +148,16 @@ export function goblinAle(player: Player): void {
         player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
     }
     // Skin/fur
-    if (player.skinType != SKIN_TYPE_PLAIN && changes < changeLimit && rand(4) == 0 && player.faceType == FACE_HUMAN) {
-        if (player.skinType == SKIN_TYPE_FUR)
+    if (player.skinType != SkinType.PLAIN && changes < changeLimit && rand(4) == 0 && player.faceType == FaceType.HUMAN) {
+        if (player.skinType == SkinType.FUR)
             outputText("\n\nYour fur itches incessantly, so you start scratching it.  It starts coming off in big clumps before the whole mess begins sloughing off your body.  In seconds, your skin is nude.  <b>You've lost your fur!</b>", false);
-        if (player.skinType == SKIN_TYPE_SCALES)
+        if (player.skinType == SkinType.SCALES)
             outputText("\n\nYour scales itch incessantly, so you scratch at them.  They start falling off wholesale, leaving you standing in a pile of scales after only a few moments.  <b>You've lost your scales!</b>", false);
-        if (player.skinType > SKIN_TYPE_SCALES)
+        if (player.skinType > SkinType.SCALES)
             outputText("\n\nYour " + player.skinDesc + " itches incessantly, and as you scratch it shifts and changes, becoming normal human-like skin.  <b>Your skin is once again normal!</b>", false);
         player.skinAdj = "";
         player.skinDesc = "skin";
-        player.skinType = SKIN_TYPE_PLAIN;
+        player.skinType = SkinType.PLAIN;
         changes++;
     }
     // skinTone
@@ -172,23 +172,23 @@ export function goblinAle(player: Player): void {
         }
         changes++;
         outputText("\n\nWhoah, that was weird.  You just hallucinated that your ", false);
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText("skin", false);
         else
             outputText(player.skinDesc, false);
         outputText(" turned " + player.skinTone + ".  No way!  It's staying, it really changed color!", false);
     }
     // Face!
-    if (player.faceType != FACE_HUMAN && changes < changeLimit && rand(4) == 0 && player.earType == EARS_ELFIN) {
+    if (player.faceType != FaceType.HUMAN && changes < changeLimit && rand(4) == 0 && player.earType == EarType.ELFIN) {
         changes++;
-        player.faceType = FACE_HUMAN;
+        player.faceType = FaceType.HUMAN;
         outputText("\n\nAnother violent sneeze escapes you.  It hurt!  You feel your nose and discover your face has changed back into a more normal look.  <b>You have a human looking face again!</b>", false);
     }
     // Ears!
-    if (player.earType != EARS_ELFIN && changes < changeLimit && rand(3) == 0) {
+    if (player.earType != EarType.ELFIN && changes < changeLimit && rand(3) == 0) {
         outputText("\n\nA weird tingling runs through your scalp as your " + hairDescription(player) + " shifts slightly.  You reach up to touch and bump <b>your new pointed elfin ears</b>.  You bet they look cute!", false);
         changes++;
-        player.earType = EARS_ELFIN;
+        player.earType = EarType.ELFIN;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {
         outputText("\n\nYour chest itches, and as you reach up to scratch it, you realize your gills have withdrawn into your skin.", false);

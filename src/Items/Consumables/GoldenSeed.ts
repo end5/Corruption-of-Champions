@@ -158,7 +158,7 @@ export function goldenSeed(type: number, player: Player): void {
         else
             outputText("chest", false);
         outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ", false);
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText(player.hairColor + " " + player.skinDesc, false);
         else
             outputText(player.skinTone + " " + player.skinDesc, false);
@@ -200,7 +200,7 @@ export function goldenSeed(type: number, player: Player): void {
     if ((player.skinTone != "tan" && player.skinTone != "olive" && player.skinTone != "dark" && player.skinTone != "light") && changes < changeLimit && rand(5) == 0) {
         changes++;
         outputText("\n\nIt takes a while for you to notice, but <b>", false);
-        if (player.skinType == SKIN_TYPE_FUR)
+        if (player.skinType == SkinType.FUR)
             outputText("the skin under your " + player.hairColor + " " + player.skinDesc, false);
         else
             outputText("your " + player.skinDesc, false);
@@ -246,85 +246,85 @@ export function goldenSeed(type: number, player: Player): void {
         changes++;
     }
     // Remove odd eyes
-    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
-        if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
+    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EyeType.HUMAN) {
+        if (player.eyeType == EyeType.BLACK_EYES_SAND_TRAP) {
             outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
         }
         else {
             outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + feet(player) + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.", false);
-            if (player.eyeType == EYES_FOUR_SPIDER_EYES)
+            if (player.eyeType == EyeType.FOUR_SPIDER_EYES)
                 outputText("  Your multiple, arachnid eyes are gone!</b>", false);
             outputText("  <b>You have normal, humanoid eyes again.</b>", false);
         }
-        player.eyeType = EYES_HUMAN;
+        player.eyeType = EyeType.HUMAN;
         changes++;
     }
     // ****************
     // Harpy Appearance:
     // ****************
     // -Harpy legs
-    if (player.lowerBody != LOWER_BODY_TYPE_HARPY && changes < changeLimit && (type == 1 || player.tailType == TAIL_TYPE_HARPY) && rand(4) == 0) {
+    if (player.lowerBody != LowerBodyType.HARPY && changes < changeLimit && (type == 1 || player.tailType == TailType.HARPY) && rand(4) == 0) {
         // (biped/taur)
         if (!player.isGoo())
             outputText("\n\nYour " + legs(player) + " creak ominously a split-second before they go weak and drop you on the ground. They go completely limp, twisting and reshaping before your eyes in ways that make you wince. Your lower body eventually stops, but the form it's settled on is quite thick in the thighs. Even your " + feet(player) + " have changed.  ", false);
         // goo
         else
             outputText("\n\nYour gooey undercarriage loses some of its viscosity, dumping you into the puddle that was once your legs. As you watch, the fluid pulls together into a pair of distinctly leg-like shapes, solidifying into a distinctly un-gooey form. You've even regained a pair of feet!  ", false);
-        player.lowerBody = LOWER_BODY_TYPE_HARPY;
+        player.lowerBody = LowerBodyType.HARPY;
         changes++;
         // (cont)
         outputText("While humanoid in shape, they have two large, taloned toes on the front and a single claw protruding from the heel. The entire ensemble is coated in " + player.hairColor + " feathers from ankle to hip, reminding you of the bird-women of the mountains. <b>You now have harpy legs!</b>", false);
     }
     // -Feathery Tail
-    if (player.tailType != TAIL_TYPE_HARPY && changes < changeLimit && (type == 1 || player.wingType == WING_TYPE_FEATHERED_LARGE) && rand(4) == 0) {
+    if (player.tailType != TailType.HARPY && changes < changeLimit && (type == 1 || player.wingType == WingType.FEATHERED_LARGE) && rand(4) == 0) {
         // (tail)
-        if (player.tailType > TAIL_TYPE_NONE)
+        if (player.tailType > TailType.NONE)
             outputText("\n\nYour tail shortens, folding into the crack of your " + buttDescription(player) + " before it disappears. A moment later, a fan of feathers erupts in its place, fluffing up and down instinctively every time the breeze shifts. <b>You have a feathery harpy tail!</b>", false);
         // (no tail)
         else
             outputText("\n\nA tingling tickles the base of your spine, making you squirm in place. A moment later, it fades, but a fan of feathers erupts from your " + player.skinDesc + " in its place. The new tail fluffs up and down instinctively with every shift of the breeze. <b>You have a feathery harpy tail!</b>", false);
-        player.tailType = TAIL_TYPE_HARPY;
+        player.tailType = TailType.HARPY;
         changes++;
     }
     // -Propah Wings
-    if (player.wingType == WING_TYPE_NONE && changes < changeLimit && (type == 1 || player.armType == ARM_TYPE_HARPY) && rand(4) == 0) {
+    if (player.wingType == WingType.NONE && changes < changeLimit && (type == 1 || player.armType == ArmType.HARPY) && rand(4) == 0) {
         outputText("\n\nPain lances through your back, the muscles knotting oddly and pressing up to bulge your " + player.skinDesc + ". It hurts, oh gods does it hurt, but you can't get a good angle to feel at the source of your agony. A loud crack splits the air, and then your body is forcing a pair of narrow limbs through a gap in your " + player.armorName + ". Blood pumps through the new appendages, easing the pain as they fill out and grow. Tentatively, you find yourself flexing muscles you didn't know you had, and <b>you're able to curve the new growths far enough around to behold your brand new, " + player.hairColor + " wings.</b>", false);
-        player.wingType = WING_TYPE_FEATHERED_LARGE;
+        player.wingType = WingType.FEATHERED_LARGE;
         player.wingDesc = "large, feathered";
         changes++;
     }
     // -Remove old wings
-    if (player.wingType != WING_TYPE_FEATHERED_LARGE && player.wingType > WING_TYPE_NONE && changes < changeLimit && rand(4) == 0) {
-        if (player.wingType != WING_TYPE_SHARK_FIN)
+    if (player.wingType != WingType.FEATHERED_LARGE && player.wingType > WingType.NONE && changes < changeLimit && rand(4) == 0) {
+        if (player.wingType != WingType.SHARK_FIN)
             outputText("\n\nSensation fades from your " + player.wingDesc + " wings slowly but surely, leaving them dried out husks that break off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.", false);
         else
             outputText("\n\nSensation fades from your large fin slowly but surely, leaving it a dried out husk that breaks off to fall on the ground. Your back closes up to conceal the loss, as smooth and unbroken as the day you entered the portal.", false);
-        player.wingType = WING_TYPE_NONE;
+        player.wingType = WingType.NONE;
         player.wingDesc = "non-existant";
         changes++;
     }
     // -Feathery Arms
-    if (player.armType != ARM_TYPE_HARPY && changes < changeLimit && (type == 1 || player.hairType == 1) && rand(4) == 0) {
+    if (player.armType != ArmType.HARPY && changes < changeLimit && (type == 1 || player.hairType == 1) && rand(4) == 0) {
         outputText("\n\nYou smile impishly as you lick the last bits of the nut from your teeth, but when you go to wipe your mouth, instead of the usual texture of your " + player.skinDesc + " on your lips, you feel feathers! You look on in horror while more of the avian plumage sprouts from your " + player.skinDesc + ", covering your forearms until <b>your arms look vaguely like wings</b>. Your hands remain unchanged thankfully. It'd be impossible to be a champion without hands! The feathery limbs might help you maneuver if you were to fly, but there's no way they'd support you alone.", false);
         changes++;
-        player.armType = ARM_TYPE_HARPY;
+        player.armType = ArmType.HARPY;
     }
     // -Feathery Hair
-    if (player.hairType != 1 && changes < changeLimit && (type == 1 || player.faceType == FACE_HUMAN) && rand(4) == 0) {
+    if (player.hairType != 1 && changes < changeLimit && (type == 1 || player.faceType == FaceType.HUMAN) && rand(4) == 0) {
         outputText("\n\nA tingling starts in your scalp, getting worse and worse until you're itching like mad, the feathery strands of your hair tickling your fingertips while you scratch like a dog itching a flea. When you pull back your hand, you're treated to the sight of downy fluff trailing from your fingernails. A realization dawns on you - you have feathers for hair, just like a harpy!", false);
         player.hairType = 1;
         changes++;
     }
     // -Human face
-    if (player.faceType != FACE_HUMAN && changes < changeLimit && (type == 1 || (player.earType == EARS_HUMAN || player.earType == EARS_ELFIN)) && rand(4) == 0) {
+    if (player.faceType != FaceType.HUMAN && changes < changeLimit && (type == 1 || (player.earType == EarType.HUMAN || player.earType == EarType.ELFIN)) && rand(4) == 0) {
         outputText("\n\nSudden agony sweeps over your " + face(player) + ", your visage turning hideous as bones twist and your jawline shifts. The pain slowly vanishes, leaving you weeping into your fingers. When you pull your hands away you realize you've been left with a completely normal, human face.", false);
-        player.faceType = FACE_HUMAN;
+        player.faceType = FaceType.HUMAN;
         changes++;
     }
     // -Gain human ears (keep elf ears)
-    if ((player.earType != EARS_HUMAN && player.earType != EARS_ELFIN) && changes < changeLimit && rand(4) == 0) {
+    if ((player.earType != EarType.HUMAN && player.earType != EarType.ELFIN) && changes < changeLimit && rand(4) == 0) {
         outputText("\n\nOuch, your head aches! It feels like your ears are being yanked out of your head, and when you reach up to hold your aching noggin, you find they've vanished! Swooning and wobbling with little sense of balance, you nearly fall a half-dozen times before <b>a pair of normal, human ears sprout from the sides of your head.</b> You had almost forgotten what human ears felt like!", false);
-        player.earType = EARS_HUMAN;
+        player.earType = EarType.HUMAN;
         changes++;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {
@@ -334,7 +334,7 @@ export function goldenSeed(type: number, player: Player): void {
     }
     // SPECIAL:
     // Harpy Womb – All eggs are automatically upgraded to large, requires legs + tail to be harpy.
-    if (player.perks.findByType(PerkLib.HarpyWomb) < 0 && player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY && rand(4) == 0 && changes < changeLimit) {
+    if (player.perks.findByType(PerkLib.HarpyWomb) < 0 && player.lowerBody == LowerBodyType.HARPY && player.tailType == TailType.HARPY && rand(4) == 0 && changes < changeLimit) {
         player.perks.create(PerkLib.HarpyWomb, 0, 0, 0, 0);
         outputText("\n\nThere's a rumbling in your womb, signifying that some strange change has taken place in your most feminine area. No doubt something in it has changed to be more like a harpy. (<b>You've gained the Harpy Womb perk! All the eggs you lay will always be large so long as you have harpy legs and a harpy tail.</b>)", false);
         changes++;

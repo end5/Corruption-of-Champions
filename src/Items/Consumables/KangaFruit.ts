@@ -84,15 +84,15 @@ export function kangaFruit(type: number, player: Player): void {
         changes++;
     }
     // -Remove feather-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_HARPY && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.HARPY && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating.  The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove chitin-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_SPIDER && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.SPIDER && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your arms' chitinous covering is flaking away.  The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove feathery hair (copy for equinum, canine peppers, Labova)
@@ -107,17 +107,17 @@ export function kangaFruit(type: number, player: Player): void {
         player.hairType = 0;
     }
     // Remove odd eyes
-    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
-        if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
+    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EyeType.HUMAN) {
+        if (player.eyeType == EyeType.BLACK_EYES_SAND_TRAP) {
             outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
         }
         else {
             outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + feet(player) + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.", false);
-            if (player.eyeType == EYES_FOUR_SPIDER_EYES)
+            if (player.eyeType == EyeType.FOUR_SPIDER_EYES)
                 outputText("  Your multiple, arachnid eyes are gone!</b>", false);
             outputText("  <b>You have normal, humanoid eyes again.</b>", false);
         }
-        player.eyeType = EYES_HUMAN;
+        player.eyeType = EyeType.HUMAN;
         changes++;
     }
     // ****************
@@ -178,49 +178,49 @@ export function kangaFruit(type: number, player: Player): void {
     // type 1 ignores normal restrictions
     // ****************
     // -Face (Req: Fur + Feet)
-    if (player.faceType != FACE_KANGAROO && ((player.skinType == SKIN_TYPE_FUR && player.lowerBody == LOWER_BODY_TYPE_KANGAROO) || type == 1) && changes < changeLimit && rand(4) == 0) {
+    if (player.faceType != FaceType.KANGAROO && ((player.skinType == SkinType.FUR && player.lowerBody == LowerBodyType.KANGAROO) || type == 1) && changes < changeLimit && rand(4) == 0) {
         // gain roo face from human/naga/shark/bun:
-        if (player.faceType == FACE_HUMAN || player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SHARK_TEETH || player.faceType == FACE_BUNNY)
+        if (player.faceType == FaceType.HUMAN || player.faceType == FaceType.SNAKE_FANGS || player.faceType == FaceType.SHARK_TEETH || player.faceType == FaceType.BUNNY)
             outputText("\n\nThe base of your nose suddenly hurts, as though someone were pinching and pulling at it.  As you shut your eyes against the pain and bring your hands to your face, you can feel your nose and palate shifting and elongating.  This continues for about twenty seconds as you stand there, quaking.  When the pain subsides, you run your hands all over your face; what you feel is a long muzzle sticking out, whiskered at the end and with a cleft lip under a pair of flat nostrils.  You open your eyes and receive confirmation. <b>You now have a kangaroo face!  Crikey!</b>", false);
         // gain roo face from other snout:
         else
             outputText("\n\nYour nose tingles. As you focus your eyes toward the end of it, it twitches and shifts into a muzzle similar to a stretched-out rabbit's, complete with harelip and whiskers.  <b>You now have a kangaroo face!</b>", false);
         changes++;
-        player.faceType = FACE_KANGAROO;
+        player.faceType = FaceType.KANGAROO;
     }
     // -Fur (Req: Footsies)
-    if (player.skinType != SKIN_TYPE_FUR && (player.lowerBody == LOWER_BODY_TYPE_KANGAROO || type == 1) && changes < changeLimit && rand(4) == 0) {
+    if (player.skinType != SkinType.FUR && (player.lowerBody == LowerBodyType.KANGAROO || type == 1) && changes < changeLimit && rand(4) == 0) {
         outputText("\n\nYour " + player.skinDesc + " itches terribly all over and you try cartoonishly to scratch everywhere at once.  As you pull your hands in, you notice " + player.hairColor + " fur growing on the backs of them.  All over your body the scene is repeated, covering you in the stuff.  <b>You now have fur!</b>", false);
         changes++;
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         player.skinDesc = "fur";
     }
     // -Roo footsies (Req: Tail)
-    if (player.lowerBody != LOWER_BODY_TYPE_KANGAROO && (type == 1 || player.tailType == TAIL_TYPE_KANGAROO) && changes < changeLimit && rand(4) == 0) {
+    if (player.lowerBody != LowerBodyType.KANGAROO && (type == 1 || player.tailType == TailType.KANGAROO) && changes < changeLimit && rand(4) == 0) {
         // gain roo feet from centaur:
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR)
+        if (player.lowerBody == LowerBodyType.CENTAUR)
             outputText("\n\nYour backlegs suddenly wobble and collapse, causing you to pitch over onto your side.  Try as you might, you can't get them to stop spasming so you can stand back up; you thrash your hooves wildly as a pins-and-needles sensation overtakes your lower body.  A dull throbbing along your spine makes you moan in agony; it's as though someone had set an entire bookshelf on your shoulders and your spine were being compressed far beyond its limit.  After a minute of pain, the pressure evaporates and you look down at your legs.  Not only are your backlegs gone, but your forelegs have taken on a dogleg shape, with extremely long feet bearing a prominent middle toe!  You set about rubbing the feeling back into your legs and trying to move the new feet.  <b>You now have kangaroo legs!</b>", false);
         // gain roo feet from naga:
-        else if (player.lowerBody == LOWER_BODY_TYPE_NAGA)
+        else if (player.lowerBody == LowerBodyType.NAGA)
             outputText("\n\nYour tail quivers, then shakes violently, planting you on your face.  As you try to bend around to look at it, you can just see the tip shrinking out of your field of vision from the corner of your eye.  The scaly skin below your waist tightens intolerably, then splits; you wriggle out of it, only to find yourself with a pair of long legs instead!  A bit of hair starts to grow in as you stand up unsteadily on your new, elongated feet.  <b>You now have kangaroo legs!</b>  Now, what are you going to do with a giant shed snakeskin?", false);
         // gain roo feet from slime:
-        else if (player.lowerBody == LOWER_BODY_TYPE_GOO)
+        else if (player.lowerBody == LowerBodyType.GOO)
             outputText("\n\nYour mounds of goo shrink and part involuntarily, exposing your crotch.  Modesty overwhelms you and you try to pull them together, but the shrinkage is continuing faster than you can shift your gooey body around.  Before long you've run out of goo to move, and your lower body now ends in a pair of slippery digitigrade legs with long narrow feet.  They dry in the air and a bit of fur begins to sprout as you look for something to cover up with.  <b>You now have kangaroo legs!</b> You sigh.  Guess this means it's back to wearing underpants again.", false);
         // gain roo feet from human/bee/demon/paw/lizard:
         else
             outputText("\n\nYour feet begin to crack and shift as the metatarsal bones lengthen.  Your knees buckle from the pain of your bones rearranging themselves, and you fall over.  After fifteen seconds of what feels like your feet being racked, the sensation stops.  You look down at your legs; they've taken a roughly dog-leg shape, but they have extremely long feet with a prominent middle toe!  As you stand up you find that you're equally comfortable standing flat on your feet as you are on the balls of them!  <b>You now have kangaroo legs!</b>", false);
-        player.lowerBody = LOWER_BODY_TYPE_KANGAROO;
+        player.lowerBody = LowerBodyType.KANGAROO;
         changes++;
     }
     // -Roo tail (Req: Ears)
-    if (player.tailType != TAIL_TYPE_KANGAROO && changes < changeLimit && rand(4) == 0 && (type != 1 || player.earType == EARS_KANGAROO)) {
+    if (player.tailType != TailType.KANGAROO && changes < changeLimit && rand(4) == 0 && (type != 1 || player.earType == EarType.KANGAROO)) {
         // gain roo tail:
-        if (player.tailType == TAIL_TYPE_NONE)
+        if (player.tailType == TailType.NONE)
             outputText("\n\nA painful pressure in your lower body causes you to stand straight and lock up.  At first you think it might be gas.  No... something is growing at the end of your tailbone.  As you hold stock still so as not to exacerbate the pain, something thick pushes out from the rear of your garments.  The pain subsides and you crane your neck around to look; a long, tapered tail is now attached to your butt and a thin coat of fur is already growing in!  <b>You now have a kangaroo tail!</b>", false);
         // gain roo tail from bee tail:
-        else if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+        else if (player.tailType == TailType.SPIDER_ADBOMEN || player.tailType == TailType.BEE_ABDOMEN) {
             outputText("\n\nYour chitinous backside shakes and cracks once you finish eating.  Peering at it as best you can, it appears as though the fuzz is falling out in clumps and the chitin is flaking off.  As convulsions begin to wrack your body and force you to collapse, the ", false);
-            if (player.tailType == TAIL_TYPE_BEE_ABDOMEN)
+            if (player.tailType == TailType.BEE_ABDOMEN)
                 outputText("hollow stinger drops out of the end, taking the venom organ with it.", false);
             else
                 outputText("spinnerets drop out of the end, taking the last of your webbing with it.", false);
@@ -230,19 +230,19 @@ export function kangaFruit(type: number, player: Player): void {
         else {
             outputText("\n\nYour tail twitches as you eat.  It begins to feel fat and swollen, and you try to look at your own butt as best you can.  What you see matches what you feel as your tail thickens and stretches out into a long cone shape.  <b>You now have a kangaroo tail!</b>", false);
         }
-        player.tailType = TAIL_TYPE_KANGAROO;
+        player.tailType = TailType.KANGAROO;
         changes++;
     }
     // -Roo ears
-    if (player.earType != EARS_KANGAROO && changes < changeLimit && rand(4) == 0) {
+    if (player.earType != EarType.KANGAROO && changes < changeLimit && rand(4) == 0) {
         // Bunbun ears get special texts!
-        if (player.earType == EARS_BUNNY)
+        if (player.earType == EarType.BUNNY)
             outputText("\n\nYour ears stiffen and shift to the sides!  You reach up and find them pointed outwards instead of up and down; they feel a bit wider now as well.  As you touch them, you can feel them swiveling in place in response to nearby sounds.  <b>You now have a pair of kangaroo ears!</b>", false);
         // Everybody else?  Yeah lazy.
         else
             outputText("\n\nYour ears twist painfully as though being yanked upwards and you clap your hands to your head.  Feeling them out, you discover them growing!  They stretch upwards, reaching past your fingertips, and then the tugging stops.  You cautiously feel along their lengths; they're long and stiff, but pointed outwards now, and they swivel around as you listen.  <b>You now have a pair of kangaroo ears!</b>", false);
         changes++;
-        player.earType = EARS_KANGAROO;
+        player.earType = EarType.KANGAROO;
     }
     // UBEROOOO
     // kangaroo perk: - any liquid or food intake will accelerate a pregnancy, but it will not progress otherwise

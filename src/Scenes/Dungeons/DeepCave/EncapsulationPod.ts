@@ -24,8 +24,8 @@ export class EncapsulationPod extends Monster {
         // [Round 2 Description]
         else if (this.effects.getValue1Of(StatusAffects.Round) == 2) {
             _long = "You're still trapped inside the pod!  By now the walls are totally soaked with some kind of viscous slime.  The smell of it is unbearably sweet and you have to put a hand against the wall to steady yourself.  Warm tentacles are curling and twisting underneath your armor, caressing every ";
-            if (player.skinType == SKIN_TYPE_FUR) _long += "furry ";
-            if (player.skinType == SKIN_TYPE_SCALES) _long += "scaley ";
+            if (player.skinType == SkinType.FUR) _long += "furry ";
+            if (player.skinType == SkinType.SCALES) _long += "scaley ";
             _long += "inch of your " + legs(player) + ", crotch, and " + game.buttDescription(player) + ".";
         }
         // [Round 3 Description]
@@ -75,10 +75,10 @@ export class EncapsulationPod extends Monster {
         initGenderless();
         this.breasts.createBreastRow(0, 0);
         this.tallness = 120;
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_BUTTLESS;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.BUTTLESS;
         this.skinTone = "purple";
-        this.skinType = SKIN_TYPE_PLAIN;
+        this.skinType = SkinType.PLAIN;
         this.skinDesc = "covering";
         this.hairColor = "black";
         this.hairLength = 0;

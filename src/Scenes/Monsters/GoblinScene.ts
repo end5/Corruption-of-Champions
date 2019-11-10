@@ -95,8 +95,8 @@ export function goblinRapesPlayer(): void {
     }
     if (player.vaginas.length > 0) {
         outputText(images.showImage("goblin-loss-female-raped"));
-        if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_NORMAL) outputText("The lips of your sex engorge, becoming almost as puffy as the goblin's.  ", false);
-        else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("Feminine lubricant soaks into the back of your " + player.armorName + ".  ", false);
+        if (player.vaginas[0].vaginalWetness <= VaginaWetness.NORMAL) outputText("The lips of your sex engorge, becoming almost as puffy as the goblin's.  ", false);
+        else if (player.vaginas[0].vaginalWetness < VaginaWetness.DROOLING) outputText("Feminine lubricant soaks into the back of your " + player.armorName + ".  ", false);
         else outputText("It rapidly forms into a puddle as your " + vaginaDescript(player, 0) + " does its best to show just how ready you are.  ", false);
     }
     outputText("Your " + nippleDescription(player, 0) + "s poke upwards, giving the goblin easy targets.  She grabs hold of them ", false);
@@ -172,7 +172,7 @@ export function goblinRapesPlayer(): void {
         outputText("By now your passage feels as stuffed as it ever has been, crammed totally full of the squishy expanded double-dong.  Every motion the tiny slut makes is amplified directly into the fuck-stick plugging your " + vaginaDescript(player, 0) + ".  Judging by how wonderful it feels rubbing and twisting against your sensitive walls, the aphrodisiac is definitely having an effect.  You moan and spread your legs wide, giving the tiny dominatrix free reign over your body.  She wiggles against you harder, throwing her head back and running her fingers through her " + monster.hairColor + " hair, shouting out encouragement all the while, \"<i>Mmmm, you like this, don't you slut?  Doesn't my dildo just fill you up perfectly?  Keep wiggling those hips – the aphrodisiac is gravity fed, and with you on the bottom you'll be blissed into unconsciousness soon.  Just don't cum before me hun, I want to feel release with you.</i>\"\n\n", false);
         outputText("You lose yourself to the sweet sensations of the bloated dildo that joins your simmering groins.  Rocking back and forth, scissoring relentlessly against your green mistress, you moan, drowning yourself in a sea of drug-enhanced pleasure. The goblin cries out and thrashes in sudden orgasm, twisting the fat dildo violently around inside your " + vaginaDescript(player, 0) + ".   The juices of her orgasm react with the toy, stretching you almost painfully and pushing you past the point of no return.  Your bodies thrash together, wracked by twin orgasms that leave you smeared with a mixture of sweat and girl-cum.\n\n", false);
         outputText("Later, the wet goblin audibly pops off the dildo.  She stumbles, bow-legged, before teasing your " + clitDescription(player) + " and yanking her toy free.  Your lips ", false);
-        if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING) outputText("gape apart momentarily", false);
+        if (player.vaginas[0].vaginalLooseness <= VaginaLooseness.GAPING) outputText("gape apart momentarily", false);
         else outputText("gape wider than ever, but only for a moment", false);
         outputText(".\n\n", false);
         outputText("She plants a kiss on your lips and mutters, \"<i>Can't forget this,</i>\" as she puts her dildo away.  You find yourself smiling and watching her strap-covered form jiggle pleasantly as she bounds away from you into the distance.  Your eyelids drift closed and your lips go numb as her drugged lipstick puts you out.  ", false);
@@ -228,7 +228,7 @@ export function gobboRapeIntro(): void {
         // Buttsex toggle
         if (player.cocks.cockThatFits(monster.analCapacity()) >= 0 && player.cor > 70) buttseks = gobboButtSecks;
         // Spidercondom
-        if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0)
+        if (player.tailType == TailType.SPIDER_ADBOMEN && player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0)
             spiderCondom = goblinCondomed;
     }
     // Breastfeed adds an option
@@ -319,7 +319,7 @@ function gobboGetsRapedFem(): void {
         outputText(images.showImage("goblin-win-female-naga-rapedfem"));
         outputText("You slither over to the helpless goblin, who watches you half in fear, half in curiosity. ", false);
         // [Has fangs:
-        if (player.faceType == FACE_SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears. She turns to run, but your tail is faster than she is.", false);
+        if (player.faceType == FaceType.SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears. She turns to run, but your tail is faster than she is.", false);
         // [No fangs:
         else outputText("You smile at her and the fear disappears. She's still wary though, and you make sure to grab her with your tail before she changes her mind about you.", false);
         outputText("\n\n", false);
@@ -366,9 +366,9 @@ function gobboGetsRapedFem(): void {
         outputText("You pick up the goblin, sitting her onto your knee and restraining both her arms behind her back with your left hand.  You tear a piece of supple leather off of her slutty garments and use it to bind her arms there.  She looks up at you, her eyes wide and frightened at the thought of being at the mercy of a larger creature.  In spite of it all, she seems more than a little turned on, if the juices staining your knee are any indication.  You look down at her and remark, \"<i>So the little skank has a submissive streak huh?</i>\"\n\n", false);
         outputText("She blushes red and the flow of feminine fluid thickens as she nods.  You know she'll probably enjoy whatever sexual act you could perform with her, so you may as well surprise her.  A cruel idea forms in the back of your mind – getting revenge for her attempts to drug you.  You easily rip the pouches from her belt and pull out a few random bottles.  The goblin, understanding your intent, begins struggling to free herself, but you easily restrain the smaller woman and force the drugs into her mouth, one after the another.  When she tries to spit them out, you massage her throat, triggering her instinct to swallow.\n\n", false);
         outputText("By the third bottle she's given up on struggling and is instead trying to grind her cunt into your knee.  Her mouth is open wide and her entire face is flushed reddish-purple with desire.  You finish force-feeding her the remaining bottles and shove her, catching her ankles to hold her over your leg with her ass in the air.  The scent of her arousal and the vapors from all the drugs and aphrodisiacs give you a bit of a 'contact high', at least in the sense that your " + vaginaDescript(player, 0) + " ", false);
-        if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("grows puffy and moist", false);
-        else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_DROOLING) outputText("drips with feminine moisture", false);
-        else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText("slowly begins to soak your thighs", false);
+        if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) outputText("grows puffy and moist", false);
+        else if (player.vaginas[0].vaginalWetness < VaginaWetness.DROOLING) outputText("drips with feminine moisture", false);
+        else if (player.vaginas[0].vaginalWetness < VaginaWetness.SLAVERING) outputText("slowly begins to soak your thighs", false);
         else outputText("drools with need, puddling under you", false);
         outputText(".  Your arousal can wait.  This slut needs to be punished.\n\n", false);
         outputText("*<b>THWACK</b>!* Your hand smacks her nicely rounded ass.  You pull back, feeling drops of wetness thanks to her prominent pussy-lips.  The little bitch's cunt is so inflamed with need that she's practically squirting from a simple spank.  You swat her again, watching her entire body tense and feeling her fluids splatter you.\n\n", false);
@@ -376,9 +376,9 @@ function gobboGetsRapedFem(): void {
         outputText("The goblin squeals, though in delight or pain you can't be sure.  You start spanking her harder and harder, turning her ass from green to red with the repeated abuse.  Her entire body begins convulsing and squirting, splattering your arm with her honey.  She got off on it!  Well, after that kind of show, she's going to get you off too - or else!\n\n", false);
         outputText("You pull her off your leg and shove her face into your " + vaginaDescript(player, 0) + ".  She thrashes against you, too lost to her own pleasure to realize what's going on.   Forcefully you put her plump little lips on your box and grind, letting her tongue slip into your folds.  Her eyes are little white slits, her pupils rolled up out of view, but there's enough of something in there that her tongue recognizes the taste and starts licking.  You tremble; it feels WAY better than it should.  Perhaps some of her potions have left a residue on her lips and tongue, but you don't care.\n\n", false);
         outputText("You cum on the drugged green bitch, ", false);
-        if (player.vaginas[0].vaginalWetness > VAGINA_WETNESS_DROOLING) outputText("splattering her with your fluids", false);
-        else if (player.vaginas[0].vaginalWetness > VAGINA_WETNESS_SLICK) outputText("coating her face with the proof of your pleasure", false);
-        else if (player.vaginas[0].vaginalWetness > VAGINA_WETNESS_WET) outputText("leaving her sticky with your nether-juices", false);
+        if (player.vaginas[0].vaginalWetness > VaginaWetness.DROOLING) outputText("splattering her with your fluids", false);
+        else if (player.vaginas[0].vaginalWetness > VaginaWetness.SLICK) outputText("coating her face with the proof of your pleasure", false);
+        else if (player.vaginas[0].vaginalWetness > VaginaWetness.WET) outputText("leaving her sticky with your nether-juices", false);
         else outputText("leaving the taste of pussy on her tongue", false);
         outputText(".  ", false);
         if (player.breasts.biggestLactation() >= 3.5) outputText("Milk explodes from your nipples, soaking the petite slut.  ", false);
@@ -444,8 +444,8 @@ function rapeAGoblinCorruptTooBig(): void {
     outputText("\"<i>Alright, whore. You wanted my babies? Here. They. CUM!</i>\" you yell. However, ", false);
     if (player.vaginas.length > 0) {
         outputText("while your " + vaginaDescript(player, 0) + " ", false);
-        if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("juices ", false);
-        else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_DROOLING) outputText("floods ", false);
+        if (player.vaginas[0].vaginalWetness <= VaginaWetness.SLICK) outputText("juices ", false);
+        else if (player.vaginas[0].vaginalWetness <= VaginaWetness.DROOLING) outputText("floods ", false);
         else outputText("explodes ", false);
         if (player.cocks.length > 1) outputText("and the rest of your " + multiCockDescriptLight(game.player) + " drench her, ", false);
     }

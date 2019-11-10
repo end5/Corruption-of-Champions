@@ -13,15 +13,15 @@ export function succubiMilk(tainted: boolean, player: Player): void {
         outputText("You savor the incredible flavor as you greedily gulp it down.", true);
         if (player.gender == 2 || player.gender == 3) {
             outputText("  The taste alone makes your " + vaginaDescript(player, 0) + " feel ", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY)
                 outputText("tingly.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.NORMAL)
                 outputText("wet.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.WET)
                 outputText("sloppy and wet.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.SLICK)
                 outputText("sopping and juicy.", false);
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING)
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING)
                 outputText("dripping wet.", false);
         }
         else if (player.cocks.length > 0)
@@ -35,17 +35,17 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 outputText(" quiver in orgasm, ", false);
             if (player.vaginas.length == 1)
                 outputText(" quivers in orgasm, ", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY)
                 outputText("becoming slightly sticky.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.NORMAL)
                 outputText("leaving your undergarments sticky.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.WET)
                 outputText("wet with girlcum.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.SLICK)
                 outputText("staining your undergarments with cum.", false);
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING)
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.DROOLING)
                 outputText("leaving cunt-juice trickling down your leg.", false);
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLAVERING)
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLAVERING)
                 outputText("spraying your undergarments liberally with slick girl-cum.", false);
             player.orgasm();
         }
@@ -118,8 +118,8 @@ export function succubiMilk(tainted: boolean, player: Player): void {
     }
     if (player.vaginas.length == 0 && (rand(3) == 0 || (rando > 75 && rando < 90))) {
         player.vaginas.createVagina();
-        player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
-        player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
+        player.vaginas[0].vaginalLooseness = VaginaLooseness.TIGHT;
+        player.vaginas[0].vaginalWetness = VaginaWetness.NORMAL;
         player.vaginas[0].virgin = true;
         player.clitLength = .25;
         if (player.fertility <= 5)
@@ -153,7 +153,7 @@ export function succubiMilk(tainted: boolean, player: Player): void {
         if (player.vaginas.length > 0) {
             outputText("\n\n", false);
             // 0 = dry, 1 = wet, 2 = extra wet, 3 = always slick, 4 = drools constantly, 5 = female ejaculator
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLAVERING) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.SLAVERING) {
                 if (player.vaginas.length == 1)
                     outputText("Your " + vaginaDescript(player, 0) + " gushes fluids down your leg as you spontaneously orgasm.", false);
                 else
@@ -162,7 +162,7 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 if (tainted)
                     dynStats("cor", 1);
             }
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DROOLING) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.DROOLING) {
                 if (player.vaginas.length == 1)
                     outputText("Your pussy feels hot and juicy, aroused and tender.  You cannot resist as your hands dive into your " + vaginaDescript(player, 0) + ".  You quickly orgasm, squirting fluids everywhere.  <b>You are now a squirter</b>.", false);
                 if (player.vaginas.length > 1)
@@ -171,28 +171,28 @@ export function succubiMilk(tainted: boolean, player: Player): void {
                 if (tainted)
                     dynStats("cor", 1);
             }
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_SLICK) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.SLICK) {
                 if (player.vaginas.length == 1)
                     outputText("You feel a sudden trickle of fluid down your leg.  You smell it and realize it's your pussy-juice.  Your " + vaginaDescript(player, 0) + " now drools lubricant constantly down your leg.", false);
                 if (player.vaginas.length > 1)
                     outputText("You feel sudden trickles of fluids down your leg.  You smell the stuff and realize it's your pussies-juices.  They seem to drool lubricant constantly down your legs.", false);
             }
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_WET) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.WET) {
                 outputText("You flush in sexual arousal as you realize how moist your cunt-lips have become.  Once you've calmed down a bit you realize they're still slick and ready to fuck, and always will be.", false);
             }
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_NORMAL) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.NORMAL) {
                 if (player.vaginas.length == 1)
                     outputText("A feeling of intense arousal passes through you, causing you to masturbate furiously.  You realize afterwards that your " + vaginaDescript(player, 0) + " felt much wetter than normal.", false);
                 else
                     outputText("A feeling of intense arousal passes through you, causing you to masturbate furiously.  You realize afterwards that your " + vaginaDescript(player, 0) + " were much wetter than normal.", false);
             }
-            if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) {
+            if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) {
                 outputText("You feel a tingling in your crotch, but cannot identify it.", false);
             }
             temp = player.vaginas.length;
             while (temp > 0) {
                 temp--;
-                if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING)
+                if (player.vaginas[0].vaginalWetness < VaginaWetness.SLAVERING)
                     player.vaginas[temp].vaginalWetness++;
             }
         }
@@ -214,8 +214,8 @@ export function succubiMilk(tainted: boolean, player: Player): void {
             }
             else {
                 player.vaginas.createVagina();
-                player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
-                player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
+                player.vaginas[0].vaginalLooseness = VaginaLooseness.TIGHT;
+                player.vaginas[0].vaginalWetness = VaginaWetness.NORMAL;
                 player.vaginas[0].virgin = true;
                 player.clitLength = .25;
                 outputText("\n\nAn itching starts in your crotch and spreads vertically.  You reach down and discover an opening.  You have grown a <b>new " + vaginaDescript(player, 0) + "</b>!", false);

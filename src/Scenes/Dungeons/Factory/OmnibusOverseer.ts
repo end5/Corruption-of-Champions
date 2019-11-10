@@ -66,14 +66,14 @@ export class OmnibusOverseer extends Monster {
         this.ballSize = 0;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.NORMAL);
         this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 70;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_TIGHT;
-        this.lowerBody = LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.TIGHT;
+        this.lowerBody = LowerBodyType.DEMONIC_HIGH_HEELS;
         this.skinTone = "light purple";
         this.hairColor = "purple";
         this.hairLength = 42;
@@ -95,9 +95,9 @@ export class OmnibusOverseer extends Monster {
         this.drop = new WeightedDrop(null, 1);
         this.special1 = lustAura;
         this.special2 = milkAttack;
-        this.wingType = WING_TYPE_BAT_LIKE_TINY;
+        this.wingType = WingType.BAT_LIKE_TINY;
         this.wingDesc = "tiny hidden";
-        this.tailType = TAIL_TYPE_DEMONIC;
+        this.tailType = TailType.DEMONIC;
         checkMonster();
     }
 

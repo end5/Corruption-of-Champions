@@ -385,7 +385,7 @@ public function doSystem(eventNo:Number):void {
 /* Were never called
 		case 118:
 			if (!monster.vaginas.length > 0) monster.vaginas.createVagina();
-			monster.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_GAPING;
+			monster.vaginas[0].vaginalLooseness = VaginaLooseness.GAPING;
 			monster.ass.analLooseness = 3;
 			outputText(mainView.eventTestInput.text, true, true);
 			simpleChoices("Again", 117, "", 0, "", 0, "", 0, "Quit", mainMenu);

@@ -132,8 +132,8 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         // if the last of the player's dicks are eliminated this way, they gain a virgin vagina;
         if (player.cocks.length == 0 && !player.vaginas.length > 0) {
             player.vaginas.createVagina();
-            player.vaginas[0].vaginalLooseness = VAGINA_LOOSENESS_TIGHT;
-            player.vaginas[0].vaginalWetness = VAGINA_WETNESS_NORMAL;
+            player.vaginas[0].vaginalLooseness = VaginaLooseness.TIGHT;
+            player.vaginas[0].vaginalWetness = VaginaWetness.NORMAL;
             player.vaginas[0].virgin = true;
             player.clitLength = .25;
             outputText("\n\nAn itching starts in your crotch and spreads vertically.  You reach down and discover an opening.  You have grown a <b>new " + vaginaDescript(player, 0) + "</b>!", false);
@@ -295,7 +295,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     // If player has addictive quality and drinks pure version, removes addictive quality.
     // if the player has a vagina and it is tight, it loosens.
     if (player.vaginas.length > 0) {
-        if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LOOSE && changes < changeLimit && rand(2) == 0) {
+        if (player.vaginas[0].vaginalLooseness < VaginaLooseness.LOOSE && changes < changeLimit && rand(2) == 0) {
             outputText("\n\nYou feel a relaxing sensation in your groin.  On further inspection you discover your " + vaginaDescript(player, 0) + " has somehow relaxed, permanently loosening.", false);
             player.vaginas[0].vaginalLooseness++;
             // Cunt Stretched used to determine how long since last enlargement
@@ -311,25 +311,25 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     }
     // General Appearance (Tail -> Ears -> Paws(fur stripper) -> Face -> Horns
     // Give the player a bovine tail, same as the minotaur
-    if (tainted && player.tailType != TAIL_TYPE_COW && changes < changeLimit && rand(3) == 0) {
-        if (player.tailType == TAIL_TYPE_NONE)
+    if (tainted && player.tailType != TailType.COW && changes < changeLimit && rand(3) == 0) {
+        if (player.tailType == TailType.NONE)
             outputText("\n\nYou feel the flesh above your " + buttDescription(player) + " knotting and growing.  It twists and writhes around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.", false);
         else {
-            if (player.tailType < TAIL_TYPE_SPIDER_ADBOMEN || player.tailType > TAIL_TYPE_BEE_ABDOMEN) {
+            if (player.tailType < TailType.SPIDER_ADBOMEN || player.tailType > TailType.BEE_ABDOMEN) {
                 outputText("\n\nYour tail bunches uncomfortably, twisting and writhing around itself before flopping straight down, now shaped into a distinctly bovine form.  You have a <b>cow tail</b>.", false);
             }
             // insect
-            if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN || player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+            if (player.tailType == TailType.SPIDER_ADBOMEN || player.tailType == TailType.BEE_ABDOMEN) {
                 outputText("\n\nYour insect-like abdomen tingles pleasantly as it begins shrinking and softening, chitin morphing and reshaping until it looks exactly like a <b>cow tail</b>.", false);
             }
         }
-        player.tailType = TAIL_TYPE_COW;
+        player.tailType = TailType.COW;
         changes++;
     }
     // Give the player bovine ears, same as the minotaur
-    if (tainted && player.earType != EARS_COW && changes < changeLimit && rand(4) == 0 && player.tailType == TAIL_TYPE_COW) {
+    if (tainted && player.earType != EarType.COW && changes < changeLimit && rand(4) == 0 && player.tailType == TailType.COW) {
         outputText("\n\nYou feel your ears tug on your scalp as they twist shape, becoming oblong and cow-like.  <b>You now have cow ears.</b>", false);
-        player.earType = EARS_COW;
+        player.earType = EarType.COW;
         changes++;
     }
     // If the player is under 7 feet in height, increase their height, similar to the minotaur
@@ -352,29 +352,29 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         changes++;
     }
     // Give the player hoofs, if the player already has hoofs STRIP FUR
-    if (tainted && player.lowerBody != LOWER_BODY_TYPE_HOOFED && player.earType == EARS_COW) {
+    if (tainted && player.lowerBody != LowerBodyType.HOOFED && player.earType == EarType.COW) {
         if (changes < changeLimit && rand(3) == 0) {
             changes++;
-            if (player.lowerBody == LOWER_BODY_TYPE_HUMAN)
+            if (player.lowerBody == LowerBodyType.HUMAN)
                 outputText("\n\nYou stagger as your feet change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_DOG)
+            if (player.lowerBody == LowerBodyType.DOG)
                 outputText("\n\nYou stagger as your paws change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
-            if (player.lowerBody == LOWER_BODY_TYPE_NAGA)
+            if (player.lowerBody == LowerBodyType.NAGA)
                 outputText("\n\nYou collapse as your sinuous snake-tail tears in half, shifting into legs.  The pain is immense, particularly in your new feet as they curl inward and transform into hooves!", false);
             // Catch-all
-            if (player.lowerBody > LOWER_BODY_TYPE_NAGA)
+            if (player.lowerBody > LowerBodyType.NAGA)
                 outputText("\n\nYou stagger as your " + feet(player) + " change, curling up into painful angry lumps of flesh.  They get tighter and tighter, harder and harder, until at last they solidify into hooves!", false);
             outputText("  A coat of beastial fur springs up below your waist, itching as it fills in.<b>  You now have hooves in place of your feet!</b>", false);
-            player.lowerBody = LOWER_BODY_TYPE_HOOFED;
+            player.lowerBody = LowerBodyType.HOOFED;
             dynStats("cor", 0);
             changes++;
         }
     }
     // If the player's face is non-human, they gain a human face
-    if (!enhanced && player.lowerBody == LOWER_BODY_TYPE_HOOFED && player.faceType != FACE_HUMAN && changes < changeLimit && rand(4) == 0) {
+    if (!enhanced && player.lowerBody == LowerBodyType.HOOFED && player.faceType != FaceType.HUMAN && changes < changeLimit && rand(4) == 0) {
         // Remove face before fur!
         outputText("\n\nYour visage twists painfully, returning to a normal human shape.  <b>Your face is human again!</b>", false);
-        player.faceType = FACE_HUMAN;
+        player.faceType = FaceType.HUMAN;
         changes++;
     }
     // enhanced get shitty fur
@@ -385,22 +385,22 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             outputText("\n\nA ripple spreads through your fur as some patches darken and others lighten.  After a few moments you're left with a black and white spotted pattern that goes the whole way up to the hair on your head!  <b>You've got cow fur!</b>", false);
         player.skinDesc = "fur";
         player.skinAdj = "";
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         player.hairColor = "black and white spotted";
     }
     // if enhanced to probova give a shitty cow face
-    else if (enhanced && player.faceType != FACE_COW_MINOTAUR) {
+    else if (enhanced && player.faceType != FaceType.COW_MINOTAUR) {
         outputText("\n\nYour visage twists painfully, warping and crackling as your bones are molded into a new shape.  Once it finishes, you reach up to touch it, and you discover that <b>your face is like that of a cow!</b>", false);
-        player.faceType = FACE_COW_MINOTAUR;
+        player.faceType = FaceType.COW_MINOTAUR;
         changes++;
     }
     // Give the player bovine horns, or increase their size, same as the minotaur
     // New horns or expanding mino horns
-    if (tainted && changes < changeLimit && rand(3) == 0 && player.faceType == FACE_HUMAN) {
+    if (tainted && changes < changeLimit && rand(3) == 0 && player.faceType == FaceType.HUMAN) {
         // Get bigger or change horns
-        if (player.hornType == HORNS_COW_MINOTAUR || player.hornType == HORNS_NONE) {
+        if (player.hornType == HornType.COW_MINOTAUR || player.hornType == HornType.NONE) {
             // Get bigger if player has horns
-            if (player.hornType == HORNS_COW_MINOTAUR) {
+            if (player.hornType == HornType.COW_MINOTAUR) {
                 if (player.horns < 5) {
                     // Fems horns don't get bigger.
                     outputText("\n\nYour small horns get a bit bigger, stopping as medium sized nubs.", false);
@@ -409,22 +409,22 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
                 }
             }
             // If no horns yet..
-            if (player.hornType == HORNS_NONE || player.horns == 0) {
+            if (player.hornType == HornType.NONE || player.horns == 0) {
                 outputText("\n\nWith painful pressure, the skin on your forehead splits around two tiny nub-like horns, similar to those you would see on the cattle back in your homeland.", false);
-                player.hornType = HORNS_COW_MINOTAUR;
+                player.hornType = HornType.COW_MINOTAUR;
                 player.horns = 1;
                 changes++;
             }
             // TF other horns
-            if (player.hornType != HORNS_NONE && player.hornType != HORNS_COW_MINOTAUR && player.horns > 0) {
+            if (player.hornType != HornType.NONE && player.hornType != HornType.COW_MINOTAUR && player.horns > 0) {
                 outputText("\n\nYour horns twist, filling your skull with agonizing pain for a moment as they transform into cow-horns.", false);
-                player.hornType = HORNS_COW_MINOTAUR;
+                player.hornType = HornType.COW_MINOTAUR;
             }
         }
         // Not mino horns, change to cow-horns
-        if (player.hornType == HORNS_DEMON || player.hornType > HORNS_COW_MINOTAUR) {
+        if (player.hornType == HornType.DEMON || player.hornType > HornType.COW_MINOTAUR) {
             outputText("\n\nYour horns vibrate and shift as if made of clay, reforming into two small bovine nubs.", false);
-            player.hornType = HORNS_COW_MINOTAUR;
+            player.hornType = HornType.COW_MINOTAUR;
             player.horns = 2;
             changes++;
         }

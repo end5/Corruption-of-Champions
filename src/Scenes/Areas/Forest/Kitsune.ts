@@ -187,15 +187,15 @@ export class Kitsune extends Monster {
             this.cumMultiplier = 1.5;
             this.hoursSinceCum = ballSize * 10;
         }
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 20, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);
         this.tallness = rand(24) + 60;
-        this.hipRating = HIP_RATING_AMPLE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
+        this.hipRating = HipRating.AMPLE;
+        this.buttRating = ButtRating.AVERAGE + 1;
         this.skinTone = "pale";
         this.hairColor = hairColor;
         this.hairLength = 13 + rand(20);
@@ -211,7 +211,7 @@ export class Kitsune extends Monster {
         this.level = 6;
         this.gems = rand(10) + 10;
         this.drop = new WeightedDrop(ConsumableLib.FOXJEWL, 1);
-        this.tailType = TAIL_TYPE_FOX;
+        this.tailType = TailType.FOX;
         checkMonster();
     }
 

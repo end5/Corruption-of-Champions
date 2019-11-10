@@ -22,16 +22,16 @@ export class HarpyMob extends Monster {
         this.pronoun1 = "they";
         this.pronoun2 = "them";
         this.pronoun3 = "their";
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_GAPING_WIDE);
+        this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.GAPING_WIDE);
         this.breasts.createBreastRow(Appearance.breastCupInverse("B"));
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(8) + 70;
-        this.hipRating = HIP_RATING_CURVY + 2;
-        this.buttRating = BUTT_RATING_LARGE;
-        this.lowerBody = LOWER_BODY_TYPE_HARPY;
+        this.hipRating = HipRating.CURVY + 2;
+        this.buttRating = ButtRating.LARGE;
+        this.lowerBody = LowerBodyType.HARPY;
         this.skinTone = "red";
-        this.skinType = SKIN_TYPE_PLAIN;
+        this.skinType = SkinType.PLAIN;
         this.skinDesc = "feathers";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -49,7 +49,7 @@ export class HarpyMob extends Monster {
         this.level = 18;
         this.gems = rand(25) + 140;
         this.additionalXP = 50;
-        this.tailType = TAIL_TYPE_HARPY;
+        this.tailType = TailType.HARPY;
         this.drop = NO_DROP;
         checkMonster();
     }

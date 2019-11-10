@@ -115,23 +115,23 @@ export function mouseCocoa(player: Player): void {
     }
     // bodypart changes:
     // gain ears
-    if (player.earType != EARS_MOUSE && changes < changeLimit && rand(4) == 0) {
+    if (player.earType != EarType.MOUSE && changes < changeLimit && rand(4) == 0) {
         outputText("\n\nYour ears ");
-        if (player.earType == EARS_HORSE || player.earType == EARS_COW || player.earType == EARS_DOG || player.earType == EARS_BUNNY || player.earType == EARS_KANGAROO)
+        if (player.earType == EarType.HORSE || player.earType == EarType.COW || player.earType == EarType.DOG || player.earType == EarType.BUNNY || player.earType == EarType.KANGAROO)
             outputText("shrink suddenly");
         else
             outputText("pull away from your head");
         outputText(", like they're being pinched, and you can distinctly feel the auricles taking a rounded shape through the pain.  Reaching up to try and massage away their stings, <b>you're not terribly surprised when you find a pair of fuzzy mouse's ears poking through your " + hairDescription(player) + ".</b>");
-        player.earType = EARS_MOUSE;
+        player.earType = EarType.MOUSE;
         changes++;
     }
     // gain tail
     // from no tail
-    if (player.earType == EARS_MOUSE && player.tailType != TAIL_TYPE_MOUSE && changes < changeLimit && rand(4) == 0) {
+    if (player.earType == EarType.MOUSE && player.tailType != TailType.MOUSE && changes < changeLimit && rand(4) == 0) {
         // from other tail
-        if (player.tailType > TAIL_TYPE_NONE) {
+        if (player.tailType > TailType.NONE) {
             outputText("\n\nYour tail clenches and itches simultaneously, leaving you wondering whether to cry out or try to scratch it.  The question is soon answered as the pain takes the forefront; looking backward is a horrible strain, but when you manage it, you can see your old appendage ");
-            if (player.tailType == TAIL_TYPE_HORSE)
+            if (player.tailType == TailType.HORSE)
                 outputText("elongating");
             else
                 outputText("compressing");
@@ -139,33 +139,33 @@ export function mouseCocoa(player: Player): void {
         }
         else
             outputText("\n\nA small nub pokes from your backside, and you turn to look at it.  When you do, your neck aches as if whiplashed, and you groan as your spine shifts smoothly downward like a rope being pulled, growing new vertebra behind it and expanding the nub into a naked, thin, tapered shape.  <b>Rubbing at your sore neck, you stare at your new mouse tail.</b>");
-        player.tailType = TAIL_TYPE_MOUSE;
+        player.tailType = TailType.MOUSE;
         changes++;
     }
     // get teeth - from human, bunny, coonmask, or other humanoid teeth faces
-    if (player.earType == EARS_MOUSE && (player.faceType == FACE_HUMAN || player.faceType == FACE_SHARK_TEETH || player.faceType == FACE_BUNNY || player.faceType == FACE_SPIDER_FANGS || player.faceType == FACE_RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
+    if (player.earType == EarType.MOUSE && (player.faceType == FaceType.HUMAN || player.faceType == FaceType.SHARK_TEETH || player.faceType == FaceType.BUNNY || player.faceType == FaceType.SPIDER_FANGS || player.faceType == FaceType.RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nYour teeth grind on their own, and you feel a strange, insistent pressure just under your nose.  As you open your mouth and run your tongue along them, you can feel ");
-        if (player.faceType != FACE_HUMAN)
+        if (player.faceType != FaceType.HUMAN)
             outputText("the sharp teeth receding and ");
         outputText("your incisors lengthening.  It's not long before they're twice as long as their neighbors and the obvious growth stops, but the pressure doesn't go away completely.  <b>Well, you now have mouse incisors and your face aches a tiny bit - wonder if they're going to keep growing?</b>");
-        player.faceType = FACE_BUCKTEETH;
+        player.faceType = FaceType.BUCKTEETH;
         changes++;
     }
     // get mouse muzzle from mouse teeth or other muzzle
-    if (player.skinType == SKIN_TYPE_FUR && player.faceType != FACE_MOUSE && (player.faceType != FACE_HUMAN || player.faceType != FACE_SHARK_TEETH || player.faceType != FACE_BUNNY || player.faceType != FACE_SPIDER_FANGS || player.faceType != FACE_RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
+    if (player.skinType == SkinType.FUR && player.faceType != FaceType.MOUSE && (player.faceType != FaceType.HUMAN || player.faceType != FaceType.SHARK_TEETH || player.faceType != FaceType.BUNNY || player.faceType != FaceType.SPIDER_FANGS || player.faceType != FaceType.RACCOON_MASK) && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nA wave of light-headedness hits you, and you black out.  In your unconsciousness, you dream of chewing - food, wood, cloth, paper, leather, even metal... whatever you can fit in your mouth, even if it doesn't taste like anything much.  For several minutes you just chew and chew your way through a parade of ordinary objects, savoring the texture of each one against your teeth, until finally you awaken.  Your teeth work, feeling longer and more prominent than before, and you hunt up your reflection.  <b>Your face has shifted to resemble a mouse's, down to the whiskers!</b>");
-        player.faceType = FACE_MOUSE;
+        player.faceType = FaceType.MOUSE;
         changes++;
     }
     // get fur
-    if ((player.skinType != SKIN_TYPE_FUR || (player.skinType == SKIN_TYPE_FUR && (player.hairColor != "brown" && player.hairColor != "white"))) && changes < changeLimit && rand(4) == 0) {
+    if ((player.skinType != SkinType.FUR || (player.skinType == SkinType.FUR && (player.hairColor != "brown" && player.hairColor != "white"))) && changes < changeLimit && rand(4) == 0) {
         // from skinscales
-        if (player.skinType != SKIN_TYPE_FUR) {
+        if (player.skinType != SkinType.FUR) {
             outputText("\n\nYour " + skinFurScales(player) + " itch");
-            if (player.skinType > SKIN_TYPE_PLAIN)
+            if (player.skinType > SkinType.PLAIN)
                 outputText("es");
             outputText(" all over");
-            if (player.tailType > TAIL_TYPE_NONE)
+            if (player.tailType > TailType.NONE)
                 outputText(", except on your tail");
             outputText(".  Alarmed and suspicious, you tuck in your hands, trying to will yourself not to scratch, but it doesn't make much difference.  Tufts of ");
             temp = rand(10);
@@ -178,7 +178,7 @@ export function mouseCocoa(player: Player): void {
                 player.hairColor = "white";
             }
             outputText(" fur begin to force through your skin");
-            if (player.skinType == SKIN_TYPE_SCALES)
+            if (player.skinType == SkinType.SCALES)
                 outputText(", pushing your scales out with little pinches");
             outputText(", resolving the problem for you.  <b>You now have fur.</b>");
         }
@@ -198,7 +198,7 @@ export function mouseCocoa(player: Player): void {
         }
         player.skinAdj = "";
         player.skinDesc = "fur";
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         changes++;
     }
 }

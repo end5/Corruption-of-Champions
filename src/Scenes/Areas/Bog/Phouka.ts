@@ -249,20 +249,20 @@ export class Phouka extends Monster {
         this.hoursSinceCum = 20;
 
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.NORMAL;
 
         this.tallness = 5;
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_TIGHT;
-        this.lowerBody = LOWER_BODY_TYPE_HUMAN;
-        this.armType = ARM_TYPE_HUMAN;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.TIGHT;
+        this.lowerBody = LowerBodyType.HUMAN;
+        this.armType = ArmType.HUMAN;
 
         this.skinTone = "black";
         this.hairColor = "black";
         this.hairLength = 1;
 
-        this.earType = EARS_ELFIN;
+        this.earType = EarType.ELFIN;
 
         initStrTouSpeInte(55, 25, 80, 40);
         initLibSensCor(75, 35, 100);
@@ -286,7 +286,7 @@ export class Phouka extends Monster {
             .add(ConsumableLib.P_WHSKY, 35)
             .add(null, 20);
 
-        this.wingType = WING_TYPE_GIANT_DRAGONFLY; // Maybe later, if the PC can get them, make a Faerie wing type.
+        this.wingType = WingType.GIANT_DRAGONFLY; // Maybe later, if the PC can get them, make a Faerie wing type.
         this.wingDesc = "small black faerie wings";
         checkMonster();
     }

@@ -243,12 +243,12 @@ export function beeScore(char: Character): number {
 // Determine Ferret Rating!
 export function ferretScore(char: Character): number {
     let counter: number = 0;
-    if (char.faceType == FACE_FERRET_MASK) counter++;
-    if (char.faceType == FACE_FERRET) counter += 2;
-    if (char.earType == EARS_FERRET) counter++;
-    if (char.tailType == TAIL_TYPE_FERRET) counter++;
-    if (char.lowerBody == LOWER_BODY_FERRET) counter++;
-    if (char.skinType == SKIN_TYPE_FUR && counter > 0) counter++;
+    if (char.faceType == FaceType.FERRET_MASK) counter++;
+    if (char.faceType == FaceType.FERRET) counter += 2;
+    if (char.earType == EarType.FERRET) counter++;
+    if (char.tailType == TailType.FERRET) counter++;
+    if (char.lowerBody == LowerBodyType.FERRET) counter++;
+    if (char.skinType == SkinType.FUR && counter > 0) counter++;
     return counter;
 }
 // Determine Dog Rating
@@ -497,7 +497,7 @@ export function dragonScore(char: Character): number {
         dragonCounter++;
     if (char.skinType == 2 && dragonCounter > 0)
         dragonCounter++;
-    if (char.hornType == HORNS_DRACONIC_X4_12_INCH_LONG || char.hornType == HORNS_DRACONIC_X2)
+    if (char.hornType == HornType.DRACONIC_X4_12_INCH_LONG || char.hornType == HornType.DRACONIC_X2)
         dragonCounter++;
     return dragonCounter;
 }

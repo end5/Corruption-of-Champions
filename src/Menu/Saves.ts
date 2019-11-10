@@ -1175,7 +1175,7 @@ export class Saves {
                 player.femininity = saveFile.data.femininity;
             // EYES
             if (saveFile.data.eyeType == undefined)
-                player.eyeType = EYES_HUMAN;
+                player.eyeType = EyeType.HUMAN;
             else
                 player.eyeType = saveFile.data.eyeType;
             // BEARS
@@ -1208,7 +1208,7 @@ export class Saves {
             else
                 player.gills = saveFile.data.gills;
             if (saveFile.data.armType == undefined)
-                player.armType = ARM_TYPE_HUMAN;
+                player.armType = ArmType.HUMAN;
             else
                 player.armType = saveFile.data.armType;
             player.hairLength = saveFile.data.hairLength;
@@ -1222,66 +1222,66 @@ export class Saves {
             // Convert from old skinDesc to new skinAdj + skinDesc!
             if (player.skinDesc.indexOf("smooth") != -1) {
                 player.skinAdj = "smooth";
-                if (player.skinType == SKIN_TYPE_PLAIN)
+                if (player.skinType == SkinType.PLAIN)
                     player.skinDesc = "skin";
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     player.skinDesc = "fur";
-                if (player.skinType == SKIN_TYPE_SCALES)
+                if (player.skinType == SkinType.SCALES)
                     player.skinDesc = "scales";
-                if (player.skinType == SKIN_TYPE_GOO)
+                if (player.skinType == SkinType.GOO)
                     player.skinDesc = "goo";
             }
             if (player.skinDesc.indexOf("thick") != -1) {
                 player.skinAdj = "thick";
-                if (player.skinType == SKIN_TYPE_PLAIN)
+                if (player.skinType == SkinType.PLAIN)
                     player.skinDesc = "skin";
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     player.skinDesc = "fur";
-                if (player.skinType == SKIN_TYPE_SCALES)
+                if (player.skinType == SkinType.SCALES)
                     player.skinDesc = "scales";
-                if (player.skinType == SKIN_TYPE_GOO)
+                if (player.skinType == SkinType.GOO)
                     player.skinDesc = "goo";
             }
             if (player.skinDesc.indexOf("rubber") != -1) {
                 player.skinAdj = "rubber";
-                if (player.skinType == SKIN_TYPE_PLAIN)
+                if (player.skinType == SkinType.PLAIN)
                     player.skinDesc = "skin";
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     player.skinDesc = "fur";
-                if (player.skinType == SKIN_TYPE_SCALES)
+                if (player.skinType == SkinType.SCALES)
                     player.skinDesc = "scales";
-                if (player.skinType == SKIN_TYPE_GOO)
+                if (player.skinType == SkinType.GOO)
                     player.skinDesc = "goo";
             }
             if (player.skinDesc.indexOf("latex") != -1) {
                 player.skinAdj = "latex";
-                if (player.skinType == SKIN_TYPE_PLAIN)
+                if (player.skinType == SkinType.PLAIN)
                     player.skinDesc = "skin";
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     player.skinDesc = "fur";
-                if (player.skinType == SKIN_TYPE_SCALES)
+                if (player.skinType == SkinType.SCALES)
                     player.skinDesc = "scales";
-                if (player.skinType == SKIN_TYPE_GOO)
+                if (player.skinType == SkinType.GOO)
                     player.skinDesc = "goo";
             }
             if (player.skinDesc.indexOf("slimey") != -1) {
                 player.skinAdj = "slimey";
-                if (player.skinType == SKIN_TYPE_PLAIN)
+                if (player.skinType == SkinType.PLAIN)
                     player.skinDesc = "skin";
-                if (player.skinType == SKIN_TYPE_FUR)
+                if (player.skinType == SkinType.FUR)
                     player.skinDesc = "fur";
-                if (player.skinType == SKIN_TYPE_SCALES)
+                if (player.skinType == SkinType.SCALES)
                     player.skinDesc = "scales";
-                if (player.skinType == SKIN_TYPE_GOO)
+                if (player.skinType == SkinType.GOO)
                     player.skinDesc = "goo";
             }
             player.faceType = saveFile.data.faceType;
             if (saveFile.data.tongueType == undefined)
-                player.tongueType = TONUGE_HUMAN;
+                player.tongueType = TongueType.HUMAN;
             else
                 player.tongueType = saveFile.data.tongueType;
             if (saveFile.data.earType == undefined)
-                player.earType = EARS_HUMAN;
+                player.earType = EarType.HUMAN;
             else
                 player.earType = saveFile.data.earType;
             if (saveFile.data.earValue == undefined)
@@ -1289,12 +1289,12 @@ export class Saves {
             else
                 player.earValue = saveFile.data.earValue;
             if (saveFile.data.antennae == undefined)
-                player.antennae = ANTENNAE_NONE;
+                player.antennae = AntennaeType.NONE;
             else
                 player.antennae = saveFile.data.antennae;
             player.horns = saveFile.data.horns;
             if (saveFile.data.hornType == undefined)
-                player.hornType = HORNS_NONE;
+                player.hornType = HornType.NONE;
             else
                 player.hornType = saveFile.data.hornType;
             player.wingDesc = saveFile.data.wingDesc;
@@ -1875,7 +1875,7 @@ export class Saves {
             // If dick length zero then player has never met Kath, no need to set flags. If her breast size is zero then set values for flags introduced with the employment expansion
             if (flags[kFLAGS.KATHERINE_BREAST_SIZE] != 0) return; // Must be a new format save
             if (flags[kFLAGS.KATHERINE_DICK_LENGTH] != 0) {
-                flags[kFLAGS.KATHERINE_BREAST_SIZE] = BREAST_CUP_B;
+                flags[kFLAGS.KATHERINE_BREAST_SIZE] = BreastCup.B;
                 flags[kFLAGS.KATHERINE_BALL_SIZE] = 1;
                 flags[kFLAGS.KATHERINE_HAIR_COLOR] = "neon pink";
                 flags[kFLAGS.KATHERINE_HOURS_SINCE_CUM] = 200; // Give her maxed out cum for that first time

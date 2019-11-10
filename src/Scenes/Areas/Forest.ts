@@ -382,7 +382,7 @@ export function bigJunkForestScene(lake: boolean = false): void {
         if (player.vaginas.length >= 1) {
             outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
             // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) {
                 outputText("  Juices stream from your womanhood and begin pooling on the dirt and twigs beneath you.  ", false);
                 if (lake) outputText("The drooling fem-spunk only makes the ground more muddy.", false);
                 else outputText("The sticky fem-spunk immediately soaks down into the rich soil.", false);
@@ -390,7 +390,7 @@ export function bigJunkForestScene(lake: boolean = false): void {
         }
     }
     // FOR CENTAURS
-    else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+    else if (player.lowerBody == LowerBodyType.CENTAUR) {
         outputText("  The impending erection can't seem to be stopped.  Your sexual frustration forces stiffness into your " + multiCockDescriptLight(game.player) + ", which forces the barrel of your horse-like torso to the ground.  Normally your erection would merely hover above the ground in between your centaurian legs, but your genitals have grown too large and heavy for your " + hipDescription(player) + " to hold them aloft.  Instead, you feel your body being forcibly pulled down at your hind legs until your equine body is resting on top of your " + multiCockDescriptLight(game.player) + ".", false);
         // IF CHARACTER HAS GIANT BREASTS ADD SENTENCE
         if (player.breasts.biggestTitSize() >= 35) {
@@ -407,7 +407,7 @@ export function bigJunkForestScene(lake: boolean = false): void {
         if (player.vaginas.length >= 1) {
             outputText("  Your " + vaginaDescript(player) + " and " + clitDescription(player) + " are thoroughly squashed between the bulky flesh where your male genitals protrude from between your hips and the " + buttDescription(player) + " above.", false);
             // IF CHARACTER HAS A DROOLING PUSSY ADD SENTENCE
-            if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_DROOLING) {
+            if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) {
                 if (lake) outputText("  A leaf falls from a tree and lands on the wet lips of your cunt, its light touch teasing your sensitive skin.  Like a mare or cow in heat, your juices stream from your womanhood and pool in the mud beneath you.  The sloppy fem-spunk only makes the ground more muddy.", false);
                 else outputText("  A leaf falls from a tree and lands on the wet lips of your cunt, its light touch teasing your sensitive skin.  Like a mare or cow in heat, your juices stream from your womanhood and pool in the dirt and twigs beneath you.", false);
             }
@@ -425,7 +425,7 @@ export function bigJunkForestScene(lake: boolean = false): void {
         // SCENE END = IF CHARACTER HAS FULL WINGS ADD SENTENCE
         if (player.canFly()) outputText("  You extend your wings and flap as hard as you can until at last, you manage to lighten the bulk of your body.  It helps just enough to let you drag your genitals out of the mud and back to camp.  The ordeal takes nearly an hour for you to return and deal with.", false);
         // Taurs
-        else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) outputText("  You struggle and work your equine legs against the wet ground.  Your " + feet(player) + " have consistent trouble finding footing as the mud fails to provide enough leverage to lift your bulk.  You breath in deeply and lean side to side, trying to find some easier vertical leverage beneath your feet.  Eventually, with a crude crawl, your centaur legs manages to push the bulk of your body onto more solid ground.  With great difficulty, you spend the next hour shuffling your genitals back to camp.", false);
+        else if (player.lowerBody == LowerBodyType.CENTAUR) outputText("  You struggle and work your equine legs against the wet ground.  Your " + feet(player) + " have consistent trouble finding footing as the mud fails to provide enough leverage to lift your bulk.  You breath in deeply and lean side to side, trying to find some easier vertical leverage beneath your feet.  Eventually, with a crude crawl, your centaur legs manages to push the bulk of your body onto more solid ground.  With great difficulty, you spend the next hour shuffling your genitals back to camp.", false);
         // SCENE END = FOR ALL OTHER CHARACTERS
         else outputText("  You struggle and push with your " + legs(player) + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + multiCockDescriptLight(game.player) + " with as much vigor as you can muster.  Eventually, your body tenses and a light load of jizz erupts from your body, but the orgasm is truly mild compared to what you need.  You're far too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later, " + sMultiCockDesc(game.player) + " has softened enough to allow you to stand again, and you make your way back to camp, still dragging your genitals through the mud.", false);
     }
@@ -433,7 +433,7 @@ export function bigJunkForestScene(lake: boolean = false): void {
         // SCENE END = IF CHARACTER HAS FULL WINGS ADD SENTENCE
         if (player.canFly()) outputText("  You extend your wings and flap as hard as you can, until at last, you manage to lighten the bulk of your body.  It helps just enough to let you drag your genitals out of the forest and back to camp.  The ordeal takes nearly an hour for you to return and deal with.", false);
         // SCENE END IF CHARACTER HAS CENTAUR BODY
-        else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) outputText("  You struggle and work your equine legs against the soft dirt.  Your " + feet(player) + " have consistent trouble finding footing as the ground fails to provide enough leverage to lift your bulk.  You breath in deeply and lean side to side, until eventually, your feet brace against the various roots of the trees around you.  With a crude crawl, your centaur legs manage to shuffle your body and genitals out of the forest and back to camp.", false);
+        else if (player.lowerBody == LowerBodyType.CENTAUR) outputText("  You struggle and work your equine legs against the soft dirt.  Your " + feet(player) + " have consistent trouble finding footing as the ground fails to provide enough leverage to lift your bulk.  You breath in deeply and lean side to side, until eventually, your feet brace against the various roots of the trees around you.  With a crude crawl, your centaur legs manage to shuffle your body and genitals out of the forest and back to camp.", false);
         // SCENE END = FOR ALL OTHER CHARACTERS
         else outputText("  You struggle and push with your " + legs(player) + " as hard as you can, but it's no use.  You do the only thing you can and begin stroking your " + multiCockDescriptLight(game.player) + " with as much vigor as you can muster.  Eventually, your body tenses and a light load of jizz erupts from your loins, but the orgasm is truly mild compared to what you need.  You're far too weary from struggling to give yourself the masturbation you truly need, but you continue to try.  Nearly an hour later, " + sMultiCockDesc(game.player) + " has softened enough to allow you to stand again, and you make your way back to camp, still dragging your genitals across the forest floor.", false);
     }

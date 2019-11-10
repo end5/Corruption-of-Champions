@@ -24,16 +24,16 @@ export class FemaleSpiderMorph extends AbstractSpiderMorph {
         this.imageName = "femalespidermorph";
         this.long = "The female spider-morph is completely nude, save for her thigh-high stockings and forearm-length gloves, which upon closer inspection, appear to be actually be part of her body - her exoskeleton.  Her exposed skin is pale as the full moon, save for the dusky skin of her nipples and the black-skinned delta of her sex.  Her breasts and ass are both full and well-rounded, and just above her ass-cheeks there's a bulbous spider-abdomen.  The spider-girl is currently eyeing you with a strange expression and her fangs bared.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_LOOSE);
+        this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("E+"));
-        this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.VIRGIN;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = 7 * 12 + 6;
-        this.hipRating = HIP_RATING_CURVY + 2;
-        this.buttRating = BUTT_RATING_LARGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS;
+        this.hipRating = HipRating.CURVY + 2;
+        this.buttRating = ButtRating.LARGE + 1;
+        this.lowerBody = LowerBodyType.CHITINOUS_SPIDER_LEGS;
         this.skinTone = "dusky";
         this.hairColor = "red";
         this.hairLength = 13;
@@ -55,7 +55,7 @@ export class FemaleSpiderMorph extends AbstractSpiderMorph {
         this.drop = new WeightedDrop().add(ConsumableLib.S_GOSSR, 5)
             .add(UseableLib.T_SSILK, 1)
             .add(null, 4);
-        this.tailType = TAIL_TYPE_SPIDER_ADBOMEN;
+        this.tailType = TailType.SPIDER_ADBOMEN;
         checkMonster();
     }
 

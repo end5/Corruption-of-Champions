@@ -62,13 +62,13 @@ export class Jojo extends Monster {
         this.cumMultiplier = 1;
         this.hoursSinceCum = 1000;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = 4 * 12;
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.TIGHT;
         this.skinTone = "white";
-        this.skinType = SKIN_TYPE_FUR;
+        this.skinType = SkinType.FUR;
         this.skinDesc = "fur";
         this.hairColor = "white";
         this.hairLength = 2;

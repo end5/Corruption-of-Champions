@@ -464,7 +464,7 @@ export function cockDescript(creature: Character, cockIndex: number = 0): string
     }
     const isPierced: boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); // Only describe as pierced or sock covered if the creature has just one cock
     const hasSock: boolean = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-    const isGooey: boolean = (creature.skinType == CoC.SKIN_TYPE_GOO);
+    const isGooey: boolean = (creature.skinType == SkinType.GOO);
     return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 }
 
@@ -1925,24 +1925,24 @@ export function assholeDescript(i_creature: Character): string {
 
     // 66% Wetness Descript
     const ANAL_WETNESS_DESCRIPTORS: Record<string, any> = new Object();
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_DRY] = "";
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_NORMAL] = "";
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_MOIST] = "moist ";
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_SLIMY] = "slimy ";
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_DROOLING] = "drooling ";
-    ANAL_WETNESS_DESCRIPTORS[ANAL_WETNESS_SLIME_DROOLING] = "slime-drooling ";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.DRY] = "";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.NORMAL] = "";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.MOIST] = "moist ";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.SLIMY] = "slimy ";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.DROOLING] = "drooling ";
+    ANAL_WETNESS_DESCRIPTORS[AnalWetness.SLIME_DROOLING] = "slime-drooling ";
 
     if (rand(3) <= 1) {
         description += ANAL_WETNESS_DESCRIPTORS[i_creature.ass.analWetness];
     }
 
     const ANAL_TIGHTNESS_DESCRIPTORS: Record<string, any> = new Object();
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_VIRGIN] = "virgin ";
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_TIGHT] = "tight ";
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_NORMAL] = "loose ";
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_LOOSE] = "roomy ";
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_STRETCHED] = "stretched ";
-    ANAL_TIGHTNESS_DESCRIPTORS[ANAL_LOOSENESS_GAPING] = "gaping ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.VIRGIN] = "virgin ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.TIGHT] = "tight ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.NORMAL] = "loose ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.LOOSE] = "roomy ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.STRETCHED] = "stretched ";
+    ANAL_TIGHTNESS_DESCRIPTORS[AnalLooseness.GAPING] = "gaping ";
 
     // 25% tightness description
     if (rand(4) == 0 || (i_creature.ass.analLooseness <= 1 && rand(4) <= 2)) {
@@ -2106,259 +2106,259 @@ export function createMapFromPairs(src: any[]): Record<string, any> {
 
 export let DEFAULT_GENDER_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [GENDER_NONE, "genderless"],
-        [GENDER_MALE, "male"],
-        [GENDER_FEMALE, "female"],
-        [GENDER_HERM, "hermaphrodite"]
+        [Gender.NONE, "genderless"],
+        [Gender.MALE, "male"],
+        [Gender.FEMALE, "female"],
+        [Gender.HERM, "hermaphrodite"]
     ]
 );
 export let DEFAULT_SKIN_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [SKIN_TYPE_PLAIN, "skin"],
-        [SKIN_TYPE_FUR, "fur"],
-        [SKIN_TYPE_SCALES, "scales"],
-        [SKIN_TYPE_GOO, "goo"],
-        [SKIN_TYPE_UNDEFINED, "undefined flesh"]
+        [SkinType.PLAIN, "skin"],
+        [SkinType.FUR, "fur"],
+        [SkinType.SCALES, "scales"],
+        [SkinType.GOO, "goo"],
+        [SkinType.UNDEFINED, "undefined flesh"]
     ]
 );
 export let DEFAULT_SKIN_DESCS: Record<string, any> = createMapFromPairs(
     [
-        [SKIN_TYPE_PLAIN, "skin"],
-        [SKIN_TYPE_FUR, "fur"],
-        [SKIN_TYPE_SCALES, "scales"],
-        [SKIN_TYPE_GOO, "skin"],
-        [SKIN_TYPE_UNDEFINED, "skin"]
+        [SkinType.PLAIN, "skin"],
+        [SkinType.FUR, "fur"],
+        [SkinType.SCALES, "scales"],
+        [SkinType.GOO, "skin"],
+        [SkinType.UNDEFINED, "skin"]
     ]
 );
 export let DEFAULT_HAIR_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [HAIR_NORMAL, "normal"],
-        [HAIR_FEATHER, "feather"],
-        [HAIR_GHOST, "transparent"],
-        [HAIR_GOO, "goopy"],
-        [HAIR_ANEMONE, "tentacle"]
+        [HairType.NORMAL, "normal"],
+        [HairType.FEATHER, "feather"],
+        [HairType.GHOST, "transparent"],
+        [HairType.GOO, "goopy"],
+        [HairType.ANEMONE, "tentacle"]
     ]
 );
 export let DEFAULT_FACE_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [FACE_HUMAN, "human"],
-        [FACE_HORSE, "horse"],
-        [FACE_DOG, "dog"],
-        [FACE_COW_MINOTAUR, "cow"],
-        [FACE_SHARK_TEETH, "shark"],
-        [FACE_SNAKE_FANGS, "snake"],
-        [FACE_CAT, "cat"],
-        [FACE_LIZARD, "lizard"],
-        [FACE_BUNNY, "bunny"],
-        [FACE_KANGAROO, "kangaroo"],
-        [FACE_SPIDER_FANGS, "spider"],
-        [FACE_FOX, "fox"],
-        [FACE_DRAGON, "dragon"],
-        [FACE_RACCOON_MASK, "raccoon mask"],
-        [FACE_RACCOON, "racoon"],
-        [FACE_BUCKTEETH, "buckteeth"],
-        [FACE_MOUSE, "mouse"]
+        [FaceType.HUMAN, "human"],
+        [FaceType.HORSE, "horse"],
+        [FaceType.DOG, "dog"],
+        [FaceType.COW_MINOTAUR, "cow"],
+        [FaceType.SHARK_TEETH, "shark"],
+        [FaceType.SNAKE_FANGS, "snake"],
+        [FaceType.CAT, "cat"],
+        [FaceType.LIZARD, "lizard"],
+        [FaceType.BUNNY, "bunny"],
+        [FaceType.KANGAROO, "kangaroo"],
+        [FaceType.SPIDER_FANGS, "spider"],
+        [FaceType.FOX, "fox"],
+        [FaceType.DRAGON, "dragon"],
+        [FaceType.RACCOON_MASK, "raccoon mask"],
+        [FaceType.RACCOON, "racoon"],
+        [FaceType.BUCKTEETH, "buckteeth"],
+        [FaceType.MOUSE, "mouse"]
     ]
 );
 export let DEFAULT_TONGUE_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [TONUGE_HUMAN, "human"],
-        [TONUGE_SNAKE, "snake"],
-        [TONUGE_DEMONIC, "demonic"],
-        [TONUGE_DRACONIC, "draconic"]
+        [TongueType.HUMAN, "human"],
+        [TongueType.SNAKE, "snake"],
+        [TongueType.DEMONIC, "demonic"],
+        [TongueType.DRACONIC, "draconic"]
     ]
 );
 export let DEFAULT_EYES_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [EYES_HUMAN, "human"],
-        [EYES_FOUR_SPIDER_EYES, "4 spider"],
-        [EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"]
+        [EyeType.HUMAN, "human"],
+        [EyeType.FOUR_SPIDER_EYES, "4 spider"],
+        [EyeType.BLACK_EYES_SAND_TRAP, "sandtrap black"]
     ]
 );
 export let DEFAULT_EARS_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [EARS_HUMAN, "human"],
-        [EARS_HORSE, "horse"],
-        [EARS_DOG, "dog"],
-        [EARS_COW, "cow"],
-        [EARS_ELFIN, "elfin"],
-        [EARS_CAT, "cat"],
-        [EARS_LIZARD, "lizard"],
-        [EARS_BUNNY, "bunny"],
-        [EARS_KANGAROO, "kangaroo"],
-        [EARS_FOX, "fox"],
-        [EARS_DRAGON, "dragon"],
-        [EARS_RACCOON, "raccoon"],
-        [EARS_MOUSE, "mouse"]
+        [EarType.HUMAN, "human"],
+        [EarType.HORSE, "horse"],
+        [EarType.DOG, "dog"],
+        [EarType.COW, "cow"],
+        [EarType.ELFIN, "elfin"],
+        [EarType.CAT, "cat"],
+        [EarType.LIZARD, "lizard"],
+        [EarType.BUNNY, "bunny"],
+        [EarType.KANGAROO, "kangaroo"],
+        [EarType.FOX, "fox"],
+        [EarType.DRAGON, "dragon"],
+        [EarType.RACCOON, "raccoon"],
+        [EarType.MOUSE, "mouse"]
     ]
 );
 export let DEFAULT_HORNS_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [HORNS_NONE, "non-existant"],
-        [HORNS_DEMON, "demon"],
-        [HORNS_COW_MINOTAUR, "cow"],
-        [HORNS_DRACONIC_X2, "2 draconic"],
-        [HORNS_DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
-        [HORNS_ANTLERS, "deer"]
+        [HornType.NONE, "non-existant"],
+        [HornType.DEMON, "demon"],
+        [HornType.COW_MINOTAUR, "cow"],
+        [HornType.DRACONIC_X2, "2 draconic"],
+        [HornType.DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
+        [HornType.ANTLERS, "deer"]
     ]
 );
 export let DEFAULT_ANTENNAE_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [ANTENNAE_NONE, "non-existant"],
-        [ANTENNAE_BEE, "bee"]
+        [AntennaeType.NONE, "non-existant"],
+        [AntennaeType.BEE, "bee"]
     ]
 );
 export let DEFAULT_ARM_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [ARM_TYPE_HUMAN, "human"],
-        [ARM_TYPE_HARPY, "harpy"],
-        [ARM_TYPE_SPIDER, "spider"]
+        [ArmType.HUMAN, "human"],
+        [ArmType.HARPY, "harpy"],
+        [ArmType.SPIDER, "spider"]
     ]
 );
 export let DEFAULT_TAIL_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [TAIL_TYPE_NONE, "non-existant"],
-        [TAIL_TYPE_HORSE, "horse"],
-        [TAIL_TYPE_DOG, "dog"],
-        [TAIL_TYPE_DEMONIC, "demonic"],
-        [TAIL_TYPE_COW, "cow"],
-        [TAIL_TYPE_SPIDER_ADBOMEN, "spider abdomen"],
-        [TAIL_TYPE_BEE_ABDOMEN, "bee abdomen"],
-        [TAIL_TYPE_SHARK, "shark"],
-        [TAIL_TYPE_CAT, "cat"],
-        [TAIL_TYPE_LIZARD, "lizard"],
-        [TAIL_TYPE_RABBIT, "rabbit"],
-        [TAIL_TYPE_HARPY, "harpy"],
-        [TAIL_TYPE_KANGAROO, "kangaroo"],
-        [TAIL_TYPE_FOX, "fox"],
-        [TAIL_TYPE_DRACONIC, "draconic"],
-        [TAIL_TYPE_RACCOON, "raccoon"],
-        [TAIL_TYPE_MOUSE, "mouse"]
+        [TailType.NONE, "non-existant"],
+        [TailType.HORSE, "horse"],
+        [TailType.DOG, "dog"],
+        [TailType.DEMONIC, "demonic"],
+        [TailType.COW, "cow"],
+        [TailType.SPIDER_ADBOMEN, "spider abdomen"],
+        [TailType.BEE_ABDOMEN, "bee abdomen"],
+        [TailType.SHARK, "shark"],
+        [TailType.CAT, "cat"],
+        [TailType.LIZARD, "lizard"],
+        [TailType.RABBIT, "rabbit"],
+        [TailType.HARPY, "harpy"],
+        [TailType.KANGAROO, "kangaroo"],
+        [TailType.FOX, "fox"],
+        [TailType.DRACONIC, "draconic"],
+        [TailType.RACCOON, "raccoon"],
+        [TailType.MOUSE, "mouse"]
     ]
 );
 export let DEFAULT_WING_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [WING_TYPE_NONE, "non-existant"],
-        [WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-        [WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-        [WING_TYPE_HARPY, "harpy"],
-        [WING_TYPE_IMP, "imp"],
-        [WING_TYPE_BAT_LIKE_TINY, "tiny bat-like"],
-        [WING_TYPE_BAT_LIKE_LARGE, "large bat-like"],
-        [WING_TYPE_SHARK_FIN, "shark fin"],
-        [WING_TYPE_FEATHERED_LARGE, "large feathered"],
-        [WING_TYPE_DRACONIC_SMALL, "small draconic"],
-        [WING_TYPE_DRACONIC_LARGE, "large draconic"],
-        [WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
+        [WingType.NONE, "non-existant"],
+        [WingType.BEE_LIKE_SMALL, "small bee-like"],
+        [WingType.BEE_LIKE_LARGE, "large bee-like"],
+        [WingType.HARPY, "harpy"],
+        [WingType.IMP, "imp"],
+        [WingType.BAT_LIKE_TINY, "tiny bat-like"],
+        [WingType.BAT_LIKE_LARGE, "large bat-like"],
+        [WingType.SHARK_FIN, "shark fin"],
+        [WingType.FEATHERED_LARGE, "large feathered"],
+        [WingType.DRACONIC_SMALL, "small draconic"],
+        [WingType.DRACONIC_LARGE, "large draconic"],
+        [WingType.GIANT_DRAGONFLY, "giant dragonfly"]
     ]
 );
 export let DEFAULT_WING_DESCS: Record<string, any> = createMapFromPairs(
     [
-        [WING_TYPE_NONE, "non-existant"],
-        [WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-        [WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-        [WING_TYPE_HARPY, "large feathery"],
-        [WING_TYPE_IMP, "small"],
-        [WING_TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
-        [WING_TYPE_BAT_LIKE_LARGE, "large, bat-like"],
-        [WING_TYPE_SHARK_FIN, ""],
-        [WING_TYPE_FEATHERED_LARGE, "large, feathered"],
-        [WING_TYPE_DRACONIC_SMALL, "small, draconic"],
-        [WING_TYPE_DRACONIC_LARGE, "large, draconic"],
-        [WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
+        [WingType.NONE, "non-existant"],
+        [WingType.BEE_LIKE_SMALL, "small bee-like"],
+        [WingType.BEE_LIKE_LARGE, "large bee-like"],
+        [WingType.HARPY, "large feathery"],
+        [WingType.IMP, "small"],
+        [WingType.BAT_LIKE_TINY, "tiny, bat-like"],
+        [WingType.BAT_LIKE_LARGE, "large, bat-like"],
+        [WingType.SHARK_FIN, ""],
+        [WingType.FEATHERED_LARGE, "large, feathered"],
+        [WingType.DRACONIC_SMALL, "small, draconic"],
+        [WingType.DRACONIC_LARGE, "large, draconic"],
+        [WingType.GIANT_DRAGONFLY, "giant dragonfly"]
     ]
 );
 export let DEFAULT_LOWER_BODY_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [LOWER_BODY_TYPE_HUMAN, "human"],
-        [LOWER_BODY_TYPE_HOOFED, "hoofed"],
-        [LOWER_BODY_TYPE_DOG, "dog"],
-        [LOWER_BODY_TYPE_NAGA, "naga"],
-        [LOWER_BODY_TYPE_CENTAUR, "centaur"],
-        [LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS, "demonic high-heels"],
-        [LOWER_BODY_TYPE_DEMONIC_CLAWS, "demonic claws"],
-        [LOWER_BODY_TYPE_BEE, "bee"],
-        [LOWER_BODY_TYPE_GOO, "goo"],
-        [LOWER_BODY_TYPE_CAT, "cat"],
-        [LOWER_BODY_TYPE_LIZARD, "lizard"],
-        [LOWER_BODY_TYPE_PONY, "pony"],
-        [LOWER_BODY_TYPE_BUNNY, "bunny"],
-        [LOWER_BODY_TYPE_HARPY, "harpy"],
-        [LOWER_BODY_TYPE_KANGAROO, "kangaroo"],
-        [LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
-        [LOWER_BODY_TYPE_DRIDER_LOWER_BODY, "drider"],
-        [LOWER_BODY_TYPE_FOX, "fox"],
-        [LOWER_BODY_TYPE_DRAGON, "dragon"],
-        [LOWER_BODY_TYPE_RACCOON, "raccoon"]
+        [LowerBodyType.HUMAN, "human"],
+        [LowerBodyType.HOOFED, "hoofed"],
+        [LowerBodyType.DOG, "dog"],
+        [LowerBodyType.NAGA, "naga"],
+        [LowerBodyType.CENTAUR, "centaur"],
+        [LowerBodyType.DEMONIC_HIGH_HEELS, "demonic high-heels"],
+        [LowerBodyType.DEMONIC_CLAWS, "demonic claws"],
+        [LowerBodyType.BEE, "bee"],
+        [LowerBodyType.GOO, "goo"],
+        [LowerBodyType.CAT, "cat"],
+        [LowerBodyType.LIZARD, "lizard"],
+        [LowerBodyType.PONY, "pony"],
+        [LowerBodyType.BUNNY, "bunny"],
+        [LowerBodyType.HARPY, "harpy"],
+        [LowerBodyType.KANGAROO, "kangaroo"],
+        [LowerBodyType.CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
+        [LowerBodyType.DRIDER_LOWER_BODY, "drider"],
+        [LowerBodyType.FOX, "fox"],
+        [LowerBodyType.DRAGON, "dragon"],
+        [LowerBodyType.RACCOON, "raccoon"]
     ]
 );
 export let DEFAULT_PIERCING_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [PIERCING_TYPE_NONE, "none"],
-        [PIERCING_TYPE_STUD, "stud"],
-        [PIERCING_TYPE_RING, "ring"],
-        [PIERCING_TYPE_LADDER, "ladder"],
-        [PIERCING_TYPE_HOOP, "hoop"],
-        [PIERCING_TYPE_CHAIN, "chain"]
+        [PiercingType.NONE, "none"],
+        [PiercingType.STUD, "stud"],
+        [PiercingType.RING, "ring"],
+        [PiercingType.LADDER, "ladder"],
+        [PiercingType.HOOP, "hoop"],
+        [PiercingType.CHAIN, "chain"]
     ]
 );
 export let DEFAULT_VAGINA_TYPE_NAMES: Record<string, any> = createMapFromPairs(
     [
-        [VAGINA_TYPE_HUMAN, "human"],
-        [VAGINA_TYPE_BLACK_SAND_TRAP, "black sandtrap"]
+        [VaginaType.HUMAN, "human"],
+        [VaginaType.BLACK_SAND_TRAP, "black sandtrap"]
     ]
 );
 export let DEFAULT_VAGINA_WETNESS_SCALES: any[] = [
-    [VAGINA_WETNESS_DRY, "dry"],
-    [VAGINA_WETNESS_NORMAL, "normal"],
-    [VAGINA_WETNESS_WET, "wet"],
-    [VAGINA_WETNESS_SLICK, "slick"],
-    [VAGINA_WETNESS_DROOLING, "drooling"],
-    [VAGINA_WETNESS_SLAVERING, "slavering"],
+    [VaginaWetness.DRY, "dry"],
+    [VaginaWetness.NORMAL, "normal"],
+    [VaginaWetness.WET, "wet"],
+    [VaginaWetness.SLICK, "slick"],
+    [VaginaWetness.DROOLING, "drooling"],
+    [VaginaWetness.SLAVERING, "slavering"],
 ];
 export let DEFAULT_VAGINA_LOOSENESS_SCALES: any[] = [
-    [VAGINA_LOOSENESS_TIGHT, "tight"],
-    [VAGINA_LOOSENESS_NORMAL, "normal"],
-    [VAGINA_LOOSENESS_LOOSE, "loose"],
-    [VAGINA_LOOSENESS_GAPING, "gaping"],
-    [VAGINA_LOOSENESS_GAPING_WIDE, "gaping wide"],
-    [VAGINA_LOOSENESS_LEVEL_CLOWN_CAR, "clown-car level"]
+    [VaginaLooseness.TIGHT, "tight"],
+    [VaginaLooseness.NORMAL, "normal"],
+    [VaginaLooseness.LOOSE, "loose"],
+    [VaginaLooseness.GAPING, "gaping"],
+    [VaginaLooseness.GAPING_WIDE, "gaping wide"],
+    [VaginaLooseness.LEVEL_CLOWN_CAR, "clown-car level"]
 ];
 export let DEFAULT_ANAL_WETNESS_SCALES: any[] = [
-    [ANAL_WETNESS_DRY, "dry"],
-    [ANAL_WETNESS_NORMAL, "normal"],
-    [ANAL_WETNESS_MOIST, "moist"],
-    [ANAL_WETNESS_SLIMY, "slimym"],
-    [ANAL_WETNESS_DROOLING, "drooling"],
-    [ANAL_WETNESS_SLIME_DROOLING, "slime-drooling"],
+    [AnalWetness.DRY, "dry"],
+    [AnalWetness.NORMAL, "normal"],
+    [AnalWetness.MOIST, "moist"],
+    [AnalWetness.SLIMY, "slimym"],
+    [AnalWetness.DROOLING, "drooling"],
+    [AnalWetness.SLIME_DROOLING, "slime-drooling"],
 ];
 export let DEFAULT_ANAL_LOOSENESS_SCALES: any[] = [
-    [ANAL_LOOSENESS_VIRGIN, "virgin"],
-    [ANAL_LOOSENESS_TIGHT, "tight"],
-    [ANAL_LOOSENESS_NORMAL, "normal"],
-    [ANAL_LOOSENESS_LOOSE, "loose"],
-    [ANAL_LOOSENESS_STRETCHED, "stretched"],
-    [ANAL_LOOSENESS_GAPING, "gaping"]
+    [AnalLooseness.VIRGIN, "virgin"],
+    [AnalLooseness.TIGHT, "tight"],
+    [AnalLooseness.NORMAL, "normal"],
+    [AnalLooseness.LOOSE, "loose"],
+    [AnalLooseness.STRETCHED, "stretched"],
+    [AnalLooseness.GAPING, "gaping"]
 ];
 export let DEFAULT_HIP_RATING_SCALES: any[] = [
-    [HIP_RATING_BOYISH, "boyish"],
-    [HIP_RATING_SLENDER, "slender"],
-    [HIP_RATING_AVERAGE, "average"],
-    [HIP_RATING_AMPLE, "ample"],
-    [HIP_RATING_CURVY, "curvy"],
-    [HIP_RATING_FERTILE, "fertile"],
-    [HIP_RATING_INHUMANLY_WIDE, "inhumanly wide"]
+    [HipRating.BOYISH, "boyish"],
+    [HipRating.SLENDER, "slender"],
+    [HipRating.AVERAGE, "average"],
+    [HipRating.AMPLE, "ample"],
+    [HipRating.CURVY, "curvy"],
+    [HipRating.FERTILE, "fertile"],
+    [HipRating.INHUMANLY_WIDE, "inhumanly wide"]
 ];
 export let DEFAULT_BUTT_RATING_SCALES: any[] = [
-    [BUTT_RATING_BUTTLESS, "buttless"],
-    [BUTT_RATING_TIGHT, "tight"],
-    [BUTT_RATING_AVERAGE, "average"],
-    [BUTT_RATING_NOTICEABLE, "noticeable"],
-    [BUTT_RATING_LARGE, "large"],
-    [BUTT_RATING_JIGGLY, "jiggly"],
-    [BUTT_RATING_EXPANSIVE, "expansive"],
-    [BUTT_RATING_HUGE, "huge"],
-    [BUTT_RATING_INCONCEIVABLY_BIG, "inconceivably big"]
+    [ButtRating.BUTTLESS, "buttless"],
+    [ButtRating.TIGHT, "tight"],
+    [ButtRating.AVERAGE, "average"],
+    [ButtRating.NOTICEABLE, "noticeable"],
+    [ButtRating.LARGE, "large"],
+    [ButtRating.JIGGLY, "jiggly"],
+    [ButtRating.EXPANSIVE, "expansive"],
+    [ButtRating.HUGE, "huge"],
+    [ButtRating.INCONCEIVABLY_BIG, "inconceivably big"]
 ];
 
 /**
@@ -2441,14 +2441,14 @@ export function allBreastsDescript(creature: Character): string {
 }
 
 export function tailDescript(i_creature: Character): string {
-    if (i_creature.tailType == TAIL_TYPE_NONE) {
+    if (i_creature.tailType == TailType.NONE) {
         trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 
     let descript: string = "";
 
-    if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1) {
+    if (i_creature.tailType == TailType.FOX && i_creature.tailVenom >= 1) {
         // Kitsune tails, we're using tailVenom to track tail count
         if (i_creature.tailVenom > 1) {
             if (i_creature.tailVenom == 2) descript += "pair ";
@@ -2470,14 +2470,14 @@ export function tailDescript(i_creature: Character): string {
 }
 
 export function oneTailDescript(i_creature: Character): string {
-    if (i_creature.tailType == TAIL_TYPE_NONE) {
+    if (i_creature.tailType == TailType.NONE) {
         trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 
     let descript: string = "";
 
-    if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailVenom >= 1) {
+    if (i_creature.tailType == TailType.FOX && i_creature.tailVenom >= 1) {
         if (i_creature.tailVenom == 1) {
             descript += "your kitsune tail";
         }

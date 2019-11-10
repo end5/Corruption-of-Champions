@@ -139,15 +139,15 @@ export class HellHound extends Monster {
         this.breasts.createBreastRow();
         this.breasts.createBreastRow();
         this.breasts.createBreastRow();
-        this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.NORMAL;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = 47;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_DOG;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE + 1;
+        this.lowerBody = LowerBodyType.DOG;
         this.skinTone = "black";
-        this.skinType = SKIN_TYPE_FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SKIN_TYPE_FUR];
+        this.skinType = SkinType.FUR;
+        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "red";
         this.hairLength = 3;
         initStrTouSpeInte(55, 60, 40, 1);
@@ -166,7 +166,7 @@ export class HellHound extends Monster {
                 ConsumableLib.BLACKPP,
                 ConsumableLib.DBLPEPP,
                 ConsumableLib.LARGEPP);
-        this.tailType = TAIL_TYPE_DOG;
+        this.tailType = TailType.DOG;
         this.special1 = hellhoundFire;
         this.special2 = hellhoundScent;
         checkMonster();

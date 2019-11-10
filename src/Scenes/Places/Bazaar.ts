@@ -357,7 +357,7 @@ function joeysMassageWithEXTRASpooge(): void {
     outputText("\n\n", false);
 
     outputText("The bunny-boy springs back atop you, landing hard just below your hips.  His dripping seed washes over " + sMultiCockDesc(game.player) + ", and the sudden onslaught of fresh, liquid warmth on your groin sets off a small explosion of jism that splatters into your chin, leaving a long trail of slime behind like a snail.  The long-eared girly-boy smiles and shifts to rub his small cock against your " + cockDescript(game.player, 0) + ", frotting you aggressively while you both spray cum like faucets with the knobs torn off.  You don't mind that he seems to have forgotten the massage, and you run your hands up and down your " + chestDesc(game.player) + " to smear the heavy loads ", false);
-    if (player.skinType != SKIN_TYPE_FUR) outputText("over your " + player.skinDesc, false);
+    if (player.skinType != SkinType.FUR) outputText("over your " + player.skinDesc, false);
     else outputText("through your fur", false);
     outputText(".\n\n", false);
 

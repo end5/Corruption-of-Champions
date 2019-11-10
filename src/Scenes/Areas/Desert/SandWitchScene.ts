@@ -233,7 +233,7 @@ function sandWitchBadEndPartThree(): void {
 function sandwitchRaped(): void {
     spriteSelect(50);
     outputText("", true);
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+    if (player.lowerBody == LowerBodyType.CENTAUR) {
         doNext(Camp.returnToCampUseOneHour);
         sandwitchCentaurBoning();
         cleanupAfterCombat();

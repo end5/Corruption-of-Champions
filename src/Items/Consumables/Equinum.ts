@@ -22,7 +22,7 @@ export function equinum(player: Player): void {
     outputText("You down the potion, grimacing at the strong taste.", true);
     // CHANCE OF BAD END - 20% if face/tail/skin/cock are appropriate.
     // If hooved bad end doesn't appear till centaured
-    if (player.skinType == SKIN_TYPE_FUR && player.faceType == FACE_HORSE && player.tailType == TAIL_TYPE_HORSE && (player.lowerBody != LOWER_BODY_TYPE_HOOFED)) {
+    if (player.skinType == SkinType.FUR && player.faceType == FaceType.HORSE && player.tailType == TailType.HORSE && (player.lowerBody != LowerBodyType.HOOFED)) {
         // WARNINGS
         // Repeat warnings
         if (player.effects.findByType(StatusAffects.HorseWarning) >= 0 && rand(3) == 0) {
@@ -152,15 +152,15 @@ export function equinum(player: Player): void {
         }
     }
     // -Remove feather-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_HARPY && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.HARPY && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your feathery arms are shedding their feathery coating.  The wing-like shape your arms once had is gone in a matter of moments, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove chitin-arms (copy this for goblin ale, mino blood, equinum, canine pepps, demon items)
-    if (changes < changeLimit && player.armType == ARM_TYPE_SPIDER && rand(4) == 0) {
+    if (changes < changeLimit && player.armType == ArmType.SPIDER && rand(4) == 0) {
         outputText("\n\nYou scratch at your biceps absentmindedly, but no matter how much you scratch, it isn't getting rid of the itch.  Glancing down in irritation, you discover that your arms' chitinous covering is flaking away.  The glossy black coating is soon gone, leaving " + player.skinDesc + " behind.", false);
-        player.armType = ARM_TYPE_HUMAN;
+        player.armType = ArmType.HUMAN;
         changes++;
     }
     // -Remove feathery hair (copy for equinum, canine peppers, Labova)
@@ -333,12 +333,12 @@ export function equinum(player: Player): void {
     if (player.gender == 2 || player.gender == 3) {
         // Single vag
         if (player.vaginas.length == 1) {
-            if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING && changes < changeLimit && rand(2) == 0) {
+            if (player.vaginas[0].vaginalLooseness <= VaginaLooseness.GAPING && changes < changeLimit && rand(2) == 0) {
                 outputText("\n\nYou grip your gut in pain as you feel your organs shift slightly.  When the pressure passes, you realize your " + vaginaDescript(player, 0) + " has grown larger, in depth AND size.", false);
                 player.vaginas[0].vaginalLooseness++;
                 changes++;
             }
-            if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_NORMAL && changes < changeLimit && rand(2) == 0) {
+            if (player.vaginas[0].vaginalWetness <= VaginaWetness.NORMAL && changes < changeLimit && rand(2) == 0) {
                 outputText("\n\nYour " + vaginaDescript(player, 0) + " moistens perceptably, giving off an animalistic scent.", false);
                 player.vaginas[0].vaginalWetness++;
                 changes++;
@@ -360,7 +360,7 @@ export function equinum(player: Player): void {
                     temp2 = player.vaginas[temp].vaginalWetness;
                 }
             }
-            if (player.vaginas[temp].vaginalWetness <= VAGINA_WETNESS_NORMAL && changes < changeLimit && rand(2) == 0) {
+            if (player.vaginas[temp].vaginalWetness <= VaginaWetness.NORMAL && changes < changeLimit && rand(2) == 0) {
                 outputText("\n\nOne of your " + vaginaDescript(temp) + " moistens perceptably, giving off an animalistic scent.", false);
                 player.vaginas[temp].vaginalWetness++;
                 changes++;
@@ -379,7 +379,7 @@ export function equinum(player: Player): void {
                     temp2 = player.vaginas[temp].vaginalLooseness;
                 }
             }
-            if (player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING && changes < changeLimit && rand(2) == 0) {
+            if (player.vaginas[0].vaginalLooseness <= VaginaLooseness.GAPING && changes < changeLimit && rand(2) == 0) {
                 outputText("\n\nYou grip your gut in pain as you feel your organs shift slightly.  When the pressure passes, you realize one of your " + vaginaDescript(temp) + " has grown larger, in depth AND size.", false);
                 player.vaginas[temp].vaginalLooseness++;
                 changes++;
@@ -448,87 +448,87 @@ export function equinum(player: Player): void {
     // NON - GENDER SPECIFIC CHANGES
     // Tail -> Ears -> Fur -> Face
     // Centaur if hooved
-    if (changes < changeLimit && rand(6) == 0 && player.lowerBody == LOWER_BODY_TYPE_HOOFED) {
+    if (changes < changeLimit && rand(6) == 0 && player.lowerBody == LowerBodyType.HOOFED) {
         changes++;
         outputText("\n\nImmense pain overtakes you as you feel your backbone snap.  The agony doesn't stop, blacking you out as your spine lengthens, growing with new flesh from your backside as the bones of your legs flex and twist.  Muscle groups shift and rearrange themselves as the change completes, the pain dying away as your consciousness returns.  <b>You now have the lower body of a centaur</b>.", false);
         if (player.gender > 0) {
             outputText("  After taking a moment to get used to your new body, you notice that your genitals now reside between the back legs on your centaur body.", false);
         }
         dynStats("spe", 3);
-        player.lowerBody = LOWER_BODY_TYPE_CENTAUR;
+        player.lowerBody = LowerBodyType.CENTAUR;
     }
     // Remove odd eyes
-    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
-        if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
+    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EyeType.HUMAN) {
+        if (player.eyeType == EyeType.BLACK_EYES_SAND_TRAP) {
             outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
         }
         else {
             outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + feet(player) + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.", false);
-            if (player.eyeType == EYES_FOUR_SPIDER_EYES)
+            if (player.eyeType == EyeType.FOUR_SPIDER_EYES)
                 outputText("  Your multiple, arachnid eyes are gone!</b>", false);
             outputText("  <b>You have normal, humanoid eyes again.</b>", false);
         }
-        player.eyeType = EYES_HUMAN;
+        player.eyeType = EyeType.HUMAN;
         changes++;
     }
     // HorseFace - Req's Fur && Ears
-    if (player.faceType != FACE_HORSE && player.skinType == SKIN_TYPE_FUR && changes < changeLimit &&
-        rand(5) == 0 && player.earType == EARS_HORSE) {
-        if (player.faceType == FACE_DOG)
+    if (player.faceType != FaceType.HORSE && player.skinType == SkinType.FUR && changes < changeLimit &&
+        rand(5) == 0 && player.earType == EarType.HORSE) {
+        if (player.faceType == FaceType.DOG)
             outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones rearranging.  You clutch at your face in agony as your skin crawls and shifts, your visage reshaping to replace your dog-like characteristics with those of a horse.  <b>You now have a horse's face.</b>", false);
         else
             outputText("\n\nMind-numbing pain shatters through you as you feel your facial bones breaking and shifting.  You clutch at yourself in agony as you feel your skin crawl and elongate under your fingers.  Eventually the pain subsides, leaving you with a face that seamlessly blends human and equine features.  <b>You have a very equine-looking face.</b>", false);
         changes++;
-        player.faceType = FACE_HORSE;
+        player.faceType = FaceType.HORSE;
     }
     // Fur - if has horsetail && ears and not at changelimit
-    if (player.skinType != SKIN_TYPE_FUR && changes < changeLimit &&
-        rand(4) == 0 && player.tailType == TAIL_TYPE_HORSE) {
-        if (player.skinType == SKIN_TYPE_PLAIN)
+    if (player.skinType != SkinType.FUR && changes < changeLimit &&
+        rand(4) == 0 && player.tailType == TailType.HORSE) {
+        if (player.skinType == SkinType.PLAIN)
             outputText("\n\nAn itchy feeling springs up over every inch of your skin.  As you scratch yourself madly, you feel fur grow out of your skin until <b>you have a fine coat of " + player.hairColor + "-colored fur.</b>", false);
-        if (player.skinType == SKIN_TYPE_SCALES) {
+        if (player.skinType == SkinType.SCALES) {
             player.skinDesc = "fur";
             outputText("\n\nYour " + player.skinTone + " scales begin to itch insufferably.  You reflexively scratch yourself, setting off an avalanche of discarded scales.  The itching intensifies as you madly scratch and tear at yourself, revealing a coat of " + player.hairColor + " " + player.skinDesc + ".  At last the itching stops as <b>you brush a few more loose scales from your new coat of fur.</b>", false);
         }
         changes++;
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         player.skinDesc = "fur";
     }
     // Ears - requires tail
-    if (player.earType != EARS_HORSE && player.tailType == TAIL_TYPE_HORSE && changes < changeLimit &&
+    if (player.earType != EarType.HORSE && player.tailType == TailType.HORSE && changes < changeLimit &&
         rand(3) == 0) {
         if (player.earType == -1)
             outputText("\n\nTwo painful lumps sprout on the top of your head, forming into tear-drop shaped ears, covered with short fur.  ", false);
-        if (player.earType == EARS_HUMAN)
+        if (player.earType == EarType.HUMAN)
             outputText("\n\nYour ears tug painfully on your face as they begin shifting, moving upwards to the top of your head and transforming into a upright animalistic ears.  ", false);
-        if (player.earType == EARS_DOG)
+        if (player.earType == EarType.DOG)
             outputText("\n\nYour ears change shape, morphing into from their doglike shape into equine-like ears!  ", false);
-        if (player.earType > EARS_DOG)
+        if (player.earType > EarType.DOG)
             outputText("\n\nYour ears change shape, morphing into teardrop-shaped horse ears!  ", false);
-        player.earType = EARS_HORSE;
+        player.earType = EarType.HORSE;
         player.earValue = 0;
         outputText("<b>You now have horse ears.</b>", false);
         changes++;
     }
     // Tail - no-prereq
-    if (player.tailType != TAIL_TYPE_HORSE && rand(2) == 0 && changes < changeLimit) {
+    if (player.tailType != TailType.HORSE && rand(2) == 0 && changes < changeLimit) {
         // no tail
         if (player.tailType == 0) {
             outputText("\n\nThere is a sudden tickling on your ass, and you notice you have sprouted a long shiny horsetail of the same " + player.hairColor + " color as your hair.", false);
         }
         // if other animal tail
-        if (player.tailType > TAIL_TYPE_HORSE && player.tailType <= TAIL_TYPE_COW) {
+        if (player.tailType > TailType.HORSE && player.tailType <= TailType.COW) {
             outputText("\n\nPain lances up your " + assholeDescript(player) + " as your tail shifts and morphs disgustingly.  With one last wave of pain, it splits into hundreds of tiny filaments, transforming into a horsetail.", false);
         }
         // if bee/spider-butt.
-        if ((player.tailType > TAIL_TYPE_COW && player.tailType < TAIL_TYPE_SHARK)) {
+        if ((player.tailType > TailType.COW && player.tailType < TailType.SHARK)) {
             outputText("\n\nYour insect-like abdomen bunches up as it begins shrinking, exoskeleton flaking off like a snake sheds its skin.  It bunches up until it is as small as a tennis ball, then explodes outwards, growing into an animalistic tail shape.  Moments later, it explodes into filaments of pain, dividing into hundreds of strands and turning into a shiny horsetail.", false);
         }
-        if (player.tailType >= TAIL_TYPE_SHARK) {
+        if (player.tailType >= TailType.SHARK) {
             outputText("\n\nPain lances up your " + assholeDescript(player) + " as your tail shifts and morphs disgustingly.  With one last wave of pain, it splits into hundreds of tiny filaments, transforming into a horsetail.", false);
         }
         outputText("  <b>You now have a horse-tail.</b>", false);
-        player.tailType = TAIL_TYPE_HORSE;
+        player.tailType = TailType.HORSE;
         player.tailVenom = 0;
         player.tailRecharge = 0;
         changes++;

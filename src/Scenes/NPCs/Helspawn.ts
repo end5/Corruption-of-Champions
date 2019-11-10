@@ -159,15 +159,15 @@ export class Helspawn extends Monster {
             }[weapon] +
             ".  Pacing around you, the well-built young warrior intently studies her mentor's defenses, readying for your next attack.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_NORMAL, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VaginaWetness.NORMAL, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 85, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("E+"));
-        this.ass.analLooseness = ANAL_LOOSENESS_VIRGIN;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.VIRGIN;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 85, 0, 0, 0);
         this.tallness = 90;
-        this.hipRating = HIP_RATING_CURVY + 2;
-        this.buttRating = BUTT_RATING_LARGE + 1;
+        this.hipRating = HipRating.CURVY + 2;
+        this.buttRating = ButtRating.LARGE + 1;
         this.skinTone = "dusky";
         this.hairColor = "red";
         this.hairLength = 13;
@@ -190,7 +190,7 @@ export class Helspawn extends Monster {
         this.temperment = TEMPERMENT_RANDOM_GRAPPLES;
         this.level = 12;
         this.gems = 10 + rand(5);
-        this.tailType = TAIL_TYPE_LIZARD;
+        this.tailType = TailType.LIZARD;
         this.tailRecharge = 0;
         this.effects.create(StatusAffects.Keen, 0, 0, 0, 0);
         this.drop = NO_DROP;

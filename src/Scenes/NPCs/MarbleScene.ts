@@ -698,7 +698,7 @@ function marblePicksYouUpInitially(): void {
     outputText("She gently lifts you up and carries you over to her bed. Laying you down on her lap, she lifts your head to one of her nipples and pushes your lips against it.  She smiles and holds you there firmly as you feel a warm and delicious fluid start to fill your mouth.  Once you've had a taste of her milk, you can't help yourself and eagerly start to gulp it down.  After a little while you hear Marble sigh, \"<i>Oh sweetie, that's just what I needed.  I know it's annoying to stop for a moment, but could you do the other teat too?</i>\"  She pulls her hand back and flips you around on her lap before lifting you to her other nipple.  You don't need any encouragement this time, and start drinking eagerly without hesitation.  \"<i>Drink your fill sweetie, I know we're both enjoying this.</i>\"\n\n", false);
     // new paragraph
     outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest.  Marble puts her hands around you and ", false);
-    if (player.earType > EARS_HUMAN) outputText("gently scratches behind your ears.  ", false);
+    if (player.earType > EarType.HUMAN) outputText("gently scratches behind your ears.  ", false);
     else outputText("lightly caresses your head.  ", false);
     outputText("\"<i>Thanks for your gentle mouth, sweetie,</i>\"  she says, \"<i>Do you think you could tell me your name?  I'm Marble.</i>\"  You let out a soft sigh and tell her who you are and why you came to visit.  She giggles, \"<i>Don't worry sweetie, I feel much better now thanks to you.  I'm really glad I got to meet you in such a pleasant way.</i>\"  You decide that it is probably time to leave now and say your farewells to this cow-girl.  \"<i>Come back to visit me anytime; I'll look forward to seeing you again soon!</i>\" she says beaming at you.  With that, you leave the farm, feeling a strange sense of euphoria passing over you.", false);
     // (increase affection by 30)
@@ -783,7 +783,7 @@ function drinkMarbleMilk(): void {
     outputText("", true);
     outputText("Beaming, Marble leads you back to her room and sits down on the bed.  She invites you onto her lap and lets you start sucking at one of her nipples.  The moment that wonderful taste meets your tongue, you start gulping down the milk with reckless abandon. She sighs in pleasure in response.  From time to time, Marble gets you to switch nipples, all the while gently stroking your head", false);
     // [player has animal ears]
-    if (player.earType > EARS_HUMAN) outputText(" and occasionally scratching behind your ears", false);
+    if (player.earType > EarType.HUMAN) outputText(" and occasionally scratching behind your ears", false);
     outputText(".  ", false);
     outputText("Once you've had your fill, you pull back and the two of you smile at each other.  \"<i>It's really nice for you isn't it sweetie?  Nice for me too to have someone like you that can give a good suck on my itching nipples.</i>\"\n\n", false);
     // (first increase addiction by 10,
@@ -2603,8 +2603,8 @@ function marbleCampSexNew(): void {
             // if Player has a vagina
             if (player.vaginas.length > 0) {
                 // Select one based on vagina wetness, similarly to the cum production, you should do the logic for this part
-                if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) outputText("  As you recover, you see that a small amount of your girly fluids has leaked onto Marble's breasts.", false);
-                else if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_SLICK) outputText("  As you recover, you see that Marble has been covered fairly liberally with your girly fluids.", false);
+                if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) outputText("  As you recover, you see that a small amount of your girly fluids has leaked onto Marble's breasts.", false);
+                else if (player.vaginas[0].vaginalWetness <= VaginaWetness.SLICK) outputText("  As you recover, you see that Marble has been covered fairly liberally with your girly fluids.", false);
                 else if (player.vaginas[0].vaginalWetness < 5) outputText("  As you recover, you see that Marble is decently drenched in your girly fluids.", false);
                 else outputText("  It takes you a minute to recover, but upon doing so, you blush and realize just how soaked with fluid you've become.", false);
             }
@@ -2835,10 +2835,10 @@ export function marbleBadEndFollowup(): void {
     // Variables for this function:
     // morph – keeps track of player's form (human, dog-morph, centaur)
     let morph: string = "human";
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
+    if (player.lowerBody == LowerBodyType.CENTAUR) morph = "centaur";
     if (dogScore(player) >= 4) morph = "dog-morph";
     if (horseScore(player) >= 3) {
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur-morph";
+        if (player.lowerBody == LowerBodyType.CENTAUR) morph = "centaur-morph";
         else morph = "equine-morph";
     }
     if (mutantScore(player) >= 5) morph = "corrupted mutant";
@@ -2851,8 +2851,8 @@ export function marbleBadEndFollowup(): void {
     if (beeScore(player) >= 4) morph = "bee-morph";
     if (goblinScore(player) >= 5) morph = "goblin";
     if (humanScore(player) >= 5 && morph == "corrupted mutant") morph = "somewhat human mutant";
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) morph = "centaur";
+    if (player.lowerBody == LowerBodyType.CENTAUR) morph = "centaur";
+    if (player.lowerBody == LowerBodyType.CENTAUR) morph = "centaur";
     // gender – keeps track of player's gender (male, female, genderless, or hermaphrodite)
     // pronouns – holds the proper pronouns for the player's gender, he/she, his/hers, him/her (should probably be multiple
     // OH FUCK THIS!
@@ -3750,9 +3750,9 @@ function giveMarbleTailjobRelease(): void {
     if (player.cor > 70) {
         outputText("\n\nYou certainly don't mind the proof of your prowess marking your lower body like this, but you can think of something better to do with it.  In fact, you slowly move the tail towards your lips.");
         // (Normal or Snake tongue)
-        if (player.tongueType == TONUGE_SNAKE || player.tongueType == TONUGE_DEMONIC) outputText("  Your tongue runs along the length of the end of your tail, tasting both Marble's feminine secretions and her semen.  She gives you a smoldering gaze as you lick her juices up.  You grin at her.");
+        if (player.tongueType == TongueType.SNAKE || player.tongueType == TongueType.DEMONIC) outputText("  Your tongue runs along the length of the end of your tail, tasting both Marble's feminine secretions and her semen.  She gives you a smoldering gaze as you lick her juices up.  You grin at her.");
         // (Demon Tongue)
-        if (player.tongueType == TONUGE_DEMONIC) outputText("  You decide to put on a show for Marble, moving your tail as you drop out a large piece of your inhumanly long tongue, licking up her secretions sensuously while staring at her.  She quickly blushes under your gaze.");
+        if (player.tongueType == TongueType.DEMONIC) outputText("  You decide to put on a show for Marble, moving your tail as you drop out a large piece of your inhumanly long tongue, licking up her secretions sensuously while staring at her.  She quickly blushes under your gaze.");
         outputText("\n\n\"<i>Sweetie, you wouldn't be trying to make me horny all over again, would you?</i>\"");
         outputText("\n\n\"<i>Well... certainly, when you're not in the mood, repeating this would be very nice.  I hope we can both have fun together next time, though... Thank you, sweetie.</i>\"");
         player.slimeFeed();
@@ -4191,7 +4191,7 @@ function milkMarbleBarPullTail(): void {
         outputText("[pg]\"<i>Alright, let's put that rude tongue of yours to a much better job.  Lick me.</i>\"");
 
         outputText("[pg]You do as you're bid and get an approving smile in response.  Digging deeper inside her, you feel under her folds and plunge into her depths.  ");
-        if (player.tongueType > TONUGE_HUMAN) outputText("You take full advantage of your inhumanly long tongue to fill her up, running across her passage all the way to the entrance to her womb and then back to her lower lips.");
+        if (player.tongueType > TongueType.HUMAN) outputText("You take full advantage of your inhumanly long tongue to fill her up, running across her passage all the way to the entrance to her womb and then back to her lower lips.");
         else outputText("You send your tongue as far into her passage as it will go and wriggle around her lower lips, trying to please your aggressive bovine lover to the best of your abilities.");
     }
     else {

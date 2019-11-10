@@ -74,7 +74,7 @@ function succubusBadEndPartTwo(): void {
         else if (player.clitLength > 1) { // big clit
             outputText("A wave of pleasure erupts from between your legs as your " + clitDescription(player) + " pops free.    You squeeze your legs tightly together, hungry for the additional sensations.  ");
         }
-        else if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLICK) { // slick
+        else if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLICK) { // slick
             outputText("Squishing wetly, your bottoms become soggy with the flood of fluids leaking from your " + vaginaDescript(player, 0) + ".   Your legs spread apart on their own, begging for any kind of intrusion.  ");
         }
         else outputText("Groaning softly, you feel yourself getting wetter and wetter with arousal.  You wish your sticky bottoms were off so you could let something into your " + vaginaDescript(player, 0) + ".  "); // normal
@@ -331,9 +331,9 @@ export function dungeonSuccubusForceFeed(): void {
     outputText("You shove your crotch into your milk-dazed foe's white-stained visage, grinding your " + vaginaDescript(player, 0) + " into her mouth until you cum all over her", false);
     if (player.cocks.length == 0) {
         temp = rand(3);
-        if (player.vaginas[0].vaginalWetness >= VAGINA_WETNESS_SLAVERING) outputText(", soaking her with girl-cum.", false);
+        if (player.vaginas[0].vaginalWetness >= VaginaWetness.SLAVERING) outputText(", soaking her with girl-cum.", false);
         else {
-            if (player.vaginas[0].vaginalWetness <= VAGINA_WETNESS_WET) outputText(", slicking her face with girlish cum.", false);
+            if (player.vaginas[0].vaginalWetness <= VaginaWetness.WET) outputText(", slicking her face with girlish cum.", false);
             else outputText(", drenching her with a deluge of girlcum.", false);
         }
     }

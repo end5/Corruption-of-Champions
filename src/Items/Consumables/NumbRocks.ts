@@ -37,7 +37,7 @@ export function numbRocks(player: Player): void {
     }
     if (player.perks.findByType(PerkLib.ThickSkin) < 0 && player.sens < 30 && rand(4) == 0) {
         outputText("Slowly, ", false);
-        if (player.skinType == SKIN_TYPE_PLAIN)
+        if (player.skinType == SkinType.PLAIN)
             outputText("your skin", false);
         else
             outputText("the skin under your " + player.skinDesc, false);

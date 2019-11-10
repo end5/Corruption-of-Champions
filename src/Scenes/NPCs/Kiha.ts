@@ -152,18 +152,18 @@ export class Kiha extends Monster {
         this.imageName = "kiha";
         this.long = "Kiha is standing across from you, holding a double-bladed axe that's nearly as big as she is.  She's six feet tall, and her leathery wings span nearly twelve feet extended.  Her eyes are pure crimson, save for a black slit in the center, and a pair of thick draconic horns sprout from her forehead, arcing over her ruby-colored hair to point behind her.  Dim red scales cover her arms, legs, back, and strong-looking tail, providing what protection they might to large areas of her body.  The few glimpses of exposed skin are dark, almost chocolate in color, broken only by a few stray scales on the underside of her bosom and on her cheekbones.  Her vagina constantly glistens with moisture, regardless of her state of arousal.  Despite her nudity, Kiha stands with the confidence and poise of a trained fighter.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_DROOLING, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
-        this.ass.analLooseness = ANAL_LOOSENESS_LOOSE;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.LOOSE;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);
         this.tallness = 6 * 12 + 1;
-        this.hipRating = HIP_RATING_AMPLE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+        this.hipRating = HipRating.AMPLE;
+        this.buttRating = ButtRating.AVERAGE + 1;
+        this.lowerBody = LowerBodyType.HOOFED;
         this.skinTone = "dark";
-        this.skinType = SKIN_TYPE_SCALES;
+        this.skinType = SkinType.SCALES;
         this.skinDesc = "skin and scales";
         this.hairColor = "red";
         this.hairLength = 3;
@@ -181,9 +181,9 @@ export class Kiha extends Monster {
         this.level = 16;
         this.gems = rand(15) + 95;
         this.drop = NO_DROP;
-        this.wingType = WING_TYPE_IMP;
+        this.wingType = WingType.IMP;
         this.wingDesc = "huge";
-        this.tailType = TAIL_TYPE_LIZARD;
+        this.tailType = TailType.LIZARD;
         checkMonster();
     }
 

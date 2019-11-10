@@ -148,12 +148,12 @@ export class IncubusMechanic extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_SLIME_DROOLING;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 70;
-        this.hipRating = HIP_RATING_AMPLE;
-        this.buttRating = BUTT_RATING_TIGHT;
-        this.lowerBody = LOWER_BODY_TYPE_DEMONIC_CLAWS;
+        this.hipRating = HipRating.AMPLE;
+        this.buttRating = ButtRating.TIGHT;
+        this.lowerBody = LowerBodyType.DEMONIC_CLAWS;
         this.skinTone = "light purple";
         this.hairColor = "black";
         this.hairLength = 12;
@@ -175,8 +175,8 @@ export class IncubusMechanic extends Monster {
         this.drop = new WeightedDrop(ConsumableLib.GROPLUS, 1);
         this.special1 = cockTripAttack;
         this.special2 = spoogeAttack;
-        this.tailType = TAIL_TYPE_DEMONIC;
-        this.wingType = WING_TYPE_BAT_LIKE_TINY;
+        this.tailType = TailType.DEMONIC;
+        this.wingType = WingType.BAT_LIKE_TINY;
         this.wingDesc = "tiny hidden";
         checkMonster();
     }

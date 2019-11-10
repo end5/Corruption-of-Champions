@@ -36,12 +36,12 @@ export class PlayerEvents implements TimeAwareInterface {
             dynStats("lus", player.lib * 0.02); // Raise lust
             if (player.perks.findByType(PerkLib.Lusty) >= 0) dynStats("lus", player.lib * 0.01, "resisted", false); // Double lust rise if lusty.
         }
-        if (player.tailType == TAIL_TYPE_BEE_ABDOMEN || player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) { // Spider and Bee Sting Recharge
+        if (player.tailType == TailType.BEE_ABDOMEN || player.tailType == TailType.SPIDER_ADBOMEN) { // Spider and Bee Sting Recharge
             if (player.tailRecharge < 5) player.tailRecharge = 5;
             player.tailVenom += player.tailRecharge;
             if (player.tailVenom > 100) player.tailVenom = 100;
         }
-        if (player.tailType == TAIL_TYPE_CAT && player.lowerBody == LOWER_BODY_TYPE_CAT && player.earType == EARS_CAT) { // Check for gain of cat agility - requires legs, tail, and ears
+        if (player.tailType == TailType.CAT && player.lowerBody == LowerBodyType.CAT && player.earType == EarType.CAT) { // Check for gain of cat agility - requires legs, tail, and ears
             if (player.perks.findByType(PerkLib.Flexibility) < 0) {
                 outputText("\nWhile stretching, you notice that you're much more flexible than you were before.  Perhaps this will make it a bit easier to dodge attacks in battle?\n\n(<b>Gained Perk: Flexibility</b>)\n");
                 player.perks.create(PerkLib.Flexibility, 0, 0, 0, 0);
@@ -54,19 +54,19 @@ export class PlayerEvents implements TimeAwareInterface {
             needNext = true;
         }
         if (flags[kFLAGS.FOX_BAD_END_WARNING] == 1) {
-            if (player.faceType != FACE_FOX || player.tailType != TAIL_TYPE_FOX || player.earType != EARS_FOX || player.lowerBody != LOWER_BODY_TYPE_FOX || player.skinType != SKIN_TYPE_FUR) {
+            if (player.faceType != FaceType.FOX || player.tailType != TailType.FOX || player.earType != EarType.FOX || player.lowerBody != LowerBodyType.FOX || player.skinType != SkinType.FUR) {
                 flags[kFLAGS.FOX_BAD_END_WARNING] = 0;
             }
         }
         if (player.perks.findByType(PerkLib.EnlightenedNinetails) >= 0 || player.perks.findByType(PerkLib.CorruptedNinetails) >= 0) { // Check ninetails perks!
-            if (player.tailType != TAIL_TYPE_FOX || player.tailVenom < 9) {
+            if (player.tailType != TailType.FOX || player.tailVenom < 9) {
                 outputText("\n<b>Without your tails, the magic power they once granted withers and dies, vanishing completely.</b>\n");
                 player.perks.remove(PerkLib.EnlightenedNinetails);
                 player.perks.remove(PerkLib.CorruptedNinetails);
                 needNext = true;
             }
         }
-        if (player.lowerBody == LOWER_BODY_TYPE_HARPY && player.tailType == TAIL_TYPE_HARPY && player.perks.findByType(PerkLib.HarpyWomb) >= 0) { // Make eggs big if harpied!
+        if (player.lowerBody == LowerBodyType.HARPY && player.tailType == TailType.HARPY && player.perks.findByType(PerkLib.HarpyWomb) >= 0) { // Make eggs big if harpied!
             if (player.effects.findByType(StatusAffects.Eggs) >= 0 && player.effects.getValue2Of(StatusAffects.Eggs) == 0) {
                 player.effects.setValue(StatusAffects.Eggs, 2, 1);
                 outputText("\n<b>A familiar, motherly rumble lets you know that your harpy-like womb is growing your eggs nice and large.</b>\n");
@@ -97,17 +97,17 @@ export class PlayerEvents implements TimeAwareInterface {
             player.perks.remove(PerkLib.Diapause);
             needNext = true;
         }
-        if (player.lowerBody == LOWER_BODY_TYPE_NAGA) {
-            if (player.tailType > TAIL_TYPE_NONE) {
+        if (player.lowerBody == LowerBodyType.NAGA) {
+            if (player.tailType > TailType.NONE) {
                 outputText("\nYour tail squirms, wriggling against your larger naga tail as the scales part around it, absorbing it.  <b>Your form is completely scaly and smooth from the waist down.</b>\n");
-                player.tailType = TAIL_TYPE_NONE;
+                player.tailType = TailType.NONE;
                 needNext = true;
             }
         }
         if (player.perks.findByType(PerkLib.WetPussy) >= 0 && player.vaginas.length > 0) {
-            if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_WET) {
+            if (player.vaginas[0].vaginalWetness < VaginaWetness.WET) {
                 outputText("\n<b>Your " + vaginaDescript(player, 0) + " returns to its normal, wet state.</b>\n");
-                player.vaginas[0].vaginalWetness = VAGINA_WETNESS_WET;
+                player.vaginas[0].vaginalWetness = VaginaWetness.WET;
                 needNext = true;
             }
         }
@@ -181,12 +181,12 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 || player.perks.findByType(PerkLib.BeeOvipositor) >= 0) { // Spider and Bee ovipositor updates
-            if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (!player.isDrider() || player.tailType != TAIL_TYPE_SPIDER_ADBOMEN)) { // Remove dat shit!
+            if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0 && (!player.isDrider() || player.tailType != TailType.SPIDER_ADBOMEN)) { // Remove dat shit!
                 outputText("\nYour ovipositor (and eggs) vanish since your body has become less spider-like.</b>\n");
                 player.perks.remove(PerkLib.SpiderOvipositor);
                 needNext = true;
             }
-            else if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && player.tailType != TAIL_TYPE_BEE_ABDOMEN) { // Remove dat shit!
+            else if (player.perks.findByType(PerkLib.BeeOvipositor) >= 0 && player.tailType != TailType.BEE_ABDOMEN) { // Remove dat shit!
                 outputText("\nYour ovipositor (and eggs) vanish since your body has become less bee-like.</b>\n");
                 player.perks.remove(PerkLib.BeeOvipositor);
                 needNext = true;
@@ -526,26 +526,26 @@ export class PlayerEvents implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.CuntStretched, 1, 1);
             if (player.vaginas.length > 0) {
                 if (player.perks.findByType(PerkLib.FerasBoonWideOpen) < 0) {
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LOOSE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 200) {
+                    if (player.vaginas[0].vaginalLooseness == VaginaLooseness.LOOSE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 200) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 100) {
+                    if (player.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 100) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals, tightening up a bit.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
-                    if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING_WIDE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 70) {
+                    if (player.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING_WIDE && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 70) {
                         outputText("\nYour " + vaginaDescript(player, 0) + " recovers from your ordeals and becomes tighter.\n");
                         player.vaginas[0].vaginalLooseness--;
                         player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
                         needNext = true;
                     }
                 }
-                if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LEVEL_CLOWN_CAR && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 50) {
+                if (player.vaginas[0].vaginalLooseness == VaginaLooseness.LEVEL_CLOWN_CAR && player.effects.getValue1Of(StatusAffects.CuntStretched) >= 50) {
                     outputText("\nYour " + vaginaDescript(player, 0) + " recovers from the brutal stretching it has received and tightens up a little bit, but not much.\n");
                     player.vaginas[0].vaginalLooseness--;
                     player.effects.setValue(StatusAffects.CuntStretched, 1, 0);
@@ -581,7 +581,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.perks.findByType(PerkLib.SlimeCore) >= 0) { // Lose slime core perk
-            if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LOWER_BODY_TYPE_GOO) {
+            if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LowerBodyType.GOO) {
                 outputText("\nYour form ripples, as if uncertain at the changes your body is undergoing.  The goo of your flesh cools, its sensitive, responsive membrane thickening into " + skin(player) + " while bones and muscles knit themselves into a cohesive torso, chest and hips gaining definition.  Translucent ooze clouds and the gushing puddle at your feet melts together, splitting into solid trunks as you regain your legs.  Before long, you can no longer see through your own body and, with an unsteady shiver, you pat yourself down, readjusting to solidity.  A lurching heat in your chest suddenly reminds you of the slime core that used to float inside you.  Gingerly touching your " + chestDesc(game.player) + ", you can feel a small, second heartbeat under your ribs that gradually seems to be sinking, past your belly. A lurching wave of warmth sparks through you, knocking you off your fresh legs and onto your " + buttDescription(player) + ".  A delicious pressure pulses in your abdomen and you loosen your " + player.armorName + " as sweat beads down your neck.  You clench your eyes, tongue lolling in your mouth, and the pressure builds and builds until, in ecstatic release, your body arches in an orgasmic release.\n\n");
 
                 outputText("\nPanting, you open your eyes and see that, for once, the source of your climax wasn't your loins.  Feeling a warm, wetness on your abs, you investigate and find the small, heart-shaped nucleus that used to be inside your body has somehow managed to pass through your belly button. Exposed to the open air, the crimson organ slowly crystallizes, shrinking and hardening into a tiny ruby.  Rubbing the stone with your thumb, you're surprised to find that you can still feel a pulse within its glittering facets.  You stow the ruby heart, in case you need it again.\n");
@@ -591,7 +591,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.keyItems.has("Ruby Heart") >= 0) { // Regain slime core
-            if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && gooScore(player) >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LOWER_BODY_TYPE_GOO) {
+            if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0 && player.perks.findByType(PerkLib.SlimeCore) < 0 && player.isGoo() && gooScore(player) >= 4 && player.vaginalCapacity() >= 9000 && player.skinAdj == "slimy" && player.skinDesc == "skin" && player.lowerBody == LowerBodyType.GOO) {
                 outputText("\nAs you adjust to your new, goo-like body, you remember the ruby heart you expelled so long ago.  As you reach to pick it up, it quivers and pulses with a warm, cheerful light.  Your fingers close on it and the nucleus slides through your palm, into your body!\n\n");
 
                 outputText("There is a momentary pressure in your chest and a few memories that are not your own flicker before your eyes.  The dizzying sight passes and the slime core settles within your body, imprinted with your personality and experiences.  There is a comforting calmness from your new nucleus and you feel as though, with your new memories, you will be better able to manage your body's fluid requirements.\n");
@@ -603,7 +603,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
         }
         if (player.effects.findByType(StatusAffects.SlimeCraving) >= 0) { // Slime craving stuff
-            if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LOWER_BODY_TYPE_GOO) {
+            if (player.vaginalCapacity() < 9000 || player.skinAdj != "slimy" || player.skinDesc != "skin" || player.lowerBody != LowerBodyType.GOO) {
                 outputText("\n<b>You realize you no longer crave fluids like you once did.</b>\n");
                 player.effects.remove(StatusAffects.SlimeCraving);
                 player.effects.remove(StatusAffects.SlimeCravingFeed);

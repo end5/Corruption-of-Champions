@@ -148,7 +148,7 @@ export function reptilum(player: Player): void {
     // -Grows second lizard dick if only 1 dick
     if (player.cocks.lizardCocks() == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nA knot of pressure forms in your groin, forcing you off your " + feet(player) + " as you try to endure it.  You examine the affected area and see a lump starting to bulge under your " + player.skinDesc + ", adjacent to your " + cockDescript(game.player, 0) + ".  The flesh darkens, turning purple", false);
-        if (player.skinType == SKIN_TYPE_FUR || player.skinType == SKIN_TYPE_SCALES)
+        if (player.skinType == SkinType.FUR || player.skinType == SkinType.SCALES)
             outputText(" and shedding " + player.skinDesc, false);
         outputText(" as the bulge lengthens, pushing out from your body.  Too surprised to react, you can only pant in pain and watch as the fleshy lump starts to take on a penis-like appearance.  <b>You're growing a second lizard-cock!</b>  It doesn't stop growing until it's just as long as its brother and the same shade of shiny purple.  A dribble of cum oozes from its tip, and you feel relief at last.", false);
         player.cocks.createCock();
@@ -234,20 +234,20 @@ export function reptilum(player: Player): void {
     }
     // Physical changes:
     // -Existing horns become draconic, max of 4, max length of 1'
-    if (player.hornType != HORNS_DRACONIC_X4_12_INCH_LONG && changes < changeLimit && rand(5) == 0) {
+    if (player.hornType != HornType.DRACONIC_X4_12_INCH_LONG && changes < changeLimit && rand(5) == 0) {
         // No dragon horns yet.
-        if (player.hornType != HORNS_DRACONIC_X2 && player.hornType != HORNS_DRACONIC_X4_12_INCH_LONG) {
+        if (player.hornType != HornType.DRACONIC_X2 && player.hornType != HornType.DRACONIC_X4_12_INCH_LONG) {
             // Already have horns
             if (player.horns > 0) {
                 // High quantity demon horns
-                if (player.hornType == HORNS_DEMON && player.horns > 4) {
+                if (player.hornType == HornType.DEMON && player.horns > 4) {
                     outputText("\n\nYour horns condense, twisting around each other and merging into larger, pointed protrusions.  By the time they finish you have four draconic-looking horns, each about twelve inches long.", false);
                     player.horns = 12;
-                    player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+                    player.hornType = HornType.DRACONIC_X4_12_INCH_LONG;
                 }
                 else {
                     outputText("\n\nYou feel your horns changing and warping, and reach back to touch them.  They have a slight curve and a gradual taper.  They must look something like the horns the dragons in your village's legends always had.", false);
-                    player.hornType = HORNS_DRACONIC_X2;
+                    player.hornType = HornType.DRACONIC_X2;
                     if (player.horns > 13) {
                         outputText("  The change seems to have shrunken the horns, they're about a foot long now.", false);
                         player.horns = 12;
@@ -260,13 +260,13 @@ export function reptilum(player: Player): void {
                 // -If no horns, grow a pair
                 outputText("\n\nWith painful pressure, the skin on the sides of your forehead splits around two tiny nub-like horns.  They're angled back in such a way as to resemble those you saw on the dragons in your village's legends.  A few inches of horn sprout from your head before stopping.  <b>You have about four inches of dragon-like horn.</b>", false);
                 player.horns = 4;
-                player.hornType = HORNS_DRACONIC_X2;
+                player.hornType = HornType.DRACONIC_X2;
                 changes++;
             }
         }
         // ALREADY DRAGON
         else {
-            if (player.hornType == HORNS_DRACONIC_X2) {
+            if (player.hornType == HornType.DRACONIC_X2) {
                 if (player.horns < 12) {
                     if (rand(2) == 0) {
                         outputText("\n\nYou get a headache as an inch of fresh horn escapes from your pounding skull.", false);
@@ -284,7 +284,7 @@ export function reptilum(player: Player): void {
                 else {
                     // --Next horn growth adds second row and brings length up to 12\"
                     outputText("\n\nA second row of horns erupts under the first, and though they are narrower, they grow nearly as long as your first row before they stop.  A sense of finality settles over you.  <b>You have as many horns as a lizan can grow.</b>", false);
-                    player.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+                    player.hornType = HornType.DRACONIC_X4_12_INCH_LONG;
                     changes++;
                 }
             }
@@ -299,58 +299,58 @@ export function reptilum(player: Player): void {
     }
     // Big physical changes:
     // -Legs – Draconic, clawed feet
-    if (player.lowerBody != LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
+    if (player.lowerBody != LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
         // Hooves -
-        if (player.lowerBody == LOWER_BODY_TYPE_HOOFED)
+        if (player.lowerBody == LowerBodyType.HOOFED)
             outputText("\n\nYou scream in agony as you feel your hooves crack and break apart, beginning to rearrange.  Your legs change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.", false);
         // TAURS -
-        else if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR)
+        else if (player.lowerBody == LowerBodyType.CENTAUR)
             outputText("\n\nYour lower body is wracked by pain!  Once it passes, you discover that you're standing on digitigrade legs with lizard-like claws.", false);
         // feet types -
-        else if (player.lowerBody == LOWER_BODY_TYPE_HUMAN || player.lowerBody == LOWER_BODY_TYPE_DOG || player.lowerBody == LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS || player.lowerBody == LOWER_BODY_TYPE_DEMONIC_CLAWS || player.lowerBody == LOWER_BODY_TYPE_BEE || player.lowerBody == LOWER_BODY_TYPE_CAT || player.lowerBody == LOWER_BODY_TYPE_LIZARD)
+        else if (player.lowerBody == LowerBodyType.HUMAN || player.lowerBody == LowerBodyType.DOG || player.lowerBody == LowerBodyType.DEMONIC_HIGH_HEELS || player.lowerBody == LowerBodyType.DEMONIC_CLAWS || player.lowerBody == LowerBodyType.BEE || player.lowerBody == LowerBodyType.CAT || player.lowerBody == LowerBodyType.LIZARD)
             outputText("\n\nYou scream in agony as you feel the bones in your legs break and begin to rearrange. They change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.", false);
         // Else –
         else
             outputText("\n\nPain rips through your " + legs(player) + ", morphing and twisting them until the bones rearrange into a digitigrade configuration.  The strange legs have three-toed, clawed feet, complete with a small vestigial claw-toe on the back for added grip.", false);
         outputText("  <b>You have reptilian legs and claws!</b>", false);
-        player.lowerBody = LOWER_BODY_TYPE_LIZARD;
+        player.lowerBody = LowerBodyType.LIZARD;
         changes++;
     }
     // -Tail – sinuous lizard tail
-    if (player.tailType != TAIL_TYPE_LIZARD && player.lowerBody == LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
+    if (player.tailType != TailType.LIZARD && player.lowerBody == LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
         // No tail
-        if (player.tailType == TAIL_TYPE_NONE)
+        if (player.tailType == TailType.NONE)
             outputText("\n\nYou drop onto the ground as your spine twists and grows, forcing the flesh above your " + buttDescription(player) + " to bulge out.  New bones form, one after another, building a tapered, prehensile tail onto the back of your body.  <b>You now have a reptilian tail!</b>", false);
         // Yes tail
         else
             outputText("\n\nYou drop to the ground as your tail twists and grows, changing its shape in order to gradually taper to a point.  It flicks back and forth, prehensile and totally under your control.  <b>You now have a reptilian tail.</b>", false);
-        player.tailType = TAIL_TYPE_LIZARD;
+        player.tailType = TailType.LIZARD;
         changes++;
     }
     // Remove odd eyes
-    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EYES_HUMAN) {
-        if (player.eyeType == EYES_BLACK_EYES_SAND_TRAP) {
+    if (changes < changeLimit && rand(5) == 0 && player.eyeType > EyeType.HUMAN) {
+        if (player.eyeType == EyeType.BLACK_EYES_SAND_TRAP) {
             outputText("\n\nYou feel a twinge in your eyes and you blink.  It feels like black cataracts have just fallen away from you, and you know without needing to see your reflection that your eyes have gone back to looking human.");
         }
         else {
             outputText("\n\nYou blink and stumble, a wave of vertigo threatening to pull your " + feet(player) + " from under you.  As you steady and open your eyes, you realize something seems different.  Your vision is changed somehow.", false);
-            if (player.eyeType == EYES_FOUR_SPIDER_EYES)
+            if (player.eyeType == EyeType.FOUR_SPIDER_EYES)
                 outputText("  Your multiple, arachnid eyes are gone!</b>", false);
             outputText("  <b>You have normal, humanoid eyes again.</b>", false);
         }
-        player.eyeType = EYES_HUMAN;
+        player.eyeType = EyeType.HUMAN;
         changes++;
     }
     // -Ears become smaller nub-like openings?
-    if (player.earType != EARS_LIZARD && player.tailType == TAIL_TYPE_LIZARD && player.lowerBody == LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
+    if (player.earType != EarType.LIZARD && player.tailType == TailType.LIZARD && player.lowerBody == LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
         outputText("\n\nTightness centers on your scalp, pulling your ears down from their normal, fleshy shape into small, scaley bumps with holes in their centers.  <b>You have reptilian ears!</b>", false);
-        player.earType = EARS_LIZARD;
+        player.earType = EarType.LIZARD;
         changes++;
     }
     // -Scales – color changes to red, green, white, blue, or black.  Rarely: purple or silver.
-    if (player.skinType != SKIN_TYPE_SCALES && player.earType == EARS_LIZARD && player.tailType == TAIL_TYPE_LIZARD && player.lowerBody == LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
+    if (player.skinType != SkinType.SCALES && player.earType == EarType.LIZARD && player.tailType == TailType.LIZARD && player.lowerBody == LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
         // (fur)
-        if (player.skinType == SKIN_TYPE_FUR) {
+        if (player.skinType == SkinType.FUR) {
             // set new skinTone
             if (rand(10) == 0) {
                 if (rand(2) == 0)
@@ -400,14 +400,14 @@ export function reptilum(player: Player): void {
             }
             outputText(player.skinTone + " scales.</b>", false);
         }
-        player.skinType = SKIN_TYPE_SCALES;
+        player.skinType = SkinType.SCALES;
         player.skinDesc = "scales";
         changes++;
     }
     // -Lizard-like face.
-    if (player.faceType != FACE_LIZARD && player.skinType == SKIN_TYPE_SCALES && player.earType == EARS_LIZARD && player.tailType == TAIL_TYPE_LIZARD && player.lowerBody == LOWER_BODY_TYPE_LIZARD && changes < changeLimit && rand(5) == 0) {
+    if (player.faceType != FaceType.LIZARD && player.skinType == SkinType.SCALES && player.earType == EarType.LIZARD && player.tailType == TailType.LIZARD && player.lowerBody == LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
         outputText("\n\nTerrible agony wracks your " + face(player) + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>", false);
-        player.faceType = FACE_LIZARD;
+        player.faceType = FaceType.LIZARD;
     }
     if (rand(4) == 0 && player.gills && changes < changeLimit) {
         outputText("\n\nYour chest itches, and as you reach up to scratch it, you realize your gills have withdrawn into your skin.", false);

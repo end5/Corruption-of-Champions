@@ -14,8 +14,8 @@ export class MinotaurKing extends Monster {
         this.ballSize = 4;
         this.hoursSinceCum = 9999;
 
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.TIGHT;
 
         initStrTouSpeInte(100, 100, 50, 60);
         initLibSensCor(66, 10, 100);

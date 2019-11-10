@@ -91,13 +91,13 @@ export class Sirius extends Naga {
         this.plural = false;
         this.cocks.createCock(14, 2);
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);
         this.tallness = 5 * 12 + 10;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
-        this.lowerBody = LOWER_BODY_TYPE_NAGA;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
+        this.lowerBody = LowerBodyType.NAGA;
         this.skinTone = "mediterranean-toned";
         this.hairColor = "orange";
         this.hairLength = 16;

@@ -29,12 +29,12 @@ export class Zetaz extends Monster {
         this.cumMultiplier = 3;
         this.hoursSinceCum = 20;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 4 * 12 + 1;
-        this.hipRating = HIP_RATING_BOYISH;
-        this.buttRating = BUTT_RATING_TIGHT;
-        this.lowerBody = LOWER_BODY_TYPE_KANGAROO;
+        this.hipRating = HipRating.BOYISH;
+        this.buttRating = ButtRating.TIGHT;
+        this.lowerBody = LowerBodyType.KANGAROO;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 5;
@@ -51,7 +51,7 @@ export class Zetaz extends Monster {
         this.gems = rand(55) + 150;
         this.additionalXP = 100;
         this.drop = new WeightedDrop(ConsumableLib.BIMBOLQ, 1);
-        this.wingType = WING_TYPE_IMP;
+        this.wingType = WingType.IMP;
         this.wingDesc = "small";
         checkMonster();
     }

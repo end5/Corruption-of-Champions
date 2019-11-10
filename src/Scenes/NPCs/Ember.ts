@@ -152,16 +152,16 @@ export class Ember extends Monster {
             // this.hoursSinceCum = 0;
         }
         if (gender >= 2) {
-            this.vaginas.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_LOOSE);
+            this.vaginas.createVagina(game.flags[kFLAGS.EMBER_PUSSY_FUCK_COUNT] == 0, VaginaWetness.SLAVERING, VaginaLooseness.LOOSE);
             this.breasts.createBreastRow(Appearance.breastCupInverse("F"));
         } else {
             this.breasts.createBreastRow(Appearance.breastCupInverse("flat"));
         }
-        this.ass.analLooseness = ANAL_LOOSENESS_NORMAL;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.NORMAL;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 70;
-        this.hipRating = HIP_RATING_AMPLE + 2;
-        this.buttRating = BUTT_RATING_LARGE;
+        this.hipRating = HipRating.AMPLE + 2;
+        this.buttRating = ButtRating.LARGE;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 15;
@@ -178,9 +178,9 @@ export class Ember extends Monster {
         this.temperment = TEMPERMENT_LOVE_GRAPPLES;
         this.level = 15;
         this.gems = 0;
-        this.hornType = HORNS_DRACONIC_X4_12_INCH_LONG;
+        this.hornType = HornType.DRACONIC_X4_12_INCH_LONG;
         this.horns = 4;
-        this.tailType = TAIL_TYPE_DRACONIC;
+        this.tailType = TailType.DRACONIC;
         this.drop = NO_DROP;
         checkMonster();
     }

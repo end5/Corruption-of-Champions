@@ -113,12 +113,12 @@ export class Player extends Character {
         // Skin armor perk
         if (this.perks.findByType(PerkLib.ThickSkin) >= 0) {
             armorDef += 2;
-            if (skinType > SKIN_TYPE_PLAIN) armorDef += 1;
+            if (skinType > SkinType.PLAIN) armorDef += 1;
         }
         // If no skin armor perk scales rock
         else {
-            if (skinType == SKIN_TYPE_FUR) armorDef += 1;
-            if (skinType == SKIN_TYPE_SCALES) armorDef += 3;
+            if (skinType == SkinType.FUR) armorDef += 1;
+            if (skinType == SkinType.SCALES) armorDef += 3;
         }
         // 'Thick' dermis descriptor adds 1!
         if (skinAdj == "smooth") armorDef += 1;
@@ -464,12 +464,12 @@ export class Player extends Character {
             }
             // Non virgins as usual
             else if (spacingsF) outputText("  ");
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LEVEL_CLOWN_CAR) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched painfully wide, large enough to accomodate most beasts and demons.</b>");
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING_WIDE) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched so wide that it gapes continually.</b>");
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_GAPING) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " painfully stretches, the lips now wide enough to gape slightly.</b>");
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_LOOSE) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is now very loose.</b>", false);
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_NORMAL) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is now a little loose.</b>", false);
-            if (vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_TIGHT) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched out to a more normal size.</b>");
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.LEVEL_CLOWN_CAR) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched painfully wide, large enough to accomodate most beasts and demons.</b>");
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.GAPING_WIDE) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched so wide that it gapes continually.</b>");
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.GAPING) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " painfully stretches, the lips now wide enough to gape slightly.</b>");
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.LOOSE) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is now very loose.</b>", false);
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.NORMAL) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is now a little loose.</b>", false);
+            if (vaginas[0].vaginalLooseness == VaginaLooseness.TIGHT) outputText("<b>Your " + Appearance.vaginaDescript(this, 0) + " is stretched out to a more normal size.</b>");
             if (spacingsB) outputText("  ");
         }
         return stretched;
@@ -1158,7 +1158,7 @@ export class Player extends Character {
             if (cocks[0].cockLength >= 16 && cocks[0].cockLength - temp2 < 16) {
                 if (cocks.length == 1) outputText("  <b>Your " + cockDescript(game.player, 0) + " would look more at home on a large horse than you.</b>", false);
                 if (cocks.length > 1) outputText("  <b>Your " + multiCockDescriptLight(game.player) + " would look more at home on a large horse than on your body.</b>", false);
-                if (this.breasts.biggestTitSize() >= BREAST_CUP_C) {
+                if (this.breasts.biggestTitSize() >= BreastCup.C) {
                     if (cocks.length == 1) outputText("  You could easily stuff your " + cockDescript(game.player, 0) + " between your breasts and give yourself the titty-fuck of a lifetime.", false);
                     if (cocks.length > 1) outputText("  They reach so far up your chest it would be easy to stuff a few cocks between your breasts and give yourself the titty-fuck of a lifetime.", false);
                 }

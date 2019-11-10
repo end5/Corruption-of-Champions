@@ -32,12 +32,12 @@ export class ImpHorde extends Monster {
         this.balls = 2;
         this.ballSize = 1;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);
         this.tallness = 36;
-        this.hipRating = HIP_RATING_SLENDER;
-        this.buttRating = BUTT_RATING_TIGHT;
+        this.hipRating = HipRating.SLENDER;
+        this.buttRating = ButtRating.TIGHT;
         this.skinTone = "red";
         this.hairColor = "black";
         this.hairLength = 1;
@@ -53,7 +53,7 @@ export class ImpHorde extends Monster {
         this.level = 10;
         this.gems = 20 + rand(25);
         this.drop = new WeightedDrop(ArmorLib.NURSECL, 1);
-        this.wingType = WING_TYPE_IMP;
+        this.wingType = WingType.IMP;
         this.wingDesc = "imp wings";
         checkMonster();
     }

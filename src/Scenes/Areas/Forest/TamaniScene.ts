@@ -244,7 +244,7 @@ export function tamaniSexLetHer(): void {
     // [lost combat]
     if (game.inCombat) {
         // Taurs
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+        if (player.lowerBody == LowerBodyType.CENTAUR) {
             if (player.HP < 1) outputText("You stumble, hooves weaving drunkenly as you try to keep your feet.  ", false);
             else outputText("You stumble, hooves weaving drunkenly as " + sMultiCockDesc(game.player) + " ache and drool with need.  ", false);
             outputText("Tamani sidles up to you and pats your flank, cooing, \"<i>There there horsey, everything's going to be okay.  Momma Tamani's going to take really good care of you.</i>\"  Before you know it your " + player.armorName + " is on the ground and the goblin is underneath you, climbing up to your crotch.\n\n", false);
@@ -262,7 +262,7 @@ export function tamaniSexLetHer(): void {
     // Voluntary submission
     else {
         // Taur
-        if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+        if (player.lowerBody == LowerBodyType.CENTAUR) {
             outputText("You meekly undress and ask Tamani how she would like to take you today.  She titters and slowly walks around you, taking her time, taking in your formidable equine body and your " + multiCockDescriptLight(game.player) + ". \"<i>All this, for little ol' me,</i>\" she breathes. She sounds more tantalized than daunted. \"<i>Stand still for me, horsie,</i>\" she commands. Unable to see her any more behind your flank, you do as she says. You feel a pair of tiny hands on your back thigh and then a small but dense weight climbing steadily towards your groin. You bite back laughter at the ticklish sensation.\n\n", false);
         }
         else {
@@ -284,7 +284,7 @@ export function tamaniSexLetHer(): void {
         }
     }
     // Taur-zilla
-    if (player.lowerBody == LOWER_BODY_TYPE_CENTAUR) {
+    if (player.lowerBody == LowerBodyType.CENTAUR) {
         outputText("Hidden entirely by your relatively vast form, you cannot see anything that Tamani is doing, only feel. Perhaps aware of this, Tamani seems determined to make sure that what you feel is a lot. A hand clutches onto your flank as you feel her lean into your groin and begin to slather every part of your " + cockDescript(game.player, 0) + " that she can reach with saliva. The goblin lipstick has its traditional effect and before long your " + cockDescript(game.player, 0) + " is straining, a hard trembling pleasure-center. You hear a teasing giggle from somewhere underneath you, and then you gasp as Tamani clambers onto your groin proper, hands clutching onto your tender underside, most of her weight supported by your bulging cock.\n\n", false);
 
         outputText("Such is your arousal you find you can support her easily, but the sensation makes you cringe, particularly as Tamani sets about her work in earnest. Hanging onto your stomach she slathers your head with attention, her tingling lips and wet tongue all over your tip until you can barely stand it, beading pre-cum into her hungry mouth.\n\n", false);
@@ -741,7 +741,7 @@ export function getRapedByTamaniYouHypnoSlut(): void {
         outputText("  She visibly orgasms, shaking and trembling from head to toe as her pussy milks your " + cockDescript(player, primary) + ".  It only lasts a few seconds, though they feel like heaven, before her body goes nerveless.\n\n", false);
 
         outputText("Taking that as an opportunity, you pick up the pace, plunging yourself in and out of her with a renewed, almost vicious vigor.  The wet slaps of your juice-", false);
-        if (player.skinType == SKIN_TYPE_FUR) outputText("matted", false);
+        if (player.skinType == SkinType.FUR) outputText("matted", false);
         else outputText("slicked", false);
         outputText(" " + player.skinDesc + " impacting her ass fill the air.  You fuck your wife harder and faster with every stroke, knowing you won't last more than a few more thrusts before you're painting her womb white.  Your wife is too cummed out to care or respond, ", false);
         if (cocks == 1) outputText("her tongue hanging out as she pants nonsensical pleasure-noises.", false);

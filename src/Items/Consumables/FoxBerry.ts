@@ -14,7 +14,7 @@ export function foxTF(enhanced: boolean, player: Player): void {
         changeLimit++;
     // Used for dick and boob TFs
     let counter: number = 0;
-    if (player.faceType == FACE_FOX && player.tailType == TAIL_TYPE_FOX && player.earType == EARS_FOX && player.lowerBody == LOWER_BODY_TYPE_FOX && player.skinType == SKIN_TYPE_FUR && rand(3) == 0) {
+    if (player.faceType == FaceType.FOX && player.tailType == TailType.FOX && player.earType == EarType.FOX && player.lowerBody == LowerBodyType.FOX && player.skinType == SkinType.FUR && rand(3) == 0) {
         if (flags[kFLAGS.FOX_BAD_END_WARNING] == 0) {
             outputText("\n\nYou get a massive headache and a craving to raid a henhouse.  Thankfully, both pass in seconds, but <b>maybe you should cut back on the vulpine items...</b>");
             flags[kFLAGS.FOX_BAD_END_WARNING] = 1;
@@ -281,21 +281,21 @@ export function foxTF(enhanced: boolean, player: Player): void {
     }
     // [Grow Fur]
     // FOURTH
-    if ((enhanced || player.lowerBody == LOWER_BODY_TYPE_FOX) && player.skinType != SKIN_TYPE_FUR && changes < changeLimit && rand(4) == 0) {
+    if ((enhanced || player.lowerBody == LowerBodyType.FOX) && player.skinType != SkinType.FUR && changes < changeLimit && rand(4) == 0) {
         // from scales
-        if (player.skinType == SKIN_TYPE_SCALES)
+        if (player.skinType == SkinType.SCALES)
             outputText("\n\nYour skin shifts and every scale stands on end, sending you into a mild panic.  No matter how you tense, you can't seem to flatten them again.  The uncomfortable sensation continues for some minutes until, as one, every scale falls from your body and a fine coat of fur pushes out.  You briefly consider collecting them, but when you pick one up, it's already as dry and brittle as if it were hundreds of years old.  <b>Oh well; at least you won't need to sun yourself as much with your new fur.</b>");
         // from skin
         else
             outputText("\n\nYour skin itches all over, the sudden intensity and uniformity making you too paranoid to scratch.  As you hold still through an agony of tiny tingles and pinches, fine, luxuriant fur sprouts from every bare inch of your skin!  <b>You'll have to get used to being furry...</b>");
-        player.skinType = SKIN_TYPE_FUR;
+        player.skinType = SkinType.FUR;
         player.skinAdj = "";
         player.skinDesc = "fur";
         changes++;
     }
     // [Grow Fox Legs]
     // THIRD
-    if ((enhanced || player.earType == EARS_FOX) && player.lowerBody != LOWER_BODY_TYPE_FOX && changes < changeLimit && rand(5) == 0) {
+    if ((enhanced || player.earType == EarType.FOX) && player.lowerBody != LowerBodyType.FOX && changes < changeLimit && rand(5) == 0) {
         // 4 legs good, 2 legs better
         if (player.isTaur())
             outputText("\n\nYou shiver as the strength drains from your back legs.  Shaken, you sit on your haunches, forelegs braced wide to stop you from tipping over;  their hooves scrape the dirt as your lower body shrinks, dragging them backward until you can feel the upper surfaces of your hindlegs with their undersides.  A wave of nausea and vertigo overtakes you, and you close your eyes to shut out the sensations.  When they reopen, what greets them are not four legs, but only two... and those roughly in the shape of your old hindleg, except for the furry toes where your hooves used to be.  <b>You now have fox legs!</b>");
@@ -303,10 +303,10 @@ export function foxTF(enhanced: boolean, player: Player): void {
         else if (player.isNaga())
             outputText("\n\nYour scales split at the waistline and begin to peel, shedding like old snakeskin.  If that weren't curious enough, the flesh - not scales - underneath is pink and new, and the legs it covers crooked into the hocks and elongated feet of a field animal.  As the scaly coating falls and you step out of it, walking of necessity on your toes, a fine powder blows from the dry skin.  Within minutes, it crumbles completely and is taken by the ever-moving wind.  <b>Your legs are now those of a fox!</b>");
         // other digitigrade
-        else if (player.lowerBody == LOWER_BODY_TYPE_HOOFED || player.lowerBody == LOWER_BODY_TYPE_DOG || player.lowerBody == LOWER_BODY_TYPE_CAT || player.lowerBody == LOWER_BODY_TYPE_BUNNY || player.lowerBody == LOWER_BODY_TYPE_KANGAROO)
+        else if (player.lowerBody == LowerBodyType.HOOFED || player.lowerBody == LowerBodyType.DOG || player.lowerBody == LowerBodyType.CAT || player.lowerBody == LowerBodyType.BUNNY || player.lowerBody == LowerBodyType.KANGAROO)
             outputText("\n\nYour legs twitch and quiver, forcing you to your seat.  As you watch, the ends shape themselves into furry, padded toes.  <b>You now have fox feet!</b>  Rather cute ones, actually.");
         // red drider bb gone
-        else if (player.lowerBody == LOWER_BODY_TYPE_DRIDER_LOWER_BODY)
+        else if (player.lowerBody == LowerBodyType.DRIDER_LOWER_BODY)
             outputText("\n\nYour legs buckle under you and you fall, smashing your abdomen on the ground.  Though your control deserts and you cannot see behind you, still you feel the disgusting sensation of chitin loosening and sloughing off your body, and the dry breeze on your exposed nerves.  Reflexively, your legs cling together to protect as much of their now-sensitive surface as possible.  When you try to part them, you find you cannot.  Several minutes pass uncomforably until you can again bend your legs, and when you do, you find that all the legs of a side bend together - <b>in the shape of a fox's leg!</b>");
         // goo home and goo to bed
         else if (player.isGoo())
@@ -314,49 +314,49 @@ export function foxTF(enhanced: boolean, player: Player): void {
         // reg legs, not digitigrade
         else {
             outputText("\n\nYour hamstrings tense painfully and begin to pull, sending you onto your face.  As you writhe on the ground, you can feel your thighs shortening and your feet stretching");
-            if (player.lowerBody == LOWER_BODY_TYPE_BEE)
+            if (player.lowerBody == LowerBodyType.BEE)
                 outputText(", while a hideous cracking fills the air");
             outputText(".  When the spasms subside and you can once again stand, <b>you find that your legs have been changed to those of a fox!</b>");
         }
-        player.lowerBody = LOWER_BODY_TYPE_FOX;
+        player.lowerBody = LowerBodyType.FOX;
         changes++;
     }
     // Grow Fox Ears]
     // SECOND
-    if ((enhanced || player.tailType == TAIL_TYPE_FOX) && player.earType != EARS_FOX && changes < changeLimit && rand(4) == 0) {
+    if ((enhanced || player.tailType == TailType.FOX) && player.earType != EarType.FOX && changes < changeLimit && rand(4) == 0) {
         // from human/gob/liz ears
-        if (player.earType == EARS_HUMAN || player.earType == EARS_ELFIN || player.earType == EARS_LIZARD) {
+        if (player.earType == EarType.HUMAN || player.earType == EarType.ELFIN || player.earType == EarType.LIZARD) {
             outputText("\n\nThe sides of your face painfully stretch as your ears elongate and begin to push past your hairline, toward the top of your head.  They elongate, becoming large vulpine triangles covered in bushy fur.  <b>You now have fox ears.</b>");
         }
         // from dog/cat/roo ears
         else {
             outputText("\n\nYour ears change, shifting from their current shape to become vulpine in nature.  <b>You now have fox ears.</b>");
         }
-        player.earType = EARS_FOX;
+        player.earType = EarType.FOX;
         changes++;
     }
     // [Grow Fox Tail](fairly common)
     // FIRST
-    if (player.tailType != TAIL_TYPE_FOX && changes < changeLimit && rand(4) == 0) {
+    if (player.tailType != TailType.FOX && changes < changeLimit && rand(4) == 0) {
         // from no tail
-        if (player.tailType == TAIL_TYPE_NONE)
+        if (player.tailType == TailType.NONE)
             outputText("\n\nA pressure builds on your backside.  You feel under your [armor] and discover a strange nodule growing there that seems to be getting larger by the second.  With a sudden flourish of movement, it bursts out into a long and bushy tail that sways hypnotically, as if it had a mind of its own.  <b>You now have a fox's tail!</b>");
         // from another type of tail
         else
             outputText("\n\nPain lances through your lower back as your tail shifts violently.  With one final aberrant twitch, it fluffs out into a long, bushy fox tail that whips around in an almost hypnotic fashion.  <b>You now have a fox's tail!</b>");
-        player.tailType = TAIL_TYPE_FOX;
+        player.tailType = TailType.FOX;
         player.tailVenom = 1;
         changes++;
     }
     // [Grow Fox Face]
     // LAST - muzzlygoodness
     // should work from any face, including other muzzles
-    if (player.skinType == SKIN_TYPE_FUR && player.faceType != FACE_FOX && changes < changeLimit && rand(5) == 0) {
+    if (player.skinType == SkinType.FUR && player.faceType != FaceType.FOX && changes < changeLimit && rand(5) == 0) {
         outputText("\n\nYour face pinches and you clap your hands to it.  Within seconds, your nose is poking through those hands, pushing them slightly to the side as new flesh and bone build and shift behind it, until it stops in a clearly defined, tapered, and familiar point you can see even without the aid of a mirror.  <b>Looks like you now have a fox's face.</b>");
         if (silly())
             outputText("  And they called you crazy...");
         changes++;
-        player.faceType = FACE_FOX;
+        player.faceType = FaceType.FOX;
     }
     if (player.tone > 40 && changes < changeLimit && rand(2) == 0) {
         outputText("\n\nMoving brings with it a little more jiggle than you're used to.  You don't seem to have gained weight, but your muscles seem less visible, and various parts of you are pleasantly softer.");

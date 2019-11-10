@@ -1476,8 +1476,8 @@ export function updatePregnancy(): boolean {
             // [(dick1 exists)
             if (player.cocks.length > 1) outputText(", followed in short order by white squirts from " + sMultiCockDesc(player) + " remaining", false);
             outputText(".  Your " + vaginaDescript(player, 0) + " quivers and pulses as well, adding ", false);
-            if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLICK) outputText("a trickle", false);
-            else if (player.vaginas[0].vaginalWetness < VAGINA_WETNESS_SLAVERING) outputText("a squirt", false);
+            if (player.vaginas[0].vaginalWetness < VaginaWetness.SLICK) outputText("a trickle", false);
+            else if (player.vaginas[0].vaginalWetness < VaginaWetness.SLAVERING) outputText("a squirt", false);
             else outputText("nearly a cupful of fluid", false);
             outputText(" from your female orgasm to the puddle on the ground below your ass.\n\n", false);
             // (gain 1 nemo-dick, reduce lust to min)]
@@ -1516,9 +1516,9 @@ export function updatePregnancy(): boolean {
         if (player.cor < 50) outputText("You rue the day you encountered that hateful imp.  ", false);
         outputText("The pain begins to subside as your delivery continues... replaced with a building sensation of pleasure.  Arousal spikes through you as the contractions intensify, and as you feel something pass you have a tiny orgasm.\n\nYet you feel more within you, and the contractions spike again, pushing you to orgasm as you pass something else.  It repeats, over and over, nearly a dozen times you birth and orgasm.  After an eternity of procreation and pleasure, you sense your ordeal is over and collapse, unconscious.", false);
 
-        if (player.vaginas[0].vaginalLooseness == VAGINA_LOOSENESS_TIGHT) player.vaginas[0].vaginalLooseness++;
+        if (player.vaginas[0].vaginalLooseness == VaginaLooseness.TIGHT) player.vaginas[0].vaginalLooseness++;
         // 50% chance
-        if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_GAPING_WIDE && rand(2) == 0) {
+        if (player.vaginas[0].vaginalLooseness < VaginaLooseness.GAPING_WIDE && rand(2) == 0) {
             player.vaginas[0].vaginalLooseness++;
             outputText("\n\n<b>Your cunt is painfully stretched from the ordeal, permanently enlarged.</b>", false);
         }
@@ -1545,7 +1545,7 @@ export function updatePregnancy(): boolean {
             outputText("  <b>Your breasts have grown to B-cups!</b>", false);
             player.growTits(1, 1, false, 3);
         }
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         if (player.gender == 1) player.gender = 3;
         if (player.gender == 0) player.gender = 2;
         player.orgasm();
@@ -1652,7 +1652,7 @@ export function updatePregnancy(): boolean {
             player.boostLactation(1);
         }
         player.cuntChange(120, true, true, false);
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         if (player.gender == 1) player.gender = 3;
         if (player.gender == 0) player.gender = 2;
         player.orgasm();
@@ -1695,7 +1695,7 @@ export function updatePregnancy(): boolean {
         // FUCKING BIRTH SHIT HERE.
         AmilyScene.pcBirthsAmilysKidsQuestVersion();
         player.cuntChange(60, true, true, false);
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         player.orgasm();
         dynStats("str", -1, "tou", -2, "spe", 3, "lib", 1, "sen", .5);
         displayedUpdate = true;
@@ -1720,7 +1720,7 @@ export function updatePregnancy(): boolean {
             player.boostLactation(.5);
         }
         player.cuntChange(60, true, true, false);
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         if (player.gender == 1) player.gender = 3;
         if (player.gender == 0) player.gender = 2;
         player.orgasm();
@@ -1762,7 +1762,7 @@ export function updatePregnancy(): boolean {
         }
         outputText("  ", false);
         player.cuntChange(100, true);
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         if (player.gender == 1) player.gender = 3;
         if (player.gender == 0) player.gender = 2;
         player.orgasm();
@@ -1802,7 +1802,7 @@ export function updatePregnancy(): boolean {
             player.boostLactation(.5);
         }
         player.cuntChange(60, true);
-        if (player.vaginas[0].vaginalWetness == VAGINA_WETNESS_DRY) player.vaginas[0].vaginalWetness++;
+        if (player.vaginas[0].vaginalWetness == VaginaWetness.DRY) player.vaginas[0].vaginalWetness++;
         if (player.gender == 1) player.gender = 3;
         if (player.gender == 0) player.gender = 2;
         player.orgasm();
@@ -1861,9 +1861,9 @@ export function updatePregnancy(): boolean {
             // Large egg scene
             else {
                 outputText("A sudden shift in the weight of your pregnant belly staggers you, dropping you to your knees.  You realize something is about to be birthed, and you shed your " + player.armorName + " before it can be ruined by what's coming.  A contraction pushes violently through your midsection, ", false);
-                if (player.vaginas[0].vaginalLooseness < VAGINA_LOOSENESS_LOOSE) outputText("stretching your tight cunt painfully, the lips opening wide ", false);
-                if (player.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_LOOSE && player.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_GAPING_WIDE) outputText("temporarily stretching your cunt-lips wide-open ", false);
-                if (player.vaginas[0].vaginalLooseness > VAGINA_LOOSENESS_GAPING_WIDE) outputText("parting your already gaping lips wide ", false);
+                if (player.vaginas[0].vaginalLooseness < VaginaLooseness.LOOSE) outputText("stretching your tight cunt painfully, the lips opening wide ", false);
+                if (player.vaginas[0].vaginalLooseness >= VaginaLooseness.LOOSE && player.vaginas[0].vaginalLooseness <= VaginaLooseness.GAPING_WIDE) outputText("temporarily stretching your cunt-lips wide-open ", false);
+                if (player.vaginas[0].vaginalLooseness > VaginaLooseness.GAPING_WIDE) outputText("parting your already gaping lips wide ", false);
                 outputText("as something begins sliding down your passage.  A burst of green slime soaks the ground below as the birthing begins in earnest, and the rounded surface of a strangely colored egg peaks between your lips.  You push hard and the large egg pops free at last, making you sigh with relief as it drops into the pool of slime.  The experience definitely turns you on, and you feel your clit growing free of its hood as another big egg starts working its way down your birth canal, rubbing your sensitive vaginal walls pleasurably.   You pant and moan as the contractions stretch you tightly around the next, slowly forcing it out between your nether-lips.  The sound of a gasp startles you as it pops free, until you realize it was your own voice responding to the sudden pressure and pleasure.  Aroused beyond reasonable measure, you begin to masturbate ", false);
                 if (player.clitLength > 5) outputText("your massive cock-like clit, jacking it off with the slimy birthing fluids as lube.   It pulses and twitches in time with your heartbeats, its sensitive surface overloading your fragile mind with pleasure.  ", false);
                 if (player.clitLength > 2 && player.clitLength <= 5) outputText("your large clit like a tiny cock, stroking it up and down between your slime-lubed thumb and fore-finger.  It twitches and pulses with your heartbeats, the incredible sensitivity of it overloading your fragile mind with waves of pleasure.  ", false);

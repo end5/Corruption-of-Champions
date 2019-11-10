@@ -280,16 +280,16 @@ export class Sheila extends Monster {
         }
 
         // this.plural = false;
-        this.vaginas.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(game.flags[kFLAGS.SHEILA_XP] <= 3 && !sheilaDemon, VaginaWetness.SLICK, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 30, 0, 0, 0);
         this.breasts.createBreastRow(game.flags[kFLAGS.SHEILA_CORRUPTION] / 10);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);
         this.tallness = 6 * 12;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_KANGAROO;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE + 1;
+        this.lowerBody = LowerBodyType.KANGAROO;
         this.skinTone = "tan";
         this.hairColor = "auburn";
         this.hairLength = 11;
@@ -331,7 +331,7 @@ export class Sheila extends Monster {
                 add(ConsumableLib.SUCMILK, 1 / 3).
                 add(ConsumableLib.INCUBID, 1 / 2);
         }
-        this.tailType = TAIL_TYPE_KANGAROO;
+        this.tailType = TailType.KANGAROO;
         checkMonster();
     }
 

@@ -184,13 +184,13 @@ export class Minerva extends Monster {
         this.ballSize = 3;
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_NORMAL);
+        this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.NORMAL);
         this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 8 * 12 + 4;
-        this.hipRating = HIP_RATING_CURVY;
-        this.buttRating = BUTT_RATING_LARGE + 1;
+        this.hipRating = HipRating.CURVY;
+        this.buttRating = ButtRating.LARGE + 1;
         this.skinTone = "blue";
         this.hairColor = "red";
         this.hairLength = 25;
@@ -213,7 +213,7 @@ export class Minerva extends Monster {
         this.gems = rand(25) + 10;
         this.additionalXP = 50;
         this.drop = new WeightedDrop(ConsumableLib.PURPEAC, 1);
-        this.wingType = WING_TYPE_HARPY;
+        this.wingType = WingType.HARPY;
         this.wingDesc = "fluffy feathery";
         checkMonster();
     }

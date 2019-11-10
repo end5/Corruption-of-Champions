@@ -52,21 +52,21 @@ export class Minotaur extends Monster {
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = this.ballSize * 10;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_STRETCHED;
-        this.ass.analWetness = ANAL_WETNESS_NORMAL;
+        this.ass.analLooseness = AnalLooseness.STRETCHED;
+        this.ass.analWetness = AnalWetness.NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);
         this.tallness = rand(37) + 84;
-        this.hipRating = HIP_RATING_AVERAGE;
-        this.buttRating = BUTT_RATING_AVERAGE;
-        this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+        this.hipRating = HipRating.AVERAGE;
+        this.buttRating = ButtRating.AVERAGE;
+        this.lowerBody = LowerBodyType.HOOFED;
         this.skinTone = furColor;
-        this.skinType = SKIN_TYPE_FUR;
+        this.skinType = SkinType.FUR;
         this.skinDesc = "shaggy fur";
         this.hairColor = furColor;
         this.hairLength = 3;
         initStrTouSpeInte(hasAxe ? 75 : 50, 60, 30, 20);
         initLibSensCor(40 + this.ballSize * 2, 15 + this.ballSize * 2, 35);
-        this.faceType = FACE_COW_MINOTAUR;
+        this.faceType = FaceType.COW_MINOTAUR;
         this.weaponName = hasAxe ? "axe" : "fist";
         this.weaponVerb = hasAxe ? "cleave" : "punch";
         this.armorName = "thick fur";
@@ -84,7 +84,7 @@ export class Minotaur extends Monster {
                 .elseDrop(null);
         }
         this.special1 = MinotaurScene.minoPheromones;
-        this.tailType = TAIL_TYPE_COW;
+        this.tailType = TailType.COW;
         checkMonster();
     }
 

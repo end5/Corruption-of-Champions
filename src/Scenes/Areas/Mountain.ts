@@ -34,7 +34,7 @@ export function exploreMountain(): void {
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] < 3) {
             trace("CHANCE AT HELLHOUND GAO");
             // Requires canine face, [either two dog dicks, or a vag and pregnant with a hellhound], at least two other hellhound features (black fur, dog legs, dog tail), and corruption >=60.
-            if (player.faceType == FACE_DOG && (player.cocks.dogCocks() >= 2 || (player.vaginas.length > 0 && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TAIL_TYPE_DOG && (player.lowerBody == LOWER_BODY_TYPE_DOG || player.hairColor == "midnight black")) {
+            if (player.faceType == FaceType.DOG && (player.cocks.dogCocks() >= 2 || (player.vaginas.length > 0 && player.pregnancyType == PregnancyStore.PREGNANCY_HELL_HOUND)) && player.cor >= 60 && player.tailType == TailType.DOG && (player.lowerBody == LowerBodyType.DOG || player.hairColor == "midnight black")) {
                 trace("PASS BODYCHECK");
                 if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00141] == 0) {
                     HellHoundScene.HellHoundMasterEncounter();
@@ -162,7 +162,7 @@ export function exploreMountain(): void {
         }
         // Mino gangbang
         if (player.effects.findByType(StatusAffects.MinoPlusCowgirl) < 0 || rand(10) == 0) {
-            if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HORNS_COW_MINOTAUR && player.earType == EARS_COW && player.tailType == TAIL_TYPE_COW && player.lactationQ() >= 200 && player.breasts.biggestTitSize() >= 3 && player.minotaurAddicted()) {
+            if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HornType.COW_MINOTAUR && player.earType == EarType.COW && player.tailType == TailType.COW && player.lactationQ() >= 200 && player.breasts.biggestTitSize() >= 3 && player.minotaurAddicted()) {
                 // PC must be a cowmorph (horns, legs, ears, tail, lactating, breasts at least C-cup)
                 // Must be addicted to minocum
                 outputText("As you pass a shadowy cleft in the mountainside, you hear the now-familiar call of a cowgirl echoing from within.  Knowing what's in store, you carefully inch closer and peek around the corner.");
@@ -322,9 +322,9 @@ function joinBeingAMinoCumSlut(): void {
     outputText("\n\nA giggle comes from your side, as you see the cow-girl is back up onto her knees, having recovered from her exalted orgasm.  She crawls forward, kneeling just over your head and leaning in to kiss her minotaur lover.  The two whisper sweet nothings to each other, too vague and indistinct to hear, but it doesn't matter.  All you can focus on is the dick lodged firmly inside of you... that, and the soaking cunt of the cow-girl just inches from your face.  Alabaster droplets drip down her legs, one even landing on your lips.  Before you can stop yourself, you lick them clean, savoring the taste of the second-hand cum.");
 
     outputText("\n\nSome part of your mind voices a complaint at what comes next, a voice that's quickly squelched inside the addiction-fueled haze of your brain.  You pull your head upwards and extend your tongue, slurping a large glob of cum from the cow-girl's snatch.  There's a surprised yelp from above you, followed by a coo of pleasure.  To your surprise, the cow-girl actually lowers her cunt down onto your face, giggling madly, filling your nostrils with the scent of her muff, with the scent of recent sex.  Not letting this opportunity go to waste, you repay her actions from earlier, slipping your ");
-    if (player.tongueType == TONUGE_SNAKE) outputText("serpentine ");
-    else if (player.tongueType == TONUGE_DEMONIC) outputText("demonic ");
-    else if (player.tongueType == TONUGE_DRACONIC) outputText("draconic ");
+    if (player.tongueType == TongueType.SNAKE) outputText("serpentine ");
+    else if (player.tongueType == TongueType.DEMONIC) outputText("demonic ");
+    else if (player.tongueType == TongueType.DRACONIC) outputText("draconic ");
     outputText("tongue inside her, eagerly licking out and guzzling down the remnants of the minotaur's present.");
 
     outputText("\n\nThe minotaur, for his part, is in no rush to give you a cream pie of your own. His thrusts are slow and deliberate, with a rhythm that has you writhing with pleasure.  The three of you moan together like some kind of erotic pyramid.  The bull's assault on your ");

@@ -24,13 +24,13 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
         this.balls = 2;
         this.ballSize = 2;
         this.breasts.createBreastRow(0);
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);
         this.tallness = 7 * 12 + 6;
-        this.hipRating = HIP_RATING_CURVY + 2;
-        this.buttRating = BUTT_RATING_LARGE + 1;
-        this.lowerBody = LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS;
+        this.hipRating = HipRating.CURVY + 2;
+        this.buttRating = ButtRating.LARGE + 1;
+        this.lowerBody = LowerBodyType.CHITINOUS_SPIDER_LEGS;
         this.skinTone = "dusky";
         this.hairColor = "red";
         this.hairLength = 13;
@@ -52,7 +52,7 @@ export class MaleSpiderMorph extends AbstractSpiderMorph {
         this.drop = new WeightedDrop().add(ConsumableLib.S_GOSSR, 5)
             .add(UseableLib.T_SSILK, 1)
             .add(null, 4);
-        this.tailType = TAIL_TYPE_SPIDER_ADBOMEN;
+        this.tailType = TailType.SPIDER_ADBOMEN;
         this.tailRecharge = 0;
         checkMonster();
     }

@@ -198,7 +198,7 @@ export function repeatWildHuntEncounter(): void {
 
     outputText("The Erlking is coming for you!\n\n");
 
-    if (player.wingType != WING_TYPE_NONE) outputText("You quickly glance from side to side, realizing that the trees here grow too close together for your to spread your [wings].\n\n");
+    if (player.wingType != WingType.NONE) outputText("You quickly glance from side to side, realizing that the trees here grow too close together for your to spread your [wings].\n\n");
 
     outputText("Do you make a run for it or stand your ground?\n\n");
 
@@ -329,7 +329,7 @@ export function repeatWildHuntGivenToTheHounds(): void {
     outputText("After all, comes a thought in your fog-addled head, they’ve earned the right to do whatever they want to their prey.\n\n");
 
     outputText("It doesn’t take the two dog men long.  They rock back and forth, shoving their thick cocks in and out of your submissive, helpless body.  The one in front grabs your head, burying your [face] into his crotch, so deep that your tongue licks against the throbbing bulge of his knot, your nose buried in the thick fur above his shaft.");
-    if (player.tailType != TAIL_TYPE_NONE) outputText("  The Hound behind grabs you by [onetail], using it as a handhold as he thrusts over and over into your [asshole].");
+    if (player.tailType != TailType.NONE) outputText("  The Hound behind grabs you by [onetail], using it as a handhold as he thrusts over and over into your [asshole].");
     else outputText("  The Hound behind grabs you by your [ass], thrusting into you again and again.");
     outputText("  You tremble, completely dominated by the two powerful males as they make you their prey-bitch.\n\n");
 
@@ -440,13 +440,13 @@ function surrenderToTheHounds(): void {
 
     outputText("The words rumble through you, and you feel a warm heat building in your stomach.  Something about your arms and legs feel... off... but you can’t take your eyes away from the Erlking’s, not even when pain lances through your body, your muscles swelling, your [armor] tearing and falling away.  The Erlking releases his hold on you and you look down immediately at your body.\n\n");
 
-    if (player.skinType == SKIN_TYPE_FUR) outputText("Your fur turns jet black.");
+    if (player.skinType == SkinType.FUR) outputText("Your fur turns jet black.");
     else outputText("Black fur runs down your body like a tide coming in.");
     outputText("  Your muscles bulge and swell beneath the midnight coat.");
     if (player.breasts.breasts.hasBreasts()) outputText("  Your chest first flattens out, then swells, as");
     else outputText("  T");
     outputText(" taut muscles fill in your entire frame.");
-    if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
+    if (player.lowerBody == LowerBodyType.DOG) outputText("  Your doggie paws tingle as muscles build there, rebuilding them as stocky, athletic hound legs.");
     else outputText("  Your [legs] bend and crack, making you howl in pain as they rebuild themselves as onyx-clawed canine paws.");
     outputText("\n\n");
 
@@ -488,9 +488,9 @@ function surrenderToTheHounds(): void {
     outputText("  You smile an open-mouthed doggie smile, feeling the warm churning of cum building in your throbbing balls.  You ache for release, wanting nothing more than to stroke yourself.  You raise your black-nailed hands to your cock, but stop short, knowing instinctively that masturbating is forbidden.\n\n");
 
     outputText("Instead, you curl your stomach, trying to reach your cock with your mouth.");
-    if (player.faceType != FACE_DOG) outputText("  The world bends alarmingly as your nose pushes out, creating a black-furred muzzle where your mouth once was.");
+    if (player.faceType != FaceType.DOG) outputText("  The world bends alarmingly as your nose pushes out, creating a black-furred muzzle where your mouth once was.");
     outputText("  You whine, looking directly at your pointed dog cock, and the trickle of pre running from its tip, but even your");
-    if (player.faceType != FACE_DOG) outputText(" new");
+    if (player.faceType != FaceType.DOG) outputText(" new");
     outputText(" muzzle and broad, flat tongue can’t reach it.\n\n");
 
     outputText("The Erlking... The Master, your mind corrects itself.  The Master murmurs softly to you.  “<i>Patience, Hound,</i>” he commands, pressing a strong, gloved hand against your chest, holding you down on the ground.  You go still, submissive to the Master as he kneels next to your prone form.  His other hand grasps your dick slowly, and your mind melts.\n\n");

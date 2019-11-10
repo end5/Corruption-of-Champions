@@ -21,25 +21,25 @@ export function Hummus(player: Player): void {
     else {
         outputText("\n\nYou cry out as the world spins around you.  You're aware of your entire body sliding and slipping, changing and morphing, but in the sea of sensation you have no idea exactly what's changing.  You nearly black out, and then it's over.  Maybe you had best have a look at yourself and see what changed?", false);
     }
-    player.armType = ARM_TYPE_HUMAN;
-    player.eyeType = EYES_HUMAN;
-    player.antennae = ANTENNAE_NONE;
-    player.faceType = FACE_HUMAN;
-    player.lowerBody = LOWER_BODY_TYPE_HUMAN;
-    player.wingType = WING_TYPE_NONE;
+    player.armType = ArmType.HUMAN;
+    player.eyeType = EyeType.HUMAN;
+    player.antennae = AntennaeType.NONE;
+    player.faceType = FaceType.HUMAN;
+    player.lowerBody = LowerBodyType.HUMAN;
+    player.wingType = WingType.NONE;
     player.wingDesc = "non-existant";
-    player.tailType = TAIL_TYPE_NONE;
-    player.tongueType = TONUGE_HUMAN;
+    player.tailType = TailType.NONE;
+    player.tongueType = TongueType.HUMAN;
     player.tailRecharge = 0;
     player.horns = 0;
-    player.hornType = HORNS_NONE;
-    player.earType = EARS_HUMAN;
-    player.skinType = SKIN_TYPE_PLAIN;
+    player.hornType = HornType.NONE;
+    player.earType = EarType.HUMAN;
+    player.skinType = SkinType.PLAIN;
     player.skinDesc = "skin";
     player.skinAdj = "";
-    player.armType = ARM_TYPE_HUMAN;
-    player.tongueType = TONUGE_HUMAN;
-    player.eyeType = EYES_HUMAN;
+    player.armType = ArmType.HUMAN;
+    player.tongueType = TongueType.HUMAN;
+    player.eyeType = EyeType.HUMAN;
     if (player.fertility > 15)
         player.fertility = 15;
     if (player.cumMultiplier > 50)

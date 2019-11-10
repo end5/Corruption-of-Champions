@@ -82,18 +82,18 @@ export class Harpy extends Monster {
         this.imageName = "harpy";
         this.long = "You are fighting a tall, deranged harpy. She appears very human, about six feet six inches tall but covered in a fine layer of powder-blue down. Her arms are sinewy and muscular, with a long web connecting them to her ample hips, covered in stringy blue feathers to aid her flight. A larger pair of powdery-blue wings also protrudes from her shoulder blades, flapping idly. She appears quite deranged as she circles you, approaching and backing away erratically. Her face is quite beautiful, with fine lilac makeup adorning the features of a handsome woman, and her lips are traced with rich golden lipstick. As she circles you, squawking frantically and trying to intimidate you, your eyes are drawn to her slender torso and small, pert breasts, each the size of a small fruit and covered in a layer of the softest feathers which ripple and move with the gusts from her wings. As astounding as her breasts are, her egg-bearing hips are even more impressive.  They're twice as wide as her torso, with enormous, jiggling buttocks where her huge, meaty thighs are coming up to meet them. Her legs end in three-pronged talons; their shadowy black curves glinting evilly in the light.";
         // this.plural = false;
-        this.vaginas.createVagina(false, VAGINA_WETNESS_SLICK, VAGINA_LOOSENESS_GAPING_WIDE);
+        this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.GAPING_WIDE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
         this.breasts.createBreastRow(Appearance.breastCupInverse("B"));
-        this.ass.analLooseness = ANAL_LOOSENESS_TIGHT;
-        this.ass.analWetness = ANAL_WETNESS_DRY;
+        this.ass.analLooseness = AnalLooseness.TIGHT;
+        this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);
         this.tallness = 6 * 12 + 6;
-        this.hipRating = HIP_RATING_INHUMANLY_WIDE;
-        this.buttRating = BUTT_RATING_EXPANSIVE;
-        this.lowerBody = LOWER_BODY_TYPE_HARPY;
+        this.hipRating = HipRating.INHUMANLY_WIDE;
+        this.buttRating = ButtRating.EXPANSIVE;
+        this.lowerBody = LowerBodyType.HARPY;
         this.skinTone = "pink";
-        this.skinType = SKIN_TYPE_PLAIN;
+        this.skinType = SkinType.PLAIN;
         this.skinDesc = "feathers";
         this.hairColor = "blue";
         this.hairLength = 16;
@@ -112,7 +112,7 @@ export class Harpy extends Monster {
         this.gems = 10 + rand(4);
         this.drop = new ChainedDrop().add(ArmorLib.W_ROBES, 1 / 10)
             .elseDrop(ConsumableLib.GLDSEED);
-        this.wingType = WING_TYPE_HARPY;
+        this.wingType = WingType.HARPY;
         this.special1 = harpyUberCharge;
         this.special2 = harpyTease;
         checkMonster();
