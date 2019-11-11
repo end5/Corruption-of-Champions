@@ -297,7 +297,7 @@ export class Player extends Character {
     }
 
     public lactationQ(): number {
-        if (this.breasts.biggestLactation() < 1)
+        if (this.breastRows.biggestLactation() < 1)
             return 0;
         // (Milk production TOTAL= breastSize x 10 * lactationMultiplier * breast total * milking-endurance (1- default, maxes at 2.  Builds over time as milking as done)
         // (Small – 0.01 mLs – Size 1 + 1 Multi)
@@ -306,7 +306,7 @@ export class Player extends Character {
         let total: number;
         if (this.effects.findByType(StatusAffects.LactationEndurance) < 0)
             this.effects.create(StatusAffects.LactationEndurance, 1, 0, 0, 0);
-        total = this.breasts.biggestTitSize() * 10 * this.breasts.averageLactation() * this.effects.getValue1Of(StatusAffects.LactationEndurance) * this.breasts.totalBreasts();
+        total = this.breastRows.biggestTitSize() * 10 * this.breastRows.averageLactation() * this.effects.getValue1Of(StatusAffects.LactationEndurance) * this.breastRows.totalBreasts();
         if (this.effects.getValue1Of(StatusAffects.LactationReduction) >= 48)
             total = total * 1.5;
         return total;

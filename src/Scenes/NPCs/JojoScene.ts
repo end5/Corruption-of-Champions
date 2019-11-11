@@ -262,7 +262,7 @@ function jojoMutationOfferYes(): void {
     // [Female]
     else {
         outputText("In your fantasy, you're riding Jojo hard, milking his swollen dick with your pussy", false);
-        if (player.breasts.biggestLactation() < 2) outputText(" while your tits cover his head, nearly suffocating him", false);
+        if (player.breastRows.biggestLactation() < 2) outputText(" while your tits cover his head, nearly suffocating him", false);
         else outputText(" while he suckles one of your breasts hungrily, sucking down your milk", false);
         outputText(". A crystalline dildo is buried hilt-deep in his ass, held in place by a harness of your own design that twists it around every time he moves.  You cum again, relishing the desperate and needy look the poor mouse is giving.  Your spasming pussy is immediately filled with even more warmth, and you feel the thick spunk forcing its way into your core until you feel bloated.\n\n", false);
         outputText("You calm your trembling body and stand up off of him, soaking him with his own escaping fluids.  Jojo moans and starts pumping his dick, wriggling his hips while his orgasm is dragged on by the dildo squeezing his prostate.  You curl up alongside his ear and begin whispering into his mind, watching as your words soak in and begin to change him with the aid of the crystalline cock's magic.</i>\n==========================================\n", false);
@@ -289,7 +289,7 @@ function mutateJojo(): void {
     outputText("On cue, you feel his tail curl up your back, already longer than it ever was before.  To your surprise the fur is vanishing, leaving you feeling smooth rubbery skin.  It splits three ways in an instant, but each grows thicker than his tail ever was before.  One curls over your shoulder as if looking for something, and reveals a strange sucking opening, sticky with some kind of fluid and filled with undulating fleshy ridges.\n\n", false);
     outputText("You smile and give the opening a lick – it's sweet – and turn back to his ear, \"<i>Now you're where I want you bitch.  Feel that dildo squeezing your prostate?  You'll cum just from that won't you?  Take those new tentacles off your dick and aim them at your face, I want to watch you give yourself a facial and cum all over yourself just from my other toy.</i>\"\n\n", false);
     outputText("Despite looking lost to the pleasure, his body obeys, releasing his dick and aiming his shoulder-tentacles at his open mouth.  You can see now that each is a dark green color, and capped with a shiny purplish head, just like the vines in the corrupted glade.  Each of them starts flaring wider, and you feel his cock snake up between your ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("bodies", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("bodies", false);
     else outputText(allBreastsDescript(player), false);
     outputText(", until it pops out just under his chin, looking like a fatter version of the twins on his shoulders.  All three start flaring wider in preparation, and you know he is about to erupt.\n\n", false);
     outputText("\"<i>Good toy,</i>\" you whisper, \"<i>cum for your ", false);
@@ -297,7 +297,7 @@ function mutateJojo(): void {
     else outputText("mistress", false);
     outputText(".</i>\"\n\n", false);
     outputText("He submits happily, a smile overtaking his face in spite of his eyes rolled back and his tongue drooling all over his muzzle.  His entire body quakes, and you feel bulges beginning to pass under your ", false);
-    if (player.breasts.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
+    if (player.breastRows.biggestTitSize() >= 1) outputText(allBreastsDescript(player), false);
     else outputText("chest", false);
     outputText(".  You can see them moving up the shoulder tentacles with agonizing slowness, until all three cock-vines erupt simultaneously, splattering Jojo's face with his own seed.  The perfect synchronization is broken immediately when his primary tentacle blasts a glob into his hair, and then the entire scene devolves into a mess of quivering tentacles and splattering spooge.  Jojo's mouth catches plenty, and he begins swallowing instinctively as his tentacles do their best to drown him.\n\n", false);
     outputText("You pull back and watch, ", false);
@@ -462,12 +462,12 @@ export function useTentacleJojo(): void {
     outputText("\n\n", false);
     outputText("You feel the bindings around your waist sliding and twisting to free up some of their length.  The pair of tentacle-cocks rear up before your " + allBreastsDescript(player) + " like hungry snakes eyeing a mouse.\n\n", false);
     // (Large tits &/or multitits with no lactation)
-    if ((player.breasts.biggestTitSize() >= 4 || (player.breasts.biggestTitSize() >= 4 && player.breastRows.length > 1)) && player.breasts.biggestLactation() < 2) {
+    if ((player.breastRows.biggestTitSize() >= 4 || (player.breastRows.biggestTitSize() >= 4 && player.breastRows.length > 1)) && player.breastRows.biggestLactation() < 2) {
         titFucking = true;
         outputText("The twin tentacles erupt like kinked up garden-hoses that have suddenly become free, splattering your chest with thick white goop.  They spurt until all of your " + breastDescript(game.player, 0) + " are painted white with warm dripping goop.  One of the purple-headed monsters slides into the mess, while the other ties itself around your " + breastDescript(game.player, 0) + ", squeezing its brother tightly between the walls of cum-slickened titflesh.  The swollen purple head bumps your chin, smearing you with its cum as it begins to fuck your tits.  Glob after glob of mouse-cum spatters up from your chest into your chin and mouth, eventually soaking your " + faceMuzzle() + " and neck.\n\n", false);
     }
     // (Lactating highly)
-    if (player.breasts.biggestLactation() >= 2) {
+    if (player.breastRows.biggestLactation() >= 2) {
         nippleSucking = true;
         outputText("The heads split apart, dividing into quarters as they reveal wet openings with pink, tongue-like appendages.  Milk begins to leak from your nipples as their intent becomes clear, and you inwardly scold yourself for ", false);
         if (player.cor < 80) outputText("being such a wanton slut", false);
@@ -482,14 +482,14 @@ export function useTentacleJojo(): void {
         outputText("\n\n", false);
     }
     // (NEITHER - JUST NIPS)
-    else if (player.breasts.biggestTitSize() < 4 && rand(2) == 0) {
+    else if (player.breastRows.biggestTitSize() < 4 && rand(2) == 0) {
         nippleSucking = true;
         outputText("The heads split apart, dividing into quarters and revealing a wet pink opening with a writhing tongue in the center.  They latch on and suck hard, each pulling your entire " + nippleDescription(player, 0) + " into their interior.  Gasping at the sensations, you can only moan as the tentacular tongue twists itself around your nipple.  ", false);
-        if (player.breasts.biggestLactation() >= 1) outputText("A squirt of milk escapes and is quickly sucked down by the hungry tentacles.  ", false);
+        if (player.breastRows.biggestLactation() >= 1) outputText("A squirt of milk escapes and is quickly sucked down by the hungry tentacles.  ", false);
         outputText("The sucking and teasing is relentless, keeping your nipples hard and incredibly sensative as Jojo has his way with you.\n\n", false);
     }
     // mouthfuck – if shoulder-tentacles are unoccupied – random
-    else if (player.breasts.biggestTitSize() < 4 && player.breasts.biggestLactation() < 2) {
+    else if (player.breastRows.biggestTitSize() < 4 && player.breastRows.biggestLactation() < 2) {
         mouthFucking = true;
         outputText("You feel the bindings around your waist sliding and twisting to free up some of their length.  The pair of tentacle-cocks rear up in front of your face, dripping cum from their tainted purple heads.  One curls around the other, twirling around it until the two tentacles look more like some obscene double-headed dildo.  They smear against your lips, coating them with spunk and begging to be let inside.  Pushing harder and harder, they eventally work your jaw open and cram themselves inside.  An immediate jet of cum paints the back of your throat, nearly gagging you for a moment.  The sensation passes quickly, as if your gag reflex was somehow numbed.\n\n", false);
         outputText("Twinned dicks force themselves further into your throat, until you are sure they must be outlined and clearly visible to Jojo on your neck.  The mouse-dicks push further in, working their way down to the bottom of your esophagus before pulling back, dripping cum all the while.  Every now and then you get a feeling of fullness in your belly, and realize one of them must have shot off a load of spunk directly into you.  The brutal mouthfuck shows no sign of slowing down, forcing you to gasp in a breath through your nose every time the tentacles pull back.\n\n", false);
@@ -550,7 +550,7 @@ export function useTentacleJojo(): void {
         }
     }
     // Breastgasm
-    if (player.breasts.biggestLactation() >= 2 && nippleSucking) {
+    if (player.breastRows.biggestLactation() >= 2 && nippleSucking) {
         outputText("Your " + breastDescript(game.player, 0) + " squirt milk even harder, pushing the tentacles clear off you with the force of your lactation.  Your " + nippleDescription(player, 0) + "s look like ", false);
         if (player.nippleLength >= 2) outputText("even larger", false);
         else outputText("obscene", false);
@@ -1134,15 +1134,15 @@ function jojosFirstRape(): void {
 
         outputText("He lets out little grunts and whines of protest as you ride him hard, but quickly cums.  The flood of warmth inside your canal only serves to spur you on, slamming your " + vaginaDescript(player, 0) + " down on him with brutal force.  You envision yourself raping others, corrupting all those you come across with your needy pussy.  You imagine what it must be like to be a succubus, fucking poor monks like this, your magics making your victim's manhood ever larger.  The thought breaks over you like a wave and you cum, hard; your " + vaginaDescript(player, 0) + " clamps down hard on Jojo's cock as he finds himself cumming again, eyes rolling back in his head.  You shudder and moan, cum squirting out of your fuck-hole with each bounce on the poor mouse.");
 
-        if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
+        if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestLactation() < 2) {
             outputText("  Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.");
         }
 
-        if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) {
+        if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() < 3) {
             outputText("  Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.");
         }
 
-        if (player.breasts.biggestLactation() >= 3) {
+        if (player.breastRows.biggestLactation() >= 3) {
             outputText("  Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.");
         }
 
@@ -1161,15 +1161,15 @@ function jojosFirstRape(): void {
         outputText("You push him hard, following through to pin his small frame.  He struggles but you twist his arm expertly and hold him down with your larger bodyweight.  He squirms as you tear off the bottom of his outfit, protesting mightily as you force him into the dirt and expose his toned bottom.\n\n");
         if (player.cocks.length == 1) {
             outputText("You grin and press your " + cockDescript(game.player, 0) + " against him, making him squeal in protest.  You press on, eager to violate his tight asshole, reveling in the crushing tightness.  His muscles quiver nervelessly as you pound him raw, his muted protests getting weaker as you notice a rapidly swelling bulge under him.  You reach around and begin jerking him off as you fuck him, fantasizing about pouring him full of corruptive demon power, making him your slave.  The dirty thoughts make your balls feel full, a pulsing squeezing tightness building in your nethers as your " + cockDescript(game.player, 0) + " flexes and bulges inside your prey.  You cum hard, pressing his muzzle into the dirt as you pump glob after glob of cum up his ass, violating him to his core.  Your pussy quivers, cumming as well, feeling empty.  You resolve to take his cock's virginity next time.");
-            if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
+            if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestLactation() < 2) {
                 outputText("  Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
             }
 
-            if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) {
+            if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() < 3) {
                 outputText("  Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
             }
 
-            if (player.breasts.biggestLactation() >= 3) {
+            if (player.breastRows.biggestLactation() >= 3) {
                 outputText("  Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
             }
 
@@ -1180,15 +1180,15 @@ function jojosFirstRape(): void {
         }
         else {
             outputText("You grin and press your " + multiCockDescriptLight(game.player) + " against him, making him squeal in protest.  You press on, eager to violate his tight asshole, reveling in the crushing tightness.  His muscles quiver nervelessly as you pound him raw, his muted protests getting weaker as you notice a rapidly swelling bulge under him.  You reach around and begin jerking him off as you fuck him, fantasizing about pouring him full of corruptive demon power, making him your slave.  The dirty thoughts make your balls feel full, a pulsing squeezing tightness building in your nethers as your " + cockDescript(game.player, 0) + " flexes and bulges inside your prey.  You cum hard, pressing his muzzle into the dirt as you pump glob after glob of cum up his ass, violating him to his core.  Cum sprays over his ass, the rest of your equipment soaking him as it cums as hard as the one you sank up into the mouse-hole.  Your pussy quivers, cumming as well, feeling empty.  Mentally you resolve to take his cock's virginity next time.");
-            if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) {
+            if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestLactation() < 2) {
                 outputText("  Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
             }
 
-            if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) {
+            if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() < 3) {
                 outputText("  Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
             }
 
-            if (player.breasts.biggestLactation() >= 3) {
+            if (player.breastRows.biggestLactation() >= 3) {
                 outputText("  Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
             }
 
@@ -1217,9 +1217,9 @@ function jojosSecondRape(): void {
     if (player.gender == 2 || player.gender == 3) {
         outputText("You throw him on the soft soil of the forest and mount him, skillfully guiding his member towards your now dripping wet hole.  As you slide down you marvel at how he feels larger and thicker than before, deliciously so.  Your " + vaginaDescript(player, 0) + " throbs in the most pleasant way as you rape his small form.  You play with your clit, watching Jojo's face flit between rapture and disgust.  You lick your lips and smile as the disgust vanishes, his hot jets of cum painting your cunt-walls.  You giggle and keep fucking him, hoping that somehow your corruption and lust are influencing him, turning him into your personal fucktoy.  The thought brings you over the edge.  You clamp down, your " + vaginaDescript(player, 0) + " milking, squeezing every last drop from him as his prick erupts inside you.  ");
         cuntChange(player, 1.5, true);
-        if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestLactation() < 2) outputText("Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
-        if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) outputText("Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
-        if (player.breasts.biggestLactation() >= 3) outputText("Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
+        if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestLactation() < 2) outputText("Milk squirts from  your nipples, spraying him down with small droplets of your creamy tit-treat.  ");
+        if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() < 3) outputText("Streams of milk spray from your nipples in time with your pussy contractions, hosing the poor mouse down and puddling on his fur.  ");
+        if (player.breastRows.biggestLactation() >= 3) outputText("Gouts of milk erupt from your nipples, spraying continually as you cum.  The poor mouse is soaked from head to toe, your cream utterly drenching the monk.  ");
         if (player.vaginas.averageVaginalWetness() == 5) outputText("Your " + vaginaDescript(player, 0) + " drenches him with your squirting girl-cum, mixed with his own seed.");
         if (player.cocks.length == 1) outputText("Jizz sprays onto his chest from your " + cockDescript(game.player, 0) + ".  ");
         if (player.cocks.length == 2) outputText("A hail of jizz splatters over Jojo from your " + multiCockDescriptLight(game.player) + ".  ");
@@ -1267,10 +1267,10 @@ function jojosThirdRape(): void {
         if (player.isBiped()) outputText("You spread your legs and crook your finger");
         else outputText("You crook your finger");
         outputText(", beckoning him towards your " + vaginaDescript(player, 0) + ".  He looks disheartened, but obediently kneels before you, his whiskers tickling your " + vaginaDescript(player, 0) + ", his wet nose bumping your clit, his tongue taking long licks between your lips.  ");
-        if (player.breasts.biggestTitSize() >= 2) {
+        if (player.breastRows.biggestTitSize() >= 2) {
             outputText("You sigh and knead your breasts in pleasure.  ");
         }
-        if (player.breasts.biggestLactation() >= 1.5 && player.breasts.biggestTitSize() > 2 && player.breasts.mostBreastsPerRow() >= 2 && player.breastRows.length >= 1) outputText("Every sensual peak within you is mirrored with small spurts of milk from your nipples.  It eventually trickles down to Jojo's tongue, spurring his efforts on.  ");
+        if (player.breastRows.biggestLactation() >= 1.5 && player.breastRows.biggestTitSize() > 2 && player.breastRows.mostBreastsPerRow() >= 2 && player.breastRows.length >= 1) outputText("Every sensual peak within you is mirrored with small spurts of milk from your nipples.  It eventually trickles down to Jojo's tongue, spurring his efforts on.  ");
         outputText("The mousey gets more and more in to eating your box, making it harder and harder to stave off an orgasm.  You wrap ");
         if (player.lowerBody == LowerBodyType.NAGA) outputText("your coils ");
         else if (player.lowerBody == LowerBodyType.GOO) outputText("your jiggling goo ");
@@ -1309,10 +1309,10 @@ function jojosThirdRape(): void {
         outputText(", beckoning him towards your " + vaginaDescript(player, 0) + ".  He looks disheartened, but obediently kneels before you, his whiskers tickling, his wet nose bumping your clit, his tongue taking long licks between your lips.  ");
         if (player.cocks.length == 1) outputText("You sigh as your " + cockDescript(game.player, 0) + " droops over his head.  ");
         if (player.cocks.length > 1) outputText("You sigh as your " + multiCockDescriptLight(game.player) + " pile atop his head.  ");
-        if (player.breasts.biggestTitSize() >= 2) {
+        if (player.breastRows.biggestTitSize() >= 2) {
             outputText("You kneed your breasts, excited and filled with pleasure.  ");
         }
-        if (player.breasts.biggestLactation() >= 1.5 && player.breasts.biggestTitSize() > 2 && player.breasts.mostBreastsPerRow() >= 2 && player.breastRows.length >= 1) outputText("Every sensual peak within you is mirrored with small spurts of milk from your nipples.  It eventually trickles down to Jojo's tongue, spurring his efforts on.  ");
+        if (player.breastRows.biggestLactation() >= 1.5 && player.breastRows.biggestTitSize() > 2 && player.breastRows.mostBreastsPerRow() >= 2 && player.breastRows.length >= 1) outputText("Every sensual peak within you is mirrored with small spurts of milk from your nipples.  It eventually trickles down to Jojo's tongue, spurring his efforts on.  ");
         outputText("The mousey gets more and more into eating your box, making it harder and harder to stave off an orgasm.  You wrap your thighs around his head and quiver with passion, ");
         if (player.vaginas.averageVaginalWetness() <= 1) outputText("squeezing him tightly into your " + vaginaDescript(player, 0) + ".");
         if (player.vaginas.averageVaginalWetness() > 1 && player.vaginas.averageVaginalWetness() < 4) outputText("creaming his tongue liberally with girlcum.");
@@ -1438,13 +1438,13 @@ function jojosFourthRape(): void {
         }
 
         // Milk here
-        if (player.breasts.biggestLactation() >= 1 && player.breasts.biggestTitSize() > 3) {
-            if (player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length < 8) outputText("Milk sprays from your " + breastDescript(game.player, 0) + " in tiny streams, triggered by your orgasms.");
-            if (player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length < 20 &&
-                player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length >= 8) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying out over the mouse, squirting out the contractions of each shuddering orgasm.");
-            if (player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length < 35 &&
-                player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length >= 20) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying in pulsing blasts, soaking the mouse.  Each nerve-wracking orgasm seems to wring more and more milk from you, until it puddles around.");
-            if (player.breasts.biggestTitSize() * player.breasts.biggestLactation() * player.breastRows.length >= 35) outputText("Milk fountains from your " + breastDescript(game.player, 0) + ", soaking the mouse with a continuous river of cream.  For every blob of cum you feel pushing into your over-filled uterus, another torrent of milk sprays out.  As your mind-bending orgasms drag on, a small lake of milk forms around you.");
+        if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestTitSize() > 3) {
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 8) outputText("Milk sprays from your " + breastDescript(game.player, 0) + " in tiny streams, triggered by your orgasms.");
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 20 &&
+                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 8) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying out over the mouse, squirting out the contractions of each shuddering orgasm.");
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 35 &&
+                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 20) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying in pulsing blasts, soaking the mouse.  Each nerve-wracking orgasm seems to wring more and more milk from you, until it puddles around.");
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 35) outputText("Milk fountains from your " + breastDescript(game.player, 0) + ", soaking the mouse with a continuous river of cream.  For every blob of cum you feel pushing into your over-filled uterus, another torrent of milk sprays out.  As your mind-bending orgasms drag on, a small lake of milk forms around you.");
         }
         cuntChange(player, 3, true);
         // Preggers chance!
@@ -1494,7 +1494,7 @@ export function loseToJojo(): void {
         if (player.cocks.length > 1) player.lib += 5;
         if (player.cocks.horseCocks() > 0) player.lib += 3;
         if (player.cocks.dogCocks() > 0) player.lib += 2;
-        if (player.breasts.biggestLactation() >= 1) player.lib += 2;
+        if (player.breastRows.biggestLactation() >= 1) player.lib += 2;
         game.monk = 0;
     }
     else {
@@ -1550,7 +1550,7 @@ function corruptJojoSexMenu(): void {
         else addButton(8, "Cruel Anal", corruptJojoAnalCruel); // Overrides Anal Smother - Herms don't smother, they fuck
     }
     addButton(1, "Give BJ", corruptJojoCunnilingus);
-    if (player.breasts.biggestTitSize() >= 2) addButton(6, (player.breasts.biggestLactation() > 1 ? "Suckle" : "Breasts"), corruptJojoBreasts); // All ya need is bewbs
+    if (player.breastRows.biggestTitSize() >= 2) addButton(6, (player.breastRows.biggestLactation() > 1 ? "Suckle" : "Breasts"), corruptJojoBreasts); // All ya need is bewbs
     addButton(9, "Back", playerMenu);
 }
 
@@ -1580,13 +1580,13 @@ function corruptJojoBJGentle(): void {
     outputText("As if on command, Jojo slips into your camp from the jungle's shadows, dropping to his knees with a timid look of fear in his eyes. You step forward and caress your fingers through the fur between his shell-like ears, whispering softly to him, \"<i>It's all right, my beautiful slut, it will all be over soon.</i>\"");
     outputText("  He whimpers as you say this, feeling the corruption flowing off of your body like an alluring musk, drawing him deeper into your service.  ");
     if (player.cocks[x].cArea() < 10)
-        outputText("He opens his mouth to protest, but you never give him the chance, sliding your " + cockDescript(player, x) + " between his lips and down his throat. You can feel the muscles of his throat grip and spasm around your " + cockDescript(player, x) + " as he chokes on the length, his thin lips trembling around your girth as his tongue slides across your vein-lined underside.  " + (player.breasts.biggestTitSize() >= 2 ? "Your hands lift to massage your breasts and tug at your nipples, and you can see him watching transfixed as you fuck his throat.  " : ""));
+        outputText("He opens his mouth to protest, but you never give him the chance, sliding your " + cockDescript(player, x) + " between his lips and down his throat. You can feel the muscles of his throat grip and spasm around your " + cockDescript(player, x) + " as he chokes on the length, his thin lips trembling around your girth as his tongue slides across your vein-lined underside.  " + (player.breastRows.biggestTitSize() >= 2 ? "Your hands lift to massage your breasts and tug at your nipples, and you can see him watching transfixed as you fuck his throat.  " : ""));
     else if (player.cocks[x].cArea() < 36)
-        outputText("He opens his mouth to protest, but you never give him the chance, forcing your " + cockDescript(player, x) + " between his lips and nearly dislocating his jaw with the girth of it. You can feel his throat stretching around you, like a hot, wet, tight sleeve, trembling with the pulse of his racing heart as you grind in and out of his mouth.  " + (player.breasts.biggestTitSize() >= 2 ? "Your hands lift to massage your breasts and tug at your nipples, and you can see him watching transfixed as you fuck his throat.  " : ""));
-    else outputText("He opens his mouth to protest, only to have your " + cockDescript(player, x) + " mute him. You can feel his buck teeth scratching against the top and bottom of your " + cockDescript(player, x) + "'s crown, but it does nothing to prevent what is to come. He lifts his hands to try to push your huge erection away, and since you can't fit your girth in his mouth, you decide to use that; grabbing hold of his hands and using them to stroke your length.  " + (player.breasts.biggestTitSize() >= 2 ? "His eyes move from your massive member to your bouncing breasts above with a look of wanton desire that makes you laugh softly.  " : ""));
+        outputText("He opens his mouth to protest, but you never give him the chance, forcing your " + cockDescript(player, x) + " between his lips and nearly dislocating his jaw with the girth of it. You can feel his throat stretching around you, like a hot, wet, tight sleeve, trembling with the pulse of his racing heart as you grind in and out of his mouth.  " + (player.breastRows.biggestTitSize() >= 2 ? "Your hands lift to massage your breasts and tug at your nipples, and you can see him watching transfixed as you fuck his throat.  " : ""));
+    else outputText("He opens his mouth to protest, only to have your " + cockDescript(player, x) + " mute him. You can feel his buck teeth scratching against the top and bottom of your " + cockDescript(player, x) + "'s crown, but it does nothing to prevent what is to come. He lifts his hands to try to push your huge erection away, and since you can't fit your girth in his mouth, you decide to use that; grabbing hold of his hands and using them to stroke your length.  " + (player.breastRows.biggestTitSize() >= 2 ? "His eyes move from your massive member to your bouncing breasts above with a look of wanton desire that makes you laugh softly.  " : ""));
     outputText("His eyes turn to you in fear and awe, pleading for release, and a slip of your foot to his own straining erection lets you know how in need of an orgasm he is, but this time is yours. You groan in pleasure as your balls draw up tight, churning with your corrupted seed, and in a rush you feed it to him, your orgasm overtaking you as surge after hot surge of cum flares through your flesh and into his throat.  " + (player.vaginas.length > 0 ? "A sympathetic orgasm hits your pussy, causing a surge of feminine juices to splash against his chest and dribble down your thighs lewdly.  " : ""));
     outputText("Your orgasm seems to last forever, filling his belly with your corrupted essence, causing his stomach to bulge slightly with the sheer volume of it. You pull away at last, letting him gasp for breath and fall to the ground, curling around his bloated belly.  ");
-    if (player.breasts.biggestTitSize() >= 2)
+    if (player.breastRows.biggestTitSize() >= 2)
         outputText("You draw him to your bosom and kiss his forehead and then stand and go about your duties, leaving him to recover from the intense encounter and then retreat back into the jungle.  ");
     else outputText("You give him one last fond caress, running your fingers through his fur in an almost patronizing petting motion, then turn without another word and leave him to retreat back into the jungle.  ");
     player.orgasm();
@@ -1664,7 +1664,7 @@ function corruptJojoAnalCruel(): void {
     clearOutput();
     const x: number = player.cocks.biggestCockIndex();
     outputText("You decided that it is time to seek out your pet monk slut, and stalk into the jungle after the mouse. It doesn't take long to find him, so you move silently to avoid his notice. You move with a predator's grace as you sneak up behind him, your hand reaching down to grab hold of his tail firmly as you shove him against a nearby tree.  ");
-    outputText("You press your body up behind him" + (player.breasts.biggestTitSize() >= 2 ? ", mashing your breasts against his back" : "") + " and hiss into his ear, \"<i>Hello slut...</i>\" You keep hold of the base of his tail, hiking it up to lift his ass enough that he has to go to his toes to stay standing. You listen to him whimper softly as he feels your stirring loins press against the cleft of his oh-so-fuckable ass.  ");
+    outputText("You press your body up behind him" + (player.breastRows.biggestTitSize() >= 2 ? ", mashing your breasts against his back" : "") + " and hiss into his ear, \"<i>Hello slut...</i>\" You keep hold of the base of his tail, hiking it up to lift his ass enough that he has to go to his toes to stay standing. You listen to him whimper softly as he feels your stirring loins press against the cleft of his oh-so-fuckable ass.  ");
     if (player.cocks[x].cArea() < 10)
         outputText("You saw your swelling erection between his ass cheeks a few times, and then with little warning, you shove yourself deep into his body, making the mouse gasp out as you fill his well used rear. You groan in pleasure as you feel his anal ring grip in flutters along your " + cockDescript(player, x) + " as you spear in and out of him, fucking your slut toy with wild abandon.  ");
     else if (player.cocks[x].cArea() < 36)
@@ -1723,13 +1723,13 @@ function corruptJojoBreasts(): void { // Should only be available to players wit
     clearOutput();
     outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");
     outputText("Your mouse slut obediently slips from the darkness and into your camp, approaching you and kneeling at your side. You can see the lust in his eyes as he looks at your breasts, longing and love reflecting wonderfully. You nod your approval and let him worship your bosom.  ");
-    if (player.breasts.biggestLactation() > 1) { // For suckling the scene is the same regardless of player's gender
+    if (player.breastRows.biggestLactation() > 1) { // For suckling the scene is the same regardless of player's gender
         outputText("He leans in and starts to kiss along your nipples before taking one into his mouth. He gives a firm suckle at the engorged teat, and you can see his eyes open wider in surprise at the sudden surge of milk that fills his muzzle. He shivers and starts to suckle in earnest, drinking from first one breast, then the other, ");
         if (player.breastRows.length > 1) outputText("and then all the others, "); // Extra boob coverage
         outputText("partaking of your blessing until his belly is full.  ");
         player.milked();
     }
-    else if (player.breasts.biggestTitSize() <= 5) {
+    else if (player.breastRows.biggestTitSize() <= 5) {
         outputText("He leans in to nuzzle and kiss at your breasts, his hands moving to caress the soft and full orbs in gentle worship. His kissing and licking slowly circles in on your nipples, bringing them to firm points that send jolts of warm pleasure through your body when he at last takes them into his mouth. You reach down between your legs, " + (player.cocks.length > 0 ? "taking hold of your shaft and masturbating it lazily as he works.  " : "slipping your fingers into your slit as you lazily masturbate with the pleasure he brings.  "));
     }
     else {
@@ -1808,7 +1808,7 @@ function whisperJojobait(): void {
             var storage:int = 0;
             var selection:int = rand(4);
             //Male
-            if (player.gender == 1 && player.breasts.biggestTitSize() < 2) {
+            if (player.gender == 1 && player.breastRows.biggestTitSize() < 2) {
                 storage = player.cocks.biggestCockIndex();
                 //MALE SOFT BJ
                 if (selection == 0) {
@@ -1862,7 +1862,7 @@ function whisperJojobait(): void {
                 }
             }
             //Shemale
-            if (player.gender == 1 && player.breasts.biggestTitSize() >= 2) {
+            if (player.gender == 1 && player.breastRows.biggestTitSize() >= 2) {
                 storage = player.cocks.biggestCockIndex();
                 //ORAL GENTLENESS FUCK YEAH
                 if (selection == 0) {
@@ -1881,9 +1881,9 @@ function whisperJojobait(): void {
                 if (selection == 1) {
                     outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");
                     outputText("Your mouse slut obediently slips from the darkness and into your camp, approaching you and kneeling at your side. You can see the lust in his eyes as he looks at your breasts, longing and love reflecting wonderfully. You nod your approval and let him worship your bosom.  ");
-                    if (player.breasts.biggestLactation() > 1)
+                    if (player.breastRows.biggestLactation() > 1)
                         outputText("He leans in and starts to kiss along your nipples before taking one into his mouth. He gives a firm suckle at the engorged teat, and you can see his eyes open wider in surprise at the sudden surge of milk that fills his muzzle. He shivers and starts to suckle in earnest, dinking from first one breast, then the other, partaking of your blessing until his belly is full.  ");
-                    else if (player.breasts.biggestTitSize() <= 5)
+                    else if (player.breastRows.biggestTitSize() <= 5)
                         outputText("He leans in to nuzzle and kiss at your breasts, his hands moving to caress the soft and full orbs in gentle worship. His kissing and licking slowly circles in on your nipples, bringing them to firm points that send jolts of warm pleasure through your body when he at last takes them into his mouth. You reach down between your legs, taking hold of your shaft and masturbating it lazily as he works.  ");
                     else outputText("He leans in close and presses a kiss to first one nipple, then the other, starting to worship your breasts lovingly. You have other plans, however, and one hand grabs the fur at the back of his neck as the other slips beneath your breasts to pull them together to either side of his face as you press him in tight against the curves of your cleavage, forcing the mouse to fight for every breath.  ");
                     outputText("You can hear Jojo's breath quickening, then his body shudders as he climaxes spontaneously, splashing his seed across your hip and belly. You can't help the laugh that rises from within you at his submissive gesture, watching as shame washes across his face and his ears lay back.  ");
@@ -1916,7 +1916,7 @@ function whisperJojobait(): void {
                 }
             }
             //CuntBOOOOOI
-            if (player.gender == 2 && player.breasts.biggestTitSize() < 2) {
+            if (player.gender == 2 && player.breastRows.biggestTitSize() < 2) {
                 //Cuntboy 1: Vaginal Gentle
                 if (selection == 0) {
                     outputText("Feeling the urge to be filled, you summon your mouse slut to you and smile as he quickly responds, moving to kneel before you reverently. You let your hand caress the side of his head, then order him to lay back.  ");
@@ -1975,18 +1975,18 @@ function whisperJojobait(): void {
                 }
             }
             //Femalez
-            if (player.gender == 2 && player.breasts.biggestTitSize() >= 2) {
+            if (player.gender == 2 && player.breastRows.biggestTitSize() >= 2) {
                 //Female 1: Breasts Gentle
                 if (selection == 0) {
                     outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");
                     outputText("Your mouse slut obediently slips from the darkness and into your camp, approaching you and kneeling at your side. You can see the lust in his eyes as he looks at your breasts, longing and love reflecting wonderfully. You nod your approval and let him worship your bosom.  ");
-                    if (player.breasts.biggestLactation() > 1) {
+                    if (player.breastRows.biggestLactation() > 1) {
                         outputText("He leans in and starts to kiss along your nipples before taking one into his mouth. He gives a firm suckle at the engorged teat, and you can see his eyes open wider in surprise at the sudden surge of milk that fills his muzzle. He shivers and starts to suckle in earnest, drinking from first one breast, then the other, ");
                         //Extra boob coverage
                         if (player.breastRows.length > 1) outputText("and then all the others, ");
                         outputText("partaking of your blessing until his belly is full.  ");
                     }
-                    else if (player.breasts.biggestTitSize() <= 5)
+                    else if (player.breastRows.biggestTitSize() <= 5)
                         outputText("He leans in to nuzzle and kiss at your breasts, his hands moving to caress the soft and full orbs in gentle worship. His kissing and licking slowly circles in on your nipples, bringing them to firm points that send jolts of warm pleasure through your body when he at last takes them into his mouth. You reach down between your legs, slipping your fingers into your slit as you lazily masturbate with the pleasure he brings.  ");
                     else outputText("He leans in close and presses a kiss to first one nipple, then the other, starting to worship your breasts lovingly. You have other plans, however, and one hand grabs the fur at the back of his neck as the other slips beneath your breasts to pull them together to either side of his face as you press him in tight against the curves of your cleavage, forcing the mouse to have to fight for every breath.  ");
                     outputText("You can hear Jojo's breath quickening, then his body shudders as he climaxes spontaneously, splashing his seed across your hip and belly. You can't help the laugh that rises from within you at his submissive gesture, watching as shame washes across his face and his ears lay back.  ");
@@ -2056,14 +2056,14 @@ function whisperJojobait(): void {
                 }
                 //Herm 2: Breasts Gentle
                 if (selection == 1) {
-                    if (player.breasts.biggestTitSize() < 2)
+                    if (player.breastRows.biggestTitSize() < 2)
                         selection = 2;
                     else {
                         outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");
                         outputText("Your mouse slut obediently slips from the darkness and into your camp, approaching you and kneeling at your side. You can see the lust in his eyes as he looks at your breasts, longing and love reflecting wonderfully. You nod your approval and let him worship your bosom.  ");
-                        if (player.breasts.biggestLactation() > 1)
+                        if (player.breastRows.biggestLactation() > 1)
                             outputText("He leans in and starts to kiss along your nipples before taking one into his mouth. He gives a firm suckle at the engorged teat, and you can see his eyes open wider in surprise at the sudden surge of milk that fills his muzzle. He shivers and starts to suckle in earnest, drinking from first one breast, then the other, partaking of your blessing until his belly is full.  ");
-                        else if (player.breasts.biggestTitSize() <= 5)
+                        else if (player.breastRows.biggestTitSize() <= 5)
                             outputText("He leans in to nuzzle and kiss at your breasts, his hands moving to caress the soft and full orbs in gentle worship. His kissing and licking slowly circles in on your nipples, bringing them to firm points that send jolts of warm pleasure through your body when he at last takes them into his mouth. You reach down between your legs, taking hold of your shaft and masturbating it lazily as he works.  ");
                         else outputText("He leans in close and presses a kiss first to one nipple, then the other, worshiping your breasts lovingly. You have other plans, however, and one hand grabs the fur at the back of his neck as the other slips beneath your breasts to pull them together to either side of his face as you press him in tight against the curves of your cleavage, forcing the mouse to have to fight for every breath.  ");
                         outputText("You can hear Jojo's breath quickening, then his body shudders as he climaxes spontaneously, splashing his seed across your hip and belly. You can't help the laugh that rises from within you at his submissive gesture, watching as shame washes across his face and his ears lay back.  ");
@@ -2751,7 +2751,7 @@ export function apparantlyJojoDOESlift(): void {
             trace("ADDING FIRST PERK");
             outputText("“<i>Breathing is key.</i>”\n\n");
             outputText("Jojo’s constantly repeated words resonate within you as you realize you’ve learned to control your breathing. It takes you less time to rest than normal and you feel as though you are bursting with energy because of it.  Your [fullChest]");
-            if (player.breasts.biggestTitSize() == 0) outputText(" rises and falls");
+            if (player.breastRows.biggestTitSize() == 0) outputText(" rises and falls");
             else outputText(" rise and fall");
             outputText(" smoothly even in the heat of battle.  From now on you know you’ll recover more quickly.\n\n");
 

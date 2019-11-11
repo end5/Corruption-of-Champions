@@ -66,7 +66,7 @@ export class Exgartuan implements TimeAwareInterface {
                 player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
             }
-            else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breasts.biggestTitSize() < 12) { // Tit removal
+            else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breastRows.biggestTitSize() < 12) { // Tit removal
                 outputText("\n<b>Black milk dribbles from your " + nippleDescription(player, 0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>");
                 player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
@@ -121,7 +121,7 @@ export class Exgartuan implements TimeAwareInterface {
                         }
                         else dynStats("lus", 1 + rand(2));
                     }
-                    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breasts.biggestTitSize() >= 12) { // Chick stuff
+                    if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breastRows.biggestTitSize() >= 12) { // Chick stuff
                         if (game.time.hours % 9 == 0) { // Only once every 9 hours or so.
                             if (rand(3) == 0) { // lactation messing with!
                                 outputText("\n<b>");
@@ -195,7 +195,7 @@ function drinkFountainEndowment(): void {
         if (player.cocks.length > 0) {
             if (player.cocks.cockArea(0) >= 100) choices++;
         }
-        if (player.breasts.biggestTitSize() >= 12) choices++;
+        if (player.breastRows.biggestTitSize() >= 12) choices++;
         // Can you be infested?
         if (choices > 0) {
             if (choices > 1) {
@@ -205,7 +205,7 @@ function drinkFountainEndowment(): void {
             }
             if (choices == 1) {
                 // If tits are big enough it must be them
-                if (player.breasts.biggestTitSize() >= 12) exgartuanInfestTits();
+                if (player.breastRows.biggestTitSize() >= 12) exgartuanInfestTits();
                 // If not then the dick was eligable.
                 else exgartuanInfestDick();
             }
@@ -213,7 +213,7 @@ function drinkFountainEndowment(): void {
         }
     }
     // (+Big Tits)
-    if (rand(3) == 0 && player.breasts.biggestTitSize() > 1) {
+    if (rand(3) == 0 && player.breastRows.biggestTitSize() > 1) {
         outputText("\n\nYour " + allBreastsDescript(player) + " balloon, each growing about four bra-sizes larger... they feel so... jiggly and sensitive.  Even your nipples seem to grow with them!  Your " + player.armorName + " feels tighter than ever!", false);
         player.nippleLength += .3;
         temp = player.breastRows.length;
@@ -326,7 +326,7 @@ export function exgartuanMasturbation(): void {
             outputText("The demon speaks up, teasing you, \"<i>Already caving in to my corruption slut?  Are you truly so happy to let a demon control your body so lewdly?  Shouldn't you at least try to pretend not to be pleased by acting like such a wanton whore?</i>\"\n\n", false);
 
             outputText("His words ring true, but in your heart of hearts you know you're no slave to his corruption.  It's just that right now it feels so good; you love the sensation of both hands sliding up and down your cock, stroking and fondling each sensitive nub.  The flow of pre-cum thickens, practically pooling on your belly while your slippery fingers ", false);
-            if (player.breasts.biggestTitSize() >= 5) outputText("shove the bloated demon between your " + allBreastsDescript(player) + ", surrounding it in a home of jiggling flesh.  The wet demon-pre soaks into the skin of your tits, lubricating the passage as you mash them around, vigorously tit-fucking the source of your unholy desires.", false);
+            if (player.breastRows.biggestTitSize() >= 5) outputText("shove the bloated demon between your " + allBreastsDescript(player) + ", surrounding it in a home of jiggling flesh.  The wet demon-pre soaks into the skin of your tits, lubricating the passage as you mash them around, vigorously tit-fucking the source of your unholy desires.", false);
             else outputText("work the shaft relentlessly, drawing out more and more of the demon's pre-seed until your forearms and upper thighs are coated in the stuff, shining darkly.", false);
             outputText("  You pant and moan, forced to feel such wonderfully obscene sensations.\n\n", false);
             outputText("\"<i>You should look at yourself, panting and moaning like a rutting animal.  I wonder, are you still a champion  or a slave to the things I'm doing to you?  You look like a sex slave, but are you truly addicted to the feeling of squirting thick demonic jism?  Such a slutty champion you've become, " + player.short + ",</i>\" taunts Exgartuan.  Part of you wants to object, to shout down his suggestions, but every time you open your mouth the only sound to escape is a wanton moan.\n\n", false);
@@ -343,7 +343,7 @@ export function exgartuanMasturbation(): void {
             outputText("Your " + cockDescript(game.player, 0) + " seems quite taken with the idea, spurting hot globules of pre-cum until it's glazed itself in a coating of slick wetness.  Both of your hands rub along the surface, soaking themselves in the copious demon-goo, working it entirely of their own volition.  You manage to control your hips at least, and put them to work thrusting up, increasing the stimulation further, and spurring your " + cockDescript(game.player, 0) + " to drizzle even more of its corrupt fluid.  It feels too good to try to resist, and there really isn't any reason to, is there?\n\n", false);
             outputText("\"<i>That's the ticket, " + player.short + ", you're sooo good at this.  Now go ahead and let it out.  I want to paint your face with seed and watch it drip off.  You'll let me do that right?  Who am I kidding, I feel so good you'll let me do whatever I want, won't you slut?</i>\"\n\n", false);
             outputText("Oh gods he's right, you're going to let him aim at you and splatter you with waves of demonic jizz.  The worst part is, you can feel a large part of you looking forward to it.  You wonder what has happened to you as you give in, oblivious to the feeling of ", false);
-            if (player.breasts.biggestTitSize() >= 5) outputText("your hands smashing your " + allBreastsDescript(player) + " around the " + cockDescript(game.player, 0) + " and vigorously titfucking it.", false);
+            if (player.breastRows.biggestTitSize() >= 5) outputText("your hands smashing your " + allBreastsDescript(player) + " around the " + cockDescript(game.player, 0) + " and vigorously titfucking it.", false);
             else outputText("your hands repositioning your " + cockDescript(game.player, 0) + " so it lays against your chest.", false);
             outputText("  Without a second thought you lean down to lick and suckle the head, performing auto-fellatio on the demon-dick sprouting from your groin.  You struggle to keep up with the flood of pre-cum, but you know you don't have long to wait...\n\n", false);
             outputText("You explode, filling your mouth with the tangy seed of your demonic submission.  Why did you ever think to resist such pleasure?  White hot release radiates out from your groin, making your body numb and happy as wave after wave of demon-spunk pours down your throat and spatters your face.  Such unholy pleasures, truly you deserve to enjoy them after what you've been through, right?  You wallow in a growing lake of syrupy submission, happy to be host to such a fun demon.\n\n", false);
@@ -382,7 +382,7 @@ export function exgartuanMasturbation(): void {
         outputText(" You shake and wriggle, overcome with a strange type of pleasure unlike a 'normal' orgasm.  The boobgasm does feel wonderful, but it does nothing for the aching lust that has built up in your crotch.  Perhaps you'll need to satisfy that as well.\n\n", false);
         // (lust + 15)
         dynStats("sen", .25, "lus", 15, "cor", 1);
-        if (player.breasts.biggestLactation() > 1) outputText("As you calm down you realize your " + nippleDescription(player, 0) + "s are dribbling streams of milk, and judging from the pools of whiteness in the soil, you turned into quite the little milk-sprinkler.  ", false);
+        if (player.breastRows.biggestLactation() > 1) outputText("As you calm down you realize your " + nippleDescription(player, 0) + "s are dribbling streams of milk, and judging from the pools of whiteness in the soil, you turned into quite the little milk-sprinkler.  ", false);
         outputText("You blush and redress, noting that Exgartuan seems to be silent and sleeping...  maybe you'll get a little peace now?", false);
     }
     player.effects.setValue(StatusAffects.Exgartuan, 2, (12 + rand(7)));
@@ -429,7 +429,7 @@ export function exgartuanBored(): void {
             outputText("  Find me somewhere to deliver it or I'll be shoving it down your throat, champion!</i>\"", false);
         }
     }
-    else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breasts.biggestTitSize() >= 12) {
+    else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breastRows.biggestTitSize() >= 12) {
         select = rand(8);
         switch (select) {
             case 0:
@@ -726,7 +726,7 @@ export function exgartuanWormCure(): void {
 export function exgartuanLactationAdjustment(): void {
     let boobs: number = 0;
     // (Lactating Already)
-    if (player.breasts.biggestLactation() > 1) {
+    if (player.breastRows.biggestLactation() > 1) {
         // (Increase)
         if (rand(2) == 0 || player.effects.findByType(StatusAffects.Feeder) >= 0) {
             outputText("Your nipples grow warm and sensitive, then start dripping milk into your " + player.armorName + ".  Exgartuan appears to be having some fun with you again...", false);
@@ -837,7 +837,7 @@ function exgartuanSleepSurprise(): void {
         }
         else {
             outputText("Wakey wakey sleepyhead.  You know the routine.  Go ahead, ", false);
-            if (player.breasts.biggestTitSize() > 1) outputText("wrap your tits around me and squeeze", false);
+            if (player.breastRows.biggestTitSize() > 1) outputText("wrap your tits around me and squeeze", false);
             else outputText("wrap your arms around me and stroke", false);
             outputText(".  We're so horny aren't we, my needy little champion?", false);
         }
@@ -849,26 +849,26 @@ function exgartuanSleepSurprise(): void {
             if (!player.cocks.hasSheath()) outputText("base", false);
             else outputText("sheath", false);
             outputText(" instead of pulling it free.  Your eyes cross from the feelings coming off your traitorous, possessed flesh after the accidental caress.  Both hands start to pump away, autonomously jacking the swollen demon-shaft into your mouth", false);
-            if (player.breasts.biggestTitSize() >= 2) outputText(" and bouncing your " + allBreastsDescript(player) + " around it", false);
+            if (player.breastRows.biggestTitSize() >= 2) outputText(" and bouncing your " + allBreastsDescript(player) + " around it", false);
             outputText(".  Moans of pleasure vibrate the " + cockHead(player) + " lodged in your throat while bubbles of wetness begin to slide down the lower half of your esophagus into your gullet.\n\n", false);
         }
         else {
             // MED+ COR, NOT DONE A LOT:
             if (flags[kFLAGS.TIMES_AUTOFELLATIOED_EXGARTUAN] < 5) {
                 outputText("You grab hold of your over-sized, demon-infested organ with both hands, resigned to this fate.  Even if you managed to stop Exgartuan now, he would just start all over again once you'd fallen asleep.  The pre-slicked, veiny surface slides through your fingers, outputting a cacophony of pleasure through your nervous system.  Your eyes cross from the feeling, and you actually cry moans of need into your own " + cockHead(player) + ".  It vibrates pleasantly, dumping a few loads of pre-cum into your gullet while ", false);
-                if (player.breasts.biggestTitSize() >= 2) outputText("you squeeze your tits around your " + cockDescript(game.player, 0) + " with your biceps", false);
+                if (player.breastRows.biggestTitSize() >= 2) outputText("you squeeze your tits around your " + cockDescript(game.player, 0) + " with your biceps", false);
                 else outputText("you squeeze and caress your " + cockDescript(game.player, 0), false);
                 outputText(".  With both hands beginning to stroke faster and faster, you give yourself over to the corrupted lust that's burning in your veins.\n\n", false);
             }
             // (MED+COR, DONE A LOT:
             else {
                 outputText("You grab hold of the swollen flesh with both hands and start to stroke it, reveling at the feel of your palms sliding along the veiny, pre-cum slicked flesh.  You gurgle happily, your moans of pleasure vibrating the " + cockHead(player) + " in your esophagus.  The swollen cock-tip dumps globules of pre-cum down your stretched throat, directly into your hungry gullet.  With both eyes crossed and your hands absorbed in fondling your member, you quickly forget your irritation at being woken up in such a way.  You get to cum SO HARD when you're fucking yourself like this!", false);
-                if (player.breasts.biggestTitSize() >= 2) {
+                if (player.breastRows.biggestTitSize() >= 2) {
                     outputText("  Your biceps squeeze around your " + allBreastsDescript(player) + ", mashing them into your " + cockDescript(game.player, 0) + " and adding to the pleasure.", false);
-                    if (player.breasts.hasFuckableNipples() && player.breasts.biggestLactation() > 1) outputText("  Milk and lubricants ", false);
-                    else if (player.breasts.hasFuckableNipples()) outputText("  Lubricants ", false);
-                    else if (player.breasts.biggestLactation() > 1) outputText("  Milk ", false);
-                    if (player.breasts.hasFuckableNipples() || player.breasts.hasFuckableNipples()) {
+                    if (player.breastRows.hasFuckableNipples() && player.breastRows.biggestLactation() > 1) outputText("  Milk and lubricants ", false);
+                    else if (player.breastRows.hasFuckableNipples()) outputText("  Lubricants ", false);
+                    else if (player.breastRows.biggestLactation() > 1) outputText("  Milk ", false);
+                    if (player.breastRows.hasFuckableNipples() || player.breastRows.hasFuckableNipples()) {
                         outputText(" from your " + nippleDescription(player, 0) + " puddle in the bouncing cleavage and turn your chest into a slip-n'-slide for dicks.", false);
                     }
                 }
@@ -934,7 +934,7 @@ function exgartuanSleepSurprise(): void {
             outputText("The splatter of mouse-cum erupting in the wood reaches your ears, bringing a wistful smile to your face.  That slutty mouse is such a peeping tom!  ", false);
         }
         outputText("Your eyes slowly roll back down while Exgartuan deflates, leaving a trail of pleased, white submission ", false);
-        if (player.breasts.biggestTitSize() < 1) outputText("over your chest", false);
+        if (player.breastRows.biggestTitSize() < 1) outputText("over your chest", false);
         else outputText("between your tits", false);
         outputText(" and across your belly as he retreats.  The thrill of orgasm is still fresh in your mind, but exhaustion quickly replaces it.  You resolve to clean up the mess in the morning as your eyelids flutter closed.  The smell of sex hangs off your dozing form like a cloud, keeping your dreams from straying too far from your cock...", false);
         // [-100 lust, then +10 lust immediately, +1 libido to 60, then +.5 libido to 80, then +.25 libido.  +1 sensitivity.  +1 corruption]
@@ -971,12 +971,12 @@ function exgartuanBulgeTortureII(): void {
 
     outputText("Damnable demon.  He doesn't even have the decency to taunt you- or even acknowledge your presence.  You bang your fists against your blighted dick, still unable to register any contact through the tightly-fitted obstruction (and secretly relieved you didn't injure yourself.)  You flop back down onto your back, determined to find some other way to satiate your lust.  Invigorated with their new mission, your hands begin to scour the remaining surface of your body, willing fingertips gently brushing your skin in search of a target.", false);
     // [if one row of breasts]
-    if (player.breasts.biggestTitSize() >= 2 && player.breasts.length == 1) outputText("  Your quest begins squarely on your pair of " + chestDesc(game.player) + ", your mitts feverishly groping and tugging away in the hope of finding any sanctuary from your encroaching lust.  Unable to extract any meaningful solace from your magnificent mounds, your sights set on your " + nippleDescription(player, 0) + "s.", false);
+    if (player.breastRows.biggestTitSize() >= 2 && player.breastRows.length == 1) outputText("  Your quest begins squarely on your pair of " + chestDesc(game.player) + ", your mitts feverishly groping and tugging away in the hope of finding any sanctuary from your encroaching lust.  Unable to extract any meaningful solace from your magnificent mounds, your sights set on your " + nippleDescription(player, 0) + "s.", false);
     // [if ≥2 rows of breasts]
-    else if (player.breasts.biggestTitSize() >= 2) outputText("  The " + allBreastsDescript(player) + " lined down your chest should serve a proper conquest.  Your palms set off to work at once, manhandling as much titflesh as they can satisfy at once.  They dart from one row to the next, inside to out, anything to relieve your libido.  You don't appear to be settling down any, however, so you draw your focus on your top row of " + nippleDescription(player, 0) + "s.", false);
+    else if (player.breastRows.biggestTitSize() >= 2) outputText("  The " + allBreastsDescript(player) + " lined down your chest should serve a proper conquest.  Your palms set off to work at once, manhandling as much titflesh as they can satisfy at once.  They dart from one row to the next, inside to out, anything to relieve your libido.  You don't appear to be settling down any, however, so you draw your focus on your top row of " + nippleDescription(player, 0) + "s.", false);
     else outputText("  With little else to turn to, your " + nippleDescription(player, 0) + "s are your only guiding light to hopefully bringing you the peace you crave.", false);
     // [if nipplecunts]
-    if (player.breasts.hasFuckableNipples()) outputText("  You waste little time in pushing four fingers into each gaping teat, anxious for any sort of pleasure.  You tickle and tease, push and pull, anything you can think to release you from this torment.", false);
+    if (player.breastRows.hasFuckableNipples()) outputText("  You waste little time in pushing four fingers into each gaping teat, anxious for any sort of pleasure.  You tickle and tease, push and pull, anything you can think to release you from this torment.", false);
     else outputText("  A little tapping, tickling, and teasing is about all the effort you can seem to muster.", false);
     outputText("  Too preoccupied with whatever's going on down below, you can't seem to focus enough to get the job done right.  Your peer down your body at your " + cockDescript(game.player, 0) + ", still flaccid and on lockdown.  The most you can respond is with another deep sigh, retreating your attention to the canvas up above you.  You figure the best course of action from here is to just try and make it until morning when you can find some help.  Confessing shame to some third party seems a much better alternative to going any more rounds with this nonsense.  Your fists clench and you take some deep breaths, prepared to ride out the remainder of the night with your sanity intact.\n\n", false);
 
@@ -1025,7 +1025,7 @@ function exgartuanBulgeTortureIII(): void {
 
     outputText("The self-proclaimed \"<i>Devil of Dickings</i>\" is finally through teasing you.  Before you can begin to think about how to respond- as if you could- something triggers in your mind.  Like a sprinter at the sound of the starting pistol, you leap forward onto him, your arms excitedly grasping all over the " + cockDescript(game.player, 0) + ".  They work their way around each of his nodules and nubs that they can find, yearning to satisfy the demon by any means necessary.  Not to be outdone, your tongue furiously traverses his sensitive skin, making its way to his glans.", false);
     // [if breasts present]
-    if (player.breasts.biggestTitSize() > 1) outputText("  Your " + chestDesc(game.player) + " work just as hard, smothering Exgartuan in all of their jiggly glory.", false);
+    if (player.breastRows.biggestTitSize() > 1) outputText("  Your " + chestDesc(game.player) + " work just as hard, smothering Exgartuan in all of their jiggly glory.", false);
     outputText("  From base to tip, you leave no skin, vein, bump, or glan untraced; all the while covering yourself in the devil's endless demonic drizzle.  Unearthly pleasure responds to your every effort, preparing you to move on to the climax.  You lighten your full embrace, firmly grasping the " + cockDescript(game.player, 0) + " with both hands, and commence working his entire shaft.  You try to maintain some semblance of pace, but in your dazed, wanton state you quickly ratchet up your speed.", false);
     // [if scrotum present]
     if (player.balls > 0) outputText("  Your " + ballsDescriptLight(player) + " churn with mighty force, roiling in anticipation.", false);
@@ -1257,10 +1257,10 @@ function boobgartuanSurprise3(): void {
     if (player.cor < 50) outputText("  Brought on artificially or not, you cannot deny it; you would probably be cursing the wretched demoness if you were not already preoccupied contending with your mounting passion and desire.", false);
     outputText("  As you paw uselessly at the firm seal, you begin to feel moisture seeping out.", false);
     // [if not lactating]
-    if (player.breasts.biggestLactation() < 1 || player.lactationQ() == 0) outputText("  <b>Your " + chestDesc(game.player) + " have started to lactate profusely.</b>", false);
+    if (player.breastRows.biggestLactation() < 1 || player.lactationQ() == 0) outputText("  <b>Your " + chestDesc(game.player) + " have started to lactate profusely.</b>", false);
     // [if lacationmultipler <4]
-    else if (player.breasts.biggestLactation() < 4) outputText("  <b>Your breasts are only mounting up their lactation to new heights.</b>", false);
-    if (player.breasts.biggestLactation() < 4) player.boostLactation(3);
+    else if (player.breastRows.biggestLactation() < 4) outputText("  <b>Your breasts are only mounting up their lactation to new heights.</b>", false);
+    if (player.breastRows.biggestLactation() < 4) player.boostLactation(3);
     outputText("  But with your nipples in their inverted state, release is a hard sought dream, resulting in your tits slowly expanding as they fill with breastmilk.\n\n", false);
 
     outputText("Even with the aid of what little manages to seep out, Exgartuan's firm grip is too strong for even a single finger to slip through.  Your breathing begins to increase in pace as your hands resort to anxiously orbiting around the surface of your shaking spheres.  The light strokes elicit a deep sigh from you, but your fervor to nudge your nubs remains your priority.  The absentminded stroking quickly ceases, your hands smothering the former site of your nipples.  Your growing guavas jiggle as the demoness laughs at you, \"<i>", false);
@@ -1276,7 +1276,7 @@ function boobgartuanSurprise3(): void {
 
     outputText("Your " + chestDesc(game.player) + " begin to rumble and quake, filling you with a mix of anxiety, dread, and passion.  One moment later, an enormous force bursts forth against your hands; your nipples have popped back out, soaking and ready to - wait a second...", false);
     // [if nipplesPerBreast >1]
-    if (player.breasts.averageNipplesPerBreast() > 1) {
+    if (player.breastRows.averageNipplesPerBreast() > 1) {
         outputText("  Where once you had multiple nipples, there now rests one on each breast", false);
         // [if nippleLength <4]
         if (player.nippleLength < 4) {

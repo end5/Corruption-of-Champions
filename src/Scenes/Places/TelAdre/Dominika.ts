@@ -223,7 +223,7 @@ function fellatrixSexWarmup(): void {
 
     outputText("She walks towards you, resting her hands on your collarbone.  ", false);
     // (If breasts)
-    if (player.breasts.biggestTitSize() >= 1) outputText("They briefly run down to the top of your " + breastDescript(game.player, 0) + " before returning to your collar.  ", false);
+    if (player.breastRows.biggestTitSize() >= 1) outputText("They briefly run down to the top of your " + breastDescript(game.player, 0) + " before returning to your collar.  ", false);
     // First time
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00150] == 2) outputText("\"<i>I have not been unaffected by this land. I have certain... dietary needs.</i>\" She coughs slightly, glancing aside and looking as though she's doing her very best not to blush.\n\n", false);
     // Repeat

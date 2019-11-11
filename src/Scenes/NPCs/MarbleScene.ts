@@ -654,7 +654,7 @@ function forceFeedMarble(): void {
     outputText("You never really noticed how many people live on this farm until now.  They're all probably expecting you to rape her - and not all of them are reconciled to the idea, judging by the looks you're getting.  What the hell, you might as well continue your business with these on-lookers around anyway... you're like 99% sure you won't be in trouble for feeding a cow.");
     outputText("\n\nYou remove the top half of your [armor], showing everyone your [chest]; a few cat calls and wolf whistles come from your spectators.  You do your best to ignore them... right now your world is just you and Marble.  You kneel down next to the cow-girl and sit her up, lifting her head up to your chest.");
     // [If player has B-cup or less]
-    if (player.breasts.biggestTitSize() <= 2) outputText("\n\nYou push her soft lips against your nipple");
+    if (player.breastRows.biggestTitSize() <= 2) outputText("\n\nYou push her soft lips against your nipple");
     else outputText("\n\nYou lift your nipple up to her mouth and push it against her soft lips");
     outputText(", but she keeps them tightly closed, refusing to drink your sweet milk.");
     outputText("\n\n\"<i>Come on, sweetie; you'll never grow big and strong if you don't drink your milk,</i>\" you tease.");
@@ -1633,7 +1633,7 @@ function standardSex(newpage: boolean = true): void {
         else {
             outputText("You smile in return and begin removing your " + player.armorName + " from your body.  You start by slowly slipping off your top to reveal your " + allBreastsDescript(player) + ", ", false);
             // [player's breasts are at least B cup]
-            if (player.breasts.biggestTitSize() >= 2) outputText("running one of your hands down them before continuing.", false);
+            if (player.breastRows.biggestTitSize() >= 2) outputText("running one of your hands down them before continuing.", false);
             // [player has small or no breasts]
             else outputText("running one of your hands over them before continuing on.", false);
             outputText("  You slip open the lower half of your clothes, revealing your ", false);
@@ -1769,35 +1769,35 @@ function marbleMilkSex(newpage: boolean = true): void {
     // (player is female)
     else if (player.vaginas.length > 0) {
         // [player has sizable breast, C or bigger]
-        if (player.breasts.biggestTitSize() > 2) {
+        if (player.breastRows.biggestTitSize() > 2) {
             outputText("Marble runs her fingers along your " + vaginaDescript(player, 0) + " for a moment before slipping a hand onto your " + biggestBreastSizeDescript(player) + ".  She smiles at you and says \"<i>I think that maybe we should play up here. You did enjoy mine, so I think I'll enjoy yours.</i>\"  She helps you slips off your garments and lies you down on her bed, quickly taking her place on top of you.  She sticks her tongue out before putting her mouth to one of your " + nippleDescription(player, 0) + "s and giving it a series of gentle licks.  Taking a moment to lick her lips, Marble starts to rub, caress and lick each of your " + allBreastsDescript(player) + " in turn with her hands and face, always gently and always lovingly.  Marble seems to be quite familiar with these techniques; she has probably practiced on herself many times before.\n\n", false);
         }
         // [player has smaller then C breasts]
         else {
             outputText("She teases your " + vaginaDescript(player, 0) + " with her fingers for a moment before putting her hand on one of your " + biggestBreastSizeDescript(player) + ".  \"<i>I'm not sure what to do with teats this small, but I'll do my best. Though I feel kinda sorry for you, sweetie.</i>\"  You open your mouth to make an indignant response, but Marble puts a figure on your lips to shush you. She gives you an intense stare and tells you in no uncertain terms that since you enjoyed her breasts so much, it's only fair that she gets to experience your " + allBreastsDescript(player) + ".  She then sticks out her tongue at you before giving your " + nippleDescription(player, 0) + " a lick and rub down, which she extends to the ", false);
-            if (player.breasts.totalNipples() > 2) outputText("other", false);
+            if (player.breastRows.totalNipples() > 2) outputText("other", false);
             else outputText("rest", false);
             outputText(".\n\n", false);
         }
         // [after either]
         outputText("After finishing up", false);
         // [if player has more than two breasts]
-        if (player.breasts.totalBreasts() > 2) outputText(" with each of your " + allBreastsDescript(player), false);
+        if (player.breastRows.totalBreasts() > 2) outputText(" with each of your " + allBreastsDescript(player), false);
         else outputText(" with each of your " + breastDescript(game.player, 0), false);
         outputText(", Marble looks up at you and sticks her tongue out again.  \"<i>Now it's time for the main course!</i>\" she whispers before lowering her head down to one of your " + nippleDescription(player, 0) + "s and closing her mouth around it. She soon begins to suckle your nipple.\n\n", false);
         // [if player has nipplecunts]
-        if (player.breasts.hasFuckableNipples()) {
+        if (player.breastRows.hasFuckableNipples()) {
             outputText("As Marble's tongue rubs against your " + nippleDescription(player, 0) + " it slips inside, much to her surprise.  She pulls back for a moment and gives you a confused look.  You tell her it isn't a problem; it only makes you happier. Understanding, Marble quickly resumes her efforts.  Her talented tongue fucks your " + nippleDescription(player, 0) + " in earnest.", false);
             // [player is lactating]
-            if (player.breasts.biggestLactation() > 1) outputText("  The whole while, Marble continues to gulp down your milk.", false);
+            if (player.breastRows.biggestLactation() > 1) outputText("  The whole while, Marble continues to gulp down your milk.", false);
         }
         // [if player is lactating]
-        else if (player.breasts.biggestLactation() > 1) outputText("Her suckling soon brings a stream of milk to her lips that she gulps down eagerly.  You give a contented sigh, but are soon brought out of your revelry as her sucking becomes more stimulating and intense.", false);
+        else if (player.breastRows.biggestLactation() > 1) outputText("Her suckling soon brings a stream of milk to her lips that she gulps down eagerly.  You give a contented sigh, but are soon brought out of your revelry as her sucking becomes more stimulating and intense.", false);
         // [player is neither lactating or has nipplecunts]
-        if (player.breasts.biggestLactation() <= 1 && !player.breasts.hasFuckableNipples()) outputText("Of course, since you aren't lactating, nothing but your " + nippleDescription(player, 0) + " reaches her lips.  Marble doesn't seem to be put off by this and still gives you a thoroughly enjoyable experience.", false);
+        if (player.breastRows.biggestLactation() <= 1 && !player.breastRows.hasFuckableNipples()) outputText("Of course, since you aren't lactating, nothing but your " + nippleDescription(player, 0) + " reaches her lips.  Marble doesn't seem to be put off by this and still gives you a thoroughly enjoyable experience.", false);
         outputText("\n\n", false);
         outputText("After a while, Marble pulls back from your " + nippleDescription(player, 0) + " and tells you, \"<i>Sweetie, I know how annoying it is to only have one of your nipples serviced, so I will be sure to finish the job.</i>\"  She dives right into your ", false);
-        if (player.breasts.totalNipples() > 2) outputText("next", false);
+        if (player.breastRows.totalNipples() > 2) outputText("next", false);
         else outputText("other", false);
         outputText(" " + nippleDescription(player, 0) + " and starts the experience all over again.  By the end, her efforts have successfully rung an orgasm from you. After cleaning up a bit, Marble sends you off in high spirits.", false);
     }
@@ -2561,7 +2561,7 @@ function marbleCampSexNew(): void {
             // all the foreplay here
             outputText("Marble smiles at you and playfully pushes her sizable breasts together a few times before ", false);
             // Marble titfucks the players upper body, two variations, boobs and no
-            if (player.breasts.biggestTitSize() > 3) {
+            if (player.breastRows.biggestTitSize() > 3) {
                 outputText("pressing them against your own " + biggestBreastSizeDescript(player) + ".  She giggles slightly as she puts one of them between her mounds and rubs them up and down around it, teasing your " + nippleDescription(player, 0) + " with her own " + marbleNips() + ", a trickle of milk leaking out onto your locked chests.", false);
             } else {
                 outputText("pressing them against your chest.  She rubs them up and down against you as she moves around, making sure she has rubbed each part of your upper body at least three times over.  She is especially happy with moving your head around between her breasts.", false);
@@ -2897,7 +2897,7 @@ export function marbleBadEndFollowup(): void {
         outputText("A tall female cow-girl then steps out of the barn entrance.  The young champion notes just how pretty she is, if a bit imposing, but he also quickly notices that she is quite clearly pregnant.  \n\n", false);
         outputText("<i>\"Marble,</i>\" the older champion says to her, \"<i>this is a friend, he's actually from my village.  This is Marble, she is the reason I left my mission.  I care about her too much, and she is carrying my child.</i>\"  ", false);
         // mysterious baby?
-        if (player.gender == 3 && player.breasts.biggestTitSize() >= 2 && player.cocks.biggestCockArea() < 15) {
+        if (player.gender == 3 && player.breastRows.biggestTitSize() >= 2 && player.cocks.biggestCockArea() < 15) {
             outputText("\"<i>Wait, your child?!  How?</i>\" the younger champion stammers. The older one grins at him and says, \"<i>So I'm the first you've met?  Well then...</i>\" before dropping her pants and revealing her " + multiCockDescriptLight(game.player) + " and her " + vaginaDescript(player, 0) + " to him.  The younger champion's jaw drops and he simply stares at her for a time, during which she giggles at him and says, \"<i>They're fully functional too.  Would you like to see them in action?</i>\"  The younger champion finds he is only able to stammer out an incoherent answer to this.  \"<i>I think I'll take that as a 'yes'. Don't worry, it'll be fun.</i>\" the older champion says, leading the young one along with Marble back inside the barn.  \"<i>Afterwards, maybe I can give you some advice on dealing with this world.</i>\"  ", false);
         }
         // if this isn't a herm, then met the family
@@ -3298,7 +3298,7 @@ function marbleNightSexDudes(): void {
         }
         // Fun, the PC's breasts fall onto Marble's Face!  If they have them, anyway...
         else {
-            if (player.breasts.biggestTitSize() >= 4) {
+            if (player.breastRows.biggestTitSize() >= 4) {
                 outputText("landing your " + biggestBreastSizeDescript(player) + " into Marble's face!  You hear a slight muffled cry underneath you as Marble takes her hands off your hips and lifts you up off of her.  ", false);
             }
             else {
@@ -3311,7 +3311,7 @@ function marbleNightSexDudes(): void {
     else {
         outputText("It isn't enough to hold you back for more than a moment, though, and soon you're thrusting deep inside her at a comfortable rhythm for the two of you.  You smile at her and she smiles back as you start fondling and playing with Marble's lovely pillows.  She starts to run her fingers onto her love button, crying out in pleasure as you continue to thrust your " + cockDescript(game.player, x) + " inside her.\n\n", false);
         // If (PC's breasts are B cups or bigger)
-        if (player.breasts.biggestTitSize() >= 2) outputText("You pull your hands back up and begin to run them over your " + biggestBreastSizeDescript(player) + ", toying and teasing your nipples as your " + cockDescript(game.player, x) + " continues to pound away at Marble's confines.  Marble soon has her hands on the breasts you vacated, clearly enjoying teasing herself just as much as you are.  The two of you cry out in pleasure from the stimulation; you can feel your orgasm fast approaching.\n\n", false);
+        if (player.breastRows.biggestTitSize() >= 2) outputText("You pull your hands back up and begin to run them over your " + biggestBreastSizeDescript(player) + ", toying and teasing your nipples as your " + cockDescript(game.player, x) + " continues to pound away at Marble's confines.  Marble soon has her hands on the breasts you vacated, clearly enjoying teasing herself just as much as you are.  The two of you cry out in pleasure from the stimulation; you can feel your orgasm fast approaching.\n\n", false);
         else outputText("The sensations are quickly becoming too much for you, and you're unable to do anything but focus on the feeling of your " + cockDescript(game.player, x) + " inside her wonderful confines.  Marble grins at your difficulties and teases, \"<i>Am I just too much for you, sweetie?  Ah!</i>\" She gasps; it seems that you're becoming too much for her too.\n\n", false);
     }
     // ORGASMO
@@ -3359,7 +3359,7 @@ function marbleNightSexChicks(): void {
             outputText("Marble gives you a grin and starts lifting your hips up and down, while simultaneously bouncing her own hips.  The combination results in both your " + vaginaDescript(player, 0) + " and Marble's being pistoned by her double dildo.  The two of you start moaning in unison from the overwhelming feelings, leaving you unable to do anything but let her buckle and bounce you around like a rough wagon, and you love every second of it.\n\n", false);
             outputText("\"<i>Oh sweetie, am I going too fast for you?  Here, let me give you a chance to catch your breath.</i>\"  She offers as she slows down her rapid movement, letting your mind settle back into place.\n\n", false);
             // If (PC's breasts are D cup or bigger)
-            if (player.breasts.biggestTitSize() >= 4) {
+            if (player.breastRows.biggestTitSize() >= 4) {
                 outputText("Marble takes her hands off your hips and lets you start to rise and fall on her in your own time.  She still rises up to meet you as you descend and lowers herself down each time you rise, matching your timing, but her hands have a much more pressing concern: your " + biggestBreastSizeDescript(player) + ".  Marble starts working her hands expertly to tease and play with your " + biggestBreastSizeDescript(player) + ". She seems to know all the right ways to move her fingers, clearly having a lot of experience with her own, and you can't help but moan at the attention.  She giggles and pants in pleasure herself; it seems she may be enjoying this play just as much as you!\n\n", false);
             }
             else {
@@ -3370,7 +3370,7 @@ function marbleNightSexChicks(): void {
             outputText("You give a horny moan and start to bounce up and down on her dildo, relishing the feeling of it within your walls.  Marble gasps at the sudden rapid stimulation and starts to writhe on the ground helplessly underneath you.  You grin down at her as you continue your movements of rising, falling and rolling.  You slow down for a moment so you can get a good grip on her ample breasts.\n\n", false);
             outputText("\"<i>Sweetie!</i>\" Marble gasps as you start to play with her breasts.  ", false);
             // Does Marble help out, or does she go for the PC's breasts?
-            if (player.breasts.biggestTitSize() >= 4) {
+            if (player.breastRows.biggestTitSize() >= 4) {
                 outputText("She reaches her hands up and starts to play with your " + biggestBreastSizeDescript(player) + ", flicking and toying with them at the same pace that you play with hers.  The two of you start a friendly little contest to see who can stimulate the other's chest better; all the while, you continue to rise and fall above her.\n\n", false);
             }
             else {
@@ -3406,7 +3406,7 @@ function marbleNightSexChicks(): void {
         if (player.cor + player.lib < player.effects.getValue4Of(StatusAffects.Marble) + 10) {
             outputText("Marble gives you a grin and starts lifting your hips up and down, while simultaneously bouncing her own hips.  The combination results in your " + vaginaDescript(player, 0) + " being pistoned by her " + marbleCock() + ".  The two of you start moaning in unison from the overwhelming feelings, leaving you unable to do anything but let her buckle and bounce you around like a rough wagon, and you love every second of it.\n\n", false);
             outputText("\"<i>Oh sweetie, am I going too fast for you?  Here, let me give you a chance to catch your breath.</i>\"  She offers as she slows down her rapid movement, letting your mind settle back into place.  ", false);
-            if (player.breasts.biggestTitSize() >= 4) {
+            if (player.breastRows.biggestTitSize() >= 4) {
                 outputText("Marble takes her hands off your hips and lets you start to rise and fall on her in your own time.  She still rises up to meet you as you descend and lowers herself down each time you rise, matching your timing, but her hands have a much more pressing concern: your " + biggestBreastSizeDescript(player) + ".  Marble starts working her hands expertly to tease and play with your " + biggestBreastSizeDescript(player) + ". She seems to know all the right ways to move her fingers, clearly having a lot of experience with her own, and you can't help but moan at the attention.  She giggles and pants in pleasure herself; it seems she may be enjoying this play just as much as you!\n\n", false);
             }
             else {
@@ -3418,7 +3418,7 @@ function marbleNightSexChicks(): void {
             outputText("You give a horny moan and start to ride her " + marbleCock() + ", bouncing up and down on her and relishing the feeling of her within your walls.  Marble gasps at the sudden rapid stimulation and starts to writhe on the ground helplessly underneath you.  You grin down at her as you continue your movements of rising and falling.  You slow down for a moment so you can get a good grip on her ample breasts.\n\n", false);
             outputText("\"<i>Sweetie!</i>\" Marble gasps, as you start to play with her breasts.  ", false);
             // Does Marble help out, or does she go for the PC's breasts?
-            if (player.breasts.biggestTitSize() >= 4) {
+            if (player.breastRows.biggestTitSize() >= 4) {
                 outputText("She reaches her hands up and starts to play with your " + biggestBreastSizeDescript(player) + ", flicking and toying with them at the same pace that you play with hers.  The two of you start a friendly little contest to see who can stimulate the other's chest better; all the while, you continue to rise and fall above her.\n\n", false);
             }
             else {

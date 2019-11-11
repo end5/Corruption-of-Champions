@@ -141,7 +141,7 @@ export class Izma extends Monster {
         this.ballSize = 3;
         this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 45, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.NORMAL;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);

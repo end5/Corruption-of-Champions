@@ -248,7 +248,7 @@ export class Phouka extends Monster {
         this.cumMultiplier = 5;
         this.hoursSinceCum = 20;
 
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.NORMAL;
 

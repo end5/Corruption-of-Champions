@@ -468,7 +468,7 @@ function ottersForGals(): void {
     outputText(".  Her lips are like magic as they go, sucking and lavishing your entire crotch with delightful attention.  You find your entire body shivering with pleasure as she attends to you, your body quickly heating up as her tongue presses all of your buttons.  Everything from your fingertips down to your toes tingles and shudders under Callu's ministrations, leaving you squirming and undulating on her face, a deeply satisfied growl rising in your throat.");
 
     outputText("\n\nGrabbing hold of your [nipples], you start playing with them while Callu does her thing.  Your fingers deftly tweak and tease them, knowing all the right techniques to really get you going.  ");
-    if (player.breasts.hasFuckableNipples()) outputText("You even slip a finger or two inside, stretching your nipple-cunts out with deliciously pleasurable results.  ");
+    if (player.breastRows.hasFuckableNipples()) outputText("You even slip a finger or two inside, stretching your nipple-cunts out with deliciously pleasurable results.  ");
     outputText("Combined with Callu's tender tongue ");
     if (player.vaginas.length > 0) outputText("paying lip service to your wet cunt");
     else outputText("doing a cave dive in your rear");

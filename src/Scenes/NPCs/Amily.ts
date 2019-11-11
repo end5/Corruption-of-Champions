@@ -253,7 +253,7 @@ export class Amily extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.NORMAL, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 48, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("C"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("C"));
         this.ass.analLooseness = AnalLooseness.VIRGIN;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 4 * 12;

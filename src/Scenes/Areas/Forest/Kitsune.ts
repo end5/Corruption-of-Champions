@@ -189,7 +189,7 @@ export class Kitsune extends Monster {
         }
         this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 20, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);

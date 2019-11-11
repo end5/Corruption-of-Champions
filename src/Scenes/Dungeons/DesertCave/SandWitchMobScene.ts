@@ -134,7 +134,7 @@ export function femaleGirlsLoseToSammitches(): void {
     outputText("\n\nYour attention is brought back to the sand-witches on your body as the one on your face cums directly into your mouth, making you flinch.  The warm flood of cum spill over your arms and [legs] as well.  The witches on you are pushing their cunts as hard as possible, and they hold onto your body, making one last booming moan.  Grinding their cum-sloobering pussies in the afterglow, they pant out in exhaustion.  Once they finally devour every little bit of pleasure they can get from you, they get up and join their sisters in the sex toy display, leaving you alone, covered in milk and cum, eyes practically glued shut with caked-on lady-cum.");
 
     outputText("\n\nWho cares-your hands are finally free.  You shoot one down to your sex, happily fingering the soaked hole and stroking the [clit].  One witch who already picked her strap-on, a hard cat cock with soft rubbery barbs, sees you having fun and runs over to stop you.  There's a quaint struggle, but she holds your hands up and saddles herself on your stomach, her kitty cock resting ");
-    if (player.breasts.biggestTitSize() >= 1) outputText("between");
+    if (player.breastRows.biggestTitSize() >= 1) outputText("between");
     else outputText("on");
     outputText(" your [chest].");
 
@@ -214,7 +214,7 @@ export function memeberedFolksFindTrueWuv(): void {
         outputText("\n\nA short witch shoulders through her sisters to appraise you.  Her sisters part before her confident strides with a suprising degree of deference, even though this woman is at least a foot shorter than most of them.  She doesn't even have huge breasts!  They might be double-D's or E's if she's lucky.  Obscuring a great deal of the right half of her face, a swirling tattoo with patterns intricate enough to make your vision swim clearly differentiates her from her cohorts.");
         outputText("\n\n\"<i>An interloper, huh?  Well, now that you've found us, we can't exactly let you go free, can we, sisters?</i>\" the diminutive enchantress says with an icy undercurrent of dark promise.  A murmured but incomprehensive babble of assent is voiced by the crowd.  Shit, you're in deep here.  The tattooed tramp casually hovers her palm over your face and begins to chant nonsensical words.  Any second now, there'll be an explosion of flame, or a clap of sandstone, and you'll be burned or pulped into the next world...  You close your eyes and breathe deep, savoring what's sure to be your last breath of cool, fresh air.");
         outputText("\n\nYour pain fades under a numbing explosion of warmth, leaving you feeling whole and hale.  Is this... death?  The pleasant heat slowly circulates through your extremities before nestling in your chest.  Your heart beats faster, pounded on by an overexcited drummer somewhere inside you.  Wait, dead people don't have heartbeats.  You open your eyes and look up into the witch's smiling face, illuminated by her glowing tattoos as the rest of your injuries vanish.  Rolling her wrist to make her hand and fingers twirl above you, she stokes the artificial calefaction hotter.  A twitch within your [armor] alerts you to a new feeling that's spreading through you - lust.  The hotter it gets, the faster your heart beats and the harder [eachCock] grows.  You whimper as the ardor savages your restraint, causing you to whimper and paw at your tenting, twitching bulge.  Scraping against the insides of your gear, your [nipples] are in no better shape.  They faintly ache to be touched");
-        if (player.breasts.hasFuckableNipples()) outputText(", fondled, and fucked");
+        if (player.breastRows.hasFuckableNipples()) outputText(", fondled, and fucked");
         else outputText(" and fondled");
         outputText(".");
         if (player.vaginas.length > 0) outputText("  Your [vagina] even gets in on the action, converting your undergarments into a swampy mess of female pheromones and dripping lubricant.");
@@ -540,14 +540,14 @@ export function sandstonesAreCool(): void {
                 outputText("  A small set of stones settle on your [balls].");
                 bonus++;
             }
-            outputText("  " + num2Text(player.breasts.totalNipples()) + " crawl up to your chest and over your top " + nippleDescription(player, 0) + "s");
-            if (player.breasts.length > 1) {
-                if (player.breasts.length == 2) outputText(" and");
+            outputText("  " + num2Text(player.breastRows.totalNipples()) + " crawl up to your chest and over your top " + nippleDescription(player, 0) + "s");
+            if (player.breastRows.length > 1) {
+                if (player.breastRows.length == 2) outputText(" and");
                 else outputText(",");
                 outputText(" your middle " + nippleDescription(player, 1) + "s");
                 bonus++;
             }
-            if (player.breasts.length > 2) {
+            if (player.breastRows.length > 2) {
                 outputText(", and your bottom " + nippleDescription(player, 2) + "s");
                 bonus++;
             }

@@ -243,7 +243,7 @@ function talkWhitney(): void {
             doYesNo(whitneyMilkerHookup, whitneyMilkerRefusal);
             return;
         }
-        else if (player.breasts.biggestLactation() >= 2) {
+        else if (player.breastRows.biggestLactation() >= 2) {
             outputText("Whitney gives you a bemused look when you settle down for a chat.\n\n", false);
             outputText("\"<i>Ya might wanna get that looked at darlin',</i>\" she says, gesturing at milky wetness dripping from the front of your " + player.armorName + ".\n\n", false);
             if (player.cor < 33) outputText("You blush with shame", false);
@@ -539,7 +539,7 @@ export function exploreFarm(): void {
             dynStats("lus", 15);
         }
         // - [if no dick, not in heat, but overfull with milk]
-        else if (player.breasts.biggestLactation() >= 2) {
+        else if (player.breastRows.biggestLactation() >= 2) {
             outputText("\"<i>Maybe she wants to be milked?</i>\" you think. You certainly do.\n\n", false);
             dynStats("lus", 3);
         }
@@ -644,8 +644,8 @@ export function getMilked(): void {
         dynStats("lus", 15);
         if (milksplosion == 0) {
             outputText("A few drops of milk bud on the tips of your " + nippleDescription(player, 0) + "s, growing larger as they roll down to the edge of the tube.  It feels as if a ", false);
-            if (player.breasts.totalBreasts() == 2) outputText("pair", false);
-            else if (player.breasts.totalBreasts() == 4) outputText("quartet", false);
+            if (player.breastRows.totalBreasts() == 2) outputText("pair", false);
+            else if (player.breastRows.totalBreasts() == 4) outputText("quartet", false);
             else outputText("group", false);
             outputText(" of internal floodgates are opening, and thin streams of milk erupt, spraying to the noisy suckling tubes.   The milk is sucked away before it can build up, leaving you to wonder just how much you're managing to produce.   The milking goes on for the better part of an hour, though you stop producing long before it's over.  By the time the milker shuts off and the harness releases you, your breasts ache terribly.\n\n", false);
         }
@@ -1122,7 +1122,7 @@ function milkerBadEnd1(): void {
     outputText(" reaches your ears as your second deposit is massed, but your attention is drawn to the new tube", false);
     /// (if vag/nipplecunts/lactation)
     let tubes: boolean = false;
-    if (player.vaginas.length > 0 || player.breasts.hasFuckableNipples() || player.breasts.biggestLactation() > 1) {
+    if (player.vaginas.length > 0 || player.breastRows.hasFuckableNipples() || player.breastRows.biggestLactation() > 1) {
         outputText("s", false);
         tubes = true;
     }
@@ -1138,11 +1138,11 @@ function milkerBadEnd1(): void {
         if (player.clitLength > 3) outputText("A smaller suction tube fastens over your " + clitDescription(player) + " as it rouses from the vaginal stimulation.", false);
     }
     // [(lactation, no nipplecunts)
-    if (player.breasts.biggestLactation() >= 1 && !player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.biggestLactation() >= 1 && !player.breastRows.hasFuckableNipples()) {
         outputText("  Some tubes of the cup-type latch onto your " + nippleDescription(player, 0) + "s, then begin suction of their own. You feel your breastmilk shift toward the nipples, then begin to dribble into the tubes.", false);
     }
     // [(nipplecunts)
-    if (player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.hasFuckableNipples()) {
         outputText("  More tubes snake up to your " + biggestBreastSizeDescript(player) + " and work their way into your " + nippleDescription(player, 0) + "s.", false);
     }
     outputText("  " + SMultiCockDesc(game.player) + " becomes enormously hard again in a matter of seconds as you absorb the secretions.  You quickly deduce what it is you're tasting; the demon-designed tubing is feeding your own semen back into you, laced with some kind of chemical!\n\n", false);
@@ -1166,15 +1166,15 @@ function milkerBadEnd1(): void {
         outputText(".", false);
     }
     // [(lactation)
-    if (player.breasts.biggestTitSize() > 1) {
+    if (player.breastRows.biggestTitSize() > 1) {
         outputText("  Your milk sprays out of your " + nippleDescription(player, 0) + "s", false);
         // [(nipplecunts)
-        if (player.breasts.hasFuckableNipples()) outputText(" and rings raise from the bases of the shafts inside your nipples, forming a seal,", false);
+        if (player.breastRows.hasFuckableNipples()) outputText(" and rings raise from the bases of the shafts inside your nipples, forming a seal,", false);
         outputText(" as suction begins to whisk it away.", false);
     }
     outputText("  A minute after your release, the flow in the other direction intensifies, pouring more fluid into you than before", false);
     // [(lactation)
-    if (player.breasts.biggestLactation() > 1) outputText(", the drug now tasting of the milk mixed in", false);
+    if (player.breastRows.biggestLactation() > 1) outputText(", the drug now tasting of the milk mixed in", false);
     outputText(". Another chorus sounds from the counter and you hear some gems tinkling as they roll off the plate and onto the ground.\n\n", false);
 
     outputText("For several hours this continues, " + sMultiCockDesc(game.player) + " swelling to nearly twice its previous size and your orgasms coming one after another without a break as you pump your hips, knowing or caring about nothing except getting off on your machine lover and being fed in turn.  Your load each time is increased rather than decreased, with the cups growing multiple fleshy overflow valves and working overtime to vent the excess pressure every time you ejaculate.  ", false);

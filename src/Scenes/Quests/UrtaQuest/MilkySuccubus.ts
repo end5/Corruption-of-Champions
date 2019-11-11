@@ -77,7 +77,7 @@ export class MilkySuccubus extends AbstractSuccubus {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 300, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("G"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("G"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 60;

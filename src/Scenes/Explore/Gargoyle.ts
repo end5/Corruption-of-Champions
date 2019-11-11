@@ -691,7 +691,7 @@ function kinkyBodyRitual(): void {
     outputText("You tell " + flags[kFLAGS.GAR_NAME] + " that you could stand to reverse some of the corruption that has affected your body.  With an eager nod, she strips you down, takes you to a side alcove near the altar and instructs you to spread your arms and legs.  Putting your trust in your little gargoyle, you do so, allowing her to bind you spread-eagle with long leather straps.");
 
     outputText("\n\nYou watch over your shoulder as she retrieves a small riding crop from her altar and, giving it an experimental crack in her palm, saunters back over to you.  Still grinning, she presses herself up against your bare back");
-    if (player.breasts.biggestTitSize() >= 1) outputText(", cupping your [chest] in her cold stone hands");
+    if (player.breastRows.biggestTitSize() >= 1) outputText(", cupping your [chest] in her cold stone hands");
     outputText(".  Your [nipples] go rock hard from her cold touch, and you shudder as she gently nips your ear and drags the length of the crop along your thighs.");
 
     outputText("\n\n\"<i>You've been a very naughty " + mf(player, "boy", "girl") + ", to have a body so warped,</i>\" she says, again running the crop along your incredibly sensitive inner thighs, making you tremble with the sensation.  You're acutely aware of her large, soft breasts pressing into your sweat-slicked back.  Huskily, " + flags[kFLAGS.GAR_NAME] + " whispers, \"<i>Don't worry, Master. I'll take good care of you...</i>\"  CRACK!  She lays on with the crop, a short, stinging stoke across your thigh.  You gasp, as much in pleasure as in pain, still reveling in the sensation of her embrace.");
@@ -706,7 +706,7 @@ function kinkyBodyRitual(): void {
     outputText(".  She breaks the kiss and steps back, laying on one last time – CRACK! with the crop, stinging you again with an intense mix of pain and pleasure.  Gasping and panting from stimulation, you nearly collapse when " + flags[kFLAGS.GAR_NAME] + " unbinds you, though she's quick to catch you before you fall.");
 
     outputText("\n\nShe guides you over to the altar and helps you lie atop it to rest.  Once you're comfortably situated, " + flags[kFLAGS.GAR_NAME] + " slips up beside you, resting her cheek ");
-    if (player.breasts.biggestTitSize() < 1) outputText("on your chest");
+    if (player.breastRows.biggestTitSize() < 1) outputText("on your chest");
     else outputText("between your [chest]");
     outputText(".  Already, you feel more thick-skinned and less lusty, and so give an appreciative grin to your cute little gargoyle.  In response, she nuzzles against you and wraps her bat-like wings protectively around the two of you.");
 

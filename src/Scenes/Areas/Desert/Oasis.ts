@@ -134,7 +134,7 @@ export function oasisSexing(): void {
     dynStats("int", -1, "lib", 1);
     // Titzen!
     if (player.breastRows.length > 0) {
-        if (player.breasts.biggestTitSize() > 1) {
+        if (player.breastRows.biggestTitSize() > 1) {
             outputText("  Demonic hands grab and squeeze at your " + allBreastsDescript(player) + " and lips fasten around your " + nippleDescription(player, 0) + " and begin to lick and suck like there's no tomorrow.", false);
         }
     }

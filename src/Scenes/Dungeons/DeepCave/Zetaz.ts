@@ -28,7 +28,7 @@ export class Zetaz extends Monster {
         this.ballSize = 1;
         this.cumMultiplier = 3;
         this.hoursSinceCum = 20;
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 4 * 12 + 1;

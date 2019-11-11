@@ -10,24 +10,24 @@ export function loseToImpMob(): void {
     outputText("You're grabbed by the chin, and your jaw is pried open to make room for a swollen dog-dick.   It's shoved in without any warmup or fan-fare, and you're forced to taste his pre in the back of your throat.  You don't dare bite down or resist in such a compromised position, and you're forced to try and suppress your gag reflex and keep your teeth back as he pushes the rest of the way in, burying his knot behind your lips.\n\n", false);
 
     // (tits)
-    if (player.breasts.biggestTitSize() > 1) {
+    if (player.breastRows.biggestTitSize() > 1) {
         outputText("A sudden weight drops onto your chest as one of the demons straddles your belly, allowing his thick, tainted fuck-stick to plop down between your " + allBreastsDescript(player) + ".  The hot fluid leaking from his nodule-ringed crown  swiftly lubricates your cleavage.  In seconds the little devil is squeezing your " + breastDescript(game.player, 0) + " around himself as he starts pounding his member into your tits.  The purplish tip peeks out between your jiggling flesh mounds, dripping with tainted moisture.", false);
-        if (player.breasts.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescript(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
+        if (player.breastRows.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescript(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
         outputText("\n\n", false);
     }
     // (NIPPLECUNTS!)
-    if (player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.hasFuckableNipples()) {
         outputText("A rough tweak on one of your nipples startles you, but your grunt of protest is turned into a muffled moan when one of the imp's tiny fingers plunges inside your " + nippleDescription(player, 0) + ".  He pulls his hand out, marveling at the sticky mess, and wastes no time grabbing the top of your tit with both hands and plunging himself in.", false);
-        if (player.breasts.biggestTitSize() < 7) outputText("  He can only get partway in, but it doesn't seem to deter him.", false);
+        if (player.breastRows.biggestTitSize() < 7) outputText("  He can only get partway in, but it doesn't seem to deter him.", false);
         else outputText("  Thanks to your massive bust, he is able to fit his entire throbbing prick inside you.", false);
         outputText("  The demon starts pounding your tit with inhuman vigor, making the entire thing wobble enticingly.  The others, seeing their brother's good time, pounce on ", false);
-        if (player.breasts.totalNipples() > 2) outputText("each of ", false);
+        if (player.breastRows.totalNipples() > 2) outputText("each of ", false);
         outputText("your other " + nippleDescription(player, 0), false);
-        if (player.breasts.totalNipples() > 2) outputText("s", false);
+        if (player.breastRows.totalNipples() > 2) outputText("s", false);
         outputText(", fighting over the opening", false);
-        if (player.breasts.totalNipples() > 2) outputText("s", false);
+        if (player.breastRows.totalNipples() > 2) outputText("s", false);
         outputText(".  A victor quickly emerges, and in no time ", false);
-        if (player.breasts.totalNipples() == 2) outputText("both", false);
+        if (player.breastRows.totalNipples() == 2) outputText("both", false);
         else outputText("all the", false);
         outputText(" openings on your chest are plugged with a tumescent demon-cock.\n\n", false);
     }
@@ -52,10 +52,10 @@ export function loseToImpMob(): void {
     outputText("As one, the crowd of demons orgasm.  Hot spunk gushes into your ass, filling you with uncomfortable pressure.  ", false);
     if (player.vaginas.length > 0) outputText("A thick load bastes your pussy with whiteness, and you can feel it seeping deeper inside your fertile womb.  ", false);
     outputText("Your mouth is filled with a wave of thick cream.  Plugged as you are by the demon's knot, you're forced to guzzle down the stuff, lest you choke on his tainted baby-batter.", false);
-    if (player.breasts.biggestTitSize() > 1) {
+    if (player.breastRows.biggestTitSize() > 1) {
         outputText("  More and more hits your chin as the dick sandwiched between your tits unloads, leaving the whitish juice to dribble down to your neck.", false);
-        if (player.breasts.hasFuckableNipples()) {
-            if (player.breasts.totalNipples() == 2) outputText("  The pair", false);
+        if (player.breastRows.hasFuckableNipples()) {
+            if (player.breastRows.totalNipples() == 2) outputText("  The pair", false);
             else outputText("  The group", false);
             outputText(" of cocks buried in your " + nippleDescription(player, 0) + " pull free before they cum, dumping the spooge into the gaping holes they've left behind.  It tingles hotly, making you quiver with pleasure.", false);
         }
@@ -79,7 +79,7 @@ export function loseToImpMob(): void {
 export function loseToImpMobII(): void {
     outputText("", true);
     outputText("You wake up, sore from the previous activity and a bit groggy.  You try to move, but find yourself incapable.  Struggling futilely, you thrash around until you realize your arms and legs are strapped down with heavy iron restraints.  You gasp out loud when you look down and discover your ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("new", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("new", false);
     else outputText("much larger", false);
     outputText(" tits, wobbling with every twist and movement you make.  You're stark naked, save for a sheer and somewhat perverse nurse's outfit.   The room around you looks to be empty, though you can see a number of blankets piled in the corners and a few cages full of spooge-covered faeries, all snoring contently.\n\n", false);
 
@@ -92,7 +92,7 @@ export function loseToImpMobII(): void {
     outputText("Zetaz pours a few bottles into a larger container and connects a tube to an opening on the bottom of the bottle.  Your eyes trace the tube back to the gag in your mouth, and after feeling around with your tongue, you realize it's been threaded through the gag and down your throat.   Zetaz lifts up the bottle and hangs it from a hook on the ceiling, and you watch in horror as the fluid flows through the tube, helpless to stop it.  You shake your head desperately, furious at having fallen into the little fucker's hands at last.\n\n", false);
 
     outputText("Zetaz walks up and paws at your ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("new", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("new", false);
     else outputText("larger", false);
     outputText(" mounds, flitting into the air to bring himself to eye-level.  He rambles, \"<i>It's so good to see you again, " + player.short + ".  Because of you, I had to flee from my honored place by Lethice's side.  I've had to hide in this fetid forest.  I'll admit, it hasn't been all bad.  We've caught a few faeries to play with, and with you here, the boys and I will have lots of fun.  We just need to reshape that troubled mind a little bit.</i>\"\n\n", false);
 

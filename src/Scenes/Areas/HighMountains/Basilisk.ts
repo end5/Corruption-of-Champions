@@ -78,7 +78,7 @@ export class Basilisk extends Monster {
         this.cocks.createCock(6, 2);
         this.balls = 2;
         this.ballSize = 2;
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);

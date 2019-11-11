@@ -84,7 +84,7 @@ export class Harpy extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.GAPING_WIDE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("B"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("B"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);

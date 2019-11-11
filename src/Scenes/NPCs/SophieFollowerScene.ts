@@ -609,7 +609,7 @@ function sophieFollowerGivesBlowjobs(): void {
     else if (player.cocks.cockArea(x) <= SophieBimbo.sophieCapacity() / 2) outputText("needy boy-cock");
     else outputText("over-swollen engorgement you call a cock");
     outputText("?</i>\"  She saunters up with her hips swaying seductively, her juicy mound squelching noisily, webs of lubricant dangling between her thighs whenever they spread.  The harpy's fingertip punches into your chest");
-    if (player.breasts.biggestTitSize() >= 1) outputText(", right between your [chest]");
+    if (player.breastRows.biggestTitSize() >= 1) outputText(", right between your [chest]");
     outputText(", and she slowly trails it up to your chin, which she gently grabs in her long-nailed fingers.  \"<i>");
     if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00282] > 0) outputText("You may have given me a bimbo's body and an insatiable need for sex,");
     else outputText("You may have seduced me into your camp with hot sex,");
@@ -1109,11 +1109,11 @@ function phaseTwoOfIncest(daughter: number): void {
     else outputText("gropable, soft ass");
     outputText(" and grab her hard, squeezing and pulling her pliant flesh.  You growl to her, giving her rump a hard spank before pushing her down and pinning her beneath you.  Your eyes run over her body, taking in her creamy skin and her colorful feathers, her eyes looking back at you with burning, aching desire.  Not wanting to wait a moment longer, you free yourself from her long, silky legs and strip yourself of your [armor].");
     // [if breasts:
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("  Your [chest], free from the confines of your gear");
         // if small bust:
-        if (player.breasts.biggestTitSize() < 3) outputText(", perk up as the cool air brushes past your hard, aroused nipples.");
-        else if (player.breasts.biggestTitSize() < 10) outputText(", bounce perkily, nipples hard as your handful of breast flesh touches the cool air.");
+        if (player.breastRows.biggestTitSize() < 3) outputText(", perk up as the cool air brushes past your hard, aroused nipples.");
+        else if (player.breastRows.biggestTitSize() < 10) outputText(", bounce perkily, nipples hard as your handful of breast flesh touches the cool air.");
         else outputText(", spring forth in a wave of soft, squeezable bustiness; the kind of breasts one could curl up with and use as a pillow.");
     }
 

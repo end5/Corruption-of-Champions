@@ -795,7 +795,7 @@ function loppeSexChoice(bakery: boolean = false): void {
         if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
         if (player.vaginas.length > 0) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
         // [(boobs >= boobjob req)
-        if (player.breasts.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
+        if (player.breastRows.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
         outputText("There's always the option to receive her anally, though with her vaunted libido, you'd probably end up so flooded with her cum that it would wash from your mouth.  Or you could be a prick-tease and leave.");
         // Display sex options
         // [Cowgirl][Frot][TakeVaginal][Boobjob][TakeAnal][Bail]
@@ -839,7 +839,7 @@ function loppeSexChoice(bakery: boolean = false): void {
         if (player.cocks.length > 0) outputText("You could just whip it out and ask what she thinks of it, compared to hers - it might lead to some cross words and crossed swords, though.  ");
         if (player.vaginas.length > 0) outputText("You could take her monster length vaginally, but if her libido is what she claims, you'll probably wind up quite stretched.  ");
         // [(boobs >= boobjob req)
-        if (player.breasts.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
+        if (player.breastRows.biggestTitSize() >= 5) outputText("Her hardening horsecock looks like it would fit between your [chest], an act likely to net you a messy demonstration of her enthusiasm.  ");
         outputText("There's always the option to receive her anally, though with her vaunted libido, you'd probably end up so flooded with her cum that it would wash from your mouth.  Or you could be a prick-tease and leave.");
         // [(loppesexed)
         outputText("  Just jerking that cock and squeezing it so hard her balls swell up when she comes, though, that might be fun.  It'd be interesting to see how big they can get.");
@@ -863,7 +863,7 @@ function loppeSexChoice(bakery: boolean = false): void {
         addButton(1, "Get BJ", loppeWorshipsDicks);
     if (player.vaginas.length > 0 && player.lust >= 33)
         addButton(2, "TakeVaginal", getFuckedInYerTwatYaCunt);
-    if (player.breasts.biggestTitSize() >= 4) addButton(3, "Boob-job", boobjobLoppe);
+    if (player.breastRows.biggestTitSize() >= 4) addButton(3, "Boob-job", boobjobLoppe);
     if (flags[kFLAGS.LOPPE_TIMES_SEXED] > 0) addButton(4, "SqueezeJob", loppeSqueezedickWhateverThatIs);
     if (player.isTaur() && player.lust >= 33) addButton(5, "TakeAnal", getAssFuckedByLoppeAsACentaur);
     else if (player.lust >= 33) addButton(5, "TakeAnal", getButtFuckedNonHoarseByLoppe);

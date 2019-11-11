@@ -114,9 +114,9 @@ export function goldenSeed(type: number, player: Player): void {
                 // (female 1)
                 if (rand(2) == 0) {
                     outputText("In your fantasy you're a happy harpy mother, your womb stretched by the sizable egg it contains. The surging hormones in your body arouse you again, and you turn to the father of your children, planting a wet kiss on his slobbering, lipstick-gilt cock. The poor adventurer writhes, hips pumping futilely in the air. He's been much more agreeable since you started keeping his cock coated with your kisses. You mount the needy boy, fantasizing about that first time when you found him near the portal, in the ruins of your old camp. The feeling of your stiff nipples ", false);
-                    if (player.breasts.hasFuckableNipples())
+                    if (player.breastRows.hasFuckableNipples())
                         outputText("and pussy leaking over ", false);
-                    else if (player.breasts.biggestLactation() >= 1.5)
+                    else if (player.breastRows.biggestLactation() >= 1.5)
                         outputText("dripping milk inside ", false);
                     else
                         outputText("rubbing inside ", false);
@@ -164,7 +164,7 @@ export function goldenSeed(type: number, player: Player): void {
             outputText(player.skinTone + " " + player.skinDesc, false);
         outputText(" remains. <b>You've lost a row of breasts!</b>", false);
         dynStats("sen", -5);
-        player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
+        player.breastRows.removeBreastRow(player.breastRows.length - 1, 1);
     }
     // -Shrink tits if above DDs.
     // Cannot happen at same time as row removal

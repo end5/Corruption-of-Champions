@@ -112,9 +112,9 @@ export function sweetGossamer(type: number, player: Player): void {
         }
     }
     // [Increase to Breast Size] - up to Large DD
-    if (player.breasts.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
-        outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player, player.breasts.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
-        player.breastRows[player.breasts.smallestTitRow()].breastRating++;
+    if (player.breastRows.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
+        outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player, player.breastRows.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
+        player.breastRows[player.breastRows.smallestTitRow()].breastRating++;
         changes++;
     }
     // [Increase to Ass Size] - to 11
@@ -153,10 +153,10 @@ export function sweetGossamer(type: number, player: Player): void {
         changes++;
     }
     // -Remove breast rows over 2.
-    if (changes < changeLimit && player.breasts.length > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
+    if (changes < changeLimit && player.breastRows.length > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
         changes++;
         outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
-        if (player.breasts.length >= 3)
+        if (player.breastRows.length >= 3)
             outputText("abdomen", false);
         else
             outputText("chest", false);
@@ -167,12 +167,12 @@ export function sweetGossamer(type: number, player: Player): void {
             outputText(player.skinTone + " " + player.skinDesc, false);
         outputText(" remains. <b>You've lost a row of breasts!</b>", false);
         dynStats("sen", -5);
-        player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
+        player.breastRows.removeBreastRow(player.breastRows.length - 1, 1);
     }
     // -Nipples reduction to 1 per tit.
-    if (player.breasts.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+    if (player.breastRows.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
         outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ", false);
-        if (player.breasts.biggestTitSize() < 1)
+        if (player.breastRows.biggestTitSize() < 1)
             outputText("'breast'.", false);
         else
             outputText("breast.", false);

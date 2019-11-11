@@ -136,9 +136,9 @@ export class HellHound extends Monster {
         this.ballSize = 4;
         this.cumMultiplier = 5;
         // this.hoursSinceCum = 0;
-        this.breasts.createBreastRow();
-        this.breasts.createBreastRow();
-        this.breasts.createBreastRow();
+        this.breastRows.createBreastRow();
+        this.breastRows.createBreastRow();
+        this.breastRows.createBreastRow();
         this.ass.analLooseness = AnalLooseness.NORMAL;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = 47;

@@ -141,14 +141,14 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         else {
             dynStats("sen", 15);
             outputText("Every movement of your body seems to bring heightened waves of sensation that make you woozy.  Your " + player.armorName + " rubs your " + nippleDescription(player, 0) + "s deliciously", false);
-            if (player.breasts.hasFuckableNipples()) {
+            if (player.breastRows.hasFuckableNipples()) {
                 outputText(", sticking to the ", false);
-                if (player.breasts.biggestLactation() > 2)
+                if (player.breastRows.biggestLactation() > 2)
                     outputText("milk-leaking nipple-twats", false);
                 else
                     outputText("slippery nipple-twats", false);
             }
-            else if (player.breasts.biggestLactation() > 2)
+            else if (player.breastRows.biggestLactation() > 2)
                 outputText(", sliding over the milk-leaking teats with ease", false);
             else
                 outputText(" catching on each of the hard nubs repeatedly", false);

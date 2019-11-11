@@ -1392,7 +1392,7 @@ export class Saves {
                 player.nippleLength = saveFile.data.nippleLength;
             // Set Breast Array
             for (i = 0; i < saveFile.data.breastRows.length; i++) {
-                player.breasts.createBreastRow();
+                player.breastRows.createBreastRow();
                 // trace("LoadOne BreastROw i(" + i + ")");
             }
             // Populate Breast Array
@@ -1414,7 +1414,7 @@ export class Saves {
             }
 
             // Force the creation of the default breast row onto the player if it's no longer present
-            if (player.breastRows.length == 0) player.breasts.createBreastRow();
+            if (player.breastRows.length == 0) player.breastRows.createBreastRow();
 
             let hasHistoryPerk: boolean = false;
             let hasLustyRegenPerk: boolean = false;

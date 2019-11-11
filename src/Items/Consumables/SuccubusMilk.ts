@@ -76,7 +76,7 @@ export function succubiMilk(tainted: boolean, player: Player): void {
         growTits(player, temp, player.breastRows.length, true, 3);
         if (player.breastRows.length == 0) {
             outputText("A perfect pair of B cup breasts, complete with tiny nipples, form on your chest.", false);
-            player.breasts.createBreastRow();
+            player.breastRows.createBreastRow();
             player.breastRows[0].breasts = 2;
             player.breastRows[0].breastsPerRow = 2;
             player.breastRows[0].nipplesPerBreast = 1;

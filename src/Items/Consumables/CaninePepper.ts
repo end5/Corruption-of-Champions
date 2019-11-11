@@ -447,7 +447,7 @@ export function caninePepper(type: number, player: Player): void {
         if (player.breastRows[0].breastRating > 0 && player.vaginas.length > 0) {
             // Doggies only get 3 rows of tits! FENOXO HAS SPOKEN
             if (player.breastRows.length < 3 && rand(2) == 0 && changes < changeLimit) {
-                player.breasts.createBreastRow();
+                player.breastRows.createBreastRow();
                 // Store temp to the index of the newest row
                 temp = player.breastRows.length - 1;
                 // Breasts are too small to grow a new row, so they get bigger first
@@ -544,7 +544,7 @@ export function caninePepper(type: number, player: Player): void {
     else if (rand(2) == 0 && changes < changeLimit) {
         outputText("\n\nYour chest tingles uncomfortably as your center of balance shifts.  <b>You now have a pair of B-cup breasts.</b>", false);
         outputText("  A sensitive nub grows on the summit of each tit, becoming a new nipple.", false);
-        player.breasts.createBreastRow();
+        player.breastRows.createBreastRow();
         player.breastRows[0].breastRating = 2;
         player.breastRows[0].breasts = 2;
         dynStats("sen", 4, "lus", 6);

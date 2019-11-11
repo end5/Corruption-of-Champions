@@ -10,7 +10,7 @@ export class SluttySwimwear extends ArmorWithPerk {
 
     public useText(): void { // Produces any text seen when equipping the armor normally
         dynStats("lus", 5);
-        if (game.player.breasts.biggestTitSize() < 1)
+        if (game.player.breastRows.biggestTitSize() < 1)
             outputText("You feel rather stupid putting the top part on like this, but you're willing to bear with it. It could certainly be good for distracting.  ");
         else {
             outputText("The bikini top clings tightly to your bustline, sending a shiver of pleasure through your body. It serves to turn you on quite nicely.  ");
@@ -45,7 +45,7 @@ export class SluttySwimwear extends ArmorWithPerk {
                 if(output) dynStats("lus", 5);
                 if(output) {
                     //[flat-chested]
-                    if(player.breasts.biggestTitSize() < 1) outputText("You feel rather stupid putting the top part on like this, but you're willing to bear with it. It could certainly be good for distracting.  ");
+                    if(player.breastRows.biggestTitSize() < 1) outputText("You feel rather stupid putting the top part on like this, but you're willing to bear with it. It could certainly be good for distracting.  ");
                     //[breasts]
                     else {
                         outputText("The bikini top clings tightly to your bustline, sending a shiver of pleasure through your body. It serves to turn you on quite nicely.  ");

@@ -65,7 +65,7 @@ function relieveTension(): void {
     // First time...
     if (player.effects.findByType(StatusAffects.TensionReleased) < 0) {
         outputText("You nod and step forwards, allowing her to hook up a modified harness and inject you with the demonic concoction.  In no time heat boils through your veins, pooling on your chest and crotch.  ");
-        if (player.breasts.biggestTitSize() < 10) {
+        if (player.breastRows.biggestTitSize() < 10) {
             growTits(player, 1, (2 + rand(3)), true, 1);
             outputText("  ");
         }
@@ -103,7 +103,7 @@ function relieveTension(): void {
             // Grow chest
             // (If player has 0 bewbs)
             if (player.breastRows.length == 0) {
-                player.breasts.createBreastRow();
+                player.breastRows.createBreastRow();
                 outputText("Your chest tingles, revealing a pair of pink nipples on your new mammory glands.  ");
             }
             growTits(player, 1, (2 + rand(3)), true, 1);
@@ -158,22 +158,22 @@ function relieveTension(): void {
 export function factoryFinisher(): void {
     clearOutput();
     outputText("You crack your sleep-fuzzed eyes, blinking at the sudden light as you try to get your bearings and remember where you are.  A nearby voice is moaning like a bitch in heat, or a drunk slut.  You giggle a bit at the thought as you work at focusing your eyes.  You feel warm and happy, particularly in your chest and groin.  The cobwebs of sleep clear from your mind with agonizing slowness, but you find it hard to worry about with how warm and wonderful you feel.  It's almost like hot wet mouths are latched onto your crotch and breasts, licking and sucking in perfect rhythm.  ", false);
-    if (player.cocks.length == 0 || player.breasts.biggestTitSize() <= 1) {
+    if (player.cocks.length == 0 || player.breastRows.biggestTitSize() <= 1) {
         outputText("A small inner voice pipes up to remind you that you don't have ", false);
         if (player.cocks.length == 0) {
             outputText("anything in your groin to suck on", false);
-            if (player.breasts.biggestTitSize() <= 1) outputText(" or ", false);
+            if (player.breastRows.biggestTitSize() <= 1) outputText(" or ", false);
         }
-        if (player.breasts.biggestTitSize() <= 1) outputText("any adornments on your chest", false);
+        if (player.breastRows.biggestTitSize() <= 1) outputText("any adornments on your chest", false);
         outputText(".  That voice trails off as that feeling of perfect pleasure and rightness sweeps it away with the last remnants of sleep.\n\n", false);
     }
     else outputText("A small inner voice tries to warn you of something, only to be swept away in the feelings of perfect pleasure and rightness that wash away the last remnants of your sleep.\n\n", false);
     outputText("You realize that the moaning voice is your own, and find that the thought just turns you on more.\n\n", false);
     outputText("'<i>You're such a horny slut!</i>' echoes a voice in your head.  You want to nod and smile, but are prevented by something.  You realize you're strapped into some kind of chair and harness so securely that you can't even move.  Tiny soothing fingers massage your temples, rubbing away the fears that moments ago threatened to interrupt your pleasure.  You can see a ", false);
-    if (player.breasts.totalBreasts() == 2) outputText("pair of ", false);
+    if (player.breastRows.totalBreasts() == 2) outputText("pair of ", false);
     else outputText("multitude of ", false);
     outputText(" clear hoses coming away from your cow-like chest udders.  ", false);
-    if (player.breasts.biggestLactation() <= 1.5) outputText("Creamy white milk is flowing in a steady stream up the tubes and away from you.  ", false);
+    if (player.breastRows.biggestLactation() <= 1.5) outputText("Creamy white milk is flowing in a steady stream up the tubes and away from you.  ", false);
     else outputText("The hoses bulge obscenely as they struggle to keep up with the torrents of creamy-white milk you're producing.  ", false);
     outputText("Even more wanton moans erupt from your disobedient lips now that you know what's going on.  You're not just a horny slut.  You're a horny cow-slut who's getting off on having her tits pumped.  The massage you're getting feels so good once you realize that.\n\n", false);
     outputText("A snap echoes through the pumping room, nearly drowned out by the moans of the other milk-sluts around you.  You look around as you realize the band to restrain your head has been unlatched.  You take advantage of your newfound freedom and look around.  Rows and rows of other girls are there, just like you.  Almost all of them have bigger tits and fuller milk-tubes.  In addition, they all have enormous members that would drag on the floor were it not for the gigantic tubes encapsulating each and every one.  ", false);

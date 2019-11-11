@@ -166,24 +166,24 @@ export function blueEgg(large: boolean, player: Player): void {
     // LARGE
     else {
         // New lines if changes
-        if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5 || player.vaginas.length > 0)
+        if (player.breastRows.length > 1 || player.buttRating > 5 || player.hipRating > 5 || player.vaginas.length > 0)
             outputText("\n\n", false);
         // Kill pussies!
         if (player.vaginas.length > 0) {
             outputText("Your vagina clenches in pain, doubling you over.  You slip a hand down to check on it, only to feel the slit growing smaller and smaller until it disappears, taking your clit with it!\n\n", false);
-            if (player.breasts.length > 1 || player.buttRating > 5 || player.hipRating > 5)
+            if (player.breastRows.length > 1 || player.buttRating > 5 || player.hipRating > 5)
                 outputText("  ", false);
             player.vaginas.removeVagina(0, 1);
             player.clitLength = .5;
             player.genderCheck();
         }
         // Kill extra boobages
-        if (player.breasts.length > 1) {
-            outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescript(player, player.breasts.length - 1) + " have vanished.</b>", false);
+        if (player.breastRows.length > 1) {
+            outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescript(player, player.breastRows.length - 1) + " have vanished.</b>", false);
             if (player.buttRating > 5 || player.hipRating > 5)
                 outputText("  ", false);
             // Remove lowest row.
-            player.breasts.removeBreastRow((player.breasts.length - 1), 1);
+            player.breastRows.removeBreastRow((player.breastRows.length - 1), 1);
         }
         // Ass/hips shrinkage!
         if (player.buttRating > 5) {
@@ -197,7 +197,7 @@ export function blueEgg(large: boolean, player: Player): void {
             player.hipRating -= 2;
         }
         // Shrink tits!
-        if (player.breasts.biggestTitSize() > 0) {
+        if (player.breastRows.biggestTitSize() > 0) {
             shrinkTits(player);
         }
         if (player.cocks.length > 0) {
@@ -274,7 +274,7 @@ export function whiteEgg(large: boolean, player: Player): void {
     outputText("You devour the egg, momentarily sating your hunger.", true);
     if (!large) {
         // Grow nipples
-        if (player.nippleLength < 3 && player.breasts.biggestTitSize() > 0) {
+        if (player.nippleLength < 3 && player.breastRows.biggestTitSize() > 0) {
             outputText("\n\nYour nipples engorge, prodding hard against the inside of your " + player.armorName + ".  Abruptly you realize they've gotten almost a quarter inch longer.", false);
             player.nippleLength += .2;
             dynStats("lus", 15);
@@ -283,7 +283,7 @@ export function whiteEgg(large: boolean, player: Player): void {
     // LARGE
     else {
         // Grow nipples
-        if (player.nippleLength < 3 && player.breasts.biggestTitSize() > 0) {
+        if (player.nippleLength < 3 && player.breastRows.biggestTitSize() > 0) {
             outputText("\n\nYour nipples engorge, prodding hard against the inside of your " + player.armorName + ".  Abruptly you realize they've grown more than an additional quarter-inch.", false);
             player.nippleLength += (rand(2) + 3) / 10;
             dynStats("lus", 15);

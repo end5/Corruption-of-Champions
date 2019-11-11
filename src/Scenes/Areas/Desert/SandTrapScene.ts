@@ -142,7 +142,7 @@ export function pcBeatsATrap(): void {
     let rideDatSantTrap: () => void = null;
     let useSandTarpsHand: () => void = null;
     let bikiniTits: () => void = null;
-    if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+    if (player.vaginas.length > 0 && player.breastRows.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
     // Requirements: Player is naga with tail and fangs, has met desert naga as naga at least once
     if (player.isNaga() && player.effects.findByType(StatusAffects.Naga) >= 0 && player.gender > 0 && player.faceType == FaceType.SNAKE_FANGS) nagaThreeSome = nagaThreesomeWithSandTrap;
 

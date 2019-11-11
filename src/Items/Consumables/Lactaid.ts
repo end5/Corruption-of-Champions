@@ -3,7 +3,7 @@ export function lactaid(player: Player): void {
     let i: number = 0;
     outputText("You gulp down the bottle of lactaid, easily swallowing the creamy liquid.", true);
     // Bump up size!
-    if (player.breasts.averageBreastSize() < 8) {
+    if (player.breastRows.averageBreastSize() < 8) {
         outputText("\n\n", false);
         if (player.breastRows.length == 1)
             growTits(player, (1 + rand(5)), 1, true, 1);
@@ -11,7 +11,7 @@ export function lactaid(player: Player): void {
             growTits(player, 1 + rand(2), player.breastRows.length, true, 1);
     }
     // Player doesn't lactate
-    if (player.breasts.biggestLactation() < 1) {
+    if (player.breastRows.biggestLactation() < 1) {
         outputText("\n\n", false);
         outputText("You feel your " + nippleDescription(player, 0) + "s become tight and engorged.  A single droplet of milk escapes each, rolling down the curves of your breasts.  <b>You are now lactating!</b>", false);
         for (i = 0; i < player.breastRows.length; i++) {

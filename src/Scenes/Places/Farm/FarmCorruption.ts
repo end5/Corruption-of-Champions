@@ -1451,7 +1451,7 @@ function makeDogeSubby(): void {
 
     outputText("\n\n“<i>You are my bitch, and you will act like it. You will protect my property with your life, and run it to the very best of your abilities. You will put my other slaves to the lash, make them work twice as hard just so you may receive one word of praise from me. When you hear my voice, it will make you wet.");
 
-    if (player.breasts.biggestTitSize() >= 2) outputText("\n\nWhen you see my breasts, you will want to suckle on them.");
+    if (player.breastRows.biggestTitSize() >= 2) outputText("\n\nWhen you see my breasts, you will want to suckle on them.");
 
     if (player.cocks.length > 0) outputText("\n\nWhen you see my dick, you will want to worship it.");
 
@@ -2417,10 +2417,10 @@ function firstVaginaOralTrainingStageTwo(): void {
     outputText(" from the arousal you already feel. “<i>A good slut knows her mistress’s breasts need to be attended to, her nipples and skin shining with a slave’s worship for all the world to see, before she’s deserving of drinking from her pussy. Let’s see how you do.</i>” ");
 
     outputText("\n\nAfter a slight pause Whitney rises up, puts her arms around your waist, and bends into one of your [nipples]. You sigh as you feel her flat tongue slide across your softness and then over your");
-    if (player.breasts.hasFuckableNipples()) outputText(" obscene folds");
+    if (player.breastRows.hasFuckableNipples()) outputText(" obscene folds");
     else outputText(" sensitive points");
     outputText(", kneading them gently and bathing them in saliva. Given her initial awkwardness at cunnilingus it’s remarkable how good she is at this. “<i>Lick every inch... that’s good. Suckle on them a bit... very good!</i>” You gasp a bit as she envelopes one of your nipples and");
-    if (player.breasts.hasFuckableNipples()) outputText(" sends her tongue questing into its sensitive inside.");
+    if (player.breastRows.hasFuckableNipples()) outputText(" sends her tongue questing into its sensitive inside.");
     else outputText("bites it ever so gently.");
     if (player.lactationQ() > 0) {
         outputText(" The gentle kneading is easily enough to make your fecund teats dribble milk into her mouth, and after being slightly startled by it Whitney evidently enjoys the taste of it, because she begins to pull at your plump breast for more. You allow her another mouthful before gently pulling her away.");
@@ -2471,7 +2471,7 @@ function vaginaOralTrainingStageTwo(): void {
     outputText("\n\nShe begins as you already bid her, hugging your waist as she laps at your [chest], eyes closed as she silently sends her warm, wet tongue rolling and questing across your softness, varnishing every inch of them with saliva before taking each of your [nipples] into her mouth to bathe them in close, sucking attention. It’s a process which is beautifully sensuous");
     if (player.lactationQ() > 0) outputText(" and it quickly makes the liquid warmth in your breasts rise to a point, beading milk freely from your teats. Whitney laps and sucks it down eagerly, but gratifyingly she remembers your order and stops reluctantly after only taking a single pull");
     outputText(", leaving your nipples");
-    if (!player.breasts.hasFuckableNipples()) outputText(" rock-hard and");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" rock-hard and");
     outputText(" shining and your [vagina] beading eagerly.");
 
     outputText("\n\nShe sinks down onto her knees then, sliding her hot little fingers between your thighs whilst she continues to work herself into a lather, finding your [vagina] and slowly beginning to play with it, beckoning at your [clit] with one soft digit whilst another sinks deep into your tunnel, softly sliding in and around your female sex until it is puffy and wet with her careful, teasing movements.");
@@ -2506,12 +2506,12 @@ function firstVaginaOralTrainingStageThree(): void {
     outputText("You smile at Whitney as you take off your... you stop, frowning down at her. Did she whimper just then? She’s completely still, staring up at you intently with her big, deep, brown eyes. Without saying a word and pretending to be interested in the sky above, you continue to disrobe, doing it slowly, placing every piece of your [armor] down on the ground with careful deliberation. There is no mistaking it this time - as you spread your [hips] and expose your [vagina] Whitney moans deep in her throat, squirming uncomfortably in her kneeling position as her gaze bores deep into your crotch. You smile softly, sit yourself down, open your [legs], and wait.");
 
     outputText("\n\nOnce you have settled yourself down the dog woman immediately sends her hand burying into her underwear, her heavy breath catching in her throat as she stares at you. It only takes a few seconds of urgent jerking before she spasms forward, her tongue out and eager to begin. She radiates heat as she pushes into your abdomen, pressing her mouth into your [chest]. Eyes closed, she silently sends her warm, flannel-like tongue rolling and questing across your softness, varnishing every inch of them with saliva, catching your skin gently here and there in her teeth, making the blood rise to the surface just so you can enjoy her licking all the more;");
-    if (!player.breasts.hasFuckableNipples()) outputText(" she takes each of your [nipples] into her mouth to bathe them in close, sucking attention");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" she takes each of your [nipples] into her mouth to bathe them in close, sucking attention");
     else outputText(" she sends her tongue lapping into each of your cunt nipples, curling at their sensitive pink until they are wet with need");
     outputText(". It’s a process which is beautifully sensuous, made all the more gratifying by the soft, lustful moans she makes as she polishes your softness.");
     if (player.lactationQ() > 0) outputText(" It quickly makes the liquid warmth in your breasts rise to a point, beading milk freely from your teats. Whitney laps and sucks it down eagerly, but gratifyingly she remembers your order and stops reluctantly after only taking a single pull.");
     outputText(" She sinks downwards leaving your nipples");
-    if (!player.breasts.hasFuckableNipples()) outputText(" rock-hard and");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" rock-hard and");
     outputText(" shining, your [vagina] beading eagerly.");
 
     outputText("\n\nShe slides her hot little fingers between your thighs whilst she continues to work herself into a lather, finding your [vagina] and slowly beginning to play with it, beckoning at your [clit] with one soft digit whilst another sinks deep into your tunnel, softly sliding in and around your pink until it is puffy and wet with her careful, teasing movements. When you give a groan of approval to her treatment of your sex she bends in and sinks her tongue into your wet, sucking warmness. You sigh as she gets to work, lapping at your entrance, searching and curling into your vagina whilst her firm digits continue to diddle both herself and you. ");
@@ -2574,12 +2574,12 @@ function vaginaOralTrainingStageThree(): void {
     outputText("\n\n“<i>Very well,</i>” you say coolly. “<i>But next time you will say it clearer. Begin.</i>”");
 
     outputText("\n\nShe radiates heat as she pushes into your abdomen, pressing her mouth into your [chest]. Eyes closed, she silently sends her warm, flannel-like tongue rolling and questing across your softness, varnishing every inch of them with saliva, catching your skin gently here and there in her teeth, making the blood rise to the surface just so you can enjoy her licking all the more;");
-    if (!player.breasts.hasFuckableNipples()) outputText(" she takes each of your [nipples] into her mouth to bathe them in close, sucking attention");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" she takes each of your [nipples] into her mouth to bathe them in close, sucking attention");
     else outputText(" she sends her tongue lapping into each of your cunt nipples, curling at their sensitive pink until they are wet with need");
     outputText(". It’s a process which is beautifully sensuous.");
     if (player.lactationQ() > 0) outputText(" It quickly makes the liquid warmth in your breasts rise to a point, beading milk freely from your teats. Whitney laps and sucks it down eagerly, whimpering as she withdraws after taking a single pull. You smile softly, knowing that the small, teasing taste of your sweetness only serves to make her thirstier.");
     outputText(" She sinks downwards leaving your nipples");
-    if (player.breasts.hasFuckableNipples()) outputText(" rock-hard and");
+    if (player.breastRows.hasFuckableNipples()) outputText(" rock-hard and");
     outputText(" shining, your [vagina] beading eagerly.");
 
     outputText("\n\nYou rise above her softly and sinuously, looking over your shoulder at her with an aloof smirk as you display your [butt] to her.");
@@ -2628,12 +2628,12 @@ function vaginaOralTrainingMaxed(): void {
     outputText("\n\n“<i>Very well,</i>” you say benevolently, opening your [hips]. “<i>I suppose you do deserve it for being such a hardworking task-slut.</i>”");
 
     outputText("\n\nShe radiates heat as she pushes into your abdomen, pressing her mouth into your [chest]. Eyes closed, she silently pushes her plump lips into your softness before she sends her warm, flannel-like tongue rolling and questing across your skin, varnishing every inch of them with clinging saliva, catching your skin gently here and there in her teeth, making the blood rise to the surface just so you can enjoy her licking all the more;");
-    if (!player.breasts.hasFuckableNipples()) outputText(" she envelopes each of your [nipples] with her lips, kissing them with their sumptuous sponginess before bathing them in close, sucking attention");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" she envelopes each of your [nipples] with her lips, kissing them with their sumptuous sponginess before bathing them in close, sucking attention");
     else outputText(" she pushes her lips against your cunt nipples before sending her tongue gently into each of them, curling at their sensitive pink until they are oozing wetness in delight");
     outputText(". It’s a process which is beautifully sensuous, made all the better by the soft, lustful moans she makes as she polishes your bust.");
     if (player.lactationQ() > 0) outputText(" It quickly makes the liquid warmth in your breasts rise to a point, beading milk freely from your teats. Whitney laps and sucks it down eagerly, whimpering as she withdraws after taking a single pull. You smile softly, knowing that that small, teasing taste of your heavy sweetness only serves to make her thirstier.");
     outputText(" Having left your [chest] gleaming with warm, oily saliva and your nipples");
-    if (!player.breasts.hasFuckableNipples()) outputText(" rock-hard and");
+    if (!player.breastRows.hasFuckableNipples()) outputText(" rock-hard and");
     outputText(" shining, she sinks down to the next stage.");
 
     outputText("\n\nYou don’t have to turn as you rise; she slides around herself, her fingers trail longingly down your waist and over your [hips] as she kneels behind you and pushes her hot tongue into the cleavage of your [butt], sliding downwards to tongue at your [asshole].  She first licks your valley quite clean of salt and musk, bathing your rose in lapping attention until it feels sensuously moist and soft, before smoothing her lips and tongue carefully across your ");

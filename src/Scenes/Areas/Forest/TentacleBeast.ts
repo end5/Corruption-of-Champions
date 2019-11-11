@@ -104,7 +104,7 @@ export class TentacleBeast extends Monster {
         this.pronoun1 = "it";
         this.pronoun2 = "it";
         this.pronoun3 = "its";
-        this.breasts.createBreastRow(0, 0);
+        this.breastRows.createBreastRow(0, 0);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 70;

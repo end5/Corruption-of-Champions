@@ -50,15 +50,15 @@ function allowSandWitchMagic(): void {
     clearOutput();
     if (player.hairColor == "sandy blonde") {
         outputText("She smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n", false);
-        if (player.breastRows.length == 0 || player.breasts.biggestTitSize() == 0) {
+        if (player.breastRows.length == 0 || player.breastRows.biggestTitSize() == 0) {
             outputText("You grow a perfectly rounded pair of C-cup breasts!  ", false);
-            if (player.breastRows.length == 0) player.breasts.createBreastRow();
+            if (player.breastRows.length == 0) player.breastRows.createBreastRow();
             player.breastRows[0].breasts = 2;
             player.breastRows[0].breastRating = 3;
             if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
             dynStats("sen", 2, "lus", 1);
         }
-        if (player.breasts.biggestTitSize() >= 1 && player.breasts.biggestTitSize() <= 2) {
+        if (player.breastRows.biggestTitSize() >= 1 && player.breastRows.biggestTitSize() <= 2) {
             outputText("Your breasts suddenly balloon outwards, stopping as they reach a perfectly rounded C-cup.  ", false);
             player.breastRows[0].breastRating = 3;
             dynStats("sen", 1, "lus", 1);
@@ -68,23 +68,23 @@ function allowSandWitchMagic(): void {
             player.breastRows[0].nipplesPerBreast = 1;
             dynStats("sen", 2, "lus", 1);
         }
-        if (player.breasts.biggestLactation() > 0) {
+        if (player.breastRows.biggestLactation() > 0) {
             outputText("A strong pressure builds in your chest, painful in its intensity.  You yank down your top as ", false);
-            if (player.breasts.biggestLactation() < 2)
+            if (player.breastRows.biggestLactation() < 2)
                 outputText("powerful jets of milk spray from your nipples, spraying thick streams over the desert sands.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarassed with your increased milk production.  ", false);
-            if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() <= 2.6)
+            if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() <= 2.6)
                 outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ", false);
-            if (player.breasts.biggestLactation() > 2.6 && player.breasts.biggestLactation() < 3)
+            if (player.breastRows.biggestLactation() > 2.6 && player.breastRows.biggestLactation() < 3)
                 outputText("thick hoses of milk erupt from  your aching nipples, forming puddles in the sand.  You smile at how well you're feeding the desert, your milk coating the sand faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, totally outside of your control.  In time you realize the milk has stopped, and even had time to soak into the sands.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ", false);
-            if (player.breasts.biggestLactation() >= 3)
+            if (player.breastRows.biggestLactation() >= 3)
                 outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down the dune in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the desert of all your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ", false);
-            if (player.breasts.biggestLactation() < 3) {
+            if (player.breastRows.biggestLactation() < 3) {
                 player.boostLactation(.75);
                 outputText("Your breasts feel fuller... riper... like your next milking could be even bigger.  ", false);
             }
             dynStats("lib", 1, "sen", 4, "lus", 15);
         }
-        if (player.breasts.biggestLactation() == 0) {
+        if (player.breastRows.biggestLactation() == 0) {
             outputText("A pleasurable release suddenly erupts from your nipples!  Streams of milk are spraying from your breasts, soaking into the sand immediately.  It stops all too soon, though the witch assures you that you can lactate quite often now.  ", false);
             player.boostLactation(1);
             dynStats("lib", .5, "sen", 1, "lus", 10);
@@ -120,7 +120,7 @@ export function sandwitchRape(): void {
     // LUST DEFEAT
     if (player.lust > 99) {
         // BAD END START
-        if (player.breasts.biggestTitSize() >= 9 && player.breasts.biggestLactation() >= 3 && player.cor >= 25) {
+        if (player.breastRows.biggestTitSize() >= 9 && player.breastRows.biggestLactation() >= 3 && player.cor >= 25) {
             outputText("Overwhelmed by the intense pleasure caused by the vibrating sphere inside your body, you fall to your knees.\n\nYou whimper pathetically, desperate to cum, as the Sand Witch steps nearer to you and gently strokes your face. She smiles cruelly and lets her hands drop down to your chest, then tears your top away, letting your huge breasts bounce free. The mysterious woman firmly rubs and kneads them, making you gasp and writhe, until she starts lightly flicking your painfully hard nipples. You edge closer and closer to orgasm, panting like a whore while the witch teases you with her hands and magic.\n\n", true);
             outputText("Just before you cum, she leans down to whisper to you, tickling your ear with her warm breath: \"<i>Evals klim ym emoceb llahs uoy.</i>\"\n\nA familiar pressure builds in your chest, but it's far stronger than ever before. You feel your breasts swell rapidly, and milk sprays from your nipples, splattering you and the witch with white droplets. Your eyes roll back and your tongue hangs out as you cum, mind nearly breaking from the world-shattering orgasm that thunders through you.\n\nYou black out.", false);
             doNext(sandWitchBadEnd);
@@ -130,20 +130,20 @@ export function sandwitchRape(): void {
         outputText("Your wobbly legs give out underneath you as your body's will to fight evaporates.\n\n", true);
         if (player.hairColor.indexOf("sandy blonde") != -1) {
             outputText("The Sand Witch smiles wickedly and intones, \"<i>Tresed eht retaw llahs klim ruoy.</i>\"\n\n", false);
-            if (player.breastRows.length == 0 || player.breasts.biggestTitSize() == 0) {
+            if (player.breastRows.length == 0 || player.breastRows.biggestTitSize() == 0) {
                 outputText("You grow a perfectly rounded pair of C-cup breasts!  ", false);
-                if (player.breastRows.length == 0) player.breasts.createBreastRow();
+                if (player.breastRows.length == 0) player.breastRows.createBreastRow();
                 player.breastRows[0].breasts = 2;
                 player.breastRows[0].breastRating = 3;
                 if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
                 dynStats("sen", 2, "lus", 1);
             }
-            if (player.breasts.biggestTitSize() > 0 && player.breasts.biggestTitSize() < 3) {
+            if (player.breastRows.biggestTitSize() > 0 && player.breastRows.biggestTitSize() < 3) {
                 outputText("Your breasts suddenly balloon outwards, stopping as they reach a perfectly rounded C-cup.  ", false);
                 player.breastRows[0].breastRating = 3;
                 dynStats("sen", 1, "lus", 1);
             }
-            if (player.breasts.averageNipplesPerBreast() < 1) {
+            if (player.breastRows.averageNipplesPerBreast() < 1) {
                 outputText("A dark spot appears on each breast, rapidly forming into a sensitive nipple.  ", false);
                 temp = player.breastRows.length;
                 while (temp > 0) {
@@ -154,20 +154,20 @@ export function sandwitchRape(): void {
                 }
                 dynStats("sen", 2, "lus", 1);
             }
-            if (player.breasts.biggestLactation() > 0) {
+            if (player.breastRows.biggestLactation() > 0) {
                 outputText("A strong pressure builds in your chest, painful in its intensity.  You yank down your top as ", false);
-                if (player.breasts.biggestLactation() < 2) outputText("powerful jets of milk spray from your nipples, spraying thick streams over the desert sands.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarassed with your increased milk production.  ", false);
-                if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() <= 2.6) outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ", false);
-                if (player.breasts.biggestLactation() > 2.6 && player.breasts.biggestLactation() < 3) outputText("thick hoses of milk erupt from your aching nipples, forming puddles in the sand.  You smile at how well you're feeding the desert, your milk coating the sand faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, totally outside of your control.  In time you realize the milk has stopped, and even had time to soak into the sands.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ", false);
+                if (player.breastRows.biggestLactation() < 2) outputText("powerful jets of milk spray from your nipples, spraying thick streams over the desert sands.  You moan at the sensation and squeeze your tits, hosing down the tainted earth with an offering of your milk.  You blush as the milk ends, quite embarassed with your increased milk production.  ", false);
+                if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() <= 2.6) outputText("eruptions of milk squirt from your nipples, hosing thick streams everywhere.  The feeling of the constant gush of fluids is very erotic, and you feel yourself getting more and more turned on.  You start squeezing your breasts as the flow diminishes, anxious to continue the pleasure, but eventually all good things come to an end.  ", false);
+                if (player.breastRows.biggestLactation() > 2.6 && player.breastRows.biggestLactation() < 3) outputText("thick hoses of milk erupt from your aching nipples, forming puddles in the sand.  You smile at how well you're feeding the desert, your milk coating the sand faster than it can be absorbed.  The constant lactation is pleasurable... in a highly erotic way, and you find yourself moaning and pulling on your nipples, totally outside of your control.  In time you realize the milk has stopped, and even had time to soak into the sands.  You wonder at your strange thoughts and pull your hands from your sensitive nipples.  ", false);
 
-                if (player.breasts.biggestLactation() >= 3) outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down the dune in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the desert all of your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ", false);
-                if (player.breasts.biggestLactation() < 3) {
+                if (player.breastRows.biggestLactation() >= 3) outputText("you drop to your knees and grab your nipples.  With a very sexual moan you begin milking yourself, hosing out huge quantities of milk.  You pant and grunt, offering as much of your milk as you can.  It cascades down the dune in a small stream, and you can't help but blush with pride... and lust.  The erotic pleasures build as you do your best to feed the desert all of your milk.  You ride the edge of orgasm for an eternity, milk everywhere.  When you come to, you realize you're kneeling there, tugging your dry nipples.  Embarrassed, you stop, but your arousal remains.  ", false);
+                if (player.breastRows.biggestLactation() < 3) {
                     player.boostLactation(.7);
                     outputText("Your breasts feel fuller... riper... like your next milking could be even bigger.  ", false);
                 }
                 dynStats("lib", 1, "sen", 4, "lus", 15);
             }
-            if (player.breasts.biggestLactation() == 0) {
+            if (player.breastRows.biggestLactation() == 0) {
                 outputText("A pleasurable release suddenly erupts from your nipples!  Twin streams of milk are spraying from your breasts, soaking into the sand immediately.  It stops all too soon, though the witch assures you that you can lactate quite often now.  ", false);
                 player.boostLactation(1);
                 dynStats("lib", .5, "sen", 1, "lus", 10);
@@ -188,7 +188,7 @@ export function sandwitchRape(): void {
     }
     // HP DEFEAT
     else {
-        if (player.breasts.biggestTitSize() >= 9 && player.breasts.biggestLactation() >= 3 && player.cor >= 25) {
+        if (player.breastRows.biggestTitSize() >= 9 && player.breastRows.biggestLactation() >= 3 && player.cor >= 25) {
             outputText("You stagger and fall to one knee, too overcome by pain to keep fighting.\n\nAs your vision wavers with exhaustion, the witch strides towards you, seeming to glide across the sand. Your consciousness starts to fade, and you see the exotic woman lick her lips and smile cruelly, staring at your generous breasts.\n\nThe last thing you hear before passing out is a mysterious spell, murmured right into your ear in a low, throaty whisper: \"<i>Evals klim ym emoceb llahs uoy.</i>\"\n\nYou dream of walking proudly through the desert, enormous rack jiggling shamelessly with every step, and of tempting nubile young champions to wrap their lips around your nipples and drink. Your sleep becomes fevered as your dreams grow more and more corrupt - you dream of using dark magic to lactate succubus milk, and of your former friends from Ingnam greedily drinking your enhanced milk until their bellies strain to contain it all, then going wide-eyed as pound after pound of breast-flesh suddenly swells upon their chests...", true);
             // BAD END.
             doNext(sandWitchBadEnd);
@@ -333,7 +333,7 @@ function sandwitchCentaurBoning(): void {
     // [win via lust]
     else outputText("and her fingers squeezing her nipples as lust overwhelms her. ", false);
     // [has breasts]
-    if (player.breasts.biggestTitSize() > 3) {
+    if (player.breastRows.biggestTitSize() > 3) {
         outputText("As you approach, her eyes drift up to your " + allBreastsDescript(player) + " and she ", false);
         // [win via HP]
         if (monster.HP < 1) outputText("is unable to stop herself from slowly licking her lips. ", false);
@@ -341,7 +341,7 @@ function sandwitchCentaurBoning(): void {
         else outputText("sensually licks her parted lips. ", false);
     }
     // [lactating]
-    if (player.breasts.biggestLactation() > 1) {
+    if (player.breastRows.biggestLactation() > 1) {
         outputText("Her eyes widen when she sees the beads of milk already dripping from your " + nippleDescription(player, 0) + "s as her hand drops between her legs and she begins to slowly masturbate.", false);
     }
     outputText("\n\n", false);
@@ -349,7 +349,7 @@ function sandwitchCentaurBoning(): void {
     if (player.cor < 70) {
         outputText("You smile as you approach", false);
         // [has breasts]
-        if (player.breasts.biggestTitSize() > 0) outputText("; your " + nippleDescription(player, 0) + "s  become stiff", false);
+        if (player.breastRows.biggestTitSize() > 0) outputText("; your " + nippleDescription(player, 0) + "s  become stiff", false);
         // [cock only]
         if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
         // [cunt only]
@@ -359,25 +359,25 @@ function sandwitchCentaurBoning(): void {
         if (player.gender == 0) outputText(" her.", false);
         outputText(" She seems hesitant at first, but soon approaches and begins to run her hands along your stomach and your " + hipDescription(player), false);
         // [has breasts]
-        if (player.breasts.biggestTitSize() > 0) outputText(", eyes fixed on your " + allBreastsDescript(player), false);
+        if (player.breastRows.biggestTitSize() > 0) outputText(", eyes fixed on your " + allBreastsDescript(player), false);
         outputText(".\n\n", false);
         // [GoTo: SW_3 and return]
         if (SWCentaurMore(3)) return;
         outputText("\n\n", false);
         outputText("Delicate hands reach around to ", false);
         // [has breasts]
-        if (player.breasts.biggestTitSize() > 0) outputText("fondle your " + allBreastsDescript(player) + " and ", false);
+        if (player.breastRows.biggestTitSize() > 0) outputText("fondle your " + allBreastsDescript(player) + " and ", false);
         outputText("tease your " + nippleDescription(player, 0) + "s, and you can feel her grinding herself against your strong shoulders. ", false);
         // [orb penetrated player during combat]
         outputText("With a start you realize that the witch's orb is still inside you as it suddenly begins to pulse within your " + assholeOrPussy(player) + ", causing you to cry out and hasten your pace across the dunes. ", false);
         outputText("You lose track of time and location as you ride, feeling her orgasm over and over against you, her milk pouring down your back and spilling onto the sands. ", false);
         // [has breasts]
-        if (player.breasts.biggestTitSize() > 0) {
+        if (player.breastRows.biggestTitSize() > 0) {
             // [lactating]
-            if (player.breasts.biggestLactation() >= 1) {
+            if (player.breastRows.biggestLactation() >= 1) {
                 outputText("Your own " + nippleDescription(player, 0) + "s  are leaking as well, ", false);
                 // [light-med lactation]
-                if (player.breasts.biggestLactation() < 3) outputText("small streams running out ", false);
+                if (player.breastRows.biggestLactation() < 3) outputText("small streams running out ", false);
                 // [heavy lactation]
                 else outputText("torrents gushing out ", false);
                 outputText("under her expert hands. ", false);
@@ -410,9 +410,9 @@ function SWCentaurMore(argument: number): boolean {
         // 1 change
         player.orgasm();
         // Grow tits
-        if (player.breasts.biggestTitSize() == 0) {
+        if (player.breastRows.biggestTitSize() == 0) {
             outputText("\n\n(You grow a perfectly rounded pair of C-cup breasts!)", false);
-            if (player.breastRows.length == 0) player.breasts.createBreastRow();
+            if (player.breastRows.length == 0) player.breastRows.createBreastRow();
             player.breastRows[0].breasts = 2;
             player.breastRows[0].breastRating = 3;
             if (player.breastRows[0].nipplesPerBreast < 1) player.breastRows[0].nipplesPerBreast = 1;
@@ -420,20 +420,20 @@ function SWCentaurMore(argument: number): boolean {
             return false;
         }
         // Grow tits bigger
-        if (player.breasts.biggestTitSize() < 3) {
+        if (player.breastRows.biggestTitSize() < 3) {
             outputText("\n\n(Your breasts suddenly balloon outwards, stopping as they reach a perfectly rounded C-cup.)", false);
             player.breastRows[0].breastRating = 3;
             dynStats("sen", 1, "lus", 1);
             return false;
         }
-        if (player.breasts.biggestLactation() == 0) {
+        if (player.breastRows.biggestLactation() == 0) {
             outputText("\n\n(Your breasts now lactate.)", false);
             player.boostLactation(1);
             dynStats("lib", .5, "sen", 1, "lus", 10);
             return false;
         }
         // Make lactation happen
-        if (player.breasts.biggestLactation() < 3) {
+        if (player.breastRows.biggestLactation() < 3) {
             player.boostLactation(.7);
             outputText("\n\n(Your breasts feel fuller... riper... milkier...)", false);
             return false;

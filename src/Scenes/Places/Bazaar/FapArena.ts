@@ -162,7 +162,7 @@ function fapResults(place: number = 3): void {
             outputText(" of girl-jizz on the floor.", false);
         }
         // [if player lactates]
-        if (player.breasts.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.", false);
+        if (player.breastRows.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.", false);
         outputText("\n\n", false);
 
         outputText("The cute referee nods in acknowledgement.  Her eyes seem to be filled with longing for your cum-spilling " + multiCockDescriptLight(game.player) + ", and you know she'd eagerly finish you off if it weren't for her professionalism.\n\n", false);
@@ -201,7 +201,7 @@ function fapResults(place: number = 3): void {
             else outputText("smear", false);
             outputText(" of girl-jizz on the floor.", false);
         }
-        if (player.breasts.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.", false);
+        if (player.breastRows.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.", false);
         outputText("\n\n", false);
 
         outputText("Quite satisfied, your left partner decides to stop torturing himself; he must have had a rough handjob too.  You watch in amazement as his cum-tube starts shooting globs of sticky goo, aiming at the referee with an expert's precision. He grins lewdly and yells: \"<i>NUMBER " + (num + 3) + " CUMMING!</i>\"\n\n", false);
@@ -238,7 +238,7 @@ function fapResults(place: number = 3): void {
             else outputText("smear", false);
             outputText(" of girl-jizz on the floor.", false);
         }
-        if (player.breasts.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.\n\n", false);
+        if (player.breastRows.biggestLactation() > 1.5) outputText("  Your " + allBreastsDescript(player) + " also release a milky flood of their own, the soft feeling of cream teasing your nipple only prolonging your orgasm.\n\n", false);
     }
     // Post fap
     outputText("You pant and relax, exhausted.  Your right arm is cramped and your " + cockDescript(game.player, x) + " is sore.  People around you look similarly tired and are slowly recovering from this rough collective dick-stroking session.  Someone gently taps your shoulder.  It is your left neighbor: \"<i>Well played. I didn't expect you would be so... resistant.  Few players last that long with me, because their rods generally don't endure my handjobs.</i>\"  He proceeds to shake hands; both you are smeared with pre-cum and various cock juices, but you don't care.  You smile and thank him for the good game and the orgasm.  It comes as something of a relief that everyone seems to show good sportsmanship.  Everyone is congratulating each other; various comments reach your ears about the game they just had and how well their opponents did.  Your right partner stands before you.  \"<i>Whoa, you sure know how to give a handjob!  That was amazing, and you know what?  I don't care if I haven't won!</i>\"  You tell him that you're glad that he enjoyed your efforts.  Everyone is now laughing and chatting casually, as if their still erect cocks weren't dripping semen and they weren't busy giving furious handjobs a few minutes ago.  ", false);

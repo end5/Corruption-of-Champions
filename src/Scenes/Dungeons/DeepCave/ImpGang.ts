@@ -145,7 +145,7 @@ export function impGangUber(): void {
         // +50 lust!
         dynStats("lus", 50);
         outputText("The imps in the back finish their spell-casting, and point at you in unison.  A wave of pure arousal hits you with the force of a freight train.   Your equipment rubs across your suddenly violently sensitive " + nippleDescription(player, 0), false);
-        if (player.breasts.biggestLactation() > 1) outputText(" as they begin to drip milk", false);
+        if (player.breastRows.biggestLactation() > 1) outputText(" as they begin to drip milk", false);
         outputText(".  The lower portions of your coverings ", false);
         if (player.cocks.length > 0) {
             outputText("are pulled tight by your " + multiCockDescript(player) + ", ", false);

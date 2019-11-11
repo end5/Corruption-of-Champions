@@ -193,9 +193,9 @@ export function cowScore(char: Character): number {
         minoCounter++;
     if (char.vaginas.length > 0)
         minoCounter++;
-    if (char.breasts.biggestTitSize() > 4 && minoCounter > 0)
+    if (char.breastRows.biggestTitSize() > 4 && minoCounter > 0)
         minoCounter++;
-    if (char.breasts.biggestLactation() > 2 && minoCounter > 0)
+    if (char.breastRows.biggestLactation() > 2 && minoCounter > 0)
         minoCounter++;
     return minoCounter;
 }
@@ -640,7 +640,7 @@ export function mutantScore(char: Character): number {
         mutantCounter++;
     if (char.cocks.length > 0 && char.vaginas.length > 0)
         mutantCounter++;
-    if (char.breasts.hasFuckableNipples())
+    if (char.breastRows.hasFuckableNipples())
         mutantCounter++;
     if (char.breastRows.length > 1)
         mutantCounter++;

@@ -174,7 +174,7 @@ export class PlayerEvents implements TimeAwareInterface {
             player.effects.addValue(StatusAffects.Eggchest, 1, -1);
             if (player.effects.getValue1Of(StatusAffects.Eggchest) <= 0) {
                 outputText("\n<b>You feel the rounded eggs within your [fullChest] vanishing, absorbed into your body.  </b>");
-                growTits(player, player.effects.getValue2Of(StatusAffects.Eggchest), player.breasts.length, true, 2);
+                growTits(player, player.effects.getValue2Of(StatusAffects.Eggchest), player.breastRows.length, true, 2);
                 outputText("\n");
                 player.effects.remove(StatusAffects.Eggchest);
                 needNext = true;
@@ -491,30 +491,30 @@ export class PlayerEvents implements TimeAwareInterface {
             else player.effects.addValue(StatusAffects.Dysfunction, 1, -1);
         }
         if (player.effects.findByType(StatusAffects.LactationReduction) < 0) { // Lactation reduction
-            if (player.breasts.biggestLactation() > 0) player.effects.create(StatusAffects.LactationReduction, 0, 0, 0, 0);
+            if (player.breastRows.biggestLactation() > 0) player.effects.create(StatusAffects.LactationReduction, 0, 0, 0, 0);
         }
-        else if (player.breasts.biggestLactation() > 0 && player.effects.findByType(StatusAffects.Feeder) < 0 && player.pregnancyIncubation == 0) {
+        else if (player.breastRows.biggestLactation() > 0 && player.effects.findByType(StatusAffects.Feeder) < 0 && player.pregnancyIncubation == 0) {
             player.effects.addValue(StatusAffects.LactationReduction, 1, 1);
             if (player.effects.getValue1Of(StatusAffects.LactationReduction) >= 48) {
                 if (player.effects.findByType(StatusAffects.LactationReduc0) < 0) {
                     player.effects.create(StatusAffects.LactationReduc0, 0, 0, 0, 0);
-                    if (player.breasts.biggestLactation() >= 1) outputText("\n<b>Your " + nippleDescription(player, 0) + "s feel swollen and bloated, needing to be milked.</b>\n");
-                    if (player.breasts.biggestLactation() <= 2) player.effects.create(StatusAffects.LactationReduc1, 0, 0, 0, 0);
-                    if (player.breasts.biggestLactation() <= 1) player.effects.create(StatusAffects.LactationReduc2, 0, 0, 0, 0);
+                    if (player.breastRows.biggestLactation() >= 1) outputText("\n<b>Your " + nippleDescription(player, 0) + "s feel swollen and bloated, needing to be milked.</b>\n");
+                    if (player.breastRows.biggestLactation() <= 2) player.effects.create(StatusAffects.LactationReduc1, 0, 0, 0, 0);
+                    if (player.breastRows.biggestLactation() <= 1) player.effects.create(StatusAffects.LactationReduc2, 0, 0, 0, 0);
                     needNext = true;
                 }
                 player.boostLactation(-0.5 * player.breastRows.length / 24);
-                if (player.breasts.biggestLactation() <= 2.5 && player.effects.findByType(StatusAffects.LactationReduc1) < 0) {
+                if (player.breastRows.biggestLactation() <= 2.5 && player.effects.findByType(StatusAffects.LactationReduc1) < 0) {
                     outputText("\n<b>Your breasts feel lighter as your body's milk production winds down.</b>\n");
                     player.effects.create(StatusAffects.LactationReduc1, 0, 0, 0, 0);
                     needNext = true;
                 }
-                else if (player.breasts.biggestLactation() <= 1.5 && player.effects.findByType(StatusAffects.LactationReduc2) < 0) {
+                else if (player.breastRows.biggestLactation() <= 1.5 && player.effects.findByType(StatusAffects.LactationReduc2) < 0) {
                     outputText("\n<b>Your body's milk output drops down to what would be considered 'normal' for a pregnant woman.</b>\n");
                     player.effects.create(StatusAffects.LactationReduc2, 0, 0, 0, 0);
                     needNext = true;
                 }
-                if (player.breasts.biggestLactation() < 1 && player.effects.findByType(StatusAffects.LactationReduc3) < 0) {
+                if (player.breastRows.biggestLactation() < 1 && player.effects.findByType(StatusAffects.LactationReduc3) < 0) {
                     player.effects.create(StatusAffects.LactationReduc3, 0, 0, 0, 0);
                     outputText("\n<b>Your body no longer produces any milk.</b>\n");
                     player.effects.remove(StatusAffects.LactationReduction);
@@ -634,7 +634,7 @@ export class PlayerEvents implements TimeAwareInterface {
         }
         if (game.time.hours == 6 && player.armorName == "bimbo skirt" && rand(10) == 0) {
             outputText("\n<b>As you wake up, you feel a strange tingling starting in your nipples that extends down into your breasts.  After a minute, the tingling dissipates in a soothing wave.  As you cup your tits, you realize they've gotten larger!</b>");
-            growTits(player, 1, player.breasts.length, false, 2);
+            growTits(player, 1, player.breastRows.length, false, 2);
             dynStats("lus", 10);
             needNext = true;
         }

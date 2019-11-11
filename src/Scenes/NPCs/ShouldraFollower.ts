@@ -251,7 +251,7 @@ export function sandWitchGetsGhostly(): void {
         buttChange(player, 20, true, true, false);
         outputText("\n\nThe witch suddenly blushes beet red.  \"<i>What the fuck is wrong with you?</i>\" she shouts, slapping you across the face and back down to the desert ground.  The sand witch storms off into the horizon, muttering to herself as she glares down at her mutated tits.  Boisterous laughing off to your side catches your attention; Shouldra is entirely too pleased with herself it seems.  It appears that the deceased comedian snuck out of her host without catching your attention.");
         outputText("\n\n\"<i>The look on your face was priceless!</i>\" she says, doing her best to mimic you.  You give her a slightly perturbed stare as she stumbles back into your body, still laughing to herself.  ");
-        if (!player.breasts.hasFuckableNipples()) outputText("\"<i>You know, maybe I should give you a couple of those chest-mounted treats.  They're pretty fun,</i>\" Shouldra teases, tweaking your [nipples].  ");
+        if (!player.breastRows.hasFuckableNipples()) outputText("\"<i>You know, maybe I should give you a couple of those chest-mounted treats.  They're pretty fun,</i>\" Shouldra teases, tweaking your [nipples].  ");
         outputText("With a very telling exasperated sigh, you snatch up your [armor] and march back to camp.");
     }
     shouldraSleeping(10, true);
@@ -1015,7 +1015,7 @@ function shouldraGivesYaSomeFukkinTeats(): void {
     dynStats("lus", 15);
     let temp2: number = 0;
     // NIPPLECUNTZZZ
-    if (!player.breasts.hasFuckableNipples() && rand(4) == 0) {
+    if (!player.breastRows.hasFuckableNipples() && rand(4) == 0) {
         temp = player.breastRows.length;
         // Set nipplecunts on every row.
         while (temp > 0) {
@@ -1061,7 +1061,7 @@ function shouldraReductoMenu(): void {
     let butt: () => void = null;
     let nipples: () => void = null;
     if (player.nippleLength > .25) nipples = shrinkDemNipplzForYoGhost;
-    if (player.breasts.biggestTitSize() >= 1) breasts = shouldraReductosYourTits;
+    if (player.breastRows.biggestTitSize() >= 1) breasts = shouldraReductosYourTits;
     if (player.buttRating >= 2) butt = shrinkDatBootyForYoGhost;
     if (player.balls > 0 && player.ballSize > 1) balls = shouldraReductosYourBallsUpInsideYa;
     if (player.cocks.length > 0 && player.cocks.longestCockLength() > 4) cock = shouldraMakesCocksDisappear;
@@ -1303,7 +1303,7 @@ export function nightTimeShouldraRapesThePC(): void {
     outputText("\n\nIt hits you like a harpy's ass.  She really did it.  The bunched up skin slowly unfurls, confirming your suspicion.  Shouldra's changed your fingers into five stout, little dicks, beads of pre forming at each of their tips.  The otherwise impassive facade of your tormentor finally gives in, your face slowly becoming giddier as she marvels at her creation.  \"<i>You have no idea how glad I am this worked,</i>\" she says outwardly.  \"<i>Granted, I had a lot of time lately to perfect it.</i>\"  She wiggles your new fingers around, displaying the same range of movement they've always had.  Balling them into a fist, however, makes for an unusually rousing experience, your dick-fingers only increasing the flow from their- \"<i>You don't want to know what I had to do to get these little guys to squirt, Champ.</i>\"  That doesn't sound good.");
     outputText("\n\nYour left hand further examines your new wrist-mounted bouquet.  They're incredibly sensitive; you can feel things just as you would normally, but any manipulation of them registers just the sort of reactions you would expect from a dick - or five in this case.  She rubs the shafts soothingly, your left thumb exploring under each glan, over each slit, and into each fold.  The attention sinks in swiftly, each of your phallic fingers getting rigid and a little harder to bend.  The handjob results in a five-pronged stiffy, each dick taut, drooling, and ready for insertion.");
     outputText("\n\nYou noticed that the pace of your breathing has picked up; the horny ghost is really getting into this madness.  The foreplay - or is it five-play in this case? - isn't going to end so soon, however.  After a few more loving strokes from one hand to the other, Shouldra begins teasing your naked body with the squadron of cocks.  She runs their dribbling tips up along your [hips].  She glides their velvet shafts down your [legs].  She pinches your [nipple] with their bulbous heads");
-    if (player.breasts.biggestTitSize() >= 1) outputText(", circling their entire lengths around your [fullChest]");
+    if (player.breastRows.biggestTitSize() >= 1) outputText(", circling their entire lengths around your [fullChest]");
     outputText(".  It's quite amazing how ecstatic the tour feels, each pre-smeared exploration smothering you in sensual vibes.  Just moving the stiff little devils - particularly at your joints - sends shivers up your arm.");
     outputText("\n\nShouldra finally parts your fingers wide and covers your face in warm, moist, excited dickflesh.  You can count the few seconds it takes for her to spend time rubbing your head before she eventually shoves your hand into your mouth.  You figure she's made your jaw just as flexible as the rest of your body, judging by how easily she was able to down the five treats.  Your hand slowly thrusts in and out of your maw, your tongue working overtime to accommodate the large arrival.  Even with otherworldly enhancements, though, the five-fingered blowjob proves to be quite the challenge, so the ghost girl opts to sucking on one or two at a time.");
     outputText("\n\nMerry with her erotic fantasy, Shouldra swaps between dicks like someone sucking each finger free of errant flavors.  You at least agree that the rather bizarre act has actually felt quite wonderful.  The spirit quickens the pace, grasping your jaw with your new pinkie and thumb and the remaining three dick digits stuffing your face.  Pre trickles down your neck from the opposable penis and its cohort as they dig hard into your chin.  Meanwhile, the other trio of cocks continue their assault, escalating to a frenzied pitch.  Just as the spirit peaks, she locks your lower jaw into a deathgrip, each stiff appendage clamping on for all they're worth.");
@@ -1378,7 +1378,7 @@ export function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMake
         choices[choices.length] = 3;
     }
     // 4 PC with boobs
-    if (player.breasts.biggestTitSize() >= 2) {
+    if (player.breastRows.biggestTitSize() >= 2) {
         choices[choices.length] = 4;
         choices[choices.length] = 4;
         choices[choices.length] = 4;

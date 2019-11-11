@@ -319,7 +319,7 @@ function beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs(clearScreen: boole
     else outputText("\n\n");
     spriteSelect(6);
     outputText("You almost breathlessly say <i>“Yes!”</i> just before you give yourself over to the siren call of the bee’s humming and the mind blowing effects of her scent.  <i>“Good " + mf(player, "boy", "girl") + ".”</i> she coos and slips off your " + player.armorName + ".  Then she slowly wraps her arms around your " + chestDesc(player) + " and you feel something start to push against your " + buttDescription(player) + ".  You sigh with pleasure and relax, allowing your rear entrance to be penetrated by the intruder.  You hear the bee girl giggle and sigh above you, quite pleased with your decision to allow her to enter you.\n\n");
-    if (player.breasts.breasts.hasBreasts()) {
+    if (player.breastRows.hasBreasts()) {
         outputText("She starts to grip and squeeze your " + chestDesc(player) + " as the intruder to your anal passage continues its advance.  You can only gasp and cry out in pleasure with each motion.  You hear her say, <i>“Let’zzz make thizzz extra zzzpeacial,”</i> as one of her hands is removed from your chest; within moments something wet and sticky is placed on the vacated " + nippleDescription(player, 0) + ".  You shudder as the bee rubs the honey into the sensitive tips, and squeal as she does the same treatment to the other " + nippleDescription(player, 0) + ".\n\n");
     }
     else {
@@ -441,10 +441,10 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
             // [Herm:
             else if (player.gender == 3) outputText("Your inability to reach your engorged " + multiCockDescriptLight(game.player) + " quickly becomes a problem as the pleasure from the bee maiden's scent courses through you. It aches to be tended to, gushing out pre. Your " + clitDescription(player) + " quivers, desperate for contact as your vagina starts reflexively rippling, trying to milk the cock it isn't going to get.", false);
             // [With breasts:
-            if (player.breasts.biggestTitSize() > 1) {
+            if (player.breastRows.biggestTitSize() > 1) {
                 outputText("  You begin pounding away at your " + allBreastsDescript(game.player) + " in an attempt to alleviate the pressure in your inaccessible groin.", false);
                 // [Fuckable breasts:
-                if (player.breasts.hasFuckableNipples()) outputText("  Your fingers slip in and out of them, sending femcum flying everywhere. But the effects of the bee's honey appear to prevent you from getting off.", false);
+                if (player.breastRows.hasFuckableNipples()) outputText("  Your fingers slip in and out of them, sending femcum flying everywhere. But the effects of the bee's honey appear to prevent you from getting off.", false);
                 // [Other:
                 else outputText("  No amount of stimulation seems to get you off though.", false);
             }
@@ -554,7 +554,7 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
         // No cooch, talk about being horny, nipples if you got em!
         if (player.vaginas.length == 0) {
             outputText("and you writhe and moan with no source of relief", false);
-            if (player.breasts.totalNipples() > 1) outputText(", your nipples swollen and red with desire.  ", false);
+            if (player.breastRows.totalNipples() > 1) outputText(", your nipples swollen and red with desire.  ", false);
             else outputText(".", false);
         }
         // Coochie talk!
@@ -564,17 +564,17 @@ function beeEncounterClassicSex(postCombat: boolean = true): void {
             if (player.vaginas[0].vaginalWetness >= VaginaWetness.DROOLING) outputText("inflaming your " + vaginaDescript(player, 0) + " with need, and allowing a river of your wetness to gush from between your puffy vulva.  ", false);
         }
         // Boobies!
-        if (player.breasts.biggestTitSize() > 1) {
+        if (player.breastRows.biggestTitSize() > 1) {
             outputText("The cool hardness of her hands startles you as she reaches around to massage your ample bosom, tweaking your hard nipples between her fingers", false);
             // if lactating
-            if (player.breasts.biggestLactation() > 1) outputText(", humming in surprise as a squirt of milk splatters across the flower's petals.  ", false);
+            if (player.breastRows.biggestLactation() > 1) outputText(", humming in surprise as a squirt of milk splatters across the flower's petals.  ", false);
             else outputText(".  ", false);
         }
         // Multiboobs!
         if (player.breastRows.length > 1) {
             outputText("The cool hardness of her hands startles you as she begins running her hands over your many breasts, tweaking each hard nipple between her fingers, leaning around to lick them with her curving sinuous tongue, and humming softly", false);
             // Milk bit
-            if (player.breasts.biggestLactation() > 1) outputText(" in surprise as a squirt of milk splashes across the flower's petals.  ", false);
+            if (player.breastRows.biggestLactation() > 1) outputText(" in surprise as a squirt of milk splashes across the flower's petals.  ", false);
             else outputText(".  ", false);
         }
         // Continue as normal!
@@ -852,7 +852,7 @@ function beeMaidenPlay(): void {
         if (player.sens < 40)
             outputText("Still, you manage to hold on against the sensations and continue to run your fingers through her honey coated lower lips while hers plow through yours.  It is actually a pretty fun bonding experience, and you feel oddly close to the bee at the end when both of you cum over each others fingers together.");
         else
-            outputText("It’s too much, you can’t take it anymore.  Your mind goes blank from the incredible feeling of her ministrations (the honey itself probably doesn’t help either) and you pull your hand out of the bee girl’s honey pot.  You don’t even register her brief disappointment, being too enraptured by your own pleasure.  All you can do is run your honey covered hand all over your body, trying to get as much stimulation as possible.  " + (player.breasts.breasts.hasBreasts() ? "Paying special attention to your " + allBreastsDescript(player) : "") + ".  In the end, you aren’t sure if it’s the insectoid girl who brings you to mind shattering orgasm or you.");
+            outputText("It’s too much, you can’t take it anymore.  Your mind goes blank from the incredible feeling of her ministrations (the honey itself probably doesn’t help either) and you pull your hand out of the bee girl’s honey pot.  You don’t even register her brief disappointment, being too enraptured by your own pleasure.  All you can do is run your honey covered hand all over your body, trying to get as much stimulation as possible.  " + (player.breastRows.hasBreasts() ? "Paying special attention to your " + allBreastsDescript(player) : "") + ".  In the end, you aren’t sure if it’s the insectoid girl who brings you to mind shattering orgasm or you.");
         dynStats("sens", 0.5);
     }
     else {
@@ -1309,7 +1309,7 @@ export function rapeTheBeeGirl(): void {
         outputText("(You could focus on your snakelike, 'naga' attributes.)\n", false);
         naga = corruptNagaBitchesRapeABee;
     }
-    if (player.cor >= 75 && player.str >= 60 && (player.tongueType == TongueType.SNAKE || player.cocks.length > 0 || player.vaginas.length > 0 || player.breasts.biggestTitSize() >= 4)) {
+    if (player.cor >= 75 && player.str >= 60 && (player.tongueType == TongueType.SNAKE || player.cocks.length > 0 || player.vaginas.length > 0 || player.breastRows.biggestTitSize() >= 4)) {
         outputText("(You could play with her a bit and try to make her lay eggs into herself.)\n", false);
         gentleman = beeGirlRapeForTheDistinguishedGentleman;
     }
@@ -1322,7 +1322,7 @@ function rapeTheBeeMultiCockStuff(): void {
     outputText("", true);
     // Doubledick special
     // HermCock supreme by mallowman
-    if (player.cocks.length >= 5 && player.breasts.biggestTitSize() > 2
+    if (player.cocks.length >= 5 && player.breastRows.biggestTitSize() > 2
         && player.vaginas.length > 0 && rand(2) == 0) {
         outputText("As you approach, she starts to edge away, her battered wings flapping in a futile attempt to escape.  Reaching her, you grip her wrists before she can fight back, squeezing tightly as her struggling increases. Forcing her onto her back, you hold her wrists tightly in one hand to allow you to pull off your " + player.armorName + ", freeing your " + multiCockDescript(game.player) + " and " + vaginaDescript(player, 0) + ".  She gasps at the alien sight of your multiple 'stingers', while you take a moment to decide what's going to go where.\n\n", false);
         outputText("You shift a bit upward, your brace of " + multiCockDescriptLight(game.player) + " sliding above the bee-girl's slick honey pot.  For a moment she breathes a sigh of relief, then gasps as two of your manhoods press against her front and back doors at once.\n\n", false);
@@ -1516,7 +1516,7 @@ function rapeABeeGirlWithYourVagina(): void {
 
         outputText("But while she can reach herself, you can't. The puddle of fluid around your rear hooves continues to grow as your " + vaginaDescript(player, 0) + " becomes more desperate for relief and the muscles in your " + assholeDescript(player) + " start to ache from the strength of their clenching. You mash your " + chestDesc(game.player) + " hard, desperate for release, but it's not enough.", false);
         // [Fuckable nipples:
-        if (player.breasts.hasFuckableNipples()) outputText("  Not even repeated penetration of your " + nippleDescription(player, 0) + "s seems to bring the relief you need.", false);
+        if (player.breastRows.hasFuckableNipples()) outputText("  Not even repeated penetration of your " + nippleDescription(player, 0) + "s seems to bring the relief you need.", false);
         outputText("\n\n", false);
 
         outputText("Despite her ability to reach, the bee-girl seems to be having a similar trouble getting herself off. Her hands seem to blur with the speed of her rubbing as her back arcs. She cries out in frustration and begins beating her wings violently, lifting off from the flower.\n\n", false);
@@ -1524,12 +1524,12 @@ function rapeABeeGirlWithYourVagina(): void {
         outputText("In a haze of sexual frustration, you leap forward and grab the bee by the hips, dragging her sopping cunt to your lips and eating her out. Her entire body vibrates in your arms but she makes no attempt to stop you, going so far as to push your head further into her crotch and wrapping her legs around you. Your fingers find another hole and penetrate it, thinking it to be her anus. Whether it is or not, you're rewarded with a massive gush of honey coating your face as she cries out and goes limp.\n\n", false);
 
         // [Breasts >D:
-        if (player.breasts.biggestTitSize() > 4) outputText("Her legs release your head and she falls back, knocking into your " + allBreastsDescript(player) + " and causing them to jiggle lewdly. You grab her before she hits the ground, surprised at how light she is.", false);
+        if (player.breastRows.biggestTitSize() > 4) outputText("Her legs release your head and she falls back, knocking into your " + allBreastsDescript(player) + " and causing them to jiggle lewdly. You grab her before she hits the ground, surprised at how light she is.", false);
         // [Breasts <=C:
         else outputText("Her legs release and she falls back, but you catch her before she hits the ground and are surprised by how light she is.", false);
         outputText("  Her body stiffens as she realizes her situation and with your aid manages to right herself. By now the pressure in your loins is unbearable and you're breathing hard. Your " + nippleDescription(player, 0) + "s ache just as badly as your " + assholeDescript(player), false);
         // [Fuckable nipples and/or lactating:
-        if (player.breasts.hasFuckableNipples() || player.lactationQ() >= 20) outputText(" and ooze fluids in a constant stream down your front", false);
+        if (player.breastRows.hasFuckableNipples() || player.lactationQ() >= 20) outputText(" and ooze fluids in a constant stream down your front", false);
         outputText(". The bee-girl obviously understands your situation and almost as soon as she's upright buzzes onto your back.", false);
 
         outputText("The peculiar sensation of her chitin covered appendages climbing along your back is lost on your lust addled mind, but the sudden penetration of your " + assholeDescript(player) + " is most definitely not. You cry out as the weak contact is more than enough to make you cum, spraying hot femcum beneath you.  Meanwhile, your tongue lolls out of your mouth and you shiver with barely restrained pleasure.\n\n", false);
@@ -1603,19 +1603,19 @@ function futaRapesBeeGirl(): void {
         outputText("the bee-bitch's face.  ", false);
     }
     if (player.breastRows.length > 0) {
-        if (player.breasts.biggestTitSize() >= 2) outputText("You free a hand to tend to your " + allBreastsDescript(player) + " and aching nipples, alternating between squeezing your female flesh and tugging on your erect nipples.  ", false);
+        if (player.breastRows.biggestTitSize() >= 2) outputText("You free a hand to tend to your " + allBreastsDescript(player) + " and aching nipples, alternating between squeezing your female flesh and tugging on your erect nipples.  ", false);
     }
     outputText("\n\n", false);
     // New PG
     outputText("You moan in ecstasy, your " + vaginaDescript(player, 0) + " clamping against her tongue and lips like a vice.  She responds by pulling it from your uterus and swirling it around the inside of your " + vaginaDescript(player, 0) + " to stimulate the walls of your trembling love-canal.  ", false);
     if (player.breastRows.length > 0) {
-        if (player.breasts.biggestTitSize() >= 2) {
+        if (player.breastRows.biggestTitSize() >= 2) {
             outputText("You pinch a nipple hard", false);
             // Lactation junction!
-            if (player.breasts.biggestLactation() > 1 && player.breasts.biggestLactation() <= 2) outputText(", squirting milk all over the bee-girl's midsection.  ", false);
-            if (player.breasts.biggestLactation() > 2 && player.breasts.biggestLactation() <= 3) outputText(", spraying milk all over your bee-bitch, soaking her completely with your milky-white goodness.  ", false);
-            if (player.breasts.biggestLactation() > 3) outputText(", hosing milk everywhere, soaking the bee-girl completely.  The force of your orgasm seems to echo through your breasts, making them produce far more milk than normal.  ", false);
-            if (player.breasts.biggestLactation() <= 1) outputText(".  ", false);
+            if (player.breastRows.biggestLactation() > 1 && player.breastRows.biggestLactation() <= 2) outputText(", squirting milk all over the bee-girl's midsection.  ", false);
+            if (player.breastRows.biggestLactation() > 2 && player.breastRows.biggestLactation() <= 3) outputText(", spraying milk all over your bee-bitch, soaking her completely with your milky-white goodness.  ", false);
+            if (player.breastRows.biggestLactation() > 3) outputText(", hosing milk everywhere, soaking the bee-girl completely.  The force of your orgasm seems to echo through your breasts, making them produce far more milk than normal.  ", false);
+            if (player.breastRows.biggestLactation() <= 1) outputText(".  ", false);
         }
     }
     if (player.balls >= 2) outputText("The warmth and pleasurable pressure of your male orgasm builds in your " + ballsDescriptLight(player) + ", growing stronger as it migrates up your groin to the base of your pulsing member.  You squeeze your " + cockDescript(game.player, 0) + " tightly, trying to hold on a bit longer, but the squirming tongue inside you is too much.  ", false);
@@ -1673,7 +1673,7 @@ function beeGirlRapeForTheDistinguishedGentleman(): void {
     if (player.tongueType == TongueType.SNAKE) choices[choices.length] = 0;
     if (player.cocks.length > 0) choices[choices.length] = 1;
     if (player.vaginas.length > 0) choices[choices.length] = 2;
-    if (player.breasts.biggestTitSize() >= 4) choices[choices.length] = 3;
+    if (player.breastRows.biggestTitSize() >= 4) choices[choices.length] = 3;
     const select: number = choices[rand(choices.length)];
 
     // (if naga tongue)

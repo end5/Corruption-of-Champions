@@ -65,10 +65,10 @@ export function trapOil(player: Player): void {
         changes++;
     }
     // Breast Loss: (towards A cup)
-    if (player.breasts.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
+    if (player.breastRows.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nYou gasp as you feel a compressing sensation in your chest and around your [fullChest].  The feeling quickly fades however, leaving you feeling like you have lost a considerable amount of weight from your upper body.");
         temp = 0;
-        while (temp < player.breasts.length) {
+        while (temp < player.breastRows.length) {
             if (player.breastRows[temp].breastRating > 70)
                 player.breastRows[temp].breastRating -= rand(3) + 15;
             else if (player.breastRows[temp].breastRating > 50)
@@ -86,12 +86,12 @@ export function trapOil(player: Player): void {
         changes++;
     }
     // Breast Gain: (towards A cup)
-    if (player.breasts.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) == 0 && changes < changeLimit) {
+    if (player.breastRows.biggestTitSize() < 1 || player.breastRows[0].breastRating < 1 && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nYou feel a vague swelling sensation in your [fullChest], and you frown downwards.  You seem to have gained a little weight on your chest.  Not enough to stand out, but- you cup yourself carefully- certainly giving you the faintest suggestion of boobs.");
         player.breastRows[0].breastRating = 1;
-        if (player.breasts.length > 1) {
+        if (player.breastRows.length > 1) {
             temp = 1;
-            while (temp < player.breasts.length) {
+            while (temp < player.breastRows.length) {
                 if (player.breastRows[temp].breastRating < 1)
                     player.breastRows[temp].breastRating = 1;
             }

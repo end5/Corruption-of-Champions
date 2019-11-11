@@ -329,7 +329,7 @@ function isAMan(): void {
     player.tallness = 71;
     player.tone = 60;
 
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.cocks.createCock();
     player.cocks[0].cockLength = 5.5;
     player.cocks[0].cockThickness = 1;
@@ -353,7 +353,7 @@ function isAWoman(): void {
     player.tallness = 67;
     player.tone = 30;
 
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.gender = Gender.FEMALE;
     clearOutput();
@@ -842,7 +842,7 @@ function customAnnetta(): void {
     // Vagina: Tight, virgin, 0.5 inch clitoris
     player.vaginas.createVagina();
     player.cocks.createCock();
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.clitLength = 0.5;
     player.tallness = 67;
     player.femininity = 90;
@@ -933,7 +933,7 @@ function customBetram(): void {
     player.earType = EarType.FOX;
     player.tailType = TailType.FOX;
     player.tailVenom = 1;
-    if (player.breasts.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
+    if (player.breastRows.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
     if (!player.cocks.length > 0) {
         player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.DOG;
@@ -977,7 +977,7 @@ function customCeveo(): void {
     player.lipPLong = "Silver lip-ring";
     player.buttRating = 8;
     player.hipRating = 8;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.nipplesPierced = 1;
     player.nipplesPShort = "silver studs";
     player.nipplesPLong = "Silver studs";
@@ -1041,9 +1041,9 @@ function customCharaun(): void {
     player.hipRating = 6;
     player.buttRating = 3;
     player.femininity = 50;
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 4;
     player.breastRows[0].fuckable = true;
     player.breastRows[1].breastRating = 3;
@@ -1069,7 +1069,7 @@ function customCharlie(): void {
     player.hairColor = "blond";
     player.skinTone = "light";
     player.nippleLength = 0.2;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 0;
     player.balls = 2;
     player.ballSize = 3;
@@ -1280,7 +1280,7 @@ function customIsaac(): void {
     // - 'tone of about 70
     // - two flat breasts each supporting one 0.2-inch nipple
     player.nippleLength = 0.2;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     // - three fox tails
     player.tailType = TailType.FOX;
     player.tailVenom = 3;
@@ -1318,7 +1318,7 @@ function customLeah(): void {
     player.inv.itemSlot1.setItemAndQty(ConsumableLib.B__BOOK, 1);
     player.inv.itemSlot2.setItemAndQty(ConsumableLib.W__BOOK, 2);
 
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.breastRows[0].breastRating = 4;
     player.clitLength = .5;
@@ -1397,7 +1397,7 @@ function customLukaz(): void {
     player.cocks[0].cockThickness = 2;
     player.cocks[0].cockType = CockTypesEnum.DOG;
     player.cocks[0].knotMultiplier = 1.5;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 0;
     player.gender = 1;
     player.tallness = 71;
@@ -1466,7 +1466,7 @@ function customMara(): void {
     player.tone = 30;
     player.fertility = 10;
     player.hairLength = 15;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.tallness = 67;
     player.breastRows[0].breastRating = 7;
@@ -1502,7 +1502,7 @@ function customMihari(): void {
 
     // Body Values:
     // breastRows
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     // -breastRating: 5
     // -breasts: 2
     // -nipplesPerBreast: 1
@@ -1559,7 +1559,7 @@ function customMirvanna(): void {
     player.clitLength = .5;
     player.fertility = 20;
     player.hairLength = 15;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.cocks.createCock();
     player.tallness = 73;
@@ -1637,7 +1637,7 @@ function customNami(): void {
     player.hairColor = "white";
     player.skinDesc = "fur";
     // Body Thickness/breastsize/- As if I had selected the ""Average"" body type from the start.
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 3;
     // Muscle Tone- A bit above average enough to trigger a mention of it in the desc.
     player.tone = 55;
@@ -1700,9 +1700,9 @@ function customNavorn(): void {
     player.hairColor = "silver";
     player.faceType = FaceType.FOX;
     player.earType = EarType.FOX;
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 5;
     player.breastRows[0].nipplesPerBreast = 4;
     player.breastRows[0].fuckable = true;
@@ -1797,7 +1797,7 @@ function customNixi(): void {
     player.cocks[0].knotMultiplier = 1.2;
     player.cocks[0].cockType = CockTypesEnum.DOG;
     player.balls = 0;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.vaginas[0].vaginalWetness = VaginaWetness.WET;
     // 1 pair DD's, 0.5"" nipples"
@@ -1878,7 +1878,7 @@ function customPrismere(): void {
     // In the human world, Prismere began as a scout, helping patrol areas with portals to make sure demonspawn and corruption didn't reach the human homeland. She's gotten herself into a few tight spots because of it, but she's hard to keep pinned down. She has a fiance back in her village whom she fully intends to get back to, so her libido isn't especially high.
     // As of the time the PC takes her on, she has some signs of demonic taint, so Corruption might start at 5 to 10 points."	"Breasts at E, height at 5'0, a curvy build with a more narrow waist and substantial hips and butt. Skin is olive, like a mocha, hair is long and wildly wavy, a deep red, and eyes are a stormy blue. Muscles are barely visible; what muscle she has is the lean build of a runner, not a fighter. Nipples aren't especially long, but more soft.
     player.cor = 5;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 7;
     player.tallness = 60;
     player.hipRating = 8;
@@ -1901,7 +1901,7 @@ function customRannRayla(): void {
     outputText("You're a young, fiery redhead who\'s utterly feminine.  You've got C-cup breasts and long red hair.  Being a champion can\'t be that bad, right?");
     player.vaginas.createVagina();
     player.clitLength = 0.25;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 3;
     player.nippleLength = 0.5;
     player.hairLength = 22;
@@ -1935,9 +1935,9 @@ function customSera(): void {
     player.hairColor = "white";
     player.skinTone = "light";
     player.nippleLength = 0.2;
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 3;
     player.breastRows[1].breastRating = 3;
     player.breastRows[2].breastRating = 3;
@@ -1991,7 +1991,7 @@ function customSiveen(): void {
     player.wingType = WingType.HARPY;
     // Halo (Flaming)
     // D-cups
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 4;
     // human skin
     // heart-shaped ass
@@ -2040,7 +2040,7 @@ function customSora(): void {
 function customTestChar(): void {
     player.XP = 500000;
     player.level = 20;
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.breastRows[0].breastRating = 5;
     player.breastRows[0].lactationMultiplier = 2;
@@ -2239,9 +2239,9 @@ function customTyriana(): void {
     player.tailType = TailType.CAT;
     player.lowerBody = LowerBodyType.CAT;
     // Breasts: 2 E-cups on top, 2 DD-cups mid, 2 D-cups bottom, 3.5 inch nipples
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
+    player.breastRows.createBreastRow();
     player.tallness = 67;
     player.breastRows[0].breastRating = 7;
     player.breastRows[1].breastRating = 5;
@@ -2258,7 +2258,7 @@ function customTyriana(): void {
 }
 
 function customVahdunbrii(): void {
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.vaginas.createVagina();
     player.breastRows[0].breastRating = 3;
     player.clitLength = .5;
@@ -2386,7 +2386,7 @@ public function doCreation(eventNo:Number):void {
         player.cocks[0].cockThickness = 1;
         player.cocks[0].cockType = CockTypesEnum.HUMAN;
         player.cocks[0].knotMultiplier = 1;
-        player.breasts.createBreastRow();
+        player.breastRows.createBreastRow();
         player.breastRows[0].breastRating = 0;
         outputText("\n\n\n\n\nYou are a man.  Your upbringing has provided you an advantage in strength and toughness.\n\nWhat type of build do you have?", true);
         simpleChoices("Lean", 10003, "Average", 10002, "Thick", 10005, "Girly", 10004, "", 0);
@@ -2401,7 +2401,7 @@ public function doCreation(eventNo:Number):void {
         player.tone = 30;
         player.fertility = 10;
         player.hairLength=10;
-        player.breasts.createBreastRow();
+        player.breastRows.createBreastRow();
         player.vaginas.createVagina();
         player.tallness = 67;
         player.breastRows[0].breastRating = 3;

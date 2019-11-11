@@ -406,7 +406,7 @@ function pullInZeMilkGirl(): void {
     outputText("You call out to " + flags[kFLAGS.MILK_NAME] + " before she can wander away, and wade over to the side of the tub, leaving your face a few scant inches from her hefty milkers.  She smiles as you reach up, nuzzling her cheek into your hand, purring your name happily.");
 
     outputText("\n\nYou flash her a mischievous grin before grabbing her waist and pulling, yanking her into the tub with you.  The milk-maid lets out a sharp cry of surprise as she tumbles in, a huge splash of cream spraying over the rim of the tub, painting the campground white.  Gasping, her head pops back over the surface of her own milk, long ebony hair dripping onto the tops of her seemingly-buoyant teats, which bob over the milky waves with a strangely serene, regal grace.  \"<i>[name]?</i>\" " + flags[kFLAGS.MILK_NAME] + " yelps as she wades through her own lactation, slowly retreating to the edge of the tub.  Chuckling, you reach out and stroke her cheek, telling her that you thought she might like a bath, too.  She starts to reply, but you cut her off with a playful stroke of her massive mounds, urging her over toward you.  She trusts you implicitly and does as you ask, sliding up under your arm and onto your lap.  Once seated, she looks up to you with saucer-like brown eyes until you cup her cheek and give her a short, tender kiss, pressing your lips to her dusky mounds.  To your delight, she seems to melt at your touch, relaxing in an instant as you hold her as close as you can, seperated only by her prodigious chest");
-    if (player.breasts.biggestTitSize() >= 7) outputText(", pressing deep into your own huge rack, your nipples flicking across her own leaky tits");
+    if (player.breastRows.biggestTitSize() >= 7) outputText(", pressing deep into your own huge rack, your nipples flicking across her own leaky tits");
     outputText(".");
     outputText("\n\n\"<i>O-oh,</i>\" she moans, just on the edge of hearing, her cheeks flushing hotly in your hand.  The cute little milkmaid turns aside, moving her udders out of the way so that she can rest her head on your chest, obviously enjoying the simple pleasure of your arm around her shoulders and the odd gentle touch.  You let her enjoy it for a few long, quiet minutes, content in the silent company of the milky girl.  From time to time you gently stroke her cow-like teats, or reach down to rub her thick, rich milk into your loins, enjoying the incredible texture of it on your ");
     if (player.gender == 1) outputText(multiCockDescriptLight(game.player));
@@ -430,7 +430,7 @@ function pullInZeMilkGirl(): void {
     if (player.vaginas.length > 0) {
         outputText("\n\nHer hands shift downwards, delicate fingertips slipping across the slit of your [vagina].  You gasp, shivering as her milk-slick fingers easily slip into your sodden box, her thumb swirling gently around your [clit].  Her other hand traces upwards, carressing your [hips] and [butt] before finally arriving at your [chest], which she massages with well-practiced skill.");
         // If PC has tits:
-        if (player.breasts.biggestTitSize() >= 1) {
+        if (player.breastRows.biggestTitSize() >= 1) {
             outputText("  She cups your breasts, having to reach so far around both your rack and hers that she's straining her arms to rub your [nipples], but she does so valiantly, stroking them with her incredibly deft fingers.");
             if (player.lactationQ() >= 100) outputText("  A spurt of milk escapes your own full jugs, joining the pool-full of your friend's.  She gasps with delight, quickly nuzzling herself into your back and going to work.  She milks you just as she would herself, letting the hefty flow of your motherly fluids pour into the pool, odd trickles smearing down your chest, staining your chest as white as her own.");
         }
@@ -439,7 +439,7 @@ function pullInZeMilkGirl(): void {
     menu();
     addButton(4, "Don't", dontFuckTheMilkWaifu);
     if (player.cocks.length > 0) addButton(0, "Fuck Her", fuckTheMilkWaifu);
-    if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 3) addButton(1, "LesboFuck", beARugMunchingMilkDyke);
+    if (player.vaginas.length > 0 && player.breastRows.biggestTitSize() >= 3) addButton(1, "LesboFuck", beARugMunchingMilkDyke);
 
 }
 

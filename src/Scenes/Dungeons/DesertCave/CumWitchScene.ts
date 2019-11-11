@@ -184,7 +184,7 @@ export function turnIntoASammitch(): void {
     outputText("\n\nThe Cum Witch begins moving your hand for you, artlessly toying with your cunt as she whispers into your ear.  She's brainwashing you, and you're too helpless, too vacant to lift a finger.  Besides, it's better to listen to her.  Just listening, it's better.  Yes, that's it.");
 
     outputText("\n\n\"<i>Oh, I can just tell you're going to be a great sister!  You'll love being milked almost as much as you'll love having my kids.</i>\" she coos.  You start to nod in agreement before you remember to listen, your thought processes slowly resuming.  \"<i>You'll love having my babies so much that you'll try to keep both your wombs full all the time, once you get your second one, won't you?  You love my cum, and you want it in all of your holes, but mostly your wombs</i>\"  This time you do nod - it's going to be fun!  You can't wait to ");
-    if (player.breasts.length < 2) outputText("get four big, milky tits");
+    if (player.breastRows.length < 2) outputText("get four big, milky tits");
     else if (player.lactationQ() < 200) outputText("have your tits made into perfect milkers");
     else outputText("get your four, big tits milked");
     outputText(" or to get your first proper administration of witch-cum.");
@@ -393,9 +393,9 @@ export function repeatLoseToCumWitchForDudes(): void {
         outputText(".  The black spellcaster comments, \"<i>I must admit it is fun to look at, but it doesn't look like it's ready to blow just yet.  How about a little encouragement?</i>\"");
 
         outputText("\n\nThe Cum Witch snaps her fingers, and two smooth, spherical bits of stone lift up.  They begin to vibrate so fast that you can hear them humming in the air.  They arc over your chest and flutter down onto ");
-        if (player.breasts.totalNipples() > 2) outputText("two of ");
+        if (player.breastRows.totalNipples() > 2) outputText("two of ");
         outputText("your [nipples]");
-        if (player.breasts.hasFuckableNipples()) outputText(", sinking inside your moist tit-holes almost immediately");
+        if (player.breastRows.hasFuckableNipples()) outputText(", sinking inside your moist tit-holes almost immediately");
         outputText(".  With two vibrators savaging your [nipples] and the black-hued beauty riding your cock like her own personal rocket, you can barely contain yourself.  Your back arches, and you try to buck your hips, to fuck her, her cock, whatever, but you're still too exhausted from the fight to shift her body weight.  You can do nothing but lie there while she uses you, humping your cock, her ebony length dragging its lurid pleasure across your " + cockDescript(game.player, x) + " while you wriggle and writhe ecstatically.");
 
         outputText("\n\nAfter a while of continual teasing, the sable seductress leans over you and lets her huge breasts sweetly kiss on your elephantine mass.  She leans down as if to kiss you, but at the last moment, she swerves to the side, licking the nape of your neck up to your ear before breathily whispering promises into your ear, \"<i>There's nothing like blowing off some steam out here in the sands after my work.  And to have such a... gifted " + mf(player, "boy", "girl") + " to play with is a treat in and of itself.</i>\"  She grunts, sweaty balls bouncing on your [sheath].  \"<i>You look so helpless for someone who's packing so much.  I look forward to seeing how you look with my cum hiding that expression.</i>\"");
@@ -477,7 +477,7 @@ export function tooBigCumWitchLossFacial(): void {
     else outputText("  You give her a lewd look and lick your tongue across your lips as you anticipate the big, fat load she's going to feed you, hungry for wet, decadent pleasure regardless of inhibitions.");
 
     outputText("\n\nThe hot moisture she's secreting all over your " + cockDescript(game.player, x) + " seems to be affecting you as well as the vibrations ");
-    if (player.breasts.hasFuckableNipples()) outputText("in");
+    if (player.breastRows.hasFuckableNipples()) outputText("in");
     else outputText("on");
     outputText(" your [nipples].  It feels like there's so much blood being forced inside your erection that the sheer over-tumescence will make you burst.  The need is overwhelming.  You HAVE to cum, and you're so wet, so stained with spunk and juice that there's no time like now.  The Cum Witch's heels press in on your ");
     if (player.balls > 0) outputText("[balls], compressing them slightly as a tingle of magic lances into you, fattening them under her ministrations");

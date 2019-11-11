@@ -114,12 +114,12 @@ function serviceLowCorruptionHighLust(): void {
             // Jack off slime and make it human shapes
             outputText("At the same time you continue to work the head of the slime beneath you, slowly twisting your hand around the top of its large erection.  Before long the mass starts to slim and bulge, becoming more defined before taking on the distinct image of a human penis.  The sight of it further excites you and you begin to work it harder, feeling it start to throb in earnest beneath your touch.  ", false);
             // Tit stuff
-            if (player.breastRows.length > 0 && player.breasts.biggestTitSize() > 0) {
+            if (player.breastRows.length > 0 && player.breastRows.biggestTitSize() > 0) {
                 outputText("You gasp a little as the slime's massive arms reach up from behind you to cup your " + allBreastsDescript(player) + ", and the soft material ", false);
                 // Tig ol' bitties
-                if (player.breasts.biggestTitSize() > 8) outputText("barely contains them.", false);
+                if (player.breastRows.biggestTitSize() > 8) outputText("barely contains them.", false);
                 // Middling Boobiliciousness
-                else if (player.breasts.biggestTitSize() > 3) outputText("gently covers them.", false);
+                else if (player.breastRows.biggestTitSize() > 3) outputText("gently covers them.", false);
                 // Tiny ta-tas.
                 else outputText("easily smothers them.", false);
                 // Get nips played with and nearly cum
@@ -133,13 +133,13 @@ function serviceLowCorruptionHighLust(): void {
                 if (player.cocks.length > 1) {
                     outputText("You feel your " + multiCockDescriptLight(game.player) + " surge to their full size as the slime works you over.  They quickly begin to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ", false);
                     // of course, if the creature is working the player's crotch because they don't have breasts, they -can- jerk off!
-                    if (player.breasts.biggestTitSize() == 0) outputText("You delicately grasp the head of one of your cocks, your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
+                    if (player.breastRows.biggestTitSize() == 0) outputText("You delicately grasp the head of one of your cocks, your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
                 }
                 // Single prick
                 else {
                     outputText("You feel your " + cockDescript(game.player, 0) + " surge to full size as the slime works you over.  It begins to throb and ache for release, a need made only more pressing by your desire to have it fondled.  ", false);
                     // Play with it if your boobs aren't being manhandled
-                    if (player.breasts.biggestTitSize() == 0) outputText("You delicately grasp the head of your " + cockDescript(game.player, 0) + ", your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
+                    if (player.breastRows.biggestTitSize() == 0) outputText("You delicately grasp the head of your " + cockDescript(game.player, 0) + ", your hand slick with the fluids of yourself and of the creature.  The combination of the creature's movements and your own quickly overwhelms you.", false);
                 }
             }
             // New paragraph for orgazms.
@@ -189,12 +189,12 @@ function serviceLowCorruptionHighLust(): void {
         else if (player.gender == 2 || player.gender == 3) {
             outputText("Eventually your own arousal becomes unbearable and your other hand finds its way to your ", false);
             // TITTY ACTIOOOON
-            if (player.breastRows.length > 0 && player.breasts.biggestTitSize() > 0) {
+            if (player.breastRows.length > 0 && player.breastRows.biggestTitSize() > 0) {
                 outputText(allBreastsDescript(player) + ", and you begin to grope yourself as you grip the creature's shaft and stroke it from crown to root.  As the pulsing of the beast's mass becomes more pronounced so does it's appearance, and it takes on the distinct look of a human penis.  Grinning you pull it towards you a bit and rapidly stroke the shaft with one hand while working the cock's head with the other, making the slime buck slightly, pulsing within your hands.  Without warning, its wide arms reach up, one reaching across your breasts while the other drapes across your thighs, the hand going for your " + vaginaDescript(player, 0) + ".  ", false);
                 // Cant cover all of tig ol' bitties
-                if (player.breasts.biggestTitSize() > 8) outputText("Its hand expands, struggling to cover all of your " + allBreastsDescript(player) + ", ", false);
+                if (player.breastRows.biggestTitSize() > 8) outputText("Its hand expands, struggling to cover all of your " + allBreastsDescript(player) + ", ", false);
                 // Middling ta-tas get covered
-                else if (player.breasts.biggestTitSize() > 3) outputText("Its hand expands and gently covers your " + allBreastsDescript(player) + ", ", false);
+                else if (player.breastRows.biggestTitSize() > 3) outputText("Its hand expands and gently covers your " + allBreastsDescript(player) + ", ", false);
                 // Small tits?  Pwned.
                 else outputText("Its hand easily smothers your " + allBreastsDescript(player) + ", ", false);
                 outputText("and you stop for a moment until the slime tweaks one of your " + nippleDescription(player, 0) + ", prompting you to begin rubbing it again.  The hand on your breasts expertly massages them with what feels like dozens of fingers as the other gently runs a finger over your gash.  Looking down, you realize that the slime doesn't appear to be moving at all - it is shifting its own mass to massage you, creating a feeling like nothing you've ever experienced!  ", false);
@@ -205,7 +205,7 @@ function serviceLowCorruptionHighLust(): void {
             // clitoris play w/ cock text
             if (player.cocks.length > 0) {
                 // since players without breasts are wholly surprised here, this needs to be acknowledged.
-                if (player.breasts.biggestTitSize() == 0 || player.breastRows.length == 0) {
+                if (player.breastRows.biggestTitSize() == 0 || player.breastRows.length == 0) {
                     outputText("You begin to moan as the creature rubs the " + vaginaDescript(player, 0) + " beneath your " + multiCockDescript(game.player) + ", working you with incredible skill, but sadly ignoring your needy ", false);
                     // multi!
                     if (player.cocks.length > 1) outputText("penii ", false);
@@ -220,7 +220,7 @@ function serviceLowCorruptionHighLust(): void {
             // Just clits, no cocks.
             else {
                 // since players without breasts are wholly surprised here, this needs to be acknowledged.
-                if (player.breasts.biggestTitSize() == 0 || player.breastRows.length == 0) outputText("You begin to moan as the creature rubs your " + vaginaDescript(player, 0) + ", working you with incredible skill, but what comes next is an utter surprise, making you unconsciously wring the head of the slime's cock.  ", false);
+                if (player.breastRows.biggestTitSize() == 0 || player.breastRows.length == 0) outputText("You begin to moan as the creature rubs your " + vaginaDescript(player, 0) + ", working you with incredible skill, but what comes next is an utter surprise, making you unconsciously wring the head of the slime's cock.  ", false);
                 // Clit engulph'ed!
                 outputText("The creature's smooth, gel-like body envelopes your " + clitDescription(player) + " and slowly pulsates, stroking it from multiple angles at once and making you gasp with pleasure.  You're torn with the urges to both thrust your hips towards it to seek more pleasure and to draw away from the sheer intensity of the sensations, and settle for helplessly moaning as your hands unthinkingly tighten and squeeze around the head of the creature's cock, causing it to release a massive stream of green fluid across your chest and body.", false);
             }
@@ -341,20 +341,20 @@ function femaleRapesOoze(): void {
     }
     // !!NOTE
     // breasts check here. if you want to allow/encourage entirely flat chested loli / cuntboy type stuff, change the bottom else-if to >= 0.
-    if (player.breasts.biggestTitSize() > 8) {
+    if (player.breastRows.biggestTitSize() > 8) {
         outputText("You grin and lean forward slightly, letting your " + allBreastsDescript(player) + " rest against its member.  You pull it forward and wedge it between them, wrapping yourself around it and slowly massaging the cock with your chest.  You feel the creature begin to pulse and throb as your chest begins to feel slick, and so you sit up to prevent the slime from finishing early.  As you pull yourself off of it you notice with a bit of delight that its formerly indistinct shaft is now a perfectly sculpted human cock, a full foot and a half long, and your breasts are now covered with a strange green fluid.\n\n", false);
     }
-    else if (player.breasts.biggestTitSize() > 3) {
+    else if (player.breastRows.biggestTitSize() > 3) {
         outputText("You smile mischievously and lean down, pressing your chest down around the creature's member.  You slowly start to move back and forth and the slime responds positively by slowly moving its hips in time with your bod, all the while throbbing and pulsing magnificently.  You watch with wide eyes as the shaft shifts, changing into a perfectly sculpted human cock, a full foot and a half long.  Sensing the thing getting close you ease yourself off and sit back up, your chest now covered with a green fluid.\n\n", false);
     }
-    else if (player.breasts.biggestTitSize() >= 0) {
+    else if (player.breastRows.biggestTitSize() >= 0) {
         outputText("You pull the member tight against your body and run your hands along its length, rubbing it over your belly as the shaft throbs and pulses beneath your touch.  You lean forward a little and rub the tip of it against your " + allBreastsDescript(player) + ", smiling as it leaves a little bit of greenish fluid behind.  After enduring your ministrations for a short time the creature begins moving its hips in time with you.  You hold in a slight gasp as the ooze's shaft shifts, changing into a perfectly sculpted human cock, a full foot and a half long.\n\n", false);
     }
     /*
     else
     {
         //this line designed to return helpful text if something goes wrong.it should work. i think. maybe. i have no idea, this project is my first experience with as3.
-        outputText("<<ERROR: breast size check returned invalid number -" + String(player.breasts.biggestTitSize()) + "- at green slime' player win + vagina + high lust;>>", false);
+        outputText("<<ERROR: breast size check returned invalid number -" + String(player.breastRows.biggestTitSize()) + "- at green slime' player win + vagina + high lust;>>", false);
     }*/
     outputText("Before long you cannot take the temptation anymore and lift your hind end into the air, moaning softly as you rub the tip of its cock against your " + vaginaDescript(player, 0) + ".", false);
     // defloration text

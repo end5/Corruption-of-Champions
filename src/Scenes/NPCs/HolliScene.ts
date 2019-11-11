@@ -309,10 +309,10 @@ function rideDatFuckingFukkFlowerP2(): void {
     if (player.clitLength > 4) outputText("  Your heavy buzzer is so big that the flexible plant-cock has plenty of room to curl around it, and if you could see it, your clit would look almost like a candy-cane (if one set of stripes was jerking off the cane beneath).");
     if (player.cocks.length > 0) outputText("  [EachCock] soon has its own partner twisting around it, a pussy-slicked vine to jerk and twine about its girth.");
     outputText("\n\nWith nothing to occupy your roving hands, you let them slide up your " + skinFurScales(player) + " to your ");
-    if (player.breasts.length > 1) outputText("lowest row of tits, cupping them before groping to your top row of breasts");
+    if (player.breastRows.length > 1) outputText("lowest row of tits, cupping them before groping to your top row of breasts");
     else outputText("[chest]");
     outputText(", caressing the");
-    if (player.breasts.biggestTitSize() > 1) outputText("ir");
+    if (player.breastRows.biggestTitSize() > 1) outputText("ir");
     outputText(" swell as you search for the lust-tightened skin of your [nipples].  They seem almost as sensitive as little clits, and as soon as you find them, you immediately set to circling them slowly, occasionally tugging and twisting when a particularly powerful sensation works through your pleasure-wracked body.");
     if (player.lactationQ() > 50) {
         outputText("  One after the other, they begin to ");
@@ -652,7 +652,7 @@ function fuckHolliInZeFlowerPuss(): void {
     if (player.cocks.length > 1) outputText("s, massaging the bundle of cocks with uncommon ferver");
     else outputText(", massing your tool with uncommon fervor");
     outputText(".  Your grunt of irritation vanishes as soon as your tender sex is forced into the heavenly hole, and with the soft breasts pressing into ");
-    if (player.breasts.biggestTitSize() >= 2) outputText("your own");
+    if (player.breastRows.biggestTitSize() >= 2) outputText("your own");
     else outputText("your [chest]");
     outputText(", you give up and kiss the dryad full on the lips, biting the lower one roughly in irritation.");
 
@@ -969,7 +969,7 @@ function vaginalDomHollisTentacruels(): void {
     outputText("\n\nThe tentacle prick pumps faster, more and more of its surface coated with wetness as it works.  You growl in frustration, yank the dick out of Holli's mouth, and slap her across the face with it, broadside.  She gasps in pain and shock.  Between your legs, the overeager motions cease.  In your hand, the slick shaft tries to wiggle free.  You squeeze down on it, and it arrests its rebellious motions, lest it injures itself.");
     outputText("\n\n\"<i>I told you, slower,</i>\" you say, punctuating the sentence with another heavy cock-slap.  Holli works her jaw in irritation, but lowers her eyes against the inferno in your steely gaze.  \"<i>Better.  Now, kiss and make up, you two.</i>\"  You cram the tender cock right back into her noise hole and command, \"<i>Giddyup, little pony - you've still got a [master] to serve.</i>\"");
     outputText("\n\nThe undulations down below resume, this time at a pleasantly languid pace.  You sigh in contentment, finally able to enjoy the slow fuck.  You grope at your [fullChest]");
-    if (!player.breasts.hasFuckableNipples() && player.lactationQ() < 50) outputText(" and pay special attention to your [nipples], tugging them in time with every sluggish thrust in your slit.");
+    if (!player.breastRows.hasFuckableNipples() && player.lactationQ() < 50) outputText(" and pay special attention to your [nipples], tugging them in time with every sluggish thrust in your slit.");
     else if (player.lactationQ() >= 50) {
         outputText(" and sigh at the ");
         if (player.lactationQ() < 150) outputText("squirts");
@@ -1201,7 +1201,7 @@ export function enjoyYourBadEndBIYAAAATCH(): void {
         outputText("\n\n\"<i>Oh, my little toy... did you think us finished already?</i>\"  From the corner of your eye, you see another tendril drop into place as she speaks, followed by five more.  Against your better judgment, your eyes and mouth widen into an anticipatory smile, and then a moan as the next of Holli's rough-skinned arboreal cocks forces into your dripping cunt.");
 
         outputText("\n\nThis tentacle climaxes before you do as well, ejaculating a fresh load of the hot goo into your packed pussy and making you feel full.  Holli gives a short sigh and slumps against you as it pours forth, pressing her soft breasts to your");
-        if (player.breasts.biggestTitSize() >= 1) outputText("s");
+        if (player.breastRows.biggestTitSize() >= 1) outputText("s");
         else outputText("chest");
         outputText(".  The demon looks up, breathing heavily.  \"<i>Don't worry, lover.  When your time comes, you will as well.</i>\"  She holds you, looking into your eyes with her own eerie black portals, apparently waiting for something; as your heaving body calms down, she strokes your [hair].  Increasingly able to focus your thoughts on something other than the pleasure of being thrust into, awareness creeps in on you.  The wet, yielding pressure of Holli's ejaculate is receding as it oozes from your spread-open cunt, but in its wake, it's leaving a lesser, solid sensation.");
 
@@ -1211,10 +1211,10 @@ export function enjoyYourBadEndBIYAAAATCH(): void {
         outputText("\n\n\"<i>What a pretty blossom you have become, my pet.</i>\"  The demon traces your new petals with the tip of her last tendril, destroying your muscle control and making you helpless in her grip.  Pressing herself to you, Holli slides the tendril in slowly, dragging it across the inside of your florid pussy, which constricts to perfectly fit the intruder and causes your eyes to roll back in your head as every tight inch of your new, sensitized vagina is stimulated.  In just two thrusts you're at your peak, and the demon squeezes you to her chest as she speaks.  \"<i>As promised, your time is now.</i>\"");
 
         outputText("\n\nHolli's lips dart to yours, locking you up in a kiss that carries pulses of slippery nectar and demonic energy through your throat and torso and down to your groin to meet the ones rising from her spurting cock-tendril.  As your body shudders in your devastating, long-wished-for orgasm, the pressure in the back of your vagina swells painfully and expands, racing along your walls toward your entrance.  When the sensations reach daylight, Holli pulls away and numerous long tendrils of your own snake from the gaps between your cunt and the slippery-sticky petals growing out of it, winding down your legs and up your torso, digging into the soil and ");
-        if (player.breasts.biggestTitSize() > 1) outputText("wrapping around and under your breasts to keep them permanently jutting out in a lurid display");
+        if (player.breastRows.biggestTitSize() > 1) outputText("wrapping around and under your breasts to keep them permanently jutting out in a lurid display");
         else outputText("tracing a lattice of slender, criss-crossing ivy over your chest that hangs just far enough over your [nipples] that a stiff breeze will drag it into them");
         outputText(", then continuing over your back and up your neck.  The tendrils thicken and multiply, occluding your forearms and lower [legs] in a casing of young bark and leaf buds, and Holli's own release you as yours take over the duty of holding you in place to receive whatever pleasure she forces upon you.  You're left in a salacious pose when the growth subsides, suspended several feet off the ground with your arms held over your head, your back arched in a memorial of your incredible orgasm, ");
-        if (player.breasts.biggestTitSize() > 1) outputText("your breasts cupped and pressed together by vines, ");
+        if (player.breastRows.biggestTitSize() > 1) outputText("your breasts cupped and pressed together by vines, ");
         if (!player.isNaga() && !player.isGoo()) outputText("your thighs spread wide open, ");
         outputText("and your nectar-drooling flower-sex exposed with your [clit]");
         if (player.cocks.length > 0) outputText(" and [eachCock]");
@@ -1260,10 +1260,10 @@ export function enjoyYourBadEndBIYAAAATCH(): void {
         outputText("\n\nThe fluids in your gut begin to mingle, sending a disquieting pinprick sensation through the skin");
         if (player.skinType == SkinType.FUR || player.skinType == SkinType.SCALES) outputText(" under your " + skinFurScales(player));
         outputText(".  Panic intensifies as the sensation quickly focuses on your crotch, and when the tendrils holding you push you away from the demon's tree, your curiosity gets the better of you.  You look over your shoulder again, trying to see what's happening.  As you strain to watch, you feel hundreds of tiny, sharp pinches and small vines begin to creep from your body, just below your ass.  The vines merge and thread into thick trunks as they get closer to the ground, pushing deep into the dirt and mooring you to the spot.  Arousal builds in you as they join the web of roots linking the demon Marae and Holli, as does a swelling at your crotch.  Another cluster of thin vines push free from your groin, growing upward in a lattice and lashing your arms into place, ");
-        if (player.breasts.biggestTitSize() < 1) outputText("folded atop your chest");
+        if (player.breastRows.biggestTitSize() < 1) outputText("folded atop your chest");
         else outputText("crooked at your sides with your hands resting atop your [chest]");
         outputText(".  They continue past your face, reaching over your head to form a canopy similar to Holli's own.  Struggle as you may, when they're done growing you're left unable to budge and locked in a rather artful pose, head turned over your shoulder with your [ass] thrust out");
-        if (player.breasts.biggestTitSize() >= 1) outputText(", your breasts exposed from the sides,");
+        if (player.breastRows.biggestTitSize() >= 1) outputText(", your breasts exposed from the sides,");
         outputText(" and your [legs] concealed below your buttcheeks by a thick tree trunk.");
 
         outputText("\n\n\"<i>Lovely,</i>\" Holli admires.  \"<i>You'll make for a fine ambiance.</i>\"  The demon sticks one finger into your still-drooling asshole, stroking the inside of the ring and fanning the flame of your magic-driven lust.  \"<i>I may even consent to use you for release occasionally... if I can't find someone more interesting to have a tryst with!</i>\"  With a cruel laugh, she pulls out of you and retreats into her tree, leaving you staring at her bark, smouldering with desire and helpless to indulge it.");
@@ -1286,7 +1286,7 @@ function holliPlaysWithPenisesBadEnd(): void {
     outputText("\n\nThe brown-haired girl regards the dryad calmly.  \"<i>How can you help me?  Moreso, how could I begin to help you?</i>\"");
 
     outputText("\n\nHolli gestures to the second tree, whose figure has remained silent.  A ");
-    if (player.breasts.biggestTitSize() < 1) outputText("masculine shape, it bears");
+    if (player.breastRows.biggestTitSize() < 1) outputText("masculine shape, it bears");
     else outputText("feminine shape, it nonetheless bears");
     outputText(multiCockDescript(game.player) + ", standing erect and hard as iron; the brown-haired girl blushes and looks away.");
 
@@ -1343,7 +1343,7 @@ function girlsGetANiceManToBadEnd(): void {
 
     outputText("\n\nThe left tree lacks the nude resident of its fellows, though it appears older and thicker than any of the others, while the branches of the right one are bent low with juicy-looking fruit.  The figure in the right tree is contorted into a lewd pose, its ");
     // [(if tits)
-    if (player.breasts.biggestTitSize() > 1) outputText("[chest] cupped by vines and held out toward the young man, ");
+    if (player.breastRows.biggestTitSize() > 1) outputText("[chest] cupped by vines and held out toward the young man, ");
     else outputText("chest crisscrossed with a mesh of fine vines, ");
     outputText("its legs elevated and spread apart to display a ");
     if (player.balls > 0 && player.ballSize > 10 && player.gender == 3) outputText(multiCockDescriptLight(game.player) + " with [balls] swinging below.");
@@ -1355,7 +1355,7 @@ function girlsGetANiceManToBadEnd(): void {
     outputText("  Though its eyes are covered, the figure's mouth works constantly, biting and licking its lips as if beset by otherworldly amounts of lust.  Holli beckons the youth toward this tree.");
 
     outputText("\n\nAs he approaches, the dryad reaches up to the canopy and pulls down a fruit-bearing branch; it snaps smoothly and the nude figure shudders, sending a tremor through the ");
-    if (player.breasts.biggestTitSize() >= 1) outputText("[chest]");
+    if (player.breastRows.biggestTitSize() >= 1) outputText("[chest]");
     else outputText("vines");
     outputText(".  Plucking the fruit from its stem, Holli throws it to the young man.  \"<i>Eat that,</i>\" she commands.  As he looks over the fruit suspiciously and bites into it, the dryad places the broken end of the branch between her thighs and begins to draw it through, producing a smooth, straight staff glistening with her secretions.  Cock throbbing against his pants, the youth watches her show and chews distractedly as the twigs and leaves shift into a cluster that sticks out behind Holli's heart-shaped ass.  Withdrawing the new staff, Holli passes it to him, smiling knowingly as he touches her pussy-wettened hand and his cock spurts another glob of precum through its fabric prison.");
 
@@ -1372,7 +1372,7 @@ function girlsGetANiceManToBadEnd(): void {
     outputText("\n\n\"<i>She likes you,</i>\" Holli says quietly, from behind the young man.  \"<i>Feel free to play with her body, if you wish.  It will please her.</i>\"");
 
     outputText("\n\nThe budding romantic, already thrusting eagerly, ");
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("reaches up and grabs two handfuls of breast, passing his thumb over a nipple and watching the ");
         if (player.gender == 2) outputText("woman");
         else outputText("hermaphrodite");

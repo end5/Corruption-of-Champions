@@ -80,7 +80,7 @@ export function encapsulationPodAI(): void {
         outputText("The rest of the mass continues to crawl up you.  They tickle at your ", false);
         if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 120) outputText("pregnant ", false);
         outputText("belly as they get closer and closer to ", false);
-        if (player.breasts.biggestTitSize() < 1) outputText("your chest", false);
+        if (player.breastRows.biggestTitSize() < 1) outputText("your chest", false);
         else outputText("the underside of your " + allBreastsDescript(player), false);
         outputText(".  Gods above, this is turning you on!  Your lower body is being violated in every conceivable way and it's only arousing you more.  Between the mind-numbing smell and the sexual assault you're having a hard time focusing.\n", false);
         if (player.lust < 65) {
@@ -92,7 +92,7 @@ export function encapsulationPodAI(): void {
     // [Round 3 Action]
     else if (monster.effects.getValue1Of(StatusAffects.Round) == 3) {
         outputText("The wet, warm pressure of the fungus' protrusion working their way up your body feels better than it has any right to be.  It's like a combination of a warm bath and a gentle massage, and when combined with the thought-numbing scent in the air, it's nigh-impossible to resist relaxing a little.  In seconds the mass of tentacles is underneath your " + player.armorName + " and rubbing over your chest and " + nippleDescription(player, 0) + "s.  You swoon from the sensation and lean back against the wall while they stroke and caress you, teasing your sensitive " + nippleDescription(player, 0) + ".", false);
-        if (player.breasts.hasFuckableNipples()) outputText("  Proof of your arousal leaks from each " + nippleDescription(player, 0) + " as their entrances part for the probing tentacles.  They happily dive inside to begin fucking your breasts, doubling your pleasure.", false);
+        if (player.breastRows.hasFuckableNipples()) outputText("  Proof of your arousal leaks from each " + nippleDescription(player, 0) + " as their entrances part for the probing tentacles.  They happily dive inside to begin fucking your breasts, doubling your pleasure.", false);
         outputText("  Moans escape your mouth as your hips begin to rock in time with the tentacles and the pulsing luminance of your fungus-pod.  It would be easy to lose yourself here.  You groan loudly enough to startle yourself back to attention.  You've got to get out!\n\n", false);
 
         outputText("The tentacles that aren't busy with your " + allBreastsDescript(player) + " are already climbing higher, and the slime has reached your waist.  If anything it actually makes the constant violation more intense and relaxing.  You start to sink down into it, but catch yourself and pull yourself back up.  No! You've got to fight!\n", false);
@@ -121,19 +121,19 @@ export function encapsulationPodAI(): void {
             outputText("Your body twitches weakly, too relaxed to move while it gets off from anal penetration.", false);
         }
         else outputText("Your body twitches weakly, too relaxed to move while it gets off from being double-penetrated.", false);
-        if (player.breasts.hasFuckableNipples()) {
+        if (player.breastRows.hasFuckableNipples()) {
             outputText("  Your " + nippleDescription(player, 0) + "s squirt around their phallic partners, leaking sexual lubricant ", false);
-            if (player.breasts.biggestLactation() > 1) outputText("and milk ", false);
+            if (player.breastRows.biggestLactation() > 1) outputText("and milk ", false);
             outputText("while the fucking continues.", false);
         }
         if (player.cocks.length > 0) {
             outputText("  The tentacles around " + sMultiCockDesc(player) + " squeeze and rotate, screwing you silly through your orgasm while cum dribbles in a steady stream from your loins.  Normally it would be squirting out in thick ropes, but the muscle-relaxing drugs in your system make the spurts a steady, weak flow.", false);
             if (player.cumQ() > 800) outputText("  Of course with all the semen you produce, the flesh-pod's ooze clouds over quite quickly, blocking your vision with a purple-white haze.", false);
         }
-        if (player.breasts.biggestLactation() > 1) {
+        if (player.breastRows.biggestLactation() > 1) {
             outputText("Milk leaks out too, ", false);
-            if (player.breasts.biggestLactation() < 2) outputText("though the slight dribble is barely noticeable to you.", false);
-            else if (player.breasts.biggestLactation() < 3) outputText("coloring things a little more white.", false);
+            if (player.breastRows.biggestLactation() < 2) outputText("though the slight dribble is barely noticeable to you.", false);
+            else if (player.breastRows.biggestLactation() < 3) outputText("coloring things a little more white.", false);
             else outputText("thickening your fluid-filled prison with nutrients.", false);
         }
         // [NEXT – CHOOSE APPRORIATE]

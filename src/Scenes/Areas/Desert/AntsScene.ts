@@ -1178,7 +1178,7 @@ function talkAboutAntMatingAndRituals(): void {
         outputText("\n\nA little louder she starts again.");
         outputText("\n\n\"<i>These are my breasts; they're not very impressive...</i>\"");
         // If PC has over D Cup Continue:
-        if (player.breasts.biggestTitSize() >= 4) outputText("\n\n\"<i>At least not like yours... I mean, yours are nicer!</i>\"");
+        if (player.breastRows.biggestTitSize() >= 4) outputText("\n\n\"<i>At least not like yours... I mean, yours are nicer!</i>\"");
         outputText("\n\nShe cups both of her breasts with her two larger hands.");
         outputText("\n\nAnd?  \"<i>...and my nipples.</i>\"  Her nipples immediately get hard.  Either from her hands rubbing them or her talking about them, you're not quite sure.");
 

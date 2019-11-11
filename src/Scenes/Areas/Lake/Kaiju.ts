@@ -207,7 +207,7 @@ function flirtWithKaiju(): void {
 
     outputText("\n\nShe still has your [leg] held gently between two fingers, and she begins to steadily push you deeper and deeper inside her wet honeypot, coating you liberally in more of the lust inducing wetness.  \"<i>Oh that's it baby, slow and steady wins the race,</i>\" she moans, her voice sounding muffled from where you are.  Her vaginal walls continue their rhythmic massage of your body, relaxing your own muscles as the tension of your adventures seem to evaporate.");
     // [If PC has breasts]
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("  Your [fullChest] slide across the slick yet firm vaginal flesh of her surprisingly dexterous cunt, your [nipples] stiffening from the constant teasing massage.");
     }
     // [If PC has cock]
@@ -237,7 +237,7 @@ function flirtWithKaiju(): void {
         // [If vagina and/or cock is present]
         if (player.gender > 0) {
             outputText("\n\nYou grind your privates against her member, determined to get yourself off as well.");
-            if (player.breasts.biggestTitSize() >= 1) outputText("  You press your [chest] against her cock flesh as well, giving her penis as much a boob job as such a behemoth prick can be given.");
+            if (player.breastRows.biggestTitSize() >= 1) outputText("  You press your [chest] against her cock flesh as well, giving her penis as much a boob job as such a behemoth prick can be given.");
             if (player.lactationQ() >= 200) outputText("  Milk spurts and flows from your [nipples], making your breast slick and shiny and helping you slide more easily along the throbbing meat-pole.");
         }
         outputText("\n\n\"<i>By Marae you're good at this!</i>\" the moaning giantess says as her cock begins to bounce in anticipation.  It nearly bucks you off your precarious perch!  \"<i>I'm...I'm going to cum!</i>\" she shouts as you redouble your efforts.  In another moment she makes good her statement, as a titanic load squirts out.");
@@ -345,7 +345,7 @@ function fuckThisGiantYouDumbCunt(): void {
 
     outputText("\n\nShe still has your [leg] held gently between two fingers, and she begins to steadily push you deeper and deeper inside her wet honeypot, coating you liberally in more of the lust inducing wetness.  \"<i>Oh that's it baby, slow and steady wins the race,</i>\" she moans, her voice sounding muffled from where you are.  Her vaginal walls continue their rhythmic massage of your body, relaxing your own muscles as the tension of your adventures seem to evaporate.");
     // [If PC has breasts]
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("\n\nYour [chest] slide across the slick yet firm vaginal flesh of her surprisingly dexterous cunt, your [nipples] stiffening from the constant teasing massage.");
     }
     // [If PC has cock]
@@ -379,7 +379,7 @@ function fuckThisGiantYouDumbCunt(): void {
                 outputText("You grind your privates against her member, determined to get yourself off as well.  ");
             }
             // [If PC has boobs]
-            if (player.breasts.biggestTitSize() >= 1) outputText("You press your [fullChest] against her cock flesh as well, giving her penis as much a boob job as such a behemoth prick can be given.");
+            if (player.breastRows.biggestTitSize() >= 1) outputText("You press your [fullChest] against her cock flesh as well, giving her penis as much a boob job as such a behemoth prick can be given.");
             if (player.lactationQ() >= 200) outputText("  Milk spurts and flows from your [nipples], making your breast slick and shiny and helping you slide more easily along the throbbing meat-pole.");
 
             outputText("\n\n\"<i>By Marae you're good at this!</i>\" the moaning giantess says as her cock begins to bounce in anticipation.  It nearly bucks you off your precarious perch!  \"<i>I'm...I'm going to cum!</i>\" she shouts as you redouble your efforts.  In another moment she makes good her statement, as a titanic load squirts out.");
@@ -762,7 +762,7 @@ function badEndPartTwo(): void {
     if (player.cocks.length > 0) outputText("[EachCock] stiffens as the tree tendril pushes against your prostate, forcing a thick glob of pre up your shaft.  ");
     if (player.vaginas.length > 0) outputText("As the first vine-cock works its way up your rectum a second has found its way up to your snatch!  The plant-like head rubs against your folds almost lovingly, tenderly, before the head starts to prod past your pink lips, butting up against your cunt as part of the shaft rears up to rub against your clit, sending shockwaves through your body, and the vine-cock chooses this moment to plunge into your [vagina].  Now you have two cocks ramming into your holes, pressing up against your walls as if to feel each other through you.  The plant dick in your pussy slides up and down through your folds, each thrust out going ever so slowly, only to ram back in at full speed, more inches sliding in every time until the head is bumping up against your cervix, leaky pre-seed slowly filling up your cunt to leak out between your thighs.  ");
     outputText("  The next sinuous cock threads itself between your legs, up your belly, past your chest to lightly poke at your lips.  You open your mouth to shout when the cock in your [asshole] hits a sensitive spot and the cock at your mouth slides right in, dripping seed into your mouth, your tongue suddenly awash in a salty, yet pleasantly sweet flavor.");
-    if (player.breasts.biggestTitSize() >= 1) outputText("  Another tendril snakes its way up your abdomen to nestle between your [chest], slicking your mounds with pre as it slides between your tits, giving itself a titty-fuck with your titties!");
+    if (player.breastRows.biggestTitSize() >= 1) outputText("  Another tendril snakes its way up your abdomen to nestle between your [chest], slicking your mounds with pre as it slides between your tits, giving itself a titty-fuck with your titties!");
 
     outputText("\n\nMore tentacles squirm up, wrapping around your limbs bondage fashion, while others rub and knead against you in a lewd massage, all while the giant’s pussy flesh wrings around you, soaking you and massaging you and the tentacles as the green girl screams like a whore in the throes of the best sex of her life.");
     if (player.cocks.length > 0) outputText("  More tentacles arrive and begin to wrap around your " + multiCockDescriptLight(game.player) + ", slowly jacking you off to the tempo set by the cocks in your ass and mouth, wracking you with further pleasure.");

@@ -70,7 +70,7 @@ export class ImpLord extends Imp {
         this.ballSize = 1;
         this.cumMultiplier = 3;
         this.hoursSinceCum = 20;
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(14) + 40;

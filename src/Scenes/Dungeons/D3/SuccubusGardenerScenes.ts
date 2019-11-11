@@ -294,7 +294,7 @@ function femGenderlessLossII(): void {
     outputText(", but that doesn't make it feel heavenly. It gently pulsates around your buzzer, rippling and squeezing, rhythmically whipping electric lashes of sensation into your fuck-crazed body one after another.");
 
     outputText("\n\nThe fleshy spear ravaging your honeypot quivers and slows, then thrusts hard enough to rock your body");
-    if (player.breasts.biggestTitSize() > 2) outputText(" and jiggle your tits");
+    if (player.breastRows.biggestTitSize() > 2) outputText(" and jiggle your tits");
     outputText(", pressing itself flat against your cervix before finally exploding, creaming your insides with a thick layer of molten-hot seed. You would groan or whimper if your throat wasn't crammed so full of plantcock. Instead, your eyes roll back under their fluttering lids, revealing a narrow band of white as you lose all control. Your body shakes like a seizure victim's, all except for the muscles down south. They're too busy clenching and squeezing the lengthy intrudor, wringing every drop of lust-imbued cum");
     if (player.isPregnant()) outputText(" to splatter against your occupied womb.");
     else outputText(" to fill your womb, to make it round with life so that others can feel what you're feeling.");
@@ -506,7 +506,7 @@ function maleLossFeeder(): void {
     if (player.cocks.length == 1) outputText(" its");
     else outputText(" one's");
     outputText(" twitching length, the succubus giggles. <i>\"Can you feel it? Can you feel your body just welling up with cum? I suppose I should have mentioned that, huh?\"</i> She runs her finger back the other way, and your muscles clench, squeezing out a big, fat drop of pre from your cock, dripping down to hit");
-    if (player.breasts.biggestTitSize() >= 3) outputText(" the underside of your breasts");
+    if (player.breastRows.biggestTitSize() >= 3) outputText(" the underside of your breasts");
     else outputText(" your chin");
     outputText(". You whimper with need. It's impossible not to. Hell, your " + multiCockDescriptLight(game.player));
     if (player.cocks.length == 1) outputText(" is");
@@ -529,7 +529,7 @@ function maleLossFeeder(): void {
 
     outputText("\n\nYou happily gurgle into the tentacle in your mouth and arch your back, blowing the first huge rope of your enhanced load");
     // 9999 - Check muh
-    if (player.breasts.biggestTitSize() >= 3) outputText(" all over your body");
+    if (player.breastRows.biggestTitSize() >= 3) outputText(" all over your body");
     else outputText(" directly onto the soil below");
     outputText(". It isn't enough! You're so full, and you need to cum so much. The next spurt is more like a firehose of seed, but it isn't enough either. Yes, you're orgasming, but it isn't satisfying you. You need to cum more! Harder! Each successive blast of creamy spunk makes a bigger mess, yet there always seems to be more inside you waiting to come out. Looking more like a waterfall of sperm than a hero, you gurgle for more once more.");
 
@@ -586,7 +586,7 @@ function maleLossFeederII(): void {
     outputText(".");
 
     // Fuckable nipples
-    if (player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.hasFuckableNipples()) {
         outputText("\n\nThe vines rubbing against your [nipples] soon discover their leaking, capacitive secrets and burrow in. If your mouth wasn't completely stuffed, you'd scream your love for this wonderful creature to the heavens. Instead, you merely whimper and cum against, a tiny boobgasm riding atop an ocean of squirting need. Your chest is taken for a ride by tentacle after tentacles. Sometimes one will withdraw to allow another entrance. Sometimes two will fuck your tits at once, sliding against each other inside of you. But you are never left empty for more than a second, your nipples like toys for the insatiable abominations.");
     }
     else if (player.isLactating()) {

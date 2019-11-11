@@ -21,7 +21,7 @@ export class AbstractSuccubus extends Monster {
             }
             // Whip yo tits!
             if (temp == 1) {
-                if (player.breastRows.length > 0 && player.breasts.biggestTitSize() > 0) outputText(allBreastsDescript(player) + " (9)", false);
+                if (player.breastRows.length > 0 && player.breastRows.biggestTitSize() > 0) outputText(allBreastsDescript(player) + " (9)", false);
                 else outputText("chest (9)", false);
                 player.takeDamage(9);
                 dynStats("lus", 4 + int(player.sens / 15));
@@ -125,7 +125,7 @@ export class AbstractSuccubus extends Monster {
                 // 50+ breastsize% success rate
                 outputText(capitalA + short + " caresses some of her ample chest-flesh before shaking it from side to side enticingly.", false);
                 if (lust >= 50) outputText("  " + pronoun2 + " hard nipples seem to demand your attention.", false);
-                if (rand(100) <= (65 + this.breasts.biggestTitSize())) {
+                if (rand(100) <= (65 + this.breastRows.biggestTitSize())) {
                     dynStats("lus", rand(breastRows[0].breastRating) + breastRows.length + 10);
                     outputText("\nThe display is quite arousing.", false);
                 }

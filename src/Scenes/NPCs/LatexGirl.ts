@@ -833,7 +833,7 @@ function feedLatexy(): void {
         addButton(2, "GirlCum, Ind.", feedLatexyGirlCumIndirectly);
         addButton(3, "GirlCum, Dir.", feedLatexyGirlCumDirect);
     }
-    if (gooHappiness() >= 50 && player.lactationQ() >= 100 && player.breasts.biggestTitSize() >= 3) addButton(4, "Milk", feedLatexySomeMilk);
+    if (gooHappiness() >= 50 && player.lactationQ() >= 100 && player.breastRows.biggestTitSize() >= 3) addButton(4, "Milk", feedLatexySomeMilk);
     if (player.inv.hasItem(ConsumableLib.MINOCUM)) addButton(5, "MinoCum Nic", minotaurCumFeedingGoo, true);
     if (player.inv.hasItem(ConsumableLib.MINOCUM)) addButton(6, "MinoCum Ruf", minotaurCumFeedingGoo, false);
 
@@ -1347,7 +1347,7 @@ function femalePCDomFucksLatexGoo(): void {
     if (flags[kFLAGS.GOO_DICK_LENGTH] > 0) outputText("  Meanwhile, the " + gooCock() + " sways uselessly above the conjoined vaginas, leaking its own secretions as it's ignored.");
     outputText("  Lost to the pleasure, you rock your [hips] back and forth, up and down, mindlessly rubbing yourself to new heights of ecstasy on your pet's super-slick snatch.");
     outputText("\n\nA sensual shiver rocks your world, assaulting your senses with its intensity.  Unthinkingly, you reach for your [chest]");
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText(", kneading your chest");
         if (player.lactationQ() > 50) {
             outputText(" as milk ");
@@ -1436,19 +1436,19 @@ function femalePCDomFucksLatexGooFuta(): void {
         outputText(", you turn around to face her, pressing your [chest] into hers.");
         if (flags[kFLAGS.GOO_NIPPLE_TYPE] == -1) {
             outputText("  Her nipple-cunts ");
-            if (player.breasts.hasFuckableNipples()) outputText("kiss yours");
+            if (player.breastRows.hasFuckableNipples()) outputText("kiss yours");
             else outputText("swallow your nipples");
             outputText(".");
         }
         else if (flags[kFLAGS.GOO_NIPPLE_TYPE] == 1) {
             outputText("  Her nipple-cocks ");
-            if (!player.breasts.hasFuckableNipples()) outputText("smear over the tops of your tits");
+            if (!player.breastRows.hasFuckableNipples()) outputText("smear over the tops of your tits");
             else outputText("disappear into your nipplecunts");
             outputText(".");
         }
         else {
             outputText("  Her nipples ");
-            if (!player.breasts.hasFuckableNipples()) outputText("rub all over your own");
+            if (!player.breastRows.hasFuckableNipples()) outputText("rub all over your own");
             else outputText("dock into your nipple-cunts");
             outputText(".");
         }

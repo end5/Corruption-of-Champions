@@ -26,7 +26,7 @@ export class FemaleSpiderMorph extends AbstractSpiderMorph {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("E+"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("E+"));
         this.ass.analLooseness = AnalLooseness.VIRGIN;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);

@@ -167,7 +167,7 @@ export function releaseZForInfo(): void {
     outputText("A loincloth flies across the room and deposits itself on your shoulder, startling you from your planning.  You glance back and see Zetaz tearing through his possessions, tossing his most prized items into a burlap sack with reckless abandon.  His whole body is trembling, as he ties it to a wooden pole, never once looking up at you.  Perhaps he fears you might change your mind?  ", false);
     if (player.cor > 66) {
         outputText("You smirk down at him and fold your arms over your ", false);
-        if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
+        if (player.breastRows.biggestTitSize() < 1) outputText("chest", false);
         else outputText(breastDescript(game.player, 0), false);
         outputText(", relishing his fear while you consider the possibilities", false);
     }
@@ -354,7 +354,7 @@ export function femaleZetazOverPtII(): void {
     outputText("You look down at the male and moan, \"<i>Please, hurry up... I need your cum... your babies.  Put your cock inside me!</i>\"\n\n", false);
 
     outputText("Zetaz looks surprised at your words, and you start to wonder why, but the heat and pleasure of his long, thick member spearing your love-canal interrupts your thought process.  He reaches up, and begins to ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("tweak your " + nippleDescription(player, 0) + "s roughly, pulling and yanking on them as", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("tweak your " + nippleDescription(player, 0) + "s roughly, pulling and yanking on them as", false);
     else outputText("maul at your " + allBreastsDescript(player) + ", slapping and squeezing them as", false);
     outputText(" he begins to repeatedly thrust against your " + vaginaDescript(player, 0) + ", fucking you in earnest.  The wet slap of his balls on your juice-slimed body fills the chamber and sends ripples of pleasure down your " + legs(player) + ".  With your eyelids half-closed, your tongue masturbating your lips, and your pussy practically squirting lubricants at the end of each thrust, you must look like every male's wet dream.\n\n", false);
 
@@ -391,7 +391,7 @@ export function zetazBadEndEpilogue(): void {
     }
     else {
         outputText("The imps never released the champion from that chamber after that.  'He' gave birth to a healthy litter of imps a few weeks later, and the hormones from the pregnancy ", false);
-        if (player.breasts.biggestTitSize() < 1) outputText("created a decent set of chest-bumps.", false);
+        if (player.breastRows.biggestTitSize() < 1) outputText("created a decent set of chest-bumps.", false);
         else outputText("swelled her already impressive rack with milk.", false);
         outputText("  After that, the imps really took a liking to her, and she was let down from her restraints.  She never got much chance to get up though; she was well and truly fucked at every opportunity.  She was already hooked.  With her incredible libido and the constant fucking, staying was the easy choice.\n\n", false);
 
@@ -543,7 +543,7 @@ export function malesZetazOverPtII(): void {
     outputText(" barely three inches long, even while hard.  He pulls out another plunger and rams the needle into your still-aching clit, making it swell until it's almost five inches long and trembling like your manhood used to.\n\n", false);
 
     outputText("\"<i>Now you're starting to look like a proper bitch.  ", false);
-    if (player.breasts.biggestTitSize() < 2) outputText("It doesn't look right without a decent rack, but boss said no tits for the new breeding bitch.  Sure makes it hard to get excited about fucking that new twat of yours though...", false);
+    if (player.breastRows.biggestTitSize() < 2) outputText("It doesn't look right without a decent rack, but boss said no tits for the new breeding bitch.  Sure makes it hard to get excited about fucking that new twat of yours though...", false);
     else outputText("With a rack like that and a nice, wet cunt, you'll have the other guys lining up for their turn in no time...", false);
     outputText("</i>\" rambles one of the imps.  You groan and shake your hips lewdly, still turned on after all the fucking, feeling empty without the unholy heat of an imp inside you.  A hunger buzzes away in your womb, demanding you get pregnant, and you're thrilled to see Zetaz stride in with a raging, fully erect stiffy.  It throbs hungrily as he smiles up at you and climbs atop the conveniently positioned platform.\n\n", false);
 

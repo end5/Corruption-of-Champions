@@ -174,7 +174,7 @@ export class GnollSpearThrower extends Monster {
         }
         // Determine damage - str modified by enemy toughness!
         else {
-            damage = player.breasts.biggestTitSize();
+            damage = player.breastRows.biggestTitSize();
             if (damage > 20) damage = 20;
             damage += int(str - Math.random() * (player.tou) - player.armorDef);
             if (damage > 0) damage = player.takeDamage(damage);
@@ -185,7 +185,7 @@ export class GnollSpearThrower extends Monster {
             // <Hyena Attack 3 – Snap Kick – Successful>
             else {
                 outputText("A glint enters the dark eyes of the gnoll before she strides forward and pivots.  A long, spotted leg snaps up and out to slam against your " + chestDesc(game.player), false);
-                if (player.breasts.biggestTitSize() >= 1) outputText(", sending a wave of pain through the sensitive flesh", false);
+                if (player.breastRows.biggestTitSize() >= 1) outputText(", sending a wave of pain through the sensitive flesh", false);
                 outputText(".  A small, traitorous part of you can't help but notice a flash of long, dark flesh beneath her loincloth even as you stagger back from the impact. (" + damage + ")", false);
                 dynStats("lus", 2);
             }
@@ -329,7 +329,7 @@ export class GnollSpearThrower extends Monster {
         this.long = "You are fighting a gnoll.  An amalgam of voluptuous, sensual lady and snarly, pissed off hyena, she clearly intends to punish you for trespassing.  Her dark-tan, spotted hide blends into a soft cream-colored fur covering her belly and two D-cup breasts, leaving two black nipples poking through the fur.  A crude loincloth is tied around her waist, obscuring her groin from view.  A leather strap cuts between her heavy breasts, holding a basket of javelins on her back.  Large, dish-shaped ears focus on you, leaving no doubt that she can hear every move you make.  Sharp, dark eyes are locked on your body, filled with aggression and a hint of lust.";
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.LOOSE);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 25, 0, 0, 0);

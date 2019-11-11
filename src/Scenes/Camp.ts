@@ -307,7 +307,7 @@ function doCamp(): void { // Only called by playerMenu
         exgartuanCampUpdate();
         return;
     }
-    else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breasts.biggestTitSize() < 12) {
+    else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breastRows.biggestTitSize() < 12) {
         exgartuanCampUpdate();
         return;
     }
@@ -1312,7 +1312,7 @@ function exgartuanCampUpdate(): void {
             player.effects.remove(StatusAffects.Exgartuan);
         }
         // Tit removal
-        else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breasts.biggestTitSize() < 12) {
+        else if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 2 && player.breastRows.biggestTitSize() < 12) {
             outputText("", true);
             outputText("<b>Black milk dribbles from your " + nippleDescription(player, 0) + ".  It immediately dissipates into the air, leaving you feeling alone.  It looks like you became too small for Exgartuan!\n</b>", false);
             player.effects.remove(StatusAffects.Exgartuan);

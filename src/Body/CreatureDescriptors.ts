@@ -73,7 +73,7 @@ export function guyGirl(creature: Character, caps: boolean = false): string {
                 return "girl";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "Girl";
                 else
@@ -106,7 +106,7 @@ export function mf(creature: Character, male: string, female: string): string {
         if (creature.vaginas.length > 0)
             return female;
         else {
-            if (creature.breasts.biggestTitSize() >= 3)
+            if (creature.breastRows.biggestTitSize() >= 3)
                 return female;
             else
                 return male;
@@ -138,7 +138,7 @@ export function boyGirl(creature: Character, caps: boolean = false): string {
                 return "girl";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "Girl";
                 else
@@ -176,7 +176,7 @@ export function heShe(creature: Character, caps: boolean = false): string {
                 return "she";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "She";
                 else
@@ -214,7 +214,7 @@ export function himHer(creature: Character, caps: boolean = false): string {
                 return "her";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "Her";
                 else
@@ -252,7 +252,7 @@ export function maleFemale(creature: Character, caps: boolean = false): string {
                 return "female";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "Female";
                 else
@@ -290,7 +290,7 @@ export function hisHer(creature: Character, caps: boolean = false): string {
                 return "her";
         }
         else {
-            if (creature.breasts.biggestTitSize() >= 3) {
+            if (creature.breastRows.biggestTitSize() >= 3) {
                 if (caps)
                     return "Her";
                 else
@@ -311,7 +311,7 @@ export function sirMadam(creature: Character, caps: boolean = false): string {
         // herm
         if (creature.vaginas.length > 0) {
             // Boy unless has tits!
-            if (creature.breasts.biggestTitSize() >= 2) {
+            if (creature.breastRows.biggestTitSize() >= 2) {
                 if (caps)
                     return "Madam";
                 else
@@ -344,7 +344,7 @@ export function sirMadam(creature: Character, caps: boolean = false): string {
         // Eunuch!
         else {
             // Called girl if has tits!
-            if (creature.breasts.biggestTitSize() >= 2) {
+            if (creature.breastRows.biggestTitSize() >= 2) {
                 if (caps)
                     return "Madam";
                 else
@@ -931,13 +931,13 @@ export function sheathDescription(creature: Character): string {
 }
 
 export function chestDesc(creature: Character): string {
-    if (creature.breasts.biggestTitSize() < 1) return "chest";
+    if (creature.breastRows.biggestTitSize() < 1) return "chest";
     return Appearance.biggestBreastSizeDescript(creature);
     // 			return Appearance.chestDesc(this);
 }
 
 export function allChestDesc(creature: Character): string {
-    if (creature.breasts.biggestTitSize() < 1) return "chest";
+    if (creature.breastRows.biggestTitSize() < 1) return "chest";
     return allBreastsDescript(creature);
 }
 

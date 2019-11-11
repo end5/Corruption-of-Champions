@@ -154,7 +154,7 @@ export class Kiha extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("D"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("D"));
         this.ass.analLooseness = AnalLooseness.LOOSE;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 40, 0, 0, 0);

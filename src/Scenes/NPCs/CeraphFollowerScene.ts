@@ -122,7 +122,7 @@ function ceraphSexMenu(): void {
         outputText("You could command her to please all of your organs.  ", false);
         hermFuck = ceraphTentacleGrape;
     }
-    if (player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.hasFuckableNipples()) {
         outputText("You could have your slave please your nipplecunts.  ");
         nipFuck = stuffSomeNippleCunts;
     }
@@ -354,7 +354,7 @@ function CeraphHandsOutNewFetishesLikePervCandy(): void {
         outputText("Ceraph giggles as she closes in on you once again.  Sighing, you lie there and allow your slave to massage your temples, using her magic to paralyze and numb your body.  ", false);
         if (player.nipplesPierced == 0) {
             outputText("She's all too happy to build up the suspense as she pulls out a pair of shining black studs, \"<i>Oh, do you know what these are going to do?  Well, how about I slide them into your ", false);
-            if (player.breasts.hasFuckableNipples()) outputText("slutty", false);
+            if (player.breastRows.hasFuckableNipples()) outputText("slutty", false);
             else if (player.nippleLength < 1) outputText("cute", false);
             else outputText("tight", false);
             outputText(" nipples, and you tell me all about your fetishes and which one makes you the hottest.  Oh, you'll love it " + mf(player, "Master", "Mistress") + "!</i>\"\n\n", false);
@@ -706,7 +706,7 @@ function fuckCeraphsCatgirls(): void {
 
     // play with da boobies
     outputText("The other sister has been looking for something else to rub herself on, and she seems to have decided on your " + chestDesc(game.player) + ".  While your lower half is being covered by one cat (which is fine too), the other moves to your top half and drapes her breasts over your head while she gropes and plays with your " + nippleDescription(player, 0) + "s.", false);
-    if (player.breasts.biggestLactation() > 1) outputText("  When some of your milk seeps out, she leans forward and latches onto a nipple eagerly, alternating between sucking on the tip and licking the drops off of it.", false);
+    if (player.breastRows.biggestLactation() > 1) outputText("  When some of your milk seeps out, she leans forward and latches onto a nipple eagerly, alternating between sucking on the tip and licking the drops off of it.", false);
     else {
         outputText("  She seems to delight in playing with her chest, modest though it may be, pushing it into your face and tweaking the fuzzy nipples just past your nose.  You blow a raspberry and shake your face into her cleavage, ", false);
         if (rand(5) == 0) outputText(" but some of the fur tickles your nose a bit <i>too</i> deeply; you deliver a sudden sneeze into her bosom, causing it to heave and jiggle.", false);
@@ -1147,7 +1147,7 @@ function cerminika(): void {
         outputText("  \"<i>I dare say,</i>\" she purrs between the kiss, pressing her forehead to yours, \"<i>You may have seduced me, champion.</i>\"\n\n", false);
 
         outputText("Pressing her hands on your shoulders she eases you down, straddling your lap.  \"<i>I linger in chastity out of fear that my dignity shall be taken from me in this land,</i>\" she purrs softly, tracing her hand across your chest.  ", false);
-        if (player.breasts.biggestTitSize() >= 0) outputText("She casually and playfully gives the gentlest squeeze to your " + chestDesc(game.player) + ".  ", false);
+        if (player.breastRows.biggestTitSize() >= 0) outputText("She casually and playfully gives the gentlest squeeze to your " + chestDesc(game.player) + ".  ", false);
         outputText("\"<i>But if I can rely on you – perhaps I do not need to worry.</i>\"  She pulls your " + player.armorName + " away, letting her hands roam hungrily across your body.  Blatantly turned on, her pussy rubs its juices against your crotch", false);
         if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", and her prick has remained firm and hard", false);
         outputText(".  Her tongue roams hungrily over her inky lips, and an almost predatory grin sets across her features as she pulls up your " + cockDescript(game.player, 0) + ".  Her fingernails cup under your head delicately and carefully tease you, rubbing her palm into the underside of your shaft.\n\n", false);
@@ -1179,7 +1179,7 @@ function cerminika(): void {
         outputText("\"<i>F-fuck!</i>\"  Those dark lips manage to stammer out, \"<i>Stop fucking me! Let me ride you, you piece of shit!</i>\"  She manages to pull her hands free from the grip you have on them, only to beat on your chest a few times and push futilely against it.  ", false);
         if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("Her prick bounces between her belly and yours as you take her.  ", false);
         outputText("For your part you have no interest in slowing down, gripping back onto her hips and pounding away at the delightfully tight cunt presently dominated by your " + cockDescript(game.player, 0) + ".  More in charge than you were before, you have a chance to truly appreciate the sensation of her labia being shoved apart for your needs.  Absolutely soaked with her needy juices, it's easy to penetrate the sorceress.  Forcing so much of her sopping nectar out is making a terrible mess of her thighs, but given how stuck up she's been about finally letting you take her, she could stand to get a little messy.  Her fingernails claw at your collarbone", false);
-        if (player.breasts.biggestTitSize() >= 1) outputText(" and slap at your own chest", false);
+        if (player.breastRows.biggestTitSize() >= 1) outputText(" and slap at your own chest", false);
         outputText(", hissing bloody murder while at the same time trying not to groan so much that she completely reveals how much she's enjoying having you piston away into her nethers. In that regard, she is failing.\n\n", false);
 
         if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("A light spurt of pre-cum from her prick warms the flesh where your hips meet.  ", false);
@@ -1428,14 +1428,14 @@ function giveFollowerBodyBits(): void {
     spriteSelect(87);
     clearOutput();
     outputText("You ask Ceraph just what all giving up a body-part would entail.  Your submissive demonic slut presses herself against you, stroking her hands under your " + player.armorName + " as she answers, \"<i>Well, [Master], I would use my body-shifting black magics to remove a choice portion of your 'fun-bits', if you know my meaning.");
-    if (player.cocks.length > 0 || player.vaginas.length > 0 || player.breasts.breasts.hasBreasts()) {
+    if (player.cocks.length > 0 || player.vaginas.length > 0 || player.breastRows.hasBreasts()) {
         if (player.cocks.length > 0) outputText("  I could take your cock.");
         if (player.vaginas.length > 0) outputText("  I could remove your snatch.  Don't worry, once it's off of you, anything I put in it won't wind up in your womb.");
-        if (player.breasts.breasts.hasBreasts()) outputText("  I could even make off with your tits if you like.");
+        if (player.breastRows.hasBreasts()) outputText("  I could even make off with your tits if you like.");
     }
     else outputText("  Sadly, you don't have anything that would be worth taking right now.  A true shame, my [Master].");
     outputText("</i>\"");
-    if (player.gender > 0 || player.breasts.biggestTitSize() > 0) {
+    if (player.gender > 0 || player.breastRows.biggestTitSize() > 0) {
         outputText("\n\nYou scratch your head as she prattles on, growing more animated and a touch aroused. \"<i>Then, I can fly back to the harem and add them to my collection.  My pets do so love when I give them an exotic endowment and then spend all night teasing it.  Could you imagine it?  Going to bed at night and dreaming of all the debauched things my slaves and I are doing, over and over?</i>\"");
         outputText("\n\nWell, that's quite the pitch she's put together.  Do you want to give her something?\n");
         let wang: () => void = null;
@@ -1453,11 +1453,11 @@ function giveFollowerBodyBits(): void {
             outputText("\nYour vagina would probably give you the most amazing sensations while being used in Ceraph's orgies.");
             vag = ceraphFollowerCuntTaking;
         }
-        if (player.breasts.biggestTitSize() >= 1) {
+        if (player.breastRows.biggestTitSize() >= 1) {
             outputText("\nDo you really need your boobs?");
             breasts = ceraphFollowerTitTaking;
-            if (player.breasts.length > 1) breasts2 = createCallBackFunction(ceraphFollowerTitTaking, 1);
-            if (player.breasts.length > 2) breasts3 = createCallBackFunction(ceraphFollowerTitTaking, 2);
+            if (player.breastRows.length > 1) breasts2 = createCallBackFunction(ceraphFollowerTitTaking, 1);
+            if (player.breastRows.length > 2) breasts3 = createCallBackFunction(ceraphFollowerTitTaking, 2);
         }
         // [(Biggest )Penis] [Smallest Penis][Vagina] [TopBreastRow] [2ndBreastRow] [3rdBreastRow]
         choices("Penis", wang, "Smallest Penis", smallestWang, "Vagina", vag, "Breasts", breasts, "BreastsRow2", breasts2,
@@ -1527,7 +1527,7 @@ function ceraphFollowerTitTaking(rowNum: number = 0): void {
         if (x >= player.breastRows.length - 2) outputText("your torso has shifted and your " + breastDescript(player, x + 1) + " have moved up to fill the void.", false);
         // Multiple below
         else outputText("your torso has shifted and your other breasts have moved up to fill the void.", false);
-        player.breasts.removeBreastRow(x, 1);
+        player.breastRows.removeBreastRow(x, 1);
     }
     // Top row is only row
     else if (x == 0) {
@@ -1542,7 +1542,7 @@ function ceraphFollowerTitTaking(rowNum: number = 0): void {
     // everybody else
     else {
         outputText("your torso leaves the now-empty spot as a flat, featureless void.", false);
-        player.breasts.removeBreastRow(x, 1);
+        player.breastRows.removeBreastRow(x, 1);
     }
     // Oh shit something went wrong.
     if (player.breastRows.length == 0) outputText("<b>ERROR!  ERROR!  Please contact Fenoxo and reload your game if you don't want your save messed up.</b>", false);
@@ -1571,33 +1571,33 @@ function stuffSomeNippleCunts(): void {
     outputText("\n\nCeraph looks at you, then down at your chest, and finally back up at you with a look of incredulousness glinting in her eyes.  \"<i>You want... [Master] is... kinky,</i>\" she coos, peeling out of her tight outfit to bare her demonic bosom.  Your demonic slave approaches, hips swaying as her bottom falls away to display her puffy purple womanhood");
     if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(" and proud demon-dick");
     outputText(".  She grabs your [chest] to examine, and her fingers probe hesitantly around the entrances of your budding chest-cunnies.  Ceraph smiles with wicked intent.  Her fingers thrust in forcefully, drawing a sensual moan from your lips as she violates ");
-    if (player.breasts.totalNipples() > 2) outputText("two of ");
+    if (player.breastRows.totalNipples() > 2) outputText("two of ");
     outputText("your tit-pussies.");
     outputText("\n\nThe demoness' digits forcefully enter you again and again, pushed in to the knuckle.  Juices drip down the swells of your breasts as Ceraph gets a feel for your depth, width and sensitive spots.  Her probing fingers casually rape your areola, and it feels goddamn good.");
-    if (player.breasts.totalNipples() > 2) outputText("  She moves from pussy to pussy with ease, exploring every single one of your myriad holes, a gleeful smile on her face.");
+    if (player.breastRows.totalNipples() > 2) outputText("  She moves from pussy to pussy with ease, exploring every single one of your myriad holes, a gleeful smile on her face.");
     if (player.lactationQ() > 0) outputText("  A squirt of breastmilk nearly takes your slave in the eye, your milk letting down uncontrollably from the tit-puckering finger-fuck.");
     if (player.cocks.length > 0) outputText("  [EachCock] is so hard by this point that it's smearing its pre-cum all over Ceraph's belly, but she doesn't mind.");
     if (player.vaginas.length > 0) outputText("  As for your [vagina], you've grown more than wet enough for a hard dicking, but honestly, right now, all you want is your [nipples] to be perfectly and completely fucked.");
     if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText("  The fetishistic slut's sloppy cock is dribbling on your hip, neglected and aroused.  Poor thing.");
     outputText("\n\nSatisfied with her work, your submissive Omnibus steps back to look at you.  Your " + skin(player) + " is flushed.  Every inch of your underboob is wet with lubricant[if (isLactating = true)  and milk].  Your [nipples] are a soggy, inflamed mess.  Worst of all, you're panting like some bitch in heat.  Your slave is just out of arm's reach, watching you with a knowing smile.  Her own purple-hued dermis is tinted rose, though she seems to be hiding her arousal better than you.  You growl, \"<i>I said, fuck my gods damned nipples!</i>\" at her and jiggle your dripping teats for emphasis.");
     outputText("\n\nCeraph frowns with distaste, but she answers, \"<i>[Master], please, shapeshifting takes time and preparation.  However, I believe I am almost ready to serve you.  Watch me change, for you...</i>\"  Ceraph cups her own sizable breasts in her palms and begins to rub them.  Her nipples, while already hard, pop out further, elongating with a well-timed, breathy exhalation of pleasure from their owner.");
-    if (player.breasts.length > 1) {
+    if (player.breastRows.length > 1) {
         outputText("  A second later, ");
-        if (player.breasts.length == 2) outputText("another row of female flesh begins");
+        if (player.breastRows.length == 2) outputText("another row of female flesh begins");
         else outputText("more rows of female flesh begin");
         outputText(" to sprout beneath her top pair, the demoness's chest mimicking yours in size and structure.  While the top pair of super-sized nipples continue to grow into massive teats, Ceraph repeats her caresses lower, and the newly-formed nipples mimic their big brothers, filling out to obscene length.");
     }
     outputText("  At first, the changes make her areola look more like something that belongs on an udder, but as they enlarge beyond even that, you realize they're taking on a distinctly masculine shape, with a slight ridge just below their bulbous tips.  After growing out almost seven inches, the upward-curving nipples stop filling out.  Ceraph has sprouted nipple-dicks!");
-    if (player.breasts.averageNipplesPerBreast() > 1) outputText("  She strokes them, one by one, and they split down the middle, dividing into a multitude of penises, a perfect match to your quad-nipplecunts.");
+    if (player.breastRows.averageNipplesPerBreast() > 1) outputText("  She strokes them, one by one, and they split down the middle, dividing into a multitude of penises, a perfect match to your quad-nipplecunts.");
     outputText("\n\nYou cannot help but gape at the lascivious demonette's new form.  She's absolutely, unquestioningly built for sex, from her wide hips and well-defined pussy-lips to the absolutely obscene growths she's produced for your whims.  Ceraph brushes her hair back and asks, \"<i>I take it you like the look, [Master]?</i>\"  You nod and stick your fingers into your chest, pulling open the holes to tempt her.  It's hard to bite back the moan that wells up in your throat, but you manage, somehow, to keep your expression placid and seductive.");
-    outputText("\n\nYour freakishly-endowed minion steps forward with an enthusiastic expression plastered on her face, taking care and time to line up each of her tit-mounted tools with your [nipples].  Ceraph glances up at you deferentially, and you nod, perhaps a bit more eagerly than you intended to.  At once, " + num2Text(player.breasts.totalNipples()) + " shafts are sliding into your udder-mounted vaginas, their pulsating demon-flesh wetly stroking your multiple interiors in perfect, exquisite sync.  A sense of barely-understood bliss erupts from your chest-pussies as they're taken, utterly filled.  It's difficult to think, let alone stand under such circumstances, and you clutch on to Ceraph's shoulders, pulling her down to the ground atop you.");
+    outputText("\n\nYour freakishly-endowed minion steps forward with an enthusiastic expression plastered on her face, taking care and time to line up each of her tit-mounted tools with your [nipples].  Ceraph glances up at you deferentially, and you nod, perhaps a bit more eagerly than you intended to.  At once, " + num2Text(player.breastRows.totalNipples()) + " shafts are sliding into your udder-mounted vaginas, their pulsating demon-flesh wetly stroking your multiple interiors in perfect, exquisite sync.  A sense of barely-understood bliss erupts from your chest-pussies as they're taken, utterly filled.  It's difficult to think, let alone stand under such circumstances, and you clutch on to Ceraph's shoulders, pulling her down to the ground atop you.");
     outputText("\n\nYour pet demon immediately gives in to her instincts and begins to raise and lower herself atop you.  At the bottom of each stroke, fluids squirt from your violated holes and the pairs of docked boobflesh squish outward, bulging obscenely.  Interlocked bodies grind together in the throes of passion, Ceraph going faster and faster, filling the air with squishing slaps of intercourse.  Soon, she is going so fast that it's impossible to pick apart the myriad of sultry sounds, not that you can think properly at present to try.  You lie there to simply enjoy the sex, wallowing in it like a sow in mud.");
     outputText("\n\nCeraph chews on her lower lip in nervous pleasure as she bobs up and down atop you, and in a moment of surprising clarity, you order, \"<i>Slave, kiss me.</i>\"  She does so with gusto, her purple-hued mouth instantly locking to yours, tongues twisting around each other like warring snakes.  It's almost enough to make you forget the pounding rhythm of her lube-soaked tits slapping against your own, ALMOST.  The turgid tit-cocks feel even bigger with every pistoning movement in and out of your cavities.  You realize she's getting close to orgasm, and a moment later, it dawns on your lust-fogged mind that you too are about to climax.");
-    outputText("\n\nBiting down on Ceraph's lower lip, you get her to pull back long enough for you to command, \"<i>Cum inside me pet, fill my tits!</i>\"  Ceraph's violet eyes cross ever so slightly, the black sclera glittering with moisture as her eyelids flutter in rapture.  She throws herself down on top of you with bruising force, bottoming out all " + num2Text(player.breasts.totalNipples()) + " twitching dicks inside you, just in time to release their creamy cargo.  Gods, she's filling you up so good!  You reach up with your hands and squeeze the edges of your [chest] hard enough to feel the rigid, cum-spouting flesh inside you.  Jizz wells up from each entrance in sync as you begin to tremble and shake.  Ceraph lets out a low moan as she fills you");
+    outputText("\n\nBiting down on Ceraph's lower lip, you get her to pull back long enough for you to command, \"<i>Cum inside me pet, fill my tits!</i>\"  Ceraph's violet eyes cross ever so slightly, the black sclera glittering with moisture as her eyelids flutter in rapture.  She throws herself down on top of you with bruising force, bottoming out all " + num2Text(player.breastRows.totalNipples()) + " twitching dicks inside you, just in time to release their creamy cargo.  Gods, she's filling you up so good!  You reach up with your hands and squeeze the edges of your [chest] hard enough to feel the rigid, cum-spouting flesh inside you.  Jizz wells up from each entrance in sync as you begin to tremble and shake.  Ceraph lets out a low moan as she fills you");
     if (flags[kFLAGS.CERAPH_HIDING_DICK] == 0) outputText(", her cock spouting its own ivory wetness onto your belly in sympathetic release.");
     else outputText(", her pussy dripping weakly in sympathetic release.");
     outputText("  Her hands run through your [hair] and pull your [face] into her shoulder.  She holds you tightly, clingingly even.  If you weren't so enraptured by the sensation of your sperm-filled nipples, you might actually care.");
-    outputText("\n\nThe two of you slowly relax, dueling climaxes winding down to return some level of sanity at last.  As soon as the demoness' eyes uncross, she stands up, " + num2Text(player.breasts.totalNipples()) + " dicks sliding free of clutching, spunk-stuffed twats at once.  You gasp and shudder, the sensitive flesh nearly setting you off again.  As she stretches, Ceraph's new appendages shrink, losing their masculinity and even faster their size.  You rise while trying to ignore the runnels of demon-spunk that spout from your well-fucked chest, your [chest] wobbling fantastically with the extra fluid weight.  Ceraph leans over to suck a [nipple] into her mouth, and after a few quick swallows, she sighs contently.");
+    outputText("\n\nThe two of you slowly relax, dueling climaxes winding down to return some level of sanity at last.  As soon as the demoness' eyes uncross, she stands up, " + num2Text(player.breastRows.totalNipples()) + " dicks sliding free of clutching, spunk-stuffed twats at once.  You gasp and shudder, the sensitive flesh nearly setting you off again.  As she stretches, Ceraph's new appendages shrink, losing their masculinity and even faster their size.  You rise while trying to ignore the runnels of demon-spunk that spout from your well-fucked chest, your [chest] wobbling fantastically with the extra fluid weight.  Ceraph leans over to suck a [nipple] into her mouth, and after a few quick swallows, she sighs contently.");
     outputText("\n\n\"<i>Delicious, my [Master],</i>\" the demoness coos as her wings unfurl, \"<i>Please, let's do this again.</i>\"  She leaps into the sky and flies off, no doubt to tend to her own pets.");
     player.orgasm();
     dynStats("sen", 2, "cor", 1);

@@ -165,10 +165,10 @@ export function minotaurBlood(player: Player): void {
             changes++;
         }
         // -Remove extra breast rows
-        if (changes < changeLimit && player.breasts.length > 1 && rand(3) == 0) {
+        if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0) {
             changes++;
             outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
-            if (player.breasts.length >= 3)
+            if (player.breastRows.length >= 3)
                 outputText("abdomen", false);
             else
                 outputText("chest", false);
@@ -179,7 +179,7 @@ export function minotaurBlood(player: Player): void {
                 outputText(player.skinTone + " " + player.skinDesc, false);
             outputText(" remains. <b>You've lost a row of breasts!</b>", false);
             dynStats("sen", -5);
-            player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
+            player.breastRows.removeBreastRow(player.breastRows.length - 1, 1);
         }
         // Shrink boobages till they are normal
         else if (rand(2) == 0 && changes < changeLimit && player.breastRows.length > 0) {
@@ -209,7 +209,7 @@ export function minotaurBlood(player: Player): void {
                 temp = 0;
                 temp2 = 0;
                 temp3 = 0;
-                if (player.breasts.biggestTitSize() >= 1)
+                if (player.breastRows.biggestTitSize() >= 1)
                     outputText("\n", false);
                 while (temp3 < player.breastRows.length) {
                     if (player.breastRows[temp3].breastRating >= 1) {

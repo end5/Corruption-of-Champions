@@ -201,7 +201,7 @@ export function startUrtaQuest(): void {
     player.skinType = SkinType.FUR;
     player.skinAdj = "silky";
     player.skinDesc = "fur";
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.breastRows[0].breastRating = 7;
     player.nippleLength = .75;
     player.skinTone = "black";
@@ -2770,7 +2770,7 @@ function knockUpUrtaWithGodChild(): void {
     outputText("\n\nFinally, Urta breaks the kiss, panting for air as she begins to buck and rock atop you.  Your " + cockDescript(game.player, x) + " shivers against the squeezing pressures the frenzied fox is forcing upon you, and already you can feel yourself trickling and leaking into her sodden vice.  Both of your bodies have become absolutely drenched in sticky, musky horse-pre");
     if (player.cocks.length > 1) outputText(", the mess made worse by your multiple-cocked virility.  There's so much that the clear juices roll off you to either side, puddling in your blankets below");
     outputText(".  Her nipples dig into yours");
-    if (player.breasts.hasFuckableNipples()) {
+    if (player.breastRows.hasFuckableNipples()) {
         outputText(", kissing into the ");
         if (player.lactationQ() > 50) outputText("milky, ");
         outputText("wet holes on your tits, drawing fresh gasps of delight from your overwhelmed brain");
@@ -2864,10 +2864,10 @@ function getKnockedUpWithGodChild(): void {
     outputText("squish, she lands nose-deep in your vagina, immediately licking at it and tickling you with her smooth, slippery tongue.  \"<i>Mmmmm,</i>\" she purrs as she suckles your [clit].  Inching upward, the dripping wet fox-girl licks higher and higher, her tongue smearing across the " + skinFurScales(player) + " that covers your ");
     if (player.pregnancyIncubation > 0 && player.pregnancyIncubation < 150) outputText("rounded ");
     outputText("belly.  Urta's rigid onyx nipples tickle your [legs] as they drag upward, each immensely erect and engorged, just a little pebbly in texture.  She reaches your [chest], kissing up the ");
-    if (player.breasts.biggestTitSize() > 1) outputText("soft curve");
+    if (player.breastRows.biggestTitSize() > 1) outputText("soft curve");
     else outputText("flat muscles");
     outputText(" until she hits your [nipple].  ");
-    if (player.breasts.hasFuckableNipples()) outputText("Her tongue plunges inside, savoring the feminine lubricants");
+    if (player.breastRows.hasFuckableNipples()) outputText("Her tongue plunges inside, savoring the feminine lubricants");
     else outputText("Her tongue plays across the surface, the heat of her breath shooting tingles up your spine");
     outputText(".  The further she climbs, the further up your [legs] you can feel her stallion-cock rising, a trail of clear pre-cum in its wake.");
 

@@ -709,25 +709,25 @@ export function loseToSandMother(): void {
     outputText(" hinders all of your attempts to fight back.  You try to argue that you aren't a servant of the demons, that you were fighting against them for your own people just as she is, but every time you open your mouth she forces it closed again with her magic.  \"<i>I am not interested in the lies of a demonic servant.  It is time we dealt with you once and for all.</i>\"");
 
     outputText("\n\nShe kneels and prods your slick pussy with her fingers, forcing sensations that rise up through your body and exit your lips as moans.  \"<i>You'll need an extra one of these of course.</i>\"  The Sand Mother reaches forwards with her free hand to grope your tits.");
-    if (player.breasts.length == 1) {
+    if (player.breastRows.length == 1) {
         outputText("  Plus an extra set of these to ensure you produce as much milk as the rest of your soon-to-be sisters.");
-        player.breasts.createBreastRow();
+        player.breastRows.createBreastRow();
     }
     // if player has four breasts
-    else if (player.breasts.length == 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
+    else if (player.breastRows.length == 2) outputText("  Thankfully you're already endowed with enough breasts to begin immediate production of milk.");
     // if player has six breasts
     else outputText("  Hmmm. We've never had a sister blessed with more than four breasts. I wonder if perhaps we can use your unusual anatomy to our advantage.");
     outputText("  She squeezes a [nipple] and a yelp of pleasure escapes you.  \"<i>I see you like that idea. Excellent.</i>\"");
     // if breasts are smaller than a normal sand witch's
-    if (player.breasts.biggestTitSize() < 3) outputText("  \"<i>Of course we'll have to grow them a bit to suit our needs.</i>\"");
+    if (player.breastRows.biggestTitSize() < 3) outputText("  \"<i>Of course we'll have to grow them a bit to suit our needs.</i>\"");
     // if breasts are larger than a normal sand witch's
-    else if (player.breasts.biggestTitSize() >= 14) outputText("  \"<i>Mmmm, and with such massive ones I'm sure we can expect you to produce more than most of our sisters could.</i>\"");
+    else if (player.breastRows.biggestTitSize() >= 14) outputText("  \"<i>Mmmm, and with such massive ones I'm sure we can expect you to produce more than most of our sisters could.</i>\"");
 
     outputText("\n\nThe Sand Mother's fingers slide around your labia, teasing them, occasionally fingering your entrance and thumbing your clit.  A light sweat breaks out all over your " + skinFurScales(player) + ".  \"<i>Yes, you're really starting to enjoy that idea, aren't you?</i>\"  You start to nod before regaining your senses. \"<i>I see.  You still need persuasion.</i>\"  She pinches your clit and an orgasm starts shivering inside your [hips].  \"<i>Of course that was never in doubt.  I could never completely trust you, even if I could bring you around to our way of thinking.</i>\"");
 
     outputText("\n\n\"<i>SISTERS! Fetch the Cum Witch!</i>\"  The Sand Mother smiles as she gives the command.  She watches your body flinch and your breasts ");
-    if (player.breasts.biggestTitSize() < 5) outputText("jiggle");
-    else if (player.breasts.biggestTitSize() < 10) outputText("bounce");
+    if (player.breastRows.biggestTitSize() < 5) outputText("jiggle");
+    else if (player.breastRows.biggestTitSize() < 10) outputText("bounce");
     else outputText("quake");
     outputText(" with every twitch of her fingers inside you.");
     if (player.lactationQ() >= 50) outputText("  Streams of milk are already starting to pour down the swells of your tits.");
@@ -738,8 +738,8 @@ export function loseToSandMother(): void {
     else outputText("This must be the Cum Witch the Sand Mother sent for!");
 
     outputText("\n\nShe and the Sand Mother whisper back and forth, and they seem to disagree about something.  From the stares the Cum Witch gives you, you infer that their discussion concerns you.  Finally, the Cum Witch frowns and speaks loud enough to be heard, \"<i>I don't think we need it, but you're right.  It would be a waste.</i>\"  She bows to the Sand Mother and then approaches you");
-    if (player.breasts.length <= 2) outputText(", admiring the extra set of breasts you already possess");
-    else outputText(", admiring how you've managed to grow " + num2Text(player.breasts.length) + " rows of breasts instead of just two on your panting torso");
+    if (player.breastRows.length <= 2) outputText(", admiring the extra set of breasts you already possess");
+    else outputText(", admiring how you've managed to grow " + num2Text(player.breastRows.length) + " rows of breasts instead of just two on your panting torso");
     outputText(".");
 
     outputText("\n\nThe chocolate skinned woman tosses aside her robe dramatically and lowers her incredibly toned body between your thighs.  Despite the presence of an overly endowed human cock that's already rising beyond your expectations, her overall figure is quite feminine and normal - just one pair of breasts.  She pokes your thoroughly soaked vagina and says, \"<i>This'll have to change.  Just one simply won't do, but right now, the body is the lesser priority.</i>\"  She angles her cock between the folds of your pussy and immediately spears your, shoving her length inside you as if testing your depths.  Once comfortable she raises her hands to either side of your head while her cock thrusts with a steady rhythm into your cunt.  \"<i>Up here...</i>\"  She taps your head with her fingers while she angles your face to stare her in the eyes, \"<i>...is what we have to fix first.</i>\"");
@@ -768,16 +768,16 @@ export function sandMotherBadEndsLadiesEpilogue(): void {
     clearOutput();
     outputText("The Champion awoke to a body changed. " + mf(player, "His", "Her") + " body had been transformed in to that of a Sand Witch's.");
     // if player had six breasts
-    if (player.breasts.length > 2) outputText("  Although unlike the other Sand Witches, this one sported extra breasts which she used to her utmost advantage.");
+    if (player.breastRows.length > 2) outputText("  Although unlike the other Sand Witches, this one sported extra breasts which she used to her utmost advantage.");
     // if player had gigantic breasts
-    if (player.breasts.biggestTitSize() >= 22) outputText("  She was unrivaled in her ability to produce milk thanks to the natural enormity of her breasts that her other sisters couldn't come close to.  They were so large that they often impeded her movement, which she admittedly didn't mind so much.");
+    if (player.breastRows.biggestTitSize() >= 22) outputText("  She was unrivaled in her ability to produce milk thanks to the natural enormity of her breasts that her other sisters couldn't come close to.  They were so large that they often impeded her movement, which she admittedly didn't mind so much.");
 
     outputText("\n\nAs best as she could remember, her life had begun only a decade ago, aging quickly to become ready for service in her Sand Mother's coven at the age of five.  She'd been eager to give her milk and use her two wombs to breed as many new sisters as possible.");
     // if player had the broodmother perk
     if (player.perks.findByType(PerkLib.BroodMother) >= 0) outputText("  She'd immediately shown a unique propensity for rapid pregnancies, birthing new sisters at twice the rate of any other Sand Witch.  Her surprisingly fertile wombs helped give an extra edge to the Sand Mother's plans.");
 
     // if player had broodmother and gigantic breasts
-    if (player.perks.findByType(PerkLib.BroodMother) >= 0 && player.breasts.biggestTitSize() >= 22) outputText("  As a result, the champion who could no longer remember her true past became little more than a giant pregnant belly surrounded by " + num2Text(player.breasts.length) + " breasts so massive that the other sand witches often used her tits as comfortable cushions to sit upon, their thighs tightly gripping each giant nipple against their aching cunts for pleasure.");
+    if (player.perks.findByType(PerkLib.BroodMother) >= 0 && player.breastRows.biggestTitSize() >= 22) outputText("  As a result, the champion who could no longer remember her true past became little more than a giant pregnant belly surrounded by " + num2Text(player.breastRows.length) + " breasts so massive that the other sand witches often used her tits as comfortable cushions to sit upon, their thighs tightly gripping each giant nipple against their aching cunts for pleasure.");
 
     outputText("\n\nTwo years later, at the call of the Great Mother, the sand witches went to war.  ");
     if (flags[kFLAGS.HEL_HARPY_QUEEN_DEFEATED] == 0) outputText("Their harpy and phoenix allies allowed them to approach Lethice's fortress unhindered, and i");
@@ -958,9 +958,9 @@ export function lesboMilkFilling(): void {
     }
     // BOTH
     outputText("\n\nAllowing an eager, pleased expression to occupy your " + face(player) + ", you peel the top of your armor down to expose your [chest] and [nipples], heaving with your excited, eager inhalations.  The Sand Mother watches you with a lecherous expression as she opens the top half of her robe.  Her four areolae are huge and moist with her creamy drippings, the pebbly texture shining dully in the unnatural light as fresh liquid beads on her enormous, lust-tightened nipples.  Shimmying out of your bottoms, you stretch your hands up high over your head and arch your back");
-    if (player.breasts.biggestTitSize() >= 10) outputText(", [fullChest] swaying enticingly as you strike your seductive pose");
+    if (player.breastRows.biggestTitSize() >= 10) outputText(", [fullChest] swaying enticingly as you strike your seductive pose");
     outputText(".   Freeing your body from its bindings is almost as exciting as seducing the queen of the lactic sorceresses, and you ");
-    if (player.breasts.biggestTitSize() >= 2) outputText("cup your mammaries");
+    if (player.breastRows.biggestTitSize() >= 2) outputText("cup your mammaries");
     else outputText("run your hands down your chest");
     outputText(" as you stride closer.");
 

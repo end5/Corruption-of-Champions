@@ -131,7 +131,7 @@ export class Satyr extends Monster {
         this.ballSize = 2 + rand(13);
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = this.ballSize * 10;
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.effects.create(StatusAffects.BonusACapacity, 20, 0, 0, 0);

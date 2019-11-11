@@ -543,7 +543,7 @@ export function loseToClara(combat: boolean = true): void {
     else outputText("way too small for your stature.");
     outputText("  You also find that you aren’t wearing your " + player.armorName + ", and your " + player.weaponName + " is nowhere to be seen.  ");
     // ifPC does not have: dick has more than 40 area, or breasts bigger then HHH cup, or centaur lower body, or naga lower body, or slime lower body, or drider lower body)
-    if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.breasts.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider())
+    if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.breastRows.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider())
         outputText("Instead a plain but rather slim form fitting two piece garb adorns your body.  Whoever dressed you in that definitely wanted your bodily assets to be fully visible to anyone looking at you.");
     else outputText("You’re completely naked.");
 
@@ -642,7 +642,7 @@ export function badEndDickThatFitsClara(): void {
     if (x < 0) x = player.cocks.smallestCockIndex();
 
     // if (PC does not have: dick has more than 40 area, or breasts bigger then HHH cup, or centaur lower body, or naga lower body, or slime lower body, or drider lower body)
-    if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.breasts.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider()) {
+    if ((player.cocks.length > 0 && player.cocks.smallestCockArea() <= 40) && player.breastRows.biggestTitSize() <= 25 && !player.isTaur() && !player.isNaga() && !player.isGoo() && !player.isDrider()) {
         outputText("In seconds she’s freed you of the form fitting garment that you woke up in.  ");
     }
     outputText("You’re still erect from the arousal that nursing from Clara gave you.  The young cow-girl straddles your calves and gives your " + cockDescript(game.player, x) + " a slight flick with her finger and continues to smile broadly at you.  \"<i>One thing that I was really worried about was that you woouldn’t have a penis that I could actually fit inside me.  Thankfully, that isn’t the case, and that pretty pecker is just my size!</i>\"  She pulls apart the lips of her womanhood before continuing, \"<i>This will be my first time ever putting anything in here, take note just how special of a slave you are to me!</i>\"");

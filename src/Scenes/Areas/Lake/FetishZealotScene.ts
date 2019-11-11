@@ -235,7 +235,7 @@ export function zealotDefeated(): void {
     if (player.lust >= 33 && player.gender > 0) {
         outputText("\n\nDo you want to take advantage of his vulnerable state to sate your lusts?", false);
         let bikiniTits: () => void = null;
-        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
+        if (player.vaginas.length > 0 && player.breastRows.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri, player, monster);
         simpleChoices("Yes", zealotWinRape, "", null, "", null, "B.Titfuck", bikiniTits, "Leave", cleanupAfterCombat);
     }
     else cleanupAfterCombat();

@@ -278,7 +278,7 @@ export class Ceraph extends Monster {
         this.cocks.createCock(10, 2, CockTypesEnum.DEMON);
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.GAPING);
         this.effects.create(StatusAffects.BonusVCapacity, 20, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("E"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("E"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 15, 0, 0, 0);

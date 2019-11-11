@@ -165,9 +165,9 @@ export function nippleDescription(i_creature: Character, i_rowNum: number): stri
     // Milkiness/Arousal/Wetness Descriptors 33% of the time
     if (rand(3) == 0 && !haveDescription) {
         // Fuckable chance first!
-        if (i_creature.breasts.hasFuckableNipples()) {
+        if (i_creature.breastRows.hasFuckableNipples()) {
             // Fuckable and lactating?
-            if (i_creature.breasts.biggestLactation() > 1) {
+            if (i_creature.breastRows.biggestLactation() > 1) {
                 options = ["milk-lubricated ",
                     "lactating ",
                     "lactating ",
@@ -191,23 +191,23 @@ export function nippleDescription(i_creature: Character, i_rowNum: number): stri
             haveDescription = true;
         }
         // Just lactating!
-        else if (i_creature.breasts.biggestLactation() > 0) {
+        else if (i_creature.breastRows.biggestLactation() > 0) {
             // Light lactation
-            if (i_creature.breasts.biggestLactation() <= 1) {
+            if (i_creature.breastRows.biggestLactation() <= 1) {
                 options = ["milk moistened ",
                     "slightly lactating ",
                     "milk-dampened "];
                 description += randomChoice(options);
             }
             // Moderate lactation
-            if (i_creature.breasts.biggestLactation() > 1 && i_creature.breasts.biggestLactation() <= 2) {
+            if (i_creature.breastRows.biggestLactation() > 1 && i_creature.breastRows.biggestLactation() <= 2) {
                 options = ["lactating ",
                     "milky ",
                     "milk-seeping "];
                 description += randomChoice(options);
             }
             // Heavy lactation
-            if (i_creature.breasts.biggestLactation() > 2) {
+            if (i_creature.breastRows.biggestLactation() > 2) {
                 options = ["dripping ",
                     "dribbling ",
                     "milk-leaking ",
@@ -264,21 +264,21 @@ export function nippleDescription(i_creature: Character, i_rowNum: number): stri
         else description += "cherry-like nub";
     }
     if (choice == 2) {
-        if (i_creature.breasts.hasFuckableNipples()) description += "fuckable nip";
+        if (i_creature.breastRows.hasFuckableNipples()) description += "fuckable nip";
         else {
-            if (i_creature.breasts.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+            if (i_creature.breastRows.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
             else description += "nipple";
         }
     }
     if (choice == 3) {
-        if (i_creature.breasts.hasFuckableNipples()) description += "nipple-hole";
+        if (i_creature.breastRows.hasFuckableNipples()) description += "nipple-hole";
         else {
-            if (i_creature.breasts.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+            if (i_creature.breastRows.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
             else description += "nipple";
         }
     }
     if (choice == 4) {
-        if (i_creature.breasts.hasFuckableNipples()) description += "nipple-cunt";
+        if (i_creature.breastRows.hasFuckableNipples()) description += "nipple-cunt";
         else description += "nipple";
     }
     return description;
@@ -2420,7 +2420,7 @@ export function allBreastsDescript(creature: Character): string {
     let storage: string = "";
     if (creature.breastRows.length == 0) return "unremarkable chest muscles ";
     if (creature.breastRows.length == 2) {
-        // if(creature.breasts.totalBreasts() == 4) storage += "quartet of ";
+        // if(creature.breastRows.totalBreasts() == 4) storage += "quartet of ";
         storage += "two rows of ";
     }
     if (creature.breastRows.length == 3) {
@@ -2495,7 +2495,7 @@ export function oneTailDescript(i_creature: Character): string {
 export function biggestBreastSizeDescript(creature: Character): string {
     let temp14: number = Math.random() * 3;
     let descript: string = "";
-    const temp142: number = creature.breasts.biggestTitRow();
+    const temp142: number = creature.breastRows.biggestTitRow();
     // ERROR PREVENTION
     if (creature.breastRows.length - 1 < temp142) {
         Logger.error("");
@@ -2581,7 +2581,7 @@ export function breastSize(val: number): string {
 /* Moved to Creature.as
         public static function chestDesc(creature:Creature):String
         {
-            if (creature.breasts.biggestTitSize() < 1) return "chest";
+            if (creature.breastRows.biggestTitSize() < 1) return "chest";
             else return biggestBreastSizeDescript(creature);
         }
 */

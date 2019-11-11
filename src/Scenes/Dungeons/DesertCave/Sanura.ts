@@ -510,7 +510,7 @@ export function fuckDatLionPussah(): void {
     else outputText("\n\nSanura's eyes go wide upon seeing your monstrous cock.  She opens her mouth, attempting to speak, but no words come out.  Her tail reaches out, coiling around your dick in futility.  \"<i>By Marae's pillowy tits that thing is huge,</i>\" she says finally, regaining her voice.  \"<i>I don't know if I can take something that big... but goddamnit, I'm going to try.</i>\"");
 
     outputText("\n\nYour manhood spikes upwards at the attention, becoming painfully hard as the sphinx continues to survey your body.  Her tail flicks over your " + skinFurScales(player) + " gently, stopping briefly to tantalize ");
-    if (player.breasts.totalNipples() == 2) outputText("both");
+    if (player.breastRows.totalNipples() == 2) outputText("both");
     else outputText("each");
     outputText(" of your nipples, which stiffen in response, just like your cock.  You can't help but think there's some sort of magic at work here.  Her tail passes between your thighs, gracefully tickling your ");
     if (player.vaginas.length > 0) outputText("damp cunt, which suddenly tightens up and practically gushes with slick juices.");

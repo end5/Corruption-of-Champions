@@ -442,21 +442,21 @@ export function nagaFUCKSJOOOOOO(): void {
         outputText("  The scaly skin rubs at your soft vaginal walls like nothing else you have experienced, and the feeling begins to drive you mad with pleasure. It only takes a few minutes of this gentle tail-fucking to drive you to another climax. This time, however, the naga doesn't wait for your recovery. Instead, she responds by plunging deeper, forcing her ever-thickening tail deeper inside your " + vaginaDescript(player, 0) + ". As she stuffs more and more of her scaly tail inside you, her hands begin to work on your " + nippleDescription(player, 0) + "s, gently caressing and massaging them.\n\n", false);
 
         // [If Lactating]
-        if (player.lactationQ() >= 50 && player.breasts.biggestLactation() >= 1) outputText("Your warm milk is leaking from your " + nippleDescription(player, 0) + "s the entire time, coating your skin and soaking her hands. At one point, she withdraws a hand and licks the milk from it. You can only assume that she liked it, as she begins to focus even more on your breasts.\n\n", false);
+        if (player.lactationQ() >= 50 && player.breastRows.biggestLactation() >= 1) outputText("Your warm milk is leaking from your " + nippleDescription(player, 0) + "s the entire time, coating your skin and soaking her hands. At one point, she withdraws a hand and licks the milk from it. You can only assume that she liked it, as she begins to focus even more on your breasts.\n\n", false);
         // -------
 
         outputText("The naga lifts you from her body with her tail, placing you onto the warm sand where she had been laying. She moves her own body above yours, her tail buried deep inside your " + vaginaDescript(player, 0) + " the entire time. She holds you in place with one hand, her other hand moving to resume playing with your " + allBreastsDescript(player) + ". She moves her head in, her hot breath washing over your neck, and looks up into your eyes for a moment. She smiles, giggles, and then wraps her mouth around your " + nippleDescription(player, 0) + ", letting her slender tongue tickle your sensitive areola.\n\n", false);
         // -----
 
         // [If lactating]
-        if (player.lactationQ() >= 50 && player.breasts.biggestLactation() >= 1) outputText("As her mouth sucks and plays with your nipple, your warm, sweet milk begins to flow forth once again, filling her mouth with your delectable cream. Her hand is also absolutely covered by it, and the excess drips down to the dry sand below, absorbed in seconds by the thirsty earth.\n\n", false);
+        if (player.lactationQ() >= 50 && player.breastRows.biggestLactation() >= 1) outputText("As her mouth sucks and plays with your nipple, your warm, sweet milk begins to flow forth once again, filling her mouth with your delectable cream. Her hand is also absolutely covered by it, and the excess drips down to the dry sand below, absorbed in seconds by the thirsty earth.\n\n", false);
         // ------
 
         outputText("All this time, her tail has been working its way slowly inside you, stretching you farther with every thrust. As you open your mouth wide to let out another passionate wail, she moves in, pushing her lips over yours and kissing you passionately.\n\n", false);
 
         // ----
         // [If Lactating]
-        if (player.lactationQ() >= 50 && player.breasts.biggestLactation() >= 1) outputText("She shares a mouthful of your delicious milk with you.\n\n", false);
+        if (player.lactationQ() >= 50 && player.breastRows.biggestLactation() >= 1) outputText("She shares a mouthful of your delicious milk with you.\n\n", false);
         // ------
 
         outputText("As the tip of her tail finally comes to rest against your cervix, you find yourself succumbing to another orgasm, your slutty wails of pleasure encouraging the naga to continue. As you begin to calm down again, you believe that this is the deepest the naga will go, although your brain works really hard and comes up with a desire for MORE depth...", false);
@@ -596,28 +596,28 @@ export function nagaFUCKSJOOOOOO(): void {
 
         outputText("As the tail begins to penetrate you, you cannot help but let out another passionate moan. The scaly skin rubs at your tender vaginal walls like nothing else you have experienced, and the feeling begins to drive you mad with pleasure. It only takes a few minutes of this gentle tail-fucking to drive you to another climax. This time, however, the naga doesn't wait for your recovery. Instead, she responds by plunging deeper, forcing her ever-thickening tail further into your " + vaginaDescript(player, 0) + ". As she stuffs more and more of her scaly tail inside you, her hands begin to work on your " + biggestBreastSizeDescript(player) + ", gently caressing and massaging them.", false);
         // (If fuckable nipples)
-        if (player.breasts.hasFuckableNipples()) {
+        if (player.breastRows.hasFuckableNipples()) {
             outputText("  As her hands rub across your " + biggestBreastSizeDescript(player) + ", the naga takes notice of the size of your nipples. She begins to press on them with her fingers, and, to her surprise, her fingers begin to disappear inside your breasts. It doesn't take her long to figure it out, and before you know it she is finger-fucking both your " + nippleDescription(player, 0) + " in sync with the thrusts of her tail.", false);
         }
         // (If lactating)
-        if (player.breasts.biggestLactation() > 1) {
+        if (player.breastRows.biggestLactation() > 1) {
             outputText("  Your warm milk is leaking from your " + nippleDescription(player, 0) + " the entire time, coating your " + player.skinDesc + " and soaking her hands. At one point, she withdraws a hand and licks the milk from it. You can only assume that she liked it, as she begins to focus even more on your breasts.", false);
         }
         outputText("\n\n", false);
 
         outputText("The naga lifts you from her body with her tail, placing you onto the warm sand where she had been laying. She moves her own body above yours, her tail buried deep inside your " + vaginaDescript(player, 0) + " the entire time. She holds you in place with one hand, her other hand moving to resume playing with your " + biggestBreastSizeDescript(player) + ". She moves her head in, her hot breath washing over your other breast, and looks up into your eyes for a moment. She smiles, giggles, and then wraps her mouth around your " + nippleDescription(player, 0) + ", letting her slender tongue tickle your sensitive skin there.", false);
         // (If fuckable nipples)
-        if (player.breasts.hasFuckableNipples()) {
+        if (player.breastRows.hasFuckableNipples()) {
             outputText("It isn't long before she decides to take it one step further, pushing her tongue inside your " + nippleDescription(player, 0) + " and wriggling it around inside. Meanwhile, her other hand begins to work its way into your other " + nippleDescription(player, 0) + ", finger-fucking it for all it's worth.", false);
         }
         // (If lactating)
-        if (player.breasts.biggestLactation() > 1) {
+        if (player.breastRows.biggestLactation() > 1) {
             outputText("  As her mouth sucks at and plays with your " + nippleDescription(player, 0) + ", your warm, sweet milk begins to flow forth once again, filling her mouth with your delectable cream. Her hand is also absolutely covered by it, and the excess drips down to the dry sand below, absorbed in seconds by the thirsty earth.", false);
         }
         outputText("\n\n", false);
         outputText("All this time, her tail has been working its way slowly inside you, stretching you farther with every thrust. As you open your mouth to let out another passionate wail, she moves in, pushing her lips over yours and kissing you passionately", false);
         // (If lactating)
-        if (player.breasts.biggestLactation() > 1) {
+        if (player.breastRows.biggestLactation() > 1) {
             outputText(", sharing with you some of your delicious milk", false);
         }
         outputText(".", false);

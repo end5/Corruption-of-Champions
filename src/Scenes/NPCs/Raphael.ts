@@ -91,9 +91,9 @@ export function RaphaelLikes(): boolean {
     if (!player.isBiped())
         return false;
     // ({If player has above E cup breasts}
-    if (player.breasts.biggestTitSize() >= 12) return false;
+    if (player.breastRows.biggestTitSize() >= 12) return false;
     // ({If player has below C cup breasts}
-    if (player.breasts.biggestTitSize() < 3) return false;
+    if (player.breastRows.biggestTitSize() < 3) return false;
     // ({If player has grown less than girly hips}
     if (player.hipRating < 6) return false;
     // ({If player has gotten a massive butt}
@@ -310,9 +310,9 @@ function RaphaelEncounterIIDressFollowup(): void {
         if (player.lowerBody == LowerBodyType.NAGA || player.lowerBody == LowerBodyType.CENTAUR || player.lowerBody == LowerBodyType.GOO || player.lowerBody == LowerBodyType.PONY)
             outputText("\"<i>You're missing half your body!</i>\" He refers to your morphed legs.\n\n", false);
         // ({If player has above E cup breasts}
-        if (player.breasts.biggestTitSize() >= 7) outputText("\"<i>Your female curves... replaced with such... udders!</i>\" He looks at your bosom. \"<i>No woman could be elegant with such monstrosities up front!</i>\"\n\n", false);
+        if (player.breastRows.biggestTitSize() >= 7) outputText("\"<i>Your female curves... replaced with such... udders!</i>\" He looks at your bosom. \"<i>No woman could be elegant with such monstrosities up front!</i>\"\n\n", false);
         // ({If player has below C cup breasts}
-        if (player.breasts.biggestTitSize() < 3) outputText("\"<i>Your female curves... gone!</i>\" He looks at your bosom. \"<i>It's hard to tell you apart from a little girl!</i>\"\n\n", false);
+        if (player.breastRows.biggestTitSize() < 3) outputText("\"<i>Your female curves... gone!</i>\" He looks at your bosom. \"<i>It's hard to tell you apart from a little girl!</i>\"\n\n", false);
         // ({If player has grown less than girly hips}
         if (player.hipRating < 6) outputText("\"<i>What happened to that fine hourglass shaped figure? Those comely hips?</i>\"\n\n", false);
         // ({If player has gotten a massive butt}

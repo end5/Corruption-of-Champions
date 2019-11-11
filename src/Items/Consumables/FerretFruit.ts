@@ -82,9 +82,9 @@ export function ferretTF(player: Player): void {
         changes++;
     }
     // -If male with breasts or female/herm with breasts > B cup:
-    if (!flags[kFLAGS.HYPER_HAPPY] && (player.breasts.biggestTitSize() > 2 || (player.cocks.length > 0 && player.breasts.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
+    if (!flags[kFLAGS.HYPER_HAPPY] && (player.breastRows.biggestTitSize() > 2 || (player.cocks.length > 0 && player.breastRows.biggestTitSize() >= 1)) && rand(2) == 0 && changes < changeLimit) {
         outputText("\n\nYou cup your tits as they begin to tingle strangely.  You can actually feel them getting smaller in your hands!");
-        for (x = 0; x < player.breasts.length; x++) {
+        for (x = 0; x < player.breastRows.length; x++) {
             if (player.breastRows[x].breastRating > 2 || (player.cocks.length > 0 && player.breastRows[x].breastRating >= 1)) {
                 player.breastRows[x].breastRating--;
             }
@@ -119,9 +119,9 @@ export function ferretTF(player: Player): void {
         }
     }
     // -If the PC has quad nipples:
-    if (player.breasts.averageNipplesPerBreast() > 1 && rand(4) == 0 && changes < changeLimit) {
+    if (player.breastRows.averageNipplesPerBreast() > 1 && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nA tightness arises in your nipples as three out of four on each breast recede completely, the leftover nipples migrating to the middle of your breasts.  <b>You are left with only one nipple on each breast.</b>");
-        for (x = 0; x < player.breasts.length; x++) {
+        for (x = 0; x < player.breastRows.length; x++) {
             player.breastRows[x].nipplesPerBreast = 1;
         }
         changes++;

@@ -91,7 +91,7 @@ export function agreeToHelpHeliaDungeon(): void {
 export function morningAfterHeliaDungeonAgreements(): void {
     outputText("\nWhen your eyes flicker open at the crack of dawn, you're pleased to see Helia is lying on your chest, ");
     // [If PC has >C Cups, \"<i>
-    if (player.breasts.biggestTitSize() > 3) outputText("her head nestled between your soft tits and ");
+    if (player.breastRows.biggestTitSize() > 3) outputText("her head nestled between your soft tits and ");
     outputText("snoring boorishly.  The air around you smells like hot booze and sex, yet you awaken feeling as spirited and lively as you ever have.  You give Hel a little shake, waking her.");
 
     outputText("\n\n\"<i>Huh, wha?</i>\" she groans, rubbing her head.  \"<i>Oh, hey there, lover mine,</i>\" she adds after a moment, giving you a long kiss on the lips.  The two of you untangle yourselves, giving each other the occasional tease and playful slap on the ass, flirting shamelessly as you dress and ready yourselves for the coming day.");

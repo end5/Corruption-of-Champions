@@ -76,7 +76,7 @@ export class Marble extends Monster {
         this.long = "Before you stands a female humanoid with numerous cow features, such as medium-sized cow horns, cow ears, and a cow tail.  She is very well endowed, with wide hips and a wide ass.  She stands over 6 feet tall.  She is using a large two handed hammer with practiced ease, making it clear she is much stronger than she may appear to be.";
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.NORMAL, VaginaLooseness.NORMAL);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("F"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("F"));
         this.ass.analLooseness = AnalLooseness.VIRGIN;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 6 * 12 + 4;

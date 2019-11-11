@@ -7,7 +7,7 @@ export function savinMakesAwesomeFemdom(): void {
     else outputText("Uncontrollable lust surges through you, your heart pounding beneath your [chest] as your [legs] collapse out from under you.  Your hands desperately claw at your [armor], trying to touch your needy cunt, the fire in your genitals burning like whitefire through your veins.  You moan with helpless lust as the witch looms over you, grabbing your hands away from your crotch and pushing you onto your back.  A moment later, she's on you, straddling your [hips] between her lush thighs.");
     outputText("\n\nPinned beneath the witch, you struggle weakly in her grasp as she slowly strips off your [armor], bearing your [chest] to her surprisingly soft, gentle caresses.  ");
     // if Multiboob:
-    if (player.breasts.length > 1) {
+    if (player.breastRows.length > 1) {
         outputText("She caresses each of your breasts, cupping each in turn, running her thumb over each nipple");
         if (player.lactationQ() >= 200) outputText(" until milk streams down your chest, much to her delight");
         outputText(".");

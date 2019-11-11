@@ -300,7 +300,7 @@ export function hellHoundPropahRape(): void {
         }
         // --- ELSE (CORRUPTION >= 40) ---
         outputText("His magical natural flames fill your body with fierce warmth, arousing you further. You pick yourself up, letting the hellhound's cocks nearly escape your nethers just to sit down again, taking the duo of dog members to the hilt. Grabbing his hind legs like the handlebars of an exercise machine, you bring yourself into position for a good amount of training. Gradually, you pick up the pace, rocking your hips up and down, enjoying the awesome double penetration.", false);
-        if (player.breasts.biggestTitSize() > 1) outputText("  Your " + chestDesc(game.player) + " jiggle in exquisite ways along with your bumping, grinding motions.", false);
+        if (player.breastRows.biggestTitSize() > 1) outputText("  Your " + chestDesc(game.player) + " jiggle in exquisite ways along with your bumping, grinding motions.", false);
         outputText("  Riding the hound for a couple of minutes, you feel the dick in your " + assholeDescript(player) + " extending, giving you a good stretching. Its brother in your " + vaginaDescript(player, 0) + " does the same, pushing more and more girl-fluids out of your slippery slit while stimulating your sensitive clit from the inside. You lean forward, running your hands through your fuckpet's dense midnight black fur, feeling his animal body warmth. The hellhound is moaning and panting beneath you, unsure whether to fear you or to enjoy what you are doing to him.\n\n", false);
 
         // --- IF PC HAS PENIS ---

@@ -1041,12 +1041,12 @@ function getIzzyBurped(): void {
             changed = true;
         }
         // ([Female/herm: if breasts smaller than G-cup and not lactating a whole lot]
-        if (player.vaginas.length > 0 && player.breasts.biggestTitSize() < 15 && player.breasts.biggestLactation() < 2) {
+        if (player.vaginas.length > 0 && player.breastRows.biggestTitSize() < 15 && player.breastRows.biggestLactation() < 2) {
             outputText("  Unbeknownst to you, Isabella's potent cow-gas has gone to town on your " + breastDescript(game.player, 0) + ", growing them to an obnoxious G-cup... no, not exactly growing, you realize, but filling... you give one of your swollen teats a squeeze, not quite surprised by the gout of milk that stains your " + player.armorName + ".\n\n", false);
             changed = true;
         }
         // ([Female/herm: if breasts >G-cup and lactating]
-        else if (player.vaginas.length > 0 && player.breasts.biggestLactation() >= 2) {
+        else if (player.vaginas.length > 0 && player.breastRows.biggestLactation() >= 2) {
             outputText("  Propped up as you are with your soft " + breastDescript(game.player, 0) + " nestling under your chin, you can easily see the growing puddle of alabaster liquid seeping into the ground.  You heave yourself up, the effort rewarded with a jet of milk shot into the air as your evidently over-laden boobs jostle about inside your " + player.armorName + ". It seems the effects of Isabella's gas has ramped your lactation to overdrive.", false);
             changed = true;
         }
@@ -1378,7 +1378,7 @@ function fuckIsabellaInTheBarn(): void {
     else outputText("\n\n\"<i>Mmm...  what do you say you help me with a little milking, and I won't ask you to stop...</i>\"");
 
     outputText("\n\nYou quickly agree, and reach around the big cowgirl's shoulders to pull the milker tubes off her breasts, leaning down until your [chest] press");
-    if (player.breasts.biggestTitSize() < 1) outputText("es");
+    if (player.breastRows.biggestTitSize() < 1) outputText("es");
     outputText(" against her back, your [cock] pushing further and further between her cheeks until you lay hands upon her eight nipples, taking her many buds between your fingers until a hesitant trickle of milk flows forth over your hands, pouring onto the barn floor as you give the cow a more sensual milking.  Your fingers glide across her nipples, going from one large, needy teat to the next, gently caressing her milky breasts until Isabella's head rolls back in a throaty moo, her backside clenching powerfully around your prick.  You let out a low groan, reminded for a moment of your own needs.  You start to move your hips, slowly starting to fuck Isabella's asscheeks as you bury your chin in her shoulder, pressing kisses all along the nape of her neck.");
 
     outputText("\n\nAfter a moment of basking in your affections, Isabella turns and catches you, pressing her lips to yours as one of her powerful arms hooks around your waist.  She opens her mouth, inviting your tongue to enter, playing across her own, inhumanly wide and warm.  You drag your tip across the flat of her tongue, feeling her hot, ragged breath flitting into your throat.  Between movements of your mouth, you reach up to cup Isabella's cheek, brushing away a strand of auburn hair to look into her bright, luminous eyes, each a well of white in the dim barn stall.");

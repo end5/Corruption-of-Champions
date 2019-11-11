@@ -8,7 +8,7 @@ export class ImpGang extends Monster {
         this.perks.removes();
         this.cocks.removeCock(0, this.cocks.length);
         this.vaginas.removeVagina(0, this.vaginas.length);
-        this.breasts.removeBreastRow(0, this.breastRows.length);
+        this.breastRows.removeBreastRow(0, this.breastRows.length);
         this.cocks.createCock(12, 1.5);
         this.cocks.createCock(25, 2.5);
         this.cocks.createCock(25, 2.5);

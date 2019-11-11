@@ -132,7 +132,7 @@ export class GooGirl extends Monster {
 
     public constructor(noInit: boolean = false) {
         if (noInit) return;
-        const playerHasBigBoobs: boolean = player.breasts.biggestTitSize() >= 3;
+        const playerHasBigBoobs: boolean = player.breastRows.biggestTitSize() >= 3;
         this.a = "the ";
         this.short = "goo-girl";
         this.imageName = "googirl";
@@ -140,7 +140,7 @@ export class GooGirl extends Monster {
         // this.long = false;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 9001, 0, 0, 0);
-        this.breasts.createBreastRow(playerHasBigBoobs ? player.breasts.biggestTitSize() : 3);
+        this.breastRows.createBreastRow(playerHasBigBoobs ? player.breastRows.biggestTitSize() : 3);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.effects.create(StatusAffects.BonusACapacity, 9001, 0, 0, 0);

@@ -385,7 +385,7 @@ export function massageCommence(selectedMassage: number): void {
     outputText("You swallow audibly and brace yourself for what's to come.\n\n");
     outputText("Uma presses her elbow against your chest ");
 
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("between your [chest] ");
     }
 

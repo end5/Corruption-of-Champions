@@ -31,7 +31,7 @@ export class ImpHorde extends Monster {
         this.cocks.createCock(12, 2, CockTypesEnum.DEMON);
         this.balls = 2;
         this.ballSize = 1;
-        this.breasts.createBreastRow(0);
+        this.breastRows.createBreastRow(0);
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);

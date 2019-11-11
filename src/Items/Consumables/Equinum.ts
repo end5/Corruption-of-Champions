@@ -418,7 +418,7 @@ export function equinum(player: Player): void {
                     // temp3 = counter
                     temp2 = 0;
                     temp3 = player.breastRows.length;
-                    if (player.breasts.biggestTitSize() > 3)
+                    if (player.breastRows.biggestTitSize() > 3)
                         outputText("\n", false);
                     while (temp3 > 0) {
                         temp3--;

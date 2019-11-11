@@ -304,9 +304,9 @@ export function tentacleLossRape(): void {
             outputText("  You feel the beast bottom out against your uterus and cry out in pleasure, gyrating yourself about as fluid sprays behind you.\n\n", false);
         }
         // Breasts > Manly, non-lactating:
-        if (player.breasts.biggestTitSize() >= 1 && player.lactationQ() <= 0) {
+        if (player.breastRows.biggestTitSize() >= 1 && player.lactationQ() <= 0) {
             outputText("Roving tentacles latch onto your " + allBreastsDescript(player) + "; tiny spikes jabbing into each " + nippleDescription(player, 0) + " and injecting some sort of hot fluid.", false);
-            if (player.breasts.totalBreasts() == 2) outputText("  The anus-like tips affix to them.", false);
+            if (player.breastRows.totalBreasts() == 2) outputText("  The anus-like tips affix to them.", false);
             else outputText("  The anus-like tips attach to one pair as more appear in order to take the others.", false);
             outputText("  You feel a gush of liquid leave your body as the translucent lengths of the tentacles turn stark white.  The fluid they inject has caused you to lactate!  They suckle at you incessantly and before long your nipples ache from overuse and your breasts have run completely dry.\n\n", false);
             player.boostLactation(1.5);
@@ -318,12 +318,12 @@ export function tentacleLossRape(): void {
             outputText("  You moan into the tentacle in your mouth appreciatevely at the beast's spectacular skill.\n\n", false);
         }
         // Breasts > Manly, lactating, not enough to overfill:
-        if (player.breasts.biggestTitSize() >= 1 && player.lactationQ() > 0 && player.lactationQ() < 1000) {
+        if (player.breastRows.biggestTitSize() >= 1 && player.lactationQ() > 0 && player.lactationQ() < 1000) {
             outputText("Roving tentacles latch onto your " + allBreastsDescript(player) + ", tiny spikes jabbing into your " + nippleDescription(player, 0) + "s and injecting some sort of hot fluid.  The pressure inside grows nearly unbearable as you feel your milk production increase.  To your relief, an anus-like tip attaches to each nipple.  They suckle at you incessantly and before long your nipples ache from overuse and your breasts have run completely dry.\n\n", false);
             player.boostLactation(1);
         }
         // Breasts > Manly, lactating, enough to overfill:
-        else if (player.breasts.biggestTitSize() >= 1 && player.lactationQ() >= 1000) {
+        else if (player.breastRows.biggestTitSize() >= 1 && player.lactationQ() >= 1000) {
             outputText("Roving tentacles latch onto your " + allBreastsDescript(player) + ", tiny spikes jabbing into your " + nippleDescription(player, 0) + " and injecting some sort of hot fluid.  The pressure inside grows nearly unbearable as you feel your milk production increase.  To your relief, an anus-like tip attaches to each nipple.  They suckle at you incessantly and before long your nipples ache from overuse, but your breasts are still prepared to provide more milk!  The suction decreases as the beast before you becomes overfilled and eventually is forced to give up.\n\n", false);
             if (player.cocks.length > 0) {
                 outputText("Your " + cockDescript(game.player, 0) + " explodes inside the creature, ", false);
@@ -413,7 +413,7 @@ export function tentacleLossRape(): void {
         return;
     }
     // Milk surprise!
-    if (player.breasts.biggestLactation() >= 3.5 && player.gender > 0) {
+    if (player.breastRows.biggestLactation() >= 3.5 && player.gender > 0) {
         player.slimeFeed();
         outputText("Before you can react the creature has wrapped a long, sinewy tendril around each of your legs.  A third tendril quickly circles your waist.  You can feel the creature's strength immediately and wince as it tightens its grip.  The constricting pain is followed by a tingling, almost burning sensation, which you quickly recognize means the beast has injected you with some kind of poison.  A warm sensation floods your body and you realize with a start the poison is actually an aphrodisiac.\n\n", false);
         dynStats("lib", 2);
@@ -490,7 +490,7 @@ export function tentacleLossRape(): void {
         if (player.cor < 75) outputText("You struggle to break free, but the creature only constricts you further, ensuring your immobility. ", false);
         outputText("A quick flex of the tentacles securing your legs leaves you spreadeagled before the maw of the horror.  ", false);
         if (player.cor < 75) outputText("Fearing for your life, you scream and struggle for help, but only the apathetic sounds of nature respond.", false);
-        outputText("\n\n" + (player.breasts.totalBreasts() + 1) + " thorny tendrils appear and pierce your breasts and groin. A sharp pain and a burning sensation tear through you, overriding the previous wave of pleasure. You feel fluids being injected into you and a distinctive, agonizing misery flows into your veins.  Your breasts and ", false);
+        outputText("\n\n" + (player.breastRows.totalBreasts() + 1) + " thorny tendrils appear and pierce your breasts and groin. A sharp pain and a burning sensation tear through you, overriding the previous wave of pleasure. You feel fluids being injected into you and a distinctive, agonizing misery flows into your veins.  Your breasts and ", false);
         if (player.vaginas.length == 1) outputText("clit ", false);
         else outputText("clits ", false);
         outputText("heat up and begin to swell. The pressure in your breasts is maddening and to your shock, you feel yourself leaking milk.", false);
@@ -505,7 +505,7 @@ export function tentacleLossRape(): void {
         outputText(".  You look down to see the end of a thorny tendril impaled in your pelvic region. Fiery pain courses through your veins as you feel the creature inject you with some sort of liquid. As the pain sears through you, your ", false);
         if (player.cocks.length > 1) outputText(multiCockDescriptLight(game.player) + " immediately become fully erect and leak pre-cum liberally from their tips.  ", false);
         else outputText("member immediately becomes fully erect and pre-cum leaks liberally from your tip.  ", false);
-        outputText("  " + Num2Text((player.breasts.totalNipples())) + " thorny tentacles pierce your nipples, and you feel as if someone shot acid into your tits, which immediately begin to swell.", false);
+        outputText("  " + Num2Text((player.breastRows.totalNipples())) + " thorny tentacles pierce your nipples, and you feel as if someone shot acid into your tits, which immediately begin to swell.", false);
         growTits(player, 1, player.breastRows.length, false, 2);
         outputText("\n\nRealizing what is about to happen, you try to struggle. The beast responds by slamming you to the ground a few times, stunning you. In your daze you see a monstrous, hollow tentacle poised over your ", false);
         if (player.cocks.length > 1) outputText("furious cocks.  ", false);
@@ -566,7 +566,7 @@ function tentacleRapeContinuation(): void {
     }
     else if (player.gender == 3) {
         if (player.cocks.length == 1) {
-            outputText("A sharp tug tells you that the creature has sealed itself upon your " + cockDescript(game.player, 0) + ". You see " + player.breasts.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped " + cockDescript(game.player, 0) + " until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".  ");
+            outputText("A sharp tug tells you that the creature has sealed itself upon your " + cockDescript(game.player, 0) + ". You see " + player.breastRows.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped " + cockDescript(game.player, 0) + " until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".  ");
             cuntChange(player, player.vaginalCapacity() * .76, true, false, true);
             outputText("With freakish coordination, the beast sucks your " + cockDescript(game.player, 0) + " and tits while hammering away at your " + vaginaDescript(player, 0) + ". The overwhelming pleasure courses through your body and triggers an immediate orgasm, sending gouts of cum into the tentacle sealed around your " + cockDescript(game.player, 0) + ". The sensation of your fluids entering the creature prompts it to suck your " + cockDescript(game.player, 0) + " harder as well as hammer your " + vaginaDescript(player, 0) + " faster, leading to a chain of orgasms.\n\n", false);
             outputText("Drunk with pleasure, you revel in the sensation of cumming into the creature while it breast feeds from you. All you can do is drown in the experience of being milked from top to bottom. The creature begins piledriving your box faster and you feel like the creature is going to impale you with its phallic tentacle.\n\n", false);
@@ -574,7 +574,7 @@ function tentacleRapeContinuation(): void {
             outputText("After a while the creature withdraws its tentacles from you. It poises the tentacle-cock over your face and lets out one last load, covering your face in hot, thick sperm. You reflexively open your mouth and allow loads of the salty juice down your throat. Once spent, the creature shambles off, leaving you well milked and cum-soaked.", false);
         }
         else {
-            outputText("A sharp tug tells you that the creature has sealed itself upon your " + multiCockDescriptLight(game.player) + ". You see " + player.breasts.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped cocks until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".");
+            outputText("A sharp tug tells you that the creature has sealed itself upon your " + multiCockDescriptLight(game.player) + ". You see " + player.breastRows.totalBreasts() + " smaller tentacles latch onto your erect nipples. You feel milk begin to leak out as the creature makes a perfect seal around your areola. A thick, phallic tentacle probes underneath your trapped cocks until it finds your vaginal opening. You cry out as the member punches past your opening and bottoms out in your womb. The tentacle swells up until it completely fills your " + vaginaDescript(player, 0) + ".");
             cuntChange(player, player.vaginalCapacity() * .76, true, true, false);
             outputText("  With freakish coordination, the beast sucks your " + multiCockDescriptLight(game.player) + " and tits while hammering away at your " + vaginaDescript(player, 0) + ". The overwhelming pleasure courses through your body and triggers an immediate orgasm, sending gouts of cum into the tentacles sealed around your pricks. The sensation of your fluids entering the creature prompts it to suck your throbbing cocks harder as well as hammer your " + vaginaDescript(player, 0) + " faster, leading to a chain of orgasms.\n\n", false);
             outputText("Drunk with pleasure, you revel in the sensation of cumming into the creature while it breast feeds from you. All you can do is drown in the experience of being milked from top to bottom. The creature begins piledriving your box faster and you feel like the creature is going to impale you with its phallic tentacle.\n\n", false);

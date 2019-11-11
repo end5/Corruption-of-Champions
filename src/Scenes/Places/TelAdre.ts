@@ -1820,7 +1820,7 @@ function letsDoYaraSex(girl: boolean = true): void {
     outputText("\n\n", false);
 
     outputText("She leans forward, planting you with a wet and lingering kiss.  She moves lower, kissing ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("your chest", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("your chest", false);
     else outputText("your nipples, one at a time", false);
     outputText(" and smooching your belly.  Even with her racially characteristic flexibility, however, she's not able to get any lower from that angle.  \"<i>Hold this, dear,</i>\" she says somewhat snarkily, pivoting around and resting her ass against your " + chestDesc(game.player) + ".  In this new posture, Yara can easily have her way with your junk, and by the way her wagging tail keeps bopping you in the face you can tell she's excited.\n\n", false);
 

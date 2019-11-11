@@ -65,15 +65,15 @@ export function broBrew(player: Player): void {
         outputText(", though you're a bit worried by how much you enjoyed the simple, brutish act", false);
     outputText(".\n\n", false);
     // (Tits b' gone)
-    if (player.breasts.biggestTitSize() >= 1) {
+    if (player.breastRows.biggestTitSize() >= 1) {
         outputText("A tingle starts in your " + nippleDescription(player, 0) + "s before the tight buds grow warm, hot even.  ", false);
-        if (player.breasts.biggestLactation() >= 1)
+        if (player.breastRows.biggestLactation() >= 1)
             outputText("Somehow, you know that the milk you had been producing is gone, reabsorbed by your body.  ", false);
         outputText("They pinch in towards your core, shrinking along with your flattening " + allChestDesc(game.player) + ".  You shudder and flex in response.  Your chest isn't just shrinking, it's reforming, sculping itself into a massive pair of chiseled pecs.  ", false);
         if (player.breastRows.length > 1) {
             outputText("The breasts below vanish entirely.  ", false);
             while (player.breastRows.length > 1) {
-                player.breasts.removeBreastRow(player.breastRows.length - 1, 1);
+                player.breastRows.removeBreastRow(player.breastRows.length - 1, 1);
             }
         }
         player.breastRows[0].breastRating = 0;

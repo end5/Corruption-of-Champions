@@ -47,10 +47,10 @@ function succubusBadEndPartTwo(): void {
     spriteSelect(55);
     clearOutput();
     outputText("In no time flat your blood begins to burn hot with the fires of unnatural lust.  "); // Arousal
-    if (player.breasts.biggestLactation() < 1) { // Tits – regular
+    if (player.breastRows.biggestLactation() < 1) { // Tits – regular
         outputText("Your " + nippleDescription(player, 0) + "s begin prodding painfully against your " + player.armorName + ", every touch serving to make them harder and more erect.  ");
     }
-    else if (player.breasts.biggestLactation() < 3) { // Tits – lactating
+    else if (player.breastRows.biggestLactation() < 3) { // Tits – lactating
         outputText("Your " + nippleDescription(player, 0) + "s get painfully hard as you feel milk begin backing up inside your " + allBreastsDescript(player) + ".   The succubus glances down mischieviously as her hands begin to grope you through your " + player.armorName + ", squeezing out a few drops of milk.  ");
     }
     else { // Tits – megalactating
@@ -246,7 +246,7 @@ export function succubusVictoryRape(): void {
             outputText("You plunge in to her velvety depths and feel her rippling cunt-muscles contract tightly around you for a perfect fit.  She gasps as each cock-distorting nodule bounces her two-inch clitty, making your mirror image moan like a bitch in heat.  The corrupted fluids dripping from her snatch squelch loudly, making your groin burn with pleasure.  ", false);
             if (player.balls > 0) outputText("Looking down, you even see the veins on your sack darkening to solid black as the corruption begins tainting your sperm-factories.  ", false);
             outputText("You pull back, letting the ring of pointed fleshy barbs spring free before plunging them back in. The pleasure makes you swoon, nearly forcing you to orgasm on the spot.  ", false);
-            if (player.breasts.biggestTitSize() > 0) outputText("Your female double reaches down to pinch your nipple, spurring you on, \"<i>Please, could you like, cum for me?</i>\"", false);
+            if (player.breastRows.biggestTitSize() > 0) outputText("Your female double reaches down to pinch your nipple, spurring you on, \"<i>Please, could you like, cum for me?</i>\"", false);
             // New PG
             outputText("\n\n", false);
             player.cocks[0].cockType = CockTypesEnum.DEMON;
@@ -273,7 +273,7 @@ export function succubusVictoryRape(): void {
         if (monster.HP < 1) outputText("Your foe staggers and falls hard on her ass, utterly defeated.  Her bruises and lacerations slowly fade and heal, regenerating with the aid of her demonic powers.  You easily tear through her clothes, leaving only the damaged stockings that gird her legs. It doesn't take much to force her down on her back and straddle her as you disrobe, ready to take your pleasure.\n\n", false);
         else outputText("Your foe drops to her knees, stuffing three digits into her greedy snatch as arousal overcomes her desire to subdue you.  With great care, you approach your insensible enemy and tear off her clothes, leaving her wearing only the remains of her stockings as you force her down on her back.  As if possessing a will of their own, her legs lewdly spread as you disrobe.\n\n", false);
         outputText("Her budding clit rises from between her folds, hardening like a tiny three inch dick.\n\n", false);
-        if (player.breasts.biggestLactation() > 1) {
+        if (player.breastRows.biggestLactation() > 1) {
             outputText("<b>You could scissor with her, or maybe force-feed her some of the milk you've backed up.  Which will it be?</b>", false);
             simpleChoices("Scissor", dungeonSuccubusForceScissor, "ForceFeed", dungeonSuccubusForceFeed, "", null, "", null, "", null);
         }
@@ -300,30 +300,30 @@ export function dungeonSuccubusForceFeed(): void {
     spriteSelect(55);
     clearOutput();
     outputText("You chuckle as you decide to release some of the pent up pressure in your " + allBreastsDescript(player) + ".  Laying down over your conquest, you grasp her wrists and pin them to the floor as you shove your tits in her face", false);
-    if (player.breasts.biggestTitSize() > 6) outputText(", nearly smothering the succubus with the swell of tit-flesh", false);
+    if (player.breastRows.biggestTitSize() > 6) outputText(", nearly smothering the succubus with the swell of tit-flesh", false);
     outputText(".  You jiggle back and forth, lining up a " + nippleDescription(player, 0) + " with the demon's parted lips.  You press your weight down threateningly, making it clear you could suffocate her with a boob.\n\n", false);
     outputText("\"<i>Drink up bitch, these tits are full!</i>\" you command.\n\n", false);
     outputText("The succubus tentatively takes a " + nippleDescription(player, 0) + " into her mouth, sighing at the tangy taste of your sweat-drenched skin.  Her lips gently suckle, wrapping around the perky hardening nub as it fills with arousal and milk.  You feel something let go inside your " + breastDescript(game.player, 0) + " and the succubus smiles, now working to free more of your trapped cream.\n\n", false);
-    if (player.breasts.biggestLactation() < 2) outputText("Her flexible tongue easily curls around one of your " + nippleDescription(player, 0) + "'s, letting her pull and tug on it as she increases the suction from her lips.  Your body rewards her efforts with a faster flow of milk that she sucks down as if she were starving.\n\n", false);
-    if (player.breasts.biggestLactation() >= 2 && player.breasts.biggestLactation() < 3) {
+    if (player.breastRows.biggestLactation() < 2) outputText("Her flexible tongue easily curls around one of your " + nippleDescription(player, 0) + "'s, letting her pull and tug on it as she increases the suction from her lips.  Your body rewards her efforts with a faster flow of milk that she sucks down as if she were starving.\n\n", false);
+    if (player.breastRows.biggestLactation() >= 2 && player.breastRows.biggestLactation() < 3) {
         outputText("Her flexible tongue wraps around your milk-engorged nipple, pulling it tightly as she increases the suction of her lips.  Your body wastes no time rewarding her and she begins gulping down a steady supply of your breastmilk with a pleased expression on her face. You muse to yourself that perhaps succubi are masochists as breast-milk runs freely from your un-milked ", false);
-        if (player.breasts.totalBreasts() > 2) outputText("tits.\n\n", false);
+        if (player.breastRows.totalBreasts() > 2) outputText("tits.\n\n", false);
         else outputText("tit.\n\n", false);
     }
-    if (player.breasts.biggestLactation() >= 3 && player.breasts.biggestLactation() < 4) {
+    if (player.breastRows.biggestLactation() >= 3 && player.breastRows.biggestLactation() < 4) {
         outputText("Her flexible tongue wraps around a milk-swollen nipple, immediately squeezing out a jet of thick breast-milk.  The tongue squeezes and tugs while the succubus ramps up the suction between her thick bee-stung lips.  Your body rewards her with fountains of milk, forcing her to visibly gulp and struggle to keep up with the heavy flow.  Milk runs freely down the " + player.skinDesc + " on your chest, pooling around the succubus' groin and your own as the unattended nipple", false);
-        if (player.breasts.totalBreasts() > 2) outputText("s", false);
+        if (player.breastRows.totalBreasts() > 2) outputText("s", false);
         outputText(" can't help but dribble in sympathy.\n\n", false);
     }
-    if (player.breasts.biggestLactation() >= 4) {
+    if (player.breastRows.biggestLactation() >= 4) {
         outputText("Her flexible tongue wraps around a milk-bloated nipple, immediately releasing a massive spray of cream that pours into her gullet, nearly choking her.  You stifle a giggle and pull her closer.  Thankfully, her determined tongue manages to stay in place and start tugging your nipple about, releasing even more of your over-large milk production.  She struggles, her throat and cheeks bulging from your explosive output of milk, until it overwhelms her and begin to pour out of her nose.  More milk pours from your unoccupied nipple", false);
-        if (player.breasts.totalBreasts() > 2) outputText("s", false);
+        if (player.breastRows.totalBreasts() > 2) outputText("s", false);
         outputText(" in sympathy, drenching your " + player.skinDesc + " with creamy goodness until it puddles on your captive demon.\n\n", false);
     }
-    if (player.breasts.totalNipples() == 2) outputText("As your first nipple drains, you move her to your other breast, being sure to motivate her cunt by grinding it with your " + foot(player) + ".  She squeals and sucks harder, emptying the last of your milk with a cute burp.  ", false);
-    if (player.breasts.totalNipples() > 2 && player.breasts.totalNipples() < 6) outputText("As your first " + nippleDescription(player, 0) + " drains, you forcibly move her to the next, unleashing a fresh batch of milk for her to feast upon.  Eventually, it too dries up, so you migrate her onwards to your next " + nippleDescription(player, 0) + ".  After she drains each of your " + num2Text(player.breasts.totalNipples()) + ", you smile happily at your now emptied breasts.  ", false);
-    if (player.breasts.totalNipples() >= 6) outputText("As your first " + nippleDescription(player, 0) + " drains, you force her over to the next, unleashing even more milk for her to feast upon.  In time, that " + nippleDescription(player, 0) + " also empties and you rotate her on to the next.  The cycle repeats seemingly endlessly as you work her from nipple to nipple, relieving the insistent pressure of your breasts and slowly filling her with your milk.  ", false);
-    if (player.breasts.averageLactation() * player.breasts.totalBreasts() < 6) outputText("Her belly bulges slightly from all the breast-milk she's consumed.\n\n", false);
+    if (player.breastRows.totalNipples() == 2) outputText("As your first nipple drains, you move her to your other breast, being sure to motivate her cunt by grinding it with your " + foot(player) + ".  She squeals and sucks harder, emptying the last of your milk with a cute burp.  ", false);
+    if (player.breastRows.totalNipples() > 2 && player.breastRows.totalNipples() < 6) outputText("As your first " + nippleDescription(player, 0) + " drains, you forcibly move her to the next, unleashing a fresh batch of milk for her to feast upon.  Eventually, it too dries up, so you migrate her onwards to your next " + nippleDescription(player, 0) + ".  After she drains each of your " + num2Text(player.breastRows.totalNipples()) + ", you smile happily at your now emptied breasts.  ", false);
+    if (player.breastRows.totalNipples() >= 6) outputText("As your first " + nippleDescription(player, 0) + " drains, you force her over to the next, unleashing even more milk for her to feast upon.  In time, that " + nippleDescription(player, 0) + " also empties and you rotate her on to the next.  The cycle repeats seemingly endlessly as you work her from nipple to nipple, relieving the insistent pressure of your breasts and slowly filling her with your milk.  ", false);
+    if (player.breastRows.averageLactation() * player.breastRows.totalBreasts() < 6) outputText("Her belly bulges slightly from all the breast-milk she's consumed.\n\n", false);
     else outputText("The succubus looks bloated and pregnant from all the milk you've forced into her.  She sloshes and moans incoherently from the strain of it all.\n\n", false);
     outputText("Despite the relief your " + allBreastsDescript(player) + " now feel, your " + vaginaDescript(player, 0), false);
     if (player.cocks.length > 0) outputText(" and " + multiCockDescriptLight(player) + " feel hungrier than ever.  ", false);

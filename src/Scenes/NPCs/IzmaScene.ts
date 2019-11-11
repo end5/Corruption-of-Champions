@@ -972,10 +972,10 @@ function nonFightIzmaSmexPAINUS(): void {
     outputText("\n\n", false);
 
     // [If the player is masculine but has B-cups or larger]
-    if (mf(player, "m", "f") == "m" && player.breasts.biggestTitSize() >= 2) {
+    if (mf(player, "m", "f") == "m" && player.breastRows.biggestTitSize() >= 2) {
         outputText("The fact that you have breasts seems to confuse Izma quite a bit as well, causing her to tilt her head.  \"<i>You're a guy... with boobs.  Did you honestly think they were necessary, or did you just want something to play with?</i>\"", false);
         // [If player is lactating]
-        if (player.breasts.biggestLactation() >= 2) outputText("  Catching sight of some milk oozing from your nipples makes Izma step back slightly.  \"<i>You're lactating too?!  Man, there are way too many things that are weird about this...</i>\"  Still, you doubt Izma is as turned off as she acts, what with the raging erection between her legs.", false);
+        if (player.breastRows.biggestLactation() >= 2) outputText("  Catching sight of some milk oozing from your nipples makes Izma step back slightly.  \"<i>You're lactating too?!  Man, there are way too many things that are weird about this...</i>\"  Still, you doubt Izma is as turned off as she acts, what with the raging erection between her legs.", false);
         outputText("\n\n", false);
     }
 
@@ -2090,9 +2090,9 @@ function RadarIzmaCumInYourChest(): void {
     spriteSelect(32);
     clearOutput();
     outputText("Taking a firm hold of her, you angle her lengthy member towards your chest and close your eyes in anticipation for her orgasmic release.  She doesn't disappoint as the smell of sweet, salty sperm rushes into your nostrils, signaling your body to receive her hot cum. Before you can truly relish inhaling your lover's scent, her load slaps forcefully ");
-    if (player.breasts.biggestTitSize() >= 1) outputText("in between your " + chestDesc(game.player) + " and coats ");
+    if (player.breastRows.biggestTitSize() >= 1) outputText("in between your " + chestDesc(game.player) + " and coats ");
     outputText("against your chest");
-    if (player.breasts.biggestTitSize() < 1) outputText(", coating it");
+    if (player.breastRows.biggestTitSize() < 1) outputText(", coating it");
     outputText(" liberally.  The aroma of your lover's spunk is too much, and with a great howl of undiminished, fulfilled satisfaction, you thrust one final time and plow deep into her, intent on burying your cock  firmly into her womb, unconsciously giving your seed the fighting chance it needs to fertilize your submissive partner.  With tremendous force, your spunk erupts forth and rushes deep inside of her pussy, ");
     // [(Normal cum production)
     if (player.cumQ() < 750) outputText("liberally lubricating her fuckhole with steamy cum and causing your beta to cry out in blissful pleasure.", false);

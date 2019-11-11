@@ -85,7 +85,7 @@ export function Hummus(player: Player): void {
         player.ass.analWetness = 1;
     // Clear breasts
     player.breastRows = [];
-    player.breasts.createBreastRow();
+    player.breastRows.createBreastRow();
     player.nippleLength = .25;
     // Girls and herms get bewbs back
     if (player.gender > 2) {

@@ -175,7 +175,7 @@ export function dreamSelect(): boolean {
         }
         // cow
         else if (daydream == 3) {
-            if ((player.gender == 1 && player.breasts.biggestTitSize() >= 5) || (player.gender == 3 && rand(2) == 0)) {
+            if ((player.gender == 1 && player.breastRows.biggestTitSize() >= 5) || (player.gender == 3 && rand(2) == 0)) {
                 outputText("having full and lactating breasts, searching for the right person to give your milk to.  You come across a pretty human girl and invite her to your breast.  She eagerly jumps into your arms and starts to suckle from your ample bosom.  You then guide your erect " + cockDescript(player, 0) + " into her waiting lower lips.  The two of you stand there in eternal bliss as she suckles on your chest and you thrust into her womanhood, until you wake from the dream.  ", false);
             }
             else if (player.gender >= 2) {

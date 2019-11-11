@@ -169,9 +169,9 @@ export function reptilum(player: Player): void {
         changes++;
     }
     // -Breasts vanish to 0 rating if male
-    if (player.breasts.biggestTitSize() >= 1 && player.gender == 1 && changes < changeLimit && rand(3) == 0) {
+    if (player.breastRows.biggestTitSize() >= 1 && player.gender == 1 && changes < changeLimit && rand(3) == 0) {
         // (HUEG)
-        if (player.breasts.biggestTitSize() > 8) {
+        if (player.breastRows.biggestTitSize() > 8) {
             outputText("\n\nThe flesh on your chest tightens up, losing nearly half its mass in the span of a few seconds.  With your center of balance shifted so suddenly, you stagger about trying not to fall on your ass.  You catch yourself and marvel at the massive change in breast size.", false);
             // Half tit size
         }
@@ -192,13 +192,13 @@ export function reptilum(player: Player): void {
         changes++;
     }
     // -Lactation stoppage.
-    if (player.breasts.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
-        if (player.breasts.totalNipples() == 2)
+    if (player.breastRows.biggestLactation() >= 1 && changes < changeLimit && rand(4) == 0) {
+        if (player.breastRows.totalNipples() == 2)
             outputText("\n\nBoth of your", false);
         else
             outputText("\n\nAll of your many", false);
         outputText(" nipples relax.  It's a strange feeling, and you pull back your top to touch one.  It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel when nothing ", false);
-        if (player.breasts.hasFuckableNipples())
+        if (player.breastRows.hasFuckableNipples())
             outputText("but sexual fluid ", false);
         outputText("escapes it.  <b>You are no longer lactating.</b>  That makes sense, only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.", false);
         if (player.perks.findByType(PerkLib.Feeder) >= 0 || player.effects.findByType(StatusAffects.Feeder) >= 0) {
@@ -213,9 +213,9 @@ export function reptilum(player: Player): void {
         }
     }
     // -Nipples reduction to 1 per tit.
-    if (player.breasts.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
+    if (player.breastRows.averageNipplesPerBreast() > 1 && changes < changeLimit && rand(4) == 0) {
         outputText("\n\nA chill runs over your " + allBreastsDescript(player) + " and vanishes.  You stick a hand under your " + player.armorName + " and discover that your extra nipples are missing!  You're down to just one per ", false);
-        if (player.breasts.biggestTitSize() < 1)
+        if (player.breastRows.biggestTitSize() < 1)
             outputText("'breast'.", false);
         else
             outputText("breast.", false);

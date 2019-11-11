@@ -213,36 +213,36 @@ export function foxTF(enhanced: boolean, player: Player): void {
         outputText("  You now have a [balls].");
     }
     // Sprouting more!
-    if (changes < changeLimit && enhanced && player.breasts.length < 4 && player.breastRows[player.breasts.length - 1].breastRating > 1) {
+    if (changes < changeLimit && enhanced && player.breastRows.length < 4 && player.breastRows[player.breastRows.length - 1].breastRating > 1) {
         outputText("\n\nYour belly rumbles unpleasantly for a second as the ");
         if (!enhanced)
             outputText("berry ");
         else
             outputText("drink ");
         outputText("settles deeper inside you.  A second later, the unpleasant gut-gurgle passes, and you let out a tiny burp of relief.  Before you finish taking a few breaths, there's an itching below your " + allChestDesc(game.player) + ".  You idly scratch at it, but gods be damned, it hurts!  You peel off part of your " + player.armorName + " to inspect the unwholesome itch, ");
-        if (player.breasts.biggestTitSize() >= 8)
+        if (player.breastRows.biggestTitSize() >= 8)
             outputText("it's difficult to see past the wall of tits obscuring your view.");
         else
             outputText("it's hard to get a good look at.");
         outputText("  A few gentle prods draw a pleasant gasp from your lips, and you realize that you didn't have an itch - you were growing new nipples!");
         outputText("\n\nA closer examination reveals your new nipples to be just like the ones above in size and shape");
-        if (player.breastRows[player.breasts.length - 1].nipplesPerBreast > 1)
+        if (player.breastRows[player.breastRows.length - 1].nipplesPerBreast > 1)
             outputText(", not to mention number");
-        else if (player.breasts.hasFuckableNipples())
+        else if (player.breastRows.hasFuckableNipples())
             outputText(", not to mention penetrability");
-        outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCup(player, player.breasts.length - 1) + "s.  <b>You have " + num2Text(player.breasts.length + 1) + " rows of breasts!</b>");
-        player.breasts.createBreastRow();
-        player.breastRows[player.breasts.length - 1].breastRating = player.breastRows[player.breasts.length - 2].breastRating;
-        player.breastRows[player.breasts.length - 1].nipplesPerBreast = player.breastRows[player.breasts.length - 2].nipplesPerBreast;
-        if (player.breasts.hasFuckableNipples())
-            player.breastRows[player.breasts.length - 1].fuckable = true;
-        player.breastRows[player.breasts.length - 1].lactationMultiplier = player.breastRows[player.breasts.length - 2].lactationMultiplier;
+        outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCup(player, player.breastRows.length - 1) + "s.  <b>You have " + num2Text(player.breastRows.length + 1) + " rows of breasts!</b>");
+        player.breastRows.createBreastRow();
+        player.breastRows[player.breastRows.length - 1].breastRating = player.breastRows[player.breastRows.length - 2].breastRating;
+        player.breastRows[player.breastRows.length - 1].nipplesPerBreast = player.breastRows[player.breastRows.length - 2].nipplesPerBreast;
+        if (player.breastRows.hasFuckableNipples())
+            player.breastRows[player.breastRows.length - 1].fuckable = true;
+        player.breastRows[player.breastRows.length - 1].lactationMultiplier = player.breastRows[player.breastRows.length - 2].lactationMultiplier;
         dynStats("sen", 2, "lus", 30);
         changes++;
     }
     // Find out if tits are eligible for evening
     let tits: boolean = false;
-    counter = player.breasts.length;
+    counter = player.breastRows.length;
     while (counter > 1) {
         counter--;
         // If the row above is 1 size above, can be grown!

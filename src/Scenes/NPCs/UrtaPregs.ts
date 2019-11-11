@@ -2620,7 +2620,7 @@ function acceptARandomGenderFromASkunk(): void {
     else if (rand(10) <= 8) {
         outputText("\n\nAn itch, not unpleasant but quite noticeable, begins plaguing you from the blank space where your loins should be.  Instinctively, you try to scratch at it.");
         outputText("\n\nNo matter how much you scratch, the itch only gets worse and you redouble your efforts in response.  This goes on for a few moments until you suddenly feel your fingers dig in, shuddering in pleasure as a throaty moan escapes your mouth.  You feel wetness, and at first you're worried it might be blood, but glancing at your fingers, you only spot a transparent slickness; vaginal juices.  You gasp as the final stages of your transformation settle in, groaning in discomfort as your wet gash begins swelling into a soft mound and a small nub, your clit, grows in, partially covered by its hood.");
-        if (player.breasts.biggestTitSize() < 1) {
+        if (player.breastRows.biggestTitSize() < 1) {
             outputText("\n\nThe same itchy feeling that previously assaulted your groin returns, but this time on your chest.  It's not too uncomfortable this time, and your flat chest begins swelling into a perky, A-Cup bust.");
             if (player.nippleLength < .5) {
                 outputText("  Your nipples erect into small half-inch nubs, complementing the transformation.");
@@ -2646,9 +2646,9 @@ function acceptARandomGenderFromASkunk(): void {
         player.cocks[0].cockLength = 5;
         player.cocks[0].cockThickness = 1;
 
-        if (player.breasts.biggestTitSize() < 3) {
+        if (player.breastRows.biggestTitSize() < 3) {
             outputText("\n\nYour chest itches.  It's not too uncomfortable, and even if it was, you're much too tired to scratch or knead at it anyway.  Your [chest] begin");
-            if (player.breasts.biggestTitSize() < 1) outputText("s");
+            if (player.breastRows.biggestTitSize() < 1) outputText("s");
             outputText(" swelling into a soft C-Cup.");
             if (player.nippleLength < 0.5) {
                 outputText("  Your nipples erect into small, half-inch nubs, complementing the transformation.");

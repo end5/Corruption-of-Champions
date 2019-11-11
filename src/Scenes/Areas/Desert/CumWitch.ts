@@ -26,7 +26,7 @@ export class CumWitch extends Monster {
         this.hoursSinceCum = 20;
         this.vaginas.createVagina(false, VaginaWetness.WET, VaginaLooseness.LOOSE);
         this.effects.create(StatusAffects.BonusVCapacity, 20, 0, 0, 0);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("E"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("E"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(12) + 55;

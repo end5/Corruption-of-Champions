@@ -478,7 +478,7 @@ export class Character {
                         if (this.breastRows[index].lactationMultiplier < this.breastRows[counter].lactationMultiplier)
                             index = counter;
                     }
-                    // trace(this.breasts.biggestLactation());
+                    // trace(this.breastRows.biggestLactation());
                     this.breastRows[index].lactationMultiplier += todo;
                     if (this.breastRows[index].lactationMultiplier < 0)
                         this.breastRows[index].lactationMultiplier = 0;

@@ -35,10 +35,10 @@ export class EncapsulationPod extends Monster {
         // [Round 4 Description]
         else {
             _long = "You're trapped inside the pod and being violated by tentacles from the shoulders down!  The slime around your waist is rising even faster now.  It will probably reach ";
-            if (player.breasts.biggestTitSize() >= 1) _long += "the underside of your " + game.allBreastsDescript(player);
+            if (player.breastRows.biggestTitSize() >= 1) _long += "the underside of your " + game.allBreastsDescript(player);
             else _long += "your chest";
             _long += " in moments.  You're being fucked by a bevy of tentacles while your nipples are ";
-            if (!player.breasts.hasFuckableNipples()) _long += "fondled ";
+            if (!player.breastRows.hasFuckableNipples()) _long += "fondled ";
             else _long += "fucked ";
             _long += "by more of the slippery fungal protrusions.  It would be so easy to just relax back in the fluid and let it cradle you while you're pleasured.  You barely even smell the sweet, thought-killing scent from before, but your hips are rocking on their own and you stumble every time you try to move.  Your resistance is about to give out!";
         }
@@ -73,7 +73,7 @@ export class EncapsulationPod extends Monster {
         this.long = "";
         // this.plural = false;
         initGenderless();
-        this.breasts.createBreastRow(0, 0);
+        this.breastRows.createBreastRow(0, 0);
         this.tallness = 120;
         this.hipRating = HipRating.SLENDER;
         this.buttRating = ButtRating.BUTTLESS;

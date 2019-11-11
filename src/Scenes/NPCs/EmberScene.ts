@@ -4307,9 +4307,9 @@ function penetrateWithEmber(clear: boolean = true): void {
     outputText(" moans at your ministrations");
     if (flags[kFLAGS.EMBER_GENDER] == 1 || flags[kFLAGS.EMBER_GENDER] == 3) {
         outputText(", her draconic prick pressing tightly against you as it leaks a steady stream of pre, matting ");
-        if (player.breasts.biggestTitSize() > 1) outputText("your [chest], ");
+        if (player.breastRows.biggestTitSize() > 1) outputText("your [chest], ");
         outputText("your belly");
-        if (player.breasts.biggestTitSize() > 1) outputText(",");
+        if (player.breastRows.biggestTitSize() > 1) outputText(",");
         outputText(" and Ember's own.");
     }
     outputText("  \"<i>Do you like playing with my body?</i>\"  Ember asks, gazing at you through half-lidded eyes.  You give her a playful smirk and run your fingers expertly over her nipples, making her moan and mewl at the stimulation and saying more than mere words could on the matter.");

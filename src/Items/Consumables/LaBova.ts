@@ -146,7 +146,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     let boobsGrew: boolean = false;
     // Increase player's breast size, if they are HH or bigger
     // do not increase size, but do the other actions:
-    if (((tainted && player.breasts.biggestTitSize() <= 11) || (!tainted && player.breasts.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
+    if (((tainted && player.breastRows.biggestTitSize() <= 11) || (!tainted && player.breastRows.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
         if (rand(2) == 0)
             outputText("\n\nYour " + breastDescript(game.player, 0) + " tingle for a moment before becoming larger.", false);
         else
@@ -168,7 +168,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         player.hairType = 0;
     }
     // If breasts are D or bigger and are not lactating, they also start lactating:
-    if (player.breasts.biggestTitSize() >= 4 && player.breastRows[0].lactationMultiplier < 1 && changes < changeLimit && (rand(3) == 0 || boobsGrew || enhanced)) {
+    if (player.breastRows.biggestTitSize() >= 4 && player.breastRows[0].lactationMultiplier < 1 && changes < changeLimit && (rand(3) == 0 || boobsGrew || enhanced)) {
         outputText("\n\nYou gasp as your " + breastDescript(game.player, 0) + " feel like they are filling up with something.  Within moments, a drop of milk leaks from your " + breastDescript(game.player, 0) + "; <b> you are now lactating</b>.", false);
         player.breastRows[0].lactationMultiplier = 1.25;
         changes++;
@@ -187,24 +187,24 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             }
             if (player.breastRows.length >= 3 && player.breastRows[2].nipplesPerBreast == 1) {
                 outputText("Finally, your ");
-                if (player.breasts.length == 3)
+                if (player.breastRows.length == 3)
                     outputText("third row of " + breastDescript(game.player, 2) + " mutates along with its sisters, sprouting into a wonderland of nipples.", false);
-                else if (player.breasts.length >= 4) {
+                else if (player.breastRows.length >= 4) {
                     outputText("everything from the third row down mutates, sprouting into a wonderland of nipples.", false);
                     player.breastRows[3].nipplesPerBreast = 4;
-                    if (player.breasts.length >= 5)
+                    if (player.breastRows.length >= 5)
                         player.breastRows[4].nipplesPerBreast = 4;
-                    if (player.breasts.length >= 6)
+                    if (player.breastRows.length >= 6)
                         player.breastRows[5].nipplesPerBreast = 4;
-                    if (player.breasts.length >= 7)
+                    if (player.breastRows.length >= 7)
                         player.breastRows[6].nipplesPerBreast = 4;
-                    if (player.breasts.length >= 8)
+                    if (player.breastRows.length >= 8)
                         player.breastRows[7].nipplesPerBreast = 4;
-                    if (player.breasts.length >= 9)
+                    if (player.breastRows.length >= 9)
                         player.breastRows[8].nipplesPerBreast = 4;
                 }
                 player.breastRows[2].nipplesPerBreast = 4;
-                outputText("  <b>You have a total of " + num2Text(player.breasts.totalNipples()) + " nipples.</b>");
+                outputText("  <b>You have a total of " + num2Text(player.breastRows.totalNipples()) + " nipples.</b>");
             }
         }
         // QUAD DAMAGE IF WEIRD SHIT BROKE BEFORE
@@ -226,7 +226,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
                 player.breastRows[3].nipplesPerBreast = 4;
             }
         }
-        else if (player.breasts.biggestLactation() > 1) {
+        else if (player.breastRows.biggestLactation() > 1) {
             if (rand(2) == 0)
                 outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescript(game.player, 0) + " start leaking milk from a massive jump in production.", false);
             else
@@ -285,7 +285,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     // apply an effect where the player really wants
     // to give their milk to other creatures
     // (capable of getting them addicted):
-    if (player.effects.findByType(StatusAffects.Feeder) < 0 && player.breasts.biggestLactation() >= 3 && rand(2) == 0 && player.breasts.biggestTitSize() >= 5 && player.cor >= 35) {
+    if (player.effects.findByType(StatusAffects.Feeder) < 0 && player.breastRows.biggestLactation() >= 3 && rand(2) == 0 && player.breastRows.biggestTitSize() >= 5 && player.cor >= 35) {
         outputText("\n\nYou start to feel a strange desire to give your milk to other creatures.  For some reason, you know it will be very satisfying.\n\n<b>(You have gained the 'Feeder' perk!)</b>", false);
         player.effects.create(StatusAffects.Feeder, 0, 0, 0, 0);
         player.perks.create(PerkLib.Feeder, 0, 0, 0, 0);

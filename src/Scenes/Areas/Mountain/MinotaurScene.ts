@@ -46,7 +46,7 @@ export function minoVictoryRapeChoices(): void {
         feedposit = "Lay Eggs";
         temp2 = layEggsInAMinotaurSpiderLike;
     }
-    if ((temp2 == null || rand(2) == 0) && player.vaginas.length > 0 && player.breasts.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) {
+    if ((temp2 == null || rand(2) == 0) && player.vaginas.length > 0 && player.breastRows.biggestTitSize() >= 4 && player.armor instanceof LustyMaidensArmor) {
         feedposit = "B.Titfuck";
         temp2 = (player.armor as LustyMaidensArmor).lustyMaidenPaizuri;
     }
@@ -55,7 +55,7 @@ export function minoVictoryRapeChoices(): void {
     let temp: () => void = null;
     // Enable mino milking even if not in need
     if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1 || player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) {
-        if (player.breasts.biggestTitSize() >= 5 && !player.isNaga()) {
+        if (player.breastRows.biggestTitSize() >= 5 && !player.isNaga()) {
             temp = minoGetsTitFucked;
             tempText = "Titfuck Him";
         }
@@ -341,7 +341,7 @@ function minoRapeIntro(): void {
     else {
         outputText("You rip off the minotaur's loincloth with a savage grin, slapping his ass and admiring the jiggle of his " + ballsDescriptLight(monster) + " as they wobble from the force of your blow.  The cow-man moos softly with desire, ropes of pre splattering the ground from his arousal.   The musk pouring off him and his puddle of slick pre-cum is overpowering, making it difficult to think as you feel your blood rush to your groin ", false);
         // NIPPULAR ENJOYMENT
-        if (player.breasts.totalNipples() > 1) outputText(" and nipples", false);
+        if (player.breastRows.totalNipples() > 1) outputText(" and nipples", false);
         outputText(".", false);
         // Vagina or not flavor texts
         if (player.vaginas.length > 0) outputText("  Glancing back at you with hope in its eyes, the minotaur's " + cockDescriptShort(monster, 0) + " twitches as he lays his gaze upon your " + vaginaDescript(player, 0) + ".", false);
@@ -557,9 +557,9 @@ export function getRapedByMinotaur(autoRape: boolean = false): void {
     if (player.vaginas.length > 0) cuntChange(player, (24 * 3), true, false, true);
 
     // Continue
-    if (player.breasts.biggestTitSize() > 0 && player.breasts.mostBreastsPerRow() > 1 && player.breastRows.length > 0) {
+    if (player.breastRows.biggestTitSize() > 0 && player.breastRows.mostBreastsPerRow() > 1 && player.breastRows.length > 0) {
         outputText("He manhandles your tits as he does so, almost violently squeezing and stretching them to his enjoyment.  ", false);
-        if (player.breasts.biggestLactation() > 1.5) outputText("He then gives a grunt in what you take to be approval as your milk begins to squirt out. He licks a milk-coated finger in satisfaction.  ", false);
+        if (player.breastRows.biggestLactation() > 1.5) outputText("He then gives a grunt in what you take to be approval as your milk begins to squirt out. He licks a milk-coated finger in satisfaction.  ", false);
     }
     if (player.cocks.length == 1) outputText("The bull-man bends forward a little, and grabs your " + cockDescript(game.player, 0) + " in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
     if (player.cocks.length > 1) outputText("The bull-man bends forward a little, and grabs one of your " + cockDescript(game.player, 0) + "s in a crushing grip. He makes short jerking motions as he keeps thrusting into you.", false);
@@ -606,7 +606,7 @@ function getOralRapedByMinotaur(): void {
     outputText("", true);
     outputText("The huge bull-man grabs you around the waist with one hand and flips you over. You hang upside down in his grip, your " + legs(player) + " splayed in the air.  The minotaur rubs your face across his sweat-slick balls, smearing his musk into your skin. Each of the minotaur's testicles is bigger than a man's head, and the skin of his sack is pulled taut over his cum-filled balls.\n\n", false);
     outputText("The minotaur traps your " + legs(player) + " in one hand and slams your back against the cold cave wall. You gasp, spraying drops of musky sweat from your lips. Dragging you against the rough stone, the minotaur lifts you higher and bends your " + legs(player) + " back over a rock ledge. You are pinned against the cave wall, " + legs(player) + " held in one of the minotaur's hands while his other roughly gropes your stretched-out body.", false);
-    if (player.breasts.breasts.hasBreasts()) outputText("  The bull-man grabs your " + biggestBreastSizeDescript(player) + ", squeezing and mauling them with his calloused hand.", false);
+    if (player.breastRows.hasBreasts()) outputText("  The bull-man grabs your " + biggestBreastSizeDescript(player) + ", squeezing and mauling them with his calloused hand.", false);
     if (player.cocks.length >= 1) {
         outputText("  Your " + multiCockDescriptLight(game.player) + " slap", false);
         if (player.cocks.length == 1) outputText("s", false);
@@ -621,7 +621,7 @@ function getOralRapedByMinotaur(): void {
     outputText("You hear a <i>POP</i> and feel a sharp pain in your jaw as the minotaur forces its full cock-head into your mouth.  The head slides past your jaws and into your mouth, pinning your tongue down and jabbing against the opening of your throat. The flared end of the shaft wedges itself behind your teeth. The minotaur moans, a sound somewhere between a bull calling to its herd and a man groaning in ecstasy. You grab the bull-man's shaft in both hands and brace yourself, trying to pull your head away from the cave wall. The minotaur starts grinding its hips, and with one hand grabs your head and twists it from side to side, rubbing its huge tip around in your mouth.\n\n", false);
     // new pg
     outputText("You arch your back off the wall, resting your weight on the minotaur's " + cockDescriptShort(monster, 0) + ". Your chest and belly rub against the minotaur's massive torso", false);
-    if (player.breasts.breasts.hasBreasts()) outputText(", painfully grinding your " + nippleDescription(player, 0) + " against his wiry fur", false);
+    if (player.breastRows.hasBreasts()) outputText(", painfully grinding your " + nippleDescription(player, 0) + " against his wiry fur", false);
     if (player.balls > 0) outputText(", and you can feel the minotaur's hot breath on your " + ballsDescriptLight(player), false);
     outputText(". The bull-man snorts and jerks his hips as you twist your hands around his shaft, hoping to make him cum sooner. You tickle your tongue against his cock-head and start sucking as hard as you can. You bend your neck as the minotaur grinds itself in your mouth, hoping to make the tip easier to take. The minotaur jerks his hips in short spasms and you can hear its grunts coming closer and closer together. You take a deep breath through your nose, filling your lungs with air before the beast floods your throat with its cum...\n\n", false);
     // new pg
@@ -695,7 +695,7 @@ function takeMinoCumDirectly(): void {
     outputText("The minotaur's eyes open wide as he lets out a lustful '<i>Moooooo</i>'.  He doesn't struggle or even move – you're giving him exactly what he wants, after all.\n\n", false);
 
     outputText("You bottom out, sighing happily as you feel his hot fluids leaking inside you, radiating pure pleasure out from your core.   Bestial hands grab your " + nippleDescription(player, 0) + "s and begin gently twisting them, taking surprising care for all their strength.  Spurred on by the feelings radiating from your ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("chest", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("chest", false);
     else outputText(breastDescript(game.player, 0), false);
     outputText(" and hungry for even more bliss, you begin bouncing atop the defeated beast, repeatedly squeezing and relaxing yourself around him, trying to wring out the maximum possible amount of fluid.\n\n", false);
 

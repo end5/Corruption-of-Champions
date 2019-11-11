@@ -741,7 +741,7 @@ export function goNext(time: number, needNext: boolean): boolean {
             return true;
         }
         // Tits gone or too small
-        else if (player.breasts.biggestTitSize() < 4) {
+        else if (player.breastRows.biggestTitSize() < 4) {
             outputText("\nThe fine chain that makes up your lewd bikini-top is dangling slack against your flattened chest.  Every movement and step sends it jangling noisily, slapping up against your [nipples], uncomfortably cold after being separated from your " + skinFurScales(player) + " for so long.  <b>There's no two ways about it - you'll need to find something else to wear.</b>\n\n");
             Inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
             return true;

@@ -192,7 +192,7 @@ function defeatFemale(): void {
     }
     // START FUNFUNSEXYTIMES)
     outputText("The spider-morph licks her lips and rubs her hands over her ass and abdomen, moaning lewdly as she gives in to her long-neglected sexual needs.  Narrowing slightly, her glittering purple eyes lock onto your exposed " + nippleDescription(player, 0) + "s.  The spider-girl purses her reflective black lips into a seductive pucker a moment before devouring one of the pointy areola.  You feel the tips of her fangs against your skin, scraping tiny, venom-filled furrows into your flesh", false);
-    if (player.breasts.biggestLactation() >= 1) outputText(" with each draught of milk that she pulls from your lactating breasts", false);
+    if (player.breastRows.biggestLactation() >= 1) outputText(" with each draught of milk that she pulls from your lactating breasts", false);
     else outputText(" with each fruitless, nipple-engorging suckle she gives you", false);
     outputText(".\n\n", false);
 
@@ -205,8 +205,8 @@ function defeatFemale(): void {
     outputText("\"<i>Delicious!  Now to get you ready,</i>\" she says with a smug grin.  You groan your frustration, but your voice is thrown up a few octaves when she sinks over an inch of her needle-like fangs into your breast.  Venom boils into your pierced flesh, the hot drug burning through your veins as your body spreads it throughout all its extremities. Your " + skin(player) + " flushes, and though you didn't think it possible, your " + vaginaDescript(player) + " gushes out a veritable flood of slick girlcum that turns the pearly threads a damp gray.  The air stinks with the heady aroma of puddling girl-lust, and you instinctively hump against your bindings, the restraints turning your motions into little more than pathetic, repetitive muscle twitches.\n\n", false);
 
     outputText("The spider-girl pulls back and admires her handiwork for a moment before she repeats the action on ", false);
-    if (player.breasts.biggestTitSize() < 1) outputText("the other side of your chest", false);
-    else if (player.breasts.totalBreasts() == 2) outputText("your other breast", false);
+    if (player.breastRows.biggestTitSize() < 1) outputText("the other side of your chest", false);
+    else if (player.breastRows.totalBreasts() == 2) outputText("your other breast", false);
     else outputText("another one of your many breasts", false);
     outputText(".  By now, your body is thrumming with sexual need and even the pain of her fangs penetrating your flesh registers as nothing more than a burst of masochistic pleasure.  A ", false);
     if (player.vaginas.wetness() >= 4) outputText("gush", false);
@@ -312,7 +312,7 @@ function spiderMorphFemaleRidesACawk(): void {
 
     outputText("The arachnid-girl begins to lower herself down, but pauses and shifts once she brushes your " + cockDescript(game.player, x) + ".  With the change in angle, her lips slide over your silk-girded penis, slathering the smooth cocoon with wetness that you can somehow feel through it.  She leans forward, placing her hands to either side of your torso and letting her unrestrained breasts bounce above you, the dark nipples ", false);
 
-    if (player.breasts.biggestTitSize() >= 2) outputText("dragging over your own " + nippleDescription(player, 0) + "s", false);
+    if (player.breastRows.biggestTitSize() >= 2) outputText("dragging over your own " + nippleDescription(player, 0) + "s", false);
     else outputText("hovering just above your chest", false);
     outputText(".  The spider-maiden seem to tire of the teasing once you begin to twitch against her.\n\n", false);
 

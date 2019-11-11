@@ -23,7 +23,7 @@ export class HarpyMob extends Monster {
         this.pronoun2 = "them";
         this.pronoun3 = "their";
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.GAPING_WIDE);
-        this.breasts.createBreastRow(Appearance.breastCupInverse("B"));
+        this.breastRows.createBreastRow(Appearance.breastCupInverse("B"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(8) + 70;

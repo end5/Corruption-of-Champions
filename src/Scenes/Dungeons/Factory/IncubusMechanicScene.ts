@@ -43,14 +43,14 @@ export function incubusLossRape(): void {
     player.slimeFeed();
     outputText("", true);
     // Nipplefuck city
-    if (player.breasts.hasFuckableNipples() && player.lust >= 100) {
+    if (player.breastRows.hasFuckableNipples() && player.lust >= 100) {
         outputText("Molten arousal pumps through your veins, burning away your reason with an unquenchable desire to mate.  You drop your top, exposing your " + allBreastsDescript(player) + " to your foe in a submissive display. Lowering your eyes, you hope you can tempt him to plug your " + nippleDescription(player, 0) + " with his demonic prick.  You roughly squeeze each sensitive tit, trailing your fingers down the sensitive breast-flesh towards your rapidly dampening fuck-holes.\n\n", false);
         outputText("Your eyes relax as pure sensation overwhelms your already over-excited body.  Your fingers find your nipple-holes, locking around them while tugging and squeezing, stretching them tight with pleasure and pain.  You cast a seductive glance to the incubus' groin, noting that he's been taken in by your wanton display.  He takes a step, his cock rippling and twisting as it shifts and changes before your eyes. It divides it half, splitting into two full-sized pricks.", false);
-        if (player.breasts.totalNipples() > 2) outputText("  Each of those divides again, splitting into four prehensile penises.", false);
-        if (player.breasts.totalNipples() > 4) outputText("  They continue dividing until his wriggling mass is sufficient to penetrate every single nipple and then some.", false);
+        if (player.breastRows.totalNipples() > 2) outputText("  Each of those divides again, splitting into four prehensile penises.", false);
+        if (player.breastRows.totalNipples() > 4) outputText("  They continue dividing until his wriggling mass is sufficient to penetrate every single nipple and then some.", false);
         outputText("\n\n", false);
         outputText("A pleading moan escapes your lips and your captor obliges you, the cocks wriggling forward under their own power and sliding into your slippery " + nippleDescription(player, 0) + "s with ease.  Each member is perfectly sized to stimulate you without over-stretching your tender breast-flesh.  You barely stifle a giggle, drunk on enough pleasure to shatter a lesser mind.  Your giggling is rudely interrupted by something hard and slick forcing itself between your lips.  You smile and slurp on it like a pacifier, swallowing droplets of pre-cum as his tentacle-like pricks fuck your breasts hard and fast, ", false);
-        if (player.breasts.biggestLactation() > 1) outputText("splattering milk and pre everywhere.\n\n", false);
+        if (player.breastRows.biggestLactation() > 1) outputText("splattering milk and pre everywhere.\n\n", false);
         else outputText("splattering your tits with escaped sexual fluids.\n\n", false);
         outputText("The demon tenses, pulling your head forwards and burying your nose against his belly.  The dick in your mouth slides down your throat, hanging just above your belly as it begins to fill your gut with bursts of demonic warmth.  Black cum erupts from your nipples as his orgasm overwhelms their meager storage capacity, soaking your tits in his corruptive essence as the pleasure finally breaks your mind.  Your eyes roll back into your head as you begin cumming... and cumming... and cumming. The orgasm drags on and on as more and more cum pours into your body.  Like a passenger in a car you see what's happening but have no control.  Your body is used and abused for hours before you finally drift off to sleep.", false);
         player.orgasm();
@@ -70,7 +70,7 @@ export function incubusLossRape(): void {
         outputText(", you watch as his pricks pulse and thicken out until their masses are as wide as his original dick.\n\n", false);
         if (player.cor >= 80) outputText("As you realize their size and number, you open your eyes wide and smile broadly, reflexively spreading your legs wide, practically begging him to fuck you.  ", false);
         outputText("In a flash, each fat tentacle-cock whips out and surrounds your body in slick demon-flesh.  The tentacles constrict, working in pairs to take off every piece of your " + player.armorName + ".  ", false);
-        if (player.breasts.biggestTitSize() >= 2) outputText("They make sure to rub each of your breasts, spending a few seconds smearing slick pre-cum into your " + nippleDescription(player, 0) + ".  ", false);
+        if (player.breastRows.biggestTitSize() >= 2) outputText("They make sure to rub each of your breasts, spending a few seconds smearing slick pre-cum into your " + nippleDescription(player, 0) + ".  ", false);
         outputText("A pair of them slides into your undergarments, pressing against your needy crotch and teasing your " + assholeDescript(player) + " with more slick demonic cum.  ", false);
         if (player.cor < 80) outputText("You wriggle and whine,", false);
         else outputText("You grab the thick tentacle-cock working on your cunt with both hands, as you can barely grab it with one. Then,  while letting out moans fit for a bitch in heat, which you are, you begin", false);
