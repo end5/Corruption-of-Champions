@@ -56,7 +56,7 @@ function brigitPostQueenDeathBadEndII(): void {
         outputText("\n\nA sharp crack sounds and Kiri's eyes widen as her chest jerks forward; Brigid stands behind her, holding a leather crop.  \"<i>You're here to fuck, not talk!</i>\" the torturer screams, shaking the whip at you.  \"<i>I don't care if it's salamanders, phoenixes, or just half-breed harpies, but you are going to help make me a new army to replace the one you wiped out!</i>\"  Kiri grimaces at the brutal woman, but begins shifting her hips against you, sending a wave of pleasure to the base of your spine.");
 
         // [(if F or U)
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("\n\nYour eyes widen in shock at the sensation, and Kiri flinches at your expression.  \"<i>What,</i>\" Brigid asks, glowering at you, \"<i>did you think we'd let you go after what you did, just because we couldn't breed you?");
             if (player.pregnancyIncubation > 0) outputText("  Once this disgusting thing you're carrying falls out of you, we'll use you more traditionally, but...</i>\"  She pauses to press uncomfortably on your pregnant belly, then resumes speaking.  \"<i>I have no intention of letting you sit idle for however long that takes.");
             outputText("  For now, I've given you the most obvious modification - I can think of something else later.</i>\"");

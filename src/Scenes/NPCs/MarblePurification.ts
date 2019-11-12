@@ -608,10 +608,10 @@ export function cowCuntBadEndPartIV(): void {
     outputText("\n\nHer hand moves down your body, and finds itself on your [chest].  She toys a bit with the nipples, giggling at your reaction, then moves down to your stomach and pokes you.  Your reaction only promotes more laughter.  You guess that she wants to get a <i>feel</i> for her new toy, and your thoughts are confirmed when she grips your legs, continuing to test you for any places that might be suitable targets for tickling you.");
     outputText("\n\nEventually the pokings and proddings wind down, and the young cow-girl becomes more interested in your naughty bits now.  ");
     // if (player is male)
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         outputText("At this point your " + multiCockDescriptLight(game.player) + " is rock hard, and Clara gives it a few strokes.  She does seem to lose interest surprisingly quick though.");
     }
-    else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    else if (player.vaginas.length > 0 && player.cocks.length === 0) {
         outputText("You’ve become quite wet at this point, and Clara gives your " + vaginaDescript(player) + " a few rubs, before tugging on your " + clitDescription(player) + " once.");
     }
     else if (player.cocks.length > 0 && player.vaginas.length > 0) {
@@ -626,7 +626,7 @@ export function cowCuntBadEndPartIV(): void {
 
     // Proceed to either the has fitted cock, no fitted cock, or has not cock variants.
     menu();
-    if (!player.cocks.length > 0) addButton(0, "Next", cocklessPCsGetAbusedByCowCunts);
+    if (player.cocks.length === 0) addButton(0, "Next", cocklessPCsGetAbusedByCowCunts);
     else if (player.cocks.cockThatFits(20) < 0) addButton(0, "Next", cockTooBigForCowCuntageBadEndage);
     else addButton(0, "Next", badEndDickThatFitsClara);
 }

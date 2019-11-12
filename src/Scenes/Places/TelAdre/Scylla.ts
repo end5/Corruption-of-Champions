@@ -28,7 +28,7 @@ export function scyllaBarSelectAction(): void {
     if (game.time.totalTime == scyllaLastActionSelectionTime) return; // Only choose action once per visit to the bar
     scyllaLastActionSelectionTime = game.time.totalTime;
     scyllaAction = SCYLLA_NOT_PRESENT;
-    if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0 && (!player.cocks.length > 0 || player.cocks.longestCockLength() < 12) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
+    if (player.effects.findByType(StatusAffects.DungeonShutDown) >= 0 && (player.cocks.length === 0 || player.cocks.longestCockLength() < 12) && flags[kFLAGS.NUMBER_OF_TIMES_MET_SCYLLA] == 0) {
         scyllaAction = SCYLLA_ACTION_FIRST_TALK;
         return;
     }
@@ -88,7 +88,7 @@ export function talkToScylla(): void {
     outputText("You approach the busty stranger as her dark, curly black hair falls over her eyes.  She seems to be staring at the cup of coffee she's clutching. As she pours pale cream into it, her tongue absently licks the generous bulge of her scarlet, O-shaped lips. She notices the motion and shakes her head harshly, slamming the cream down too hard and shattering the ceramic. Milky white fluid splatters across her face and she utters a gasp that you think is only half surprise. Was it your imagination, or did that sound a little orgasmic? It might be a good idea to introduce yourself and help her clean up the mess.\n\n", false);
 
     // New modified intro
-    if (!player.cocks.length > 0 || player.cocks.longestCockLength() < 12) {
+    if (player.cocks.length === 0 || player.cocks.longestCockLength() < 12) {
         if (flags[kFLAGS.SCYLLA_SMALLCOCK_INTRO] == 0) {
             outputText("You step up to the woman and introduce yourself, noticing that the white and black hat she wears is covering tiny bulges in her skull.  Brushing her jet hair from her eyes, she follows your glance and blushes a deep purple hue. Pulling the cowl back, she reveals the twin nub-like horns that mark demonic taint. Apologizing for the scene she caused with the cup, she mumbles an introduction, getting as far as to explain that she is a nun before losing the thread entirely- evidently distracted by some inner turmoil. Following her gaze, you see that she’s staring at some of the other patrons- men whose massive members are visible through the knee-length bulge in their pant legs. You try to get her attention again, but she’s lost in a private world, her breath quick and shallow. Troublesome. If you want to keep her attention for any length of time, apparently you’ll need a monster cock swinging from your hips. You leave the size queen and go back to your soup.\n\n", false);
             flags[kFLAGS.SCYLLA_SMALLCOCK_INTRO] = 1;

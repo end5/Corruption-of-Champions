@@ -1826,7 +1826,7 @@ function watchMediumAffectionEmberEggLay(): void {
         }
         if (player.vaginas.length > 0) outputText("wetness gathering in your own pussy");
         outputText(" more than indicate");
-        if (!player.cocks.length > 0 || !player.vaginas.length > 0) outputText("s");
+        if (player.cocks.length === 0 || player.vaginas.length === 0) outputText("s");
         outputText(" your desire to break your promise.");
     }
     outputText("\n\nOne of Ember's clawed fingers slowly penetrates her depths, sinking in all the way to the knuckle and drawing a long throaty moan from her.  She sets upon a steady pace; humming with each thrust inside.  Soon, you realize her pumps are becoming shallower and more erratic, until she removes her finger; the egg's outer shell is visible, coming out of her folds.");
@@ -3729,7 +3729,7 @@ export function giveBirthToEmberKids(): void {
     if (flags[kFLAGS.EMBER_OVIPOSITION] == 0) {
         // 40% chance of boy, 40% chance of girl and 20% chance of both
         // (If the PC has no pussy)
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             outputText("A terribly painful ripping feeling comes from your crotch. Reaching down to touch the tender spot you feel a spike of pleasure and moistness.  <b>You've grown a vagina!</b>\n\n");
             player.vaginas.createVagina();
         }
@@ -3812,7 +3812,7 @@ export function giveBirthToEmberKids(): void {
     // PC Lays Egg
     else {
         // (If the PC has no pussy)
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             outputText("A terribly painful ripping feeling comes from your crotch. Reaching down to touch the tender spot you feel a spike of pleasure and moistness.  <b>You've grown a vagina!</b>\n\n");
             player.vaginas.createVagina();
         }

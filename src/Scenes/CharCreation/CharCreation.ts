@@ -886,7 +886,7 @@ function customAria(): void {
     outputText("It's really no surprise that you were sent through the portal to deal with the demons - you look enough like one as-is.  Your numerous fetish-inducing piercings, magical fox-tails, and bimbo-licious personality were all the motivation the elders needed to keep you from corrupting the village youth.");
     // 2/26/2013 8:18:21	rdolave@gmail.com	Character Creation	"female DD breasts feminity 100 butt size 5 hip size 5 body thickness 10 clit I would like her nipples pierced with Ceraphs piercing
     // (on a side note how much do you think it would cost to add bell nipple,labia and clit piercings as well as an option for belly button piercings would like to see belly button piecings with a few different options as well.  Also would love to have handcuff ear piercings.)"	Would like the bimbo brain and bimbo body perks as well as the nine tail PerkLib.  demonic high heels, pink skin, obscenely long pink hair  would like her to be a kitsune with the nine tails.  pink fur.  starting equipment would like to be the succubus whip and nurse's outfit.  Also would like the xmas perk and all three Vday perks	Aria
-    if (!player.vaginas.length > 0) player.vaginas.createVagina();
+    if (player.vaginas.length === 0) player.vaginas.createVagina();
     if (player.femininity < 80) player.femininity = 80;
     player.perks.create(PerkLib.BimboBody, 0, 0, 0, 0);
     player.perks.create(PerkLib.BimboBrains, 0, 0, 0, 0);
@@ -934,14 +934,14 @@ function customBetram(): void {
     player.tailType = TailType.FOX;
     player.tailVenom = 1;
     if (player.breastRows.biggestTitSize() > 1) player.breastRows[0].breastRating = 1;
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         player.cocks.createCock();
         player.cocks[0].cockType = CockTypesEnum.DOG;
         player.cocks[0].cockLength = 8;
         player.cocks[0].cockThickness = 1;
         player.cocks[0].knotMultiplier = 1.4;
     }
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VaginaWetness.WET;
         player.clitLength = 0.25;
@@ -1014,8 +1014,8 @@ function customCeveo(): void {
 function customCharaun(): void {
     outputText("As a gifted fox with a juicy, thick knot, a wet cunt, and magical powers, you have no problems with being chosen as champion.");
     // Herm, Fox Cock: (27"l x 1.4"w, knot multiplier 3.6), No Balls, Cum Multiplier: 7,500, Vaginal Wetness: 5, Clit length: 0.5, Virgin, Fertility: 15	9-tailed "enlightened" kitsune( a pure-blooded kitsune with the "Enlightened Nine-tails" perk and magic specials)
-    if (!player.cocks.length > 0) player.cocks.createCock();
-    if (!player.vaginas.length > 0) player.vaginas.createVagina();
+    if (player.cocks.length === 0) player.cocks.createCock();
+    if (player.vaginas.length === 0) player.vaginas.createVagina();
     player.gender = 3;
     player.cocks[0].cockLength = 27;
     player.cocks[0].cockThickness = 1.4;
@@ -1157,7 +1157,7 @@ function customCody(): void {
 function customGalatea(): void {
     // "(Dangit Fenoxo!  Stop adding sexy must-have things to the game!  If it's not too late to update it I've added in that sexy new armor.  Thanks!)
     // Other:
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         player.vaginas.createVagina();
         if (player.clitLength == 0) player.clitLength = 0.25;
     }
@@ -1210,11 +1210,11 @@ function customGundam(): void {
 function customHikari(): void {
     // Character Creation	If possible I would like a herm with a cat cock that is 10 inches by 4 inches. Anything else is up to you.	I would like a herm catmorph with two large d breasts and shoulder length hair. Also if possible I would like to start with some gel armor. Everything else is fair game.	Hikari
     outputText("As a herm with a super-thick cat-cock, D-cup breasts, and out-of-this-world armor, you're a natural pick for champion.");
-    if (!player.cocks.length > 0) player.cocks.createCock();
+    if (player.cocks.length === 0) player.cocks.createCock();
     player.cocks[0].cockType = CockTypesEnum.CAT;
     player.cocks[0].cockLength = 10;
     player.cocks[0].cockThickness = 4;
-    if (!player.vaginas.length > 0) player.vaginas.createVagina();
+    if (player.vaginas.length === 0) player.vaginas.createVagina();
     player.breastRows[0].breastRating = 4;
     player.hairLength = 10;
     player.setArmor(ArmorLib.GELARMR);
@@ -1296,7 +1296,7 @@ function customIsaac(): void {
 function customKatti(): void {
     outputText("You have big breasts with big, fuckable nipples on them, and no matter what, your vagina always seems to be there to keep you company.");
     // Gender: Female
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         player.vaginas.createVagina();
         genderCheck();
     }
@@ -1371,7 +1371,7 @@ function customLeah(): void {
 function customLucina(): void {
     // 428347355782040	Character Creation	Female,wetness=wet, Looseness=normal,not a virgin, Fertility high i guess i dont really care can be up to you.	for her face normal human, ears i want Elvin, no tails, just normal skin, body thickness i want to be slender, body tone kinda athletic but not too much, hair i want really long i think like a 30 on the codex number i think and her hair color light blonde, i want her to have normal D size breast with you can choose how you want them really though i dont think i really care, nipple size i dont care, her skin color a fair light light color but not too pale, for her starting equipment i want im not sure what i want her to wear but basically i want a Elvin archer with a bow. so maybe you can do something about the clothing. i just want a Elvin character in the game since theres goblins plus another archer besides kelt a female one add to that.	Lucina
     outputText("You're a blond, fair-skinned lass with a well-made bow and the skills to use it.  You have D-cup breasts and a very moist cunt that's seen a little action.  You're fit and trim, but not too thin, nor too well-muscled.  All in all, you're a good fit for championing your village's cause.");
-    if (!player.vaginas.length > 0) player.vaginas.createVagina();
+    if (player.vaginas.length === 0) player.vaginas.createVagina();
     player.vaginas[0].vaginalWetness = VaginaWetness.SLICK;
     player.vaginas[0].vaginalLooseness = VaginaLooseness.LOOSE;
     player.vaginas[0].virgin = false;
@@ -1715,7 +1715,7 @@ function customNavorn(): void {
     player.breastRows[3].breastRating = 5;
     player.breastRows[3].nipplesPerBreast = 4;
     player.breastRows[3].fuckable = true;
-    if (!player.cocks.length > 0) player.cocks.createCock();
+    if (player.cocks.length === 0) player.cocks.createCock();
     player.cocks.createCock();
     player.cocks.createCock();
     player.cocks.createCock();
@@ -1754,7 +1754,7 @@ function customNavorn(): void {
     // Muscle: 75/100"
     player.tone = 75;
     // for wetness a squirter, looseness a 2 and capacity at 140.
-    if (!player.vaginas.length > 0) player.vaginas.createVagina();
+    if (player.vaginas.length === 0) player.vaginas.createVagina();
     player.vaginas[0].vaginalWetness = VaginaWetness.SLAVERING;
     player.effects.create(StatusAffects.BonusVCapacity, 132, 0, 0, 0);
     // Virgin, high fertility like in the email I sent before.  dragon wings, nine fox tails,  dragon legs, eight DD breasts with four fuckable nipples each, dragon tongue, waist length hair, large dragon wings.

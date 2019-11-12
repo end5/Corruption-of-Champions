@@ -276,7 +276,7 @@ function helDefeatedCorrupt(): void {
         if (player.cocks.length > 0 && player.cocks.cockThatFits(85) >= 0 && player.lust >= 33) {
             addButton(0, "Rape Ass", rapingHelsAssMeansYourCorruptCauseAnalIsEvil);
         }
-        else if (!player.cocks.length > 0 || player.cocks.cockThatFits(85) == -1) {
+        else if (player.cocks.length === 0 || player.cocks.cockThatFits(85) == -1) {
             outputText("\n\nYour dick is too big to fuck her anally.", false);
         }
 

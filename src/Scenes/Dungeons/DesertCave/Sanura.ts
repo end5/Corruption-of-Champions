@@ -380,7 +380,7 @@ export function fuckDatSphinx(): void {
         addButton(2, "Pawjob", lionpaws, false);
     }
     // Cunts & NoDicks
-    if (player.vaginas.length > 0 || !player.cocks.length > 0) addButton(3, "Magic Dildos", forceDildos);
+    if (player.vaginas.length > 0 || player.cocks.length === 0) addButton(3, "Magic Dildos", forceDildos);
 }
 
 // Get Blown (Males & Herms)

@@ -112,7 +112,7 @@ export function gooGasmic(player: Player): void {
         return;
     }
     // 3a. Grow vagina if none
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nA wet warmth spreads through your slimey groin as a narrow gash appears on the surface of your groin.  <b>You have grown a vagina.</b>", false);
         player.vaginas.createVagina();
         player.vaginas[0].vaginalWetness = VaginaWetness.DROOLING;

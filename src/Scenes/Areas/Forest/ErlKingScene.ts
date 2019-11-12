@@ -143,10 +143,10 @@ function firstWildHuntChase(waited: boolean = false): void {
 
         outputText("To your horror, you see flashes of red as their slick shafts slide out, the air thick with heavy, panting breaths.");
         if (player.cor >= 40) {
-            if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+            if (player.cocks.length > 0 && player.vaginas.length === 0) {
                 outputText("  You can't help but stiffen, yourself, at the sight of their eagerness.");
             }
-            else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+            else if (player.vaginas.length > 0 && player.cocks.length === 0) {
                 outputText("  As the air grows thick with their musk, your pussy grows wet, despite your best efforts.");
             }
             else if (player.vaginas.length > 0 && player.cocks.length > 0) {
@@ -451,10 +451,10 @@ function surrenderToTheHounds(): void {
     outputText("\n\n");
 
     outputText("Between your bestial legs, your genitals rearrange themselves.");
-    if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    if (player.vaginas.length > 0 && player.cocks.length === 0) {
         outputText("  Your clit swells to incredible size, throbbing a dull red, run through with purple veins.  You pant heavily, your tongue hanging out of your mouth, as the rest of your pussy closes, sealing as if it were never there, only to be replaced a moment later with the swelling of two massive testicles.");
     }
-    else if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    else if (player.cocks.length > 0 && player.vaginas.length === 0) {
         if (player.cocks.length > 1) {
             outputText("  Your stomach lurches as your cocks slap together and begin melding into one swollen form.  It pulses and throbs, swelling at the base, pointing at the tip, becoming a single dog cock.");
         }
@@ -476,7 +476,7 @@ function surrenderToTheHounds(): void {
             else outputText("  Your canine prick throbs painfully, leaving you panting and whining.");
         }
     }
-    else if (!player.vaginas.length > 0 && !player.cocks.length > 0) {
+    else if (player.vaginas.length === 0 && player.cocks.length === 0) {
         outputText("  The smooth curve of your crotch ripples and bulges, and a cherry-red tip pushes out from your fur.  The wind around you picks up, blowing across your new, smooth doggie prick as it pushes out.  The overwhelming sensation has you shuddering, and you tilt your head back and howl.");
     }
     outputText("\n\n");
@@ -526,7 +526,7 @@ function predatoryPrey(): void {
     outputText("His warm mouth presses against your neck, his fingers undoing your [armor], letting it fall to the forest floor.  His touch sends warm shivers through you, and you moan as he walks you backward, pressing you firmly against a tree.\n\n");
 
     if (!player.isTaur()) {
-        if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && player.cocks.length === 0) {
             outputText("With your back against the tree, he guides your");
             if (player.isBiped() || player.isDrider() || player.isGoo()) outputText(" [legs] up, letting them wrap around his back.");
             else if (player.isNaga()) outputText(" tail up, letting your coils wrap around his back.");
@@ -572,7 +572,7 @@ function predatoryPrey(): void {
     else {
         outputText("The Erlking smiles at you, caressing your cheek.  “<i>I pride myself in keeping a proper stable,</i>” he says, delicately moving behind you.  With his strong hands on your flanks, he guides you to face up against a tree.\n\n");
 
-        if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+        if (player.vaginas.length > 0 && player.cocks.length === 0) {
             outputText("With your [chest] against the rough bark, he lifts your [tail], exposing your [pussy] to the swelling head of his equine cock.  With a soft sound, he pushes between your lips, letting you feel each prepuce ring as they squeeze into you.");
 
             cuntChange(player, 12 * 3, true, true, false);
@@ -633,7 +633,7 @@ function howDareYou(): void {
 
     outputText("“<i>What do yo-</i>” begins the Erlking, looking up at you.  You slap his face, cutting off the end of the question.\n\n");
 
-    if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    if (player.vaginas.length > 0 && player.cocks.length === 0) {
         outputText("You grab his horns, shoving him over backwards.  He seems to be getting weaker by the moment.  He can barely pick himself up off the ground.  You look down at the prone huntsman with disdain, striding to his head, your [feet] on either side of his head.\n\n");
 
         outputText("“<i>What are yo-</i>” he tries to ask, before you crouch down, burying his deer-muzzle in your muff.  You grab the forward prongs of his antlers, steering his mouth against your dripping vagina.\n\n");

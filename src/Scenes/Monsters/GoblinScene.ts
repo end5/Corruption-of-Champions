@@ -104,7 +104,7 @@ export function goblinRapesPlayer(): void {
     else outputText("twisting and tweaking", false);
     outputText(", torturing you with pain and pleasure.\n\n", false);
     // [DICK VERSION]
-    if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+    if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
         // [TOO BIG]
         if (player.cocks.cockArea(0) > monster.vaginalCapacity()) {
             outputText("She lifts her body up high, grabbing your " + cockDescript(game.player, 0) + " with both her petite hands.  Your mind somehow makes note of the shiny black of her fingernails as she struggles to part her dripping wet womanhood around your massive member.  Though her body stretches to an absurd degree, she just can't get you inside. She pouts and drops your tool back onto you, promising you, \"<i>I'll find a way to get every ounce of your cum inside me, don't you worry.</i>\"\n\n", false);

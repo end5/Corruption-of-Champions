@@ -103,7 +103,7 @@ export class Sheila extends Monster {
         // Hit:
         else {
             outputText("Sheila's eyes glint suspiciously, and you feel your mind slowing down and your body heating up as you meet her lascivious gaze.  Too late you look away, but the damage is done; her fantasies of ");
-            if (!player.cocks.length > 0) outputText("burying her drooling tail inside you until it squirts");
+            if (player.cocks.length === 0) outputText("burying her drooling tail inside you until it squirts");
             else outputText("riding your dick to the hilt");
             outputText(" run rampant inside your head and crowd out everything else.  \"<i>Did you see it, [name]?  My love for you?</i>\" Sheila asks, smiling.  God, did you ever!  You can hardly focus on anything!");
             // big (20+) int drop and big lib-based lust gain if successful, locks Infest command for the fight if successful, always misses if Sheila is blinded

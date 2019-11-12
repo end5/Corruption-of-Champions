@@ -1795,7 +1795,7 @@ function firstCockOralTrainingStageTwo(): void {
         outputText("\n\n“<i>Gods, that was am- something, mistress,</i>” she says eventually. “<i>Did... did I do well?</i>” You rub behind her floppy ear and tell her she’s getting better, but - and you say this pointedly - she’s still quite forgetful. You watch her closely as she mumbles an apology and then sets about cleaning you, first sending her tongue slicking deliciously around your sopping vagina, licking up every splash of your fluids that she finds, before rising up to your oozing [cock biggest]. There’s an eagerness on display here which you don’t think was there before as she laps at your cock head, and you think she even stifles a disappointed whine when she’s finished. Smiling softly, you get up and send her on her way.");
     }
     // Male w/ balls:
-    else if (!player.vaginas.length > 0 && player.balls > 0) {
+    else if (player.vaginas.length === 0 && player.balls > 0) {
         outputText("\n\n“<i>First of all, before you start each time you must work on these.</i>” With your [cock] raised it is easy enough to expose your [balls] to her. “<i>A good slut knows her master’s balls need a good polish before she’s deserving of swallowing his cock. Let’s see how you do.</i>” ");
 
         outputText("\n\nAfter a slight pause Whitney sinks her face so far into your groin you can no longer see her expression. You sigh as you feel her flat tongue dance across your sensitive nuts, kneading them gently and bathing them in saliva. This at least is a task perfectly suited to her tongue, you think, and you stifle an insane laugh only with difficulty. “<i>Lick every inch... that’s good. Suckle on them a bit... very good!</i>” You gasp a bit as she envelopes one of your orbs entirely and pulls at it ever so gently, sending delicious sensation thrumming through your crotch.");
@@ -1832,7 +1832,7 @@ function firstCockOralTrainingStageTwo(): void {
         if (player.cocks.length > 1) outputText(" The second cock trapped in her grasp flexes out cum just as eagerly as the first, sweat standing out on your forehead as you are clenched by your twin high; it paints her skirt with its generous discharge.");
     }
     // Male without balls:
-    else if (!player.vaginas.length > 0 && player.balls == 0) {
+    else if (player.vaginas.length === 0 && player.balls == 0) {
         // multicock
         if (player.cocks.length > 1) {
             outputText("\n\n“<i>This is a bit more technical than simply being a good cocksucker, so I want you to pay attention.</i>” You move your hips slightly and indicate your [cock biggest2]. “<i>Put your hand around that. I think if you’re knelt there pleasuring yourself you should at least be extending the same courtesy to your master, hmm? Do it slow and gentle to begin with.</i>” ");
@@ -1860,7 +1860,7 @@ function firstCockOralTrainingStageTwo(): void {
     }
 
     // male
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nYou exhale long and low when you’re finally done, feeling a glow of intense satisfaction. You gaze dozily down at your slave, who is panting hoarsely, her eyes still closed. You can’t help but notice she occasionally and impulsively licks her lips, as if she is searching for the flavor of something delicious.");
 
         outputText("\n\n“<i>Gods, that was am- something, master,</i>” she says eventually. “<i>Did... did I do well?</i>” You rub behind her floppy ear and tell her she’s getting better, but - and you say this pointedly - she’s still quite forgetful. You watch her closely as she mumbles an apology and then leans back in to clean your oozing [cock biggest]");
@@ -1880,7 +1880,7 @@ function cockOralTrainingStageTwo(): void {
     outputText("Not saying a word, you undo the bottom half of your [armor], exposing your [cock biggest] with a soft smile. Without any need for instruction Whitney gets to work, her hand delving into her underwear with a contented sigh, her eyes focused on the task in front of her as she steadily stokes the heat in her crotch with tight, urgent jerks of her slim body.");
 
     // Male
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
 
         outputText("\n\n");
         if (player.balls > 0) outputText("\n\nShe begins as you’ve already bid her, bending in to lap at your [balls], silently sending her warm, wet tongue rolling and questing around your gonads, polishing every inch of them, taking each into her mouth intermittently to bathe them in close, sucking attention. ");
@@ -1937,7 +1937,7 @@ function firstCockOralTrainingStageThree(): void {
     outputText("You smile at Whitney as you take off your... you stop, frowning down at her. Did she whimper just then? She’s completely still, staring at you intently with her big, deep, brown eyes. Without saying a word and pretending to be interested in the sky above, you continue to disrobe, doing it slowly, placing every piece of your [armor] down on the ground with careful deliberation. There is no mistaking it this time - as your [cock biggest] finally bobs into view Whitney moans deep in her throat, squirming uncomfortably in her kneeling position as her gaze bores deep into your crotch. You smile softly, sit yourself down, open your [hips] wide, and wait.");
 
     // Male
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nOnce you have settled yourself down the dog woman immediately sends her hand burying into her underwear, her heavy breath catching in her throat as she stares at your [cock biggest]. It only takes a few seconds of urgent jerking before she spasms forward, her tongue out and eager to begin.");
         if (player.balls > 0) outputText(" You sigh blissfully as the flat, warm flannel-like tongue spreads itself across your [balls], covering every inch, each sensitive orb taken into your slave’s mouth to be suckled gently until they are thrumming and bulging with packed heat, the loving attention laved on them made all the better by the soft, lustful moans drifting up from between your legs as she polishes them.");
 
@@ -2093,7 +2093,7 @@ function cockOralTrainingStageThree(): void {
     outputText("\n\n“<i>Very well,</i>” you say coolly. “<i>But next time you will say it clearer. Begin.</i>”");
 
     // Male
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nShe spasms forward, her tongue out, overwhelmingly eager to do so. ");
         if (player.balls > 0) outputText("You sigh blissfully as the flat, warm flannel-like tongue spreads itself across your [balls], covering every inch, each sensitive orb taken into your slave’s mouth to be suckled gently until they are thrumming and bulging with packed heat, the loving attention laved on them made all the better by the soft, lustful moans up from between your legs as she obsequiously polishes them. ");
         outputText("She rises until her head is level with your semi-erect prick and with long, careful, exquisite licks makes it fiercely erect, running her tongue along its full length and then swirling it around your [cockHead biggest], pressing into the sensitive spots she knows will make you dense and tight with need. She grips it steadily at the base as she does so, every so often giving it a tight squeeze to contrast with a particularly soft lap at your bulging head.");
@@ -2222,7 +2222,7 @@ function cockOralTrainingMaxed(): void {
     outputText("\n\n“<i>Very well,</i>” you say benevolently, opening your [hips]. “<i>I suppose you do deserve it for being such a hardworking task slut.</i>”");
 
     // Male
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nShe spasms forward, her tongue out, overwhelmingly eager to begin. ");
         if (player.balls > 0) outputText("You sigh blissfully as her plump lips push into your [balls] before the flat, warm flannel-like tongue spreads itself across them, covering every inch, each sensitive orb first sensuously kissed and then taken into your slave’s mouth to be suckled gently until they are thrumming and bulging with packed heat. The loving attention laved on them is made all the better by the soft, lustful moans turning into outright panting sobs of pleasure drifting up from between your legs as she obsequiously polishes them.");
 
@@ -2758,7 +2758,7 @@ function whitneyDomBondageOral(): void {
     outputText("\n\n“<i>Glad we got the edge off there,</i>” her lilting voice floats down to you. The pressing tone is gone, replaced with a lazier, playful one. “<i>Whew! Now then. I don’t believe I told you to stop...</i>” she says as she sinks her hips down, her oozing pussy sitting straight back onto your lips as her warm butt cheeks press over your eyes. Your groan is stifled by the returning, smothering demand of her sex. It’s impossible to struggle against it pulled tight as you are, and you are forced to do as she asks, moving your tongue over her sweltering folds in a soft, attentive way you hope will please her. “<i>That’s it. Nice an’ slow, take your time. While you’re doing that, let’s see what you got down here for me, hmm?</i>” You close your eyes as you feel her fingers run softly up your inner thighs.");
 
     // Male:
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         outputText("\n\nHer dry, smooth digits touch your turgid [cock biggest] at the base, rising slowly up the sensitive stem.");
         if (player.cocks.length > 1) outputText(" “<i>So many things to play with tucked away in here!</i>” comes her merry voice again, as you feel her grasp your [cock smallest] at the same time; you groan into the confines of her flesh as she gives it a soft, teasing pump. It’s obvious your main member has really caught her attention though, and both her hands soon return to it.");
 
@@ -2798,7 +2798,7 @@ function whitneyDomBondageOral(): void {
 
         outputText("\n\nWith the fierce action comes surging ecstasy as you’re finally let go, your seed finally allowed to rise. Her pussy spasms around your tongue and she cries out, thrusting and clenching downwards on you, guttering wetness on you; stars stream across your vision as seconds later you’re allowed to reach your own high. You thrust your hips into it, your body caught in helpless convulsion as you fountain cum and stream femjizz, spurting your fluids deliriously. You can’t see it but it feels like you must be hitting the ceiling and soaking the bed with it, you’re that pent up, Whitney’s unrelenting, smooth grasp is that good.");
     }
-    else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    else if (player.vaginas.length > 0 && player.cocks.length === 0) {
         // Female:
         outputText("\n\nHer dry, smooth digits flow down your mound, creep between your thighs and touch the lips of your [vagina]; you groan into the confines of her flesh as her fingers slide into your crevice, circling your [clit]. The rough oral you’ve been subjected to has sunk heat into your groin and it doesn’t take much of her hands’ gentle but insistent working of your cunt for you to start beading excitement.");
 
@@ -2855,7 +2855,7 @@ function whitneyDomStraponDoggy(): void {
     outputText("\n\nIn a position of complete supplication, your face and [chest] forced down into the bed, you look up in trepidation as your monstrously skilled slave mistress shifts around to your front end. She’s smiling her fanged smile down at you as she dangles the last two items she retrieved from her dressing table.");
 
     // PC female & has Vapula
-    if (player.vaginas.length > 0 && !player.cocks.length > 0 && Vapula.vapulaSlave()) {
+    if (player.vaginas.length > 0 && player.cocks.length === 0 && Vapula.vapulaSlave()) {
         outputText("\n\nThe wooden paddle in one hand perhaps isn’t much of a surprise, but the other... it’s a double ended strap-on, one end relatively small and flexible-looking, the other a purple monster with garish leopard spots painted across its bumps. It’s immediately recognizable to you and you look up at Whitney with a kind of horror, whose grin only widens.");
 
         outputText("\n\n“<i>Oh yes. Your succubus was only too glad to let me borrow this when I asked her for help in the bedroom with you. D’you know, she seemed to have the darndest idea you were going to use it on me? Shows how much she knows. Oh c’mon, [name],</i>” she croons, waggling the demonic dildo in front of you teasingly. “<i>As if you never fantasized about gettin it from the other end. And as if you’ve got a choice at this point anyway.</i>”");
@@ -2938,7 +2938,7 @@ function whitneyDomStraponDoggy(): void {
     outputText("\n\nA " + ((whitneyDefurred()) ? "hand" : "paw") + " reaches around and clutches your [chest] for anchorage as she finally begins to pound into your tenderized hole with all she’s got. She catches a [nipple] between her fingers and you find yourself being forced towards orgasm again, your ears full of her harsh breathing, your nose full of her heavy scent. She’s no longer thrusting into you for your pleasure though, if she ever was; the hard, feral thrusting of the strap-on into your " + ((player.vaginas.length > 0) ? "oozing cunt" : "ass") + " is all about her, all about working the smaller, teasing end in her own pussy as hard as she can. You are simply a vehicle for her own lusts, and when you come again with a juddering cry into her panties, " + ((player.vaginas.length > 0) ? "wetting the bed this time with the jackhammer force of it" : "") + " she keeps going, hammering into your hapless " + ((player.vaginas.length > 0) ? "[vagina]" : "butt") + ".");
 
     outputText("\n\nThe relentless pounding forces your eyes to roll and your hands to grip uselessly at the air until finally, with a breathless, ecstatic bark and a final, hard paddle blow to your [butt], she reaches her own peak. You feel utterly dissolved as she thumps into you deliriously, caught in her own sumptuous orgasm for long seconds; you catch yourself thinking you should try timing your orgasms to better suit your mistress.");
-    if (player.vaginas.length > 0 && !player.cocks.length > 0 && Vapula.vapulaSlave()) outputText(" You feel the end of the dildo tense deep within you before releasing, filling you full of warm demon spunk until it pools out onto the bed. The feeling is horribly, disgustingly satisfying, and for a moment you can see exactly how Vapula views the world.");
+    if (player.vaginas.length > 0 && player.cocks.length === 0 && Vapula.vapulaSlave()) outputText(" You feel the end of the dildo tense deep within you before releasing, filling you full of warm demon spunk until it pools out onto the bed. The feeling is horribly, disgustingly satisfying, and for a moment you can see exactly how Vapula views the world.");
 
     outputText("\n\nAt long last she comes to a halt. She lays herself on top of you as she gathers her breath, still holstered in you, her small, peachy breasts pushing into your shoulders, her soft stomach against your hands, her breath on the nape of your neck. After a short rest spooned together like this she rolls over and slowly goes about undoing your restraints. You roll onto your back when she’s done, staring at the ceiling as she possessively snuggles into you, feeling distinctly pulverized. You can’t say for sure why you signed on for this, but there’s no question letting Whitney do to you as she may is a strange, intense release you can’t find anywhere else, or at least anywhere else where they let you walk away at the end.");
 
@@ -3603,7 +3603,7 @@ export function vapulaBrandSelect(slot: number): void {
     addButton(2, "Property Of", vapulaPropertyOfTattoo, slot);
     addButton(3, "Cum Addict", vapulaCumAddictTattoo, slot);
     if (slot == 2 || slot == 3) addButton(4, "Buttslut", vapulaButtslutTattoo, slot);
-    if (!player.cocks.length > 0) addButton(5, "Dildo Polisher", vapulaDildoPolisherTattoo, slot);
+    if (player.cocks.length === 0) addButton(5, "Dildo Polisher", vapulaDildoPolisherTattoo, slot);
 
     addButton(9, "Back", vapulaSlotSelect);
 }

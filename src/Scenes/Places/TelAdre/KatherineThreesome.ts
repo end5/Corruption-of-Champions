@@ -182,7 +182,7 @@ export function roastYou(): void { // Not available if Kath has no cock
         outputText("“<i>OK, Kath - subdue the perpetrator.</i>”  You look around just in time to get pounced by Kath.  She’s horny too and isn’t pulling her punches.  “<i>Ha ha, yeah, she’s really getting good at catching her prey,</i>” says Urta, standing over the two of you.\n\n");
         outputText("Urta grabs your arms while Kath gets to work removing your clothes.  You’re so close you can see the precum oozing from the tip of Urta’s cock and wetting the lower part of her shirt.  Urta whispers “<i>You come in here, you get us both warmed up and then you try to sneak out?</i>”\n\n");
         outputText("Katherine chimes in with “<i>Yeah, what gives?</i>”  Urta looks you in the eye and says “<i>This is our turn.  I’m going to feed you this monster and Kath is going to fuck ");
-        if (!player.vaginas.length > 0)
+        if (player.vaginas.length === 0)
             outputText("your ass");
         else outputText(Katherine.cockMultiple("your pussy", "both your pussy and your ass"));
         outputText(".  May Marae help your innards.</i>”");
@@ -211,7 +211,7 @@ export function roastYou(): void { // Not available if Kath has no cock
     outputText("She moves close enough and gestures toward her glistening horsecock.  “<i>Salted enough for your tastes?</i>” she asks.  By now Kath’s " + Katherine.cockMultiple("shaft has done its work", "twin shafts have done their work") + " and you’re too horny to resist.  You wrap your mouth around Urta’s spooge cannon and suck on it like a hot, meaty saltlick.\n\n");
     outputText("“<i>Oh yeah, that’s a good " + mf(player, "boy", "girl") + "!</i>” Urta shouts, loud enough for " + (Katherine.isAt(Katherine.KLOC_BAR) || Katherine.isAt(Katherine.KLOC_BAR_DRUNK) ? "anyone at the bar" : "people on the street") + " to hear.  The two herms start to work in tandem - Kath pulling out as Urta shoves her cock deeper and then Urta pulling back far enough for you to tongue the tip of her cock while Kath sinks in up to her knot" + Katherine.cockMultiple("", "s") + ".\n\n");
     outputText("They keep up this pace until you decide to push some of Urta’s buttons.  Reaching up blind your hand finds her balls and you begin to rub her sperm filled sack.  Urta shudders, reverses herself and thrusts forward at the same time as Kath.  All of a sudden you’ve got a foot of horsecock down your throat and Katherine’s " + Katherine.cockType() + Katherine.cockMultiple(" shlong", " meatsticks") + " buried knot deep in");
-    if (!player.vaginas.length > 0)
+    if (player.vaginas.length === 0)
         outputText(" your ass");
     else if (Katherine.getCockNumber() > 1)
         outputText(" both your other holes");
@@ -309,7 +309,7 @@ export function spitroastKath(): void { // Works for all except genderless chara
         outputText("face into your groin. ");
     outputText(" Kath takes it without complaint and her rough tongue does wonders for your mood and " + (player.cocks.length > 0 ? "member" : "your moist cunt") + ".\n\n");
     outputText("Urta really gets into it - she places your hands on her breasts and starts to fuck Kath as though it’s life or death.  " + (player.isTaur() ? "You’re not used to having a lover in front of you anymore and the added stimulation" : "The rocking motion along with Katherine’s eager tongue") + " brings your climax more quickly than you thought possible.\n\n");
-    if (!player.cocks.length > 0)
+    if (player.cocks.length === 0)
         outputText("Kath laps at your pussy, drinking your juices as fast as you can produce them.  Every time you think your orgasm is over she draws the whole length of her tongue over your clit and gives you another.  She only stops when your legs give out and you collapse" + (player.isTaur() ? ", falling to the side to avoid crushing her" : " on top of her"));
     else {
         outputText("You pull Urta towards you so that Kath takes your whole length.  ");
@@ -325,7 +325,7 @@ export function spitroastKath(): void { // Works for all except genderless chara
     outputText(".\n\nWhen you recover you rub Kath’s thigh appreciatively but your display only drives Urta to fuck her even harder.  Between you Kath’s tail flicks back and forth, so you grab it and start massaging it near the base.  Kath pushes back against Urta and you see Urta’s eyes roll back.  ");
     if (Katherine.getCockNumber() > 0) outputText("A hot spray of cum lands on and around your " + (player.isTaur() ? "rear " : "") + (player.isNaga() ? "tail" : "feet") + ".  ");
     outputText("Kath just came and if you had to guess her clenching pussy sent Urta over the edge.\n\n");
-    if (!player.cocks.length > 0 || player.cumQ() < 3000)
+    if (player.cocks.length === 0 || player.cumQ() < 3000)
         outputText("Sure enough you " + (player.isTaur() ? "feel Kath’s ass and back press against your belly and you realize" : "watch her belly stretch and stretch until") + " she’s so full her belly is resting against the floorboards");
     else
         outputText("It would be difficult enough for Kath to take Urta’s load but her belly already holds several buckets of your cum.  There’s no escape and you " + (player.isTaur() ? "feel" : "see") + " her belly expand even further.  Urta pulls back on Kath’s hips hard enough to leave marks, driven by a deep urge to breed Katherine’s velvet pussy.  When her strength fails her Urta falls back and a thick stream of semen erupts from Kath’s cunt");
@@ -382,7 +382,7 @@ function pinAndFuckMountUrta(): void { // Plays for anyone without a cock and fo
     outputText("You roll Kath and Urta over so you can get access to Urta’s equine cock.  It’s a little soft but a couple of strokes along its cum slicked length start to change that.  Urta opens her eyes and tries to focus on you but you’re already " + (player.vaginas.length > 0 ? "sliding your pussy against her shaft" : "rubbing her horsecock against your anus") + ".  Underneath you both Kath lets out a happy “<i>Oh!</i>”  You’re guessing Urta’s muscles are clamping down on Kath’s cock" + Katherine.cockMultiple("", "s") + ".\n\n");
 
     outputText("As you sink onto Urta’s cock ");
-    if (!player.vaginas.length > 0)
+    if (player.vaginas.length === 0)
         outputText("you enjoy the sensation of your colon stretching and straightening to take Urta’s enormous girth and length.  You feel a pulse of hot pre soaking into your deepest depths.");
     else {
         outputText("and it grinds against your cervix you ");
@@ -407,7 +407,7 @@ function pinAndFuckMountUrta(): void { // Plays for anyone without a cock and fo
     outputText("  Urta starts to moan; now that her oversensitive dick is buried in your " + (player.vaginas.length > 0 ? "pussy" : "rectum") + " she’s really getting into it.  You flex the muscles of your " + (player.vaginas.length > 0 ? "vagina" : "ass") + " to please her more.  Kath helps out by reaching around Urta and playing with her nipples while you massage her balls and tell her you want to be filled.\n\n");
 
     outputText("Urta’s legs lock around you and she tries to force her horsecock even deeper.  You feel a bulge moving along the underside and when the hot cum erupts inside you");
-    if (!player.vaginas.length > 0)
+    if (player.vaginas.length === 0)
         outputText(", filling your colon like a balloon,");
     else if (player.pregnancyType == PregnancyStore.PREGNANCY_GOO_STUFFED)
         outputText("it forces its way inside your womb.  You hope the goo in you enjoys the bath.  As more of Urta’s seed fills your pussy");
@@ -808,7 +808,7 @@ export function doubleStuffKath(): void { // Both Kath and Urta are drunk
     else outputText("You hear an “<i>Oh!</i>” from Urta and she plants her equine shaft as deep as she can inside Kath's pussy.  Kath's eyes glaze over as Urta grunts and holds Kath in place while her seed flows, filling Katherine's belly 'til it takes the shape of a " + Katherine.catGirl("", "fuzzy ") + " watermelon.  The two girls are forced apart by Kath's new bulge and have to take a moment to recover from their orgasms.\n\n");
     outputText("Kath regains her strength first and forces herself up onto her elbows.  She smiles at you and simply opens her mouth.  You smile back, " + (player.cocks.length > 0 ? "feed her your cock" : "press your crotch against her face") + " and relax, enjoying the slower pace" + (player.cocks.length > 0 ? ", the texture of Kath’s tongue and the inside of her throat" : " and the texture of Kath’s tongue") + ".\n\n");
     outputText("Your two lovers trade you" + (player.cocks.length > 0 ? "r cock" : "") + " back and forth a few times until you feel that you’re about to cum.  ");
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         outputText("There's no reason to fight it, you let go and femcum dribbles down " + (player.isNaga() ? "the scales of your tail" : "your legs") + " and washes over both Kath and Urta.  Your muscles give out and you collapse on the floor next to your panting, sweating lovers.");
     }
     else if (player.cocks.length > 1) {

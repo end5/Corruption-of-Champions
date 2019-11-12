@@ -358,7 +358,7 @@ export function useTentacleJojo(): void {
                 else if (player.cocks.cockArea(0) >= 20) outputText("engulfing", false);
                 else outputText("easily swallowing", false);
                 outputText(" your " + cockDescript(game.player, 0) + " in a tight vise of pleasure.  The other two tentacles slide under, ", false);
-                if (!player.vaginas.length > 0) outputText("rubbing back and forth along your taint and smearing you with their slime.", false);
+                if (player.vaginas.length === 0) outputText("rubbing back and forth along your taint and smearing you with their slime.", false);
                 else {
                     outputText("rubbing against your thighs and smearing them with lubricant while one of them easily sucks your " + clitDescription(player) + " inside.", false);
                     // (If big clit –
@@ -418,7 +418,7 @@ export function useTentacleJojo(): void {
     if (player.vaginas.length > 0) outputText("pair of tentacles ", false);
     else outputText("tentacle ", false);
     outputText("hanging over your bottom decide", false);
-    if (!player.vaginas.length > 0) outputText("s", false);
+    if (player.vaginas.length === 0) outputText("s", false);
     outputText(" that now is a good time to penetrate your undefended opening", false);
     if (player.vaginas.length > 0) outputText("s", false);
     outputText(", and press against you, ", false);
@@ -727,7 +727,7 @@ function milkJojoFirst(): void {
     outputText("At long last, the appointed time has come, and Jojo lets out the most lewd-sounding squeak you've ever heard come from his mouth.  His ass-cheeks and legs clench and flex against their restraints", false);
     if (player.cocks.length > 0) outputText(", squeezing your " + cockDescript(game.player, x) + " with agonizingly pleasurable pressure", false);
     outputText(".  His back arches in ecstasy.  Most noticeably, the tube slurping on his cock is suddenly distorting as thick, round globules of mousey seed are sucked towards the wall.  The bulges are quickly smoothed out into one long, hose-dilating river of rodent-spooge.", false);
-    if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText("  His balls tremble and shrink in your mouth, pumping his prodigious semen out, wasting it in exchange for a pittance of gems.", false);
+    if (player.cocks.length === 0 && player.vaginas.length > 0) outputText("  His balls tremble and shrink in your mouth, pumping his prodigious semen out, wasting it in exchange for a pittance of gems.", false);
     outputText("\n\n", false);
 
     if (player.cocks.length > 0) {
@@ -771,7 +771,7 @@ function repeatMilkJojo(tentacle: boolean = false): void {
         outputText("Giving your furry slut's clenching ass a smack, you walk around in front of him, nearly tripping over the bouncing tube as you change position.  Jojo's panting with his eyes nearly rolled back into his head.  Every fifteen seconds or so his body will clench, only to have the cock-sucker's motions slow torturously.  He squeals and squeaks each time as if it was the first time.  You scratch him behind his large, dish-shaped ears as words bubble up from within you.  \"<i>Good pet.  You love being milked.  Your balls get so full and heavy... so full of spunk.  They ache, don't they?  Yes... they hurt you so bad.  You get so much cum pent up in there, and you can't let it out, not without being sucked like this.  Shhh... shhh... it's okay.  Just enjoy how perfectly swollen your balls are getting.  You can let it out eventually.</i>\"\n\n", false);
 
         outputText("Jojo's eyes roll the whole way back for a moment, and his mouth begins to froth as he utterly caves in to his animal, pleasure-seeking instincts.  You lean back against a smooth part of the wall and shed your clothes, beginning to masturbate directly in front of your stall.  In time, your own pleasured moans draw your pet from his pleasure-induced stupor, and he watches with wide, bloodshot eyes as you bring yourself off to climax after climax", false);
-        if (!player.cocks.length > 0 && !player.vaginas.length > 0) outputText(", even though to do so you're forced to stimulate your " + assholeDescript(player), false);
+        if (player.cocks.length === 0 && player.vaginas.length === 0) outputText(", even though to do so you're forced to stimulate your " + assholeDescript(player), false);
         outputText(".  His twitching rodent-nose sniffs at the air wildly as he pants, inhaling your scent between long, forlorn sounding moans.\n\n", false);
 
         outputText("Jojo's muscles seize, and you can tell his orgasm has arrived.  You smirk and lean closer, tugging an ear close to your mouth for another dose of 'encouragement'.  \"<i>Cum for me, pet.  Let all that spunk clogging up your balls boil out into the milker.  Give it all up for me.  Just let out every... thick... pent-up... liter of your seed.  Empty it all!  Cum and squirt until your balls are as empty as your virtue!</i>\"\n\n", false);
@@ -2108,7 +2108,7 @@ function beeEggsInCorruptJojo(): void {
     clearOutput();
     outputText("Drawing Jojo close, you gently tease your fingertips along the soft fur of his cheeks, buzzing reassuring noises into his dish-shaped ears.  The greedy little slut perks up and nuzzles against you happily.  His hand, soft and delicate, reaches down inside your [armor] to touch your groin.  Its partner strays south to the mouse's own erection, gathering his copious pre to smear a fresh layer across his hardness.  You let him be for now, allowing him to build your lust higher and higher.  The show draws your ovipositor out of its slit and fills it with fresh blood, hardening the tubular organ into an approximation of a large phallus.");
     outputText("\n\nJojo, for his part, seems oblivious to the swelling protrusion or your malicious grin.  Once fully hard, you whisper to him, instructing for him to get on all fours and let you fuck him.  ");
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         if (flags[kFLAGS.TIMES_EGGED_JOJO] == 0) outputText("Jojo looks confused at this; he knows you don't have a cock!  ");
         else outputText("Jojo looks confused at first, and then nods in understanding, remembering the last time you laid in him.  ");
     }

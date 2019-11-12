@@ -20,7 +20,7 @@ export function fapArenaGOOOO(): void {
     // [if dick size < 8 inches]
     if (player.cocks.longestCockLength() < 8) {
         outputText("\"<i>I'm afraid you aren't well-endowed enough to take part in our sessions.  Please come back when ", false);
-        if (!player.cocks.length > 0) outputText("you have a cock.", false);
+        if (player.cocks.length === 0) outputText("you have a cock.", false);
         else outputText("your cock is sufficiently long.", false);
         outputText("</i>\"", false);
         // THE FOLLOWING IS CUT - I AINT SELLING GRO+ HERE! NOAP

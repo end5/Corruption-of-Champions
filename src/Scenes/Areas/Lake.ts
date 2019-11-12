@@ -318,7 +318,7 @@ function ottahGirl(): void {
             if (player.cocks.shortestCockLength() > 48) outputText("\n\nUnfortunately, you don't think she can quite handle your cock.");
             else addButton(0, "Fuck Her", ottergirlLikesDongs);
         }
-        if (player.vaginas.length > 0 || !player.cocks.length > 0) addButton(1, "Facesitting", ottersForGals);
+        if (player.vaginas.length > 0 || player.cocks.length === 0) addButton(1, "Facesitting", ottersForGals);
     }
     if (flags[kFLAGS.MET_OTTERGIRL] > 1) addButton(2, "Get Fish", getSomeFishYaFatty);
     addButton(4, "Leave", avoidZeOtterPussy);

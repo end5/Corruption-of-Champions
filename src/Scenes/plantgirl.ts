@@ -1337,7 +1337,7 @@ if(player.balls > 0) outputText("begin to massage your [sack] as you raise your 
 else if(player.vaginas.length > 0) outputText("relish in the moment and allow a hand to drop to your sex as you raise your hips, eager to please both ends during this act");
 else outputText("grab her nipples and begin to play with them");
 outputText(".  Slowly, you lower your hips back down once again onto the plant woman's penile member, causing your partner to moan in lustful appreciation.  A sense of fullness floods you as you allow yourself to take her entire member inside of you.  You ");
-if(!player.vaginas.length > 0) outputText("place both hands on her shoulders");
+if(player.vaginas.length === 0) outputText("place both hands on her shoulders");
 else outputText("continue to finger yourself");
 outputText(" as you bob your [asshole] against her lap, moaning loudly as you do.  The plant woman's hands shoot out and ");
 //PC has a pussy (and/or) a dick:

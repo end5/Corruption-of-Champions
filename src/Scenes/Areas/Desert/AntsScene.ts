@@ -787,7 +787,7 @@ function femalePhyllaFirstFuckGooooo(): void {
     outputText("\n\nYou've had just about enough of her denying you her pussy, and concentrate hard on forcing her to lower herself onto you.  Quite a task, given your current predicament.  Right when you think about giving up trying and just enjoying her going to town on you, you feel her mind bend to you and her once out of reach lips lower.  She's so wet you can see the streams of her arousal running down both sides of her chitinous legs.  Zeroing in, you fixate on her clit, which is much longer than you expected and sticks out far past the folds of her fuckhole.");
     menu();
     // (If PC has NO DICK(S)! Jump to - Scissoring Continuation)
-    if (!player.cocks.length > 0) addButton(0, "Next", girlFiller);
+    if (player.cocks.length === 0) addButton(0, "Next", girlFiller);
     // (If PC has ANY NUMBER of DICK(S)! - Jump to - If PC Herm/Has (a) cock(s))
     else addButton(0, "Next", femalePhyllaFirstTimePlusCock);
 }
@@ -990,7 +990,7 @@ export function introductionToPhyllaFollower(): void {
             outputText("\n\nShe takes a deep breath and continues.");
             outputText("\n\n\"<i>I don't need semen to have children; I just need certain fluids.</i>\"  Again she blushes and half covers her face with a pillow.  She looks as if she's not going to continue until she looks down between your legs.  \"<i>You were kind of leaking them...</i>\"  All she can muster is a deeper blush...");
         }
-        else if (!player.cocks.length > 0) {
+        else if (player.cocks.length === 0) {
             outputText("\n\nYou raise your eyebrow and ask her how she can be pregnant if neither of you have a penis.");
             outputText("\n\nShe takes a deep breath and continues.");
             outputText("\n\n\"<i>I don't need semen to have children; I just need certain fluids.</i>\"  Again she blushes and half covers her face with a pillow.  She looks as if she's not going to continue until she looks down between your legs.  \"<i>You know the kind of fluids I'm talking about...  I mean, they're sweet and we shared them... they come from our... I mean, your...</i>\"  All she can muster is to point at where your vagina is located...");

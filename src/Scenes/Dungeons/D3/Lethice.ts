@@ -425,7 +425,7 @@ export class Lethice extends Monster {
         if (player.cocks.length > 0) outputText(" wrap around your [cock]");
         else outputText(" lap across the lips of your [cunt]");
         outputText(". Shudders of pleasure almost instantly begin to wrack your body, reacting to the demoness’s talented touch. She’s certainly skilled with her tongue, flicking and licking and caressing your sex with vigorous determination. You guide her movements by her demonic horns at first, but soon find yourself too busy gasping and moaning to try and control her - there’s no point, when she’s this good at");
-        if (!player.cocks.length > 0) outputText(" munching rug.");
+        if (player.cocks.length === 0) outputText(" munching rug.");
         else outputText(" sucking cock.");
         outputText("\n\nAround you, spurred on by your face-fucking the omnibus, the defeated demon court undulates in waves of orgiastic pleasure, gleefully sucking each other’s cocks, penetrating any hole they can find, or simply rolling on the floor locked in each other’s sensual embraces. Those that didn’t join the fight hoot and holler from the stands, encouraging you to fuck the omnibus like the eager slut she is. For her part, the horny demon just smirks up at you between long, loving licks across your sex.");
 

@@ -54,7 +54,7 @@ export function ferretTF(player: Player): void {
         changes++;
     }
     // - If male with a hip rating >4 or a female/herm with a hip rating >6:
-    if (((!player.cocks.length > 0 && player.hipRating > 6) || (player.cocks.length > 0 && player.hipRating > 4)) && rand(3) == 0 && changes < changeLimit) {
+    if (((player.cocks.length === 0 && player.hipRating > 6) || (player.cocks.length > 0 && player.hipRating > 4)) && rand(3) == 0 && changes < changeLimit) {
         outputText("\n\nA warm, tingling sensation arises in your [hips].  Immediately, you reach down to them, concerned.  You can feel a small portion of your [hips] dwindling away under your hands.");
         player.hipRating--;
         if (player.hipRating > 10)

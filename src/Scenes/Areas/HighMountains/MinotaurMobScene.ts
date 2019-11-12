@@ -263,7 +263,7 @@ function submitToMinotaurMob(): void {
 
 export function minotaurDeFeet(): void {
     outputText("", true);
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("As you slump down in defeat, your horny beast-children take note of your missing femininity.  They growl in displeasure and depart, but not before kicking you unconsciousness.  \"<i>Bitch.</i>\"");
         cleanupAfterCombat();
         return;

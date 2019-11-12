@@ -479,7 +479,7 @@ export function bimboSophieLustStickSurprise(): void {
     if (select == 0) {
         sophieSprite();
         outputText("Sophie flounces into your arms and kisses you on the lips before you can react.  ", false);
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("You smirk and pry the enthusiastic bimbo out of your arms, for now.", false);
             dynStats("lus", 1);
         }
@@ -492,7 +492,7 @@ export function bimboSophieLustStickSurprise(): void {
     else if (select == 1) {
         sophieSprite();
         outputText("During an idle moment, you feel heavy breasts squeezing against your back.  Sophie caresses your " + chestDesc(game.player) + " and nibbles at your ear.  She asks, \"<i>Can we like, fuck soon, babe?  I've been so wet here all by myself, just stroking my pussy and dreaming of you.</i>\"  You can't help but turn and smile at her, but as soon as you do, she plants a kiss full on your lips.  ", false);
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("Pushing her back, you give her ass a slap and mouth, 'Soon'.", false);
             dynStats("lus", 1);
         }
@@ -609,7 +609,7 @@ function bimboSophieLicksRugs(): void {
     outputText(" fem-spunk all over Sophie's face, marking the bimbo with your love.  The horny harpy seems to be getting off on it as well, as she's moaning luridly into your labia, letting the fluid bubble up and muffle her outbursts.\n\n", false);
 
     outputText("You both fall back, winded, gasping, and a little delirious from the encounter.  The entirely of your groin is covered in a gold coating, shining with the harpy's lipstick and your own feminine moisture.  In a way, the sight is oddly entrancing.  Your " + vaginaDescript(player) + " glitters in the light while the harpy's overly-thick lipstick sinks into your skin, filling your body with drugs designed to stimulate males.  ", false);
-    if (!player.cocks.length > 0) outputText("  It's a good thing you don't have a penis!", false);
+    if (player.cocks.length === 0) outputText("  It's a good thing you don't have a penis!", false);
     else outputText("You groan as your groin burns with desire, filling your " + multiCockDescriptLight(game.player) + " with blood.  Images of yourself relentlessly fucking your bimbo bride pregnant over and over again fill your mind.  You shudder and blush, trying to resist the artificial needs pounding through your body, but you realize your body is ready.", false);
     outputText("\n\n", false);
 
@@ -639,7 +639,7 @@ function bimboSophieSixtyNineAfterCunnilingus(): void {
     sophieSprite();
     outputText("", true);
     // NON WANG
-    if (!player.cocks.length > 0 || player.cocks.cockThatFits(sophieCapacity()) == -1) {
+    if (player.cocks.length === 0 || player.cocks.cockThatFits(sophieCapacity()) == -1) {
         outputText("You throw yourself at Sophie, compelled by thoughts of pleasure and her delicious-looking pussy, wanting nothing more than to place your lips on her cunt and slurp with reckless abandon.  She takes the hit like a champ, tumbling with you through the dirt and dust until you land on your " + buttDescription(player) + ", bouncing to a stop with the harpy's feathery thighs clenching around your head.  ");
         if (SophieScene.pregnancy.event >= 2) outputText("Her pregnant belly rests against your middle, untouched by the rough fall.  ");
         outputText("How did she do that?  Your questions fade away as you look up and spot your target - the cum-slicked delta of Sophie's cunt, so moist it seems to fog the air, beckoning you to plunge your tongue inside and taste it.\n\n", false);

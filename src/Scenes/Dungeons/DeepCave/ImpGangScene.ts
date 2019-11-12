@@ -32,7 +32,7 @@ export function loseToImpMob(): void {
         outputText(" openings on your chest are plugged with a tumescent demon-cock.\n\n", false);
     }
     // (SINGLE PEN)
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("Most of the crowd centers itself around your lower body, taking a good long look at your " + assholeDescript(player) + ".  An intrepid imp steps forwards and pushes his member into the unfilled orifice.  You're stretched wide by the massive and unexpectedly forceful intrusion.  The tiny corrupted nodules stroke every inch of your interior, eliciting uncontrollable spasms from your inner muscles.  The unintentional dick massage gives your rapist a wide smile, and he reaches down to smack your ass over and over again throughout the ordeal.", false);
         buttChange(player, 12, true, true, false);
         outputText("\n\n", false);
@@ -71,7 +71,7 @@ export function loseToImpMob(): void {
     outputText("\n\n", false);
 
     outputText("Powerless and in the throes of post-coital bliss, you don't object as you're lifted on the table", false);
-    if (!player.vaginas.length > 0) outputText(" and forced to start drinking bottle after bottle of succubi milk", false);
+    if (player.vaginas.length === 0) outputText(" and forced to start drinking bottle after bottle of succubi milk", false);
     outputText(".  You pass out just as round two is getting started, but the demons don't seem to mind....", false);
     doNext(loseToImpMobII);
 }
@@ -84,7 +84,7 @@ export function loseToImpMobII(): void {
     outputText(" tits, wobbling with every twist and movement you make.  You're stark naked, save for a sheer and somewhat perverse nurse's outfit.   The room around you looks to be empty, though you can see a number of blankets piled in the corners and a few cages full of spooge-covered faeries, all snoring contently.\n\n", false);
 
     outputText("Eventually a lone imp enters the room.  It's Zetaz!  He looks you up and down and decrees, \"<i>You're ready.</i>\"  You struggle to shout him down, but all that escapes the gag in your mouth is incomprehensible gibberish.  He chuckles and flips a switch on the wall, and suddenly the most heavenly vibration begins within your sopping twat.", false);
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("...Wait, your what?  You have a cunt now!?", false);
     }
     outputText("  Your eyes cross at the pleasure as your mind struggles to figure out why it feels so good.\n\n", false);

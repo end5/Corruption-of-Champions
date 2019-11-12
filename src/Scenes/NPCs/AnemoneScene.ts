@@ -68,7 +68,7 @@ export class AnemoneScene implements TimeAwareInterface {
                 player.effects.remove(StatusAffects.AnemoneArousal);
                 outputText("\n<b>The nigh-constant arousal forced upon you by the anemone-like creature in your body finally fades.  You stick a finger inside yourself and marvel in wonder - it's gone!  You aren't sure if it slipped out or your body somehow consumed it, but it's nice to have a clearer head.</b>\n", false);
             }
-            else if (!player.vaginas.length > 0) {
+            else if (player.vaginas.length === 0) {
                 player.effects.remove(StatusAffects.AnemoneArousal);
                 outputText("\n<b>The nigh-constant arousal forced upon you by the anemone-like creature in your body finally fades.  You aren't sure if it was somehow consumed by the removal of your vagina or if it escaped during the process, but it's nice to have a clear head for a change.</b>\n", false);
             }
@@ -751,7 +751,7 @@ function anemoneQuoteUnquoteAnal(): void {
     outputText("eyes a-twinkle");
     if (player.balls > 0) {
         outputText(", and her hair reaches forward to caress your [sack], delivering lancets of venom through the thin skin that send your arousal, and your production, into overdrive");
-        if (!player.cocks.length > 0) outputText(".  As your [balls] swell with blood and seed, you can't help but groan; there'll be nowhere for the largess to go, and it will be with you until your body reabsorbs it - or you make an outlet");
+        if (player.cocks.length === 0) outputText(".  As your [balls] swell with blood and seed, you can't help but groan; there'll be nowhere for the largess to go, and it will be with you until your body reabsorbs it - or you make an outlet");
     }
     outputText(".  Your hips take over, thrusting into her brutally and knocking her head back and forth.  Her tentacles fly wildly, brushing all along your stomach and hips as you pound her mouth, leaving little stripes of heat on your " + skin(player) + " that seep into your body and only make you want to come even more.");
 
@@ -1638,7 +1638,7 @@ function reallyEvictDaAnemone(): void {
 export function kidADreams(): void {
     outputText("\n<b><u>In the middle of the night...</u></b>");
     // if male:
-    if (player.cocks.length > 0 && (!player.vaginas.length > 0 || player.femininity < 50)) {
+    if (player.cocks.length > 0 && (player.vaginas.length === 0 || player.femininity < 50)) {
         outputText(images.showImage("anemone-kid-male-masti"), false);
         outputText("\nThe church bell chimes overhead as you regard the figure opposite you.  Your family chose this woman and arranged this marriage, true, but it's not fair to say you're not at least a little interested in the svelte, veiled form inhabiting the wedding dress your mother handed down to her.");
         outputText("\n\nThe pastor coughs politely.  \"<i>Well... do you?  Take this woman?</i>\"");

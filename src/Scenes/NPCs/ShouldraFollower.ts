@@ -214,7 +214,7 @@ export function shouldraMeetsCorruptVala(): void {
 export function sandWitchGetsGhostly(): void {
     spriteSelect(67);
     clearOutput();
-    if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+    if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
         outputText("As you admire your latest victory, a familiar specter pokes her head out from your torso.  The sand witch shuffles backward on the ground, her face an amalgamation of dread, confusion, and curiosity.  \"<i>What say we have a little fun with this one, eh, Champ?</i>\" Shouldra suggests, licking her lips in anticipation.  You wave an arm outwards, giving the antsy apparition the go ahead to pursue her prey.  The desert denizen unearths a second breath, climbing to her feet in an attempt to escape.  She doesn't make it too far before the ghost girl dives into her back, hurling the witch to the dunes.");
         outputText("\n\n\"<i>Get out of my head!</i>\" the sorceress screams, thrashing around in the sand clinging to her cranium.  She eventually calms down and faces you, her brown eyes now the customary glowing shade of yellow you've come to welcome.  \"<i>Now all we need is a skeleton, a wolf man, and some bats.  Then we'll have ourselves a holiday!</i>\" Shouldra jokes while climbing to her new feet, her voice replacing that of her quarry.  The ghost girl begins exploring the sand witch's body; it doesn't take long for her to fixate on the witch's quartet of lactating lovelies.  Reassured that the ghost girl is in control, you strip free of your [armor] and approach the bewitched witch.");
         outputText("\n\n\"<i>I haven't done anything yet and these factories are already working at over-capacity,</i>\" the spirit points out.  She takes a moment to jab a finger into one of the milky teats and samples her host's product.  Her reaction is like that of a gourmet chef enjoying a fine delicacy.  \"<i>Mmmm... invigorating.  But I think we can do something about the modest proportions of the source,</i>\" Shouldra teases, circling the witches' hands around the churning cantaloupes.  The ghost girl wastes no time in getting right to her own variety of spell casting, doing her best to keep from wavering as she continues to grope the sorceress' silos.");
@@ -269,7 +269,7 @@ function shouldraFappinTimes(): void {
         shouldraAndWormsYoureGonnaHaveABadTime();
     }
     else if (player.gender == 0) genderlessShouldraMasturbation();
-    else if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) maleMasturbationProper();
+    else if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) maleMasturbationProper();
     else {
         if (rand(2) == 0) girlyMasturbationWithGhosts();
         else shouldraTongueLicksPCs();

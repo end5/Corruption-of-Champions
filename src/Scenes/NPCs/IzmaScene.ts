@@ -1920,7 +1920,7 @@ function followerIzmaTakesItInPooper(): void {
 
     outputText("She yells as you bite down on her nipple, and you're rewarded with hot spurts of cum that fill your belly as Izma's quad balls empty into you.  ", false);
     // [if player has no penis)
-    if (!player.cocks.length > 0) outputText("The feeling of her cock throbbing finally puts you over the edge and you orgasm, your tight pucker helping milk the last of her cum into you.\n\n", false);
+    if (player.cocks.length === 0) outputText("The feeling of her cock throbbing finally puts you over the edge and you orgasm, your tight pucker helping milk the last of her cum into you.\n\n", false);
     // (if player has penis)
     else {
         outputText("She collapses onto you, spent, and you close your eyes and relish the feeling of her hot cock pulsing in your ass and her warm belly lying against your " + cockDescript(game.player, 0) + ".  When she sits back up, she gives you a stern look as she lets go of your wrists, making it clear that they should stay right where they are.  You look at her pleadingly as she trails her fingers along your " + cockNoun(player.cocks[0].cockType) + ".\n\n", false);
@@ -1960,7 +1960,7 @@ function followerIzmaTakesItInPooper(): void {
         }
     }
     // (10; resume here for dickless)
-    if (!player.cocks.length > 0) outputText("After a few minutes, she pulls her shrinking cock out of you and gives you a deep kiss. \"<i>Thanks for that,</i>\" she says, \"<i>...my Alpha.</i>\"  She jogs off to the river to clean off.  After a minute you follow her, with her cum dripping out of your well-used anus.", false);
+    if (player.cocks.length === 0) outputText("After a few minutes, she pulls her shrinking cock out of you and gives you a deep kiss. \"<i>Thanks for that,</i>\" she says, \"<i>...my Alpha.</i>\"  She jogs off to the river to clean off.  After a minute you follow her, with her cum dripping out of your well-used anus.", false);
     player.orgasm();
     dynStats("sen", -1);
     doNext(Camp.returnToCampUseOneHour);

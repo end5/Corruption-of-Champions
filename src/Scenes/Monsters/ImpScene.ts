@@ -253,7 +253,7 @@ function centaurOnImpStart(): void {
     else outputText("You lick your lips obscenely as you approach the small figure.\n\n", false);
     // [Even chance of any of the following happening if the player has the correct equipment, distribute chances between what equipment is available]
     const x: number = player.cocks.cockThatFits(monster.analCapacity());
-    if (x >= 0 && !player.vaginas.length > 0) centaurOnImpMale();
+    if (x >= 0 && player.vaginas.length === 0) centaurOnImpMale();
     else if (player.vaginas.length > 0 && x < 0) centaurOnImpFemale();
     else {
         outputText("Do you focus on your maleness or girl-parts?", false);

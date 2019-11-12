@@ -459,7 +459,7 @@ export function bimboChampagne(player: Player, clearScreen: boolean, intro: bool
             player.breastRows[0].breastRating = 5;
         }
         // (Player does not have vagina:
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             player.vaginas.createVagina();
             player.genderCheck();
             outputText("\n\nYou can feel ");

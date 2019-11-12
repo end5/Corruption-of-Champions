@@ -171,7 +171,7 @@ function harpyDamageLoss(): void {
         outputText("your " + multiCockDescriptLight(game.player) + " flopping from side to side from the ministrations, you see not one, but THREE deranged, randy bird-girls, all squabbling over your genitals.\n\n", false);
 
         // [(Male/shemale)
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             outputText("The hierarchy is eventually settled, it seems, because two of those heavy-hipped bird babes wrap their lips around your " + cockDescript(game.player, x) + ", sucking and pecking at the hot flesh", false);
             if (player.balls > 0) outputText(", craning their necks to slurp and massage your " + ballsDescriptLight(player) + " eagerly, trying to coax up your cum production as much as they can", false);
             outputText(". The third, estranged harpy leaps at your torso, straddling your navel with her weighty rear, knocking the breath out of you and leaning down, ", false);
@@ -371,7 +371,7 @@ function winAndRapeHarpyAnally(): void {
     outputText("The harpy girl seems to freeze above you, wincing and trilling in pain. You are bordering on pain yourself; her crushing ass is so tight and so hot it nearly burns your " + cockDescript(game.player, x) + "! You smirk and raise your hand, before bringing it down onto her blubbery feminine rear.  With a loud, ringing slap, her ass jiggles as you scream \"<i>Giddy-up!</i>\"\n\n", false);
 
     // [(Males, no breasts)
-    if (player.breastRows.biggestTitSize() < 1 && !player.vaginas.length > 0) {
+    if (player.breastRows.biggestTitSize() < 1 && player.vaginas.length === 0) {
         outputText("Her pupils constrict, and the feathery fat-reared fowl squawks loudly, going completely crazy atop you! She writhes and bounces this way and that, growing more and more desperate and insane as her pain increases.  Your " + cockDescript(game.player, x) + " slams this way and that into her rough, gripping walls, as moans and grunts escape your lips. She flaps frantically from side to side, almost slipping her clutching rump free of your " + cockDescript(game.player, x) + " before you grasp hard onto her meaty thighs, forcing yourself back into the distressed harpy with a lewd grin.  It is clear that some part of her is loving this brutal intrusion; her feminine fluids are spilling free, coating your torso with her strong scent.\n\n", false);
     }
     // [(Herms/Shemales)

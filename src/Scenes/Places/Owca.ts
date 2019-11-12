@@ -962,7 +962,7 @@ function disbandHorde(): void {
 // Option: Enslave - penis version (requires D2 completion and libido >= 60 and corr >= 70) (Z)
 function enslaveVapulaWithYourWang(): void {
     clearOutput();
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         enslaveVapulaAsACuntWielder();
         return;
     }

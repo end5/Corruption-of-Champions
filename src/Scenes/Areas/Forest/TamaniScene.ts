@@ -684,7 +684,7 @@ export function tamaniKnockUp(): void {
 
 export function encounterTamani(): void {
     // Fems:
-    if (player.cocks.length <= 0) {
+    if (player.cocks.length === 0) {
         tamaniFemaleEncounter();
     }
     // Dudezillaz:

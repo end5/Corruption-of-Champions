@@ -13,7 +13,7 @@
 
 // [INITIAL INTRO – Requires Male/Herm, visits at 5pm – 7pm]
 export function lottieAppearance(display: boolean = true): () => void {
-    if (!player.cocks.length > 0) return null;
+    if (player.cocks.length === 0) return null;
     if (player.effects.findByType(StatusAffects.MetMarae) < 0) return null;
     if (game.time.hours >= 15 && game.time.hours <= 23) {
         if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00281] == 0) {

@@ -92,7 +92,7 @@ export class PlayerEvents implements TimeAwareInterface {
             dynStats("lust", 10); // Always gain 10 lust each hour
             needNext = true;
         }
-        if (!player.vaginas.length > 0 && player.perks.findByType(PerkLib.Diapause) >= 0) { // Lose diapause
+        if (player.vaginas.length === 0 && player.perks.findByType(PerkLib.Diapause) >= 0) { // Lose diapause
             outputText("\n<b>With the loss of your womb, you lose your kangaroo-like diapause ability.</b>\n");
             player.perks.remove(PerkLib.Diapause);
             needNext = true;
@@ -208,7 +208,7 @@ export class PlayerEvents implements TimeAwareInterface {
                     }
                     else {
                         outputText("\nYou feel a certain fullness building in your insectile abdomen.  You have some eggs ready... and you feel a strange urge to have them fertilized.");
-                        if (!player.vaginas.length > 0) outputText("  Wait, how would you even go about that?");
+                        if (player.vaginas.length === 0) outputText("  Wait, how would you even go about that?");
                     }
                     outputText("  <b>You have enough eggs to lay!</b>\n");
                     needNext = true;
@@ -216,7 +216,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 else if (prevEggs < 20 && player.ovipositor.eggs() >= 20) { // Stage 2 egg message
                     if (player.perks.findByType(PerkLib.SpiderOvipositor) >= 0) {
                         outputText("\nYour spider body feels like it's stretched taut, and a heavy warmth has spread throughout it.  The sensation of eggs piling up inside you is enough to drive you to distraction.  It would be a good idea to find somewhere to deposit them - but, oh, how great it would feel to get them fertilized by a nice hard cock first!");
-                        if (!player.vaginas.length > 0) outputText("  Wait, that's not right...");
+                        if (player.vaginas.length === 0) outputText("  Wait, that's not right...");
                     }
                     else {
                         outputText("\nYour abdomen feels like it's stretched taut, and a heavy warmth has spread throughout it.  It swings pendulously with every movement you make, and the sensation of eggs piling up inside you is enough to drive you to distraction.");
@@ -318,7 +318,7 @@ export class PlayerEvents implements TimeAwareInterface {
         // flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330] prevents PC getting two of the same notices overnite
         else if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330] > 0) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00330]--;
         if (player.perks.findByType(PerkLib.FutaForm) >= 0) { // Futa checks
-            if (!player.cocks.length > 0) { // (Dick regrowth)
+            if (player.cocks.length === 0) { // (Dick regrowth)
                 player.cocks.createCock();
                 player.cocks[0].cockLength = 10;
                 player.cocks[0].cockThickness = 2.75;
@@ -352,7 +352,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
-            if (!player.vaginas.length > 0) { // Vagoo
+            if (player.vaginas.length === 0) { // Vagoo
                 player.vaginas.createVagina();
                 if (player.perks.findByType(PerkLib.FutaFaculties) >= 0)
                     outputText("\n<b>Your crotch is like, all itchy an' stuff.  Damn!  There's a wet little slit opening up, and it's all tingly!  It feels so good, why would you have ever gotten rid of it?</b>\n");
@@ -370,7 +370,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
-            if (!player.vaginas.length > 0) { // Vagoo
+            if (player.vaginas.length === 0) { // Vagoo
                 player.vaginas.createVagina();
                 if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0)
                     outputText("\n<b>Your crotch is like, all itchy an' stuff.  Omigawsh!  There's a wet little slit opening up, and it's all tingly!  It feels so good, maybe like, someone could put something inside there!</b>\n");
@@ -397,7 +397,7 @@ export class PlayerEvents implements TimeAwareInterface {
         if (player.perks.findByType(PerkLib.BroBody) >= 0) { // Bro checks
             player.effects.remove(StatusAffects.Feeder);
             player.perks.remove(PerkLib.Feeder);
-            if (!player.cocks.length > 0) { // (Dick regrowth)
+            if (player.cocks.length === 0) { // (Dick regrowth)
                 player.cocks.createCock();
                 player.cocks[0].cockLength = 10;
                 player.cocks[0].cockThickness = 2.75;

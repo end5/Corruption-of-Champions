@@ -34,7 +34,7 @@ function cinnabarGreeting(): void {
     if (flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS] == 0) {
         flags[kFLAGS.CINNABAR_NUMBER_ENCOUNTERS]++;
         // (No cock)
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("You walk over towards the rat-morph, and as you near, she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She licks her lips and sidles alongside you, caressing your body as she offers, \"<i>50 gems for an hour.  That's all it takes to have Cinnabar be your companion...</i>\"  Her voice trails off into a husky vibration as she awaits your response.\n\n", false);
             // [Buy an hour] [Leave]
             simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
@@ -61,7 +61,7 @@ function cinnabarGreeting(): void {
     // Not first time
     else {
         // (No cock)
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("You walk over towards Cinnabar, and as you near, she places her hands on her hips, sizing you up with her intense, blood-red eyes.  She licks her lips and sidles alongside you, caressing your body as she offers, \"<i>50 gems for an hour.  That's all it takes to have a companion...</i>\"  Her voice trails off into a husky vibration as she awaits your response.\n\n", false);
             // [Buy an hour] [Leave]
             simpleChoices("Buy1Hour", cinnabarNonHugeDickings, "", null, "", null, "", null, "Leave", Bazaar.enterTheBazaar);
@@ -116,7 +116,7 @@ function cinnabarNonHugeDickings(): void {
     outputText("Cinnabar coos happily, in spite of the pain, and she begs, \"<i>Please " + mf(player, "master", "mistress") + ", look at the mirrors.  Your slut is trying to be good, but she needs to be filled so badly.</i>\"  You turn to look, but hold on to her tortured tits, just in case.  Amazingly, a pair of the mirrors have changed.  They no longer reflect your own image back – they show her gaping, girlcum-dripping gash and twitching, black-skinned anus.  You can even smell her feral musk and feel the heat pouring from her horny genitalia hitting you in a wave.\n\n", false);
 
     outputText("Too shocked to keep your grip, you listen dumbly as Cinnabar groans, \"<i>" + mf(player, "Master", "Mistress") + " is pleased?  This one knows how to use portals for their intended purpose.  Watch slut make more sexy portals.</i>\"  True to her words, many of the other mirrors change, showing both sets of nipples", false);
-    if (!player.vaginas.length > 0) outputText(" and your " + assholeDescript(player), false);
+    if (player.vaginas.length === 0) outputText(" and your " + assholeDescript(player), false);
     else outputText(", your " + vaginaDescript(player) + ", and your " + assholeDescript(player), false);
     outputText(" just inches away.  Without any prompting, you reach through to touch her arousal engorged lips, slipping fingertips through the needy gash and marveling at how large it feels.  You push forward, burying one, two, three, and finally four fingers inside her hungry nethers.\n\n", false);
 
@@ -132,7 +132,7 @@ function cinnabarNonHugeDickings(): void {
     // Finger poke
     if (player.vaginas.length > 0) cuntChange(player, 8, true, true, false);
     else buttChange(player, 8, true, true, false);
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("  Unbidden, " + sMultiCockDesc(game.player) + " begins to harden, stiffening with every brush against your prostate.", false);
+    if (player.cocks.length > 0 && player.vaginas.length === 0) outputText("  Unbidden, " + sMultiCockDesc(game.player) + " begins to harden, stiffening with every brush against your prostate.", false);
     else if (player.vaginas.length > 0) outputText("  Femcum begins to soak the rat's practiced fingers, drenching her finger-pads with liquid lust.", false);
     outputText("  You rock back, slamming your " + buttDescription(player) + " against the wall and moaning with need.  She's quite skilled, and ", false);
     if (player.vaginas.length > 0) outputText("caresses your passage in ways that ", false);
@@ -150,7 +150,7 @@ function cinnabarNonHugeDickings(): void {
         else outputText("her fist", false);
         outputText(" into your asshole, leaning on you in the same way and locking your bodies together through the portals.  ", false);
     }
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("You gasp and moan when you feel her other hand wrap around your " + cockDescript(game.player, 0) + ", pulling and tugging on it until it starts to leak a trail of squeezed-out man-slime on the mattress.  ", false);
+    if (player.cocks.length > 0 && player.vaginas.length === 0) outputText("You gasp and moan when you feel her other hand wrap around your " + cockDescript(game.player, 0) + ", pulling and tugging on it until it starts to leak a trail of squeezed-out man-slime on the mattress.  ", false);
     outputText("Growing more and more aroused, hotter and hotter, you pick up the pace, pistoning your forearms in and out of Cinnabar's lewdly squelching holes.\n\n", false);
 
     outputText("She squeaks, the first rodent-like sound she's made all evening, and you take that as your cue to work her even more brutally, pounding her now-gaped holes with hard, fast strokes.  Each time it seems like she swallows more of your arm, and after a few particularly violent poundings, you've sunk inside the rat up to the elbow.  From where you're kneeling, you can see her belly, and it isn't distended in the slightest.  Just how much can she handle?\n\n", false);
@@ -168,7 +168,7 @@ function cinnabarNonHugeDickings(): void {
         else outputText("tightly-clenched fingers", false);
     }
     outputText(" plunge further inside you, violating you far more gently, but still hard enough to get you off.", false);
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         outputText("  Her soft pads grip your " + cockDescript(game.player, 0) + " tightly while she  presses on your prostate, milking your cum from you with professional skill.  Rather than coming in its usual spurts, it drips in a long, liquid chain of white-goo that drops into a submissive puddle on the bed.", false);
         if (player.cumQ() >= 250) {
             outputText("  Not content with that, your body keeps going, thickening the stream into a torrent that soaks the sheets", false);

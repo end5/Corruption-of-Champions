@@ -359,7 +359,7 @@ function ghostGooGurlzDuckfaces(): void {
 
     outputText("The ghost girl wriggles her way out of your torso, hovers hesitantly for a moment as she sizes up her intended prey, then floats towards it. You stifle a giggle as she 'crawls' slowly through the air, a near-intangible, vaguely human-shaped wisp. She reaches the slime, steels herself, and dives in. The slime jiggles like... well, gelatin, as the spirit pushes herself into the green mass. You wait several moments, confusedly observing the gyrations of the agitated stuff.  Then, the motion just... ceases. Curious as to if the attempt worked or not, you approach hesitantly. The green slime shuffles in place as it turns itself to regard you. Looking carefully into the stuff, you make out glimpses of the ghost girl's face, and you catch a wink. Knowing what that signifies, you throw off your " + player.armorName + " as you stride towards her, ", false);
     // ([if penis present]
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText(" presenting your " + multiCockDescriptLight(game.player) + " to the spectral slime.", false);
+    if (player.cocks.length > 0 && player.vaginas.length === 0) outputText(" presenting your " + multiCockDescriptLight(game.player) + " to the spectral slime.", false);
     else if (player.vaginas.length > 0) outputText(" slipping a hand down to your " + clitDescription(player) + " eagerly.", false);
     // [if herm]
     else outputText(" both of your sexes throbbing in excitement.", false);

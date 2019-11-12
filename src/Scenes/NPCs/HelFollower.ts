@@ -2136,15 +2136,15 @@ function leaveWithGirls(): void {
 }
 
 function helAndSluttyHarpy(): void {
-    if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length === 0 && player.vaginas.length === 0) {
         helAndSluttyHarpyGenderless();
         return;
     }
-    else if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    else if (player.cocks.length > 0 && player.vaginas.length === 0) {
         helAndSluttyHarpyMale();
         return;
     }
-    else if (!player.cocks.length > 0 && player.vaginas.length > 0) {
+    else if (player.cocks.length === 0 && player.vaginas.length > 0) {
         helAndSluttyHarpyFemale();
         return;
     }

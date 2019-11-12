@@ -133,7 +133,7 @@ export function goldenSeed(type: number, player: Player): void {
     //   Sexual:
     // ****************
     // -Grow a cunt (guaranteed if no gender)
-    if (player.gender == 0 || (!player.vaginas.length > 0 && changes < changeLimit && rand(3) == 0)) {
+    if (player.gender == 0 || (player.vaginas.length === 0 && changes < changeLimit && rand(3) == 0)) {
         changes++;
         // (balls)
         if (player.balls > 0)

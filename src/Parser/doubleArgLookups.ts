@@ -47,21 +47,21 @@ export let cockHeadLookups: Record<string, any> = // For subject: "cockHead"
 export let twoWordNumericTagsLookup: Record<string, any> =
 {
     cockfit(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) return "<b>(Attempt to parse cock when none present.)</b>";
+            if (game.player.cocks.length === 0) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
                 if (game.player.cocks.cockThatFits(aspect) >= 0) return cockDescript(game.player, game.player.cocks.cockThatFits(aspect));
                 else return cockDescript(game.player, game.player.cocks.smallestCockIndex());
             }
         },
     cockfit2(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) return "<b>(Attempt to parse cock when none present.)</b>";
+            if (game.player.cocks.length === 0) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
                 if (game.player.cocks.cockThatFits2(aspect) >= 0) return cockDescript(game.player, game.player.cocks.cockThatFits2(aspect));
                 else return cockDescript(game.player, game.player.cocks.smallestCockIndex());
             }
         },
     cockheadfit(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) {
+            if (game.player.cocks.length === 0) {
                 return "<b>(Attempt to parse cockhead when none present.)</b>";
             }
             else {
@@ -70,21 +70,21 @@ export let twoWordNumericTagsLookup: Record<string, any> =
             }
         },
     cockheadfit2(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) return "<b>(Attempt to parse cockhead when none present.)</b>";
+            if (game.player.cocks.length === 0) return "<b>(Attempt to parse cockhead when none present.)</b>";
             else {
                 if (game.player.cocks.cockThatFits2(aspect) >= 0) return cockHead(game.player, game.player.cocks.cockThatFits2(aspect));
                 else return cockHead(game.player, game.player.cocks.smallestCockIndex());
             }
         },
     cock(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) return "<b>(Attempt to parse cock when none present.)</b>";
+            if (game.player.cocks.length === 0) return "<b>(Attempt to parse cock when none present.)</b>";
             else {
                 if (aspect - 1 >= 0 && aspect - 1 < game.player.cocks.length) return cockDescript(game.player, aspect - 1);
                 else return "<b>(Attempt To Parse CockDescript for Invalid Cock)</b>";
             }
         },
     cockhead(thisPtr: any, aspect: any): any {
-            if (!game.player.cocks.length > 0) return "<b>(Attempt to parse cockHead when none present.)</b>";
+            if (game.player.cocks.length === 0) return "<b>(Attempt to parse cockHead when none present.)</b>";
             else {
                 const intAspect: number = int(aspect - 1);
                 if (intAspect >= 0 && intAspect < game.player.cocks.length) return cockHead(game.player, intAspect);

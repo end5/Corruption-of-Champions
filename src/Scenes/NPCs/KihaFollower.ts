@@ -1724,7 +1724,7 @@ export function pcWinsDomFight(): void {
     choices[choices.length] = 2;
     let select: number = choices[rand(choices.length)];
     // PC's cock is chosen/ has cock only:
-    if (select == 0 || !player.vaginas.length > 0) {
+    if (select == 0 || player.vaginas.length === 0) {
         outputText(" plow back into her cunt.  With your brute strength and form, you pin her body down to the ground and fuck her from behind.");
         // Kiha response one (requires vagina):
         if (rand(2) == 0) outputText("[pg]\"<i>Ha!  The Champion still has some fight in " + mf(player, "him", "her") + "!  Keep me here if you can, wimp!  I WILL pin you down and cum all over your face!  You'll lap it all up like a good little " + mf(player, "boy", "girl") + " to bo- UGH!</i>\"");
@@ -1740,7 +1740,7 @@ export function pcWinsDomFight(): void {
         else outputText("[pg]\"<i>Ha!  The Champion still has some fight in " + mf(player, "him", "her") + "!  Keep me here if you can, wimp!  I WILL pin you down and cum all over your face!  You'll lap it all up like a good little " + mf(player, "boy", "girl") + " to bo- UGH!</i>\"");
     }
     outputText("[pg]Subdued for the time being, you push onward with coitus and brutalize Kiha's ever moistening pussy, the female dragon morph crying out in sheer delight at the \"<i>punishment</i>\" being inflicted upon her ");
-    if (select == 0 || !player.vaginas.length > 0) outputText("love canal");
+    if (select == 0 || player.vaginas.length === 0) outputText("love canal");
     else outputText("clit");
     outputText(".  \"<i>Come on, idiot!  Give me all you've got, if you have the balls!</i>\"");
 
@@ -1748,7 +1748,7 @@ export function pcWinsDomFight(): void {
     if (player.gender != 2 && player.balls == 0) outputText("[pg]You're not sure if that's an insult or a challenge to step it up.");
     outputText("[pg]She wants it rough?  Fine by me, you think to yourself.  Taking hold of her scarlet hair, you give her a forceful");
     // PC is fucking Kiha with a cock:
-    if (select == 0 || !player.vaginas.length > 0) outputText(" tug along her lengths and pull her head back towards you, soliciting a pained scream from Kiha as her roots convey the agony of the act to her.  \"<i>Is that all you've GOT?! Give me a break!</i>\"");
+    if (select == 0 || player.vaginas.length === 0) outputText(" tug along her lengths and pull her head back towards you, soliciting a pained scream from Kiha as her roots convey the agony of the act to her.  \"<i>Is that all you've GOT?! Give me a break!</i>\"");
     // PC is fucking Kiha via scissoring:
     else outputText(" twist of your fingers along her clitoral hood, causing Kiha to screech in surprised pain and pleasure.  \"<i>Is that all you've GOT?! Give me a break!</i>\"");
     outputText(" she mockingly yells back at you.  In a flash, her right leg sweeps against your shoulder and pushes you towards the ground; her other leg and body twisting to assist in knocking you over.  As fast as you can, you try and work your limbs and body to fend off Kiha's attempts to force you against the ground, but it's no use.  The dragoness... ");
@@ -1762,7 +1762,7 @@ export function pcWinsDomFight(): void {
         if (player.cocks.length > 0) outputText(cockDescript(game.player, x));
         else outputText(clitDescription(player));
         outputText(" in her mouth.  \"<i>Get used to that angle [name]; it's your new favorite position.</i>\"  She taunts, before ");
-        if (!player.cocks.length > 0) outputText("lapping viciously at your cunt.");
+        if (player.cocks.length === 0) outputText("lapping viciously at your cunt.");
         else outputText("ramming your cock down her craw.");
     }
     outputText("[pg]This won't do at all!  You're going to dominate her, whether she likes it or not!  Mustering your strength, you wait for the best moment to break free and ");
@@ -1825,7 +1825,7 @@ export function pcWinsDomFight(): void {
         outputText("[pg]Out of nowhere, you feel Kiha's tail once again find its way around your throat and drag you painfully towards her.  She doesn't let go until you're firmly planted against a withered old tree, and she straddles your battered form, pressing you against the rough bark with her powerful thighs.  Your head is already trapped between your wooden head-rest and her drooling vagina by the time you manage to regain your composure, and it's too late to do anything about it; she's got you right where she wants you.  Kiha laughs triumphantly as she begins to grind her clit wetly across your face.  \"<i>Quite the will you have there, Champion!  You could have won, if you were a little more attentive to your surroundings.  Now... now you'll have to settle for eating my pussy, weakling!  Get to it!</i>\"");
         outputText("[pg]You need a moment to plan how to get out of this, so you grudgingly go along with it for now.  Like a rattlesnake's tail, you flick the tip of your tongue rapidly over her clitty; the dragoness moans her approval and grabs you by the hair to help \"<i>guide</i>\" you.  \"<i>Gods, you eat pussy well! That's about all you're good for if you can't beat me, right?</i>\"  She says mockingly, as if she was daring you to make a move.  Sensing weakness in her grip, you do just that.");
         outputText("[pg]Grabbing at her ankles, you give a mighty tug and yank them out from underneath her, breaking her grip on you and sending her crashing into the dirt.  Still in your grasp, you work her legs all the way up to her ears and bury your face in her snatch, teasing and tormenting the needy sex with mean-spirited effectiveness.  The dragoness only whines and groans in delight, offering no strong resistance as you bring her to climax, legs twitching uncontrollably as she coats you in a rush of pussy juice.  Taking a moment to clean yourself, you lap up the fluids that Kiha has so \"<i>graciously</i>\" shared with you.  \"<i>Oh... wow.  We have to do that again sometime!</i>\"  Kiha remarks, exhausted and panting for air.  A grin cracks across your face, realizing that you haven't cum yet.  \"<i>Who says it's over?</i>\"  You say with a grin, as you grab her and pin her against a tree.  Slumped against the ground, she's in the perfect position for ");
-        if ((player.cocks.length > 0 && rand(2)) || !player.vaginas.length > 0) {
+        if ((player.cocks.length > 0 && rand(2)) || player.vaginas.length === 0) {
             outputText("a facial.[pg]You tell your lover to stay there and don't move while you conclude the act, furiously stroking your length");
             if (player.cocks.length > 1) outputText("s");
             outputText(" only inches away from Kiha's face.  Her body perks up as it dawns on her what you have in mind, and she arcs her head back for your impending release.  \"<i>Come on... come on... yeah, cum baby, I want it so bad...</i>\" she whines in between pants of lust, impatiently longing for your orgasm.  A few moments later you feel the warmth of seed gushing from your " + cockHead(player, x) + ", strings of sperm slamming against Kiha's pretty features.  She gasps in satisfaction as your cum rains down on her, moaning as your ejaculate coats her cheeks and brow.  Not one to let jism go to waste, you take her by the back of the head and press your " + cockDescript(game.player, x) + " against her lips; Kiha yields her mouth to your whims and hums in bliss as more seed flows into her throat and maw.");

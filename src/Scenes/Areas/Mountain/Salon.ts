@@ -477,7 +477,7 @@ function minotaurCumBukkakeInSalon(): void {
     buttChange(player, 90, true, false);
 
     outputText("\n\nYou slide down the twitching bull-shaft until your " + buttDescription(player) + " slaps the wall, and you draw slowly away, but you push back harder, turned into a lewd, wanting whore by the massive quantity of minotaur seed in your belly, on your skin, and fogging up the air.  The beast pulls out and you whine plaintively, feeling empty and useless until he plunges back inside and reminds you of your purpose.  He starts to fuck you hard, not caring for your pleasure at all, slamming his horse-cock deep and fast.  Each of his three rings of prepuce ", false);
-    if (!player.cocks.length > 0) outputText("drags through your body, touching sensitive nerves you didn't even know you had until you cum, shuddering and shaking like a wanton whore.", false);
+    if (player.cocks.length === 0) outputText("drags through your body, touching sensitive nerves you didn't even know you had until you cum, shuddering and shaking like a wanton whore.", false);
     else outputText("presses on your prostate as it squeezes by, making " + sMultiCockDesc(game.player) + " drip and spurt freely until you can bear it no longer and cum, shaking and shuddering like a wanton whore.  Jizz drips and pours from " + sMultiCockDesc(game.player) + " in a steady stream that pools on the floor, slowly rolling towards a drain that doubtless empties into a tank or greedy goblin cunt.", false);
     outputText("\n\n", false);
 

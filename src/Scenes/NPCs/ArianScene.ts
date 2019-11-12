@@ -626,7 +626,7 @@ function bargeInOnArian(): void {
     outputText("\n\nSlowly you approach the hiding lizard, and sit on his bed.  You let him know you're flattered to be his object of desire, and that there's no need to hide himself.  If he felt this way about you he should just have said so.");
     outputText("\n\nArian peeks from under his covers.  \"<i>Y - You mean you're not mad at me?</i>\"  You smile and tell him you aren't.  Arian visibly relaxes, letting his covers fall on his chest.");
     // (if PC is male)
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         outputText("\n\n\"<i>I just assumed... since we're both male....</i>\" He explains himself, fidgeting.  \"<i>I didn't know if you... well... if you would mind that....</i>\"");
         outputText("\n\nYou raise your eyebrow; it seems that Arian is not opposed to some male on male.... What do you tell him?");
         // [Don't mind] [Like Girls]
@@ -635,14 +635,14 @@ function bargeInOnArian(): void {
         addButton(1, "Like Girls", youLikeGirlsNotSickLizardDudes);
     }
     // (else if PC is genderless)
-    else if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
+    else if (player.cocks.length === 0 && player.vaginas.length === 0) {
         outputText("\n\n\"<i>I just assumed... since we're both male....</i>\"  He fidgets with his hands.  \"<i>I didn't know if you... well... if you would mind that....</i>\"");
         outputText("\n\nYou stop him in his tracks, and tell him you're not exactly male.  You strip your undergarments and let Arian gaze in fascination at your crotch - your clean, smooth, genderless crotch.  Not believing what he is seeing Arian crawls forward to touch your crotch, mesmerized.  \"<i>How?  You... I... we can't....</i>\"  You silence him with a finger, and tell him there's plenty you two can do.");
         // (Display Sex Menu)
         arianSexMenu(false);
     }
     // (else if PC is female)
-    else if (!player.cocks.length > 0 && player.vaginas.length > 0) {
+    else if (player.cocks.length === 0 && player.vaginas.length > 0) {
         outputText("\n\n\"<i>It's just that... well... you're so beautiful and I'm... I didn't think you....</i>\"  He trails off.");
         outputText("\n\nYou tell him he looks adorable, especially when he's acting like a hopeless virgin.  At the mention of the word ‘virgin' Arian recoils.  Surprised by this development, you ask him if he really is a virgin.");
         outputText("\n\nArian hides his face once more inside his covers and says in a whisper, \"<i>Yes....</i>\"");
@@ -1222,7 +1222,7 @@ function arianSexingTalk(): void {
         outputText("\n\nArian takes a glance at your crotch.");
 
         // if PC has no cock)
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("\n\nBut sighs in disappointment when [Arian ey] sees no bulge.  \"<i>Maybe... you could grow your dick back and... nevermind....</i>\"  Arian averts [Arian eir] eyes.");
             outputText("\n\nYou tell [Arian em] you'll think about it.");
         }
@@ -2152,7 +2152,7 @@ function suckAriansDick(): void {
     outputText("\n\n\"<i>Yes, I liked it very much!  Though I hope you'll let me return the favor... somehow,</i>\"  [Arian Ey] says, releasing you from between [Arian eir] legs, while [Arian eir] tail lazily curls to gently massage your neck in a sign of affection.");
 
     // [NoCock:
-    if (!player.cocks.length > 0) outputText("\n\nYou tell [Arian ey] you'll think of some way [Arian ey] can return the favor,");
+    if (player.cocks.length === 0) outputText("\n\nYou tell [Arian ey] you'll think of some way [Arian ey] can return the favor,");
     else outputText("\n\nWell, you happen to have a creamy lolly of your own that [Arian ey] could lick, you tease,");
     outputText(" rolling your neck in pleasure as [Arian ey] rubs it with [Arian eir] reptilian tail.");
 
@@ -3207,7 +3207,7 @@ function giveArianReptilum(): void {
         if (player.vaginas.length > 0) outputText(" and ");
     }
     if (player.vaginas.length > 0) outputText("[vagina]");
-    if (!player.vaginas.length > 0 && !player.cocks.length > 0) outputText("genderless crotch");
+    if (player.vaginas.length === 0 && player.cocks.length === 0) outputText("genderless crotch");
     outputText(".  \"<i>Hmm, that looks much tastier than candy actually.</i>\"  [Arian Ey] licks your ");
     if (player.cocks.length > 0) outputText("cock from base to tip");
     else if (player.vaginas.length > 0) outputText("pussy all the way from the back to the tip of your [clit]");
@@ -3701,7 +3701,7 @@ export function wakeUpAfterArianSleep(): void {
             outputText(" what a naughty little lizan.");
 
             outputText("\n\nYou can't resist playfully teasing Arian that [Arian ey] is such a buttslut.  ");
-            if (!player.vaginas.length > 0) outputText("Did [Arian ey] always know [Arian ey] wanted a man to top [Arian em], or is this development new to [Arian em]?");
+            if (player.vaginas.length === 0) outputText("Did [Arian ey] always know [Arian ey] wanted a man to top [Arian em], or is this development new to [Arian em]?");
             else outputText("Does [Arian ey] really get off on having a girl with a dick all her own fuck [Arian em] like a girl, hmm?");
 
             outputText("\n\n\"<i>No... but I love it regardless!  Fill me with your seed, please!</i>\"  Arian begs, moaning and eagerly awaiting your deposit.");

@@ -602,7 +602,7 @@ export function volunteerToSlurpCowCunt(): void {
         }
     }
     IsabellaFollowerScene.isabellaAffection(2);
-    if (!IsabellaFollowerScene.isabellaFollower() || !player.vaginas.length > 0 || player.breastRows.biggestTitSize() < 1) {
+    if (!IsabellaFollowerScene.isabellaFollower() || player.vaginas.length === 0 || player.breastRows.biggestTitSize() < 1) {
         doNext(Camp.returnToCampUseOneHour);
     }
     else {

@@ -811,7 +811,7 @@ function sheilaFriendlyHerPeoples(): void {
         outputText("\n\n\"<i>Yeah, I suppose that'll work");
         if (player.cocks.length > 0) outputText(", and I'll turn the kids over to");
         outputText(" - no, I mean, ");
-        if (!player.cocks.length > 0) outputText("if I decide");
+        if (player.cocks.length === 0) outputText("if I decide");
         else outputText("I'm not ready for");
         outputText(" - er... fuck <b>you!</b></i>\"  This last exclamation comes in response to your pealing laughter.  \"<i>Wanker!</i>\"");
         outputText("\n\nShe gets to her feet, lips pressed tight and face flushed with embarrassment, and leaves without another word, the bundle of game animals hanging over her shoulder... but what's said is said.");
@@ -2712,7 +2712,7 @@ function forcedSheilaOral(dick: boolean = true): void {
         outputText(".");
 
         outputText("\n\nThe unhappy woman complies, inserting her tongue.  The little pink triangle works your hole only haltingly, stroking past the nerves of the entrance with a jerky, mechanical motion.  It's clear from the feeling that she's just pistoning it in and out, imitating the world's smallest cock.");
-        if ((player.vaginas.length > 0 && player.vaginalCapacity() >= 100) || (!player.vaginas.length > 0 && player.analCapacity() >= 100)) outputText("  She keeps hitting the same spot again, too - she's not even bothering to adjust her angle and touch the rest of your stretched opening.");
+        if ((player.vaginas.length > 0 && player.vaginalCapacity() >= 100) || (player.vaginas.length === 0 && player.analCapacity() >= 100)) outputText("  She keeps hitting the same spot again, too - she's not even bothering to adjust her angle and touch the rest of your stretched opening.");
 
         outputText("\n\n\"<i>You are awful at this,</i>\" you gripe, sitting heavily on her head.  A muffled complaint comes from under you, but you pay it no mind.  \"<i>No boy parts, tail too stubby to insert... and now no oral skills either.  Seriously, what are you good for except taking the dick and making babies?  Why don't you just stay home with your legs open and hold out a begging bowl?");
         // [(PC has met hellhound master)
@@ -2858,7 +2858,7 @@ function sheilaLossRapeRouter(): void {
     // RNG biased against giving this scene to men/herms, but it should still be possible
     // boilerplate face-in-cunt shit
     // if sheila xp >= -3, set sheila xp = -2
-    if ((!player.cocks.length > 0 || rand(3) == 0)) sheilaForcedOralGeneric();
+    if ((player.cocks.length === 0 || rand(3) == 0)) sheilaForcedOralGeneric();
     // loss scene - cowgirl (for M,H)
     // if sheila xp >= -3, set sheila xp = -2
     else {
@@ -3923,7 +3923,7 @@ function demonImpChildren(): void {
 
     outputText("\n\nShe takes your look of surprise as permission to elaborate.  \"<i>Mmm, why the wide eyes, mate?  Our people always pushed them out fast.  Except instead of tucking him into a snuggly against my tits, I tucked him into somewhere a bit... lower.</i>\"  She hugs your arm closer, fairly rubbing her pussy on the back of your hand and leaving a trail of her lube as she slides her own fingers into your [armor].  \"<i>He has his " + mf(player, "daddy", "other mommy") + "'s cock.");
     // (if no cock)
-    if (!player.cocks.length > 0) outputText("  Or, had...</i>\" she finishes with a frown as she reaches your bare groin.  \"<i>Where'd you leave that magnificent old fella?  I was lookin' forward to another go.</i>\"  She pulls her hand out, then leans toward you with a pout.  \"<i>I'm so horny, too...</i>\"");
+    if (player.cocks.length === 0) outputText("  Or, had...</i>\" she finishes with a frown as she reaches your bare groin.  \"<i>Where'd you leave that magnificent old fella?  I was lookin' forward to another go.</i>\"  She pulls her hand out, then leans toward you with a pout.  \"<i>I'm so horny, too...</i>\"");
     // (if cock)
     else {
         outputText("  Still, it's not the same as having you inside me...</i>\"  She squeezes the neck of your [cock] and then pulls her hand away, slipping it between her own legs.  \"<i>I was thinking you could help me make another, and maybe up the population of men worth a damn around here.</i>\"  Reclining, she spreads her thighs, pulling apart her small, smooth labia ");
@@ -4910,7 +4910,7 @@ function bigDickAndThighs(): void {
     outputText("\n\n\"<i>If you love cock so much, why don't you grow one?</i>\" you ask.");
 
     outputText("\n\nSheila giggles at that and raises her eyes, meeting your gaze.  \"<i>But it's only yours I love, [name].  I might take it off you as long as you promise ");
-    if (!player.vaginas.length > 0) outputText("to grow a nice pussy for me so that ");
+    if (player.vaginas.length === 0) outputText("to grow a nice pussy for me so that ");
     outputText("I can put it in you any time I want.</i>\"  She sticks her tongue out at you, and the seed dripping from her lips oozes onto it.");
     outputText("\n\nShaking your head, you leave her behind.");
 

@@ -903,7 +903,7 @@ export function dildoFuckRubi(): void {
     clearOutput();
     rubiSprite();
     // (If PC has no cock)
-    if (!player.cocks.length > 0) outputText("You don't have the equipment to give Rubi a good fucking, but there is one thing you do have.");
+    if (player.cocks.length === 0) outputText("You don't have the equipment to give Rubi a good fucking, but there is one thing you do have.");
     // (If PC has cock)
     else outputText("While you do have the requisite equipment to give Rubi a good fucking, you'd much rather use something else.");
     // (Add)
@@ -2407,12 +2407,12 @@ function getFuckedByRubi(): void {
     outputText(" eyes constantly meet yours, looking for approval, before and after every act.  You're certain you're still the one in charge here... but you're simply letting Rubi take the lead.");
 
     outputText("\n\nThe young demon-morph hurriedly strips you out of your [armor] and licks [rubi eir] lips at the sight of your naked, prone form.  [rubi Ey] slips down to [rubi eir] knees and whispers, \"<i>Let's get this ");
-    if (!player.vaginas.length > 0) outputText("asshole");
+    if (player.vaginas.length === 0) outputText("asshole");
     else outputText("cunt");
     outputText(" of yours all ready for me.</i>\"  Rubi's head descends between your legs");
     if (player.cocks.length > 0) outputText(", ignoring your " + multiCockDescriptLight(game.player) + " completely,");
     outputText(" and presses [rubi eir] face into your [vagOrAss], inhaling deeply.  [rubi Eir] lips pucker as [rubi ey] plants a kiss directly onto your ");
-    if (!player.vaginas.length > 0) outputText("ass");
+    if (player.vaginas.length === 0) outputText("ass");
     else outputText("moistening pussy");
     outputText(".  You let out a small moan and lean backwards, taking your eyes off the ");
     if (flags[kFLAGS.RUBI_HAIR] == 0) outputText("black-haired");
@@ -2430,14 +2430,14 @@ function getFuckedByRubi(): void {
     outputText(" emerges from the foreskin surrounding it as [rubi eir] cock strains, aching for something, anything to fill.");
 
     outputText("\n\nWith a look into your eyes, confirming [rubi eir] desires, [rubi ey] gives [rubi eir] cock what it wants.  One swift motion is all it takes as Rubi sinks [rubi eir] dick inside you several inches.  The feeling of penetration makes you moan suddenly, louder than you wanted to.  Rubi smiles, pulls out a few inches, and pushes back inside, just a little deeper.  This time it's your demonic lover's turn to moan as you clamp your [vagOrAss] around [rubi eir] invading member, tightening around [rubi em] like a vice.");
-    if (!player.vaginas.length > 0) buttChange(player, flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
+    if (player.vaginas.length === 0) buttChange(player, flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
     else cuntChange(player, flags[kFLAGS.RUBI_COCK_SIZE] * flags[kFLAGS.RUBI_COCK_SIZE] / 6, true, true, false);
 
     outputText("\n\nRubi takes hold of one of your legs, lifting it up onto [rubi eir] shoulder and thrusts in just a little bit deeper.  The movement is just right, rubbing your ");
-    if (!player.vaginas.length > 0) outputText("prostate");
+    if (player.vaginas.length === 0) outputText("prostate");
     else outputText("g-spot");
     outputText(" briefly, but enough to send a hot shiver up your spine.  Seeing this reaction, Rubi's smile widens into a grin and begins to thrust in and out at a slow pace.  Every thrust brushes past your sensitive ");
-    if (!player.vaginas.length > 0) outputText("prostate");
+    if (player.vaginas.length === 0) outputText("prostate");
     else outputText("g-spot");
     outputText(", and one by one your limbs start to tingle.  In and out, [rubi ey] goes, and you can feel something building inside you.");
 
@@ -2453,12 +2453,12 @@ function getFuckedByRubi(): void {
     outputText("\n\nSecond, your heart skips a beat.  Third, a lump forms in your throat.  You swallow hard, attempting to rid yourself of it, but it persists.  Your stomach churns, as if butterflies were swarming around inside of it.  Fourth, without really thinking about it... you nod.  It's a short, almost imperceptible movement, but Rubi picks up on it.");
 
     outputText("\n\n[rubi Eir] cock plunges in, putting a new, renewed pressure on your ");
-    if (!player.vaginas.length > 0) outputText("prostate");
+    if (player.vaginas.length === 0) outputText("prostate");
     else outputText("g-spot");
     outputText(".  Orgasmic energy suddenly bursts outwards from your crotch.  The tingling, needful sensations in your limbs explode in turn, showering your nerves with cool euphoria.  It washes over you like a tidal wave, causing your body to tense, your back arching and limbs jerking violently.  Your mouth parts and you can't help but scream, \"<i>Yes, yes!</i>\" repeatedly, not caring who could possibly hear you.  Rubi gives one last thrust, causing another miniature orgasm to rock across you, and giving you the acute sensation of being filled, as [rubi eir] body joins yours in its sex rapture.");
 
     outputText("\n\nRubi's [rubi cock] surges inside you, releasing one jet after another of warm, sticky jism into your needy ");
-    if (!player.vaginas.length > 0) outputText("bowels");
+    if (player.vaginas.length === 0) outputText("bowels");
     else outputText("womb");
     outputText(".  ");
 
@@ -2466,14 +2466,14 @@ function getFuckedByRubi(): void {
     if (flags[kFLAGS.RUBI_BLU_BALLS] < 4) { }
     else if (flags[kFLAGS.RUBI_BLU_BALLS] <= 6) {
         outputText("There's so much of it that it oozes out from your abused ");
-        if (!player.vaginas.length > 0) outputText("ass");
+        if (player.vaginas.length === 0) outputText("ass");
         else outputText("cunt");
         outputText(", dribbling down your buttcheeks and pooling onto the bed and floor below.  ");
     }
     // (Blueballs 6-9)
     else if (flags[kFLAGS.RUBI_BLU_BALLS] <= 9) {
         outputText("Your insides rumble suddenly as Rubi's impressive load begins to fill you up, [rubi eir] seed slipping into every available nook and cranny.  What doesn't fit slips out of your abused ");
-        if (!player.vaginas.length > 0) outputText("ass");
+        if (player.vaginas.length === 0) outputText("ass");
         else outputText("cunt");
         outputText(" in a small torrent, pooling onto the bed and floor below.  ");
     }

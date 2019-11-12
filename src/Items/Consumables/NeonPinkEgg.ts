@@ -60,7 +60,7 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         // Lower ones are gender specific for some reason
         if (player.lib < 60) {
             // (Cunts or assholes!
-            if (!player.cocks.length > 0 || (player.gender == 3 && rand(2) == 0)) {
+            if (player.cocks.length === 0 || (player.gender == 3 && rand(2) == 0)) {
                 if (player.lib < 30) {
                     outputText("\n\nYou squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to breed until you're swollen and pregnant.  ", false);
                     if (player.cor < 25)
@@ -360,7 +360,7 @@ export function neonPinkEgg(pregnantChange: boolean, player: Player): void {
         // Lower ones are gender specific for some reason
         if (player.lib < 60) {
             // (Cunts or assholes!
-            if (!player.cocks.length > 0 || (player.gender == 3 && rand(2) == 0)) {
+            if (player.cocks.length === 0 || (player.gender == 3 && rand(2) == 0)) {
                 if (player.lib < 30) {
                     outputText("\n\nYou squirm a little and find your eyes glancing down to your groin.  Strange thoughts jump to mind, wondering how it would feel to breed until you're swollen and pregnant.  ", false);
                     if (player.cor < 25)

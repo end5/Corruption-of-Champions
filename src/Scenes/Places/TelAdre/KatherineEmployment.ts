@@ -984,7 +984,7 @@ function katherineTrainingWithUrtaStage3Horny(): void {
     let spitroast: () => void = KatherineThreesome.spitroastKath;
     let three69: () => void = KatherineThreesome.threeSixtyNine;
     if (player.gender == 0) spitroast = null;
-    if (!player.cocks.length > 0) three69 = null;
+    if (player.cocks.length === 0) three69 = null;
     simpleChoices("Spitroast", spitroast, "369", three69, "Try Leaving", KatherineThreesome.roastYou, "", null, "", null);
 }
 

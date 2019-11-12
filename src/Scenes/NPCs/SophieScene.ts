@@ -865,7 +865,7 @@ export function luststickApplication(hours: number = 4): void {
     if (player.perks.findByType(PerkLib.LuststickAdapted) >= 0) return;
     // Increment luststick resistance
     flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00285] += Math.floor(hours / 2);
-    if (!player.cocks.length > 0) return;
+    if (player.cocks.length === 0) return;
     // Max of 20.
     if (hours > 20) hours = 20;
     // Add duration if under effects

@@ -17,7 +17,7 @@ export function numbRocks(player: Player): void {
                 outputText(" ", false);
             }
             if (player.vaginas.length > 0) {
-                if (!player.cocks.length > 0)
+                if (player.cocks.length === 0)
                     outputText("your ");
                 outputText(vaginaDescript(player, 0) + " ", false);
             }

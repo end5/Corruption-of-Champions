@@ -479,7 +479,7 @@ function rideMechanicsCockII(cType: number): void {
 }
 
 export function mechanicFuckedYouUp(hpVictory: boolean, pcCameWorms: boolean): void {
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         maleLossToMechanic(hpVictory);
     }
     else {
@@ -633,14 +633,14 @@ function errybodyelseLossToMechanic(hpVictory: boolean): void {
 
     // Get turned into girl-lube pot.
     // Genderless Lust Loss
-    if (!player.vaginas.length > 0 && !hpVictory) {
+    if (player.vaginas.length === 0 && !hpVictory) {
         outputText("You stagger about drunkenly, stuffing your hand down your [armor] to get at your needy, aching [asshole]. You feel like a molten-hot font of lust and a delirious, jizz-craving slut all at the same time. Nothing short of hours of endlessly rutting on a virile, demonic cock for hours will quench the flames of your ardor and give you the pleasure you now crave. You whimper, looking up at the incubus imploringly as you try to get him to take you, yanking open your [armor] to show off your ready sphincter and busily pumping fingers. You even spread yourself open, beckoning him to stuff you.");
         outputText("\n\nThe demon uncaps a bottle of something and presses it into your spread-open sphincter, pouring something into you. Before you try to push it out, you feel buzzing heat in your groin, so strong that it's practically disabling. Slowly, that heat focusing into an incredible, wet sensation. <b>You've grown a pussy!</b> The empty bottle falls to the ground.");
         player.vaginas.createVagina();
         outputText("\n\n");
     }
     // Genderless HP Loss
-    else if (!player.vaginas.length > 0 && hpVictory) {
+    else if (player.vaginas.length === 0 && hpVictory) {
         outputText("Collapsing onto the ground, you look up at the demonic aggressor with hate in your eyes, unwilling to admit defeat even when staring full-on into its face. The incubus, for his part, simply smiles down at you as he steps closer, claws clicking noisily on the smooth, tiled pavement.");
 
         outputText("\n\n\"<i>Is that all the mighty champion is capable of? Feeble resistance that ends itself before lust can be properly awakened? I am... disappointed in you,</i>\" the incubus admits as he kneels down to look at conquered prize. \"<i>Still, Lethice will be pleased to have you at hand at last. I think I might get to keep you.</i>\" He playfully manhandles his foot-long meat to smack against your [face], forcing you to get a good feel for his tainted cock, to smell lurid, sexual scent.");

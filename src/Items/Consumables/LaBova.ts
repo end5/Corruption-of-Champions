@@ -113,7 +113,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         lengthChange(player, temp3, 1);
         if (player.cocks[temp].cockLength < 2) {
             outputText("  ", false);
-            if (player.cocks.length == 1 && !player.vaginas.length > 0) {
+            if (player.cocks.length == 1 && player.vaginas.length === 0) {
                 outputText("Your " + cockDescript(game.player, 0) + " suddenly starts tingling.  It's a familiar feeling, similar to an orgasm.  However, this one seems to start from the top down, instead of gushing up from your loins.  You spend a few seconds frozen to the odd sensation, when it suddenly feels as though your own body starts sucking on the base of your shaft.  Almost instantly, your cock sinks into your crotch with a wet slurp.  The tip gets stuck on the front of your body on the way down, but your glans soon loses all volume to turn into a shiny new clit.", false);
                 if (player.balls > 0)
                     outputText("  At the same time, your " + ballsDescriptLight(player) + " fall victim to the same sensation; eagerly swallowed whole by your crotch.", false);
@@ -130,7 +130,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             }
         }
         // if the last of the player's dicks are eliminated this way, they gain a virgin vagina;
-        if (player.cocks.length == 0 && !player.vaginas.length > 0) {
+        if (player.cocks.length == 0 && player.vaginas.length === 0) {
             player.vaginas.createVagina();
             player.vaginas[0].vaginalLooseness = VaginaLooseness.TIGHT;
             player.vaginas[0].vaginalWetness = VaginaWetness.NORMAL;

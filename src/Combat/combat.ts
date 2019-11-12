@@ -2038,7 +2038,7 @@ export function display(): void {
             }
             else if (player.lust <= 50) {
                 outputText("\nYou pant. You can’t help it, not with the exertion of fighting and how blessedly <i>warm</i> you’re starting to get between the legs.");
-                if (!player.cocks.length > 0 && !player.vaginas.length > 0) outputText(" You wish, for a moment, that you hadn’t so carelessly lost your genitalia.");
+                if (player.cocks.length === 0 && player.vaginas.length === 0) outputText(" You wish, for a moment, that you hadn’t so carelessly lost your genitalia.");
                 outputText(" Trying not to breath about this beast was never going to work anyway.\n");
             }
             else if (player.lust <= 60) {
@@ -4822,7 +4822,7 @@ export function kissAttack(): void {
         return;
     }
     // Success but no effect:
-    if (monster.lustVuln <= 0 || !monster.cocks.length > 0) {
+    if (monster.lustVuln <= 0 || monster.cocks.length === 0) {
         if (monster.plural) outputText("  Mouth presses against mouth, and you allow your tongue to stick out to taste the saliva of one of their number, making sure to give them a big dose.  Pulling back, you look at " + monster.a + monster.short + " and immediately regret wasting the time on the kiss.  It had no effect!\n\n", false);
         else outputText("  Mouth presses against mouth, and you allow your tongue to stick to taste " + monster.pronoun3 + "'s saliva as you make sure to give them a big dose.  Pulling back, you look at " + monster.a + monster.short + " and immediately regret wasting the time on the kiss.  It had no effect!\n\n", false);
         enemyAI();
@@ -4874,7 +4874,7 @@ export function possess(): void {
         outputText("There is nothing to possess inside the golem.");
     }
     // Sample possession text (>79 int, perhaps?):
-    else if ((!monster.cocks.length > 0 && !monster.vaginas.length > 0) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > 100) {
+    else if ((monster.cocks.length === 0 && monster.vaginas.length === 0) || monster.lustVuln == 0 || monster.inte == 0 || monster.inte > 100) {
         outputText("With a smile and a wink, your form becomes completely intangible, and you waste no time in throwing yourself into the opponent's frame.  Unfortunately, it seems ", false);
         if (monster.inte > 100) outputText("they were FAR more mentally prepared than anything you can handle, and you're summarily thrown out of their body before you're even able to have fun with them.  Darn, you muse.\n\n", false);
         else outputText("they have a body that's incompatible with any kind of possession.\n\n", false);

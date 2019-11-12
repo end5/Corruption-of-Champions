@@ -34,7 +34,7 @@ export class LustyMaidensArmor extends Armor {
             outputText(" at all!  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }
-        else if (game.player.vaginas.length <= 0) {
+        else if (game.player.vaginas.length === 0) {
             outputText("that it will dig uncomfortably into your featureless groin.  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }

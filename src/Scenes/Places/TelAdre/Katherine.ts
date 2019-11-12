@@ -5546,7 +5546,7 @@ function bathTimeFrustrated(): void { // You took away her cock. This is your fa
 }
 
 function bathTimePenetrated(): void {
-    if (!player.vaginas.length > 0) { // Genderless or Male - get this out of the way since it will be a little different
+    if (player.vaginas.length === 0) { // Genderless or Male - get this out of the way since it will be a little different
         if (player.cocks.length > 0) {
             outputText("\n\nKath's " + cockMultiple("staff slides", "staves slide") + (player.isNaga() ? " against your scaly behind" : " between your legs") + ", leaving little streaks of precum" + (player.isNaga() ? "." : " on your inner thighs."));
             if (player.balls > 0) outputText("  " + (player.isNaga() ? "Her hands slide down your side and she wraps her fingers around" : "She slides her cock" + cockMultiple("", "s") + " back and forth, rubbing " + cockMultiple("it", "them") + " against") + " your scrotum, teasing you with her sharp " + catGirl("nails", "claws") + " until your cock" + (player.cocks.length > 1 ? "s are" : "is") + " standing fully erect.");
@@ -5915,7 +5915,7 @@ function drunkFuck(): void {
         outputText("gets her whole hand inside your ass and rolls it around, knowing how much it takes to drive a genderless lover to distraction");
 
     outputText(".\n\nOnly when you’re having trouble even standing does Kath release your arm");
-    if (!player.vaginas.length > 0) outputText(" and yank her " + (player.cocks.length > 0 ? "fingers" : "fist") + " from your ass");
+    if (player.vaginas.length === 0) outputText(" and yank her " + (player.cocks.length > 0 ? "fingers" : "fist") + " from your ass");
     outputText(", and that’s just so she can " + clothesLowerChoice("undo her pants", "raise her skirt", "pull open the hidden slit in her bodysuit", "raise her dress", "open her robe") + ", pull aside her panties and grab your hips with both hands.  Just a moment later your ");
     const dPen: boolean = getCockNumber() > 1 && player.vaginas.length > 0;
     if (dPen)

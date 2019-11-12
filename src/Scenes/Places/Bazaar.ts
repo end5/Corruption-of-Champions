@@ -292,7 +292,7 @@ function joeysMassageWifNoExtraJizz(): void {
         outputText(".  He skillfully works a free hand over your slippery butt-cheek, squeezing the supple flesh while he expertly rubs your interior, stroking it with semen-lubed touches.\n\n", false);
     }
     // Fems/Genderless cum+epilogue
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         // (Genderless orgasm)
         if (player.gender == 0) outputText("Though his single finger makes you burn with passion, Joey's second slides effortlessly after it, filling your " + assholeDescript(player) + " with another of his cum-soaked digits.  His warm jism slides down the crack between the fingers, slowly pooling in your backdoor.  Once you've adjusted, he continues to the massage, stroking and bumping your interior with the confident, practiced strokes of a professional. You pull hard on your tortured " + nippleDescription(player, 0) + "s, egging up the gradual upwelling of pleasure while you lick the bunny-cream from your lips.  A moment later, the no-longer-offending digits press hard on a sensitive spot, and you're arching your back, screaming with pleasure.\n\n", false);
         // (Female orgasm)
@@ -879,7 +879,7 @@ function eggsInButt(eggButt: boolean = false): void {
     else if (player.vaginas.length > 0) outputText("[vagina]");
     else outputText("[asshole]");
     outputText(", spreading his sweet bounty all over.  His fingers to go work, rubbing up and down");
-    if (!player.cocks.length > 0) outputText(", in and out");
+    if (player.cocks.length === 0) outputText(", in and out");
     outputText(", removing all that pent up tension from inside you.  ");
     if (player.cocks.length > 0) outputText("[EachCock] begins leaking pre-cum, mixing with Joey's on your belly to create what looks like a chocolate-white chocolate marbled confection.");
     else if (player.vaginas.length > 0) outputText("Your cunt grows ever wetter, and not just because of the new chocolate coating.  Despite Joey's femboy appearance, you've got to hand it to him, he does know his way around a pussy.");
@@ -990,7 +990,7 @@ function abuseHisAss(): void {
     outputText("Your tongue flicks from your lips at all the possibilities that course through your mind.  \"<i>Lemme go!</i>\"  The feline barks out from under you, though you have better ideas.  You move your free hand back and roughly pull down his pants, exposing his muscled rump to the cool, night air.  Feeling a firm cheek beneath your hand, you rub and squeeze it almost affectionately before swatting the cheek roughly, coaxing a strained grunt from the tiger man's mouth.");
 
     // [(If player doesn't have cock)
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         outputText("\n\nDeciding to humiliate the poor fool, you begin to spank your hand against the tiger man's rear.  Your swats grow steadily more forceful and your slaps begin to grow louder and louder, filling the night air with the sound of your hand slapping firm cheeks.  You reduce the defiant growls uttered by the tiger man to soft whimpers and he slowly ceases his struggles and submits.  Your hand grips a cheek firmly, fingers digging into the abused flesh and feeling the warmth of the sting you've inflicted.  Tilting your head over, you can't help but smirk as the tiger's erect manhood juts out between his legs.");
 
         outputText("\n\n\"<i>What's that racket?</i>\" You turn your head, hearing a low voice shout from inside the nearby tent.  With a snicker you shove the humiliated tiger to the ground and leave him exposed and aroused as the occupants of the tent pour out.  By the time they surround him you are long gone and back to the well-lit collection of tents in the bazaar.");

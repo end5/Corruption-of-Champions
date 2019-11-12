@@ -111,7 +111,7 @@ export function femaleGirlsLoseToSammitches(): void {
     outputText("\n\nYou try to thrash your arms, but two more witches sit on them, grinding their slut-holes onto your arms in a perverted way to restrain you.  The witches on your [legs] see how creative their sisters are being and follow their example, spreading your [legs] farther apart turning them into their pleasure toys as their wet pussies start to rock back and forth.");
 
     outputText("\n\nTwo witches leave the room while the other ones wait in line for a spot on the new slut.  The four girls getting off on your limbs are moaning in delight as they play with their milky rows, squeezing some out onto your body.  ");
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("Amazingly, as the oil spreads over your crotch, the flesh splits, revealing a small, wet entrance with a little clit.");
         player.vaginas.createVagina();
         player.clitLength = 0.25;

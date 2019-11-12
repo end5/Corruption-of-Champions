@@ -444,14 +444,14 @@ function victoryVSDriderRideOviAnal(): void {
     outputText("Shivering, you glance back up at the defeated woman; she has a passionate, prideful look plastered on her face, though it seems to waver each time another inch of ovipositor pushes past your stretched-out ring.\n\n", false);
 
     // ([not mans]
-    if (!player.cocks.length > 0) outputText("\"<i>I never would've thought you were an anal-pregnancy slut,</i>\" hisses the spider in pleasure, flexing her organ harder while it curls through your guts, so deep inside you that you wonder how much further she can go.", false);
+    if (player.cocks.length === 0) outputText("\"<i>I never would've thought you were an anal-pregnancy slut,</i>\" hisses the spider in pleasure, flexing her organ harder while it curls through your guts, so deep inside you that you wonder how much further she can go.", false);
     else outputText("\"<i>Just because I have an exoskeleton doesn't mean I can't feel you dripping on me.  I thought I was the corrupt bitch here, but you... you take the cake.</i>\"", false);
     outputText("\n\n", false);
 
     outputText("With a final hard shove, the last few segments pop inside you", false);
     if (player.cocks.length > 0) outputText(", nearly crushing your prostate from the tight squeeze", false);
     outputText(".  ", false);
-    if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText("You gasp and dribble a few strands of girl-goo, the contractions of your achingly empty pussy intensifying.  ", false);
+    if (player.cocks.length === 0 && player.vaginas.length > 0) outputText("You gasp and dribble a few strands of girl-goo, the contractions of your achingly empty pussy intensifying.  ", false);
     if (player.cocks.length > 0) outputText("You gasp and squirt a few weak ropes of cum, having a miniature orgasm on the spot.  ", false);
     outputText("Writhing happily, you sigh ", false);
     if (player.cocks.length > 0) outputText("while your " + multiCockDescriptLight(game.player) + " dribbles white, wasted goo onto the black and " + monster.hairColor + " striped carapace below", false);

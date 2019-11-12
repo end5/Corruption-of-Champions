@@ -44,7 +44,7 @@ export function sharkTooth(type: number, player: Player): void {
     }
     // Smexual stuff!
     // -TIGGERSHARK ONLY: Grow a cunt (guaranteed if no gender)
-    if (type == 1 && (player.gender == 0 || (!player.vaginas.length > 0 && changes < changeLimit && rand(3) == 0))) {
+    if (type == 1 && (player.gender == 0 || (player.vaginas.length === 0 && changes < changeLimit && rand(3) == 0))) {
         changes++;
         // (balls)
         if (player.balls > 0)
@@ -61,9 +61,9 @@ export function sharkTooth(type: number, player: Player): void {
         player.genderCheck();
     }
     // WANG GROWTH - TIGGERSHARK ONLY
-    if (type == 1 && (!player.cocks.length > 0) && changes < changeLimit && rand(3) == 0) {
+    if (type == 1 && (player.cocks.length === 0) && changes < changeLimit && rand(3) == 0) {
         // Genderless:
-        if (!player.vaginas.length > 0)
+        if (player.vaginas.length === 0)
             outputText("\n\nYou feel a sudden stabbing pain in your featureless crotch and bend over, moaning in agony. Your hands clasp protectively over the surface - which is swelling in an alarming fashion under your fingers! Stripping off your clothes, you are presented with the shocking site of once-smooth flesh swelling and flowing like self-animate clay, resculpting itself into the form of male genitalia! When the pain dies down, you are the proud owner of a new human-shaped penis", false);
         // Female:
         else

@@ -484,7 +484,7 @@ function bunbun69(): void {
             if (player.balls > 0) outputText("balls", false);
             else outputText("clit", false);
             outputText(", whiskers vibrating with a happy little hum, her buck teeth massaging your root enthusiastically, impatient for her Champion-cream filling. Her hands slide from the back of your head, along your neck, down your back, and to your ass, fingers wrapping around to find your " + assholeOrPussy(player) + ". Slipping both middle fingers in, she strokes your ", false);
-            if (!player.vaginas.length > 0) outputText("prostate", false);
+            if (player.vaginas.length === 0) outputText("prostate", false);
             else outputText("inner walls", false);
             outputText(" until your orgasm overpowers your saccharine-fat daze and you peak, egg-bloated body spurting in creaming jets of pale seed to paint the brown bunny's insides white.\n\n", false);
 
@@ -537,7 +537,7 @@ function bunbun69(): void {
             else if (player.vaginas.length > 0) outputText("clit", false);
             else outputText("groin", false);
             outputText(", whiskers vibrating with a happy little hum, her buck teeth massaging your root enthusiastically, impatient for her own creamy meal. Her hands slide from the back of your head, along your neck, down your back, and to your ass, fingers wrapping around to find your " + assholeOrPussy(player) + ". Slipping both middle fingers in, she strokes your ", false);
-            if (!player.vaginas.length > 0) outputText("prostate", false);
+            if (player.vaginas.length === 0) outputText("prostate", false);
             else outputText("inner walls", false);
             outputText(" until your orgasm overpowers your bunny-fucked daze and you peak, your egg-bloated body spurting in gushing jets of pale seed to paint the olive girl's insides white.\n\n", false);
 

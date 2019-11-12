@@ -13,7 +13,7 @@ export function broBrew(player: Player): void {
         }
         outputText("\n\n", false);
         // female
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("The beverage isn't done yet, however, and it makes it perfectly clear with a building pleasure in your groin.  You can only cry in ecstasy and loosen the bottoms of your " + player.armorName + " just in time for a little penis to spring forth.  You watch, enthralled, as blood quickly stiffens the shaft to its full length – then keeps on going!  Before long, you have a quivering 10-inch maleness, just ready to stuff into a welcoming box.", false);
             player.cocks.createCock();
             player.cocks[0].cockLength = 10;

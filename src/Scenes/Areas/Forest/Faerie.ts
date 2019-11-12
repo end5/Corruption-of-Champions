@@ -3,7 +3,7 @@
 export function encounterFaerie(): void {
     spriteSelect(17);
     outputText("A faerie slightly taller and thicker than your middle finger flits about the air. Her flat chest and girlish bob of hair make her look quite cute, but the solid black stockings and leather straps covering her chest show her slutty nature. Her wings are a light red, the color of aroused genitals.\n\n", true);
-    if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+    if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
         outputText("She seems to notice you getting hard at the sight of her and looks down. \"<i>Ew, man parts!</i>\" the faerie exclaims, flying away like a frightened bird.", false);
         if (rand(player.spe / 2) + player.effects.getValue1Of(StatusAffects.FaerieFucked) > 15) {
             if (player.effects.getValue1Of(StatusAffects.FaerieFucked) < 5) {

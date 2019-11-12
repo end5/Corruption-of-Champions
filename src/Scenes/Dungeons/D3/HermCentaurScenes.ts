@@ -234,9 +234,9 @@ export function inSovietCoCPonyRidesYou(hpVictory: boolean, pcCameWorms: boolean
         else femLoss(hpVictory);
     }
 
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) maleLoss(hpVictory);
-    else if (player.vaginas.length > 0 && !player.cocks.length > 0) femLoss(hpVictory);
-    else if (!player.vaginas.length > 0 && !player.cocks.length > 0) femLoss(hpVictory);
+    if (player.cocks.length > 0 && player.vaginas.length === 0) maleLoss(hpVictory);
+    else if (player.vaginas.length > 0 && player.cocks.length === 0) femLoss(hpVictory);
+    else if (player.vaginas.length === 0 && player.cocks.length === 0) femLoss(hpVictory);
 }
 
 function femLoss(hpVictory: boolean): void {
@@ -264,7 +264,7 @@ function femLoss(hpVictory: boolean): void {
 
     outputText("\n\nThat burgeoning heat that's soothing away your worries builds hotter and higher with every swallow, but it isn't until the lactation slows to a trickle that you notice something else - it's gathering in your groin.");
 
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText(" The pleasant warmth builds with alarming speed, the diffused sensation pooling toward a focused point in your crotch. The heat seems to tunnel deeper into your core before returning to the surface, and with each iteration, the pulsating, almost liquid sensation feels hotter. The warmth quickly makes way to raw, unadulterated heat, which in turn rapidly transforms into a deeply rooted, scalding fire- but it takes on a subtly different tone; a different kind of heat. It’s only when the first traces of wetness begins to roll down the inside of your thigh that you put all the pieces together. <b>The centaur's milk has rooted a cunt into your previously genitalia-void crotch.</b>");
         player.vaginas.createVagina();
         outputText("\n\n");

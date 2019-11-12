@@ -3260,7 +3260,7 @@ function giveAmilyAPresent(): void {
             outputText("You have a hunch if you had a penis that wasn't too big, giving Amily a nurse's outfit might set off some kinky roleplay.\n\n");
         else {
             outputText("You have a hunch that if you had a nurse's outfit you could get Amily to give you a rather erotic checkup, provided ");
-            if (!player.cocks.length > 0)
+            if (player.cocks.length === 0)
                 outputText("you had a dick.");
             else if (player.cocks.cockThatFits(61) < 0) outputText(" your dick could fit.");
         }
@@ -4249,7 +4249,7 @@ function corruptAmilyLickPussiesLikeAPro(): void {
     }
     // [(if PC has balls)
     if (player.balls > 0) {
-        if (!player.cocks.length > 0) outputText(", ", false);
+        if (player.cocks.length === 0) outputText(", ", false);
         outputText("your " + ballsDescriptLight(player) + " gently resting atop her head, supported by her small horns", false);
     }
     outputText(".  She moves her head back, a thin strand of girlcum linking her nose to your " + vaginaDescript(player) + ".  Amily " + ((flags[kFLAGS.AMILY_NOT_FURRY] == 0) ? "licks" : "wipes") + " her nose " + ((flags[kFLAGS.AMILY_NOT_FURRY] == 0) ? "off and licks it all up" : "") + ", savoring the taste of the juices, \"<i>Wonderful, mistress, just wonderful,</i>\" Amily grins; then she bows and says, \"<i>Thank you for allowing this worthless cunt to taste your wonderful essence, my mistress.</i>\"  She gives your clit a quick lick and continues, \"<i>Blessed be, oh great Marae.  For granting this slutty cumdumpster mercy and allowing me to have serve my " + mf(player, "master", "mistress") + " so fully.  Amen.</i>\" With that said, she licks her lips, ", false);
@@ -7047,7 +7047,7 @@ export function pureAmilyPutsItInYourRectumDamnNearKilledEm(): void {
         if (player.cocks.length > 0) outputText(" and p", false);
     }
     if (player.cocks.length > 0) {
-        if (!player.vaginas.length > 0) outputText("  P", false);
+        if (player.vaginas.length === 0) outputText("  P", false);
         outputText("recum dribbles from your " + multiCockDescriptLight(game.player), false);
     }
     if (player.gender > 0) outputText(", forming a small puddle underneath you as you feel your climax approaching.", false);

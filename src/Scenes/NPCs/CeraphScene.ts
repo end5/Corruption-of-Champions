@@ -1180,7 +1180,7 @@ export function ceraphBodyPartDreams(): void {
         // PUSSY ORGY FLOOR DRAIN
         if (subChoice == 0) {
             outputText("You can feel an odd sensation in your nethers during your dreams, and as the warm, slick feeling grows you recognize it for what it is – cum dripping into your pussy.  ", false);
-            if (!player.vaginas.length > 0) outputText("You don't have a vagina any more, do you?", false);
+            if (player.vaginas.length === 0) outputText("You don't have a vagina any more, do you?", false);
             else outputText("No, that doesn't feel right – it isn't your vagina.", false);
             outputText("  It must be the sex that Ceraph stole from you!  You feel tight... enclosed somehow, but the ever present trickle of bodily fluids into your imprisoned nethers slowly brings about your own arousal.\n\n", false);
 
@@ -1193,7 +1193,7 @@ export function ceraphBodyPartDreams(): void {
         // PUSSY CLITPUMP
         else if (subChoice == 1) {
             outputText("An insistent suction pulls on your lower lips, engorging them.  You squirm, rolling your hips back and forth to escape the pull, even as your clit begins to grow from its hood.  ", false);
-            if (!player.vaginas.length > 0) outputText("Wait... you don't have a clit any more... Ceraph took that away.  ", false);
+            if (player.vaginas.length === 0) outputText("Wait... you don't have a clit any more... Ceraph took that away.  ", false);
             else outputText("Wait... that's not your " + clitDescription(player) + "... it's the one Ceraph took from you.  ", false);
             outputText("The thought of your demonic tormentor sharpens the sensations, letting you feel a smooth, circular chamber around the top of your old vagina.  You blink open long, mascara-laden eyes and are treated to the sight of Ceraph (your mistress?) pumping away at the device she has on your clit, increasing the suction.\n\n", false);
 
@@ -1213,7 +1213,7 @@ export function ceraphBodyPartDreams(): void {
         // PUSSY FLESHLIGHT
         else if (subChoice == 2) {
             outputText("A sudden prodding at your vagina's entrance nearly rouses you from your sleep.  ", false);
-            if (!player.vaginas.length > 0) outputText("Wait... you don't have a pussy anymore.  ", false);
+            if (player.vaginas.length === 0) outputText("Wait... you don't have a pussy anymore.  ", false);
             else outputText("Wait... your pussy doesn't feel like that!  ", false);
             outputText("You must be picking up on feelings from the cunt Ceraph took away from you!  Warm demonic cum bubbles at your entrance, slicking the engorging vulva with demonic taint.  You swoon from the heat of it, and the demoness wastes no time, quickly inserting her entire length.\n\n", false);
 

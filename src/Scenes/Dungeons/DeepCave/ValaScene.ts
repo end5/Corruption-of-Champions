@@ -405,7 +405,7 @@ export function badEndValaNumber2Pt2(): void {
 
     outputText("There's no time to contemplate your fate, however, as the imp's black poison seems to take hold and you feel a burning all along your body. ", false);
     // (No vagina:
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("Between your thighs, a wet slurping tears through the air and a sudden seething heat fills your groin as a fresh pussy opens up, just under your dick.  ", false);
     }
     // (No breasts:

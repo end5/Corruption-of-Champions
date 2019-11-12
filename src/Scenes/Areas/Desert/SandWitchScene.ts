@@ -351,7 +351,7 @@ function sandwitchCentaurBoning(): void {
         // [has breasts]
         if (player.breastRows.biggestTitSize() > 0) outputText("; your " + nippleDescription(player, 0) + "s  become stiff", false);
         // [cock only]
-        if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
+        if (player.cocks.length > 0 && player.vaginas.length === 0) outputText(" and your " + cockDescript(game.player, 0) + " hardens.", false);
         // [cunt only]
         if (player.vaginas.length > 0 && player.cocks.length == 0) outputText(" and your " + vaginaDescript(player, 0) + " begins to drip with moisture.", false);
         // [cock and cunt]

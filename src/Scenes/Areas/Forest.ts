@@ -452,7 +452,7 @@ function trappedSatyr(): void {
     outputText("A humanoid figure with a set of goat-like horns and legs - a satyr - is currently buried balls-deep in one of the vagina-flowers that scatter the grove, whooping in delight as he hungrily pounds into its ravenously sucking depths.  He stops on occasion to turn and take a slobbering suckle from a nearby breast-like growth; evidently, he doesn't care that he's stuck there until the flower's done with him.\n\n", false);
 
     // (Player lacks a penis:
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         outputText("You can't really see any way to take advantage of this scenario, so you simply turn back and leave the way you came.", false);
         doNext(Camp.returnToCampUseOneHour);
     }

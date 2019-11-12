@@ -493,7 +493,7 @@ function basiliskAdvantageGoblin(): void {
         player.orgasm();
     }
     // Unsexed:
-    else if (!player.vaginas.length > 0) {
+    else if (player.vaginas.length === 0) {
         outputText("At the corner of your vision, you see a small, familiar green shape hover into view.  The goblin is so busy sorting through her inventory of drugs that you actually manage to see her before she sees you.  When she does lift her head up and notices the petrified, naked individual in front of her, she is so surprised she drops her satchel.\n\n", false);
 
         outputText("\"<i>A " + race(player) + "!</i>\" she yelps.  Hesitantly at first, then with increasing confidence as how vulnerable you are sinks in, she does a round circuit of you, taking in every angle of your frozen, helpless flesh.\n\n", false);

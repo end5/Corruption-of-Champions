@@ -61,7 +61,7 @@ export class Exgartuan implements TimeAwareInterface {
         checkedExgartuan = 0; // Make sure we test just once in timeChangeLarge
         if (player.effects.findByType(StatusAffects.Exgartuan) >= 0) { // Update Exgartuan stuff
             trace("EXGARTUAN V1: " + player.effects.getValue1Of(StatusAffects.Exgartuan) + " V2: " + player.effects.getValue2Of(StatusAffects.Exgartuan));
-            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (!player.cocks.length > 0 || player.cocks.cockArea(0) < 100)) { // If too small dick, remove him
+            if (player.effects.getValue1Of(StatusAffects.Exgartuan) == 1 && (player.cocks.length === 0 || player.cocks.cockArea(0) < 100)) { // If too small dick, remove him
                 outputText("\n<b>You suddenly feel the urge to urinate, and stop over by some bushes.  It takes wayyyy longer than normal, and once you've finished, you realize you're alone with yourself for the first time in a long time.  Perhaps you got too small for Exgartuan to handle?</b>\n");
                 player.effects.remove(StatusAffects.Exgartuan);
                 needNext = true;
@@ -1238,9 +1238,9 @@ function boobgartuanSurprise3(): void {
     if (player.gender > 0) {
         outputText("  Your " + hipDescription(player) + " begin grinding together, moist with ", false);
         // [if cock >0]
-        if (player.cocks.length > 0 && !player.vaginas.length > 0) outputText("pre-cum", false);
+        if (player.cocks.length > 0 && player.vaginas.length === 0) outputText("pre-cum", false);
         // [if vagina >0]
-        if (player.vaginas.length > 0 && !player.cocks.length > 0) outputText("juice", false);
+        if (player.vaginas.length > 0 && player.cocks.length === 0) outputText("juice", false);
         // [if cock >0, vagina >0]
         if (player.cocks.length > 0 && player.vaginas.length > 0) outputText("an aromatic cocktail of pre and juice", false);
         outputText(" as your tit massage begins to excite your nether regions.", false);

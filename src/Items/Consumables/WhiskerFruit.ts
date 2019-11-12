@@ -136,7 +136,7 @@ export function catTransformation(player: Player): void {
         temp3 = 0;
         // Determine if shrinkage is required
         // and set temp2 to threshold
-        if (!player.vaginas.length > 0 && player.breastRows.biggestTitSize() > 2)
+        if (player.vaginas.length === 0 && player.breastRows.biggestTitSize() > 2)
             temp2 = 2;
         else if (player.breastRows.biggestTitSize() > 4)
             temp2 = 4;

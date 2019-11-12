@@ -1254,10 +1254,10 @@ function topAkbitchFromBottomDuex(): void {
     outputText(images.showImage("akbal-deepwoods-male-akbalonback2"));
     // -page turn-
     // {tight/virgin vag/ass}
-    if ((!player.vaginas.length > 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2))
+    if ((player.vaginas.length === 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2))
         outputText("As you begin to impale yourself on the demonic pole, you gasp as your [vagOrAss] is spread wide by Akbal’s rather large demon-cat dick.  The remnants of his spit on your [vagOrAss] reacts to the mystic lube and any pain you would have felt is gone, replaced by mind numbing bliss.  The demon begins to thrust up into your [vagOrAss], which you cannot help but allow.  The sensation is beyond ecstasy - it is pure euphoria, exploding like a firecracker and blasting through you like a wave.  All too soon the pleasure peaks.");
     // {medium vag/ass}
-    else if ((!player.vaginas.length > 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4))
+    else if ((player.vaginas.length === 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4))
         outputText("As you impale yourself on the demon’s quivering dick, a moan finds itself coming out of your mouth.  The moment the remnants of saliva in your [vagOrAss] touch the lube coating his barbed cock, you see stars.  Lost in the moment, you cannot believe anything can feel this good.  You ride up and down the entire length of the demon’s damned sex organ.  It’s almost as if you’re bouncing up and down on a rod of pure bliss, like your entire being is being impaled by pure joy.  All too soon the pleasure peaks.");
     // {gapped pussy}
     else
@@ -1376,10 +1376,10 @@ function akbitchHighStrengthVariant(): void {
         outputText("\n\nWithout warning, you shove the little bitch onto his back and press his legs to his chest.  His heavy sack is drawn up tight, his self-lubing cock still pumping a river of lubricant and pre.  Using your muscles, you trap him in this position with your legs before reaching behind you to grab his barbed cock.  The barbed appendage is rubbery and wet with slick fluid.  Touching it causes Akbal to try to thrust upward, but it's damn near impossible against someone as strong as you.  Aiming his slick, ribbed demon-cat dick into your [vagOrAss], you begin to ease down onto it.");
 
         // {tight/virgin vagorass}
-        if ((!player.vaginas.length > 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2))
+        if ((player.vaginas.length === 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2))
             outputText("\n\nAs soon as your [vagOrAss] begins to envelop the thick head of Akbal’s giant, barbed dick, you let out a loud moan.  As the remnants of the spit slathered across your [vagOrAss] mixes with the lube on Akbal’s swollen sex organ, your body flinches from the tidal wave of pleasure.  Even those gorgeous barbs feel as though they’re soft, vibrating beads, wiggling as you envelop the demonic cock.  Thanks to the mixture, you are able to take his full length and revel in the stretched feeling having all that man meat gives you.  Akbal attempts to move, to thrust up into your [vagOrAss], but you hold him here, asserting your dominance as you easily keep the bitch boy pinned.");
         // {medium vagorAss}
-        if ((!player.vaginas.length > 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4))
+        if ((player.vaginas.length === 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4))
             outputText("\n\nAs soon as your [vagOrAss] begins to envelop the thick head of Akbal’s giant, barbed dick, you let out a squeal of delight. As your saliva drenched [vagOrAss] comes into contact with the lube soaking his demon dick, you almost pass out from the immense pleasure the mixture causes.  Those wonderful barbs are even vibrating against your tender flesh.  The girthy prick inside you is pure heat and vibrating pleasure that has your body tingling from your [vagOrAss] to your [feet].  Akbal attempts to move, to thrust up into your [vagOrAss] but you hold him here, asserting your dominance as you easily keep the bitch boy pinned.");
         // {Gaped vagorAss}
         else
@@ -1459,11 +1459,11 @@ function akbalBitchSpeed(): void {
         outputText(" with his long tongue, you begin to shiver.  Then you remember what it is you wanted to do.  Before he makes you cum, you shove his face away from you, pushing him onto his back with his cock once again standing tall.  Unable to contain yourself and draw this out any longer, you straddle the more than willing Jaguar demon and lower yourself onto his twitching erection without a second thought.");
 
         // {tight/virgin vagorass}
-        if ((!player.vaginas.length > 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2)) {
+        if ((player.vaginas.length === 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2)) {
             outputText("\n\nWhen the mushroom-shaped head of Akbal’s monstrous dick touches your [vagOrAss], a lightning bolt of ecstasy shoots through your body.  The saliva coating your [vagOrAss] mixes with the fluid coating the demon’s dick and makes you call out from the very depths of your soul.  As if the heated, almost drug-like pleasure wasn’t enough, your [vagOrAss] is being stretched, somehow taking the full length of Akbal’s monster dick without a problem.  Once you’ve fully enveloped him, the barbs begn to vibrate, pulsing like sex beads that send you into overdrive.\n\nYou begin to bounce.  Your body cries out for more and you answer the call by bouncing up and down the entire length of Akbal’s wonderfully rigid dick as fast as you can.  Each time you crash your [vagOrAss] into his, there is a hard clap, and soon, you’re going so fast it sounds like excited applause.  Beneath you, Akbal shakes as you ride him faster and harder than he’s ever been ridden before.  The tightness of your [vagOrAss] seems to be rare treat to such a well-endowed demon.");
         }
         // {medium vagorass}
-        else if ((!player.vaginas.length > 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4)) {
+        else if ((player.vaginas.length === 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4)) {
             outputText("\n\nWhen the mushroom shaped head of Akbal’s barbed dick touches your [vagOrAss], you feel the invasion with your entire body.  The saliva coating your spit-slick vagina reacts with the fluids coating Akbal’s dick, causing a chemically induced euphoria.  As if that wasn’t enough the barbs covering the shaft begin to vibrate, tingling your [vagOrAss] and driving you wild.\n\nYou plant your feet and begin riding Akbal for all you are worth.  With all your speed and strength, you smash your body into his, causing an unsteady, almost unending rhythm.  Beneath you Akbal shivers as you ride him so hard and fast that he can’t keep up. The demon’s toes curl, his eyes are even rolled into the back of his head.");
         }
         // {gaped vagorass}
@@ -1613,11 +1613,11 @@ function akbitchToughness(): void {
         outputText("\n\nYou shove the demon away from you, sliding down his body with a sexy little grin.  You waste no time reaching for his barbed dick and aiming it at your [vagOrAss] before squatting down until his rigid length is poised at your entrance.");
 
         // {tight/virgin Vag/ass}
-        if ((!player.vaginas.length > 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2)) {
+        if ((player.vaginas.length === 0 && player.ass.analLooseness < 2) || (player.vaginas.length > 0 && player.looseness() <= 2)) {
             outputText("\n\nAs your [vagOrAss] touches the mushroom-shaped head of Akbal’s barbed dick, your body is hit with an explosion of pleasure.  The sensation is pure ecstasy, blasting through your body from your [vagOrAss].  Your [vagOrAss] begins to stretch, the mystic mixture of Akbal’s spit and the lube soaking his erect dick allowing you to take the gargantuan barbed dick without a problem.  The feeling of your flesh widening to encompass Akbal’s dick is both alien and wonderful.  Once you can take the entire length you begin bouncing up and down his euphoria inducing dick with a huge grin on your [face].");
         }
         // {medium vag/ass}
-        else if ((!player.vaginas.length > 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4)) {
+        else if ((player.vaginas.length === 0 && player.ass.analLooseness < 4) || (player.vaginas.length > 0 && player.looseness() < 4)) {
             outputText("\n\nAs your [vagOrAss] touches the mushroom-shaped head of Akbal’s barbed dick, your body is hit with an explosion of ecstasy.  The feeling of Akbal’s giant sex organ just sitting inside your [vagOrAss] sends waves of pure pleasure through your body.  Throwing your head back you ride the demon for all you are worth.");
         }
         // {Gaped vag/ass}

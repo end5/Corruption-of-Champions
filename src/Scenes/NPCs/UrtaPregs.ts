@@ -1304,7 +1304,7 @@ function urtaPregCravings(): void {
     clearOutput();
     outputText("You decide to ask Urta if she has any particular cravings right now.  The pregnant fox visibly thinks about, then surreptitiously eyes your crotch.");
     // noDick:
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         outputText("\n\n\"<i>No, I'm fine, really,</i>\" she replies with a shake of her head.");
         outputText("\n\nPerhaps you should think about doing something else then?  Or maybe you should ask again when you have something else to offer her.  She seemed a bit saddened that you didn't have a dick.");
 

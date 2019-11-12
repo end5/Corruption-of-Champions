@@ -189,7 +189,7 @@ export function dreamSelect(): boolean {
         // cat
         else if (daydream == 4) {
             // FEMALE
-            if (player.vaginas.length > 0 && (!player.cocks.length > 0 || rand(2) == 0))
+            if (player.vaginas.length > 0 && (player.cocks.length === 0 || rand(2) == 0))
                 outputText("being a full cat and getting pounded by another as you mewl with pleasure.  He comes and pulls out, the barbs on his cock rake your insides as you yowl from the sensation. You clean yourself before searching for another cat to pound you, then another, and another...  ", false);
             // MALE
             else

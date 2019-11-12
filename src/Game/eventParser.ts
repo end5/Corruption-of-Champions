@@ -384,7 +384,7 @@ public function doSystem(eventNo:Number):void {
 */
 /* Were never called
 		case 118:
-			if (!monster.vaginas.length > 0) monster.vaginas.createVagina();
+			if (monster.vaginas.length === 0) monster.vaginas.createVagina();
 			monster.vaginas[0].vaginalLooseness = VaginaLooseness.GAPING;
 			monster.ass.analLooseness = 3;
 			outputText(mainView.eventTestInput.text, true, true);
@@ -735,7 +735,7 @@ export function goNext(time: number, needNext: boolean): boolean {
             return true;
         }
         // Lost pussy
-        else if (!player.vaginas.length > 0) {
+        else if (player.vaginas.length === 0) {
             outputText("\nYou fidget uncomfortably as the crease in the gusset of your lewd bikini digs into your sensitive, featureless loins.  There's simply no way you can continue to wear this outfit in comfort - it was expressly designed to press in on the female mons, and without a vagina, <b>you simply can't wear this exotic armor.</b>\n\n");
             Inventory.takeItem(player.setArmor(ArmorLib.COMFORTABLE_UNDERCLOTHES), playerMenu);
             return true;

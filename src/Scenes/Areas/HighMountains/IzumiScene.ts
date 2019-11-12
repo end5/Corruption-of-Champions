@@ -714,7 +714,7 @@ function surrenderLargeCock(): void {
     outputText("“<i>Five!</i>”  She yells, and her left hand joins the first in gripping your cock, this time about halfway down your shaft.  Again, her wrist rotates gently as she massages the area, but her hand doesn’t actually go anywhere.  Her grin widens into a truly ominous smile as she leans forwards conspiratorially.\n\n");
 
     outputText("“<i>Four.</i>”  She whispers, and without warning her legs unfold, both feet flying out from beneath her and latching onto the [sheath] of your [cock biggest]!  Izumi leers at you with undisguised amusement as she watches your reaction to the sensation of her bare soles rolling over the [sheath] of your shaft");
-    if (player.balls > 0 && !player.vaginas.length > 0) outputText(", occasionally sliding down to massage your [balls] before returning to your cock.");
+    if (player.balls > 0 && player.vaginas.length === 0) outputText(", occasionally sliding down to massage your [balls] before returning to your cock.");
     else if (player.balls == 0 && player.vaginas.length > 0) outputText(", occasionally sliding down to tease at the lips of your [vagina].");
     else if (player.balls > 0 && player.vaginas.length > 0) outputText(", occasionally sliding down, alternating between a gentle massage of your [balls] and teasing caresses of your [vagina].");
     outputText("\n\n");
@@ -1085,11 +1085,11 @@ export function fuckedUpByAFuckhugeOni(titLoss: boolean = false): void {
         addButton(1, "Vaginal", fuckhugeOniWantsYourBabiesOrSomeShit);
     }
 
-    if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    if (player.vaginas.length > 0 && player.cocks.length === 0) {
         addButton(2, "69", littleChampLittleChampFuckhugeOniIsCominTaEatcha);
     }
 
-    if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length === 0 && player.vaginas.length === 0) {
         addButton(0, "Next", noDickNoVagNoService);
     }
 
@@ -1126,7 +1126,7 @@ function lossSceneStay(): void {
 export function deathBySnuSnuIMeanGiantOniTits(): void {
     flags[kFLAGS.IZUMI_LAST_ENCOUNTER] = 1;
 
-    if (player.isTaur() || player.isDrider() || !player.cocks.length > 0) {
+    if (player.isTaur() || player.isDrider() || player.cocks.length === 0) {
         this.fuckedUpByAFuckhugeOni(true);
         return;
     }
@@ -1324,7 +1324,7 @@ function noDickNoVagNoService(): void {
 function littleChampLittleChampFuckhugeOniIsCominTaEatcha(): void {
     lossSceneStay();
 
-    if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] != 2 && !player.cocks.length > 0) {
+    if (flags[kFLAGS.IZUMI_SEEN_PC_GENDER] != 2 && player.cocks.length === 0) {
         outputText("Izumi’s fingers stroke questingly over your slit for a moment, then she frowns, confused.\n\n");
 
         outputText("“<i>Huh. You, uh.. You actually </i>don’t<i> have a dick.</i>”  She says, sounding a little taken aback.  “<i>You know, I gotta say, I think you’re the first person I’ve met on this rock without a wang? Seriously. I just kind of assumed you had one. Kinda lost track of my gameplan here, ‘cause I was really expecting something to grab onto down here.</i>”  She taps her lip with her free hand while you stare at her, bemused.  Then an ominous, toothy grin spreads slowly across her face.  “<i>Okay, new plan.</i>” She announces, then her hand snaps out to snatch hold of your");

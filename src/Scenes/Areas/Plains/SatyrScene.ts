@@ -169,7 +169,7 @@ export function loseToSatyr(): void {
     outputText("He grabs your [ass] and roughly squeezes your cheeks, kneeling down while lifting you up so he can impale your [vagOrAss].");
 
     outputText("\n\nYou can only watch in lust and horror as his massive cock aligns with your hole.  Finally, with a grunt, he pushes forward and spears you mercilessly on his shaft");
-    if ((player.vaginas.length > 0 && player.vaginalCapacity() < monster.cocks.cockArea(0)) || (!player.vaginas.length > 0 && player.analCapacity() < monster.cocks.cockArea(0))) outputText(", not even bothered by the fact that his cock doesn't even fit inside you");
+    if ((player.vaginas.length > 0 && player.vaginalCapacity() < monster.cocks.cockArea(0)) || (player.vaginas.length === 0 && player.analCapacity() < monster.cocks.cockArea(0))) outputText(", not even bothered by the fact that his cock doesn't even fit inside you");
     outputText(".");
     // [cunt/buttchange]
     if (player.vaginas.length > 0) cuntChange(player, monster.cocks.cockArea(0), true, true, false);
@@ -334,7 +334,7 @@ function willinglyBoneSatyr(): void {
     outputText("\n\nYou grasp and claw at your caprine lover, eagerly slamming your hips into his, revelling at the feeling of being stretched so deliciously full, marvelling at the meaty smacking of flesh on flesh.  Babbling madly, you try to convey how good he is making you feel and how much you want him. Spurred on, the satyr begins not only to send you away with increasingly faster bucks, but to receive you on your way down with equally powerful thrusts. You writhe against him, clawing wildly at his back in your ecstasy, reaching up and grabbing one of his horns to yank his head up into a carnal, tongue-tangling kiss.");
 
     outputText("\n\nThe satyr breaks the kiss and bleats loudly, slamming his hips against you, forcing his huge cock to dig in as deep as it can before unloading all his seed into your ");
-    if (!player.vaginas.length > 0) outputText("clenching butt");
+    if (player.vaginas.length === 0) outputText("clenching butt");
     else outputText("spasming vagina");
     outputText(".  It's like someone shoved a hose into you and opened the nozzle, filling you with an endless stream of hot spooge; you can feel it pooling inside you, inflating your belly with his gigantic load.");
 
@@ -345,12 +345,12 @@ function willinglyBoneSatyr(): void {
     outputText(".  Moaning softly and heaving in great lungfuls of breath, you sink back down onto him, feeling well and truly sated.");
 
     outputText("\n\nThe satyr's load has reduced to a trickle, but he still tries to pump more of it inside your ");
-    if (!player.vaginas.length > 0) outputText("bowels");
+    if (player.vaginas.length === 0) outputText("bowels");
     else outputText("womb");
     outputText("; making slow, short thrusts to ensure you've got all the seed that you need.  Panting, he grins at you from his prone position.  \"<i>Tell me then... did you like it?  Think that was enough baby batter to put a little satyr inside you?  Because if not I can go again.</i>\"  He grins confidently.");
 
     // (if male/genderless and 0 satyr children)
-    if (!player.vaginas.length > 0 && flags[kFLAGS.SATYR_KIDS] == 0) {
+    if (player.vaginas.length === 0 && flags[kFLAGS.SATYR_KIDS] == 0) {
         outputText("\n\nYou stare at him blankly, then, as coherent thought returns to you, you ask how he can knock you up when you don't have a womb.");
         outputText("\n\nHe winks at your disquieted expression.  \"<i>Satyr seed is so potent that we can impregnate anything, even ");
         if (player.cocks.length > 0) outputText("males");
@@ -394,7 +394,7 @@ function satyrPreggo(): void {
 export function satyrBirth(vag: boolean): void {
     spriteSelect(98);
     outputText("\nSudden sharp, intense pangs rip through your gut, seeming to emanate from your ");
-    if (vag && !player.vaginas.length > 0) {
+    if (vag && player.vaginas.length === 0) {
         outputText("newly grown vagina");
         player.vaginas.createVagina();
     }

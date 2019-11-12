@@ -160,7 +160,7 @@ export function turnIntoASammitch(): void {
     else outputText("let's go ahead and have some fun, shall we?  We'll have to wait until you pop out whatever's in your womb before I give you your first witch child.");
     outputText("  There will be plenty of time to make you one of us while we're waiting.</i>\"");
 
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText("\n\nShe gestures towards you and releases a flow of salmon-hued light in your direction.  As soon as it touches you, you moan out loud and begin to lift your [hips] into the air, humping against an unseen but clearly felt pressure on your loins.  A slowly spreading, vertical slit opens there, glistening with moisture as it parts to reveal a fresh clit.  <b>You've grown a cunt!</b>");
         player.vaginas.createVagina();
         player.clitLength = .25;
@@ -597,7 +597,7 @@ export function defeatedByCumWitch(): void {
         else turnIntoASammitch();
     }
     else {
-        if (player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+        if (player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
             if (rand(2) == 0) TDMsLoseToCumWitchScene();
             else repeatLoseToCumWitchForDudes();
         }

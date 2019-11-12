@@ -2499,12 +2499,12 @@ function marbleCampSexNew(): void {
             outputText(".\n\n");
             outputText("Marble gives you a kinky look and coos, \"<i>Do you like what you see?  Because I sure do like what I see.</i>\"  Her hand goes to your crotch and delivers some teasing squeezes until you can't do anything but moan under her gentle fondling.  She smiles at you, happy to see the effect her efforts have on you.  \"<i>Relax, sweetie... I really believe you need some more love...</i>\"  You trill in excitement as she starts going down on you.");
             outputText("\n\nThe contact of her hands has been replaced with a sensation of sweet warmth.  Marble effortlessly licks your groin, ");
-            if (player.vaginas.length > 0 && !player.cocks.length > 0) outputText("probing her tongue in your " + vaginaDescript(player, 0) + ", licking you in the most appropriate places");
+            if (player.vaginas.length > 0 && player.cocks.length === 0) outputText("probing her tongue in your " + vaginaDescript(player, 0) + ", licking you in the most appropriate places");
             else outputText("wrapping her tongue around your rod of dickflesh, squeezing and pumping beads of pre-cum up your shaft");
             outputText(".  She's doing an amazing job, and you thrash wildly under her smothering tongue assaults.");
             // ([vag only/has a cock]
             outputText("  Marble keeps ");
-            if (player.vaginas.length > 0 && !player.cocks.length > 0) outputText("poking your cunt");
+            if (player.vaginas.length > 0 && player.cocks.length === 0) outputText("poking your cunt");
             else outputText("suckling the juices out of your urethra and literally absorbing the drops of pre-cum as they spurt out of the tip of your junk.");
             // [if multicock]
             if (player.cocks.length > 1) outputText("  She alternatively sucks and jerks every cock you have, making sure there isn't a single meat-tower that isn't being taken care of.");

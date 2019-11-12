@@ -740,7 +740,7 @@ function drunkUrtaRidesARutPCsCock(): void {
     outputText("\n\nYour tired and lust-hazed mind sees no reason not to, and you grab her, so Urta's massive mare member starts to be pleasured by her own hand as well as yours.  Squealing in delight, the horny vixen returns to what seems to occupy her mind completely: bouncing fervently on top of you, with your " + cockDescript(game.player, x) + " trapped in her wet snatch.");
 
     outputText("\n\nThe stimulation is intense, your now far more sensitive member completely at the mercy of her inner muscles.  Urta doesn't seem tired at all, instead being even more ferocious and eager to share another set of mind-blowing orgasms with you, ramming her own hips against your [hips] while the back of her tail occasionally teases");
-    if (!player.vaginas.length > 0 && player.balls == 0) outputText(" the inside of your thighs");
+    if (player.vaginas.length === 0 && player.balls == 0) outputText(" the inside of your thighs");
     else if (player.balls > 0) outputText(" your [balls]");
     else if (player.vaginas.length > 0) outputText(" your [clit]");
     outputText(" when she's pressed entirely against you.  She smacks her own bottom and you run your other hand over her body as the two of you tug on and pull her massive erection towards your face and over your [chest], thick dollops of pre-cum and leftover semen dripping from her member over your body.  Urta licks her lips as she looks down on you with ");

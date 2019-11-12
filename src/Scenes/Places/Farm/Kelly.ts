@@ -73,12 +73,12 @@ function hasPinkEgg(): boolean {
 export function breakingKeltOptions(): void {
     clearOutput();
     spriteSelect(35);
-    if ((!player.cocks.length > 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
+    if ((player.cocks.length === 0 && flags[kFLAGS.KELT_BREAK_LEVEL] == 0) || flags[kFLAGS.NEVER_RESIST_KELT] == 1 || player.effects.getValue2Of(StatusAffects.Kelt) >= 40 || player.effects.findByType(StatusAffects.Kelt) < 0) {
         KeltScene.keltEncounter();
         return;
     }
     if (flags[kFLAGS.KELT_BREAK_LEVEL] > 0) {
-        if (!player.cocks.length > 0) {
+        if (player.cocks.length === 0) {
             outputText("You can't keep trying to break Kelt without the proper tool to do it with.");
             menu();
             addButton(0, "Next", Farm.farmExploreEncounter);
@@ -1619,7 +1619,7 @@ function talkNHandToKelly(): void {
     if (temp == 0) {
         outputText("\n\nYou ask what happened to the wives she mentioned she had.");
         outputText("\n\n\"<i>Who?</i>\" Kelly says, stopping her pumping for a moment.  \"<i>Oh, those two.  I wouldn't worry about them, [Master].  I never told them where I worked, because I never wanted them to know I worked for a woman.  Funny, isn't it.");
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             // Male:
             outputText("  Now I </i>do<i> work for a man, and I spend most days polishing his [cock biggest]!");
         }

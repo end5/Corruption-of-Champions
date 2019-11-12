@@ -54,7 +54,7 @@ export function gobboAssassinBeatYaUp(): void {
     if (player.lust <= 99) outputText("You collapse, utterly beaten. To make sure you'll be easier to handle, the victorious assassin saunters up, a pair of fluid filled needles in her hands. She jams them into your [player.legs], emptying the contents into you before you can so much as stammer a protest. Burning lust pours through your veins unbidden, and you moan out loud as the chemicals have their way with you as easily as the goblin soon will.\n\n");
     // i. *Lust Loss – Male/Herm (Fits)(FENCRAFTED)
     // 50% odds for herms
-    if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0 && player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+    if (player.cocks.cockThatFits(monster.vaginalCapacity()) >= 0 && player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
         x = player.cocks.cockThatFits(monster.vaginalCapacity());
         if (x < 0) x = player.cocks.smallestCockIndex();
         outputText("You tear through your " + player.armorName + " in a rush, anything to release [eachCock] from its hellish confinement.  You’re so aroused, so horny.  Any passing thoughts of modesty are immediately discarded and forgotten, washed away under the wave of your all-consuming lust as your fingers slide home around [oneCock] and begin to play with the turgid tool.  You immediately buck from the sensation of incredible, pent-up need, nearly cumming on the spot.  Looking up, you meet the emerald-skinned woman’s eyes pleadingly.");
@@ -102,7 +102,7 @@ export function gobboAssassinBeatYaUp(): void {
         outputText("\n\nStanding up with your white goo dripping from her nethers, the goblin gives you a wink and disappears around a corner, leaving you alone to slumber.");
     }
     // ii. Lust Loss - Male - No Fit
-    else if (player.cocks.biggestCockArea() > monster.vaginalCapacity() && player.cocks.length > 0 && (!player.vaginas.length > 0 || rand(2) == 0)) {
+    else if (player.cocks.biggestCockArea() > monster.vaginalCapacity() && player.cocks.length > 0 && (player.vaginas.length === 0 || rand(2) == 0)) {
         x = player.cocks.biggestCockIndex();
         outputText("You tear through your [armor] in a rush, anything to release [eachCock] from its hellish confinement.  You’re so aroused, so horny.  Any passing thoughts of modesty are immediately discarded and forgotten, washed away under the wave of your all-consuming lust as your fingers slide home around [oneCock] and begin to play with the turgid tool.  You immediately buck from the sensation of incredible, pent-up need, nearly cumming on the spot.  Looking up, you meet the emerald-skinned woman’s eyes pleadingly.");
         outputText("\n\nThe assassin sighs and grumbles, \"<i>Another one with a fucking tree-trunk for a cock.</i>\"  She begrudgingly slips out of her straps, perky, dark-green nipples popping free from their confinement to jut proudly from her chest.  “The downside of being a goblin,” explains the athletic green-skinned beauty, \'<i>is that around a dick like that... a heaving, pulsating tower of cock-flesh like that... I’ve just gotta TRY it.</i>\"  Now nude, your captor saunters up, wide hips shaking from side to side with every step.  \"<i>Being a size-queen is suffering,</i>\" she finishes with a wry smile.");

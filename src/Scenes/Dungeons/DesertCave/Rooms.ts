@@ -91,7 +91,7 @@ export function takeFertilePills(): void {
     // {Contraceptives}
     else {
         outputText("It doesn't take you long to figure out that the pink pill should cancel the effects of your contraceptives.  You pop it into your mouth and swallow, feeling a tingle near your crotch after a moment.  You should be capable of bearing children again");
-        if (!player.vaginas.length > 0) outputText(", should you ever grow a vagina");
+        if (player.vaginas.length === 0) outputText(", should you ever grow a vagina");
         outputText(".");
         player.effects.remove(StatusAffects.Contraceptives);
     }
@@ -107,7 +107,7 @@ export function takeBarrenPills(): void {
         outputText("You figure one of these brown pills should render you barren, and you pop it into your mouth, not wanting to be impregnated.");
         if (player.pregnancyIncubation > 0) outputText("  Of course, you're already pregnant, and this doesn't seem to be doing anything about THAT.");
         outputText("  You do feel an emptiness in your midsection, reassuring you that the pill did its job.");
-        if (!player.vaginas.length > 0) outputText("  Now if you ever re-grow a vagina, you should be fine.");
+        if (player.vaginas.length === 0) outputText("  Now if you ever re-grow a vagina, you should be fine.");
         player.effects.create(StatusAffects.Contraceptives, 0, 0, 0, 0);
     }
     doNext(playerMenu);

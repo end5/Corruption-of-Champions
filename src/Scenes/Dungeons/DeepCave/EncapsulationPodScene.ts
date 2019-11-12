@@ -117,7 +117,7 @@ export function encapsulationPodAI(): void {
         outputText("You're floating in pure liquid bliss.  Thoughts melt away before they can form, and every inch of your body is being caressed, squeezed, or penetrated by the warm, slime-slicked tentacles.  Nearly every muscle in your body goes completely slack as you're cradled with bliss.  Without your thoughts or stress bothering you, the pleasure swiftly builds to a crescendo.\n\n", false);
 
         outputText("The wave of need starts out inside your crotch, begging to be let out, but you can't even be bothered to move your " + hipDescription(player) + " anymore.  Without your help, release stays just out of reach, but the tentacles working your body seem intent on spurring it on.  The one inside your " + assholeDescript(player) + " begins to pump more quickly, and with the added pressure, you cum quickly.  ", false);
-        if (!player.vaginas.length > 0) {
+        if (player.vaginas.length === 0) {
             outputText("Your body twitches weakly, too relaxed to move while it gets off from anal penetration.", false);
         }
         else outputText("Your body twitches weakly, too relaxed to move while it gets off from being double-penetrated.", false);

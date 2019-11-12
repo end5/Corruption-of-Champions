@@ -892,7 +892,7 @@ function ceraphLackeyCorruption(): void {
 
     // Cock obtained from this is human-looking, so you'd trigger the next paragraph too.
     // (if PC has no cock)
-    if (!player.cocks.length > 0) {
+    if (player.cocks.length === 0) {
         outputText("Intense pleasure overcomes you as you feel blood rush to your groin; ", false);
         if (player.vaginas.length > 0) outputText("your " + clitDescription(player) + " swells", false);
         else outputText("a small bump forms on your mons", false);
@@ -909,7 +909,7 @@ function ceraphLackeyCorruption(): void {
         outputText("Your " + cockDescript(game.player, x) + " throbs, veins bulging as it grows larger, ballooning to a generous 20-inch long, 3-inch thick size.  ", false);
     }
     // (if PC's cock is not demonic or pc has/had no cock prior)
-    if (!player.cocks.length > 0 || !demon) {
+    if (player.cocks.length === 0 || !demon) {
         outputText("A heady, musky scent emanates from your cock, then its color changes abruptly to a shiny inhuman purple hue and tiny sensitive nodules form along the length of the shaft; the crown develops a circle of rubbery protrusions that grow larger as you become more aroused.\n\n", false);
     }
     else {
@@ -948,7 +948,7 @@ function ceraphLackeyCorruption(): void {
     // (if PC's dick is not demonic naturally)
     if (!demon) outputText("You lift yourself off her and sit in the dirt; she grins and slowly crawls toward you to take your demonic prick into her mouth, sucking with so much pressure you fear she will swallow your cock whole.  Slowly, you feel something trickle out of your sensitive cock and into her mouth, then she pulls away with a <b>POP</b>. \"<i>This should take care of the medicine, " + mf(player, "Master", "Mistress") + ".</i>\"  True to her word, you watch as your cock slowly reverts its coloration", false);
     // [(if PC didn't have a cock)
-    if (!demon && !player.cocks.length > 0) outputText(", then the temporary phallus shrinks and disappears back into your crotch", false);
+    if (!demon && player.cocks.length === 0) outputText(", then the temporary phallus shrinks and disappears back into your crotch", false);
     if (!demon) outputText(".\n\n", false);
 
     outputText("She smiles at you seductively, licking her lips.  A slapping sound along with multiple pants and gasps catches your attention; both you and the succubus look around for its source.  The imps that brought the succubus for you are still masturbating furiously.  She looks at you with an eyebrow raised and says, \"<i>There is only one more thing you have to do to completely subdue me.  Order me to pleasure those lowly imps.</i>\"\n\n", false);

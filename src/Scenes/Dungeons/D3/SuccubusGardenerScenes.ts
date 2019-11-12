@@ -63,7 +63,7 @@ function tentaFail(): void {
     outputText("\n\nA flash of green obscures your vision for a moment. Before you can react, it has looped around your neck as strongly as a bar of iron and is pulling back, dragging you to the ground while your muscles are still focused on limply thrusting forward. It presses you flat, and in spite of your struggles, a dozen similarly powerful tendrils emerge. They wrap your limbs up in pale green cocoons of squirming plant life. The only parts of you remaining exposed are your crotch and your face, but even the latter has narrow bands encircling it, holding you still.");
 
     outputText("\n\nThe lusty demoness, still fucking one of her pets, looks dumbly in your directly, her gaze somewhat vacant and her jaw slackened. You can see the tentacle in her sopping wet cunt pulsating, and rivulets of sappy moisture are running from her over-engorged looks. She doesn't seem to be in any state to take advantage of you, but then again, she doesn't need to. A large, orange tentacle is hovering above you.");
-    if (!player.cocks.length > 0) outputText(" Its outline is clearly phallic, but how could such a huge thing ever fit inside you, let alone anyone?");
+    if (player.cocks.length === 0) outputText(" Its outline is clearly phallic, but how could such a huge thing ever fit inside you, let alone anyone?");
     else {
         outputText(" Its tip oozes lubricants, but the gaping pussy at its tip is big enough to hold six minotaurs' monster-cocks.");
         if (player.cocks.biggestCockLength() < 36) outputText(" How could you ever hope to fill it?");
@@ -71,7 +71,7 @@ function tentaFail(): void {
     }
 
     let createdVag: boolean = false;
-    if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length === 0 && player.vaginas.length === 0) {
         // Genderless
         outputText("\n\nInterestingly, the new arrival descends towards your featureless cross, dripping neon orange goo as it goes. Where the stuff lands on you, your flesh alights with tingles of raw, pure sensation, somewhere stuck between pain and pleasure and yet neither. Then, that column of pulsating, phallic meat is pressing down against you, ramming itself into you, and there is not you nor your flesh can do but yield to its touches. You gasp, opening... no, <i>blossoming</i>, revealing sensitive lips and folds.");
 
@@ -80,14 +80,14 @@ function tentaFail(): void {
         player.vaginas.createVagina();
         createdVag = true;
     }
-    else if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    else if (player.vaginas.length > 0 && player.cocks.length === 0) {
         // Cooches only
         outputText("\n\nThe new arrival descends towards your already well-lubricated pussy, dripping neon orange goo as it goes. Where the stuff lands on you, you alight with raw, deviously pleasurable sensation, particularly on your pussy lips. They burn with raw, unfiltered sensation, both pleasure and pain all in one. Then, that column of pulsating, phallic meat presses down against you, too fat for any normal pussy to take, and yet somehow, it's ramming itself into you. You spread to accept it... and then spread some more, blossoming.");
 
     }
 
     // Merge Genderless & Coochies
-    if (!player.cocks.length > 0) // 100% gonna have a cooch by this point
+    if (player.cocks.length === 0) // 100% gonna have a cooch by this point
     {
         outputText("\n\nYou can feel your");
         if (createdVag) outputText(" new");
@@ -176,17 +176,17 @@ function leaveHer(): void {
 
 export function surrenderToTheGardener(hpVictory: boolean = false): void {
     // Male
-    if (player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length > 0 && player.vaginas.length === 0) {
         maleLoss(hpVictory);
     }
 
     // Genderless
-    if (!player.cocks.length > 0 && !player.vaginas.length > 0) {
+    if (player.cocks.length === 0 && player.vaginas.length === 0) {
         femGenderlessLoss(hpVictory);
     }
 
     // Fems
-    if (player.vaginas.length > 0 && !player.cocks.length > 0) {
+    if (player.vaginas.length > 0 && player.cocks.length === 0) {
         femGenderlessLoss(hpVictory);
     }
 
@@ -220,7 +220,7 @@ function femGenderlessLoss(hpVictory: boolean): void {
     outputText("\n\nGently removing your [armor] a piece at a time, the succubus coos, <i>\"Are you looking forward to it yet, [name]? Being wholly, totally embraced, every hole filled with pulsing, eager lengths?\"</i> She strokes your cheek in a gesture that you would mistake for affection from anyone but a demon.");
     if (player.vaginas.length > 0) outputText(" Against your better judgment, you're starting to get wet from the promises of her words. You know you're being given to a neverending hell of sexual stimulation, but you can't stop your body's libido from responding to the idea.");
     outputText(" <i>\"Yeah, you want it, doncha?\"</i> Slim fingers deftly press at your");
-    if (!player.vaginas.length > 0) {
+    if (player.vaginas.length === 0) {
         outputText(" bare crotch, sinking into a crease that didn't exist a moment before. Her skilled touches and dark powers mold your body like a sculptor's clay, crafting a magnificent cunt on your crotch while simultaneously bringing it to a dripping wet state.");
         player.vaginas.createVagina();
     }

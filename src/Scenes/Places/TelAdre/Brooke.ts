@@ -582,10 +582,10 @@ export function tribadism(): void {
     outputText(".  You start to fuck against her in earnest, pressing and pumping, sliding and bucking against her, loving and living for the sounds and expressions she makes as you love her the way only another " + mf(player, "woman", "'woman'") + " can.");
 
     outputText("\n\n<i>\"Fuck yeah!\"</i> she enthuses, spurring you harder into action.  You lift her by her ass, speeding up your fucking, rutting against her vulva with your own [vagina] as quick and as hard as you can.  There's nothing gentle about it: the way your two clits kiss against each other with each upswing sends waves and demands from your [clit] to your head, and you eagerly obey them");
-    if (!player.cocks.length > 0) outputText(".  Brooke moves her hands up to your tits, her hands groping onto your [chest], her palms pressing onto your [nipples] mindlessly, and her tongue lolls and flags with each buck up against her you make");
+    if (player.cocks.length === 0) outputText(".  Brooke moves her hands up to your tits, her hands groping onto your [chest], her palms pressing onto your [nipples] mindlessly, and her tongue lolls and flags with each buck up against her you make");
     // [if {is not a herm and is lactating}
-    if (!player.cocks.length > 0 && player.lactationQ() >= 200) outputText(".  Your milk streams from your [chest] as Brooke puts more of her weak pressure on them: it sprays from between her fingers and drips down the back of her hands on across her wrists");
-    if (!player.cocks.length > 0 && player.breastRows.hasFuckableNipples()) outputText(".  Feeling the texture of your [nipples] under her hands snaps her out of her reverie enough to think to stimulate you further by pressing into each with a thumb, fucking into and against you with each of your excited thrusts");
+    if (player.cocks.length === 0 && player.lactationQ() >= 200) outputText(".  Your milk streams from your [chest] as Brooke puts more of her weak pressure on them: it sprays from between her fingers and drips down the back of her hands on across her wrists");
+    if (player.cocks.length === 0 && player.breastRows.hasFuckableNipples()) outputText(".  Feeling the texture of your [nipples] under her hands snaps her out of her reverie enough to think to stimulate you further by pressing into each with a thumb, fucking into and against you with each of your excited thrusts");
     outputText(".");
     if (player.cocks.length > 0) outputText("  Brooke moves one hand to your [chest] and wraps her other around your stiff [cock], pumping it in time with your thrusts against her.");
 
@@ -920,7 +920,7 @@ export function brookeSpecialMediumSceneContinued(): void {
     flags[kFLAGS.BROOKE_MEDIUM_SCENE] = 1;
 
     // {Male only}
-    if (x >= 0 && !player.vaginas.length > 0) {
+    if (x >= 0 && player.vaginas.length === 0) {
         outputText(images.showImage("brooke-gym-male-specialscene"));
         outputText("Her grip isn't very strong on your shoulders, relying on keeping you pressed against the stall for any traction against your body.  She grinds herself against you, her firm, plush tits dragging over your [chest] and her hot slit running along the skin of your [cock] with each motion.  Her tongue doesn't stop, dancing energetically in your mouth, running and playing with your own with every motion.  You run your hands along the swell of her ass, groping and lifting, humping along with her, building the excitement between you both while avoiding penetration for now.");
 
@@ -1239,7 +1239,7 @@ export function submitHeckelXBrookeThreesome(): void {
     if (player.cocks.length == 2) outputText(" while she strokes your second dick with a free hand, wobbly balancing herself on her other, tired arm");
     if (player.cocks.length >= 3) outputText(" while she does her best to please your [eachCock], massaging one with her fingers and shoving the others in her mouth, sometimes at once");
     if (player.cocks.length > 0) outputText(".  Brooke and Heckel move at the same pace: the Shepherd girl, eager to please, does all she can with her mouth, sucking, bathing, and worshiping your tool, ");
-    if (!player.cocks.length > 0 && player.vaginas.length > 0) outputText("burying her muzzle into your [vagina] and immediately gets to work digging and searching your tunnel with her warm, moist, energetic tongue.  She licks, kisses, and worships everything from your vulva to your [clit] and when she gets bored of that, she thrusts her whole face into you once more, finding some new depth neither of you thought she could reach.  All the ");
+    if (player.cocks.length === 0 && player.vaginas.length > 0) outputText("burying her muzzle into your [vagina] and immediately gets to work digging and searching your tunnel with her warm, moist, energetic tongue.  She licks, kisses, and worships everything from your vulva to your [clit] and when she gets bored of that, she thrusts her whole face into you once more, finding some new depth neither of you thought she could reach.  All the ");
     outputText("while the hyena behind her pounds into her cunt with an unusual ferocity, atypical of how you know her.  Whether Heckel is just unusually aroused or she's taking the whole 'dominant' role more personally with Brooke, you're unsure and uncaring, if it means getting this sort of action.");
     if (player.gender == 3) outputText("  Brooke, knowing of your duality, releases your cock from her mouth and dips lower, snaking her tongue below you and running it deliciously over your feminine sex.  Despite her weak hands, she does absolutely everything she can with what reach she's given, and you lean back, sliding your ass forward a bit to give her better reach to everything you have.");
 
@@ -1424,7 +1424,7 @@ export function brookeVHeckelBrookeWins3(): void {
     outputText("\n\n<i>\"Huh, wha... ?\"</i> she asks, a bit startled by the motion.  She looks in your eyes, then around the locker room you're both in, then to Heckel, motionless between you both.  <i>\"Sorry,\"</i> she says, <i>\"I kind of phased out for a minute there.  That was pretty intense, even for me.\"</i>  You ask her what she means by that.  <i>\"Well, Heckel and I, this isn't the first time we've had this little 'competition' of ours.  I win some and she wins some, but no matter what, at the end of the day, someone's getting fucked.  But <b>that</b> was something else.  I guess I got a little carried away because you were here with me, [name]; I had an audience to prove once and for all that I was better than Heckel – better at the gym, and better at fuckin'.\"</i>");
 
     outputText("\n\nYou're surprised Heckel doesn't immediately reply with some snarky, indignant response.  Instead, what you hear is a heavy snore from the hyena");
-    if (!player.cocks.length > 0) outputText(", muffled from your [vagina] still plugging her lips");
+    if (player.cocks.length === 0) outputText(", muffled from your [vagina] still plugging her lips");
     outputText(".  Brooke chuckles a bit at the sound.  <i>\"I don't think I can blame her.  We fucked her pretty hard,\"</i> she says, and you laugh a little yourself – you'll still be feeling this later.  <i>\"It'll be a while before her knot deflates, and a bit longer than that for her to wake up, so don't feel like you have to wait up for me.  Fucking her is great and all, but I still have plans for my submissive puppy for the day – you probably have other things to do.  Save yourself while you still can.\"</i>  You answer that, well... maybe you don't, and you're down for more if she is.  Brooke grins at you devilishly, daring you to reaffirm that – thinking on it, you back down.  As fun as that sounds, you're not certain how long you'll be able to keep up with the two athletes.");
 
     outputText("\n\nYou disengage yourself from Heckel");

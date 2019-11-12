@@ -199,7 +199,7 @@ export class Sophie extends Harpy {
         const select: number = 1;
         let rando: number = 1;
         // Update attacks for girls/neuters
-        if (!player.cocks.length > 0 || this.effects.findByType(StatusAffects.BimboBrawl) >= 0) {
+        if (player.cocks.length === 0 || this.effects.findByType(StatusAffects.BimboBrawl) >= 0) {
             // Talons
             special1 = talonsSophie;
             // Batter
