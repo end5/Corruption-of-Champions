@@ -132,9 +132,9 @@ export class Exgartuan implements TimeAwareInterface {
                             else if (rand(3) == 0) {
                                 outputText("\n<b>");
                                 if (rand(2) == 0)
-                                    outputText("You feel warm and tingly, good all over.  Wait a second, your hands are playing with your " + breastDescript(game.player, 0) + ".  You yank your hands away, but it only makes Exgartuan laugh with demonic pleasure!");
+                                    outputText("You feel warm and tingly, good all over.  Wait a second, your hands are playing with your " + breastDescriptOfRow(game.player, 0) + ".  You yank your hands away, but it only makes Exgartuan laugh with demonic pleasure!");
                                 else {
-                                    outputText("Your hands knead and caress your " + breastDescript(game.player, 0) + ", eagerly touching every inch of soft flesh.  You gasp when you realize what you're doing and pull them away");
+                                    outputText("Your hands knead and caress your " + breastDescriptOfRow(game.player, 0) + ", eagerly touching every inch of soft flesh.  You gasp when you realize what you're doing and pull them away");
                                     if (player.cor < 50) outputText(", angry at yourself for falling prey to the demon's directions");
                                     outputText(".");
                                     dynStats("lus", 5 + player.sens / 10);
@@ -361,7 +361,7 @@ export function exgartuanMasturbation(): void {
         else {
             outputText("You shrug off your top eagerly, ready to cooperate with the demon inside your " + allBreastsDescript(player) + " and enjoy a relaxing tit-massage.  You slide the offending material to the side and marvel at the wondrously large orbs on your chest.  Truly any place that can give you such wonderful endowments can't be evil.  You lean back, enjoying the warmth in the air as it flows over every extra-sensitive inch of your mounds, more than ready to get started.\n\n", false);
         }
-        outputText("Both hands rise unbidden and begin to caress your " + breastDescript(game.player, 0) + ".  They slide over every sensitive inch of ", false);
+        outputText("Both hands rise unbidden and begin to caress your " + breastDescriptOfRow(game.player, 0) + ".  They slide over every sensitive inch of ", false);
         if (player.skinType == SkinType.PLAIN || player.skinType >= SkinType.UNDEFINED) outputText("flesh", false);
         else if (player.skinType == SkinType.FUR) outputText("furry-covered flesh", false);
         else if (player.skinType == SkinType.SCALES) outputText("soft scaley flesh", false);
@@ -433,7 +433,7 @@ export function exgartuanBored(): void {
         select = rand(8);
         switch (select) {
             case 0:
-                outputText("You feel an ominous jiggling in your " + breastDescript(game.player, 0) + " as the demon inside you stirs back to wakefulness.  The sound of a yawn being muffled by your " + player.armorName + " confirms it.", false);
+                outputText("You feel an ominous jiggling in your " + breastDescriptOfRow(game.player, 0) + " as the demon inside you stirs back to wakefulness.  The sound of a yawn being muffled by your " + player.armorName + " confirms it.", false);
                 break;
             case 1:
                 outputText("After a few hours of peace, Exgartuan begins to stir.  You can feel a desire to be touched building within your " + allBreastsDescript(player) + ".  What a needy demon.", false);
@@ -600,7 +600,7 @@ export function exgartuanCombatUpdate(): boolean {
             select = rand(3);
             switch (select) {
                 case 0:
-                    outputText("A brief fantasy of " + monster.a + monster.short + " brutally squeezing and caressing your chest fills your mind.  You break free of the twisted daydream and pull your hands away from your " + breastDescript(game.player, 0) + ".  Damnit you're in combat!  There's no time for such foolishness!", false);
+                    outputText("A brief fantasy of " + monster.a + monster.short + " brutally squeezing and caressing your chest fills your mind.  You break free of the twisted daydream and pull your hands away from your " + breastDescriptOfRow(game.player, 0) + ".  Damnit you're in combat!  There's no time for such foolishness!", false);
                     break;
                 case 1:
                     outputText("A blush colors your cheeks as warm pleasure spreads through your chest.  You spare a downward glance and nearly shriek when you see both hands busy massaging your massive mounds.  You don't have time for this!  You pull your hands away in a huff.", false);

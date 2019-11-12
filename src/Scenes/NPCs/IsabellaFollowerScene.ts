@@ -1042,12 +1042,12 @@ function getIzzyBurped(): void {
         }
         // ([Female/herm: if breasts smaller than G-cup and not lactating a whole lot]
         if (player.vaginas.length > 0 && player.breastRows.biggestTitSize() < 15 && player.breastRows.biggestLactation() < 2) {
-            outputText("  Unbeknownst to you, Isabella's potent cow-gas has gone to town on your " + breastDescript(game.player, 0) + ", growing them to an obnoxious G-cup... no, not exactly growing, you realize, but filling... you give one of your swollen teats a squeeze, not quite surprised by the gout of milk that stains your " + player.armorName + ".\n\n", false);
+            outputText("  Unbeknownst to you, Isabella's potent cow-gas has gone to town on your " + breastDescriptOfRow(game.player, 0) + ", growing them to an obnoxious G-cup... no, not exactly growing, you realize, but filling... you give one of your swollen teats a squeeze, not quite surprised by the gout of milk that stains your " + player.armorName + ".\n\n", false);
             changed = true;
         }
         // ([Female/herm: if breasts >G-cup and lactating]
         else if (player.vaginas.length > 0 && player.breastRows.biggestLactation() >= 2) {
-            outputText("  Propped up as you are with your soft " + breastDescript(game.player, 0) + " nestling under your chin, you can easily see the growing puddle of alabaster liquid seeping into the ground.  You heave yourself up, the effort rewarded with a jet of milk shot into the air as your evidently over-laden boobs jostle about inside your " + player.armorName + ". It seems the effects of Isabella's gas has ramped your lactation to overdrive.", false);
+            outputText("  Propped up as you are with your soft " + breastDescriptOfRow(game.player, 0) + " nestling under your chin, you can easily see the growing puddle of alabaster liquid seeping into the ground.  You heave yourself up, the effort rewarded with a jet of milk shot into the air as your evidently over-laden boobs jostle about inside your " + player.armorName + ". It seems the effects of Isabella's gas has ramped your lactation to overdrive.", false);
             changed = true;
         }
         // both cases, flavor text

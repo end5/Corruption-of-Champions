@@ -144,15 +144,44 @@ export function allChestDesc(creature: Character): string {
     return allBreastsDescript(creature);
 }
 
-export function breastDescript(creature: Character, rowNum: number): string {
+export function breastDescriptOfRow(creature: Character, rowNum: number): string {
     // ERROR PREVENTION
     if (creature.breastRows.length - 1 < rowNum) {
         Logger.error("");
-        return "<b>ERROR, breastDescript() working with invalid breastRow</b>";
+        return "<b>ERROR, breastDescriptOfRow() working with invalid breastRow</b>";
     }
     if (creature.breastRows.length == 0) {
         Logger.error("");
-        return "<b>ERROR, breastDescript() called when no breasts are present.</b>";
+        return "<b>ERROR, breastDescriptOfRow() called when no breasts are present.</b>";
     }
-    return BreastStore.breastDescript(creature.breastRows[rowNum].breastRating, creature.breastRows[rowNum].lactationMultiplier);
+    return breastDescript(creature.breastRows[rowNum].breastRating, creature.breastRows[rowNum].lactationMultiplier);
+}
+
+export function breastDescript(size: number, lactation: number = 0): string {
+    if (size < 1) return "flat breasts";
+    let descript: string = (rand(2) == 0 ? breastSize(size) : ""); // Add a description of the breast size 50% of the time
+    switch (rand(10)) {
+        case 1:
+            if (lactation > 2) return descript + "milk-udders";
+            break;
+        case 2:
+            if (lactation > 1.5) descript += "milky ";
+            if (size > 4) return descript + "tits";
+            break;
+        case 4:
+        case 5:
+        case 6:
+            return descript + "tits";
+        case 7:
+            if (lactation >= 2.5) return descript + "udders";
+            if (lactation >= 1) descript += "milk ";
+            return descript + "jugs";
+        case 8:
+            if (size > 6) return descript + "love-pillows";
+            return descript + "boobs";
+        case 9:
+            if (size > 6) return descript + "tits";
+        default:
+    }
+    return descript + "breasts";
 }

@@ -316,7 +316,7 @@ function rapeAnemoneWithPussy(): void {
 
     outputText("Next, you take the time to strip off your " + player.armorName + ", making sure to give a good show; the anemone entertains herself by stroking her erect prick and smearing around the pre-cum, grinning as she watches you.", false);
     // [(breastrow0>C-cup)
-    if (player.breastRows.biggestTitSize() > 2) outputText("  You give special attention to the presentation of your " + breastDescript(game.player, 0) + ", removing your top with tantalizing slowness, letting each breast slip out and hang between you like fruit ripe to be taken, then making sure to rub them seductively to arouse the both of you further.", false);
+    if (player.breastRows.biggestTitSize() > 2) outputText("  You give special attention to the presentation of your " + breastDescriptOfRow(game.player, 0) + ", removing your top with tantalizing slowness, letting each breast slip out and hang between you like fruit ripe to be taken, then making sure to rub them seductively to arouse the both of you further.", false);
     // (hipsize=girly or better)
     if (player.hipRating > 6) outputText("  You make good use of your " + hipDescription(player) + ", too, giving a little shimmy to show off your pronounced curves.", false);
     outputText("  By the time you're finished, the anemone's crotch glistens with fluid from both her sexes; it's probably as wet as it was when she was underwater.  You lean into the anemone and give her a deep kiss, ", false);
@@ -338,14 +338,14 @@ function rapeAnemoneWithPussy(): void {
     if (player.lowerBody != LowerBodyType.CENTAUR) {
         outputText("as she thrusts hard and fast, her hair whips back and forth over your ", false);
         // [(breasts>manly)
-        if (player.breastRows.biggestTitSize() >= 1) outputText(breastDescript(game.player, 0) + " and ", false);
+        if (player.breastRows.biggestTitSize() >= 1) outputText(breastDescriptOfRow(game.player, 0) + " and ", false);
         outputText(nippleDescription(player, 0) + "s,", false);
     }
     // (centaur)
     else {
         outputText("as she pushes deeply into your cunt, her hair flies forward past your upper body, brushing along your skin.  On one pass you grab some and use it as a pleasure tool, rubbing it vigorously on your ", false);
         // [(breasts>manly)
-        if (player.breastRows.biggestTitSize() >= 1) outputText(breastDescript(game.player, 0) + " and ", false);
+        if (player.breastRows.biggestTitSize() >= 1) outputText(breastDescriptOfRow(game.player, 0) + " and ", false);
         outputText(nippleDescription(player, 0) + "s,", false);
     }
     outputText(" spreading heat along your chest to nearly match your vagina's.\n\n", false);
@@ -564,7 +564,7 @@ export function loseToAnemone(): void {
 
         outputText("Sitting down in the shallow water with her face toward yours, she takes your hand and pulls you forward until you're over her lap.  Her long tentacles settle into neat, straight rows and drape down her back and over one eye, giving her a sly, debonair look.  She rolls her gaze down your torso, and her free hand follows in short order as she caresses your", false);
         // [(if breasts)
-        if (player.breastRows.biggestTitSize() > 1) outputText(" " + breastDescript(game.player, 0) + " and", false);
+        if (player.breastRows.biggestTitSize() > 1) outputText(" " + breastDescriptOfRow(game.player, 0) + " and", false);
         outputText(" " + nippleDescription(player, 0) + "s and drifts down past your navel.  It makes a stop at your vulva, tickling your most sensitive area and causing your " + clitDescription(player) + " to swell with proof of your pleasure.  The hand begins its return trip, delivering one upward stroke to your now-engorged button and shooting a spark up your spine.  It comes to rest on your hip, and the anemone presses you downward, slowly but insistently, until your " + vaginaDescript(player, 0) + " comes to rest above her hard, blue shaft.  Two of her longer tentacles reach up from the water and touch themselves to your lower lips, pulling them apart and delivering jolts of aphrodisiac that make your " + vaginaDescript(player, 0) + " clench and release convulsively.  Her hand resumes downward pressure, guiding your twitching pussy toward her erect blue shaft; its small tentacles bend upward in the manner of a flower turning to face the sun.  In a breathless moment the head and then the shaft push past the boundary of your open lips, the first intrusion sending home its own venom and tipping you over the teetering precipice of your control.  ", false);
         // [hymen removal]
         cuntChange(player, monster.cocks.cockArea(0), true);

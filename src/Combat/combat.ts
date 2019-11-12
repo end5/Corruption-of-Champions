@@ -2777,13 +2777,13 @@ export function tease(justText: boolean = false): void {
             // Single breast row
             if (player.breastRows.length == 1) {
                 // 50+ breastsize% success rate
-                outputText("Your lift your top, exposing your " + breastDescript(game.player, 0) + " to " + monster.a + monster.short + ".  You shake them from side to side enticingly.", false);
+                outputText("Your lift your top, exposing your " + breastDescriptOfRow(game.player, 0) + " to " + monster.a + monster.short + ".  You shake them from side to side enticingly.", false);
                 if (player.lust >= 50) outputText("  Your " + nippleDescription(player, 0) + "s seem to demand " + monster.pronoun3 + " attention.", false);
             }
             // Multirow
             if (player.breastRows.length > 1) {
                 // 50 + 10% per breastRow + breastSize%
-                outputText("You lift your top, freeing your rows of " + breastDescript(game.player, 0) + " to jiggle freely.  You shake them from side to side enticingly", false);
+                outputText("You lift your top, freeing your rows of " + breastDescriptOfRow(game.player, 0) + " to jiggle freely.  You shake them from side to side enticingly", false);
                 if (player.lust >= 50) outputText(", your " + nippleDescription(player, 0) + "s painfully visible.", false);
                 else outputText(".", false);
                 chance++;

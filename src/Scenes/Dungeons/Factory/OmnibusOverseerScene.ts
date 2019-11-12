@@ -57,16 +57,16 @@ function omnibusVictoryGrowBreasts(): void {
     // Multiple Rows...
     else {
         // Top row + 3, all other rows brought up to par.
-        outputText("Your top " + breastDescript(game.player, 0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ");
+        outputText("Your top " + breastDescriptOfRow(game.player, 0) + " tingle pleasantly as the magic takes effect.  You watch with fascination as they begin to swell up, like sponges exposed to water.  The top of your " + player.armorName + " is pulled tight by change, until your chest seems ready to burst free.  <b>You've gained 4 cup sizes!</b>  ");
         player.breastRows[0].breastRating += 4;
-        outputText("The next row of " + breastDescript(game.player, 1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + breastDescript(game.player, 0) + ".  ");
+        outputText("The next row of " + breastDescriptOfRow(game.player, 1) + " jiggle and tingle with even more pleasure than the first.  They pulsate for a few seconds, shrinking and growing rapidly until they settle at a size just below your top " + breastDescriptOfRow(game.player, 0) + ".  ");
         player.breastRows[1].breastRating = player.breastRows[0].breastRating - 1;
         if (player.breastRows.length >= 3) {
-            outputText("Your third group of " + breastDescript(game.player, 2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
+            outputText("Your third group of " + breastDescriptOfRow(game.player, 2) + " seem to follow their sister's example, tingling briefly before settling at a size just below the breasts above.  ", false);
             player.breastRows[2].breastRating = player.breastRows[1].breastRating - 1;
         }
         if (player.breastRows.length >= 4) {
-            outputText("Your remaining " + breastDescript(game.player, 3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ");
+            outputText("Your remaining " + breastDescriptOfRow(game.player, 3) + " feel so wonderful that you just can't resist cupping and squeezing them as they reshape to fit in perfectly with the rest of your breasts.  ");
             player.breastRows[3].breastRating = player.breastRows[2].breastRating - 1;
             if (player.breastRows.length == 5) player.breastRows[4].breastRating = player.breastRows[3].breastRating - 1;
         }

@@ -121,7 +121,7 @@ export function rubiBreasts(): string {
     else {
         ret += breastCup(flags[kFLAGS.RUBI_BREAST_SIZE]);
         ret += " ";
-        ret += BreastStore.breastDescript(flags[kFLAGS.RUBI_BREAST_SIZE]);
+        ret += breastDescript(flags[kFLAGS.RUBI_BREAST_SIZE]);
     }
 
     return ret;

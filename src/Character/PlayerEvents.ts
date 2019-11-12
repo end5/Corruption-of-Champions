@@ -348,7 +348,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 player.breastRows[0].breastRating = 5;
                 if (player.perks.findByType(PerkLib.FutaFaculties) >= 0)
                     outputText("\n<b>Your tits get nice and full again.  You'll have lots of fun now that your breasts are back to being big, swollen knockers!</b>\n");
-                else outputText("\n<b>Your " + breastDescript(game.player, 0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
+                else outputText("\n<b>Your " + breastDescriptOfRow(game.player, 0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
@@ -366,7 +366,7 @@ export class PlayerEvents implements TimeAwareInterface {
                 player.breastRows[0].breastRating = 5;
                 if (player.perks.findByType(PerkLib.BimboBrains) >= 0 || player.effects.findByType(StatusAffects.BimboChampagne) >= 0)
                     outputText("\n<b>Your boobies like, get all big an' wobbly again!  You'll have lots of fun now that your tits are back to being big, yummy knockers!</b>\n");
-                else outputText("\n<b>Your " + breastDescript(game.player, 0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
+                else outputText("\n<b>Your " + breastDescriptOfRow(game.player, 0) + " have regained their former bimbo-like size.  It looks like you'll be stuck with large, sensitive breasts forever, but at least it'll help you tease your enemies into submission!</b>\n");
                 dynStats("int", -1, "lus", 15);
                 needNext = true;
             }
@@ -434,7 +434,7 @@ export class PlayerEvents implements TimeAwareInterface {
             }
             else { // Bigga titayz
                 if (player.breastRows[0].breastRating < 5) {
-                    outputText("\nYour " + breastDescript(game.player, 0) + " start to jiggle and wobble as time passes, seeming to refill with your inexhaustible supply of milk.  It doesn't look like you'll be able to keep them below a DD cup so long as you're so focused on breast-feeding.\n");
+                    outputText("\nYour " + breastDescriptOfRow(game.player, 0) + " start to jiggle and wobble as time passes, seeming to refill with your inexhaustible supply of milk.  It doesn't look like you'll be able to keep them below a DD cup so long as you're so focused on breast-feeding.\n");
                     player.breastRows[0].breastRating = 5;
                     needNext = true;
                 }

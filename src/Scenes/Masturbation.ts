@@ -762,10 +762,10 @@ function titForeplay(): void {
     // Ok lets touch our boobies if we haz them and they are big enough
     if (player.breastRows.length == 1 && player.breastRows.biggestTitSize() > 3) {
         if (player.lib < 45)
-            outputText("You caress your " + breastDescript(player, 0) + " gently with your fingers");
+            outputText("You caress your " + breastDescriptOfRow(player, 0) + " gently with your fingers");
         else if (player.lib < 70)
-            outputText("You grope your " + breastDescript(player, 0) + " agressively with both hands");
-        else outputText("You squeeze your " + breastDescript(player, 0) + " brutally with both hands");
+            outputText("You grope your " + breastDescriptOfRow(player, 0) + " agressively with both hands");
+        else outputText("You squeeze your " + breastDescriptOfRow(player, 0) + " brutally with both hands");
     }
     else if (player.breastRows.length > 1 && player.breastRows.biggestTitSize() > 3) {
         if (player.lib < 45)
@@ -807,7 +807,7 @@ function titForeplay(): void {
         if (player.vaginas.averageVaginalWetness() < 2)
             outputText("you feel your nipples loosen up. ");
         else if (player.vaginas.averageVaginalWetness() < 4)
-            outputText("you begin to slowly spread the slippery secretions leaking from your engorged nipples all over your " + breastDescript(player, 0) + ". ");
+            outputText("you begin to slowly spread the slippery secretions leaking from your engorged nipples all over your " + breastDescriptOfRow(player, 0) + ". ");
         else {
             outputText("little spurts of ");
             // Lactating?
@@ -2186,7 +2186,7 @@ function dualBeltMasturbation(): void {
     if (player.cumQ() >= 1000) outputText("It grows larger and larger until you are sure it will pop, but it doesn't.  It just sloshes around - a huge bubble, nearly waist high. ");
     outputText("Your eyes close in shivered ecstasy as your cunt spasms and clutches down around the hardened section deep inside of you. ");
     // ([If high lactation]
-    if (player.breastRows.biggestLactation() >= 2) outputText("Milk gushes out from your " + breastDescript(player, 0) + " as you orgasm, filling the inside of the suit with a slick layer of milk and forming milk bubbles that hang lewdly off your chest. ");
+    if (player.breastRows.biggestLactation() >= 2) outputText("Milk gushes out from your " + breastDescriptOfRow(player, 0) + " as you orgasm, filling the inside of the suit with a slick layer of milk and forming milk bubbles that hang lewdly off your chest. ");
     outputText("However, the suit is far from over as it keeps up all of its actions, keeping you on an orgasmic plateau, making sure you never stop coming. Your hands fall to the side and your body falls down, unable to keep it up as your consciousness fades, the suit still filling with all your fluids.\n\n");
     outputText("When you wake, the black latex is no longer covering your body and the belt is silent around your waist. Cum drips from the tip of your cock and the top part of your " + legs(player) + " are coated with your feminine juices. ");
     if (player.breastRows.biggestLactation() >= 2) outputText("Thin streams of creamy milk flow from your " + allBreastsDescript(player) + ", your torso and midsection dripping wet from the stuff. ");
@@ -2235,7 +2235,7 @@ function centaurNippleCunt(): void {
     if (player.breastRows.totalNipples() > 2) outputText("two of ");
     outputText("them.");
     if (player.breastRows.biggestTitSize() > 2)
-        outputText("  The sudden displacement makes your " + breastDescript(player, 0) + " jiggle enticingly, and the sudden movement fires arcs of pleasure deep into your body.");
+        outputText("  The sudden displacement makes your " + breastDescriptOfRow(player, 0) + " jiggle enticingly, and the sudden movement fires arcs of pleasure deep into your body.");
     else outputText("  They're shallow enough that you don't get much more than a fingertip inside them, but the flesh is extraordinarily sensitive, shooting arcs of pleasure deep into your body.");
     outputText("  Your free fingers slowly stroke around the outer edges of your " + nippleDescription(player, 0) + "s' lips, pausing when you feel a tiny sensitive clit-like nub just inside the top of the opening.\n\n");
 
@@ -2269,7 +2269,7 @@ function centaurNippleCunt(): void {
         outputText("\n\n");
     }
     // (ORGAZMO)
-    outputText("A slow wave of contractions starts deep inside each of your " + nippleDescription(player, 0) + "s.  It intensifies as it rises towards the surface of your " + breastDescript(player, 0) + ", reaching a crescendo that brings you to the peak of pleasure.  Your eyes roll back as you slump down in orgasmic bliss, fingers pumping relentlessly at you slippery nipple-holes.  Noisy wet squelches and incessant moaning rouse you from your pleasure-induced coma, eventually waking you back to reality.\n\n");
+    outputText("A slow wave of contractions starts deep inside each of your " + nippleDescription(player, 0) + "s.  It intensifies as it rises towards the surface of your " + breastDescriptOfRow(player, 0) + ", reaching a crescendo that brings you to the peak of pleasure.  Your eyes roll back as you slump down in orgasmic bliss, fingers pumping relentlessly at you slippery nipple-holes.  Noisy wet squelches and incessant moaning rouse you from your pleasure-induced coma, eventually waking you back to reality.\n\n");
 
     // Optional post orgasm bits for dicks/pussies
     if (player.cocks.length > 0) {

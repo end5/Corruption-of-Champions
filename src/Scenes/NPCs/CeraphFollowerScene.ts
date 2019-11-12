@@ -1520,11 +1520,11 @@ function ceraphFollowerTitTaking(rowNum: number = 0): void {
     else if (player.lactationQ() >= 100) flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 5;
     else flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00217] = 3;
     outputText("You pull down your [armor] to bare your bosom to Ceraph and indicate that you'd like her to take it.  She smiles like a cat who's gotten the cream and whispers, \"<i>Your wish is my command, [Master].</i>\"");
-    outputText("\n\nCeraph bounces your " + breastDescript(game.player, x) + " in her hands, playing with them for just a few seconds before she digs her nails in and pulls.  Your tits stretch for a moment, pulled tight while Ceraph giggles cruelly.  Heat blooms inside your chest, vivid tingles radiating from Ceraph's fingertips deep inside you.  At last it peaks and with a deep 'POMF', your tit-flesh separates from your body.  You look closely at the departing bosom – where it once joined with your body, it's covered in healthy pink skin and intricate, arcane tattoos.  Meanwhile, ", false);
+    outputText("\n\nCeraph bounces your " + breastDescriptOfRow(game.player, x) + " in her hands, playing with them for just a few seconds before she digs her nails in and pulls.  Your tits stretch for a moment, pulled tight while Ceraph giggles cruelly.  Heat blooms inside your chest, vivid tingles radiating from Ceraph's fingertips deep inside you.  At last it peaks and with a deep 'POMF', your tit-flesh separates from your body.  You look closely at the departing bosom – where it once joined with your body, it's covered in healthy pink skin and intricate, arcane tattoos.  Meanwhile, ", false);
     // More than 1 set of tits and not on bottom row?
     if (x < player.breastRows.length - 1 && player.breastRows.length > 1) {
         // If only 1 row below
-        if (x >= player.breastRows.length - 2) outputText("your torso has shifted and your " + breastDescript(player, x + 1) + " have moved up to fill the void.", false);
+        if (x >= player.breastRows.length - 2) outputText("your torso has shifted and your " + breastDescriptOfRow(player, x + 1) + " have moved up to fill the void.", false);
         // Multiple below
         else outputText("your torso has shifted and your other breasts have moved up to fill the void.", false);
         player.breastRows.removeBreastRow(x, 1);

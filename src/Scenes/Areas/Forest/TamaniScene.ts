@@ -789,7 +789,7 @@ export function getRapedByTamaniYouHypnoSlut(): void {
         if (cocks > 1) outputText("main ", false);
         outputText(cockDescript(game.player, 0) + ".  Her warmth spreads over the " + cockHead(player) + " of your " + cockDescript(game.player, 0) + ", but will go no further.  You tug harder on her bouncing backside, but you're simply too large to fit inside your wife's beautiful pussy.  She turns around and places a small hand ", false);
         if (player.breastRows.biggestTitSize() < 1) outputText("on your chest ", false);
-        else outputText("between your " + breastDescript(game.player, 0) + " ", false);
+        else outputText("between your " + breastDescriptOfRow(game.player, 0) + " ", false);
         outputText(" and commands, \"<i>Stop, you're just too big of a man for Tamani to do it the old fashioned way.</i>\"\n\n", false);
 
         outputText("Disgruntled but obedient, you stop your vaginal assault and release your wife.  It seems she has another way for your aching " + cockDescript(game.player, 0) + " to perform its duties anyway.  Tamani turns around and pulls out some clear tubing, along with a floppy, flexible sheath while she explains, \"<i>I'll just have to get you off and let you pump all your babies into me with this!</i>\"\n\n", false);

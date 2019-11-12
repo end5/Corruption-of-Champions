@@ -1783,7 +1783,7 @@ function marbleMilkSex(newpage: boolean = true): void {
         outputText("After finishing up", false);
         // [if player has more than two breasts]
         if (player.breastRows.totalBreasts() > 2) outputText(" with each of your " + allBreastsDescript(player), false);
-        else outputText(" with each of your " + breastDescript(game.player, 0), false);
+        else outputText(" with each of your " + breastDescriptOfRow(game.player, 0), false);
         outputText(", Marble looks up at you and sticks her tongue out again.  \"<i>Now it's time for the main course!</i>\" she whispers before lowering her head down to one of your " + nippleDescription(player, 0) + "s and closing her mouth around it. She soon begins to suckle your nipple.\n\n", false);
         // [if player has nipplecunts]
         if (player.breastRows.hasFuckableNipples()) {

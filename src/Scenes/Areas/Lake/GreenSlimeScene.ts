@@ -613,7 +613,7 @@ function oozeRapesYouVaginally(): void {
 
 export function rapeOozeWithMilk(): void {
     outputText("", true);
-    outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, removing the top of your " + player.armorName + " and pressing the mess of a monster to your " + breastDescript(game.player, 0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + breastDescript(game.player, 0) + " to the tip of your " + nippleDescription(player, 0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + nippleDescription(player, 0) + ", it slowly works its way down your body, almost lovingly ", false);
+    outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, removing the top of your " + player.armorName + " and pressing the mess of a monster to your " + breastDescriptOfRow(game.player, 0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + breastDescriptOfRow(game.player, 0) + " to the tip of your " + nippleDescription(player, 0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + nippleDescription(player, 0) + ", it slowly works its way down your body, almost lovingly ", false);
 
     // [If male-
     if (player.gender == 1) {
@@ -647,7 +647,7 @@ export function rapeOozeWithMilk(): void {
     // [if female or Herm-
     else outputText("Your hands fly to your " + vaginaDescript(player, 0) + " and frantically plunge your fingers in and out of it.  You wish the slime would engulf it as well.  ", false);
 
-    outputText("You cum many times into the mass, but that's not what truly matters to you. It's an extremely welcome, mind-shatteringly satisfying bonus, but not the main event. What does matter is the slow, meticulous draining of milk from both of your " + breastDescript(game.player, 0) + " at once that the ooze is doing for you. Feeling that it's on the last of your milk, you urge the ooze on, trying to get it to crank up its work on your now-overly sensitive ", false);
+    outputText("You cum many times into the mass, but that's not what truly matters to you. It's an extremely welcome, mind-shatteringly satisfying bonus, but not the main event. What does matter is the slow, meticulous draining of milk from both of your " + breastDescriptOfRow(game.player, 0) + " at once that the ooze is doing for you. Feeling that it's on the last of your milk, you urge the ooze on, trying to get it to crank up its work on your now-overly sensitive ", false);
 
     // [if male-
     if (player.gender == 1) {
@@ -663,7 +663,7 @@ export function rapeOozeWithMilk(): void {
         if (player.balls > 0) outputText(", " + ballsDescriptLight(player) + ",", false);
         outputText(" and " + clitDescription(player) + " and ", false);
     }
-    outputText(breastDescript(game.player, 0) + ".\n\n", false);
+    outputText(breastDescriptOfRow(game.player, 0) + ".\n\n", false);
 
     outputText("Unfortunately, you seem to have done a little too much to it in your battle before. The ooze slides off, leaving you hanging on the edge of orgasm. Deciding you just won't stand for this, you scoop up most the mess left by the monster and use it as a masturbation aid, achieving sweet release by ", false);
     if (player.gender == 1) outputText("feverishly jacking yourself off with it.  The cool feel of it contrasts enough to send you over the edge relatively quickly, and you release your cum into it.  You drop most of its bulk ", false);

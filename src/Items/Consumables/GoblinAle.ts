@@ -133,7 +133,7 @@ export function goblinAle(player: Player): void {
     // -Remove extra breast rows
     if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0) {
         changes++;
-        outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
+        outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescriptOfRow(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
         if (player.breastRows.length >= 3)
             outputText("abdomen", false);
         else

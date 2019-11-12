@@ -42,7 +42,7 @@ export class TestContent {
         outputText("\ncockDescript " + cockDescript(game.player, 0));
         outputText("\nbiggestBreastSizeDescript " + biggestBreastSizeDescript(player));
         outputText("\nbreaseSize 5" + breastSize(5));
-        outputText("\nbreastDescript " + breastDescript(game.player, 0));
+        outputText("\nbreastDescript " + breastDescriptOfRow(game.player, 0));
         outputText("\ncockHead " + cockHead(player));
         outputText("\nbreastCup 5 " + breastCup(5));
 

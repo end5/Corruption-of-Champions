@@ -464,7 +464,7 @@ export function useTentacleJojo(): void {
     // (Large tits &/or multitits with no lactation)
     if ((player.breastRows.biggestTitSize() >= 4 || (player.breastRows.biggestTitSize() >= 4 && player.breastRows.length > 1)) && player.breastRows.biggestLactation() < 2) {
         titFucking = true;
-        outputText("The twin tentacles erupt like kinked up garden-hoses that have suddenly become free, splattering your chest with thick white goop.  They spurt until all of your " + breastDescript(game.player, 0) + " are painted white with warm dripping goop.  One of the purple-headed monsters slides into the mess, while the other ties itself around your " + breastDescript(game.player, 0) + ", squeezing its brother tightly between the walls of cum-slickened titflesh.  The swollen purple head bumps your chin, smearing you with its cum as it begins to fuck your tits.  Glob after glob of mouse-cum spatters up from your chest into your chin and mouth, eventually soaking your " + faceMuzzle() + " and neck.\n\n", false);
+        outputText("The twin tentacles erupt like kinked up garden-hoses that have suddenly become free, splattering your chest with thick white goop.  They spurt until all of your " + breastDescriptOfRow(game.player, 0) + " are painted white with warm dripping goop.  One of the purple-headed monsters slides into the mess, while the other ties itself around your " + breastDescriptOfRow(game.player, 0) + ", squeezing its brother tightly between the walls of cum-slickened titflesh.  The swollen purple head bumps your chin, smearing you with its cum as it begins to fuck your tits.  Glob after glob of mouse-cum spatters up from your chest into your chin and mouth, eventually soaking your " + faceMuzzle() + " and neck.\n\n", false);
     }
     // (Lactating highly)
     if (player.breastRows.biggestLactation() >= 2) {
@@ -477,7 +477,7 @@ export function useTentacleJojo(): void {
         outputText("You watch with a happy smile, enjoying the sensations as the tentacles bulge and move milk-distended knots down their lengths towards Jojo.  They are so full that the sloshing whiteness actually becomes visible through the 'skin' of his tendrils.", false);
         if (player.breastRows.length > 1) {
             // (NewPG if multirow)
-            outputText("\n\nThere is nothing to do but enjoy the sensations until your " + breastDescript(game.player, 0) + " are emptied, but before that can happen, they detach, soaking your chest with excess milk, and move down to the next row.  It becomes clear they will keep milking you, moving from row to row to give each a chance to recover, so that they can feed indefinitely...", false);
+            outputText("\n\nThere is nothing to do but enjoy the sensations until your " + breastDescriptOfRow(game.player, 0) + " are emptied, but before that can happen, they detach, soaking your chest with excess milk, and move down to the next row.  It becomes clear they will keep milking you, moving from row to row to give each a chance to recover, so that they can feed indefinitely...", false);
         }
         outputText("\n\n", false);
     }
@@ -551,7 +551,7 @@ export function useTentacleJojo(): void {
     }
     // Breastgasm
     if (player.breastRows.biggestLactation() >= 2 && nippleSucking) {
-        outputText("Your " + breastDescript(game.player, 0) + " squirt milk even harder, pushing the tentacles clear off you with the force of your lactation.  Your " + nippleDescription(player, 0) + "s look like ", false);
+        outputText("Your " + breastDescriptOfRow(game.player, 0) + " squirt milk even harder, pushing the tentacles clear off you with the force of your lactation.  Your " + nippleDescription(player, 0) + "s look like ", false);
         if (player.nippleLength >= 2) outputText("even larger", false);
         else outputText("obscene", false);
         outputText(" cow-teats from all the suction, fountaining milk everywhere as it puddles on the ground.  The milk flow tapers off after a few seconds, leaving you stretched and sore.", false);
@@ -1439,12 +1439,12 @@ function jojosFourthRape(): void {
 
         // Milk here
         if (player.breastRows.biggestLactation() >= 1 && player.breastRows.biggestTitSize() > 3) {
-            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 8) outputText("Milk sprays from your " + breastDescript(game.player, 0) + " in tiny streams, triggered by your orgasms.");
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 8) outputText("Milk sprays from your " + breastDescriptOfRow(game.player, 0) + " in tiny streams, triggered by your orgasms.");
             if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 20 &&
-                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 8) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying out over the mouse, squirting out the contractions of each shuddering orgasm.");
+                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 8) outputText("Milk erupts from your " + breastDescriptOfRow(game.player, 0) + ", spraying out over the mouse, squirting out the contractions of each shuddering orgasm.");
             if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length < 35 &&
-                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 20) outputText("Milk erupts from your " + breastDescript(game.player, 0) + ", spraying in pulsing blasts, soaking the mouse.  Each nerve-wracking orgasm seems to wring more and more milk from you, until it puddles around.");
-            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 35) outputText("Milk fountains from your " + breastDescript(game.player, 0) + ", soaking the mouse with a continuous river of cream.  For every blob of cum you feel pushing into your over-filled uterus, another torrent of milk sprays out.  As your mind-bending orgasms drag on, a small lake of milk forms around you.");
+                player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 20) outputText("Milk erupts from your " + breastDescriptOfRow(game.player, 0) + ", spraying in pulsing blasts, soaking the mouse.  Each nerve-wracking orgasm seems to wring more and more milk from you, until it puddles around.");
+            if (player.breastRows.biggestTitSize() * player.breastRows.biggestLactation() * player.breastRows.length >= 35) outputText("Milk fountains from your " + breastDescriptOfRow(game.player, 0) + ", soaking the mouse with a continuous river of cream.  For every blob of cum you feel pushing into your over-filled uterus, another torrent of milk sprays out.  As your mind-bending orgasms drag on, a small lake of milk forms around you.");
         }
         cuntChange(player, 3, true);
         // Preggers chance!

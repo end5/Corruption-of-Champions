@@ -60,7 +60,7 @@ function rapeImpWithDick(): void {
         outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
         if (player.lowerBody != LowerBodyType.CENTAUR) {
             outputText("  You casually unclasp your " + player.armorName + " and reveal your " + cockDescript(game.player, x) + ", ", false);
-            if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + breastDescript(game.player, 0) + " while you jerk hard on your " + cockDescript(game.player, x) + ", bringing it to a full, throbbing erection.", false);
+            if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + breastDescriptOfRow(game.player, 0) + " while you jerk hard on your " + cockDescript(game.player, x) + ", bringing it to a full, throbbing erection.", false);
             else outputText("stroking it to full hardness languidly.", false);
         }
         outputText("\n\nWith no foreplay, you press your " + cockDescript(game.player, x) + " against his tight little pucker and ram it in to the hilt.  The imp's eyes bulge in surprise even as a thick stream of pre leaks from his " + cockDescriptShort(monster, 0) + ".  You grab him by his distended waist and brutally rape the little demon, whose claws stay busy adding to his pleasure.", false);
@@ -80,7 +80,7 @@ function rapeImpWithDick(): void {
         outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck.  The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
         if (player.lowerBody != LowerBodyType.CENTAUR) {
             outputText("  You casually unclasp your " + player.armorName + " and reveal your " + multiCockDescriptLight(game.player) + ", ", false);
-            if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + breastDescript(game.player, 0) + " while you jerk hard on one of your " + cockDescript(game.player, x) + "s, bringing it to a full, throbbing erection.", false);
+            if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + breastDescriptOfRow(game.player, 0) + " while you jerk hard on one of your " + cockDescript(game.player, x) + "s, bringing it to a full, throbbing erection.", false);
             else outputText("stroking one of your members to full hardness languidly.", false);
         }
         outputText("\n\nWith no foreplay, you press a " + cockDescript(game.player, x) + " against his tight little pucker and ram it in to the hilt.  The imp's eyes bulge in surprise even as a thick stream of pre leaks from his " + cockDescriptShort(monster, 0) + ".  You grab him by his distended waist and brutally rape the little demon, whose claws stay busy adding to his pleasure.", false);
@@ -528,7 +528,7 @@ function centaurOnImpResults(iNum: number): void {
     if (iNum == 3) {
         // <<Has Breasts>>
         if (player.breastRows.biggestTitSize() >= 2) {
-            outputText("As the sensations intensify you reach up and begin massaging your " + breastDescript(game.player, 0) + " and playing with your " + nippleDescription(player, 0) + "s.  ", false);
+            outputText("As the sensations intensify you reach up and begin massaging your " + breastDescriptOfRow(game.player, 0) + " and playing with your " + nippleDescription(player, 0) + "s.  ", false);
             // <<(breasts cont.) nips have pussies>>
             if (player.breastRows.hasFuckableNipples()) {
                 // <<nip-pussies and milk>>
@@ -542,7 +542,7 @@ function centaurOnImpResults(iNum: number): void {
                     // <<little milk>>
                     if (player.breastRows.biggestLactation() <= 1) outputText("Beads of milk begin to drip down your chest and occasionally spurt outward.  ", false);
                     // <<else>>
-                    else outputText("Milk pours out of your " + breastDescript(game.player, 0) + " and streams down your body.  ", false);
+                    else outputText("Milk pours out of your " + breastDescriptOfRow(game.player, 0) + " and streams down your body.  ", false);
                 }// <</milk>>
             }
         }// <</Breasts>>
@@ -1687,18 +1687,18 @@ export function feederBreastfeedRape(): void {
 
         if (player.breastRows.length == 1) outputText("\n\nAs your second breast's milk flow begins to slow, the imp curls up against you contently.  You cradle him for a moment, before laying the creature down, where he burps and falls asleep.  You chuckle at how cute these creatures are when they're passive.");
         else {
-            outputText("\n\nYou chuckle at the still very hungry imp, and begin massaging your second row of " + breastDescript(game.player, 1) + ", occasionally pinching your " + nippleDescription(player, 1) + "s, drawing a few beads of milk from them.  The imp makes short work of your first row of breasts and has moved towards your second.");
+            outputText("\n\nYou chuckle at the still very hungry imp, and begin massaging your second row of " + breastDescriptOfRow(game.player, 1) + ", occasionally pinching your " + nippleDescription(player, 1) + "s, drawing a few beads of milk from them.  The imp makes short work of your first row of breasts and has moved towards your second.");
             outputText("\n\n\"<i>So eager to please, aren't you?</i>\" you say teasingly, though not expecting an answer from the imp's nipple filled mouth.  As you suspected, the imp is far too busy feeding to answer. You debate punishing him for his rudeness.  However, the pleasure of nursing is far too enjoyable to interrupt unnecessarily.");
             outputText("\n\nThe imp's belly has swollen much larger; his chest is also developing a thin layer of fat.  You wonder how much more the little beast will feed, as he moves to your fourth breast.");
             outputText("\n\nYou moan softly as the imp continues his work, although you do notice that he's starting to have trouble keeping up with your flow, as a fair amount of your milk has ended up on your chest and the ground, rather than the imp's belly.  Giving him a small swat on his bald head, you point to the milk on the ground, which causes him to whimper in apology.");
             outputText("\n\nNodding your acceptance, he continues his work much more carefully.  He's taking his time again instead of just sucking wildly.  You reach down curiously, and tug on the imp's " + cockDescriptShort(monster, 0) + " but find that it's shrinking.  As you hold it, it shrinks more and more. You wonder what will happen to him if he continues to nurse.");
             // if(player has only 2 rows of breasts)
             if (player.breastRows.length == 2) {
-                outputText("\n\nUnfortunately it looks like you won't find out, as the last of your " + breastDescript(game.player, 1) + " runs dry.  The imp wobbles and falls over, clearly not used to the added weight.  Now that you get a good look at him, you see some very serious changes.  He's got a very full belly, his chest has a pair of soft male breasts, and his cock and balls have shrunk significantly.  It's a damn shame you ran out of milk for the creature.  It would've interesting to see what happened if he'd continued.");
+                outputText("\n\nUnfortunately it looks like you won't find out, as the last of your " + breastDescriptOfRow(game.player, 1) + " runs dry.  The imp wobbles and falls over, clearly not used to the added weight.  Now that you get a good look at him, you see some very serious changes.  He's got a very full belly, his chest has a pair of soft male breasts, and his cock and balls have shrunk significantly.  It's a damn shame you ran out of milk for the creature.  It would've interesting to see what happened if he'd continued.");
                 outputText("\n\nThe imp on the other hand looks a little sick to the stomach now, and flops backwards, passing out completely.  You look at him for a moment and decide he'll be fine.");
             }
             else {
-                outputText("\n\nYou begin massaging your lowest row of breasts, fascinated by the idea of what will become of the imp when he milks you of all your corrupt milk.  You feel the fluid flow begin, and the imp moves on to your " + breastDescript(game.player, 2) + ".  He nurses passionately at your " + nippleDescription(player, 2) + ", slurping down every drop of your milk.");
+                outputText("\n\nYou begin massaging your lowest row of breasts, fascinated by the idea of what will become of the imp when he milks you of all your corrupt milk.  You feel the fluid flow begin, and the imp moves on to your " + breastDescriptOfRow(game.player, 2) + ".  He nurses passionately at your " + nippleDescription(player, 2) + ", slurping down every drop of your milk.");
                 outputText("\n\nBefore you can even fully begin to enjoy the rest of the milking, it's over.  The imp takes one last, long gulp and falls backwards onto the ground.  You watch, fascinated as the imp groans loudly in discomfort. His belly gurgles and visibly shifts as if his belly was full of large worms wiggling around.  \"<i>Weird.</i>\" The imp begins to desperately claw at his testicles as they shrink so far that they vanish back inside of him.  The apparent itching sensation he's experiencing doesn't seem to stop however, as he begins clawing out small patches of fur, until he reveals a new, moist virgin cunt.");
                 outputText("\n\nThe imp quickly penetrates his new orifice with two clawed fingers, gasping in the foreign ecstasy.  As he plays with his new tool, his former cock vanishes inside of his body, just as his testicles did.  The imp is crying out in the new found pleasure, and it seems like he's enjoying his new form.");
 
@@ -1772,7 +1772,7 @@ function getRapedAsAGirl(): void {
     outputText(images.showImage("implord-loss-female"), false);
     outputText("You collapse from exhaustion, your [vagina] beginning to soak your [armor].  You groan loudly, desperately trying to continue the fight, or flee, but the exhaustion is too much.  You close your eyes for a moment, but hearing a loud thud near your face causes you to painfully open your eyes.  You see a large bestial hoof near your face, while the other hoof is used to roll you onto your back.");
 
-    outputText("\n\nYou try to move, but before you can even begin to squirm a hoof presses hard between your " + breastDescript(game.player, 0) + ".  You gasp as the air is temporarily knocked out of your lungs.  The demon chuckles at your last feeble attempt to free yourself.  He holds his " + cockDescriptShort(monster, 0) + " stroking it lewdly, a cruel smirk stretching across his face.  You watch as several beads of pre begin to drip from his tip onto your stomach.");
+    outputText("\n\nYou try to move, but before you can even begin to squirm a hoof presses hard between your " + breastDescriptOfRow(game.player, 0) + ".  You gasp as the air is temporarily knocked out of your lungs.  The demon chuckles at your last feeble attempt to free yourself.  He holds his " + cockDescriptShort(monster, 0) + " stroking it lewdly, a cruel smirk stretching across his face.  You watch as several beads of pre begin to drip from his tip onto your stomach.");
 
     outputText("\n\nThe imp steps between your legs, gently kicking them apart, until the wet spot on your [armor] is painfully obvious.  He chuckles, and leans down, ripping your [armor] off.  He casually tosses it to the side, and leans towards your [vagina].");
 
@@ -1841,7 +1841,7 @@ function putBeeEggsInAnImpYouMonster(): void {
     if (player.breastRows.biggestTitSize() >= 1) {
         outputText("his tiny claws grab your ");
         if (player.breastRows.length > 1) outputText("first row of ");
-        outputText(breastDescript(game.player, 0) + ", squeezing your tits as you fuck him full.");
+        outputText(breastDescriptOfRow(game.player, 0) + ", squeezing your tits as you fuck him full.");
         if (player.lactationQ() >= 500) outputText("  Rivulets of your milk run down his forearms as he inexpertly milks you.");
     }
     // [If cock:

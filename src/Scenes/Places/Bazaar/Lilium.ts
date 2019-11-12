@@ -165,7 +165,7 @@ function liliumDickRidah(): void {
 
     // (if player has breasts)
     if (player.breastRows.biggestTitSize() >= 1) {
-        outputText("You turn your attention to your own " + allBreastsDescript(player) + " and how they bounce from the force of your vigorous fucking, supporting the weight of your " + breastDescript(game.player, 0) + " with your hands as you continue to ride Lilium's cock.", false);
+        outputText("You turn your attention to your own " + allBreastsDescript(player) + " and how they bounce from the force of your vigorous fucking, supporting the weight of your " + breastDescriptOfRow(game.player, 0) + " with your hands as you continue to ride Lilium's cock.", false);
         // (if demonic tongue)
         if (player.tongueType == TongueType.DEMONIC) outputText("  Letting your demonic tongue extend out from between your lips, you wrap it around one " + nippleDescription(player, 0) + " and gently squeeze, sending an electric thrill that flows to your core and back out to the tips of your fingers.", false);
         // (else if no demonic tongue)

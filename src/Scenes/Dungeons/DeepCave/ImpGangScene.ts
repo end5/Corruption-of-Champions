@@ -11,8 +11,8 @@ export function loseToImpMob(): void {
 
     // (tits)
     if (player.breastRows.biggestTitSize() > 1) {
-        outputText("A sudden weight drops onto your chest as one of the demons straddles your belly, allowing his thick, tainted fuck-stick to plop down between your " + allBreastsDescript(player) + ".  The hot fluid leaking from his nodule-ringed crown  swiftly lubricates your cleavage.  In seconds the little devil is squeezing your " + breastDescript(game.player, 0) + " around himself as he starts pounding his member into your tits.  The purplish tip peeks out between your jiggling flesh mounds, dripping with tainted moisture.", false);
-        if (player.breastRows.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescript(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
+        outputText("A sudden weight drops onto your chest as one of the demons straddles your belly, allowing his thick, tainted fuck-stick to plop down between your " + allBreastsDescript(player) + ".  The hot fluid leaking from his nodule-ringed crown  swiftly lubricates your cleavage.  In seconds the little devil is squeezing your " + breastDescriptOfRow(game.player, 0) + " around himself as he starts pounding his member into your tits.  The purplish tip peeks out between your jiggling flesh mounds, dripping with tainted moisture.", false);
+        if (player.breastRows.biggestLactation() > 1) outputText("  Milk starts to squirt from the pressure being applied to your " + breastDescriptOfRow(game.player, 0) + ", which only encourages the imp to squeeze even harder.", false);
         outputText("\n\n", false);
     }
     // (NIPPLECUNTS!)

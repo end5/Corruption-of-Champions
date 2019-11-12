@@ -232,7 +232,7 @@ export function dreamSelect(): boolean {
 
             outputText("Eventually you cum, splattering your spunk all across her features and the top of her tits.  It runs down the massive flesh in slow dribbles, dimples in the enormous bust causing the spooge to puddle slowly.  Licking her lips, she grinds the cum into her breasts before pausing.  Looking at you carefully, she speaks.  \"<i>So, is this your dream?</i>\" Exgartuan asks.  \"<i>Or mine?</i>\"\n\n", false);
 
-            outputText("You awake with a start.  Your " + breastDescript(game.player, 0) + " jiggles grumpily.", false);
+            outputText("You awake with a start.  Your " + breastDescriptOfRow(game.player, 0) + " jiggles grumpily.", false);
         }
         // Exgartucock
         else if (daydream == 9) {

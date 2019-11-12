@@ -603,7 +603,7 @@ export function cultistBadEnd2(): void {
 
 export function fetishCultistHasAMilkFetish(): void {
     outputText("", true);
-    outputText("You remove your " + player.armorName + ", standing naked in front of the beaten fetish-girl with your lactating " + breastDescript(game.player, 0) + " dripping milk. You pick the cultist up and sit down on the ground with her resting on your lap, her soft warm ass up against your thighs. You hold the nipple up to her mouth; she suckles on it without the slightest sign of rebellion.\n\n", false);
+    outputText("You remove your " + player.armorName + ", standing naked in front of the beaten fetish-girl with your lactating " + breastDescriptOfRow(game.player, 0) + " dripping milk. You pick the cultist up and sit down on the ground with her resting on your lap, her soft warm ass up against your thighs. You hold the nipple up to her mouth; she suckles on it without the slightest sign of rebellion.\n\n", false);
 
     outputText("Minutes later, the landscape around you slowly changes into a cozy cabin. There's a fireplace with a bear rug in front of it and you're on a rocking chair in the corner with the Cultist on your lap, still nursing from your breasts. She has a bonnet on with two long black pigtails falling down her milky white body. A black lacy thong is barely covering her pussy with the back string disappearing between her two pleasant cheeks. Black & white striped knee socks cover her legs. Her grateful eyes look up at you, and you notice that they have black eye-liner on that makes her hazel eyes pop like fire.\n\n", false);
 

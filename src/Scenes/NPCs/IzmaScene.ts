@@ -691,7 +691,7 @@ function finalIzmaSubmission(): void {
 
     outputText("She pulls back out, and for a moment you feel a bit of trepidation at the absence of her cock, before crying out as she again goes balls-deep into your backside.  She continues to thrust and grind into you, giving a few animalistic snarls of pleasure.  You manage to glance back, only to notice how completely the bookworm has turned into some sort of proud wild woman.  It suits her; she's proven that she's so much stronger than you, after all.  So strong, so in control, so powerful... it feels right to be like this, underneath Izma as she asserts her position over you.\n\n", false);
 
-    outputText("As if sensing your complete submission, Izma's hands trail down toward your " + breastDescript(game.player, 0) + ", mauling and groping at them, tweaking your " + nippleDescription(player, 0) + "s in an almost-painful fashion.  It only manages to turn you on further though, groaning and squirming from intense pleasure.  Izma makes you orgasm first, your muscles twitching and spasming as you briefly lose control over yourself", false);
+    outputText("As if sensing your complete submission, Izma's hands trail down toward your " + breastDescriptOfRow(game.player, 0) + ", mauling and groping at them, tweaking your " + nippleDescription(player, 0) + "s in an almost-painful fashion.  It only manages to turn you on further though, groaning and squirming from intense pleasure.  Izma makes you orgasm first, your muscles twitching and spasming as you briefly lose control over yourself", false);
     if (player.vaginas.length > 0 || player.cocks.length > 0) {
         outputText("; ", false);
         if (player.cocks.length > 0) {

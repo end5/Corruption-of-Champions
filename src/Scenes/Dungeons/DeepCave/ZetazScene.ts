@@ -168,7 +168,7 @@ export function releaseZForInfo(): void {
     if (player.cor > 66) {
         outputText("You smirk down at him and fold your arms over your ", false);
         if (player.breastRows.biggestTitSize() < 1) outputText("chest", false);
-        else outputText(breastDescript(game.player, 0), false);
+        else outputText(breastDescriptOfRow(game.player, 0), false);
         outputText(", relishing his fear while you consider the possibilities", false);
     }
     else if (player.cor > 33) {

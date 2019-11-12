@@ -179,7 +179,7 @@ export function blueEgg(large: boolean, player: Player): void {
         }
         // Kill extra boobages
         if (player.breastRows.length > 1) {
-            outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescript(player, player.breastRows.length - 1) + " have vanished.</b>", false);
+            outputText("Your back relaxes as extra weight vanishes from your chest.  <b>Your lowest " + breastDescriptOfRow(player, player.breastRows.length - 1) + " have vanished.</b>", false);
             if (player.buttRating > 5 || player.hipRating > 5)
                 outputText("  ", false);
             // Remove lowest row.

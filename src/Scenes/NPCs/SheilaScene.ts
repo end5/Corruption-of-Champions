@@ -2246,7 +2246,7 @@ function sheilaMutualMasturbation(): void {
     }
     // (nipcunts)
     else if (target == "nipplecunt") {
-        outputText("nipple constricts around your fingers in climax, oozing lubrication onto your partner.  As the drops from your " + breastDescript(game.player, 0) + " hit her own, Sheila's back arches again and her own orgasm begins.");
+        outputText("nipple constricts around your fingers in climax, oozing lubrication onto your partner.  As the drops from your " + breastDescriptOfRow(game.player, 0) + " hit her own, Sheila's back arches again and her own orgasm begins.");
     }
     // (jack shit)
     else outputText("fingers are pulled into her vagina by her muscles as her orgasm begins.");

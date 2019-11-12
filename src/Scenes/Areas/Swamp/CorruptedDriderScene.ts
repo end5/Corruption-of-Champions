@@ -784,7 +784,7 @@ export function driderPregVagBirth(): void {
 
     // (If breasts)
     if (player.breastRows.biggestTitSize() >= 2) {
-        outputText("One drider girl cautiously makes her way over to you.  Her legs tickle your stomach as she climbs up to one of your " + breastDescript(game.player, 0) + ".  Grasping the flesh tightly in her tiny hands she begins to suckle at your " + nippleDescription(player, 0) + ".", false);
+        outputText("One drider girl cautiously makes her way over to you.  Her legs tickle your stomach as she climbs up to one of your " + breastDescriptOfRow(game.player, 0) + ".  Grasping the flesh tightly in her tiny hands she begins to suckle at your " + nippleDescription(player, 0) + ".", false);
         if (player.breastRows.length > 1) outputText("  Following their sister's lead, more little driders take their place at each of your nipples and begin to drink.", false);
         else outputText("  Following her sister's lead, another little drider takes her place at your other nipple and begins to drink.", false);
         if (player.lactationQ() >= 3000) outputText("  One of your offspring seemed to be grasping your breast too tightly and drinking too greedily as suddenly you see one propelled away from you before she lands in a small puddle of milk nearby.  She seems to be struggling to right herself as she writhes around in the milk puddle, and so with a grin you reach over to pluck up the clumsy child and place her back at your waiting teat.", false);

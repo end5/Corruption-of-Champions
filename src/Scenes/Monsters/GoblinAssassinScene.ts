@@ -414,7 +414,7 @@ function rapeAGoblinCorruptTooBig(): void {
     else outputText("stretch her so much that you can see the bulge even from this angle", false);
     outputText(" and it drives your lust even higher. You withdraw more cock from the hole than your cum starved slut has body, causing her eyes to roll into the back of her head as her " + vaginaDescript(monster) + " clamps down on you and she cums again. Every time you pull out or hammer home brings her off to the point that by the time you've both gotten down on all fours, rutting like a pair of wild animals, she can only lie there, practically foaming at the wide open mouth", false);
     if (player.breastRows.biggestTitSize() >= 1) {
-        outputText(", her head resting between your " + breastDescript(game.player, 0), false);
+        outputText(", her head resting between your " + breastDescriptOfRow(game.player, 0), false);
         if (player.breastRows.biggestLactation() >= 1) {
             outputText(" as your " + nippleDescription(player, 0) + " ", false);
             if (player.breastRows.biggestLactation() < 2) outputText("occasionally drip milky tears onto her face", false);

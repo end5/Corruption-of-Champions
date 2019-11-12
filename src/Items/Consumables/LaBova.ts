@@ -148,9 +148,9 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     // do not increase size, but do the other actions:
     if (((tainted && player.breastRows.biggestTitSize() <= 11) || (!tainted && player.breastRows.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
         if (rand(2) == 0)
-            outputText("\n\nYour " + breastDescript(game.player, 0) + " tingle for a moment before becoming larger.", false);
+            outputText("\n\nYour " + breastDescriptOfRow(game.player, 0) + " tingle for a moment before becoming larger.", false);
         else
-            outputText("\n\nYou feel a little weight added to your chest as your " + breastDescript(game.player, 0) + " seem to inflate and settle in a larger size.", false);
+            outputText("\n\nYou feel a little weight added to your chest as your " + breastDescriptOfRow(game.player, 0) + " seem to inflate and settle in a larger size.", false);
         growTits(player, 1 + rand(3), 1, false, 3);
         changes++;
         dynStats("sen", .5);
@@ -169,7 +169,7 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     }
     // If breasts are D or bigger and are not lactating, they also start lactating:
     if (player.breastRows.biggestTitSize() >= 4 && player.breastRows[0].lactationMultiplier < 1 && changes < changeLimit && (rand(3) == 0 || boobsGrew || enhanced)) {
-        outputText("\n\nYou gasp as your " + breastDescript(game.player, 0) + " feel like they are filling up with something.  Within moments, a drop of milk leaks from your " + breastDescript(game.player, 0) + "; <b> you are now lactating</b>.", false);
+        outputText("\n\nYou gasp as your " + breastDescriptOfRow(game.player, 0) + " feel like they are filling up with something.  Within moments, a drop of milk leaks from your " + breastDescriptOfRow(game.player, 0) + "; <b> you are now lactating</b>.", false);
         player.breastRows[0].lactationMultiplier = 1.25;
         changes++;
         dynStats("sen", .5);
@@ -182,13 +182,13 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
             player.breastRows[0].nipplesPerBreast = 4;
             outputText("\n\nYour " + nippleDescription(player, 0) + "s tingle and itch.  You pull back your " + player.armorName + " and watch in shock as they split into four distinct nipples!  <b>You now have four nipples on each side of your chest!</b>", false);
             if (player.breastRows.length >= 2 && player.breastRows[1].nipplesPerBreast == 1) {
-                outputText("A moment later your second row of " + breastDescript(game.player, 1) + " does the same.  <b>You have sixteen nipples now!</b>", false);
+                outputText("A moment later your second row of " + breastDescriptOfRow(game.player, 1) + " does the same.  <b>You have sixteen nipples now!</b>", false);
                 player.breastRows[1].nipplesPerBreast = 4;
             }
             if (player.breastRows.length >= 3 && player.breastRows[2].nipplesPerBreast == 1) {
                 outputText("Finally, your ");
                 if (player.breastRows.length == 3)
-                    outputText("third row of " + breastDescript(game.player, 2) + " mutates along with its sisters, sprouting into a wonderland of nipples.", false);
+                    outputText("third row of " + breastDescriptOfRow(game.player, 2) + " mutates along with its sisters, sprouting into a wonderland of nipples.", false);
                 else if (player.breastRows.length >= 4) {
                     outputText("everything from the third row down mutates, sprouting into a wonderland of nipples.", false);
                     player.breastRows[3].nipplesPerBreast = 4;
@@ -210,27 +210,27 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         // QUAD DAMAGE IF WEIRD SHIT BROKE BEFORE
         else if (player.breastRows.length > 1 && player.breastRows[1].nipplesPerBreast == 1) {
             if (player.breastRows[1].nipplesPerBreast == 1) {
-                outputText("\n\nYour second row of " + breastDescript(game.player, 1) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 1) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your second row of breasts</b>.", false);
+                outputText("\n\nYour second row of " + breastDescriptOfRow(game.player, 1) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 1) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your second row of breasts</b>.", false);
                 player.breastRows[1].nipplesPerBreast = 4;
             }
         }
         else if (player.breastRows.length > 2 && player.breastRows[2].nipplesPerBreast == 1) {
             if (player.breastRows[2].nipplesPerBreast == 1) {
-                outputText("\n\nYour third row of " + breastDescript(game.player, 2) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 2) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your third row of breasts</b>.", false);
+                outputText("\n\nYour third row of " + breastDescriptOfRow(game.player, 2) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 2) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your third row of breasts</b>.", false);
                 player.breastRows[2].nipplesPerBreast = 4;
             }
         }
         else if (player.breastRows.length > 3 && player.breastRows[3].nipplesPerBreast == 1) {
             if (player.breastRows[3].nipplesPerBreast == 1) {
-                outputText("\n\nYour fourth row of " + breastDescript(game.player, 3) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 3) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your fourth row of breasts</b>.", false);
+                outputText("\n\nYour fourth row of " + breastDescriptOfRow(game.player, 3) + " tingle and itch.  You pull back your " + player.armorName + " and watch in shock as your " + nippleDescription(player, 3) + " split into four distinct nipples!  <b>You now have four nipples on each breast in your fourth row of breasts</b>.", false);
                 player.breastRows[3].nipplesPerBreast = 4;
             }
         }
         else if (player.breastRows.biggestLactation() > 1) {
             if (rand(2) == 0)
-                outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescript(game.player, 0) + " start leaking milk from a massive jump in production.", false);
+                outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescriptOfRow(game.player, 0) + " start leaking milk from a massive jump in production.", false);
             else
-                outputText("\n\nSomething shifts inside your " + breastDescript(game.player, 0) + " and they feel MUCH fuller and riper.  You know that you've started producing much more milk.", false);
+                outputText("\n\nSomething shifts inside your " + breastDescriptOfRow(game.player, 0) + " and they feel MUCH fuller and riper.  You know that you've started producing much more milk.", false);
             player.boostLactation(2.5);
             if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                 outputText("  Your " + nippleDescription(player, 0) + "s swell up, growing larger to accommodate your increased milk flow.", false);
@@ -244,9 +244,9 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
     else {
         if (tainted && player.breastRows[0].lactationMultiplier > 1 && player.breastRows[0].lactationMultiplier < 5 && changes < changeLimit && (rand(3) == 0 || enhanced)) {
             if (rand(2) == 0)
-                outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescript(game.player, 0) + " start producing more milk.", false);
+                outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescriptOfRow(game.player, 0) + " start producing more milk.", false);
             else
-                outputText("\n\nSomething shifts inside your " + breastDescript(game.player, 0) + " and they feel fuller and riper.  You know that you've started producing more milk.", false);
+                outputText("\n\nSomething shifts inside your " + breastDescriptOfRow(game.player, 0) + " and they feel fuller and riper.  You know that you've started producing more milk.", false);
             player.boostLactation(0.75);
             if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                 outputText("  Your " + nippleDescription(player, 0) + "s swell up, growing larger to accommodate your increased milk flow.", false);
@@ -258,9 +258,9 @@ export function laBova(tainted: boolean, enhanced: boolean, player: Player): voi
         if (!tainted) {
             if (player.breastRows[0].lactationMultiplier > 1 && player.breastRows[0].lactationMultiplier < 3.2 && changes < changeLimit && rand(3) == 0) {
                 if (rand(2) == 0)
-                    outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescript(game.player, 0) + " start producing more milk.", false);
+                    outputText("\n\nA wave of pleasure passes through your chest as your " + breastDescriptOfRow(game.player, 0) + " start producing more milk.", false);
                 else
-                    outputText("\n\nSomething shifts inside your " + breastDescript(game.player, 0) + " and they feel fuller and riper.  You know that you've started producing more milk.", false);
+                    outputText("\n\nSomething shifts inside your " + breastDescriptOfRow(game.player, 0) + " and they feel fuller and riper.  You know that you've started producing more milk.", false);
                 player.boostLactation(0.75);
                 if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                     outputText("  Your " + nippleDescription(player, 0) + "s swell up, growing larger to accommodate your increased milk flow.", false);

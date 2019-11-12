@@ -113,7 +113,7 @@ export function sweetGossamer(type: number, player: Player): void {
     }
     // [Increase to Breast Size] - up to Large DD
     if (player.breastRows.smallestTitSize() < 6 && changes < changeLimit && rand(4) == 0) {
-        outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescript(player, player.breastRows.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
+        outputText("\n\nAfter eating it, your chest aches and tingles, and your hands reach up to scratch at it unthinkingly.  Silently, you hope that you aren't allergic to it.  Just as you start to scratch at your " + breastDescriptOfRow(player, player.breastRows.smallestTitRow()) + ", your chest pushes out in slight but sudden growth.", false);
         player.breastRows[player.breastRows.smallestTitRow()].breastRating++;
         changes++;
     }
@@ -155,7 +155,7 @@ export function sweetGossamer(type: number, player: Player): void {
     // -Remove breast rows over 2.
     if (changes < changeLimit && player.breastRows.length > 2 && rand(3) == 0 && !flags[kFLAGS.HYPER_HAPPY]) {
         changes++;
-        outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
+        outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescriptOfRow(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
         if (player.breastRows.length >= 3)
             outputText("abdomen", false);
         else

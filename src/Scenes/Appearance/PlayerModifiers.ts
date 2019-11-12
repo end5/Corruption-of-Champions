@@ -98,7 +98,7 @@ export function shrinkTits(char: Character, ignore_hyper_happy: boolean = false)
                 outputText("\n", false);
                 if (temp3 < char.breastRows.length - 1) outputText("...and y", false);
                 else outputText("Y", false);
-                outputText("our " + breastDescript(char, temp3) + " shrink, dropping to " + breastCup(temp3) + "s.", false);
+                outputText("our " + breastDescriptOfRow(char, temp3) + " shrink, dropping to " + breastCup(temp3) + "s.", false);
             }
             if (char.breastRows[temp3].breastRating < 0) char.breastRows[temp3].breastRating = 0;
         }
@@ -217,16 +217,16 @@ export function growTits(char: Character, amount: number, rowsGrown: number, dis
     if (display) {
         if (growthType < 3) {
             if (amount <= 2) {
-                if (char.breastRows.length > 1) outputText("Your rows of " + breastDescript(char, 0) + " jiggle with added weight, growing a bit larger.", false);
-                if (char.breastRows.length == 1) outputText("Your " + breastDescript(char, 0) + " jiggle with added weight as they expand, growing a bit larger.", false);
+                if (char.breastRows.length > 1) outputText("Your rows of " + breastDescriptOfRow(char, 0) + " jiggle with added weight, growing a bit larger.", false);
+                if (char.breastRows.length == 1) outputText("Your " + breastDescriptOfRow(char, 0) + " jiggle with added weight as they expand, growing a bit larger.", false);
             }
             else if (amount <= 4) {
-                if (char.breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + breastDescript(char, 0) + " expand significantly.", false);
-                if (char.breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(char, 0) + " expand significantly.", false);
+                if (char.breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your rows of " + breastDescriptOfRow(char, 0) + " expand significantly.", false);
+                if (char.breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescriptOfRow(char, 0) + " expand significantly.", false);
             }
             else {
-                if (char.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescript(char, 0) + " tingle strongly, growing disturbingly large.", false);
-                if (char.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescript(char, 0) + " intensifies as they continue to grow at an obscene rate.", false);
+                if (char.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + breastDescriptOfRow(char, 0) + " tingle strongly, growing disturbingly large.", false);
+                if (char.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + breastDescriptOfRow(char, 0) + " intensifies as they continue to grow at an obscene rate.", false);
             }
             if (char.breastRows.biggestTitSize() >= 8.5 && char.nippleLength < 2) {
                 outputText("  A tender ache starts at your " + nippleDescription(char, 0) + "s as they grow to match your burgeoning breast-flesh.", false);
@@ -247,16 +247,16 @@ export function growTits(char: Character, amount: number, rowsGrown: number, dis
         }
         else {
             if (amount <= 2) {
-                if (char.breastRows.length > 1) outputText("Your top row of " + breastDescript(char, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
-                if (char.breastRows.length == 1) outputText("Your row of " + breastDescript(char, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                if (char.breastRows.length > 1) outputText("Your top row of " + breastDescriptOfRow(char, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
+                if (char.breastRows.length == 1) outputText("Your row of " + breastDescriptOfRow(char, 0) + " jiggles with added weight as it expands, growing a bit larger.", false);
             }
             if (amount > 2 && amount <= 4) {
-                if (char.breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + breastDescript(char, 0) + " expand significantly.", false);
-                if (char.breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescript(char, 0) + " expand significantly.", false);
+                if (char.breastRows.length > 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your top row of " + breastDescriptOfRow(char, 0) + " expand significantly.", false);
+                if (char.breastRows.length == 1) outputText("You stagger as your chest gets much heavier.  Looking down, you watch with curiosity as your " + breastDescriptOfRow(char, 0) + " expand significantly.", false);
             }
             if (amount > 4) {
-                if (char.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescript(char, 0) + " tingle strongly, growing disturbingly large.", false);
-                if (char.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescript(char, 0) + " intensifies as they continue to grow at an obscene rate.", false);
+                if (char.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + breastDescriptOfRow(char, 0) + " tingle strongly, growing disturbingly large.", false);
+                if (char.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + breastDescriptOfRow(char, 0) + " intensifies as they continue to grow at an obscene rate.", false);
             }
             if (char.breastRows.biggestTitSize() >= 8.5 && char.nippleLength < 2) {
                 outputText("  A tender ache starts at your " + nippleDescription(char, 0) + "s as they grow to match your burgeoning breast-flesh.", false);

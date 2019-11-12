@@ -711,12 +711,12 @@ export function appearance(e: MouseEvent = null): void {
         outputText("A pair of feathery gills are growing out just below your neck, spreading out horizontally and draping down your chest.  They allow you to stay in the water for quite a long time.  ", false);
     // Chesticles..I mean bewbz.
     if (player.breastRows.length == 1) {
-        outputText("You have " + num2Text(player.breastRows[temp].breasts) + " " + breastDescript(player, temp) + ", each supporting ", false);
+        outputText("You have " + num2Text(player.breastRows[temp].breasts) + " " + breastDescriptOfRow(player, temp) + ", each supporting ", false);
         if (player.breastRows[0].nipplesPerBreast == 1)
             outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + ".", false);
         else outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + "s.", false);
         if (player.breastRows[0].milkFullness > 75)
-            outputText("  Your " + breastDescript(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
+            outputText("  Your " + breastDescriptOfRow(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
         if (player.breastRows[0].breastRating >= 1)
             outputText("  You could easily fill a " + breastCupOfRow(player, temp) + " bra.", false);
         // Done with tits.  Move on.
@@ -736,14 +736,14 @@ export function appearance(e: MouseEvent = null): void {
                 outputText("\n--Your fourth set of tits cradles ", false);
             if (temp == 4)
                 outputText("\n--Your fifth and final mammory grouping swells with ", false);
-            outputText(num2Text(player.breastRows[temp].breasts) + " " + breastDescript(player, temp) + " with ", false);
+            outputText(num2Text(player.breastRows[temp].breasts) + " " + breastDescriptOfRow(player, temp) + " with ", false);
             if (player.breastRows[temp].nipplesPerBreast == 1)
                 outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + " each.", false);
             else outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + "s each.", false);
             if (player.breastRows[temp].breastRating >= 1)
                 outputText("  They could easily fill a " + breastCupOfRow(player, temp) + " bra.", false);
             if (player.breastRows[temp].milkFullness > 75)
-                outputText("  Your " + breastDescript(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
+                outputText("  Your " + breastDescriptOfRow(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
             temp++;
         }
         // Done with tits.  Move on.

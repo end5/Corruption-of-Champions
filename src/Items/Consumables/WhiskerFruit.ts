@@ -151,17 +151,17 @@ export function catTransformation(player: Player): void {
                     if (player.breastRows[k].breastRating > 10) {
                         player.breastRows[k].breastRating -= 2 + rand(3);
                         if (temp3 == 0)
-                            outputText("\n\nThe " + breastDescript(game.player, 0) + " on your chest wobble for a second, then tighten up, losing several cup-sizes in the process!", false);
+                            outputText("\n\nThe " + breastDescriptOfRow(game.player, 0) + " on your chest wobble for a second, then tighten up, losing several cup-sizes in the process!", false);
                         else
-                            outputText("  The change moves down to your " + num2Text2(k + 1) + " row of " + breastDescript(game.player, 0) + ". They shrink greatly, losing a couple cup-sizes.", false);
+                            outputText("  The change moves down to your " + num2Text2(k + 1) + " row of " + breastDescriptOfRow(game.player, 0) + ". They shrink greatly, losing a couple cup-sizes.", false);
                     }
                     // Small change
                     else {
                         player.breastRows[k].breastRating -= 1;
                         if (temp3 == 0)
-                            outputText("\n\nAll at once, your sense of gravity shifts.  Your back feels a sense of relief, and it takes you a moment to realize your " + breastDescript(game.player, k) + " have shrunk!", false);
+                            outputText("\n\nAll at once, your sense of gravity shifts.  Your back feels a sense of relief, and it takes you a moment to realize your " + breastDescriptOfRow(game.player, k) + " have shrunk!", false);
                         else
-                            outputText("  Your " + num2Text2(k + 1) + " row of " + breastDescript(game.player, k) + " gives a tiny jiggle as it shrinks, losing some off its mass.", false);
+                            outputText("  Your " + num2Text2(k + 1) + " row of " + breastDescriptOfRow(game.player, k) + " gives a tiny jiggle as it shrinks, losing some off its mass.", false);
                     }
                     // Increment changed rows
                     temp3++;

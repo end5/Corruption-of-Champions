@@ -1206,7 +1206,7 @@ function rideUrtaTenderFemale(): void {
 
     // (Big Tits:
     if (player.breastRows.biggestTitSize() >= 5) {
-        outputText("Your " + breastDescript(game.player, 0) + " mash into the fox's own, your " + nippleDescription(player, 0) + "s ", false);
+        outputText("Your " + breastDescriptOfRow(game.player, 0) + " mash into the fox's own, your " + nippleDescription(player, 0) + "s ", false);
         if (!player.breastRows.hasFuckableNipples()) outputText("rubbing over her black-skinned buds.", false);
         else outputText("parting as her prominent black nipples slip inside your own.", false);
         outputText("  You squeal at the sudden pleasure, arching your back and furthering the sensation from your over-burdened chest.", false);
@@ -1305,7 +1305,7 @@ function dudeFuckingUrtasCooch(): void {
     outputText("\n\n", false);
 
     outputText("The two of you collapse together in a shuddering pile of post-orgasmic bliss.  The shift in position frees your " + multiCockDescriptLight(game.player) + " from Urta with a noisy -SHHHLLUUUCK-, but you're too wiped out to care.  The fox-girl sighs happily and rolls over, planting a kiss on your nose before she works at removing her over-filled condom.  It nearly bursts when she ties it off, but she manages to gently set it down to the floor without incident. She looks at you happily and gives you a big hug, crushing her hard nipples against ", false);
-    if (player.breastRows.biggestTitSize() >= 1) outputText("your own " + breastDescript(game.player, 0), false);
+    if (player.breastRows.biggestTitSize() >= 1) outputText("your own " + breastDescriptOfRow(game.player, 0), false);
     else outputText("your chest", false);
     outputText(" as she says, \"<i>Thank you so much, lover.  I forget how good it can be in my... vagina.  Maybe we could do this again?</i>\"\n\n", false);
 

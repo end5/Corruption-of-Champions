@@ -999,7 +999,7 @@ export function victoryLactation69(): void {
 
     outputText("Unbidden, drops of milk begin to form at the tips of your " + nippleDescription(player, 0) + "s, and you take this for a sign that your body is ready to teach Isabella her place.  Leaning down, you let your ", false);
     if (player.breastRows.length > 1) outputText("top row of ", false);
-    outputText(breastDescript(game.player, 0) + " hang around Isabella's head, but her horns poke and prod at your tits uncomfortably.  You arch your back a little and reposition yourself so that just one of your rounded melons is pressing down on the bovine broad's face, the nipple leaking milk down her cheek.  Her well-rounded tit is an inch or two below you, smelling pleasantly of sweetness and cream.\n\n", false);
+    outputText(breastDescriptOfRow(game.player, 0) + " hang around Isabella's head, but her horns poke and prod at your tits uncomfortably.  You arch your back a little and reposition yourself so that just one of your rounded melons is pressing down on the bovine broad's face, the nipple leaking milk down her cheek.  Her well-rounded tit is an inch or two below you, smelling pleasantly of sweetness and cream.\n\n", false);
 
     outputText("Isabella latches on almost immediately, suckling hard to get your milk flowing and drinking deeply.  One of her hands squeezes her bronzed mammary to push her areola higher, right into the surprised 'o' of your mouth.  It tastes warm and sweet, just like the milk that starts to squirt from the four nipple-tips into your throat.  You swallow it easily, instinctively even, and you start to suck after each swallow, refilling your mouth with larger and larger volumes of creamy cow-milk.  The busty redhead's lips suck and suck, only pausing for her tongue to slurp the milk from your " + nippleDescription(player, 0) + ".\n\n", false);
 
@@ -1015,7 +1015,7 @@ export function victoryLactation69(): void {
     outputText("The increasingly sugary taste of Isabella's milk cuts off just as your chest is emptied, and the two of you switch to the next tit simultaneously, synchronized by some unspoken cooperation.\n\n", false);
 
     outputText("With your bellies filling, the conflict that started it all seems like a distant dream that's washing away with each burst of sexual relief and swallow of pearlescent milk.  Isabella's moos of pleasure vibrate your " + nippleDescription(player, 0) + ", adding to your own", false);
-    if (player.breastRows.length > 1) outputText(", while your other " + breastDescript(game.player, 1) + " plasters her crimson hair into her scalp", false);
+    if (player.breastRows.length > 1) outputText(", while your other " + breastDescriptOfRow(game.player, 1) + " plasters her crimson hair into her scalp", false);
     outputText(".  Her hips buck and writhe off the ground, the squelching of her masturbation filling the air just as her pumping digits fill her box.", false);
     if (player.vaginas.length > 0) outputText("  Of course, you're pumping at your own quim nearly as hard, but the messy cow-girl's efforts still manage to drown you out.", false);
     else if (player.cocks.length > 0) outputText("  Of course, you're pumping at " + sMultiCockDesc(game.player) + " just as hard, but the sounds of your fapping are easily drowned out by the enthusiastic cow-girl.", false);

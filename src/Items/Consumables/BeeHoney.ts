@@ -121,7 +121,7 @@ export class BeeHoney extends Consumable {
         // -Remove extra breast rows
         if (changes < changeLimit && player.breastRows.length > 2 && rand(3) == 0 && !game.flags[kFLAGS.HYPER_HAPPY]) {
             changes++;
-            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
+            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescriptOfRow(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ");
             if (player.breastRows.length >= 3) outputText("abdomen");
             else outputText("chest");
             outputText(". The " + nippleDescription(player, player.breastRows.length - 1) + "s even fade until nothing but ");

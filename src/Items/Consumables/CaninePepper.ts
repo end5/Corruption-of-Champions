@@ -453,7 +453,7 @@ export function caninePepper(type: number, player: Player): void {
                 // Breasts are too small to grow a new row, so they get bigger first
                 // But ONLY if player has a vagina (dont want dudes weirded out)
                 if (player.vaginas.length > 0 && player.breastRows[0].breastRating <= player.breastRows.length) {
-                    outputText("\n\nYour " + breastDescript(game.player, 0) + " feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach ", false);
+                    outputText("\n\nYour " + breastDescriptOfRow(game.player, 0) + " feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach ", false);
                     player.breastRows[0].breastRating += 2;
                     outputText(breastCupOfRow(player, 0) + " size.  But it doesn't stop there, you feel a tightness beginning lower on your torso...", false);
                     changes++;
@@ -484,7 +484,7 @@ export function caninePepper(type: number, player: Player): void {
                     if (player.breastRows[temp].breastRating == 0)
                         outputText("\n\nYour abdomen tingles and twitches as a new row of breasts sprouts below the others.  Your new breasts stay flat and masculine, not growing any larger.", false);
                     else
-                        outputText("\n\nYour abdomen tingles and twitches as a new row of " + breastCupOfRow(player, temp) + " " + breastDescript(player, temp) + " sprouts below your others.", false);
+                        outputText("\n\nYour abdomen tingles and twitches as a new row of " + breastCupOfRow(player, temp) + " " + breastDescriptOfRow(player, temp) + " sprouts below your others.", false);
                     outputText("  A sensitive nub grows on the summit of each new tit, becoming a new nipple.", false);
                     changes++;
                 }
@@ -528,7 +528,7 @@ export function caninePepper(type: number, player: Player): void {
                             outputText("fifth ", false);
                         if (temp > 4)
                             outputText("", false);
-                        outputText("row of " + breastDescript(player, temp) + " grows larger, as if jealous of the jiggling flesh above.", false);
+                        outputText("row of " + breastDescriptOfRow(player, temp) + " grows larger, as if jealous of the jiggling flesh above.", false);
                         temp2 = (player.breastRows[temp - 1].breastRating) - player.breastRows[temp].breastRating - 1;
                         if (temp2 > 5)
                             temp2 = 5;

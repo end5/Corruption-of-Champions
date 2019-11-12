@@ -167,7 +167,7 @@ export function minotaurBlood(player: Player): void {
         // -Remove extra breast rows
         if (changes < changeLimit && player.breastRows.length > 1 && rand(3) == 0) {
             changes++;
-            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescript(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
+            outputText("\n\nYou stumble back when your center of balance shifts, and though you adjust before you can fall over, you're left to watch in awe as your bottom-most " + breastDescriptOfRow(player, player.breastRows.length - 1) + " shrink down, disappearing completely into your ", false);
             if (player.breastRows.length >= 3)
                 outputText("abdomen", false);
             else
@@ -196,7 +196,7 @@ export function minotaurBlood(player: Player): void {
                     }
                     // Talk about shrinkage
                     if (temp == 1)
-                        outputText("\n\nYou feel a weight lifted from you, and realize your " + breastDescript(game.player, 0) + " have shrunk to " + breastCupOfRow(player, 0) + "s.", false);
+                        outputText("\n\nYou feel a weight lifted from you, and realize your " + breastDescriptOfRow(game.player, 0) + " have shrunk to " + breastCupOfRow(player, 0) + "s.", false);
                     if (temp == 2)
                         outputText("\n\nYou feel significantly lighter.  Looking down, you realize your breasts are MUCH smaller, down to " + breastCupOfRow(player, 0) + "s.", false);
                     changes++;
@@ -221,7 +221,7 @@ export function minotaurBlood(player: Player): void {
                             outputText("...and y", false);
                         else
                             outputText("Y", false);
-                        outputText("our " + breastDescript(player, temp3) + " shrink, dropping to " + breastCupOfRow(player, temp3) + "s.", false);
+                        outputText("our " + breastDescriptOfRow(player, temp3) + " shrink, dropping to " + breastCupOfRow(player, temp3) + "s.", false);
                     }
                     temp3++;
                 }

@@ -91,7 +91,7 @@ export function gooObedience(arg: number = 0, output: boolean = true): number {
     return flags[kFLAGS.GOO_OBEDIENCE];
 }
 function gooTits(): string {
-    return BreastStore.breastDescript(gooTitSize());
+    return breastDescript(gooTitSize());
 }
 
 function gooCock(): string {

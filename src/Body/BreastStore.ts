@@ -56,35 +56,6 @@ export class BreastStore  implements SaveAwareInterface {
     }
     // End of Interface Implementation
 
-    public static breastDescript(size: number, lactation: number = 0): string {
-        if (size < 1) return "flat breasts";
-        let descript: string = (rand(2) == 0 ? breastSize(size) : ""); // Add a description of the breast size 50% of the time
-        switch (rand(10)) {
-            case 1:
-                if (lactation > 2) return descript + "milk-udders";
-                break;
-            case 2:
-                if (lactation > 1.5) descript += "milky ";
-                if (size > 4) return descript + "tits";
-                break;
-            case 4:
-            case 5:
-            case 6:
-                return descript + "tits";
-            case 7:
-                if (lactation >= 2.5) return descript + "udders";
-                if (lactation >= 1) descript += "milk ";
-                return descript + "jugs";
-            case 8:
-                if (size > 6) return descript + "love-pillows";
-                return descript + "boobs";
-            case 9:
-                if (size > 6) return descript + "tits";
-            default:
-        }
-        return descript + "breasts";
-    }
-
     public get cupSize(): number { return _cupSize; }
 
     public set cupSize(value: number): void {
