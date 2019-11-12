@@ -196,9 +196,9 @@ export function minotaurBlood(player: Player): void {
                     }
                     // Talk about shrinkage
                     if (temp == 1)
-                        outputText("\n\nYou feel a weight lifted from you, and realize your " + breastDescript(game.player, 0) + " have shrunk to " + breastCup(player, 0) + "s.", false);
+                        outputText("\n\nYou feel a weight lifted from you, and realize your " + breastDescript(game.player, 0) + " have shrunk to " + breastCupOfRow(player, 0) + "s.", false);
                     if (temp == 2)
-                        outputText("\n\nYou feel significantly lighter.  Looking down, you realize your breasts are MUCH smaller, down to " + breastCup(player, 0) + "s.", false);
+                        outputText("\n\nYou feel significantly lighter.  Looking down, you realize your breasts are MUCH smaller, down to " + breastCupOfRow(player, 0) + "s.", false);
                     changes++;
                 }
             }
@@ -221,7 +221,7 @@ export function minotaurBlood(player: Player): void {
                             outputText("...and y", false);
                         else
                             outputText("Y", false);
-                        outputText("our " + breastDescript(player, temp3) + " shrink, dropping to " + breastCup(player, temp3) + "s.", false);
+                        outputText("our " + breastDescript(player, temp3) + " shrink, dropping to " + breastCupOfRow(player, temp3) + "s.", false);
                     }
                     temp3++;
                 }

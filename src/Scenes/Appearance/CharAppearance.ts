@@ -718,7 +718,7 @@ export function appearance(e: MouseEvent = null): void {
         if (player.breastRows[0].milkFullness > 75)
             outputText("  Your " + breastDescript(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
         if (player.breastRows[0].breastRating >= 1)
-            outputText("  You could easily fill a " + breastCup(player, temp) + " bra.", false);
+            outputText("  You could easily fill a " + breastCupOfRow(player, temp) + " bra.", false);
         // Done with tits.  Move on.
         outputText("\n", false);
     }
@@ -741,7 +741,7 @@ export function appearance(e: MouseEvent = null): void {
                 outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + " each.", false);
             else outputText(num2Text(player.breastRows[temp].nipplesPerBreast) + " " + int(player.nippleLength * 10) / 10 + "-inch " + nippleDescription(player, temp) + "s each.", false);
             if (player.breastRows[temp].breastRating >= 1)
-                outputText("  They could easily fill a " + breastCup(player, temp) + " bra.", false);
+                outputText("  They could easily fill a " + breastCupOfRow(player, temp) + " bra.", false);
             if (player.breastRows[temp].milkFullness > 75)
                 outputText("  Your " + breastDescript(player, temp) + " are painful and sensitive from being so stuffed with milk.  You should release the pressure soon.", false);
             temp++;

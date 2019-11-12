@@ -152,7 +152,7 @@ function plantsForMe2(BE: number = 0): void {
         outputText("\n\nEssy drags her thin tongue over the length of [oneCock], flowing over every inch of it, bending about its curve as she licks from base to tip before engulfing it with her lips. Without a moment's hesitation, she slides down to the hilt, giving amazing pleasure from the surreal tightness, hitting you as you feel the plant's throat rippling and actually milking at your length.");
 
         outputText("\n\nEssy just smiles as she begins to bob her head, slowly at first, but with increasing speed as your moans of delight egg her on.  Two tentacles rise up, funneling wide at the tips and engulfing your [nipples]");
-        if (player.breastRows[0].breastRating >= 1) outputText(" and " + breastCup(player, 0) + " breasts");
+        if (player.breastRows[0].breastRating >= 1) outputText(" and " + breastCupOfRow(player, 0) + " breasts");
         outputText(".  The opaque cups pump and suck, Essy humming to herself as the base of her tongue continues to skillfully tease over every hot spot near the [cockHead biggest] of your [cock biggest], her length slithering about it skillfully.");
     }
     // (Pussy=

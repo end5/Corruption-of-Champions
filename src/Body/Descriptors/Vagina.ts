@@ -57,7 +57,7 @@ export function vaginaDescript(i_creature: Character, i_vaginaIndex: number = 0)
         if (description != "") description += ", ";
         description += "pierced";
     }
-    if (description == "" && i_creature.skinType == 3) {
+    if (i_creature.skinType == 3) {
         if (description != "")
             description += ", ";
         if (rand(2) == 0)
@@ -137,7 +137,7 @@ export function clitDescription(i_creature: Character): string {
     if (rand(2) == 0) {
         // Doggie descriptors - 50%
         // TODO Conditionals don't make sense, need to introduce a class variable to keep of "something" or move race or Creature/Character
-        if (i_creature.skinType == 1 > 2 && !haveDescription && rand(2) == 0) {
+        if (i_creature.skinType == 1 && !haveDescription && rand(2) == 0) {
             description += "bitch-";
             haveDescription = true;
         }

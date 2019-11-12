@@ -14,7 +14,7 @@ export function describeByScale(value: number, scale: any[], lessThan: string = 
     if (scale.length == 1) return "about " + scale[0][1];
     if (value < scale[0][0]) return lessThan + " " + scale[0][1];
     if (value == scale[0][0]) return scale[0][1];
-    for (const i = 1; i < scale.length; i++) {
+    for (let i = 1; i < scale.length; i++) {
         if (value < scale[i][0]) return "between " + scale[i - 1][1] + " and " + scale[i][1];
         if (value == scale[i][0]) return scale[i][1];
     }

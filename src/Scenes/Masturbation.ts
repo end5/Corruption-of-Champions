@@ -429,12 +429,12 @@ export function masturbateGo(): void {
             }
             // Titfuck (squeeze em both in between 2!
             if (player.breastRows.canTitFuck() && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, tongue running figure eights across the tips. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, tongue running figure eights across the tips. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // Titfuck (enough breasts for both!)
             if (player.breastRows.canTitFuck() && player.breastRows.mostBreastsPerRow() > 2 && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively lick and suck at the tips.  ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively lick and suck at the tips.  ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your many nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // No tits, jerk and lick!
@@ -468,12 +468,12 @@ export function masturbateGo(): void {
             }
             // Titfuck (squeeze em both in between 2!
             if (player.breastRows.canTitFuck() && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, mouthfucking yourself with each of your cocks in turn. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, mouthfucking yourself with each of your cocks in turn. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // Titfuck (enough breasts for both!)
             if (player.breastRows.mostBreastsPerRow() > 2 && player.breastRows.biggestTitSize() > 3 && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively mouthfuck each of your cocks. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively mouthfuck each of your cocks. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your many nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // No tits, jerk and lick!
@@ -524,12 +524,12 @@ export function masturbateGo(): void {
             }
             // Titfuck (squeeze em both in between 2!
             if (player.breastRows.canTitFuck() && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, your tongue running figure eights across the tips. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, your tongue running figure eights across the tips. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // Titfuck (enough breasts for both!)
             if (player.breastRows.mostBreastsPerRow() > 2 && player.breastRows.biggestTitSize() > 3 && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively lick and suck at the tips.  ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively lick and suck at the tips.  ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your many nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // No tits, jerk and lick!
@@ -564,12 +564,12 @@ export function masturbateGo(): void {
             }
             // Titfuck (squeeze em both in between 2!
             if (player.breastRows.canTitFuck() && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, mouthfucking yourself with each of your cocks in turn. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", sandwiching them inside your pillowy mounds.  With delicious slowness you begin jacking yourself off with your tits, your shafts rubbing together between your luxurious breasts, mouthfucking yourself with each of your cocks in turn. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // Titfuck (enough breasts for both!)
             if (player.breastRows.mostBreastsPerRow() > 2 && player.breastRows.biggestTitSize() > 3 && !nippleFuck) {
-                outputText("You wrap your " + breastCup(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively mouthfuck each of your cocks. ");
+                outputText("You wrap your " + breastCupOfRow(player, 0) + " tits around your " + multiCockDescriptLight(player) + ", squeezing them between your " + player.breastRows.totalBreasts() + " breasts.  With delicious slowness you begin jacking yourself off with your tits, smooth breastflesh massaging your members as you aggressively mouthfuck each of your cocks. ");
                 if (player.breastRows.biggestLactation() > 0) outputText("Jets of milk squirt out of your many nipples with each thrust of your hips, adding to the already copious amounts of fluids coating your body. ");
             }
             // No tits, jerk and lick!
@@ -1952,7 +1952,7 @@ function stimBeltUse(): void {
         if (player.effects.findByType(StatusAffects.used_self_dash_stim) < 0) {
             player.effects.create(StatusAffects.used_self_dash_stim, 0, 0, 0, 0);
             outputText("Brimming with anticipation, you wind up the small gearbox on the weird contraption. You place the machine down and strip yourself naked. Stepping through the straps of the garment, you pull it up. The dildo does not come out, so you take the time to ease the artificial phallus to rest deep in your womanhood. After nestling the false cock in your pussy, you finish pulling up the belt and you tighten the straps. You lay down and you flip the switch. The machine vibrates around and inside you vigorously. Immediately, waves and cramps of pleasure swirl around your cunt and shoot up and down your spine. The machine, free of human limitations and fatigue, ceaselessly rubs and caresses your insides at impossibly high speeds. Within minutes, you begin experiencing the tell-tale contractions of an impending orgasm. With your hands free, you are able to explore your breasts and body as the device hammers away. You squeeze your ");
-            outputText(breastCup(player, 0));
+            outputText(breastCupOfRow(player, 0));
             outputText(" tits as your body convulses with multiple orgasms. Savoring every moment, you relish in the pangs of delight searing your body. Eventually, the belt moves slower and slower, until it comes to a stop, along with your fun. You realize that the gears have wound down and the box needs to be wound for your pleasure to continue. Deciding not to overwhelm yourself, you carefully remove your toy and save it for another time.");
             player.orgasm();
             dynStats("sen", -1);

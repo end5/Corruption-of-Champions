@@ -230,7 +230,7 @@ export function foxTF(enhanced: boolean, player: Player): void {
             outputText(", not to mention number");
         else if (player.breastRows.hasFuckableNipples())
             outputText(", not to mention penetrability");
-        outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCup(player, player.breastRows.length - 1) + "s.  <b>You have " + num2Text(player.breastRows.length + 1) + " rows of breasts!</b>");
+        outputText(".  While you continue to explore your body's newest addition, a strange heat builds behind the new nubs. Soft, jiggly breastflesh begins to fill your cupped hands.  Radiant warmth spreads through you, eliciting a moan of pleasure from your lips as your new breasts catch up to the pair above.  They stop at " + breastCupOfRow(player, player.breastRows.length - 1) + "s.  <b>You have " + num2Text(player.breastRows.length + 1) + " rows of breasts!</b>");
         player.breastRows.createBreastRow();
         player.breastRows[player.breastRows.length - 1].breastRating = player.breastRows[player.breastRows.length - 2].breastRating;
         player.breastRows[player.breastRows.length - 1].nipplesPerBreast = player.breastRows[player.breastRows.length - 2].nipplesPerBreast;
@@ -265,7 +265,7 @@ export function foxTF(enhanced: boolean, player: Player): void {
             // Smallish change.
             else
                 player.breastRows[counter].breastRating++;
-            outputText("  You do a quick measurement and determine that your " + num2Text2(counter + 1) + " row of breasts are now " + breastCup(player, counter) + "s.");
+            outputText("  You do a quick measurement and determine that your " + num2Text2(counter + 1) + " row of breasts are now " + breastCupOfRow(player, counter) + "s.");
             if (!tits) {
                 tits = true;
                 changes++;

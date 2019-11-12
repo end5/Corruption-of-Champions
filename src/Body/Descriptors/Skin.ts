@@ -25,14 +25,14 @@ export function skin(char: Character, noAdj: boolean = false, noTone: boolean = 
 export function skinFurScales(creature: Character): string {
     let skinzilla: string = "";
     // Adjectives first!
-    if (skinAdj != "")
-        skinzilla += skinAdj + ", ";
+    if (creature.skinAdj != "")
+        skinzilla += creature.skinAdj + ", ";
     // Fur handled a little differently since it uses
     // haircolor
-    if (_skinType == 1)
-        skinzilla += hairColor + " ";
+    if (creature.skinType == 1)
+        skinzilla += creature.hairColor + " ";
     else
-        skinzilla += _skinTone + " ";
-    skinzilla += skinDesc;
+        skinzilla += creature.skinTone + " ";
+    skinzilla += creature.skinDesc;
     return skinzilla;
 }

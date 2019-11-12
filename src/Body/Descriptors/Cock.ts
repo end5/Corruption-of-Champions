@@ -551,7 +551,7 @@ export function multiCockDescriptLight(creature: Character): string {
         // For cocks that are the same
         if (same) {
             descript += randomChoice("pair of ", "two ", "brace of ", "matching ", "twin ");
-            descript += cockAdjective(creature);
+            descript += cockAdjectiveOfChar(creature);
             if (normalCocks == 2) descript += " " + cockNoun(CockTypesEnum.HUMAN) + "s";
             if (horseCocks == 2) descript += ", " + cockNoun(CockTypesEnum.HORSE) + "s";
             if (dogCocks == 2) descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
@@ -561,7 +561,7 @@ export function multiCockDescriptLight(creature: Character): string {
         // Nonidentical
         else {
             descript += randomChoice("pair of ", "two ", "brace of ");
-            descript += cockAdjective(creature) + ", ";
+            descript += cockAdjectiveOfChar(creature) + ", ";
             descript += randomChoice("mutated cocks", "mutated dicks", "mixed cocks", "mismatched dicks");
         }
     }
@@ -569,7 +569,7 @@ export function multiCockDescriptLight(creature: Character): string {
         // For samecocks
         if (same) {
             descript += randomChoice("three ", "group of ", "<i>ménage à trois</i> of ", "triad of ", "triumvirate of ");
-            descript += cockAdjective(creature);
+            descript += cockAdjectiveOfChar(creature);
             if (normalCocks == 3) descript += " " + cockNoun(CockTypesEnum.HUMAN) + "s";
             if (horseCocks == 3) descript += ", " + cockNoun(CockTypesEnum.HORSE) + "s";
             if (dogCocks == 3) descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
@@ -578,7 +578,7 @@ export function multiCockDescriptLight(creature: Character): string {
         }
         else {
             descript += randomChoice("three ", "group of ");
-            descript += cockAdjective(creature) + ", ";
+            descript += cockAdjectiveOfChar(creature) + ", ";
             descript += randomChoice("mutated cocks", "mutated dicks", "mixed cocks", "mismatched dicks");
         }
     }
@@ -590,29 +590,29 @@ export function multiCockDescriptLight(creature: Character): string {
         // Same
         if (same) {
             if (currCock == normalCocks) {
-                descript += cockAdjective(creature) + " ";
+                descript += cockAdjectiveOfChar(creature) + " ";
                 descript += cockNoun(CockTypesEnum.HUMAN) + "s";
                 descripted = true;
             }
             if (currCock == dogCocks) {
-                descript += cockAdjective(creature) + ", ";
+                descript += cockAdjectiveOfChar(creature) + ", ";
                 descript += cockNoun(CockTypesEnum.DOG) + "s";
                 descripted = true;
             }
             if (currCock == horseCocks) {
-                descript += cockAdjective(creature) + ", ";
+                descript += cockAdjectiveOfChar(creature) + ", ";
                 descript += cockNoun(CockTypesEnum.HORSE) + "s";
                 descripted = true;
             }
             if (creature.cocks[0].cockType.Index > 2) {
-                descript += cockAdjective(creature) + ", ";
+                descript += cockAdjectiveOfChar(creature) + ", ";
                 descript += cockNoun(creature.cocks[0].cockType) + "s";
                 descripted = true;
             }
         }
         // If mixed
         if (!descripted) {
-            descript += cockAdjective(creature) + ", ";
+            descript += cockAdjectiveOfChar(creature) + ", ";
             descript += randomChoice("mutated cocks", "mutated dicks", "mixed cocks", "mismatched dicks");
         }
     }
@@ -751,7 +751,7 @@ export function multiCockDescript(creature: Character): string {
     return descript;
 }
 
-export function cockAdjective(creature: Character, index: number = -1): string {
+export function cockAdjectiveOfChar(creature: Character, index: number = -1): string {
     if (index < 0) index = creature.cocks.biggestCockIndex();
     const isPierced: boolean = (creature.cocks.length == 1) && (creature.cocks[index].isPierced); // Only describe as pierced or sock covered if the creature has just one cock
     const hasSock: boolean = (creature.cocks.length == 1) && (creature.cocks[index].sock != "");
@@ -814,7 +814,7 @@ export function cockHead(creature: Character, cockNum: number = 0): string {
         Logger.error("");
         return "ERROR";
     }
-    switch (cocks[cockNum].cockType) {
+    switch (creature.cocks[cockNum].cockType) {
         case CockTypesEnum.CAT:
             if (rand(2) == 0) return "point";
             return "narrow tip";

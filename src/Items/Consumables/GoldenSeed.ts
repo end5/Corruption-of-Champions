@@ -177,7 +177,7 @@ export function goldenSeed(type: number, player: Player): void {
         // (H+)
         else {
             player.breastRows[0].breastRating -= (4 + rand(4));
-            outputText("\n\nYour chest pinches tight, wobbling dangerously for a second before the huge swell of your bust begins to shrink into itself. The weighty mounds jiggle slightly as they shed cup sizes like old, discarded coats, not stopping until they're " + breastCup(player, 0) + "s.", false);
+            outputText("\n\nYour chest pinches tight, wobbling dangerously for a second before the huge swell of your bust begins to shrink into itself. The weighty mounds jiggle slightly as they shed cup sizes like old, discarded coats, not stopping until they're " + breastCupOfRow(player, 0) + "s.", false);
         }
     }
     // -Grow tits to a B-cup if below.

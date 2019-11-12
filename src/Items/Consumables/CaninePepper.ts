@@ -455,7 +455,7 @@ export function caninePepper(type: number, player: Player): void {
                 if (player.vaginas.length > 0 && player.breastRows[0].breastRating <= player.breastRows.length) {
                     outputText("\n\nYour " + breastDescript(game.player, 0) + " feel constrained and painful against your top as they grow larger by the moment, finally stopping as they reach ", false);
                     player.breastRows[0].breastRating += 2;
-                    outputText(breastCup(player, 0) + " size.  But it doesn't stop there, you feel a tightness beginning lower on your torso...", false);
+                    outputText(breastCupOfRow(player, 0) + " size.  But it doesn't stop there, you feel a tightness beginning lower on your torso...", false);
                     changes++;
                 }
                 // Had 1 row to start
@@ -465,7 +465,7 @@ export function caninePepper(type: number, player: Player): void {
                     if (player.breastRows[0].breastRating - 1 == 0)
                         outputText("\n\nA second set of breasts forms under your current pair, stopping while they are still fairly flat and masculine looking.", false);
                     else
-                        outputText("\n\nA second set of breasts bulges forth under your current pair, stopping as they reach " + breastCup(player, temp) + "s.", false);
+                        outputText("\n\nA second set of breasts bulges forth under your current pair, stopping as they reach " + breastCupOfRow(player, temp) + "s.", false);
                     outputText("  A sensitive nub grows on the summit of each new tit, becoming a new nipple.", false);
                     dynStats("sen", 6, "lus", 5);
                     changes++;
@@ -484,7 +484,7 @@ export function caninePepper(type: number, player: Player): void {
                     if (player.breastRows[temp].breastRating == 0)
                         outputText("\n\nYour abdomen tingles and twitches as a new row of breasts sprouts below the others.  Your new breasts stay flat and masculine, not growing any larger.", false);
                     else
-                        outputText("\n\nYour abdomen tingles and twitches as a new row of " + breastCup(player, temp) + " " + breastDescript(player, temp) + " sprouts below your others.", false);
+                        outputText("\n\nYour abdomen tingles and twitches as a new row of " + breastCupOfRow(player, temp) + " " + breastDescript(player, temp) + " sprouts below your others.", false);
                     outputText("  A sensitive nub grows on the summit of each new tit, becoming a new nipple.", false);
                     changes++;
                 }

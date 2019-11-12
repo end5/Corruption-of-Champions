@@ -1,6 +1,6 @@
 export function tailDescript(i_creature: Character): string {
     if (i_creature.tailType == TailType.NONE) {
-        trace("WARNING: Character has no tails to describe.");
+        Logger.trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 
@@ -29,7 +29,7 @@ export function tailDescript(i_creature: Character): string {
 
 export function oneTailDescript(i_creature: Character): string {
     if (i_creature.tailType == TailType.NONE) {
-        trace("WARNING: Character has no tails to describe.");
+        Logger.trace("WARNING: Character has no tails to describe.");
         return "<b>!Creature has no tails to describe!</b>";
     }
 

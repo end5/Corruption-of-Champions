@@ -610,7 +610,7 @@ function valeriaGooRapeII(): void {
         for (const x = 0; x < player.breastRows.length; x++) {
             player.breastRows[x].breastRating += 3 + rand(3);
         }
-        outputText(" Your tits have grown much larger, " + breastCup(player, 0) + "-cups at least.");
+        outputText(" Your tits have grown much larger, " + breastCupOfRow(player, 0) + "-cups at least.");
     }
     if (player.cocks.length > 0 && player.balls > 0) {
         player.ballSize += 3 + rand(2);

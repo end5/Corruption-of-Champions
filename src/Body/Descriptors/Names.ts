@@ -1,11 +1,11 @@
 
-function createMapFromPairs(src: any[]): Record<string, any> {
-    const result: Record<string, any> = {};
-    for (const i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
+function createMapFromPairs<T extends number | string, U>(src: [T, U][]): Record<T, U> {
+    const result = {} as Record<T, U>;
+    for (let i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
     return result;
 }
 
-export let DEFAULT_GENDER_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_GENDER_NAMES = createMapFromPairs(
     [
         [Gender.NONE, "genderless"],
         [Gender.MALE, "male"],
@@ -13,7 +13,7 @@ export let DEFAULT_GENDER_NAMES: Record<string, any> = createMapFromPairs(
         [Gender.HERM, "hermaphrodite"]
     ]
 );
-export let DEFAULT_SKIN_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_SKIN_NAMES = createMapFromPairs(
     [
         [SkinType.PLAIN, "skin"],
         [SkinType.FUR, "fur"],
@@ -22,7 +22,7 @@ export let DEFAULT_SKIN_NAMES: Record<string, any> = createMapFromPairs(
         [SkinType.UNDEFINED, "undefined flesh"]
     ]
 );
-export let DEFAULT_SKIN_DESCS: Record<string, any> = createMapFromPairs(
+export let DEFAULT_SKIN_DESCS = createMapFromPairs(
     [
         [SkinType.PLAIN, "skin"],
         [SkinType.FUR, "fur"],
@@ -31,7 +31,7 @@ export let DEFAULT_SKIN_DESCS: Record<string, any> = createMapFromPairs(
         [SkinType.UNDEFINED, "skin"]
     ]
 );
-export let DEFAULT_HAIR_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_HAIR_NAMES = createMapFromPairs(
     [
         [HairType.NORMAL, "normal"],
         [HairType.FEATHER, "feather"],
@@ -40,7 +40,7 @@ export let DEFAULT_HAIR_NAMES: Record<string, any> = createMapFromPairs(
         [HairType.ANEMONE, "tentacle"]
     ]
 );
-export let DEFAULT_FACE_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_FACE_NAMES = createMapFromPairs(
     [
         [FaceType.HUMAN, "human"],
         [FaceType.HORSE, "horse"],
@@ -61,7 +61,7 @@ export let DEFAULT_FACE_NAMES: Record<string, any> = createMapFromPairs(
         [FaceType.MOUSE, "mouse"]
     ]
 );
-export let DEFAULT_TONGUE_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_TONGUE_NAMES = createMapFromPairs(
     [
         [TongueType.HUMAN, "human"],
         [TongueType.SNAKE, "snake"],
@@ -69,14 +69,14 @@ export let DEFAULT_TONGUE_NAMES: Record<string, any> = createMapFromPairs(
         [TongueType.DRACONIC, "draconic"]
     ]
 );
-export let DEFAULT_EYES_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_EYES_NAMES = createMapFromPairs(
     [
         [EyeType.HUMAN, "human"],
         [EyeType.FOUR_SPIDER_EYES, "4 spider"],
         [EyeType.BLACK_EYES_SAND_TRAP, "sandtrap black"]
     ]
 );
-export let DEFAULT_EARS_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_EARS_NAMES = createMapFromPairs(
     [
         [EarType.HUMAN, "human"],
         [EarType.HORSE, "horse"],
@@ -93,7 +93,7 @@ export let DEFAULT_EARS_NAMES: Record<string, any> = createMapFromPairs(
         [EarType.MOUSE, "mouse"]
     ]
 );
-export let DEFAULT_HORNS_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_HORNS_NAMES = createMapFromPairs(
     [
         [HornType.NONE, "non-existant"],
         [HornType.DEMON, "demon"],
@@ -103,20 +103,20 @@ export let DEFAULT_HORNS_NAMES: Record<string, any> = createMapFromPairs(
         [HornType.ANTLERS, "deer"]
     ]
 );
-export let DEFAULT_ANTENNAE_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_ANTENNAE_NAMES = createMapFromPairs(
     [
         [AntennaeType.NONE, "non-existant"],
         [AntennaeType.BEE, "bee"]
     ]
 );
-export let DEFAULT_ARM_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_ARM_NAMES = createMapFromPairs(
     [
         [ArmType.HUMAN, "human"],
         [ArmType.HARPY, "harpy"],
         [ArmType.SPIDER, "spider"]
     ]
 );
-export let DEFAULT_TAIL_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_TAIL_NAMES = createMapFromPairs(
     [
         [TailType.NONE, "non-existant"],
         [TailType.HORSE, "horse"],
@@ -137,7 +137,7 @@ export let DEFAULT_TAIL_NAMES: Record<string, any> = createMapFromPairs(
         [TailType.MOUSE, "mouse"]
     ]
 );
-export let DEFAULT_WING_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_WING_NAMES = createMapFromPairs(
     [
         [WingType.NONE, "non-existant"],
         [WingType.BEE_LIKE_SMALL, "small bee-like"],
@@ -153,7 +153,7 @@ export let DEFAULT_WING_NAMES: Record<string, any> = createMapFromPairs(
         [WingType.GIANT_DRAGONFLY, "giant dragonfly"]
     ]
 );
-export let DEFAULT_WING_DESCS: Record<string, any> = createMapFromPairs(
+export let DEFAULT_WING_DESCS = createMapFromPairs(
     [
         [WingType.NONE, "non-existant"],
         [WingType.BEE_LIKE_SMALL, "small bee-like"],
@@ -169,7 +169,7 @@ export let DEFAULT_WING_DESCS: Record<string, any> = createMapFromPairs(
         [WingType.GIANT_DRAGONFLY, "giant dragonfly"]
     ]
 );
-export let DEFAULT_LOWER_BODY_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_LOWER_BODY_NAMES = createMapFromPairs(
     [
         [LowerBodyType.HUMAN, "human"],
         [LowerBodyType.HOOFED, "hoofed"],
@@ -193,7 +193,7 @@ export let DEFAULT_LOWER_BODY_NAMES: Record<string, any> = createMapFromPairs(
         [LowerBodyType.RACCOON, "raccoon"]
     ]
 );
-export let DEFAULT_PIERCING_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_PIERCING_NAMES = createMapFromPairs(
     [
         [PiercingType.NONE, "none"],
         [PiercingType.STUD, "stud"],
@@ -203,13 +203,13 @@ export let DEFAULT_PIERCING_NAMES: Record<string, any> = createMapFromPairs(
         [PiercingType.CHAIN, "chain"]
     ]
 );
-export let DEFAULT_VAGINA_TYPE_NAMES: Record<string, any> = createMapFromPairs(
+export let DEFAULT_VAGINA_TYPE_NAMES = createMapFromPairs(
     [
         [VaginaType.HUMAN, "human"],
         [VaginaType.BLACK_SAND_TRAP, "black sandtrap"]
     ]
 );
-export let DEFAULT_VAGINA_WETNESS_SCALES: any[] = [
+export let DEFAULT_VAGINA_WETNESS_SCALES: [VaginaWetness, string][] = [
     [VaginaWetness.DRY, "dry"],
     [VaginaWetness.NORMAL, "normal"],
     [VaginaWetness.WET, "wet"],
@@ -217,7 +217,7 @@ export let DEFAULT_VAGINA_WETNESS_SCALES: any[] = [
     [VaginaWetness.DROOLING, "drooling"],
     [VaginaWetness.SLAVERING, "slavering"],
 ];
-export let DEFAULT_VAGINA_LOOSENESS_SCALES: any[] = [
+export let DEFAULT_VAGINA_LOOSENESS_SCALES: [VaginaLooseness, string][] = [
     [VaginaLooseness.TIGHT, "tight"],
     [VaginaLooseness.NORMAL, "normal"],
     [VaginaLooseness.LOOSE, "loose"],
@@ -225,7 +225,7 @@ export let DEFAULT_VAGINA_LOOSENESS_SCALES: any[] = [
     [VaginaLooseness.GAPING_WIDE, "gaping wide"],
     [VaginaLooseness.LEVEL_CLOWN_CAR, "clown-car level"]
 ];
-export let DEFAULT_ANAL_WETNESS_SCALES: any[] = [
+export let DEFAULT_ANAL_WETNESS_SCALES: [AnalWetness, string][] = [
     [AnalWetness.DRY, "dry"],
     [AnalWetness.NORMAL, "normal"],
     [AnalWetness.MOIST, "moist"],
@@ -233,7 +233,7 @@ export let DEFAULT_ANAL_WETNESS_SCALES: any[] = [
     [AnalWetness.DROOLING, "drooling"],
     [AnalWetness.SLIME_DROOLING, "slime-drooling"],
 ];
-export let DEFAULT_ANAL_LOOSENESS_SCALES: any[] = [
+export let DEFAULT_ANAL_LOOSENESS_SCALES: [AnalLooseness, string][] = [
     [AnalLooseness.VIRGIN, "virgin"],
     [AnalLooseness.TIGHT, "tight"],
     [AnalLooseness.NORMAL, "normal"],
@@ -241,7 +241,7 @@ export let DEFAULT_ANAL_LOOSENESS_SCALES: any[] = [
     [AnalLooseness.STRETCHED, "stretched"],
     [AnalLooseness.GAPING, "gaping"]
 ];
-export let DEFAULT_HIP_RATING_SCALES: any[] = [
+export let DEFAULT_HIP_RATING_SCALES: [HipRating, string][] = [
     [HipRating.BOYISH, "boyish"],
     [HipRating.SLENDER, "slender"],
     [HipRating.AVERAGE, "average"],
@@ -250,7 +250,7 @@ export let DEFAULT_HIP_RATING_SCALES: any[] = [
     [HipRating.FERTILE, "fertile"],
     [HipRating.INHUMANLY_WIDE, "inhumanly wide"]
 ];
-export let DEFAULT_BUTT_RATING_SCALES: any[] = [
+export let DEFAULT_BUTT_RATING_SCALES: [ButtRating, string][] = [
     [ButtRating.BUTTLESS, "buttless"],
     [ButtRating.TIGHT, "tight"],
     [ButtRating.AVERAGE, "average"],
@@ -262,7 +262,7 @@ export let DEFAULT_BUTT_RATING_SCALES: any[] = [
     [ButtRating.INCONCEIVABLY_BIG, "inconceivably big"]
 ];
 
-export let BREAST_CUP_NAMES: any[] = [
+export let BREAST_CUP_NAMES = [
     "flat", // 0
     // 				1			2			3			4			5				6			7		8			9
     "A-cup", "B-cup", "C-cup", "D-cup", "DD-cup", "big DD-cup", "E-cup", "big E-cup", "EE-cup", // 1-9
