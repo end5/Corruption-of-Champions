@@ -2,30 +2,33 @@
  * Created by aimozg on 11.01.14.
  */
 
-export class ChainedDrop implements RandomDrop {
-    private items: any[] = [];
-    private probs: any[] = [];
-    private defaultItem: any;
-    public constructor(defaultItem: any = null) {
+export class ChainedDrop<T> implements RandomDrop<T> {
+    private items: T[] = [];
+    private probs: number[] = [];
+    private defaultItem: T | null;
+
+    public constructor(defaultItem: T | null = null) {
         this.defaultItem = defaultItem;
     }
-    public add(item: any, prob: number): ChainedDrop {
+
+    public add(item: T, prob: number) {
         if (prob < 0 || prob > 1) {
             Logger.error("Invalid probability value " + prob);
         }
-        items.push(item);
-        probs.push(prob);
+        this.items.push(item);
+        this.probs.push(prob);
         return this;
     }
-    public elseDrop(item: any): ChainedDrop {
+
+    public elseDrop(item: T) {
         this.defaultItem = item;
         return this;
     }
 
-    public roll(): any {
-        for (const i = 0; i < items.length; i++) {
-            if (Math.random() < probs[i]) return items[i];
+    public roll() {
+        for (let i = 0; i < this.items.length; i++) {
+            if (Math.random() < this.probs[i]) return this.items[i];
         }
-        return defaultItem;
+        return this.defaultItem;
     }
 }

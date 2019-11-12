@@ -2,43 +2,45 @@
  * Created by aimozg on 11.01.14.
  */
 
-export class WeightedDrop implements RandomDrop {
-    private items: any[] = [];
+export class WeightedDrop<T> implements RandomDrop<T> {
+    private items: [T, number][] = [];
     private sum: number = 0;
-    public constructor(first: *=null, firstWeight: number = 0) {
-        if (first != null) {
-            items.push([first, firstWeight]);
-            sum += firstWeight;
-        }
+
+    public constructor(first: T | null = null, firstWeight: number = 0) {
+        if (first)
+            this.add(first, firstWeight);
     }
-    public add(item: any, weight: number = 1): WeightedDrop {
-        items.push([item, weight]);
-        sum += weight;
+
+    public add(item: T, weight: number = 1) {
+        this.items.push([item, weight]);
+        this.sum += weight;
         return this;
     }
-    public addMany(weight: number, ..._items): WeightedDrop {
-        for (const item * in _items) {
-            items.push([item, weight]);
-            sum += weight;
+
+    public addMany(weight: number, ..._items: T[]) {
+        for (const item of _items) {
+            this.items.push([item, weight]);
+            this.sum += weight;
         }
         return this;
     }
+
     // you can pass your own random value from 0 to 1 (so you can use your own RNG)
-    public roll(): any {
-        let random: number = Math.random() * sum;
-        let item: any = null;
-        while (random > 0 && items.length > 0) {
-            const pair: any[] = items.shift();
+    public roll() {
+        let random = Math.random() * this.sum;
+        let item: T | null = null;
+        while (random > 0 && this.items.length > 0) {
+            const pair = this.items.shift()!;
             item = pair[0];
             random -= pair[1];
         }
-        return item;
+        return item!;
     }
 
-    public clone(): WeightedDrop {
-        const other: WeightedDrop = new WeightedDrop();
-        other.items = items.slice();
-        other.sum = sum;
+    public clone() {
+        const other = new WeightedDrop<T>();
+        other.items = this.items.slice();
+        other.sum = this.sum;
         return other;
     }
 }
