@@ -8,16 +8,7 @@ export class ComfortableClothes extends Armor {
         super("C.Cloth", "C.Cloth", "comfortable clothes", "a set of comfortable clothes", 0, 0, "These loose fitting and comfortable clothes allow you to move freely while protecting you from the elements.  (DEF: +0) (Cost: 0)", "Light", true);
     }
 
-    public get supportsBulge(): boolean { return game.player.modArmorName != "crotch-hugging clothes"; }
+    public get supportsBulge() { return game.player.modArmorName != "crotch-hugging clothes"; }
     // Comfortable clothes can't be changed by Exgartuan if he's already changed them
 
-    /*
-            override protected function unequipReturnItem(player:Player,output:Boolean):ItemType
-            {
-                if (output && player.armorName != player.armor.name){
-                    outputText("The " + player.armorName + " revert into a pair of comfortable clothes, as if by magic.  ");
-                }
-                return this;
-            }
-    */
 }

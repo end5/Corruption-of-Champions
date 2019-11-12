@@ -5,7 +5,7 @@
 
 export class FurLoincloth extends Armor {
 
-    public get description(): string {
+    public get description() {
         return "A pair of loincloths to cover your crotch and " + buttDescription(game.player) + ".  Typically worn by people named 'Conan'.";
     }
 

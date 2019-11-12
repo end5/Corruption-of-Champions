@@ -8,12 +8,12 @@ export class LustyMaidensArmor extends Armor {
         super("LMArmor", "LMArmor", "lusty maiden's armor", "a bikini-like set of armor that could only belong to a lusty maiden", 6, 400, "This skimpy chain bikini barely qualifies as armor.  Indeed, the chain is made from links much finer and lighter than normal, so fine that it feels almost silken under your fingertips.  A simple seal in the g-string-like undergarment states, \"Virgins only.\"", "Light");
     }
 
-    public get def(): number {
+    public get def() {
         if (game.player.vaginas.hasVirginVagina()) return 9 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
         return 6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS];
     }
 
-    public canUse(): boolean {
+    public canUse() {
         if (game.player.breastRows.biggestTitSize() < BreastCup.A) { // {No titties}
             outputText("You slide the bikini top over your chest and buckle it into place, but the material hangs almost comically across your flat chest.  The cold chain dangles away from you, swaying around ridiculously before smacking, cold and hard into your [nipples].  This simply won't do - it doesn't fit you, and you switch back to your old armor.\n\n");
             return false;
@@ -34,7 +34,7 @@ export class LustyMaidensArmor extends Armor {
             outputText(" at all!  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }
-        else if (!game.player.vaginas.length > 0) {
+        else if (game.player.vaginas.length <= 0) {
             outputText("that it will dig uncomfortably into your featureless groin.  <b>You put your old gear back on with a sigh</b>.");
             return false;
         }
@@ -53,7 +53,7 @@ export class LustyMaidensArmor extends Armor {
         return true;
     }
 
-    public playerEquip(): Armor {
+    public playerEquip() {
         while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
         if (game.player.vaginas.hasVirginVagina()) {
             game.player.perks.create(PerkLib.SluttySeduction, 10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS], 0, 0, 0);
@@ -64,13 +64,13 @@ export class LustyMaidensArmor extends Armor {
         return super.playerEquip();
     }
 
-    public playerRemove(): Armor {
+    public playerRemove() {
         while (game.player.perks.findByType(PerkLib.SluttySeduction) >= 0) game.player.perks.remove(PerkLib.SluttySeduction);
         return super.playerRemove();
     }
 
     // "Chaste" Paizuri - works for most foes with penises.
-    public lustyMaidenPaizuri(player: Player = null, monster: Monster = null): void {
+    public lustyMaidenPaizuri(player?: Player, monster?: Monster) {
         if (player == null) player = game.player;
         if (monster == null) monster = game.monster;
         clearOutput();
@@ -127,33 +127,4 @@ export class LustyMaidensArmor extends Armor {
             cleanupAfterCombat();
         else doNext(Camp.returnToCampUseOneHour);
     }
-
-    /*
-            override public function equipEffect(wearer:Player, output:Boolean):void
-            {
-                if(wearer.lib < 50) dynStats("lib", 1, "sen", 1);
-                /*Stats: Virgin - 9, Non-Virgin - 5
-
-                //NONVIRGIN:
-                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.perks.create("Slutty Seduction",6,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
-                //VIRGIN:
-                if(wearer.hasPerk("Slutty Seduction") < 0) wearer.perks.create("Slutty Seduction",10,0,0,0,"Your incredibly revealing steel armor allows you access to 'Seduce', an improved form of 'Tease'.");
-                Special Bonus: Every time you use the special titfuck scene, you gain two defense and 2 tease damage up to a max of 8.  Every night you lose half your bonus (minimum 1).
-                Min lust: 30
-                Min libido: 50*/
-    /*			if(wearer.vaginas.hasVirginVagina()) {
-                    while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
-                    wearer.perks.create(PerkLib.SluttySeduction,10 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
-                }
-                else {
-                    while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
-                    if(wearer.perks.findByType(PerkLib.SluttySeduction) < 0) wearer.perks.create(PerkLib.SluttySeduction,6 + game.flags[kFLAGS.BIKINI_ARMOR_BONUS],0,0,0);
-                }
-            }
-
-            override public function unequipEffect(wearer:Player, output:Boolean):void
-            {
-                while(wearer.perks.findByType(PerkLib.SluttySeduction) >= 0) wearer.perks.remove(PerkLib.SluttySeduction);
-            }
-    */
 }

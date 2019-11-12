@@ -5,22 +5,15 @@
 export class LeatherArmorSegments extends Armor {
 
     public constructor() {
-        super("UrtaLta", "UrtaLta", "leather armor segments", "leather armor segments", 5, 76, null, "Light", true);
+        super("UrtaLta", "UrtaLta", "leather armor segments", "leather armor segments", 5, 76, undefined, "Light", true);
     }
-    public removeText(): void {
+    public removeText() {
         outputText("You have your old set of " + ArmorLib.LEATHRA.longName + " left over.  ");
     }
 
-    public playerRemove(): Armor {
+    public playerRemove() {
         super.playerRemove();
         return ArmorLib.LEATHRA;
     }
 
-    /*
-            override protected function unequipReturnItem(player:Player,output:Boolean):ItemType
-            {
-                outputText("You have your old set of " + ArmorLib.LEATHRA.longName + " left over.  ");
-                return ArmorLib.LEATHRA;
-            }
-    */
 }
