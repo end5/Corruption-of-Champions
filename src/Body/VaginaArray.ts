@@ -1,4 +1,8 @@
-export class VaginaArray extends Array {
+export class VaginaArray extends Array<VaginaClass> {
+    public constructor(
+        private owner: Character
+    ) { super(); }
+
     public wetness(): number {
         if (this.length == 0)
             return 0;
@@ -46,7 +50,7 @@ export class VaginaArray extends Array {
                 // trace("Attempted to remove " + totalRemoved + " vaginas.");
             }
         }
-        genderCheck();
+        this.owner.genderCheck();
     }
 
     public averageVaginalLooseness(): number {

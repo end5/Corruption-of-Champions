@@ -1,4 +1,4 @@
-export class BreastRowArray extends Array {
+export class BreastRowArray extends Array<BreastRowClass> {
     public biggestTitSize(): number {
         if (this.length == 0)
             return -1;

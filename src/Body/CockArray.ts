@@ -1,4 +1,4 @@
-export class CockArray extends Array {
+export class CockArray extends Array<Cock> {
     public constructor(
         private owner: Character
     ) { super(); }
@@ -475,7 +475,7 @@ export class CockArray extends Array {
     public dogCocks(): number { // How many dogCocks
         if (this.length == 0) return 0;
         let counter: number = 0;
-        for (const x = 0; x < this.length; x++) {
+        for (let x = 0; x < this.length; x++) {
             if (this[x].cockType == CockTypesEnum.DOG || this[x].cockType == CockTypesEnum.FOX) counter++;
         }
         return counter;
@@ -573,8 +573,8 @@ export class CockArray extends Array {
     }
 
     // Create a cock. Default type is HUMAN
-    public createCock(clength: number = 5.5, cthickness: number = 1, ctype: CockTypesEnum = null): boolean {
-        if (ctype == null) ctype = CockTypesEnum.HUMAN;
+    public createCock(clength: number = 5.5, cthickness: number = 1, ctype?: CockTypesEnum): boolean {
+        if (!ctype) ctype = CockTypesEnum.HUMAN;
         if (this.length >= 10)
             return false;
         const newCock = new Cock(clength, cthickness, ctype);
@@ -607,7 +607,7 @@ export class CockArray extends Array {
                     }
                     else if (cock.sock == "cockring") {
                         let numRings: number = 0;
-                        for (const i = 0; i < this.length; i++) {
+                        for (let i = 0; i < this.length; i++) {
                             if (this[i].sock == "cockring") numRings++;
                         }
 
@@ -617,7 +617,7 @@ export class CockArray extends Array {
                     this.splice(arraySpot, totalRemoved);
                 }
                 catch (e: Error) {
-                    trace("Argument error in Creature[" + this.owner._short + "]: " + e.message);
+                    trace("Argument error in Creature[" + this.owner.short + "]: " + e.message);
                 }
                 // trace("Attempted to remove " + totalRemoved + " cocks.");
             }
@@ -703,7 +703,7 @@ export class CockArray extends Array {
     public countCockSocks(type: string): number {
         let count: number = 0;
 
-        for (const i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.length; i++) {
             if (this[i].sock == type) {
                 count++;
             }
