@@ -25,74 +25,74 @@ export class BreastStore  implements SaveAwareInterface {
     public preventLactationDecrease: number = 0;
 
     public constructor(breastFlag: number) {
-        _breastFlag = breastFlag;
-        if (_breastFlag < 1 || _breastFlag > MAX_FLAG_VALUE) trace("Error: BreastStore created with invalid flag value. BreastStore(" + breastFlag + ")");
+        this._breastFlag = breastFlag;
+        if (this._breastFlag < 1 || this._breastFlag > BreastStore.MAX_FLAG_VALUE) trace("Error: BreastStore created with invalid flag value. BreastStore(" + breastFlag + ")");
     }
 
     // Implementation of SaveAwareInterface
     public updateAfterLoad(game: CoC): void {
-        if (_breastFlag < 1 || _breastFlag > MAX_FLAG_VALUE) return;
-        const flagData: any[] = String(game.flags[_breastFlag]).split("^");
+        if (this._breastFlag < 1 || this._breastFlag > BreastStore.MAX_FLAG_VALUE) return;
+        const flagData: any[] = String(game.flags[this._breastFlag]).split("^");
         if (flagData.length < 9) {
             // Loading from a file that doesn't contain appropriate save data.
             // Values will either have to be assigned in Saves.unFuckSave() or by the first encounter with this NPC
             return;
         }
         // For now there's no need to check the version. If this class is ever updated to save more the version will become useful.
-        rows = int(flagData[1]);
-        cupSize = int(flagData[2]);
-        lactationLevel = int(flagData[3]);
-        nippleLength = Number(flagData[4]);
-        _fullness = int(flagData[5]);
-        _timesMilked = int(flagData[6]);
-        preventLactationIncrease = int(flagData[7]);
-        preventLactationDecrease = int(flagData[8]);
+        this.rows = int(flagData[1]);
+        this.cupSize = int(flagData[2]);
+        this.lactationLevel = int(flagData[3]);
+        this.nippleLength = Number(flagData[4]);
+        this._fullness = int(flagData[5]);
+        this._timesMilked = int(flagData[6]);
+        this.preventLactationIncrease = int(flagData[7]);
+        this.preventLactationDecrease = int(flagData[8]);
     }
 
     public updateBeforeSave(game: CoC): void {
-        if (_breastFlag < 1 || _breastFlag > MAX_FLAG_VALUE) return;
-        game.flags[_breastFlag] = BREAST_STORE_VERSION_1 + "^" + rows + "^" + cupSize + "^" + lactationLevel + "^" + nippleLength + "^" + _fullness + "^" + _timesMilked
-            + "^" + preventLactationIncrease + "^" + preventLactationDecrease;
+        if (this._breastFlag < 1 || this._breastFlag > BreastStore.MAX_FLAG_VALUE) return;
+        game.flags[this._breastFlag] = BreastStore.BREAST_STORE_VERSION_1 + "^" + this.rows + "^" + this.cupSize + "^" + this.lactationLevel + "^" + this.nippleLength + "^" + this._fullness + "^" + this._timesMilked
+            + "^" + this.preventLactationIncrease + "^" + this.preventLactationDecrease;
     }
     // End of Interface Implementation
 
-    public get cupSize(): number { return _cupSize; }
+    public get cupSize(): number { return this._cupSize; }
 
-    public set cupSize(value: number): void {
+    public set cupSize(value: number) {
         if (value < BreastCup.FLAT) value = BreastCup.FLAT;
         if (value > BreastCup.ZZZ_LARGE) value = BreastCup.ZZZ_LARGE;
-        _cupSize = value;
+        this._cupSize = value;
     }
 
-    public get lactationLevel(): number { return _lactation; }
+    public get lactationLevel(): number { return this._lactation; }
 
-    public set lactationLevel(value: number): void {
-        if (value < LACTATION_DISABLED) value = LACTATION_DISABLED;
-        if (value > LACTATION_EPIC) value = LACTATION_EPIC;
-        if (_lactation <= LACTATION_NONE && value >= LACTATION_LIGHT) { // Lactation is just starting - zero the other vars involved
-            _fullness = 0;
-            _timesMilked = 0;
+    public set lactationLevel(value: number) {
+        if (value < BreastStore.LACTATION_DISABLED) value = BreastStore.LACTATION_DISABLED;
+        if (value > BreastStore.LACTATION_EPIC) value = BreastStore.LACTATION_EPIC;
+        if (this._lactation <= BreastStore.LACTATION_NONE && value >= BreastStore.LACTATION_LIGHT) { // Lactation is just starting - zero the other vars involved
+            this._fullness = 0;
+            this._timesMilked = 0;
         }
-        _lactation = value;
+        this._lactation = value;
     }
 
     public advanceTime(): void {
-        if (_lactation <= LACTATION_NONE) return;
+        if (this._lactation <= BreastStore.LACTATION_NONE) return;
         // Add to breastFullness and possibly adjust lactationLevel. Even when lactationLevel == LACTATION_NONE this is still doing something useful, adjusting _breastTimesMilked
-        _fullness += LACTATION_BOOST[_lactation]; // Higher lactation means faster refill
-        if (_fullness > 60 + 20 * LACTATION_BOOST[_lactation]) { // 100 at LACTATION_LIGHT, 180 at LACTATION_EPIC - fullness over this value is overloaded, lactation may be reduced
-            _fullness = 50; // This way fullness won't immediately hit the limit again
-            if (_timesMilked >= 5) {
-                _timesMilked -= 5; // If enough milkings have occured then don't reduce lactation level right away
+        this._fullness += BreastStore.LACTATION_BOOST[this._lactation]; // Higher lactation means faster refill
+        if (this._fullness > 60 + 20 * BreastStore.LACTATION_BOOST[this._lactation]) { // 100 at LACTATION_LIGHT, 180 at LACTATION_EPIC - fullness over this value is overloaded, lactation may be reduced
+            this._fullness = 50; // This way fullness won't immediately hit the limit again
+            if (this._timesMilked >= 5) {
+                this._timesMilked -= 5; // If enough milkings have occured then don't reduce lactation level right away
             }
-            else if (preventLactationDecrease != _lactation) {
-                _lactation--;
+            else if (this.preventLactationDecrease != this._lactation) {
+                this._lactation--;
             }
         }
     }
 
     public adj(): string {
-        switch (_cupSize) {
+        switch (this._cupSize) {
             case BreastCup.FLAT: return "non-existent";
             case BreastCup.A: return "small";
             case BreastCup.B:
@@ -143,84 +143,84 @@ export class BreastStore  implements SaveAwareInterface {
         return ("titanic");
     }
 
-    public canTitFuck(): boolean { return _cupSize >= BreastCup.C; }
+    public canTitFuck(): boolean { return this._cupSize >= BreastCup.C; }
 
-    public cup(): string { return breastCup(_cupSize); } // The cup size alone
+    public cup(): string { return breastCup(this._cupSize); } // The cup size alone
 
     public description(useAdj: boolean = false, isMale: boolean = false): string {
-        if (_cupSize == BreastCup.FLAT) return "flat" + (isMale ? " manly," : "") + " chest";
-        return (useAdj ? adj() + " " : "") + cup() + " breasts";
+        if (this._cupSize == BreastCup.FLAT) return "flat" + (isMale ? " manly," : "") + " chest";
+        return (useAdj ? this.adj() + " " : "") + this.cup() + " breasts";
     }
 
     public breastDesc(): string {
-        return breastDescript(cupSize, 0.5 * lactationLevel);
+        return breastDescript(this.cupSize, 0.5 * this.lactationLevel);
     }
 
-    public hasBreasts(): boolean { return _cupSize != BreastCup.FLAT; }
+    public hasBreasts(): boolean { return this._cupSize != BreastCup.FLAT; }
 
-    public lactating(): boolean { return _lactation >= LACTATION_LIGHT; }
+    public lactating(): boolean { return this._lactation >= BreastStore.LACTATION_LIGHT; }
 
     public milked(): boolean { // Returns true if this milking increased the NPC's lactationLevel
-        _fullness = 0;
-        _timesMilked++;
-        if (preventLactationIncrease == _lactation) return false;
-        switch (_lactation) { // With enough milking the lactation level increases
-            case LACTATION_NONE: // If you suckle enough times the NPC will eventually start producing milk if they're set to LACTATION_NONE
-                if (_timesMilked < 12) return false;
+        this._fullness = 0;
+        this._timesMilked++;
+        if (this.preventLactationIncrease == this._lactation) return false;
+        switch (this._lactation) { // With enough milking the lactation level increases
+            case BreastStore.LACTATION_NONE: // If you suckle enough times the NPC will eventually start producing milk if they're set to LACTATION_NONE
+                if (this._timesMilked < 12) return false;
                 break;
-            case LACTATION_LIGHT:
-                if (_timesMilked < 10) return false;
+            case BreastStore.LACTATION_LIGHT:
+                if (this._timesMilked < 10) return false;
                 break;
-            case LACTATION_MODERATE:
-                if (_timesMilked < 12) return false;
+            case BreastStore.LACTATION_MODERATE:
+                if (this._timesMilked < 12) return false;
                 break;
-            case LACTATION_HEAVY:
-                if (_timesMilked < 15) return false;
+            case BreastStore.LACTATION_HEAVY:
+                if (this._timesMilked < 15) return false;
                 break;
-            case LACTATION_STRONG:
-                if (_timesMilked < 20) return false;
+            case BreastStore.LACTATION_STRONG:
+                if (this._timesMilked < 20) return false;
                 break;
             default: // No amount of suckling will increase lactation levels for this NPC
                 return false;
         }
         // Only reach this point if the NPC has been milked enough times to justify increasing their milk production
-        _timesMilked = 5;
-        lactationLevel++;
+        this._timesMilked = 5;
+        this.lactationLevel++;
         return true;
     }
 
-    public milkIsFull(): boolean { return (_lactation <= LACTATION_NONE ? 0 : _fullness >= 50); }
+    public milkIsFull() { return (this._lactation <= BreastStore.LACTATION_NONE ? 0 : this._fullness >= 50); }
 
-    public milkIsOverflowing(): boolean {
-        return (_lactation <= LACTATION_NONE ? 0 : _fullness >= 60 + 5 * LACTATION_BOOST[_lactation]); // Probably pretty desperate to be milked by this point
+    public milkIsOverflowing() {
+        return (this._lactation <= BreastStore.LACTATION_NONE ? 0 : this._fullness >= 60 + 5 * BreastStore.LACTATION_BOOST[this._lactation]); // Probably pretty desperate to be milked by this point
     }
 
     // At fullness == 50 the maximum amount of milk is produced. When overfull, lactation level is reduced and fullness drops to 50.
     // So a higher lactationLevel means more milk is produced and the breasts can stay full without drying up for longer. Will always return 0 if not lactating
     public milkQuantity(): number {
-        if (_lactation <= LACTATION_NONE) return 0;
-        return 0.01 * Math.max(100, 2 * _fullness) * Number(20 * _rows * _cupSize * (_lactation - 1));
+        if (this._lactation <= BreastStore.LACTATION_NONE) return 0;
+        return 0.01 * Math.max(100, 2 * this._fullness) * Number(20 * this._rows * this._cupSize * (this._lactation - 1));
     }
 
     public nippleDescript(tiny: string = "tiny", small: string = "prominent", large: string = "large", huge: string = "elongated", massive: string = "massive"): string {
-        if (_nippleLength < 3) return tiny;
-        if (_nippleLength < 10) return small;
-        if (_nippleLength < 20) return large;
-        if (_nippleLength < 32) return huge;
+        if (this._nippleLength < 3) return tiny;
+        if (this._nippleLength < 10) return small;
+        if (this._nippleLength < 20) return large;
+        if (this._nippleLength < 32) return huge;
         return massive;
     }
 
-    public get nippleLength(): number { return _nippleLength; }
+    public get nippleLength(): number { return this._nippleLength; }
 
-    public set nippleLength(value: number): void {
+    public set nippleLength(value: number) {
         if (value < 0) value = 0;
-        _nippleLength = 0.1 * Math.round(10 * value); // Ensure nipple length only goes to one decimal place
+        this._nippleLength = 0.1 * Math.round(10 * value); // Ensure nipple length only goes to one decimal place
     }
 
-    public get rows(): number { return _rows; }
+    public get rows(): number { return this._rows; }
 
-    public set rows(value: number): void {
+    public set rows(value: number) {
         if (value < 1) value = 1;
-        _rows = value;
+        this._rows = value;
     }
 }
