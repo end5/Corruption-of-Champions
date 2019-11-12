@@ -17,14 +17,14 @@ export class Inventory {
     }
 
     public consumeItem(itype: ItemType, amount: number = 1): boolean {
-        if (!hasItem(itype, amount)) {
-            Logger.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + itemCount(itype) + ".");
+        if (!this.hasItem(itype, amount)) {
+            Logger.error("ERROR: consumeItem attempting to find " + amount + " item" + (amount > 1 ? "s" : "") + " to remove when the player has " + this.itemCount(itype) + ".");
             return false;
         }
         // From here we can be sure the player has enough of the item in inventory
         let slot: ItemSlotClass;
         while (amount > 0) {
-            slot = getLowestSlot(itype); // Always draw from the least filled slots first
+            slot = this.getLowestSlot(itype); // Always draw from the least filled slots first
             if (slot.quantity > amount) {
                 slot.quantity -= amount;
                 amount = 0;
@@ -65,7 +65,7 @@ export class Inventory {
 
     public getLowestSlot(itype: ItemType): ItemSlotClass {
         let minslot: ItemSlotClass = null;
-        for (const slot of itemSlots) {
+        for (const slot of this.itemSlots) {
             if (slot.itype == itype) {
                 if (minslot == null || slot.quantity < minslot.quantity) {
                     minslot = slot;
@@ -76,12 +76,12 @@ export class Inventory {
     }
 
     public hasItem(itype: ItemType, minQuantity: number = 1): boolean {
-        return itemCount(itype) >= minQuantity;
+        return this.itemCount(itype) >= minQuantity;
     }
 
     public itemCount(itype: ItemType): number {
         let count: number = 0;
-        for (const itemSlot of itemSlots) {
+        for (const itemSlot of this.itemSlots) {
             if (itemSlot.itype == itype) count += itemSlot.quantity;
         }
         return count;
@@ -89,34 +89,35 @@ export class Inventory {
 
     // 0..5 or -1 if no
     public roomInExistingStack(itype: ItemType): number {
-        for (const i = 0; i < itemSlots.length; i++) {
-            if (itemSlot(i).itype == itype && itemSlot(i).quantity != 0 && itemSlot(i).quantity < 5)
+        for (let i = 0; i < this.itemSlots.length; i++) {
+            if (this.itemSlot(i).itype == itype && this.itemSlot(i).quantity != 0 && this.itemSlot(i).quantity < 5)
                 return i;
         }
         return -1;
     }
 
     public itemSlot(idx: number): ItemSlotClass {
-        return itemSlots[idx];
+        return this.itemSlots[idx];
     }
 
     // 0..5 or -1 if no
     public emptySlot(): number {
-        for (const i = 0; i < itemSlots.length; i++) {
-            if (itemSlot(i).isEmpty() && itemSlot(i).unlocked) return i;
+        for (const i = 0; i < this.itemSlots.length; i++) {
+            if (this.itemSlot(i).isEmpty() && this.itemSlot(i).unlocked) return i;
         }
         return -1;
     }
 
     public destroyItems(itype: ItemType, numOfItemToRemove: number): boolean {
-        for (const slotNum = 0; slotNum < itemSlots.length; slotNum += 1) {
-            if (itemSlot(slotNum).itype == itype) {
-                while (itemSlot(slotNum).quantity > 0 && numOfItemToRemove > 0) {
-                    itemSlot(slotNum).removeOneItem();
+        for (let slotNum = 0; slotNum < this.itemSlots.length; slotNum += 1) {
+            if (this.itemSlot(slotNum).itype == itype) {
+                while (this.itemSlot(slotNum).quantity > 0 && numOfItemToRemove > 0) {
+                    this.itemSlot(slotNum).removeOneItem();
                     numOfItemToRemove--;
                 }
             }
         }
         return numOfItemToRemove <= 0;
     }
+
 }

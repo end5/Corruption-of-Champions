@@ -74,21 +74,21 @@ export class Player extends Character {
     }
 
     public get modArmorName(): string {
-        if (_modArmorName == null) _modArmorName = "";
-        return _modArmorName;
+        if (this._modArmorName == null) this._modArmorName = "";
+        return this._modArmorName;
     }
 
     public set modArmorName(value: string): void {
         if (value == null) value = "";
-        _modArmorName = value;
+        this._modArmorName = value;
     }
 
     public get armorName(): string {
-        if (_modArmorName.length > 0) return modArmorName;
-        return _armor.name;
+        if (this._modArmorName.length > 0) return this.modArmorName;
+        return this._armor.name;
     }
     public get armorDef(): number {
-        let armorDef: number = _armor.def;
+        let armorDef: number = this._armor.def;
         // Blacksmith history!
         if (armorDef > 0 && this.perks.findByType(PerkLib.HistorySmith) >= 0) {
             armorDef = Math.round(armorDef * 1.1);
@@ -97,19 +97,19 @@ export class Player extends Character {
         // Skin armor perk
         if (this.perks.findByType(PerkLib.ThickSkin) >= 0) {
             armorDef += 2;
-            if (skinType > SkinType.PLAIN) armorDef += 1;
+            if (this.skinType > SkinType.PLAIN) armorDef += 1;
         }
         // If no skin armor perk scales rock
         else {
-            if (skinType == SkinType.FUR) armorDef += 1;
-            if (skinType == SkinType.SCALES) armorDef += 3;
+            if (this.skinType == SkinType.FUR) armorDef += 1;
+            if (this.skinType == SkinType.SCALES) armorDef += 3;
         }
         // 'Thick' dermis descriptor adds 1!
-        if (skinAdj == "smooth") armorDef += 1;
+        if (this.skinAdj == "smooth") armorDef += 1;
         // Agility boosts armor ratings!
         if (this.perks.findByType(PerkLib.Agility) >= 0) {
-            if (armorPerk == "Light") armorDef += Math.round(spe / 8);
-            else if (armorPerk == "Medium") armorDef += Math.round(spe / 13);
+            if (this.armorPerk == "Light") armorDef += Math.round(this.spe / 8);
+            else if (this.armorPerk == "Medium") armorDef += Math.round(this.spe / 13);
         }
         // Berzerking removes armor
         if (this.effects.findByType(StatusAffects.Berzerking) >= 0) {
@@ -122,55 +122,55 @@ export class Player extends Character {
         return armorDef;
     }
     public get armorBaseDef(): number {
-        return _armor.def;
+        return this._armor.def;
     }
     public get armorPerk(): string {
-        return _armor.perk;
+        return this._armor.perk;
     }
     public get armorValue(): number {
-        return _armor.value;
+        return this._armor.value;
     }
     private _weapon: Weapon = WeaponLib.FISTS;
     public get weaponName(): string {
-        return _weapon.name;
+        return this._weapon.name;
     }
     public get weaponVerb(): string {
-        return _weapon.verb;
+        return this._weapon.verb;
     }
     public get weaponAttack(): number {
-        let attack: number = _weapon.attack;
-        if (this.perks.findByType(PerkLib.WeaponMastery) >= 0 && weaponPerk == "Large" && str > 60)
+        let attack: number = this._weapon.attack;
+        if (this.perks.findByType(PerkLib.WeaponMastery) >= 0 && this.weaponPerk == "Large" && this.str > 60)
             attack *= 2;
-        if (this.perks.findByType(PerkLib.LightningStrikes) >= 0 && spe >= 60 && weaponPerk != "Large") {
-            attack += Math.round((spe - 50) / 3);
+        if (this.perks.findByType(PerkLib.LightningStrikes) >= 0 && this.spe >= 60 && this.weaponPerk != "Large") {
+            attack += Math.round((this.spe - 50) / 3);
         }
         if (this.effects.findByType(StatusAffects.Berzerking) >= 0) attack += 30;
         attack += this.effects.getValue1Of(StatusAffects.ChargeWeapon);
         return attack;
     }
     public get weaponBaseAttack(): number {
-        return _weapon.attack;
+        return this._weapon.attack;
     }
     public get weaponPerk(): string {
-        return _weapon.perk || "";
+        return this._weapon.perk || "";
     }
     public get weaponValue(): number {
-        return _weapon.value;
+        return this._weapon.value;
     }
 
     public get armor(): Armor {
-        return _armor;
+        return this._armor;
     }
 
     public setArmor(newArmor: Armor): Armor {
         // Returns the old armor, allowing the caller to discard it, store it or try to place it in the player's inventory
         // Can return null, in which case caller should discard.
-        const oldArmor: Armor = _armor.playerRemove(); // The armor is responsible for removing any bonuses, perks, etc.
+        const oldArmor: Armor = this._armor.playerRemove(); // The armor is responsible for removing any bonuses, perks, etc.
         if (newArmor == null) {
-            Logger.error(short + ".armor is set to null");
+            Logger.error(this.short + ".armor is set to null");
             newArmor = ArmorLib.COMFORTABLE_UNDERCLOTHES;
         }
-        _armor = newArmor.playerEquip(); // The armor can also choose to equip something else - useful for Ceraph's trap armor
+        this._armor = newArmor.playerEquip(); // The armor can also choose to equip something else - useful for Ceraph's trap armor
         return oldArmor;
     }
 
@@ -191,18 +191,18 @@ export class Player extends Character {
     }
 
     public get weapon(): Weapon {
-        return _weapon;
+        return this._weapon;
     }
 
     public setWeapon(newWeapon: Weapon): Weapon {
         // Returns the old weapon, allowing the caller to discard it, store it or try to place it in the player's inventory
         // Can return null, in which case caller should discard.
-        const oldWeapon: Weapon = _weapon.playerRemove(); // The weapon is responsible for removing any bonuses, perks, etc.
+        const oldWeapon: Weapon = this._weapon.playerRemove(); // The weapon is responsible for removing any bonuses, perks, etc.
         if (newWeapon == null) {
-            Logger.error(short + ".weapon is set to null");
+            Logger.error(this.short + ".weapon is set to null");
             newWeapon = WeaponLib.FISTS;
         }
-        _weapon = newWeapon.playerEquip(); // The weapon can also choose to equip something else
+        this._weapon = newWeapon.playerEquip(); // The weapon can also choose to equip something else
         return oldWeapon;
     }
 
@@ -223,7 +223,7 @@ export class Player extends Character {
     }
 
     public reduceDamage(damage: number): number {
-        damage = int(damage - rand(tou) - armorDef);
+        damage = int(damage - rand(this.tou) - this.armorDef);
         // EZ MOAD half damage
         if (flags[kFLAGS.EASY_MODE_ENABLE_FLAG] == 1) damage /= 2;
         if (this.effects.findByType(StatusAffects.Shielding) >= 0) {
@@ -235,13 +235,13 @@ export class Player extends Character {
             damage = Math.round(damage * .75);
 
         // Take damage you masochist!
-        if (this.perks.findByType(PerkLib.Masochist) >= 0 && lib >= 60) {
+        if (this.perks.findByType(PerkLib.Masochist) >= 0 && this.lib >= 60) {
             damage = Math.round(damage * .7);
             dynStats("lus", 2);
             // Dont let it round too far down!
             if (damage < 1) damage = 1;
         }
-        if (this.perks.findByType(PerkLib.ImmovableObject) >= 0 && tou >= 75) {
+        if (this.perks.findByType(PerkLib.ImmovableObject) >= 0 && this.tou >= 75) {
             damage = Math.round(damage * .8);
             if (damage < 1) damage = 1;
         }
@@ -256,8 +256,8 @@ export class Player extends Character {
 
         // Uma's Accupuncture Bonuses
         let modArmorDef: number = 0;
-        if (this.perks.findByType(PerkLib.ChiReflowDefense) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI) - armorDef);
-        if (this.perks.findByType(PerkLib.ChiReflowAttack) >= 0) modArmorDef = ((armorDef * UmasShop.NEEDLEWORK_ATTACK_DEFENSE_MULTI) - armorDef);
+        if (this.perks.findByType(PerkLib.ChiReflowDefense) >= 0) modArmorDef = ((this.armorDef * UmasShop.NEEDLEWORK_DEFENSE_DEFENSE_MULTI) - this.armorDef);
+        if (this.perks.findByType(PerkLib.ChiReflowAttack) >= 0) modArmorDef = ((this.armorDef * UmasShop.NEEDLEWORK_ATTACK_DEFENSE_MULTI) - this.armorDef);
         damage -= modArmorDef;
         if (damage < 0) damage = 0;
         return damage;
@@ -269,14 +269,14 @@ export class Player extends Character {
         // we return "1 damage received" if it is in (0..1) but deduce no HP
         const returnDamage: number = (damage > 0 && damage < 1) ? 1 : damage;
         if (damage > 0) {
-            HP -= damage;
+            this.HP -= damage;
             game.mainView.statsView.showStatDown('hp');
             if (flags[kFLAGS.MINOTAUR_CUM_REALLY_ADDICTED_STATE] > 0) {
                 dynStats("lus", int(damage / 2));
             }
             // Prevent negatives
-            if (HP <= 0) {
-                HP = 0;
+            if (this.HP <= 0) {
+                this.HP = 0;
                 // This call did nothing. There is no event 5010: if (game.inCombat) doNext(5010);
             }
         }
@@ -288,7 +288,7 @@ export class Player extends Character {
      * speeds (1: narrowly avoid, 3: deftly avoid)
      */
     public speedDodge(monster: Monster): number {
-        const diff: number = spe - monster.spe;
+        const diff: number = this.spe - monster.spe;
         const rnd: number = int(Math.random() * ((diff / 4) + 80));
         if (rnd <= 80) return 0;
         else if (diff < 8) return 1;
@@ -313,7 +313,7 @@ export class Player extends Character {
     }
 
     public isLactating(): boolean {
-        if (lactationQ() > 0) return true;
+        if (this.lactationQ() > 0) return true;
         return false;
     }
 
@@ -394,22 +394,22 @@ export class Player extends Character {
                 min += 30;
         }
         // SPOIDAH BOOSTS
-        if (ovipositor.eggs() >= 20) {
+        if (this.ovipositor.eggs() >= 20) {
             min += 10;
-            if (ovipositor.eggs() >= 40) min += 10;
+            if (this.ovipositor.eggs() >= 40) min += 10;
         }
-        if (min < 30 && armorName == "lusty maiden's armor") min = 30;
+        if (min < 30 && this.armorName == "lusty maiden's armor") min = 30;
         return min;
     }
 
     public clearStatuses(visibility: boolean): void {
         if (this.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
-            str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
+            this.str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
             this.effects.remove(StatusAffects.DriderIncubusVenom);
             mainView.statsView.showStatUp('str');
         }
         while (this.effects.findByType(StatusAffects.Web) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.Web);
+            this.spe += this.effects.getValue1Of(StatusAffects.Web);
             mainView.statsView.showStatUp('spe');
             // speUp.visible = true;
             // speDown.visible = false;
@@ -450,12 +450,12 @@ export class Player extends Character {
             this.effects.remove(StatusAffects.SheilaOil);
         }
         if (game.monster.effects.findByType(StatusAffects.TwuWuv) >= 0) {
-            inte += game.monster.effects.getValue1Of(StatusAffects.TwuWuv);
+            this.inte += game.monster.effects.getValue1Of(StatusAffects.TwuWuv);
             statScreenRefresh();
             mainView.statsView.showStatUp('inte');
         }
         if (this.effects.findByType(StatusAffects.NagaVenom) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.NagaVenom);
+            this.spe += this.effects.getValue1Of(StatusAffects.NagaVenom);
             mainView.statsView.showStatUp('spe');
             // stats(0,0,this.effects.getValue1Of(StatusAffects.NagaVenom),0,0,0,0,0);
             this.effects.remove(StatusAffects.NagaVenom);
@@ -478,7 +478,7 @@ export class Player extends Character {
         if (this.effects.findByType(StatusAffects.GooBind) >= 0) this.effects.remove(StatusAffects.GooBind);
         if (this.effects.findByType(StatusAffects.HarpyBind) >= 0) this.effects.remove(StatusAffects.HarpyBind);
         if (this.effects.findByType(StatusAffects.CalledShot) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.CalledShot);
+            this.spe += this.effects.getValue1Of(StatusAffects.CalledShot);
             mainView.statsView.showStatUp('spe');
             // speDown.visible = false;
             // speUp.visible = true;
@@ -488,8 +488,8 @@ export class Player extends Character {
             this.effects.remove(StatusAffects.DemonSeed);
         }
         if (this.effects.findByType(StatusAffects.ParalyzeVenom) >= 0) {
-            str += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value1;
-            spe += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value2;
+            this.str += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value1;
+            this.spe += this.effects[this.effects.findByType(StatusAffects.ParalyzeVenom)].value2;
             this.effects.remove(StatusAffects.ParalyzeVenom);
         }
         if (this.effects.findByType(StatusAffects.lustvenom) >= 0) {
@@ -507,18 +507,18 @@ export class Player extends Character {
         }
         if (this.effects.findByType(StatusAffects.Disarmed) >= 0) {
             this.effects.remove(StatusAffects.Disarmed);
-            if (weapon == WeaponLib.FISTS) {
+            if (this.weapon == WeaponLib.FISTS) {
                 // 					weapon = ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon;
                 // 					(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon).doEffect(this, false);
-                setWeapon(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon);
+                this.setWeapon(ItemType.lookupItem(flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID]) as Weapon);
             }
             else {
                 flags[kFLAGS.BONUS_ITEM_AFTER_COMBAT_ID] = flags[kFLAGS.PLAYER_DISARMED_WEAPON_ID];
             }
         }
         if (this.effects.findByType(StatusAffects.AnemoneVenom) >= 0) {
-            str += this.effects.getValue1Of(StatusAffects.AnemoneVenom);
-            spe += this.effects.getValue2Of(StatusAffects.AnemoneVenom);
+            this.str += this.effects.getValue1Of(StatusAffects.AnemoneVenom);
+            this.spe += this.effects.getValue2Of(StatusAffects.AnemoneVenom);
             // Make sure nothing got out of bounds
             dynStats("cor", 0);
 
@@ -529,7 +529,7 @@ export class Player extends Character {
             this.effects.remove(StatusAffects.AnemoneVenom);
         }
         if (this.effects.findByType(StatusAffects.GnollSpear) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.GnollSpear);
+            this.spe += this.effects.getValue1Of(StatusAffects.GnollSpear);
             // Make sure nothing got out of bounds
             dynStats("cor", 0);
             mainView.statsView.showStatUp('spe');
@@ -539,7 +539,7 @@ export class Player extends Character {
         }
         if (this.effects.findByType(StatusAffects.BasiliskCompulsion) >= 0) this.effects.remove(StatusAffects.BasiliskCompulsion);
         if (this.effects.findByType(StatusAffects.BasiliskSlow) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.BasiliskSlow);
+            this.spe += this.effects.getValue1Of(StatusAffects.BasiliskSlow);
             mainView.statsView.showStatUp('spe');
             // speUp.visible = true;
             // speDown.visible = false;
@@ -547,7 +547,7 @@ export class Player extends Character {
         }
         while (this.effects.findByType(StatusAffects.IzmaBleed) >= 0) this.effects.remove(StatusAffects.IzmaBleed);
         if (this.effects.findByType(StatusAffects.GardenerSapSpeed) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
+            this.spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
             mainView.statsView.showStatUp('spe');
             this.effects.remove(StatusAffects.GardenerSapSpeed);
         }
@@ -559,13 +559,13 @@ export class Player extends Character {
         if (this.effects.findByType(StatusAffects.TentagrappleCooldown) >= 0) this.effects.remove(StatusAffects.TentagrappleCooldown);
         if (this.effects.findByType(StatusAffects.ShowerDotEffect) >= 0) this.effects.remove(StatusAffects.ShowerDotEffect);
         if (this.effects.findByType(StatusAffects.GardenerSapSpeed) >= 0) {
-            spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
+            this.spe += this.effects.getValue1Of(StatusAffects.GardenerSapSpeed);
             mainView.statsView.showStatUp('spe');
             this.effects.remove(StatusAffects.GardenerSapSpeed);
         }
         if (this.effects.findByType(StatusAffects.VineHealUsed) >= 0) this.effects.remove(StatusAffects.VineHealUsed);
         if (this.effects.findByType(StatusAffects.DriderIncubusVenom) >= 0) {
-            str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
+            this.str += this.effects.getValue2Of(StatusAffects.DriderIncubusVenom);
             this.effects.remove(StatusAffects.DriderIncubusVenom);
         }
         if (this.effects.findByType(StatusAffects.TaintedMind) >= 0) this.effects.remove(StatusAffects.TaintedMind);
@@ -580,29 +580,29 @@ export class Player extends Character {
     }
 
     public modCumMultiplier(delta: number): number {
-        trace("modCumMultiplier called with: " + delta);
+        Logger.trace("modCumMultiplier called with: " + delta);
 
         if (delta == 0) {
-            trace("Whoops! modCumMuliplier called with 0... aborting...");
+            Logger.trace("Whoops! modCumMuliplier called with 0... aborting...");
             return delta;
         }
         else if (delta > 0) {
-            trace("and increasing");
+            Logger.trace("and increasing");
             if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0) {
-                trace("and MessyOrgasms found");
+                Logger.trace("and MessyOrgasms found");
                 delta *= 1.5;
             }
         }
         else if (delta < 0) {
-            trace("and decreasing");
+            Logger.trace("and decreasing");
             if (this.perks.findByType(PerkLib.MessyOrgasms) >= 0) {
-                trace("and MessyOrgasms found");
+                Logger.trace("and MessyOrgasms found");
                 delta *= 0.5;
             }
         }
 
-        trace("and modifying by " + delta);
-        cumMultiplier += delta;
+        Logger.trace("and modifying by " + delta);
+        this.cumMultiplier += delta;
         return delta;
     }
 
@@ -612,15 +612,15 @@ export class Player extends Character {
         if (this.perks.findByType(PerkLib.BigCock) >= 0)
             bigCock = true;
 
-        return cocks[cockNum].growCock(lengthDelta, bigCock);
+        return this.cocks[cockNum].growCock(lengthDelta, bigCock);
     }
 
     public increaseEachCock(lengthDelta: number): number {
         let totalGrowth: number = 0;
 
-        for (const i = 0; i < cocks.length; i++) {
-            trace("increaseEachCock at: " + i);
-            totalGrowth += increaseCock(i as Number, lengthDelta);
+        for (let i = 0; i < this.cocks.length; i++) {
+            Logger.trace("increaseEachCock at: " + i);
+            totalGrowth += this.increaseCock(i, lengthDelta);
         }
 
         return totalGrowth;
