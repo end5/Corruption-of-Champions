@@ -1,16 +1,16 @@
 import { trace } from "console";
-import { Character } from "../Character/Character";
-import { num2Text, rand } from "../Display/Utils";
-import { PerkLib } from "../Effects/PerkLib";
-import { StatusAffects } from "../Effects/StatusAffects";
-import { dynStats, outputText } from "../Game/engineCore";
-import { kFLAGS } from "../Game/Flags";
-import { flags } from "../Game/Game";
-import { hasCock } from "../Scenes/Places/TelAdre/Katherine";
+import { Character } from "../../Character/Character";
+import { num2Text, rand } from "../../Display/Utils";
+import { PerkLib } from "../../Effects/PerkLib";
+import { StatusAffects } from "../../Effects/StatusAffects";
+import { dynStats, outputText } from "../../Game/engineCore";
+import { kFLAGS } from "../../Game/Flags";
+import { flags } from "../../Game/Game";
+import { hasCock } from "../Places/TelAdre/Katherine";
 import { breastCup, cockDescript, multiCockDescriptLight, nippleDescription, sackDescript, vaginaDescript } from "./Appearance";
-import { VaginaLooseness } from "./appearanceDefs";
+import { VaginaLooseness } from "../../Body/Descriptors/Types";
 import { ballsDescriptLight, breastDescript } from "./CreatureDescriptors";
-import { buttChangeNoDisplay, cuntChangeNoDisplay } from "./Modifiers";
+import { buttChangeNoDisplay, cuntChangeNoDisplay } from "../../Body/Modifiers";
 
 export function cuntChange(char: Character, cArea: number, display: boolean, spacingsF: boolean = false, spacingsB: boolean = true): boolean {
     if (char.vaginas.length == 0) return false;
