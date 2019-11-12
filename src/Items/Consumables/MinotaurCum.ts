@@ -1,7 +1,7 @@
 export function minotaurCum(player: Player): void {
     player.slimeFeed();
     // Minotaur cum addiction
-    player.minoCumAddiction(7);
+    minoCumAddiction(7);
     outputText("", true);
     outputText("As soon as you crack the seal on the bottled white fluid, a ", false);
     if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 0)

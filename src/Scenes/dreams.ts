@@ -39,7 +39,7 @@ export function dreamSelect(): boolean {
         temp--;
     }
     // Two chances if addicted, three if with perk!
-    if (player.minotaurAddicted()) {
+    if (minotaurAddicted()) {
         choices[choices.length] = 6;
         choices[choices.length] = 6;
         if (player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0) choices[choices.length] = 6;

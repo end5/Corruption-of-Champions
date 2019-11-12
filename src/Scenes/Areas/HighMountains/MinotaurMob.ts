@@ -72,7 +72,7 @@ export class MinotaurMob extends Monster {
             else if (player.vaginas.wetness() <= 3) outputText("drool", false);
             else outputText("juice itself", false);
             outputText(" in need.", false);
-            if (player.minotaurNeed()) {
+            if (minotaurNeed()) {
                 outputText("  You need a fix so bad!", false);
                 dynStats("lus", 5);
             }

@@ -162,7 +162,7 @@ export function exploreMountain(): void {
         }
         // Mino gangbang
         if (player.effects.findByType(StatusAffects.MinoPlusCowgirl) < 0 || rand(10) == 0) {
-            if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HornType.COW_MINOTAUR && player.earType == EarType.COW && player.tailType == TailType.COW && player.lactationQ() >= 200 && player.breastRows.biggestTitSize() >= 3 && player.minotaurAddicted()) {
+            if (flags[kFLAGS.HAS_SEEN_MINO_AND_COWGIRL] == 1 && player.horns > 0 && player.hornType == HornType.COW_MINOTAUR && player.earType == EarType.COW && player.tailType == TailType.COW && player.lactationQ() >= 200 && player.breastRows.biggestTitSize() >= 3 && minotaurAddicted()) {
                 // PC must be a cowmorph (horns, legs, ears, tail, lactating, breasts at least C-cup)
                 // Must be addicted to minocum
                 outputText("As you pass a shadowy cleft in the mountainside, you hear the now-familiar call of a cowgirl echoing from within.  Knowing what's in store, you carefully inch closer and peek around the corner.");
@@ -374,7 +374,7 @@ function joinBeingAMinoCumSlut(): void {
         dynStats("lus=", 100);
     }
     // Chance to impregnate PC, get mino-fix, and maybe relief from feeder perk.
-    player.minoCumAddiction(10);
+    minoCumAddiction(10);
     player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR);
     if (player.effects.findByType(StatusAffects.Feeder) >= 0) {
         // You've now been milked, reset the timer for that

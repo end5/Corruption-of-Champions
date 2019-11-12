@@ -120,7 +120,7 @@ export class LustyMaidensArmor extends Armor {
         dynStats("sen", 2);
         if (player.vaginas.hasVirginVagina()) dynStats("cor", -1);
         // If minotaur, increase addiction slightly.
-        if (monster instanceof Minotaur || monster instanceof MinotaurMob) player.minoCumAddiction(3);
+        if (monster instanceof Minotaur || monster instanceof MinotaurMob) minoCumAddiction(3);
         if (monster.short == "Ceraph") game.flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00291]++;
         // Usable on: Imps, Minotaurs, Satyrs, Incubus Mechanic, Anemones, Spider Guys, Akbal, Drider, Fetish Zealot, Sand Trap, Very Corrupt Jojo (Maybe slight decorruption to him), Ceraph, Red Kitsune if cock out.
         if (game.inCombat)

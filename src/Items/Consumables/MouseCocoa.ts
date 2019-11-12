@@ -100,7 +100,7 @@ export function mouseCocoa(player: Player): void {
                 else {
                     outputText("Desperately horny, you pull out your bottle of minotaur jism and break the seal in two shakes, then lie down with your hips elevated and upend it over your greedy vagina.  The gooey seed pours into you, and you orgasm fitfully, shaking and failing to hold the bottle in place as it coats your labia.  <b>As a hazy doze infiltrates your mind, you pray the pregnancy takes and dream of the sons you'll bear with your increasingly fertile body... you're going to go insane if you don't get a baby in you</b>.");
                     // (consumes item, increment addiction/output addict message, small chance of mino preg, reduce lust)]", false);
-                    player.minoCumAddiction(5);
+                    minoCumAddiction(5);
                     player.knockUp(PregnancyStore.PREGNANCY_MINOTAUR, PregnancyStore.INCUBATION_MINOTAUR, 175);
                     player.inv.consumeItem(ConsumableLib.MINOCUM);
                 }

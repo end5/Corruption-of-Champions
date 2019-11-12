@@ -1,12 +1,4 @@
 
-/*
-   private function minotaurAddicted():Boolean {
-   return player.minotaurAddicted();
-}
-private function minotaurNeed():Boolean {
-   return player.minotaurNeed();
-}
-*/
 export function minoVictoryRapeChoices(): void {
     spriteSelect(44);
     // Determine if PC can rape with a dick!
@@ -718,8 +710,42 @@ function takeMinoCumDirectly(): void {
     cleanupAfterCombat();
 }
 
-function minoCumAddiction(raw: number = 10): void {
-    player.minoCumAddiction(raw);
+export function minoCumAddiction(raw: number = 10): void {
+    // Increment minotaur cum intake count
+    flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00340]++;
+    // Fix if variables go out of range.
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] < 0) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 0;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] < 0) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] = 0;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 120) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 120;
+
+    // Turn off withdrawal
+    // if(flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] = 1;
+    // Reset counter
+    flags[kFLAGS.TIME_SINCE_LAST_CONSUMED_MINOTAUR_CUM] = 0;
+    // If highly addicted, rises slower
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 60) raw /= 2;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 80) raw /= 2;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] >= 90) raw /= 2;
+    // If in withdrawl, readdiction is potent!
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 3) raw += 10;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] == 2) raw += 5;
+    raw = Math.round(raw * 100) / 100;
+    // PUT SOME CAPS ON DAT' SHIT
+    if (raw > 50) raw = 50;
+    if (raw < -50) raw = -50;
+    flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] += raw;
+    // Recheck to make sure shit didn't break
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] > 120) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 120;
+    if (flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] < 0) flags[kFLAGS.MINOTAUR_CUM_ADDICTION_TRACKER] = 0;
+
+}
+
+export function minotaurAddicted(): boolean {
+    return player.perks.findByType(PerkLib.MinotaurCumAddict) >= 0 || flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] >= 1;
+}
+
+export function minotaurNeed(): boolean {
+    return flags[kFLAGS.MINOTAUR_CUM_ADDICTION_STATE] > 1;
 }
 
 export function minoCumUpdate(): boolean {

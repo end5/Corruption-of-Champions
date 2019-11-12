@@ -304,7 +304,7 @@ function gloryholeMinotaur(): void {
     outputText("your [chest] as cum rains down upon you. By the time his orgasm stops and his dick goes limp, your face and [chest] are covered in a thick layer of spooge.\n\n", false);
     outputText("Your head spins from the minotaur's musk, and you idly mop up and swallow the cum on your " + face(player) + ". A goblin aide comes in with a bowl, and gently scrapes the cum off your tits with a smooth, flat rock. Once you're cleaned up and you're dressed, the aide leads you back to Lynnette.\n\n", false);
     dynStats("lus", 33, "cor", 1);
-    player.minoCumAddiction(10);
+    minoCumAddiction(10);
     doNext(hairDressingMainMenu);
 }
 
@@ -405,7 +405,7 @@ function dyeMenu(): void {
 
 function minotaurCumBukkakeInSalon(): void {
     outputText("", true);
-    player.minoCumAddiction(10);
+    minoCumAddiction(10);
     player.slimeFeed();
     outputText("As the salon door swings closed behind you, a familiar, heavenly scent catches your nose and wicks into your brain, flooding you with need and molten-hot lust.  Lynnette saunters over with her lips slightly pursed and her body jiggling, but you brush her aside.  She's completely forgotten as you close in on the source of your olfactory bliss.  Your sigh dreamily while your pupils slowly dilate from the familiar chemicals pounding through your bloodstream", false);
     if (player.vaginas.length > 0) outputText(" and puffing up your twat with liquid arousal.\n\n", false);

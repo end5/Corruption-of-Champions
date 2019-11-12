@@ -322,7 +322,7 @@ export function nomnomnom(name: string, price: number): void {
         else outputText("other patrons squirm and fill out their pants", false);
         outputText(", none of them tries to make a move.  Pity.", false);
         dynStats("lus", (20 + player.lib / 10));
-        player.minoCumAddiction(10);
+        minoCumAddiction(10);
     }
     else {
         outputText("You hand over " + num2Text(flags[kFLAGS.TEMP_STORAGE_PASTRY_PRICE]) + " gems and get your " + flags[kFLAGS.TEMP_STORAGE_PASTRY_NAME] + ".  A moment later you're at a table, licking the sugary residue from your fingertips and wondering just how they make the food so damned good.", false);
