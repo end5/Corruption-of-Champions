@@ -50,8 +50,8 @@ export class SandWitch extends Monster {
         }
         this.long = "A sand witch appears to be totally human, an oddity in this strange land.  She has dirty blonde hair and a very tanned complexion, choosing to cover most of her body with robes of the same color as the desert sands, making her impossible to spot from afar.";
         this.vaginas.createVagina(false, VaginaWetness.WET, VaginaLooseness.LOOSE);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(12) + 55;

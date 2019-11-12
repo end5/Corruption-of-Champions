@@ -177,7 +177,7 @@ export class Monster extends Creature {
         /// *REQUIRED*/ this.breastRows.createBreastRow(size,nipplesPerBreast); // default 0,1
         //// Repeat for multiple breast rows
         //// You can call just `this.breastRows.createBreastRow();` for flat breasts
-        //// Note useful method: this.breastRows.createBreastRow(Appearance.breastCupInverse("C")); // "C" -> 3
+        //// Note useful method: this.breastRows.createBreastRow(breastCupInverse("C")); // "C" -> 3
 
         //// 4. Ass
         /// *OPTIONAL*/ //this.ass.analLooseness = AnalLooseness.; // default TIGHT
@@ -193,7 +193,7 @@ export class Monster extends Creature {
         //// 6. Skin
         /// *OPTIONAL*/ //this.skinTone = "skinTone"; // default "albino"
         /// *OPTIONAL*/ //this.skinType = SKIN_TYPE_; // default PLAIN
-        /// *OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else Appearance.DEFAULT_SKIN_DESCS[skinType]
+        /// *OPTIONAL*/ //this.skinDesc = "skinDesc"; // default "skin" if this.skinType is not set, else DEFAULT_SKIN_DESCS[skinType]
         /// *OPTIONAL*/ //this.skinAdj = "skinAdj"; // default ""
 
         //// 7. Hair
@@ -291,7 +291,7 @@ export class Monster extends Creature {
 
         //// 18. Wings
         /// *OPTIONAL*/ //this.wingType = WingType.; // default NONE
-        /// *OPTIONAL*/ //this.wingDesc = ; // default Appearance.DEFAULT_WING_DESCS[wingType]
+        /// *OPTIONAL*/ //this.wingDesc = ; // default DEFAULT_WING_DESCS[wingType]
 
         //// 19. Antennae
         /// *OPTIONAL*/ //this.antennae = AntennaeType.; // default NONE
@@ -422,7 +422,7 @@ export class Monster extends Creature {
     }
 
     public set skinType(value: number): void {
-        if (!_checkCalled) { this.skinDesc = Appearance.DEFAULT_SKIN_DESCS[value]; }
+        if (!_checkCalled) { this.skinDesc = DEFAULT_SKIN_DESCS[value]; }
         super.skinType = value;
     }
 
@@ -442,7 +442,7 @@ export class Monster extends Creature {
     }
 
     public set wingType(value: number): void {
-        if (!_checkCalled) this.wingDesc = Appearance.DEFAULT_WING_DESCS[value];
+        if (!_checkCalled) this.wingDesc = DEFAULT_WING_DESCS[value];
         super.wingType = value;
     }
 
@@ -833,55 +833,55 @@ export class Monster extends Creature {
         const Heis: string = Pronoun1 + " " + be + " ";
         const Hehas: string = Pronoun1 + " " + have + " ";
         result = "You are inspecting " + a + short + " (imageName='" + imageName + "', class='" + getQualifiedClassName(this) + "'). You are fighting " + pronoun2 + ".\n\n";
-        result += Heis + (Appearance.DEFAULT_GENDER_NAMES[gender] || ("gender#" + gender)) +
-            " with " + Appearance.numberOfThings(this.cocks.length, "cock") +
-            ", " + Appearance.numberOfThings(vaginas.length, "vagina") +
-            " and " + Appearance.numberOfThings(breastRows.length, "breast row") + ".\n\n";
+        result += Heis + (DEFAULT_GENDER_NAMES[gender] || ("gender#" + gender)) +
+            " with " + numberOfThings(this.cocks.length, "cock") +
+            ", " + numberOfThings(vaginas.length, "vagina") +
+            " and " + numberOfThings(breastRows.length, "breast row") + ".\n\n";
         // APPEARANCE
-        result += Heis + Appearance.inchesAndFeetsAndInches(tallness) + " tall with " +
-            Appearance.describeByScale(hipRating, Appearance.DEFAULT_HIP_RATING_SCALES, "thinner than", "wider than") + " hips and " +
-            Appearance.describeByScale(buttRating, Appearance.DEFAULT_BUTT_RATING_SCALES, "thinner than", "wider than") + " butt.\n";
-        result += Pronoun3 + " lower body is " + (Appearance.DEFAULT_LOWER_BODY_NAMES[lowerBody] || ("lowerBody#" + lowerBody));
-        result += ", " + pronoun3 + " arms are " + (Appearance.DEFAULT_ARM_NAMES[armType] || ("armType#" + armType));
-        result += ", " + pronoun1 + " " + have + " " + skinTone + " " + skinAdj + " " + skinDesc + " (type " + (Appearance.DEFAULT_SKIN_NAMES[skinType] || ("skinType#" + skinType)) + ").\n";
+        result += Heis + inchesAndFeetsAndInches(tallness) + " tall with " +
+            describeByScale(hipRating, DEFAULT_HIP_RATING_SCALES, "thinner than", "wider than") + " hips and " +
+            describeByScale(buttRating, DEFAULT_BUTT_RATING_SCALES, "thinner than", "wider than") + " butt.\n";
+        result += Pronoun3 + " lower body is " + (DEFAULT_LOWER_BODY_NAMES[lowerBody] || ("lowerBody#" + lowerBody));
+        result += ", " + pronoun3 + " arms are " + (DEFAULT_ARM_NAMES[armType] || ("armType#" + armType));
+        result += ", " + pronoun1 + " " + have + " " + skinTone + " " + skinAdj + " " + skinDesc + " (type " + (DEFAULT_SKIN_NAMES[skinType] || ("skinType#" + skinType)) + ").\n";
         result += Hehas;
         if (hairLength > 0) {
-            result += hairColor + " " + Appearance.inchesAndFeetsAndInches(hairLength) + " long " + (Appearance.DEFAULT_HAIR_NAMES[hairType] || ("hairType#" + hairType)) + " hair.\n";
+            result += hairColor + " " + inchesAndFeetsAndInches(hairLength) + " long " + (DEFAULT_HAIR_NAMES[hairType] || ("hairType#" + hairType)) + " hair.\n";
         } else {
             result += "no hair.\n";
         }
         result += Hehas
-            + (Appearance.DEFAULT_FaceType.NAMES[faceType] || ("faceType#" + faceType)) + " face, "
-            + (Appearance.DEFAULT_EarType.NAMES[earType] || ("earType#" + earType)) + " ears, "
-            + (Appearance.DEFAULT_TONGUE_NAMES[tongueType] || ("tongueType#" + tongueType)) + " tongue and "
-            + (Appearance.DEFAULT_EYES_NAMES[eyeType] || ("eyeType#" + eyeType)) + " eyes.\n";
+            + (DEFAULT_FaceType.NAMES[faceType] || ("faceType#" + faceType)) + " face, "
+            + (DEFAULT_EarType.NAMES[earType] || ("earType#" + earType)) + " ears, "
+            + (DEFAULT_TONGUE_NAMES[tongueType] || ("tongueType#" + tongueType)) + " tongue and "
+            + (DEFAULT_EYES_NAMES[eyeType] || ("eyeType#" + eyeType)) + " eyes.\n";
         result += Hehas;
         if (tailType == TailType.NONE) result += "no tail, ";
-        else result += (Appearance.DEFAULT_TAIL_NAMES[tailType] || ("tailType#" + tailType)) + " tail with venom=" + tailVenom + " and recharge=" + tailRecharge + ", ";
+        else result += (DEFAULT_TAIL_NAMES[tailType] || ("tailType#" + tailType)) + " tail with venom=" + tailVenom + " and recharge=" + tailRecharge + ", ";
         if (hornType == HornType.NONE) result += "no horns, ";
-        else result += horns + " " + (Appearance.DEFAULT_HornType.NAMES[hornType] || ("hornType#" + hornType)) + " horns, ";
+        else result += horns + " " + (DEFAULT_HornType.NAMES[hornType] || ("hornType#" + hornType)) + " horns, ";
         if (wingType == WingType.NONE) result += "no wings, ";
-        else result += wingDesc + " wings (type " + (Appearance.DEFAULT_WING_NAMES[wingType] || ("wingType#" + wingType)) + "), ";
+        else result += wingDesc + " wings (type " + (DEFAULT_WING_NAMES[wingType] || ("wingType#" + wingType)) + "), ";
         if (antennae == AntennaeType.NONE) result += "no antennae.\n\n";
-        else result += (Appearance.DEFAULT_AntennaeType.NAMES[antennae] || ("antennaeType#" + antennae)) + " antennae.\n\n";
+        else result += (DEFAULT_AntennaeType.NAMES[antennae] || ("antennaeType#" + antennae)) + " antennae.\n\n";
 
         // GENITALS AND BREASTS
         for (const i = 0; i < this.cocks.length; i++) {
             const cock = this.cocks[i];
             result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " " + cock.cockType.toString().toLowerCase() + " cock is ";
-            result += Appearance.inchesAndFeetsAndInches(cock.cockLength) + " long and " + cock.cockThickness + "\" thick";
+            result += inchesAndFeetsAndInches(cock.cockLength) + " long and " + cock.cockThickness + "\" thick";
             if (cock.isPierced) result += ", pierced with " + cock.pLongDesc;
             if (cock.knotMultiplier != 1) result += ", with knot of size " + cock.knotMultiplier;
             result += ".\n";
         }
-        if (balls > 0 || ballSize > 0) result += Hehas + Appearance.numberOfThings(balls, "ball") + " of size " + ballSize + ".\n";
+        if (balls > 0 || ballSize > 0) result += Hehas + numberOfThings(balls, "ball") + " of size " + ballSize + ".\n";
         if (cumMultiplier != 1 || this.cocks.length > 0) result += Pronoun1 + " " + have + " cum multiplier " + cumMultiplier + ". ";
         if (hoursSinceCum > 0 || this.cocks.length > 0) result += "It were " + hoursSinceCum + " hours since " + pronoun1 + " came.\n\n";
         for (i = 0; i < vaginas.length; i++) {
             const vagina: VaginaClass = (vaginas[i] as VaginaClass);
-            result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " " + (Appearance.DEFAULT_VAGINA_TYPE_NAMES[vagina.type] || ("vaginaType#" + vagina.type)) + (vagina.virgin ? " " : " non-") + "virgin vagina is ";
-            result += Appearance.describeByScale(vagina.vaginalLooseness, Appearance.DEFAULT_VAGINA_LOOSENESS_SCALES, "tighter than", "looser than");
-            result += ", " + Appearance.describeByScale(vagina.vaginalWetness, Appearance.DEFAULT_VAGINA_WETNESS_SCALES, "drier than", "wetter than");
+            result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " " + (DEFAULT_VAGINA_TYPE_NAMES[vagina.type] || ("vaginaType#" + vagina.type)) + (vagina.virgin ? " " : " non-") + "virgin vagina is ";
+            result += describeByScale(vagina.vaginalLooseness, DEFAULT_VAGINA_LOOSENESS_SCALES, "tighter than", "looser than");
+            result += ", " + describeByScale(vagina.vaginalWetness, DEFAULT_VAGINA_WETNESS_SCALES, "drier than", "wetter than");
             if (vagina.labiaPierced) result += ". Labia are pierced with " + vagina.labiaPLong;
             if (vagina.clitPierced) result += ". Clit is pierced with " + vagina.clitPLong;
             if (this.effects.getValue1Of(StatusAffects.BonusVCapacity) > 0) {
@@ -895,11 +895,11 @@ export class Monster extends Creature {
             for (i = 0; i < breastRows.length; i++) {
                 const row: BreastRowClass = (breastRows[i] as BreastRowClass);
                 result += Pronoun3 + (i > 0 ? (" #" + (i + 1)) : "") + " breast row has " + row.breasts;
-                result += " " + row.breastRating.toFixed(2) + "-size (" + Appearance.breastCup(row.breastRating) + ") breasts with ";
-                result += Appearance.numberOfThings(row.nipplesPerBreast, nipple + (row.fuckable ? "fuckable nipple" : "unfuckable nipple")) + " on each.\n";
+                result += " " + row.breastRating.toFixed(2) + "-size (" + breastCup(row.breastRating) + ") breasts with ";
+                result += numberOfThings(row.nipplesPerBreast, nipple + (row.fuckable ? "fuckable nipple" : "unfuckable nipple")) + " on each.\n";
             }
         }
-        result += Pronoun3 + " ass is " + Appearance.describeByScale(ass.analLooseness, Appearance.DEFAULT_ANAL_LOOSENESS_SCALES, "tighter than", "looser than") + ", " + Appearance.describeByScale(ass.analWetness, Appearance.DEFAULT_ANAL_WETNESS_SCALES, "drier than", "wetter than");
+        result += Pronoun3 + " ass is " + describeByScale(ass.analLooseness, DEFAULT_ANAL_LOOSENESS_SCALES, "tighter than", "looser than") + ", " + describeByScale(ass.analWetness, DEFAULT_ANAL_WETNESS_SCALES, "drier than", "wetter than");
         if (this.effects.getValue1Of(StatusAffects.BonusACapacity) > 0) {
             result += "; anal capacity is increased by " + this.effects.getValue1Of(StatusAffects.BonusACapacity);
         }

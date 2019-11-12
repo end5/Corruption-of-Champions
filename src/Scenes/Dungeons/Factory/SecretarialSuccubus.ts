@@ -37,7 +37,7 @@ export class SecretarialSuccubus extends AbstractSuccubus {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 30, 0, 0, 0);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 60;

@@ -151,7 +151,7 @@ export class GooGirl extends Monster {
         const tone: string = randomChoice("blue", "purple", "crystal");
         this.skinTone = tone;
         this.skinType = SkinType.GOO;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.GOO];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.GOO];
         this.skinAdj = "goopey";
         this.hairColor = tone;
         this.hairLength = 12 + rand(10);

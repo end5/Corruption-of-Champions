@@ -25,7 +25,7 @@ export class GoblinBroodmother extends Goblin {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("E"));
+        this.breastRows.createBreastRow(breastCupInverse("E"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 30, 0, 0, 0);

@@ -88,7 +88,7 @@ export class Basilisk extends Monster {
         this.lowerBody = LowerBodyType.LIZARD;
         this.skinTone = "gray";
         this.skinType = SkinType.SCALES;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.SCALES];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.SCALES];
         this.hairColor = "none";
         this.hairLength = 0;
         initStrTouSpeInte(85, 70, 35, 70);

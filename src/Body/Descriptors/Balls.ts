@@ -186,17 +186,17 @@ export function sackDescript(i_creature: Character): string {
 }
 
 export function ballsDescriptLight(creature: Character, forcedSize: boolean = true): string {
-    return Appearance.ballsDescription(forcedSize, true, creature);
+    return ballsDescription(forcedSize, true, creature);
 }
 
 export function ballDescript(creature: Character): string {
-    return Appearance.ballsDescription(false, false, creature);
+    return ballsDescription(false, false, creature);
 }
 
 export function ballsDescript(creature: Character): string {
-    return Appearance.ballsDescription(false, true, creature, true);
+    return ballsDescription(false, true, creature, true);
 }
 
 export function simpleBallsDescript(creature: Character): string {
-    return Appearance.ballsDescription(false, true, creature);
+    return ballsDescription(false, true, creature);
 }

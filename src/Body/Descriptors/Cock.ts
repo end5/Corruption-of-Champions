@@ -756,7 +756,7 @@ export function cockAdjectiveOfChar(creature: Character, index: number = -1): st
     const isPierced: boolean = (creature.cocks.length == 1) && (creature.cocks[index].isPierced); // Only describe as pierced or sock covered if the creature has just one cock
     const hasSock: boolean = (creature.cocks.length == 1) && (creature.cocks[index].sock != "");
     const isGooey: boolean = (creature.skinType == SkinType.GOO);
-    return Appearance.cockAdjective(creature.cocks[index].cockType, creature.cocks[index].cockLength, creature.cocks[index].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
+    return cockAdjective(creature.cocks[index].cockType, creature.cocks[index].cockLength, creature.cocks[index].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 }
 
 // Simplified these cock descriptors and brought them into the creature class
@@ -782,7 +782,7 @@ function cockMultiLDescriptionShort(creature: Character): string {
         return "<b>ERROR: NO WANGS DETECTED for cockMultiLightDesc()</b>";
     }
     if (creature.cocks.length == 1) { // For a songle cock return the default description
-        return Appearance.cockDescript(creature, 0);
+        return cockDescript(creature, 0);
     }
     switch (creature.cocks[0].cockType) { // With multiple cocks only use the descriptions for specific cock types if all cocks are of a single type
         case CockTypesEnum.ANEMONE:
@@ -794,14 +794,14 @@ function cockMultiLDescriptionShort(creature: Character): string {
         case CockTypesEnum.KANGAROO:
         case CockTypesEnum.LIZARD:
         case CockTypesEnum.TENTACLE:
-            if (creature.cocks.countCocksOfType(creature.cocks[0].cockType) == creature.cocks.length) return Appearance.cockNoun(creature.cocks[0].cockType) + "s";
+            if (creature.cocks.countCocksOfType(creature.cocks[0].cockType) == creature.cocks.length) return cockNoun(creature.cocks[0].cockType) + "s";
             break;
         case CockTypesEnum.DOG:
         case CockTypesEnum.FOX:
-            if (creature.cocks.dogCocks() == creature.cocks.length) return Appearance.cockNoun(CockTypesEnum.DOG) + "s";
+            if (creature.cocks.dogCocks() == creature.cocks.length) return cockNoun(CockTypesEnum.DOG) + "s";
         default:
     }
-    return Appearance.cockNoun(CockTypesEnum.HUMAN) + "s";
+    return cockNoun(CockTypesEnum.HUMAN) + "s";
 }
 
 export function sheathDescription(creature: Character): string {
@@ -888,7 +888,7 @@ export function cockDescriptShort(creature: Character, i_cockIndex: number = 0):
         descripted = true;
     }
     // Seems to work better without this comma:			if (descripted && cocks[i_cockIndex].cockType != CockTypesEnum.HUMAN) description += ", ";
-    description += Appearance.cockNoun(creature.cocks[i_cockIndex].cockType);
+    description += cockNoun(creature.cocks[i_cockIndex].cockType);
 
     return description;
 }

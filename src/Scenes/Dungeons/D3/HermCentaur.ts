@@ -14,7 +14,7 @@ export class HermCentaur extends Monster {
 
         // THIS SHIT IS RETARDED.
         // Rather than doing something smart, like usiing the mf() function to set the gender prounouns in checkMonster, instead, each create<x> function sets them to something. So if you createVag then createCock, you get male pronouns. Fuck off.
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("E"));
+        this.breastRows.createBreastRow(breastCupInverse("E"));
         this.cocks.createCock(36, 5, CockTypesEnum.HORSE);
         this.vaginas.createVagina(false, 4, 5);
 

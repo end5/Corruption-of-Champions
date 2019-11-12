@@ -20,7 +20,7 @@ export class HarpyQueen extends Monster {
         this.long = "You face the Harpy Queen, a broodmother of epic proportions - literally.  Her hips are amazingly wide, thrice her own width at the least, and the rest of her body is lushly voluptuous, with plush, soft thighs and a tremendous butt.  Her wide wings beat occasionally, sending ripples through her jiggly body.  She wields a towering whitewood staff in one hand, using the other to cast eldritch spells.";
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.LOOSE);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("D"));
+        this.breastRows.createBreastRow(breastCupInverse("D"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 70;

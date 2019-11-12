@@ -148,13 +148,13 @@ export function foxTF(enhanced: boolean, player: Player): void {
         if (choices.length != 0) {
             const select: number = choices[rand(choices.length)];
             if (player.cocks[select].cockType == CockTypesEnum.HUMAN) {
-                outputText("\n\nYour " + cockDescript(player, select) + " clenches painfully, becoming achingly, throbbingly erect.  A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath.  You shudder as the crown of your " + cockDescript(player, select) + " reshapes into a point, the sensations nearly too much for you.  You throw back your head as the transformation completes, your " + Appearance.cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before.  <b>You now have a dog-cock.</b>", false);
+                outputText("\n\nYour " + cockDescript(player, select) + " clenches painfully, becoming achingly, throbbingly erect.  A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath.  You shudder as the crown of your " + cockDescript(player, select) + " reshapes into a point, the sensations nearly too much for you.  You throw back your head as the transformation completes, your " + cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before.  <b>You now have a dog-cock.</b>", false);
                 player.cocks[select].cockThickness += .3;
                 dynStats("sen", 10, "lus", 5);
             }
             // Horse
             else if (player.cocks[select].cockType == CockTypesEnum.HORSE) {
-                outputText("\n\nYour " + Appearance.cockNoun(CockTypesEnum.HORSE) + " shrinks, the extra equine length seeming to shift into girth.  The flared tip vanishes into a more pointed form, a thick knotted bulge forming just above your sheath.  <b>You now have a dog-cock.</b>", false);
+                outputText("\n\nYour " + cockNoun(CockTypesEnum.HORSE) + " shrinks, the extra equine length seeming to shift into girth.  The flared tip vanishes into a more pointed form, a thick knotted bulge forming just above your sheath.  <b>You now have a dog-cock.</b>", false);
                 // Tweak length/thickness.
                 if (player.cocks[select].cockLength > 6)
                     player.cocks[select].cockLength -= 2;

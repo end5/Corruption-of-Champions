@@ -168,7 +168,7 @@ export class Akbal extends Monster {
         this.buttRating = ButtRating.TIGHT;
         this.skinTone = "spotted";
         this.skinType = SkinType.FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "black";
         this.hairLength = 5;
         initStrTouSpeInte(55, 53, 50, 75);

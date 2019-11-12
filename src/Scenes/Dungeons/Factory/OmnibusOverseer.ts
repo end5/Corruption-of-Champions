@@ -67,7 +67,7 @@ export class OmnibusOverseer extends Monster {
         this.cumMultiplier = 3;
         // this.hoursSinceCum = 0;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.NORMAL);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.SLIME_DROOLING;
         this.tallness = rand(9) + 70;

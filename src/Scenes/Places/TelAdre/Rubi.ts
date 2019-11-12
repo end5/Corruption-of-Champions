@@ -107,7 +107,7 @@ export function rubiCock(lust: number = 50): string {
     else if (flags[kFLAGS.RUBI_BLU_BALLS] <= 6) {
         cumQ = 150;
     }
-    return Appearance.cockDescription(rubiGetCockType(), flags[kFLAGS.RUBI_COCK_SIZE], flags[kFLAGS.RUBI_COCK_SIZE] / 6, lust, cumQ);
+    return cockDescription(rubiGetCockType(), flags[kFLAGS.RUBI_COCK_SIZE], flags[kFLAGS.RUBI_COCK_SIZE] / 6, lust, cumQ);
 }
 
 export function rubiGetCockType(): CockTypesEnum {
@@ -119,7 +119,7 @@ export function rubiBreasts(): string {
     if (flags[kFLAGS.RUBI_BREAST_SIZE] < 1)
         ret = "chest";
     else {
-        ret += Appearance.breastCup(flags[kFLAGS.RUBI_BREAST_SIZE]);
+        ret += breastCup(flags[kFLAGS.RUBI_BREAST_SIZE]);
         ret += " ";
         ret += BreastStore.breastDescript(flags[kFLAGS.RUBI_BREAST_SIZE]);
     }

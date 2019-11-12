@@ -61,9 +61,9 @@ function succubusBadEndPartTwo(): void {
             outputText("Swooning from sudden blood loss, you struggle to maintain the kiss as your body takes your " + cockDescript(game.player, 0) + " to full hardness in seconds.  ");
         }
         else if (player.cocks.cockArea(0) < 100) { // Cock – single big
-            outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ".  ");
+            outputText("Nearly blacking out, you struggle to stay awake as your body shifts your blood to your disproportionate " + cockNoun(CockTypesEnum.HUMAN) + ".  ");
         }
-        else outputText("As you struggle not to lose consciousness, you realize your over-aroused body had pumped most of your blood to your over-sized " + Appearance.cockNoun(CockTypesEnum.HUMAN) + ", which now droops to the floor, pulsing hotly.  "); // Cock -megahuge
+        else outputText("As you struggle not to lose consciousness, you realize your over-aroused body had pumped most of your blood to your over-sized " + cockNoun(CockTypesEnum.HUMAN) + ", which now droops to the floor, pulsing hotly.  "); // Cock -megahuge
     }
     // DO MULTIZ
     if (player.cocks.length > 1) outputText("The feeling of light-headedness nearly robs you of consciousness as your " + multiCockDescript(player) + " fill with blood, pulsating with arousal as they reach full size.  ");

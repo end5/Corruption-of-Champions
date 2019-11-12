@@ -31,12 +31,12 @@ export function cuntChange(char: Character, cArea: number, display: boolean, spa
         }
         // Non virgins as usual
         else if (spacingsF) outputText("  ");
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.LEVEL_CLOWN_CAR) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " is stretched painfully wide, large enough to accomodate most beasts and demons.</b>");
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING_WIDE) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " is stretched so wide that it gapes continually.</b>");
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " painfully stretches, the lips now wide enough to gape slightly.</b>");
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.LOOSE) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " is now very loose.</b>", false);
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.NORMAL) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " is now a little loose.</b>", false);
-        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.TIGHT) outputText("<b>Your " + Appearance.vaginaDescript(char, 0) + " is stretched out to a more normal size.</b>");
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.LEVEL_CLOWN_CAR) outputText("<b>Your " + vaginaDescript(char, 0) + " is stretched painfully wide, large enough to accomodate most beasts and demons.</b>");
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING_WIDE) outputText("<b>Your " + vaginaDescript(char, 0) + " is stretched so wide that it gapes continually.</b>");
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.GAPING) outputText("<b>Your " + vaginaDescript(char, 0) + " painfully stretches, the lips now wide enough to gape slightly.</b>");
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.LOOSE) outputText("<b>Your " + vaginaDescript(char, 0) + " is now very loose.</b>", false);
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.NORMAL) outputText("<b>Your " + vaginaDescript(char, 0) + " is now a little loose.</b>", false);
+        if (char.vaginas[0].vaginalLooseness == VaginaLooseness.TIGHT) outputText("<b>Your " + vaginaDescript(char, 0) + " is stretched out to a more normal size.</b>");
         if (spacingsB) outputText("  ");
     }
     return stretched;
@@ -54,10 +54,10 @@ export function buttChange(char: Character, cArea: number, display: boolean, spa
 }
 
 export function buttChangeDisplay(char: Character): void {	// Allows the test for stretching and the text output to be separated
-    if (char.ass.analLooseness == 5) outputText("<b>Your " + Appearance.assholeDescript(char) + " is stretched even wider, capable of taking even the largest of demons and beasts.</b>");
-    if (char.ass.analLooseness == 4) outputText("<b>Your " + Appearance.assholeDescript(char) + " becomes so stretched that it gapes continually.</b>", false);
-    if (char.ass.analLooseness == 3) outputText("<b>Your " + Appearance.assholeDescript(char) + " is now very loose.</b>");
-    if (char.ass.analLooseness == 2) outputText("<b>Your " + Appearance.assholeDescript(char) + " is now a little loose.</b>");
+    if (char.ass.analLooseness == 5) outputText("<b>Your " + assholeDescript(char) + " is stretched even wider, capable of taking even the largest of demons and beasts.</b>");
+    if (char.ass.analLooseness == 4) outputText("<b>Your " + assholeDescript(char) + " becomes so stretched that it gapes continually.</b>", false);
+    if (char.ass.analLooseness == 3) outputText("<b>Your " + assholeDescript(char) + " is now very loose.</b>");
+    if (char.ass.analLooseness == 2) outputText("<b>Your " + assholeDescript(char) + " is now a little loose.</b>");
     if (char.ass.analLooseness == 1) outputText("<b>You have lost your anal virginity.</b>", false);
 }
 

@@ -106,7 +106,7 @@ export class InfestedHellhound extends HellHound {
         this.buttRating = ButtRating.AVERAGE + 1;
         this.skinTone = "black";
         this.skinType = SkinType.FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "red";
         this.hairLength = 3;
         initStrTouSpeInte(65, 60, 50, 1);

@@ -147,7 +147,7 @@ export class HellHound extends Monster {
         this.lowerBody = LowerBodyType.DOG;
         this.skinTone = "black";
         this.skinType = SkinType.FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "red";
         this.hairLength = 3;
         initStrTouSpeInte(55, 60, 40, 1);

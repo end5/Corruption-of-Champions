@@ -177,7 +177,7 @@ export function catTransformation(player: Player): void {
         changes < changeLimit && rand(4) == 0) {
         // loop through and find a non-cat wang.
         for (const i = 0; i < (player.cocks.length) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) { }
-        outputText("\n\nYour " + cockDescript(game.player, i) + " swells up with near-painful arousal and begins to transform.  It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra.  Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum.  ", false);
+        outputText("\n\nYour " + cockDescript(game.player, i) + " swells up with near-painful arousal and begins to transform.  It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra.  Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum.  ", false);
         if (!player.cocks.hasSheath()) {
             outputText("Then, it begins to shrink and sucks itself inside your body.  Within a few moments, a fleshy sheath is formed.", false);
             if (player.balls > 0)
@@ -235,7 +235,7 @@ export function catTransformation(player: Player): void {
             dynStats("sen", 5);
             // Make note of other dicks changing
             if (temp2 == 1)
-                outputText("  Upon further inspection, all your " + Appearance.cockNoun(CockTypesEnum.CAT) + "s have shrunk!", false);
+                outputText("  Upon further inspection, all your " + cockNoun(CockTypesEnum.CAT) + "s have shrunk!", false);
             changes++;
         }
     }

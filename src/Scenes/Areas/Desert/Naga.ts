@@ -96,7 +96,7 @@ export class Naga extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 40, 0, 0, 0);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("C"));
+        this.breastRows.createBreastRow(breastCupInverse("C"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);

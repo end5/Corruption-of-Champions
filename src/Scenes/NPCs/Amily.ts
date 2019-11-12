@@ -253,7 +253,7 @@ export class Amily extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.NORMAL, VaginaLooseness.NORMAL);
         this.effects.create(StatusAffects.BonusVCapacity, 48, 0, 0, 0);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("C"));
+        this.breastRows.createBreastRow(breastCupInverse("C"));
         this.ass.analLooseness = AnalLooseness.VIRGIN;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = 4 * 12;
@@ -261,7 +261,7 @@ export class Amily extends Monster {
         this.buttRating = ButtRating.TIGHT;
         this.skinTone = "tawny";
         this.skinType = SkinType.FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "brown";
         this.hairLength = 5;
         initStrTouSpeInte(30, 30, 85, 60);

@@ -149,7 +149,7 @@ export class FetishCultist extends Monster {
         this.long = "The woman across from you has her eyes closed, her hands joined, and seems to be chanting under her breath. She is wearing a religious outfit that closely hugs her curvacious shape, with a skirt so short that you can clearly see her pussy's lips.\n\nShe has clealy lost her grasp on sanity, and filled the void with pure perversion.";
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaLooseness.GAPING, VaginaWetness.WET);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.NORMAL;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = 5 * 12 + 7;

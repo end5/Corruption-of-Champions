@@ -27,7 +27,7 @@ export class PhoenixPlatoon extends Monster {
         this.ballSize = 1;
         this.cumMultiplier = 3;
         this.vaginas.createVagina(false, VaginaWetness.SLAVERING, VaginaLooseness.LOOSE);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("D"));
+        this.breastRows.createBreastRow(breastCupInverse("D"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.tallness = rand(8) + 70;

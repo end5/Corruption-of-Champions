@@ -95,7 +95,7 @@ function gooTits(): string {
 }
 
 function gooCock(): string {
-    return Appearance.cockDescription(gooGetCockType(), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
+    return cockDescription(gooGetCockType(), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
 }
 export function gooGetCockType(): CockTypesEnum {
     return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]);
@@ -510,7 +510,7 @@ export function approachLatexy(): void {
     // {LightA}
     else outputText("Sitting high on her chest, her " + gooTits() + " seems almost disproportionately tiny for her frame.  The perky onyx nipples protrude invitingly, tiny caps of inviting midnight.");
     // {Regardless}
-    outputText("  You estimate " + flags[kFLAGS.GOO_NAME] + "'s chest would fit a " + Appearance.breastCup(gooTitSize()) + " bra, were she to wear one.");
+    outputText("  You estimate " + flags[kFLAGS.GOO_NAME] + "'s chest would fit a " + breastCup(gooTitSize()) + " bra, were she to wear one.");
     // Dicknips:
     if (flags[kFLAGS.GOO_NIPPLE_TYPE] == 1) outputText("  Those proud nipples have odd bulges at the tips, bulges that can swell tremendously, turning into rigid dicknipples.");
     // Cuntnips:

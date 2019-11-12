@@ -450,7 +450,7 @@ function rapeAGoblinCorruptTooBig(): void {
         if (player.cocks.length > 1) outputText("and the rest of your " + multiCockDescriptLight(game.player) + " drench her, ", false);
     }
     else if (player.cocks.length > 1) {
-        outputText("while your other " + Appearance.cockNoun(CockTypesEnum.HUMAN), false);
+        outputText("while your other " + cockNoun(CockTypesEnum.HUMAN), false);
         if (player.cocks.length > 2) outputText(" drench her, ", false);
         else outputText(" drenches her, ", false);
     }

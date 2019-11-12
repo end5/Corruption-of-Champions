@@ -237,11 +237,11 @@ export function caninePepper(type: number, player: Player): void {
                 player.cocks[temp2].knotMultiplier += (temp3);
                 outputText("\n\n", false);
                 if (temp3 < .06)
-                    outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " feels unusually tight in your sheath as your knot grows.", false);
+                    outputText("Your " + cockNoun(CockTypesEnum.DOG) + " feels unusually tight in your sheath as your knot grows.", false);
                 if (temp3 >= .06 && temp3 <= .12)
-                    outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " pops free of your sheath, thickening nicely into a bigger knot.", false);
+                    outputText("Your " + cockNoun(CockTypesEnum.DOG) + " pops free of your sheath, thickening nicely into a bigger knot.", false);
                 if (temp3 > .12)
-                    outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " surges free of your sheath, swelling thicker with each passing second.  Your knot bulges out at the base, growing far beyond normal.", false);
+                    outputText("Your " + cockNoun(CockTypesEnum.DOG) + " surges free of your sheath, swelling thicker with each passing second.  Your knot bulges out at the base, growing far beyond normal.", false);
                 dynStats("sen", .5, "lus", 5 * crit);
             }
             // Grow dogdick with big knot
@@ -340,12 +340,12 @@ export function caninePepper(type: number, player: Player): void {
             // Talk about it
             // Hooooman
             if (player.cocks[temp3].cockType == CockTypesEnum.HUMAN) {
-                outputText("\n\nYour " + cockDescript(player, temp3) + " clenches painfully, becoming achingly, throbbingly erect.  A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath.  You shudder as the crown of your " + cockDescript(player, temp3) + " reshapes into a point, the sensations nearly too much for you.  You throw back your head as the transformation completes, your " + Appearance.cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before.  <b>You now have a dog-cock.</b>", false);
+                outputText("\n\nYour " + cockDescript(player, temp3) + " clenches painfully, becoming achingly, throbbingly erect.  A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath.  You shudder as the crown of your " + cockDescript(player, temp3) + " reshapes into a point, the sensations nearly too much for you.  You throw back your head as the transformation completes, your " + cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before.  <b>You now have a dog-cock.</b>", false);
                 dynStats("sen", 10, "lus", 5 * crit);
             }
             // Horse
             if (player.cocks[temp3].cockType == CockTypesEnum.HORSE) {
-                outputText("\n\nYour " + Appearance.cockNoun(CockTypesEnum.HORSE) + " shrinks, the extra equine length seeming to shift into girth.  The flared tip vanishes into a more pointed form, a thick knotted bulge forming just above your sheath.  <b>You now have a dog-cock.</b>", false);
+                outputText("\n\nYour " + cockNoun(CockTypesEnum.HORSE) + " shrinks, the extra equine length seeming to shift into girth.  The flared tip vanishes into a more pointed form, a thick knotted bulge forming just above your sheath.  <b>You now have a dog-cock.</b>", false);
                 // Tweak length/thickness.
                 if (player.cocks[temp3].cockLength > 6)
                     player.cocks[temp3].cockLength -= 2;
@@ -568,7 +568,7 @@ export function caninePepper(type: number, player: Player): void {
             if (player.cor < 33 || !player.cocks.length > 0)
                 outputText("\nYou shake your head to clear the unwanted fantasy from your mind, repulsed by it.", false);
             else {
-                outputText("  Heart pounding, your shaft pops free of its sheath on instinct, as you take off after the new scent.  Caught firmly in the grip of a female's heat, you ignore your master's cry as you disappear into the wild, " + Appearance.cockNoun(CockTypesEnum.DOG) + " growing harder as you near your quarry.  You burst through a bush, spotting a white-furred female.  She drops, exposing her dripping fem-sex to you, the musky scent of her sex channeling straight through your nose and sliding into your " + Appearance.cockNoun(CockTypesEnum.DOG) + ".", false);
+                outputText("  Heart pounding, your shaft pops free of its sheath on instinct, as you take off after the new scent.  Caught firmly in the grip of a female's heat, you ignore your master's cry as you disappear into the wild, " + cockNoun(CockTypesEnum.DOG) + " growing harder as you near your quarry.  You burst through a bush, spotting a white-furred female.  She drops, exposing her dripping fem-sex to you, the musky scent of her sex channeling straight through your nose and sliding into your " + cockNoun(CockTypesEnum.DOG) + ".", false);
                 dynStats("lus", 5 + player.lib / 20);
                 // Break 2
                 if (player.cor < 66)
@@ -584,7 +584,7 @@ export function caninePepper(type: number, player: Player): void {
                             outputText("\nYou reluctantly pry your hand from your aching " + cockDescript(game.player, 0) + " as you drag yourself out of your fantasy.", false);
                     }
                     else {
-                        outputText("  At last your knot pops into her juicy snatch, splattering her groin with a smattering of her arousal.  The scents of your mating reach a peak as the velvet vice around your " + Appearance.cockNoun(CockTypesEnum.DOG) + " quivers in the most indescribably pleasant way.  You clamp down on her hide as your whole body tenses, unleashing a torrent of cum into her sex.  Each blast is accompanied by a squeeze of her hot passage, milking you of the last of your spooge.  Your " + legs(player) + " give out as your fantasy nearly brings you to orgasm, the sudden impact with the ground jarring you from your daydream.", false);
+                        outputText("  At last your knot pops into her juicy snatch, splattering her groin with a smattering of her arousal.  The scents of your mating reach a peak as the velvet vice around your " + cockNoun(CockTypesEnum.DOG) + " quivers in the most indescribably pleasant way.  You clamp down on her hide as your whole body tenses, unleashing a torrent of cum into her sex.  Each blast is accompanied by a squeeze of her hot passage, milking you of the last of your spooge.  Your " + legs(player) + " give out as your fantasy nearly brings you to orgasm, the sudden impact with the ground jarring you from your daydream.", false);
                         dynStats("lus", 5 + player.lib / 20);
                     }
                 }

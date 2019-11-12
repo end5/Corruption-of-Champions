@@ -94,7 +94,7 @@ export class Vala extends Monster {
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.SLICK, VaginaLooseness.GAPING_WIDE);
         this.effects.create(StatusAffects.BonusVCapacity, 25, 0, 0, 0);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("E"));
+        this.breastRows.createBreastRow(breastCupInverse("E"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 10, 0, 0, 0);

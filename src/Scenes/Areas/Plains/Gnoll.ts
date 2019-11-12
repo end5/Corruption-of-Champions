@@ -366,7 +366,7 @@ export class Gnoll extends Monster {
         this.long = "This lanky figure is dappled with black spots across rough, tawny fur. Wiry muscle ripples along long legs and arms, all of it seeming in perpetual frenetic motion: every moment half flinching and half lunging.  The head bears a dark muzzle curled in a perpetual leer and bright orange eyes watching with a savage animal cunning.  Between the legs hang what appears at first to be a long, thin dong; however, on closer inspection it is a fused tube of skin composed of elongated pussy lips and clitoris.  The hyena girl is sporting a pseudo-penis, and judging by the way it bobs higher as she jinks back and forth, she's happy to see you!\n\nShe wears torn rags scavenged from some other, somewhat smaller, creature, and in one hand clutches a twisted club.";
         // this.plural = false;
         this.vaginas.createVagina(false, VaginaWetness.DROOLING, VaginaLooseness.LOOSE);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("C"));
+        this.breastRows.createBreastRow(breastCupInverse("C"));
         this.ass.analLooseness = AnalLooseness.STRETCHED;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 25, 0, 0, 0);
@@ -375,7 +375,7 @@ export class Gnoll extends Monster {
         this.buttRating = ButtRating.TIGHT;
         this.skinTone = "tawny";
         this.skinType = SkinType.FUR;
-        // this.skinDesc = Appearance.Appearance.DEFAULT_SKIN_DESCS[SkinType.FUR];
+        // this.skinDesc = DEFAULT_SKIN_DESCS[SkinType.FUR];
         this.hairColor = "black";
         this.hairLength = 22;
         initStrTouSpeInte(80, 70, 75, 60);

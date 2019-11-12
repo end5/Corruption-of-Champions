@@ -135,8 +135,8 @@ export function breastCupOfRow(creature: Character, rowNum: number): string {
 
 export function chestDesc(creature: Character): string {
     if (creature.breastRows.biggestTitSize() < 1) return "chest";
-    return Appearance.biggestBreastSizeDescript(creature);
-    // 			return Appearance.chestDesc(this);
+    return biggestBreastSizeDescript(creature);
+    // 			return chestDesc(this);
 }
 
 export function allChestDesc(creature: Character): string {

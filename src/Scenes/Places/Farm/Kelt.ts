@@ -119,7 +119,7 @@ export class Kelt extends Monster {
         this.ballSize = 2 + rand(13);
         this.cumMultiplier = 1.5;
         this.hoursSinceCum = player.ballSize * 10;
-        this.breastRows.createBreastRow(Appearance.breastCupInverse(breakLevel2 ? "B" : "A"));
+        this.breastRows.createBreastRow(breastCupInverse(breakLevel2 ? "B" : "A"));
         this.ass.analLooseness = AnalLooseness.NORMAL;
         this.ass.analWetness = AnalWetness.DRY;
         this.effects.create(StatusAffects.BonusACapacity, 50, 0, 0, 0);

@@ -58,7 +58,7 @@ export class BreastStore  implements SaveAwareInterface {
 
     public static breastDescript(size: number, lactation: number = 0): string {
         if (size < 1) return "flat breasts";
-        let descript: string = (rand(2) == 0 ? Appearance.breastSize(size) : ""); // Add a description of the breast size 50% of the time
+        let descript: string = (rand(2) == 0 ? breastSize(size) : ""); // Add a description of the breast size 50% of the time
         switch (rand(10)) {
             case 1:
                 if (lactation > 2) return descript + "milk-udders";
@@ -174,7 +174,7 @@ export class BreastStore  implements SaveAwareInterface {
 
     public canTitFuck(): boolean { return _cupSize >= BreastCup.C; }
 
-    public cup(): string { return Appearance.breastCup(_cupSize); } // The cup size alone
+    public cup(): string { return breastCup(_cupSize); } // The cup size alone
 
     public description(useAdj: boolean = false, isMale: boolean = false): string {
         if (_cupSize == BreastCup.FLAT) return "flat" + (isMale ? " manly," : "") + " chest";

@@ -23,8 +23,8 @@ export class SandWitchMob extends Monster {
         this.pronoun2 = "them";
         this.pronoun3 = "their";
         this.vaginas.createVagina(false, VaginaWetness.WET, VaginaLooseness.LOOSE);
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
-        this.breastRows.createBreastRow(Appearance.breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
+        this.breastRows.createBreastRow(breastCupInverse("DD"));
         this.ass.analLooseness = AnalLooseness.TIGHT;
         this.ass.analWetness = AnalWetness.NORMAL;
         this.tallness = rand(12) + 55;
