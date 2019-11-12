@@ -65,7 +65,7 @@ export function vaginaDescript(i_creature: Character, i_vaginaIndex: number = 0)
         else
             description += "slimy";
     }
-    if (i_creature.vaginaType() == 5 && Math.floor(Math.random() * 2) == 0) {
+    if (i_creature.vaginas[0].type == 5 && Math.floor(Math.random() * 2) == 0) {
         if (description != "") description += ", ";
         options = ["black",
             "onyx",

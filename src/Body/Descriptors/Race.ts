@@ -204,7 +204,7 @@ export function sandTrapScore(char: Character): number {
     let counter: number = 0;
     if (char.effects.findByType(StatusAffects.BlackNipples) >= 0)
         counter++;
-    if (char.vaginas.length > 0 && char.vaginaType() == 5)
+    if (char.vaginas.length > 0 && char.vaginas[0].type == 5)
         counter++;
     if (char.eyeType == 2)
         counter++;

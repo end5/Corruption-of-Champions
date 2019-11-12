@@ -96,5 +96,5 @@ export function Hummus(player: Player): void {
     player.gills = false;
     player.effects.remove(StatusAffects.Uniball);
     player.effects.remove(StatusAffects.BlackNipples);
-    player.vaginaType(0);
+    player.vaginas[0].type = 0;
 }

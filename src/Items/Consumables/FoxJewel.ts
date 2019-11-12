@@ -295,9 +295,9 @@ export function foxJewel(mystic: boolean, player: Player): void {
         player.effects.remove(StatusAffects.BlackNipples);
     }
     // Debugcunt
-    if (changes < changeLimit && rand(3) == 0 && player.vaginaType() == 5 && player.vaginas.length > 0) {
+    if (changes < changeLimit && rand(3) == 0 && player.vaginas[0].type == 5 && player.vaginas.length > 0) {
         outputText("\n\nSomething invisible brushes against your sex, making you twinge.  Undoing your clothes, you take a look at your vagina and find that it has turned back to its natural flesh colour.");
-        player.vaginaType(0);
+        player.vaginas[0].type = 0;
         changes++;
     }
     if (changes == 0) {

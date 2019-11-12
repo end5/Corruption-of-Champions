@@ -281,7 +281,7 @@ export function trapOil(player: Player): void {
         changes++;
     }
     // Vagina Turns Black:
-    if (player.vaginas.length > 0 && player.vaginaType() != 5 && rand(4) == 0 && changes < changeLimit) {
+    if (player.vaginas.length > 0 && player.vaginas[0].type != 5 && rand(4) == 0 && changes < changeLimit) {
         outputText("\n\nYour [vagina] feels... odd.  You undo your clothes and gingerly inspect your nether regions.  The tender pink color of your sex has disappeared, replaced with smooth, marble blackness starting at your lips and working inwards.");
         // (Wet:
         if (player.vaginas.wetness() >= 3)
@@ -293,7 +293,7 @@ export function trapOil(player: Player): void {
             outputText("  After a few cautious touches you decide it doesn't feel any different - the sheer bizarreness of it is a big turn on though, and you feel it beginning to shine with anticipation at the thought of using it.");
         outputText("  <b>Your vagina is now ebony in color.</b>");
         dynStats("sen", 2, "lus", 10);
-        player.vaginaType(5);
+        player.vaginas[0].type = 5;
         changes++;
     }
     // Dragonfly Wings:

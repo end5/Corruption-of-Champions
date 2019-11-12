@@ -765,7 +765,7 @@ function putAPCDickInUrtaCoochies(truth: boolean): void {
 function putUrtasWangInPCsCunt(truth: boolean): void {
     clearOutput();
     outputText("You push " + player2.short + " down on her back, a task made all the more difficult by your growing arousal.  Thankfully, she's not wearing her usual " + player2.armorName + ".  Instead, her form is bared to your probing fingertips, pliant and exposed.  You cannot help but dip a finger into her moist delta, parting the oozing veil to enjoy the view of her ");
-    if (player.vaginaType() != 5) outputText("pink, ");
+    if (player.vaginas[0].type != 5) outputText("pink, ");
     outputText("pulsing interior.  The sight is exciting in the extreme, immediately sending your heartbeat through the roof.  Your tremendous horse-cock is immediately stiffened by your ardor, along with your coal-black nipples, and your armor-plated skirt begins to rise, as if by magic.");
 
     outputText("\n\n" + player2.short + " giggles at the tenting garment, playfully reaching under to caress the sensitive bottom of your swelling bulge.  Fresh length quickly surges out of your sheath in response, popping your tip past the hem in a second to hang there, pulsing, stiff, and slowly winking your urethra at your lover's face.  Your nipples grow so hard that they're almost painful, and they scrape against the interior of your leather breastplate irritatingly.  Struggling with the straps, you do your best to undo the offending armor, but it just... won't... come... free!   Damnit!");
@@ -2855,7 +2855,7 @@ function getKnockedUpWithGodChild(): void {
     outputText("\n\nYou toss a little fuel on the fire by spreading your legs");
     if (player.balls > 0) outputText(" and lifting your balls");
     outputText(", exposing your puffy lips, and spreading them wide to expose your ");
-    if (player.vaginaType() != 5) outputText("pink, ");
+    if (player.vaginas[0].type != 5) outputText("pink, ");
     else outputText("dusky, ");
     outputText("glistening interior.  Urta whines, high pitched and keening, and she doubles over, pumping her cock with both hands, unashamedly masturbating at the sight of your exposed, vulnerable womanhood.  She grunts, swinging her hips lewdly back and forth, actually fucking her hands now, mouth open and panting, \"<i>Gonna... gonna fuck ya!  Fullofbabies!</i>\"");
 
