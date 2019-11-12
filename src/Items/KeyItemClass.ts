@@ -1,5 +1,5 @@
 
-export class KeyItemClass extends Object {
+export class KeyItemClass {
 
     // data
     public keyName: string = "";

@@ -1,5 +1,5 @@
 
-export class ItemSlotClass extends Object {
+export class ItemSlotClass {
 
     // data
     private _quantity: number = 0;
@@ -9,7 +9,7 @@ export class ItemSlotClass extends Object {
     public setItemAndQty(itype: ItemType, quant: number): void {
         if (itype == null) itype = ItemType.NOTHING;
         if (quant == 0 && itype == ItemType.NOTHING) {
-            emptySlot();
+            this.emptySlot();
             return;
         }
         if (quant < 0 || quant == 0 && itype != ItemType.NOTHING || quant > 0 && itype == ItemType.NOTHING) {
@@ -37,31 +37,31 @@ export class ItemSlotClass extends Object {
     }
 
     public get quantity(): number {
-        return _quantity;
+        return this._quantity;
     }
 
-    public set quantity(value: number): void {
-        if (value > 0 && _itype == null) Logger.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
-        if (value == 0) _itype = ItemType.NOTHING;
-        _quantity = value;
+    public set quantity(value: number) {
+        if (value > 0 && this._itype == null) Logger.error("ItemSlotClass.quantity set with no item; use setItemAndQty instead!");
+        if (value == 0) this._itype = ItemType.NOTHING;
+        this._quantity = value;
     }
 
     public get itype(): ItemType {
-        return _itype;
+        return this._itype;
     }
 
     public get unlocked(): boolean {
-        return _unlocked;
+        return this._unlocked;
     }
 
-    public set unlocked(value: boolean): void {
-        if (_unlocked != value) {
-            emptySlot();
+    public set unlocked(value: boolean) {
+        if (this._unlocked != value) {
+            this.emptySlot();
         }
-        _unlocked = value;
+        this._unlocked = value;
     }
 
     public isEmpty(): boolean {
-        return _quantity <= 0;
+        return this._quantity <= 0;
     }
 }

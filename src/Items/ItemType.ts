@@ -3,20 +3,20 @@
  */
 
 export class ItemType {
-    private static ITEM_LIBRARY: Dictionary = new Dictionary();
-    private static ITEM_SHORT_LIBRARY: Dictionary = new Dictionary();
+    private static ITEM_LIBRARY: Record<string, any> = {};
+    private static ITEM_SHORT_LIBRARY: Record<string, any> = {};
     public static NOTHING: ItemType = new ItemType("NOTHING!");
 
     public static lookupItem(id: string): ItemType {
-        return ITEM_LIBRARY[id];
+        return ItemType.ITEM_LIBRARY[id];
     }
 
     public static lookupItemByShort(shortName: string): ItemType {
-        return ITEM_SHORT_LIBRARY[shortName];
+        return ItemType.ITEM_SHORT_LIBRARY[shortName];
     }
 
-    public static getItemLibrary(): Dictionary {
-        return ITEM_LIBRARY;
+    public static getItemLibrary(): Record<string, any> {
+        return ItemType.ITEM_LIBRARY;
     }
 
     private _id: string;
@@ -29,55 +29,55 @@ export class ItemType {
      * Short name to be displayed on buttons
      */
     public get shortName(): string {
-        return _shortName;
+        return this._shortName;
     }
 
     /**
      * A full name of the item, to be described in text
      */
     public get longName(): string {
-        return _longName;
+        return this._longName;
     }
 
     /**
      * Item base price
      */
     public get value(): number {
-        return _value;
+        return this._value;
     }
 
     /**
      * Detailed description to use on tooltips
      */
     public get description(): string {
-        return _description;
+        return this._description;
     }
 
     /**
      * 7-character unique (across all the versions) string, representing that item type.
      */
     public get id(): string {
-        return _id;
+        return this._id;
     }
 
-    public constructor(_id: string, _shortName: string = null, _longName: string = null, _value: number = 0, _description: string = null) {
+    public constructor(_id: string, _shortName?: string, _longName?: string, _value: number = 0, _description?: string) {
 
         this._id = _id;
         this._shortName = _shortName || _id;
         this._longName = _longName || this.shortName;
         this._description = _description || this.longName;
         this._value = _value;
-        if (ITEM_LIBRARY[_id] != null) {
-            Logger.error("Duplicate itemid " + _id + ", old item is " + (ITEM_LIBRARY[_id] as ItemType).longName);
+        if (ItemType.ITEM_LIBRARY[_id] != null) {
+            Logger.error("Duplicate itemid " + _id + ", old item is " + (ItemType.ITEM_LIBRARY[_id] as ItemType).longName);
         }
-        if (ITEM_SHORT_LIBRARY[_shortName] != null) {
-            trace("WARNING: Item with duplicate shortname: '" + _id + "' and '" + (ITEM_SHORT_LIBRARY[this._shortName] as ItemType)._id + "' share " + this._shortName);
+        if (ItemType.ITEM_SHORT_LIBRARY[this._shortName] != null) {
+            Logger.trace("WARNING: Item with duplicate shortname: '" + _id + "' and '" + (ItemType.ITEM_SHORT_LIBRARY[this._shortName] as ItemType)._id + "' share " + this._shortName);
         }
-        ITEM_LIBRARY[_id] = this;
-        ITEM_SHORT_LIBRARY[this._shortName] = this;
+        ItemType.ITEM_LIBRARY[_id] = this;
+        ItemType.ITEM_SHORT_LIBRARY[this._shortName] = this;
     }
 
     public toString(): string {
-        return "\"" + _id + "\"";
+        return "\"" + this._id + "\"";
     }
 }

@@ -84,7 +84,7 @@ export class KeyItemArray extends Array {
             counter--;
             if (this[counter].keyName == itemName) {
                 this.splice(counter, 1);
-                trace("Attempted to remove \"" + itemName + "\" keyItem.");
+                Logger.trace("Attempted to remove \"" + itemName + "\" keyItem.");
                 counter = 0;
             }
         }

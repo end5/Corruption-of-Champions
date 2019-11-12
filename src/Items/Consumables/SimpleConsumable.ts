@@ -3,12 +3,12 @@
  */
 
 export class SimpleConsumable extends Consumable {
-    private effect: () => void;
+    private effect: (player: Player) => void;
 
     /**
      * @param effect Function(player:Player)
      */
-    public constructor(id: string, shortName: string, longName: string, effect: () => void, value: number = 0, description: string = null) {
+    public constructor(id: string, shortName: string, longName: string, effect: (player: Player) => void, value: number = 0, description?: string) {
         super(id, shortName, longName, value, description);
         this.effect = effect;
     }

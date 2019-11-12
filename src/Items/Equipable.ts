@@ -22,27 +22,23 @@ export class Equipable extends Consumable {
     /**
      * Called after item succesfully equipped. By default, does nothing. Should add perks/effects/etc.
      */
-    public equipEffect(player: Player, output: boolean): void {
-
-    }
+    public equipEffect(player: Player, output: boolean): void { }
 
     /**
      * Called after item succesfully unequipped. By default, does nothing. Should remove perks/effects/etc.
      */
-    public unequipEffect(player: Player, output: boolean): void {
-
-    }
+    public unequipEffect(player: Player, output: boolean): void { }
 
     protected equipped(player: Player, output: boolean): void {
-        equipEffect(player, output);
+        this.equipEffect(player, output);
     }
 
     protected unequipped(player: Player, output: boolean): void {
-        unequipEffect(player, output);
+        this.unequipEffect(player, output);
     }
 
     protected equip(player: Player, returnOldItem: boolean, output: boolean): void {
-        Logger.errorAMC("Equipable", "equip", id);
+        Logger.errorAMC("Equipable", "equip", this.id);
     }
 
     /**
@@ -50,7 +46,7 @@ export class Equipable extends Consumable {
      * @param output true if the unequip function should print to the screen
      */
     public unequip(player: Player, returnToInventory: boolean, output: boolean = false): void {
-        Logger.errorAMC("Equipable", "unequip", id);
+        Logger.errorAMC("Equipable", "unequip", this.id);
     }
 
     public doEffect(player: Player, output: boolean): void {
@@ -61,10 +57,10 @@ export class Equipable extends Consumable {
             }
             return;
         }
-        equip(player, true, output);
+        this.equip(player, true, output);
     }
 
-    public constructor(id: string, shortName: string = null, longName: string = null, value: number = 0, description: string = null) {
+    public constructor(id: string, shortName?: string, longName?: string, value: number = 0, description?: string) {
         super(id, shortName, longName, value, description);
     }
 
