@@ -22,10 +22,10 @@ export class CockArray extends Array<Cock> {
         let index: number = 0;
         while (counter > 0) {
             counter--;
-            if (this[index].cArea < this[counter].cArea)
+            if (this[index].cArea() < this[counter].cArea())
                 index = counter;
         }
-        return this[index].cArea;
+        return this[index].cArea();
     }
 
     // Find the second biggest dick and it's area.
@@ -38,7 +38,7 @@ export class CockArray extends Array<Cock> {
     //     // Find the biggest
     //     while (counter > 0) {
     //         counter--;
-    //         if (this.cocks.area(index) < this[counter].cArea)
+    //         if (this.cocks.area(index) < this[counter].cArea())
     //             index = counter;
     //     }
     //     // Reset counter and find the next biggest
@@ -51,7 +51,7 @@ export class CockArray extends Array<Cock> {
     //             if (index2 == -1)
     //                 index2 = counter;
     //             // Is the stored value less than the current one?
-    //             if (this.cocks.area(index2) < this[counter].cArea) {
+    //             if (this.cocks.area(index2) < this[counter].cArea()) {
     //                 index2 = counter;
     //             }
     //         }
@@ -181,7 +181,7 @@ export class CockArray extends Array<Cock> {
         let index: number = 0;
         while (counter > 0) {
             counter--;
-            if (this[index].cArea > this[counter].cArea) {
+            if (this[index].cArea() > this[counter].cArea()) {
                 index = counter;
             }
         }
@@ -230,11 +230,11 @@ export class CockArray extends Array<Cock> {
         while (cockIdxPtr > 0) {
             cockIdxPtr--;
             if (type == "area") {
-                if (this[cockIdxPtr].cArea <= i_fits) {
+                if (this[cockIdxPtr].cArea() <= i_fits) {
                     // If one already fits
                     if (cockIndex >= 0) {
                         // See if the newcomer beats the saved small guy
-                        if (this[cockIdxPtr].cArea > this[cockIndex].cArea)
+                        if (this[cockIdxPtr].cArea() > this[cockIndex].cArea())
                             cockIndex = cockIdxPtr;
                     }
                     // Store the index of fitting dick
@@ -270,11 +270,11 @@ export class CockArray extends Array<Cock> {
         while (counter > 0) {
             counter--;
             // Does this one fit?
-            if (this[counter].cArea <= fits) {
+            if (this[counter].cArea() <= fits) {
                 // If one already fits
                 if (index >= 0) {
                     // See if the newcomer beats the saved small guy
-                    if (this[counter].cArea > this[index].cArea) {
+                    if (this[counter].cArea() > this[index].cArea()) {
                         // Save old wang
                         if (index != -1)
                             index2 = index;
@@ -282,7 +282,7 @@ export class CockArray extends Array<Cock> {
                     }
                     // If this one fits and is smaller than the other great
                     else {
-                        if ((this[index2].cArea < this[counter].cArea) && counter != index) {
+                        if ((this[index2].cArea() < this[counter].cArea()) && counter != index) {
                             index2 = counter;
                         }
                     }
@@ -300,11 +300,11 @@ export class CockArray extends Array<Cock> {
     public smallestCockArea(): number {
         if (this.length == 0)
             return -1;
-        return this[this.smallestCockIndex()].cArea;
+        return this[this.smallestCockIndex()].cArea();
     }
 
     public smallestCock(): number {
-        return this[this.smallestCockIndex()].cArea;
+        return this[this.smallestCockIndex()].cArea();
     }
 
     public biggestCockIndex(): number {
@@ -314,7 +314,7 @@ export class CockArray extends Array<Cock> {
         let index: number = 0;
         while (counter > 0) {
             counter--;
-            if (this[index].cArea < this[counter].cArea)
+            if (this[index].cArea() < this[counter].cArea())
                 index = counter;
         }
         return index;
@@ -330,7 +330,7 @@ export class CockArray extends Array<Cock> {
         // Find the biggest
         while (counter > 0) {
             counter--;
-            if (this[index].cArea < this[counter].cArea)
+            if (this[index].cArea() < this[counter].cArea())
                 index = counter;
         }
         // Reset counter and find the next biggest
@@ -343,7 +343,7 @@ export class CockArray extends Array<Cock> {
             if (index == index2 && counter != index)
                 index2 = counter;
             // Is the stored value less than the current one?
-            if (this[index2].cArea < this[counter].cArea) {
+            if (this[index2].cArea() < this[counter].cArea()) {
                 // Make sure we don't set index2 to be the same
                 // as the biggest dick.
                 if (counter != index)
@@ -365,7 +365,7 @@ export class CockArray extends Array<Cock> {
         // Find the smallest
         while (counter > 0) {
             counter--;
-            if (this[index].cArea > this[counter].cArea)
+            if (this[index].cArea() > this[counter].cArea())
                 index = counter;
         }
         // Reset counter and find the next biggest
@@ -378,7 +378,7 @@ export class CockArray extends Array<Cock> {
             if (index == index2 && counter != index)
                 index2 = counter;
             // Is the stored value less than the current one?
-            if (this[index2].cArea > this[counter].cArea) {
+            if (this[index2].cArea() > this[counter].cArea()) {
                 // Make sure we don't set index2 to be the same
                 // as the biggest dick.
                 if (counter != index)
@@ -402,7 +402,7 @@ export class CockArray extends Array<Cock> {
         // Find the biggest
         while (counter > 0) {
             counter--;
-            if (this[index].cArea < this[counter].cArea)
+            if (this[index].cArea() < this[counter].cArea())
                 index = counter;
         }
         // Reset counter and find the next biggest
@@ -415,7 +415,7 @@ export class CockArray extends Array<Cock> {
                 if (index2 == -1)
                     index2 = counter;
                 // Is the stored value less than the current one?
-                else if (this[index2].cArea < this[counter].cArea) {
+                else if (this[index2].cArea() < this[counter].cArea()) {
                     index2 = counter;
                 }
             }
@@ -433,7 +433,7 @@ export class CockArray extends Array<Cock> {
                 if (index3 == -1)
                     index3 = counter;
                 // Is the stored value less than the current one?
-                else if (this[index3].cArea < this[counter].cArea) {
+                else if (this[index3].cArea() < this[counter].cArea()) {
                     index3 = counter;
                 }
             }
@@ -564,7 +564,7 @@ export class CockArray extends Array<Cock> {
                 return counter;
             }
             // Catch-all
-            if (this[counter].cockType.Index > 4) {
+            if (this[counter].cockType > 4) {
                 this[counter].cockType = CockTypesEnum.HORSE;
                 return counter;
             }
@@ -623,17 +623,6 @@ export class CockArray extends Array<Cock> {
             }
         }
         this.owner.genderCheck();
-    }
-
-    // This is placeholder shit whilst I work out a good way of BURNING ENUM TO THE FUCKING GROUND
-    // and replacing it with something that will slot in and work with minimal changes and not be
-    // A FUCKING SHITSTAIN when it comes to intelligent de/serialization.
-    public fixFuckingCockTypesEnum(): void {
-        if (this.length > 0) {
-            for (let i = 0; i < this.length; i++) {
-                this[i].cockType = CockTypesEnum.ParseConstantByIndex(this[i].cockType.Index);
-            }
-        }
     }
 
     public averageCockThickness(): number {

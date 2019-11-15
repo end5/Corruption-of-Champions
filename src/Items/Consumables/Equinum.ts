@@ -180,7 +180,7 @@ export function equinum(player: Player): void {
     // MALENESS.
     if ((player.gender == 1 || player.gender == 3) && rand(1.5) == 0 && changes < changeLimit) {
         // If cocks that aren't horsified!
-        if ((player.cocks.horseCocks() + player.demonCocks()) < player.cocks.length) {
+        if ((player.cocks.horseCocks() + player.cocks.demonCocks()) < player.cocks.length) {
             // Transform a cock and store it's index value to talk about it.
             // Single cock
             if (player.cocks.length == 1) {
@@ -208,10 +208,10 @@ export function equinum(player: Player): void {
                     temp3 = 1;
                     dynStats("lib", 5, "sen", 4, "lus", 35);
                 }
-                if (player.cocks[0].cockType.Index > 4) {
+                if (player.cocks[0].cockType > 4) {
                     outputText("\n\nYour " + cockDescript(game.player, 0) + " begins to feel odd... you pull down your clothes to take a look and see it darkening.  You feel a growing tightness in the tip of your " + cockDescript(game.player, 0) + " as it flattens, flaring outwards.  Your skin folds and bunches around the base, forming an animalistic sheath.  The slick inhuman texture you recently had fades, taking on a more leathery texture.  Your hands are drawn to the strange new " + cockNoun(CockTypesEnum.HORSE) + ", and you jerk yourself off, splattering thick ropes of cum with intense force.", false);
                     temp = player.cocks.addHorseCock();
-                    temp2 = player.cocks[temp](rand(4) + 4);
+                    temp2 = player.increaseCock(temp, rand(4) + 4);
                     temp3 = 1;
                     dynStats("lib", 5, "sen", 4, "lus", 35);
                 }

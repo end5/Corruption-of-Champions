@@ -1430,7 +1430,7 @@ export function shouldraWakesUpOrPokesPCsForShitsAndGigglesIdunnoHowLongCanIMake
     // 20 (PC knows any spells)
     if (player.hasSpells()) choices[choices.length] = 20;
     // 21 (PC has anemone dick)
-    if (player.anemoneCocks() > 0) choices[choices.length] = 21;
+    if (player.cocks.anemoneCocks() > 0) choices[choices.length] = 21;
     // 22 (Computer date is within a week before or after Halloween/or on Halloween whichever's easier)
     if (isHalloween()) choices[choices.length] = 22;
 

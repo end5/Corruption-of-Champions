@@ -111,7 +111,7 @@ export function rubiCock(lust: number = 50): string {
 }
 
 export function rubiGetCockType(): CockTypesEnum {
-    return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.RUBI_COCK_TYPE]);
+    return flags[kFLAGS.RUBI_COCK_TYPE];
 }
 export function rubiBreasts(): string {
     let ret: string = "pair of ";

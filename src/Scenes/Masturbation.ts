@@ -258,15 +258,15 @@ export function masturbateGo(): void {
                 outputText("You stroke quickly, pleasuring your sensitive, canine erection, darting down to fondle the sensitive sheath at the base of your cock.  ");
             else if (player.cocks.tentacleCocks() >= 1)
                 outputText("You stroke quickly, pleasuring the supple length of your tentacular endowment, fondling every inhuman nodule as you slide along every inch of twisting length.  ");
-            else if (player.demonCocks() >= 1)
+            else if (player.cocks.demonCocks() >= 1)
                 outputText("You stroke quickly, pleasuring the bumpy ridges of your demonic tool, fondling every inhuman nodule as you slide along the entire twitching length.  ");
-            else if (player.catCocks() >= 1)
+            else if (player.cocks.catCocks() >= 1)
                 outputText("You stroke quickly, feeling the tiny 'barbs' of your " + cockDescript(player) + " sliding through your fingers, even darting down to circle the sensitive skin around your sheath.  ");
             else if (player.cocks.lizardCocks() >= 1)
                 outputText("You stroke quickly, pleasuring your sensitive " + cockDescript(player) + ", sliding fingers over each ridge and bump that covers its knotty length.  ");
-            else if (player.anemoneCocks() >= 1)
+            else if (player.cocks.anemoneCocks() >= 1)
                 outputText("You stroke quickly, gasping as your fingers are stung repeatedly with the aphrodisiac-laced tentacles around the base of your " + cockDescript(player) + " and under its crown.  ");
-            else if (player.displacerCocks() >= 1)
+            else if (player.cocks.displacerCocks() >= 1)
                 outputText("You stroke quickly, pleasuring your sensitive, alien endowment, darting down to fondle the sensitive sheath as your pointed tip opens into a wiggling, starfish-like shape.  ");
             else outputText("You stroke quickly, pleasuring your sensitive dick, darting down to fondle the base of your cock.  ");
         }
@@ -279,15 +279,15 @@ export function masturbateGo(): void {
                 outputText("You delight in teasing the pointed tip of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  Your knot seems to pulse and twitch with each stroke, reacting to every touch.  ");
             else if (player.cocks.tentacleCocks() >= 1)
                 outputText("You delight in teasing the over-sized mushroom-like tip of your " + cockDescript(player) + ", caressing it after every stroke as you squeeze out dollops of pre to smear along its slimy length.  It writhes and twists in your hands of it's own volition, lengthening and shortening with each set of strokes.  ");
-            else if (player.demonCocks() >= 1)
+            else if (player.cocks.demonCocks() >= 1)
                 outputText("You delight in teasing the larger bumps that form a ring around the crown of your " + cockDescript(player) + ", watching as they twitch and spasm in time with the dollops of pre you're squeezing out and smearing over the entire length.  ");
-            else if (player.catCocks() >= 1)
+            else if (player.cocks.catCocks() >= 1)
                 outputText("You delight in teasing the sensitive nubs all along your " + cockDescript(player) + ", circling the cock-tip at the end of each stroke to gather pre and slather it over your entire length.  Each of the tiny 'barbs' provides bursts of pleasure with each stroke, driving you on.  ");
             else if (player.cocks.lizardCocks() >= 1)
                 outputText("You delight in teasing the rounded bulbs that cover your " + cockDescript(player) + ", circling them with your fingertips before sliding up to the urethra and gathering a drop of pre.  You smear it over your sensitive reptile skin and revel in the pleasure radiating through you.  ");
-            else if (player.anemoneCocks() >= 1)
+            else if (player.cocks.anemoneCocks() >= 1)
                 outputText("You delight in grabbing hold of the tiny, stinging tentacles around the base and squeezing them between your " + cockDescript(player) + " and hand.  Aphrodisiac pours into your blood as you release them and stroke along the length, gathering dollops of pre to coat yourself with and 'accidentally' bumping the other tentacles at the crown.  ");
-            else if (player.displacerCocks() >= 1)
+            else if (player.cocks.displacerCocks() >= 1)
                 outputText("You delight in teasing the opened tip of your " + cockDescript(player) + ", rubbing it at the end of each stroke, watching it squeeze out dollops of pre that you smear over it to tease yourself with.  Your knot seems to pulse and twitch with each stroke, reacting to every touch.  ");
             else outputText("You delight in teasing the crown of your " + cockDescript(player) + ", rubbing it at the end of each stroke, squeezing out dollops of pre to smear over it and tease yourself with.  It seems to pulse and twitch with each stroke, responding to every touch.  ");
         }
@@ -300,15 +300,15 @@ export function masturbateGo(): void {
                 outputText("The pointed tip of your " + cockDescript(player) + " angles towards your face as you masturbate, a dollop of pre slowly leaking from it.  ");
             else if (player.cocks.tentacleCocks() >= 1)
                 outputText("The overly wide head of your " + cockDescript(player) + " bumps against your lips as you masturbate, waving back and forth like a snake as it searches for an orifice.  ");
-            else if (player.demonCocks() >= 1)
+            else if (player.cocks.demonCocks() >= 1)
                 outputText("The purplish head of your " + cockDescript(player) + " bumps against your lips as you masturbate, flushing darkly with every beat of your heart.  ");
-            else if (player.catCocks() >= 1)
+            else if (player.cocks.catCocks() >= 1)
                 outputText("The slightly pointed tip of your " + cockDescript(player) + " bumps against your lips as you masturbate, flushing with blood as your spines grow thicker in your hand.  ");
             else if (player.cocks.lizardCocks() >= 1)
                 outputText("The pointed, purple tip of your " + cockDescript(player) + " bumps against your lips while its knotted surface flushes near-purple and seems to grow thicker.  ");
-            else if (player.anemoneCocks() >= 1)
+            else if (player.cocks.anemoneCocks() >= 1)
                 outputText("The tentacle-ringed tip of your " + cockDescript(player) + " brushes against your lips, making them tingle with artificial heat while you stroke it.  ");
-            else if (player.displacerCocks() >= 1)
+            else if (player.cocks.displacerCocks() >= 1)
                 outputText("The blooming tip of your " + cockDescript(player) + " angles towards your face as you masturbate, a dollop of pre slowly leaking out of the outstretched top.  ");
             else outputText("The head of your " + cockDescript(player) + " wobbles towards your face as you masturbate, a dollop of pre slowly growing atop it.  ");
             // try to stick it in a titty!
@@ -336,15 +336,15 @@ export function masturbateGo(): void {
                 outputText("The head of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  You are unable to resist opening your mouth and sucking it down, filling your mouth with your " + cockDescript(player) + ".  ");
             else if (player.cocks.tentacleCocks() >= 1)
                 outputText("The bulbous, mushroom-like head of your " + cockDescript(player) + " pushes against your face eagerly, smearing pre-cum over your lips as it seeks entrance to the nearest orifice.  You're unable to resist opening your mouth to suck it down, filling your mouth with slick rubbery cock-tentacle.  ");
-            else if (player.demonCocks() >= 1)
+            else if (player.cocks.demonCocks() >= 1)
                 outputText("The tainted swollen head of your " + cockDescript(player) + " pushes against your face, smearing sweet pre-cum over your lips.  You're unable to resist opening wide and taking in the demonic member, submitting wholly to the desire to pleasure your corrupted body-parts.  ");
-            else if (player.catCocks() >= 1)
+            else if (player.cocks.catCocks() >= 1)
                 outputText("The pointed tip of your " + cockDescript(player) + " pushes against your face, smearing pre-cum over your lips and tickling you with the many barbs.  You're unable to resist opening wide and taking in the " + cockDescript(player) + ", half-humming half-purring in contentment.  ");
             else if (player.cocks.lizardCocks() >= 1)
                 outputText("The slightly-pointed tip of your " + cockDescript(player) + " pushes against your face, smearing pre-cum over your eager lips.   You can't resist opening wide and slipping it inside as your hands caress the reptilian bulges along your length.  ");
-            else if (player.anemoneCocks() >= 1)
+            else if (player.cocks.anemoneCocks() >= 1)
                 outputText("The rounded, tentacle-ringed tip of your " + cockDescript(player) + " slides against your face, smearing pre-cum over your lips and stinging them with aphrodisiacs that make you pant with lust.  You can't resist opening wide to greedily slurp it down, and in seconds tiny, tingling stings are erupting through your oral cavity, filling you with lust and pleasure.  ");
-            else if (player.displacerCocks() >= 1)
+            else if (player.cocks.displacerCocks() >= 1)
                 outputText("The head of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  Wiggling against your lips, the various protrusions of the 'star' at the tip smear you with your heady emissions.   You are unable to resist opening your mouth and sucking it down, filling your mouth with your " + cockDescript(player) + ".  ");
             else outputText("The head of your " + cockDescript(player) + " wobbles over, bumping your face and smearing your lips with its copious pre-cum.  You are unable to resist opening your mouth and sucking it down, filling your mouth with your cock.  ");
             // try to stick it in a titty!
@@ -367,15 +367,15 @@ export function masturbateGo(): void {
                         outputText("The strong animal scent of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
                     else if (player.cocks.tentacleCocks() >= 1)
                         outputText("The sweet scent of your " + cockDescript(player) + " fills your nostrils as inch after inch of tentacle forces its way down your throat.  You struggle briefly with it, wrestling to keep it from pushing the whole way into your gut, swooning with the pleasure that fighting with your own cock induces.  ");
-                    else if (player.demonCocks() >= 1)
+                    else if (player.cocks.demonCocks() >= 1)
                         outputText("The spicy demonic odor your " + cockDescript(player) + " radiates fills your nostrils as you force inch after inch of tainted meat down your throat.  You struggle briefly, but your " + cockDescript(player) + " quickly overwhelms your resistance and your gag reflex momentarily seems to disappear.  ");
-                    else if (player.catCocks() >= 1)
+                    else if (player.cocks.catCocks() >= 1)
                         outputText("The sweet, slightly tangy scent of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of the prickly shaft as you can.  The soft spines that coat its surface actually feel quite pleasant as you force it deeper, denying your gag reflex.  ");
                     else if (player.cocks.lizardCocks() >= 1)
                         outputText("The salty, dry odor of your " + cockDescript(player) + " fills your nostrils as you force inch after inch into your mouth, swallowing as much of the bulgy shaft as you can.  ");
-                    else if (player.anemoneCocks() >= 1)
+                    else if (player.cocks.anemoneCocks() >= 1)
                         outputText("The stinging, aphrodisiac-laced " + cockDescript(player) + " slowly works its way down your throat as you swallow it deeper and deeper, gurgling happily as your throat grows more sensitive.  ");
-                    else if (player.displacerCocks() >= 1)
+                    else if (player.cocks.displacerCocks() >= 1)
                         outputText("The strong animal scent of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
                     else outputText("The heady aroma of your cock fills your nostrils as you force inch after inch into your mouth, deepthroating as much of yourself as you can.  ");
                 }
@@ -898,9 +898,9 @@ function titFuckSingle(): void {
                 else if(player.cocks.normalCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
                 else if(player.cocks.dogCocks() > 0) outputText("Shivering with anticipation, you place the pointed tip of your " + dogDescript(0) + " against the opening of ", false);
                 else if(player.cocks.tentacleCocks() > 0) outputText("Shivering with anticipation, you place the bulbous tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
-                else if(player.demonCocks() > 0) outputText("Shivering with anticipation, you place the bump-encircled tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
-                else if(player.catCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
-                else if(player.anemoneCocks() > 0 || player.displacerCocks() > 0) outputText("Shivering with anticipation, you place the wriggling tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
+                else if(player.cocks.demonCocks() > 0) outputText("Shivering with anticipation, you place the bump-encircled tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
+                else if(player.cocks.catCocks() > 0) outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
+                else if(player.cocks.anemoneCocks() > 0 || player.cocks.displacerCocks() > 0) outputText("Shivering with anticipation, you place the wriggling tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
                 else outputText("Shivering with anticipation, you place the tip of your " + cockDescript(game.player, 0) + " against the opening of ", false);
         */
     }
@@ -938,9 +938,9 @@ function titFuckSingle(): void {
                 else if(player.cocks.horseCocks() > 0) outputText("Without hesitation, you shove the engorged flare of your " + cockDescript(game.player, 0) + " into ", false);
                 else if(player.cocks.dogCocks() > 0) outputText("Without hesitation, you shove the pointed tip of your " + dogDescript(0) + " into ", false);
                 else if(player.cocks.tentacleCocks() > 0) outputText("Without hesitation, you shove the over-sized mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
-                else if(player.demonCocks() > 0) outputText("Without hesitation, you shove the bump-ringed monstrosity that is your " + cockDescript(game.player, 0) + " into ", false);
-                else if(player.anemoneCocks() > 0) outputText("Without hesitation, you shove the tentacle-laden mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
-                else if(player.displacerCocks() > 0) outputText("Without hesitation, you shove the opened top of your " + cockDescript(game.player, x) + " into ");
+                else if(player.cocks.demonCocks() > 0) outputText("Without hesitation, you shove the bump-ringed monstrosity that is your " + cockDescript(game.player, 0) + " into ", false);
+                else if(player.cocks.anemoneCocks() > 0) outputText("Without hesitation, you shove the tentacle-laden mushroom that is your " + cockDescript(game.player, 0) + " into ", false);
+                else if(player.cocks.displacerCocks() > 0) outputText("Without hesitation, you shove the opened top of your " + cockDescript(game.player, x) + " into ");
                 else outputText("Without hesitation, you shove the " + cockHead(0) + " of your " + cockDescript(game.player, 0) + " into ", false);
         */
     }
@@ -999,11 +999,11 @@ function titFuckSingle(): void {
                         else if(player.cocks.horseCocks() > 0) outputText("Slick juices dribble down the mottled skin of your " + horseDescript(0) + " and y", false);
                         else if(player.cocks.dogCocks() > 0) outputText("Slick juices dribble down the red, shiny skin of your " + dogDescript(0) + " and y", false);
                         else if(player.cocks.tentacleCocks() > 0) outputText("Slick juices dribble down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.demonCocks() > 0) outputText("Slick juices dribble down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.demonCocks() > 0) outputText("Slick juices dribble down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
                         else if(player.cocks.lizardCocks() > 0) outputText("Slick juices dribble down the bumpy purple skin of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.catCocks() > 0) outputText("Slick juices dribble over the pink, spiny protrusions that cover your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.anemoneCocks() > 0) outputText("Slick juices dribble over the nearly transparent skin of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.displacerCocks() > 0) outputText("Slick juices dribble over the dusky purple of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.catCocks() > 0) outputText("Slick juices dribble over the pink, spiny protrusions that cover your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.anemoneCocks() > 0) outputText("Slick juices dribble over the nearly transparent skin of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.displacerCocks() > 0) outputText("Slick juices dribble over the dusky purple of your " + cockDescript(game.player, 0) + " and y", false);
                         else outputText("Slick juices dribble down the skin of your " + cockDescript(game.player, 0) + " and y", false);
             */
         }
@@ -1050,10 +1050,10 @@ function titFuckSingle(): void {
                         else if(player.cocks.horseCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the mottled skin of your " + horseDescript(0) + " and y", false);
                         else if(player.cocks.dogCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the red, shiny skin of your " + dogDescript(0) + " and y", false);
                         else if(player.cocks.tentacleCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the rubbery skin of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.demonCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.catCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the spiny, pink flesh of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.cocks.lizardCocks() > 0 || player.displacerCocks()) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + cockDescript(game.player, 0) + " and y", false);
-                        else if(player.anemoneCocks() > 0) outputText("Rivulets of milky girlcum drizzle and drip from the many tiny tentacles of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.demonCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the shiny purplish skin and nodules of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.catCocks() > 0) outputText("Rivulets of milky girlcum drizzle down the spiny, pink flesh of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.lizardCocks() > 0 || player.cocks.displacerCocks()) outputText("Rivulets of milky girlcum drizzle over the purplish, knotted flesh of your " + cockDescript(game.player, 0) + " and y", false);
+                        else if(player.cocks.anemoneCocks() > 0) outputText("Rivulets of milky girlcum drizzle and drip from the many tiny tentacles of your " + cockDescript(game.player, 0) + " and y", false);
                         else outputText("Rivulets of milky girlcum drizzle over the sensitive skin of your " + cockDescript(game.player, 0) + " and y", false);
             */
         }
@@ -1096,10 +1096,10 @@ function titFuckSingle(): void {
                         else if(player.cocks.horseCocks() > 0) outputText("Milky girlcum squirts out from around your " + horseDescript(0) + ", staining its mottled skin white.  Y", false);
                         else if(player.cocks.dogCocks() > 0) outputText("Milky girlcum squirts out from around your " + dogDescript(0) + ", staining its shiny skin white.  Y", false);
                         else if(player.cocks.tentacleCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its rubbery skin white.  Y", false);
-                        else if(player.demonCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its purplish-skin white.  Y", false);
-                        else if(player.catCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the pink kitty-skin white.  Y", false);
-                        else if(player.cocks.lizardCocks() > 0 || player.displacerCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the purple, knotty flesh white.  Y", false);
-                        else if(player.anemoneCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the odd aquatic shaft wide.  Y", false);
+                        else if(player.cocks.demonCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its purplish-skin white.  Y", false);
+                        else if(player.cocks.catCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the pink kitty-skin white.  Y", false);
+                        else if(player.cocks.lizardCocks() > 0 || player.cocks.displacerCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the purple, knotty flesh white.  Y", false);
+                        else if(player.cocks.anemoneCocks() > 0) outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining the odd aquatic shaft wide.  Y", false);
                         else outputText("Milky girlcum squirts out from around your " + cockDescript(game.player, 0) + ", staining its length white.  Y", false);
             */
         }
@@ -1163,11 +1163,11 @@ function titFuckSingle(): void {
                                 else if(player.cocks.horseCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the flared tip of your " + horseDescript(0) + " swallowing it like an enormous mouth. ", false);
                                 else if(player.cocks.dogCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the pointed tip of your " + dogDescript(0) + " swallowing it like an enormous mouth. ", false);
                                 else if(player.cocks.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the rounded tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
-                                else if(player.demonCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the nodule-ringed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
-                                else if(player.catCocks() > 0) outputText("The swollen tips of your bloated nipples stretch around the barbed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
+                                else if(player.cocks.demonCocks() > 0) outputText("The swollen lips of your bloated nipple stretch around the nodule-ringed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
+                                else if(player.cocks.catCocks() > 0) outputText("The swollen tips of your bloated nipples stretch around the barbed tip of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
                                 else if(player.cocks.lizardCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the pointed tip of your " + cockDescript(game.player, 0) + ", stretching oddly as it swallows the knot-covered appendage. ", false);
-                                else if(player.anemoneCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the stinging tentacles that surround your " + cockDescript(game.player, 0) + "'s tip, convulsing with wet squishing sounds as they become red and enflamed with artificial lust.  ", false);
-                                else if(player.displacerCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the outstretched head of your " + cockDescript(game.player, 0) + ", convulsing with wet, squishing sounds as it wriggles inside you.");
+                                else if(player.cocks.anemoneCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the stinging tentacles that surround your " + cockDescript(game.player, 0) + "'s tip, convulsing with wet squishing sounds as they become red and enflamed with artificial lust.  ", false);
+                                else if(player.cocks.displacerCocks() > 0) outputText("The swollen tips of your bloated nipple wrap around the outstretched head of your " + cockDescript(game.player, 0) + ", convulsing with wet, squishing sounds as it wriggles inside you.");
                                 else outputText("The swollen tips of your bloated nipples wrap around the " + cockHead(0) + " of your " + cockDescript(game.player, 0) + ", swallowing it like an enormous mouth. ", false);
                 */
             }
@@ -1217,11 +1217,11 @@ function titFuckSingle(): void {
                                 else if(player.cocks.horseCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the flared tip of your " + horseDescript(0) + " spreads them even wider. ", false);
                                 else if(player.cocks.dogCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the massive girth of your " + dogDescript(0) + " spreads them even wider. ", false);
                                 else if(player.cocks.tentacleCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
-                                else if(player.demonCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
-                                else if(player.catCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the barbed tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
+                                else if(player.cocks.demonCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
+                                else if(player.cocks.catCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the barbed tip of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                                 else if(player.cocks.lizardCocks() > 0) outputText("The swollen lips of your bloated nipple gape wide, but the pointed tip of your " + cockDescript(game.player, 0) + " slowly spreads them even wider. ", false);
-                                else if(player.anemoneCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the stinging tip of your " + cockDescript(game.player, 0) + " spreads them wider and fills them with artificial lust. ", false);
-                                else if(player.displacerCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the wide head of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
+                                else if(player.cocks.anemoneCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the stinging tip of your " + cockDescript(game.player, 0) + " spreads them wider and fills them with artificial lust. ", false);
+                                else if(player.cocks.displacerCocks() > 0)  outputText("The swollen lips of your bloated nipple gape wide, but the wide head of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                                 else outputText("The swollen lips of your bloated nipple gape wide, but the " + cockHead(0) + " of your " + cockDescript(game.player, 0) + " spreads them even wider. ", false);
                 */
             }
@@ -1264,10 +1264,10 @@ function titFuckSingle(): void {
                         if(player.cocks.normalCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling at your crotch. ", false);
                         else if(player.cocks.horseCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling in and around your sheath. ", false);
                         else if(player.cocks.tentacleCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, mixing with the tentacles own lubricants. ", false);
-                        else if(player.demonCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the base of your member. ", false);
-                        else if(player.catCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the spines near your base. ", false);
+                        else if(player.cocks.demonCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the base of your member. ", false);
+                        else if(player.cocks.catCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the spines near your base. ", false);
                         else if(player.cocks.lizardCocks() > 0) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the bulbs near your base. ", false);
-                        else if(player.anemoneCocks() > 0)  outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the wriggling tentacles near your base. ", false);
+                        else if(player.cocks.anemoneCocks() > 0)  outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the wriggling tentacles near your base. ", false);
                         else if(player.hasKnot()) outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the bulb near your base. ", false);
                         else  outputText("girl-lube drizzles down the length of your " + cockDescript(game.player, 0) + " in thick streams, pooling around the spines near your base. ", false);
             */
@@ -1318,12 +1318,12 @@ function titFuckSingle(): void {
             /* Old method
                         if(player.cocks.normalCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely. ", false);
                         else if(player.cocks.horseCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the flared tip of your " + horseDescript(0) + " and begin to slide down its length, swallowing it completely. ", false);
-                        else if(player.cocks.dogCocks() > 0 || player.displacerCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ", false);
+                        else if(player.cocks.dogCocks() > 0 || player.cocks.displacerCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + dogDescript(0) + " and begin to slide down its length, even swallowing your bulging knot without difficulty. ", false);
                         else if(player.cocks.tentacleCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as it twists and pulses on its own, fucking your nipple.  ", false);
-                        else if(player.demonCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each bump and nodule makes you quiver with unholy pleasures.  ", false);
-                        else if(player.catCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each springy barb makes you quiver with pleasure.  ", false);
+                        else if(player.cocks.demonCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each bump and nodule makes you quiver with unholy pleasures.  ", false);
+                        else if(player.cocks.catCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each springy barb makes you quiver with pleasure.  ", false);
                         else if(player.cocks.lizardCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely as each of the bulgy knots along its length stretch the orifice further.  ", false);
-                        else if(player.anemoneCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely and leaving a searing trail of desire in its path.  ", false);
+                        else if(player.cocks.anemoneCocks() > 0) outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely and leaving a searing trail of desire in its path.  ", false);
                         else outputText("the gaping fuck-mouth of your inhuman nipple-cunt. The swollen lips of your bloated nipple engulf the tip of your " + cockDescript(game.player, 0) + " and begin to slide down its length, swallowing it completely. ", false);
             */
         }
@@ -1342,7 +1342,7 @@ function titFuckSingle(): void {
                 outputText("girl-lube drizzles down the length of your " + cockDescript(player) + " in thick streams, pooling in and around your sheath. ");
             else if (player.cocks.tentacleCocks() > 0)
                 outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
-            else if (player.demonCocks() > 0)
+            else if (player.cocks.demonCocks() > 0)
                 outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
             else outputText("girl-lube pours out of your swollen nipple over your " + cockDescript(player) + " and hands, pooling on the ground below you. ");
         }
@@ -1535,7 +1535,7 @@ function multiNippleFuckPrep(randomCock: number): void {
         else outputText("your " + cockDescript(player, randomCock) + " ");
     }
     // Applying randomization - everything else
-    if (player.cocks[randomCock].cockType.Index >= 3) {
+    if (player.cocks[randomCock].cockType >= 3) {
         outputText("tip of ");
         // more than one?
         if (player.cocks.normalCocks() > 1)
@@ -1580,13 +1580,13 @@ function orgazmo(selfSucking: boolean, nippleFuck: boolean): void {
                 outputText("swollen equine sheath, slowly beginning to work its way up your shaft.  Pre-cum begins pouring from your " + cockDescript(player) + ", slicking your " + cockDescript(player) + " as you get ready to blow.  ");
             else if (player.cocks.tentacleCocks() == 1)
                 outputText("wiggling vine-like cock, growing rapidly.  You feel the rubbery surface of your tentacle prick contracting as it nears release.  Thick bulges of fluids collect and travel along the length of your " + cockDescript(player) + ", the first of which is almost to your oversized tip.  ");
-            else if (player.demonCocks() == 1)
+            else if (player.cocks.demonCocks() == 1)
                 outputText("tainted man-meat, growing rapidly.  You feel the nodules close to the base swell and pulse, starting a rippling wave of pleasure that migrates upwards.  The ring of bumps around your crown double in size, flaring out as your " + cockDescript(player) + " prepares to unload.  ");
-            else if (player.catCocks() == 1)
+            else if (player.cocks.catCocks() == 1)
                 outputText("full, cat-like sheath.  You feel it tingling and throbbing as the spines pulsate with arousal.  You feel the barbs at the bottom thickening as bulges of fluid migrate through your " + cockDescript(player) + " towards the tip.  ");
             else if (player.cocks.lizardCocks() == 1)
                 outputText("swollen member.  You can feel it tingling and bulging strangly as it begins to contract and pulse.  Pre-cum leaks from your " + cockDescript(player) + " in a steady stream as each 'bulb' nearly doubles in size, and then one at a time, they deflate while your urethra dilates wide.  ");
-            else if (player.anemoneCocks() == 1)
+            else if (player.cocks.anemoneCocks() == 1)
                 outputText("base.  The tentacles surrounding your " + cockDescript(player) + " go nuts, constricting around it, inadvertently firing aphrodisiacs into the orgasmic flesh as they wring a potent, hip-jerking climax from you.  ");
             else outputText("twitching manhood, growing rapidly.  You stroke furiously, feeling the pressure of your cum as it nears release.  ");
             outputText("Pleasurable spasms overwhelm you as cum erupts from your " + cockDescript(player));

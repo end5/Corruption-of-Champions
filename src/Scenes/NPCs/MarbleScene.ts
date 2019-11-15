@@ -1748,7 +1748,7 @@ function marbleMilkSex(newpage: boolean = true): void {
             temp = player.cocks.length;
             while (temp > 0) {
                 temp--;
-                if (player.cocks[temp].cockType.Index > 2) {
+                if (player.cocks[temp].cockType > 2) {
                     outputText(cockDescript(player, temp), false);
                     temp = -1;
                 }

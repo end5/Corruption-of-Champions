@@ -171,8 +171,6 @@ function resetToPC(): void {
     player.inv.itemSlot5 = urtaQItems5;
     game.player = player;
 
-    // See called method comment.
-    player.cocks.fixFuckingCockTypesEnum();
 }
 
 // Urta Appearance Screen(C)*

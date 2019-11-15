@@ -1056,7 +1056,7 @@ function addictionScyllaTakeAdvantageDicksBonusAndEpilogue(): void {
     // Add possible scenes to array
     if (player.cocks.length >= 4) blah.push(4);
     if (player.cocks.tentacleCocks() > 0) blah.push(5);
-    if (player.demonCocks() > 0) blah.push(6);
+    if (player.cocks.demonCocks() > 0) blah.push(6);
     // Pick an available scene and store it in select.
     const select: number = blah[rand(blah.length)];
 

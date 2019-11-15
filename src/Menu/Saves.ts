@@ -656,7 +656,7 @@ export class Saves {
             for (i = 0; i < player.cocks.length; i++) {
                 saveFile.data.cocks[i].cockThickness = player.cocks[i].cockThickness;
                 saveFile.data.cocks[i].cockLength = player.cocks[i].cockLength;
-                saveFile.data.cocks[i].cockType = player.cocks[i].cockType.Index;
+                saveFile.data.cocks[i].cockType = player.cocks[i].cockType;
                 saveFile.data.cocks[i].knotMultiplier = player.cocks[i].knotMultiplier;
                 saveFile.data.cocks[i].pierced = player.cocks[i].pierced;
                 saveFile.data.cocks[i].pShortDesc = player.cocks[i].pShortDesc;
@@ -1329,7 +1329,7 @@ export class Saves {
             for (i = 0; i < saveFile.data.cocks.length; i++) {
                 player.cocks[i].cockThickness = saveFile.data.cocks[i].cockThickness;
                 player.cocks[i].cockLength = saveFile.data.cocks[i].cockLength;
-                player.cocks[i].cockType = CockTypesEnum.ParseConstantByIndex(saveFile.data.cocks[i].cockType);
+                player.cocks[i].cockType = saveFile.data.cocks[i].cockType;
                 player.cocks[i].knotMultiplier = saveFile.data.cocks[i].knotMultiplier;
                 if (saveFile.data.cocks[i].sock == undefined)
                     player.cocks[i].sock = "";

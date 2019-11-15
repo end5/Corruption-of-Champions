@@ -1953,7 +1953,7 @@ function FirstTimeAmilyTakeCharge(): void {
 
     // (If player has penis 14 inches or more long)
     if (player.cocks[0].cockLength >= 14) {
-        if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 3) {
+        if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType > 3) {
             outputText("Her eyes go wide with shock and fear as you reveal your impressively sized member, already growing erect and hard. \"<i>You can't stick that in me! It'll never fit!</i>\" She squeals.\n\n", false);
             outputText("\"<i>I'll make it fit!</i>\" You assure her.\n\n", false);
         }

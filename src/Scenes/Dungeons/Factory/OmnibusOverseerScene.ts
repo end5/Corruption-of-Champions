@@ -95,7 +95,7 @@ function omnibusVictoryGrowDick(): void {
         genderCheck();
     }
     if (player.cocks.length == 1) {
-        if (player.demonCocks() < 1) {
+        if (player.cocks.demonCocks() < 1) {
             outputText("You smile, watching your " + cockDescript(game.player, 0) + " grow longer.  Inches of newfound dick-flesh erupt from your crotch in response to omnibus' dark magics.  Before you can play with your transformed tool, a wave of burning desire passes through you.  ");
             if (player.cor < 80) outputText("You watch in horror as the skin of your " + cockDescript(game.player, 0) + " turns shiny and purplish-black.  ");
             else outputText("Curious, you watch the skin of your " + cockDescript(game.player, 0) + " turn a shiny-dark purple.  ");
@@ -115,7 +115,7 @@ function omnibusVictoryGrowDick(): void {
     if (player.cocks.length > 1) {
         let temp: number = player.cocks.length;
         // Already has demoncocks
-        if (player.demonCocks() == player.cocks.length) {
+        if (player.cocks.demonCocks() == player.cocks.length) {
             outputText("Your " + multiCockDescriptLight(player) + " leap forwards, taking to the dark magic with ease.  Inch after inch of new length erupts from your groin as your " + multiCockDescriptLight(player) + " get longer and thicker.  They pulsate, as if promising dark pleasure as they settle into their new enhanced size.");
             while (temp > 0) {
                 temp--;
@@ -517,7 +517,7 @@ export function demonBadEnd(): void {
             if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
             else outputText("devour Marae's as soon as you get a chance.", false);
             outputText("You greedily gather up the lethicite splattered on your body and devour it, turning it into raw demonic power.  You really do need to get more of this... but first you know a certain demoness you intend to wrap around your ", false);
-            if (player.demonCocks() > 0) outputText("growing", false);
+            if (player.cocks.demonCocks() > 0) outputText("growing", false);
             else outputText("new", false);
             outputText(" demon-cock for a few more orgasms.", false);
         }
@@ -542,7 +542,7 @@ export function demonBadEnd(): void {
             if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
             else outputText("devour Marae's as soon as you get a chance.", false);
             outputText("  But first you know a certain demoness you intend to wrap around your ", false);
-            if (player.demonCocks() > 0) outputText("growing", false);
+            if (player.cocks.demonCocks() > 0) outputText("growing", false);
             else outputText("new", false);
             outputText(" demon-cock for a few more orgasms.", false);
         }
@@ -588,7 +588,7 @@ export function demonBadEnd(): void {
         if (player.effects.findByType(StatusAffects.MaraesLethicite) < 0) outputText("gather some yourself at the next opportunity...", false);
         else outputText("devour Marae's as soon as you get a chance.", false);
         outputText("  But first you know a certain demoness you intend to wrap around your ", false);
-        if (player.demonCocks() > 0) outputText("growing", false);
+        if (player.cocks.demonCocks() > 0) outputText("growing", false);
         else outputText("new", false);
         outputText(" demon-cock for a few more orgasms.", false);
         outputText("  Before you get into that, you spy a small piece of pink crystal on the floor between your legs.  You snatch it and devour it before the succubus has a chance and eat it, turning part of your soul into new-found demonic strength before you return to a long night of sex...", false);

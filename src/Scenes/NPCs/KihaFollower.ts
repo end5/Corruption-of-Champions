@@ -1034,7 +1034,7 @@ function boneTheShitOutofKihaHolesWithHorsecock(): void {
     else if (c <= 1000) outputText("Her eyes water, and trickles of cum run from her nose, but she still manages to gulp most of it down.");
     else {
         outputText("Her eyes water copiously as semen back-floods out her nostrils.  Her throat works to swallow it all, guzzling it noisily, but it just isn't enough.  Jizz squirts from the corners of her mouth and makes a mess of her heaving breasts before it finally winds down to a manageable level.  Her belly even looks a bit pudgy from all the ");
-        if (player.cocks[x].cockType.Index > 0 && player.cocks[x].cockType.Index < 10) outputText("animal ");
+        if (player.cocks[x].cockType > 0 && player.cocks[x].cockType < 10) outputText("animal ");
         outputText("sperm she's been forced to swallow.");
     }
     outputText("[pg]Kiha pulls back and releases your tip from her sore, semen-drenched puckers.  She coughs and gasps for a moment, inadvertently smearing the salty sludge all over herself.  When she recovers, she sighs, \"<i>You got it everywhere, idiot.  Now I'll have to go get a bath, but first, you had better return the favor.</i>\"");
@@ -1054,7 +1054,7 @@ function boneTheShitOutofKihaHolesWithHorsecock(): void {
     if (horse) outputText("mare");
     else outputText("slut");
     outputText("... a tight cock-sleeve already marked with your seed, just waiting to be mounted and impregnated with your young. You zero in on her cunt - her breeding hole - and step forward, ");
-    if (player.cocks[x].cockType.Index > 0) {
+    if (player.cocks[x].cockType > 0) {
         if (player.isTaur()) outputText("throwing your hooves onto the rock, looming over Kiha");
         else outputText("fondling your bestial tool with one hand");
     }
@@ -1121,7 +1121,7 @@ function boneTheShitOutofKihaHolesWithHorsecock(): void {
     else outputText(", her belly distending hugely, grossly even, utterly filled with cum until it's squirting from her pussy in a river of white");
     outputText(".");
     outputText("[pg]Sighing, you pull out of the twitching dragoness.  Her violated twat runs white with cum, dripping out in the messiest creampie you've made in some time.  Kiha shivers and reaches down, scooping your musky ");
-    if (player.cocks[x].cockType.Index > 0) outputText("animal-");
+    if (player.cocks[x].cockType > 0) outputText("animal-");
     outputText("cum from herself to sample its unique flavor.  The sight invigorates your flagging cock, raising it back to towering, horse-like proportions");
     if (player.isTaur()) outputText(" until the shaft bumps your belly");
     outputText(".  You've just started to breed this bitch!");

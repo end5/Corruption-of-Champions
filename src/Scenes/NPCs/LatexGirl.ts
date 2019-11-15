@@ -98,7 +98,7 @@ function gooCock(): string {
     return cockDescription(gooGetCockType(), flags[kFLAGS.GOO_DICK_LENGTH], flags[kFLAGS.GOO_DICK_LENGTH] / 6, 50, 100);
 }
 export function gooGetCockType(): CockTypesEnum {
-    return CockTypesEnum.ParseConstantByIndex(flags[kFLAGS.GOO_DICK_TYPE]);
+    return flags[kFLAGS.GOO_DICK_TYPE];
 }
 
 export function latexGooFollower(): boolean {

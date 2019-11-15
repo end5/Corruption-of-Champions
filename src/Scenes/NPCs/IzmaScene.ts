@@ -947,7 +947,7 @@ function nonFightIzmaSmexPAINUS(): void {
 
     outputText("You respond in kind, shedding your garments as her lips purse and her eyes roam up and down your form.  ", false);
     // Single Normal dicks
-    if (player.cocks.length == 1 && player.cocks[0].cockType.Index < 9) {
+    if (player.cocks.length == 1 && player.cocks[0].cockType < 9) {
         // [Human dick in slot 0]
         if (player.cocks[0].cockType == CockTypesEnum.HUMAN) outputText("Izma seems surprised to see your genitalia is similar to hers.  \"<i>Huh. Thought that every land-dweller usually bumbled into a dick transformation around here.</i>\"", false);
         // [Horse cock in slot 0]

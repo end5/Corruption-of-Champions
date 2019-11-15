@@ -1423,12 +1423,12 @@ function jojosFourthRape(): void {
                 if (player.cumQ() >= 25 && player.cumQ() < 250) {
                     if (player.cocks.horseCocks() == 1) outputText(" Your " + cockDescript(game.player, 0) + " flares wildly as musky horse-cum erupts from it, splattering over Jojo.  ");
                     if (player.cocks.dogCocks() == 1) outputText("The terrible pressure in your " + cockDescript(game.player, 0) + " finally relents, in the form of a fountain of doggie-cum, spraying out from your " + cockDescript(game.player, 0) + " in a steady stream that seems to last and last.  ");
-                    if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("Your body tenses and cums a thick eruption far beyond what a normal human could produce.  Jojo is splattered with the stuff.  ");
+                    if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType > 2) outputText("Your body tenses and cums a thick eruption far beyond what a normal human could produce.  Jojo is splattered with the stuff.  ");
                 }
                 if (player.cumQ() >= 250) {
                     if (player.cocks.horseCocks() == 1) outputText("Your " + cockDescript(game.player, 0) + " ripples and bulges with animalistic vigor, horse-cum splattering everywhere with each contraction.  The musky animal-jizz never seems to stop pouring from your equine organ, soaking the mouse from the waist up.  ");
                     if (player.cocks.dogCocks() == 1) outputText("Your " + cockDescript(game.player, 0) + " suddenly releases the pressure, a constant stream of doggie-cum spouting from your " + cockDescript(game.player, 0) + " like some kind of cum-hose.  It seems to go on endlessly, covering the mouse from the waist up with thick ribbons of doggie-spooge as your knot slowly shrinks to normal.  ");
-                    if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("Your body tenses and cums a thick eruption far beyond what a normal human could produce.  Jojo is splattered with the stuff.  ");
+                    if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType > 2) outputText("Your body tenses and cums a thick eruption far beyond what a normal human could produce.  Jojo is splattered with the stuff.  ");
                 }
             }
             // Sorry multicocks, I'm donE!

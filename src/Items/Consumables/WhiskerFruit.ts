@@ -85,8 +85,8 @@ export function catTransformation(player: Player): void {
     // Libido gain
     if (player.lib < 80 && changes < changeLimit && rand(4) == 0) {
         // Cat dicked folks
-        if (player.catCocks() > 0) {
-            temp = player.cocks.findFirstCockType(CockTypesEnum.CAT);
+        if (player.cocks.catCocks() > 0) {
+            const temp = player.cocks.findFirstCockType(CockTypesEnum.CAT);
             outputText("\n\nYou feel your " + cockDescript(player, temp) + " growing hard, the barbs becoming more sensitive. You gently run your hands down them and imagine the feeling of raking the insides of a cunt as you pull.  The fantasy continues, and after ejaculating and hearing the female yowl with pleasure, you shake your head and try to drive off the image.  ", false);
             if (player.cor < 33)
                 outputText("You need to control yourself better.", false);
@@ -173,7 +173,7 @@ export function catTransformation(player: Player): void {
             changes++;
     }
     // Cat dangly-doo.
-    if (player.cocks.length > 0 && player.catCocks() < player.cocks.length &&
+    if (player.cocks.length > 0 && player.cocks.catCocks() < player.cocks.length &&
         changes < changeLimit && rand(4) == 0) {
         // loop through and find a non-cat wang.
         for (const i = 0; i < (player.cocks.length) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) { }
@@ -190,7 +190,7 @@ export function catTransformation(player: Player): void {
         changes++;
     }
     // Cat penorz shrink
-    if (player.catCocks() > 0 && rand(3) == 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
+    if (player.cocks.catCocks() > 0 && rand(3) == 0 && changes < changeLimit && !flags[kFLAGS.HYPER_HAPPY]) {
         // loop through and find a cat wang.
         temp = 0;
         for (const j = 0; j < (player.cocks.length); j++) {

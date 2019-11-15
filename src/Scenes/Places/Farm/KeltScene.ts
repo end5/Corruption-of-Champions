@@ -177,7 +177,7 @@ function keltEagerlyGetNaked(): void {
         // (Horse Cock:
         if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("\"<i>Now that's just sad.  Getting a little envious of me, huh?  Had to go out and get a nice horsecock all your own?  Should have asked.  I'd have given you a taste of mine!  ", false);
         // (Tentacle Cock or other weirdness
-        if (player.cocks[0].cockType.Index >= 3) outputText("\"<i>Hah!  I'll bite... what the fuck are you supposed to be?  That a cock, or just an ugly, misplaced tail?  HA!  ", false);
+        if (player.cocks[0].cockType >= 3) outputText("\"<i>Hah!  I'll bite... what the fuck are you supposed to be?  That a cock, or just an ugly, misplaced tail?  HA!  ", false);
         // (Small Size, ?-10 inches:
         if (player.cocks[0].cockLength <= 10) outputText("\"So, when you poke a woman with that, does she notice?  Or do you have to tell her when to start faking her orgasm?</i>\"\r\r", false);
         // (Medium Size, 11-20 inches:
@@ -233,7 +233,7 @@ function keltReluctantlyGetNaked(): void {
         // (Horse Cock:
         if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("\"<i>Now that's just sad.  Getting a little envious of me, huh?  Had to go out and get a nice horsecock all your own?  Should have asked.  I'd have given you a taste of mine!  ", false);
         // (Tentacle Cock or other weirdness
-        if (player.cocks[0].cockType.Index >= 3) outputText("\"<i>Hah!  I'll bite... what the fuck are you supposed to be?  That a cock, or just an ugly, misplaced tail?  HA!  ", false);
+        if (player.cocks[0].cockType >= 3) outputText("\"<i>Hah!  I'll bite... what the fuck are you supposed to be?  That a cock, or just an ugly, misplaced tail?  HA!  ", false);
         // (Small Size, ?-10 inches:
         if (player.cocks[0].cockLength <= 10) outputText("\"So, when you poke a woman with that, does she notice?  Or do you have to tell her when to start faking her orgasm?</i>\"\r\r", false);
         // (Medium Size, 11-20 inches:

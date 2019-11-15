@@ -288,7 +288,7 @@ export function minotaurBlood(player: Player): void {
         }
         if (selectedCockValue != -1) {
             // Text for humandicks or others
-            if (player.cocks[selectedCockValue].cockType == CockTypesEnum.HUMAN || player.cocks[selectedCockValue].cockType.Index > 2)
+            if (player.cocks[selectedCockValue].cockType == CockTypesEnum.HUMAN || player.cocks[selectedCockValue].cockType > 2)
                 outputText("\n\nYour " + cockDescript(player, selectedCockValue) + " begins to feel strange... you pull down your pants to take a look and see it darkening as you feel a tightness near the base where your skin seems to be bunching up.  A sheath begins forming around your cock's base, tightening and pulling your cock inside its depths.  A hot feeling envelops your member as it suddenly grows into a horse penis, dwarfing its old size.  The skin is mottled brown and black and feels more sensitive than normal.  Your hands are irresistibly drawn to it, and you jerk yourself off, splattering cum with intense force.", false);
             // Text for dogdicks
             if (player.cocks[selectedCockValue].cockType == CockTypesEnum.DOG)

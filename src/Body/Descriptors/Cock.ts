@@ -23,13 +23,6 @@ export function cockDescription(cockType: CockTypesEnum, length: number, girth: 
 }
 
 export function cockNoun(cockType: CockTypesEnum): string {
-    /*
-    if (cockType is int) {
-        trace("Someone is still calling cockNoun with an integer cock type");
-        trace("Fix this shit already, dammit!")
-        cockType = CockTypesEnum.ParseConstantByIndex(cockType);
-    }
-    */
     if (cockType == CockTypesEnum.HUMAN) {
         // Yeah, this is kind of messy
         // there is no other easy way to preserve the weighting fenoxo did
@@ -332,14 +325,14 @@ function cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockTyp
         // lots of cum? drippy.
         if (i_creature.cumQ() > 50 && i_creature.cumQ() < 200 && rand(2) == 0) {
             // for hroses and dogs
-            if (i_cockType.Group == "animal") description += "animal-pre leaking";
+            if (CockTypesEnumGroup[i_cockType] == "animal") description += "animal-pre leaking";
             else description += "pre-slickened";
             descripts = 1;
         }
         // Tons of cum
         if (i_creature.cumQ() >= 200 && rand(2) == 0) {
             // for horses and dogs
-            if (i_cockType.Group == "animal") description += "animal-spunk dripping";
+            if (CockTypesEnumGroup[i_cockType] == "animal") description += "animal-spunk dripping";
             else description += "cum-drooling";
             descripts = 1;
         }
@@ -373,13 +366,6 @@ function cockAdjectives(i_cockLength: number, i_cockThickness: number, i_cockTyp
 }
 
 export function cockMultiNoun(cockType: CockTypesEnum): string {
-    /*
-    if (cockType is int) {
-        trace("Someone is still calling cockNoun with an integer cock type");
-        trace("Fix this shit already, dammit!");
-        cockType = CockTypesEnum.ParseConstantByIndex(cockType);
-    }
-    */
     let options: any[];
     let description: string = "";
     if (cockType == CockTypesEnum.HUMAN) {
@@ -556,7 +542,7 @@ export function multiCockDescriptLight(creature: Character): string {
             if (horseCocks == 2) descript += ", " + cockNoun(CockTypesEnum.HORSE) + "s";
             if (dogCocks == 2) descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
             // Failsafe
-            if (creature.cocks[0].cockType.Index > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";
+            if (creature.cocks[0].cockType > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";
         }
         // Nonidentical
         else {
@@ -574,7 +560,7 @@ export function multiCockDescriptLight(creature: Character): string {
             if (horseCocks == 3) descript += ", " + cockNoun(CockTypesEnum.HORSE) + "s";
             if (dogCocks == 3) descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
             // Tentacles
-            if (creature.cocks[0].cockType.Index > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";
+            if (creature.cocks[0].cockType > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";
         }
         else {
             descript += randomChoice("three ", "group of ");
@@ -604,7 +590,7 @@ export function multiCockDescriptLight(creature: Character): string {
                 descript += cockNoun(CockTypesEnum.HORSE) + "s";
                 descripted = true;
             }
-            if (creature.cocks[0].cockType.Index > 2) {
+            if (creature.cocks[0].cockType > 2) {
                 descript += cockAdjectiveOfChar(creature) + ", ";
                 descript += cockNoun(creature.cocks[0].cockType) + "s";
                 descripted = true;
@@ -681,7 +667,7 @@ export function multiCockDescript(creature: Character): string {
             if (horseCocks == 2) descript += ", " + cockNoun(CockTypesEnum.HORSE) + "s";
             if (dogCocks == 2) descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
             // Tentacles
-            if (creature.cocks[0].cockType.Index > 2)
+            if (creature.cocks[0].cockType > 2)
                 descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";
         }
         // Nonidentical
@@ -703,7 +689,7 @@ export function multiCockDescript(creature: Character): string {
             if (dogCocks == 3)
                 descript += ", " + cockNoun(CockTypesEnum.DOG) + "s";
             // Tentacles
-            if (creature.cocks[0].cockType.Index > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";   // Not sure what's going on here, referencing index *may* be a bug.
+            if (creature.cocks[0].cockType > 2) descript += ", " + cockNoun(creature.cocks[0].cockType) + "s";   // Not sure what's going on here, referencing index *may* be a bug.
 
         }
         else {
@@ -735,7 +721,7 @@ export function multiCockDescript(creature: Character): string {
                 descripted = true;
             }
             // TODO More group cock type descriptions!
-            if (creature.cocks[0].cockType.Index > 2) {
+            if (creature.cocks[0].cockType > 2) {
                 descript += cockAdjectives(averageLength, averageThickness, CockTypesEnum.HUMAN, creature) + ", ";
                 descript += cockNoun(creature.cocks[0].cockType) + "s";
                 descripted = true;

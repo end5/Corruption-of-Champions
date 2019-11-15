@@ -174,7 +174,7 @@ export function incubusVictoryRapeSex(): void {
         outputText("You don't waste any time, gripping your " + cockDescript(game.player, 0) + " in one hand and ", false);
         if (player.cocks[0].cockType == CockTypesEnum.HORSE) outputText("pressing your thick flare ", false);
         if (player.cocks[0].cockType == CockTypesEnum.DOG) outputText("pressing your pointed tip ", false);
-        if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType.Index > 2) outputText("pressing your head ", false);
+        if (player.cocks[0].cockType == CockTypesEnum.HUMAN || player.cocks[0].cockType > 2) outputText("pressing your head ", false);
         outputText("between the incubus' cheeks towards his inhumanly smooth rear-passage.  You gasp in delight at the tight ribbed texture of his asshole as you slide ", false);
         if (player.cocks[0].cockLength > 10) outputText("deep inside ", false);
         else outputText("inside ", false);
